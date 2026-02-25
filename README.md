@@ -1,10 +1,12 @@
-# WhaTap MCP Server
+# WhaTap Open MCP Server
 
-MCP (Model Context Protocol) server for [WhaTap](https://www.whatap.io/) monitoring platform. Enables AI assistants like Claude Desktop and Claude Code to query your server, APM, Kubernetes, database, and log monitoring data.
+[MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server for the [WhaTap](https://www.whatap.io/) monitoring platform.
+
+Connect your AI assistant to WhaTap and query server, APM, Kubernetes, database, and log monitoring data through natural language.
 
 ## Quick Start
 
-### With Claude Desktop
+### Claude Desktop
 
 Add to your `claude_desktop_config.json`:
 
@@ -15,15 +17,14 @@ Add to your `claude_desktop_config.json`:
       "command": "npx",
       "args": ["whatap-mcp"],
       "env": {
-        "WHATAP_API_TOKEN": "<your-account-api-token>",
-        "WHATAP_API_URL": "https://api.whatap.io"
+        "WHATAP_API_TOKEN": "<your-account-api-token>"
       }
     }
   }
 }
 ```
 
-### With Claude Code
+### Claude Code
 
 ```bash
 claude mcp add whatap -- npx whatap-mcp \
@@ -32,69 +33,114 @@ claude mcp add whatap -- npx whatap-mcp \
 
 ## Configuration
 
-| Environment Variable | Required | Default | Description |
-|---------------------|----------|---------|-------------|
-| `WHATAP_API_TOKEN` | Yes | - | WhaTap account-level API token |
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `WHATAP_API_TOKEN` | Yes | — | WhaTap account-level API token |
 | `WHATAP_API_URL` | No | `https://api.whatap.io` | WhaTap API base URL |
 
-## Available Tools (30 total)
+Get your API token from **WhaTap Console > Account > API Token**.
 
-### Project Management
-- `whatap_list_projects` - List all monitoring projects
-- `whatap_project_info` - Get detailed project information
-- `whatap_list_agents` - List agents in a project
+## Available Tools (30)
 
-### Server / Infrastructure Monitoring
-- `whatap_server_cpu` - CPU usage metrics
-- `whatap_server_memory` - Memory usage metrics
-- `whatap_server_disk` - Disk I/O and usage
-- `whatap_server_network` - Network I/O metrics
-- `whatap_server_process` - Process-level CPU/memory
-- `whatap_server_cpu_load` - CPU load averages (1/5/15 min)
-- `whatap_server_top` - Top-N servers by CPU/memory/disk
+### Project Management (3)
 
-### APM (Application Performance)
-- `whatap_apm_tps` - Transactions per second
-- `whatap_apm_response_time` - Service response time
-- `whatap_apm_error` - Transaction error count/rate
-- `whatap_apm_apdex` - APDEX satisfaction score
-- `whatap_apm_active_transactions` - Currently active transactions
-- `whatap_apm_transaction_stats` - Transaction statistics
+| Tool | Description |
+|------|-------------|
+| `whatap_list_projects` | List all monitoring projects |
+| `whatap_project_info` | Get detailed project information |
+| `whatap_list_agents` | List agents (servers/instances) in a project |
 
-### Kubernetes Monitoring
-- `whatap_k8s_node_list` - List Kubernetes nodes
-- `whatap_k8s_node_cpu` - Node CPU usage
-- `whatap_k8s_node_memory` - Node memory usage
-- `whatap_k8s_pod_status` - Pod status and statistics
-- `whatap_k8s_container_top` - Top containers by CPU/memory
-- `whatap_k8s_events` - Recent Kubernetes events
+### Server / Infrastructure (7)
 
-### Database Monitoring
-- `whatap_db_instance_list` - List database instances
-- `whatap_db_stat` - Database performance stats
-- `whatap_db_active_sessions` - Active database sessions
-- `whatap_db_wait_analysis` - Wait event analysis (Oracle)
+| Tool | Description |
+|------|-------------|
+| `whatap_server_cpu` | CPU usage (total, user, system, idle) |
+| `whatap_server_memory` | Memory usage (used %, used bytes, total) |
+| `whatap_server_disk` | Disk I/O and usage per mount point |
+| `whatap_server_network` | Network I/O (bytes in/out per second) |
+| `whatap_server_process` | Process-level CPU and memory |
+| `whatap_server_cpu_load` | CPU load averages (1/5/15 min) |
+| `whatap_server_top` | Top-N servers by CPU, memory, or disk |
 
-### Log Monitoring
-- `whatap_log_search` - Search logs with keyword filter
-- `whatap_log_stats` - Log volume statistics
+### APM — Application Performance (6)
 
-### Alerts & Events
-- `whatap_alerts` - Get active/recent alerts
+| Tool | Description |
+|------|-------------|
+| `whatap_apm_tps` | Transactions per second |
+| `whatap_apm_response_time` | Service response time |
+| `whatap_apm_error` | Transaction error count and rate |
+| `whatap_apm_apdex` | APDEX satisfaction score |
+| `whatap_apm_active_transactions` | Currently active (in-flight) transactions |
+| `whatap_apm_transaction_stats` | Transaction statistics (count, avg time, errors) |
 
-### Advanced
-- `whatap_mxql_query` - Execute raw MXQL queries
+### Kubernetes (6)
 
-## Example Usage
+| Tool | Description |
+|------|-------------|
+| `whatap_k8s_node_list` | List nodes with CPU and memory overview |
+| `whatap_k8s_node_cpu` | Node CPU usage |
+| `whatap_k8s_node_memory` | Node memory usage |
+| `whatap_k8s_pod_status` | Pod status and restart counts |
+| `whatap_k8s_container_top` | Top containers by CPU or memory |
+| `whatap_k8s_events` | Recent cluster events (warnings, errors) |
 
-Once connected, you can ask your AI assistant:
+### Database (4)
 
-- "List all my WhaTap projects"
-- "Show me the CPU usage for project 12345 over the last hour"
-- "What are the top 5 servers by memory usage?"
-- "Show active transactions in my APM project"
-- "Search logs for 'OutOfMemoryError' in the last 6 hours"
-- "Are there any active alerts?"
+| Tool | Description |
+|------|-------------|
+| `whatap_db_instance_list` | List database instances |
+| `whatap_db_stat` | Performance stats (active sessions, locks, CPU) |
+| `whatap_db_active_sessions` | Active sessions with SQL text and wait events |
+| `whatap_db_wait_analysis` | Wait event analysis (Oracle) |
+
+### Log (2)
+
+| Tool | Description |
+|------|-------------|
+| `whatap_log_search` | Search logs by keyword |
+| `whatap_log_stats` | Log volume statistics |
+
+### Alerts (1)
+
+| Tool | Description |
+|------|-------------|
+| `whatap_alerts` | Get active/recent alert events |
+
+### Advanced (1)
+
+| Tool | Description |
+|------|-------------|
+| `whatap_mxql_query` | Execute raw MXQL queries |
+
+## Example Prompts
+
+Once connected, ask your AI assistant:
+
+```
+"List all my WhaTap projects"
+"Show CPU usage for project 12345 over the last hour"
+"What are the top 5 servers by memory usage?"
+"Show active transactions in my APM project"
+"Are there any pods in CrashLoopBackOff?"
+"Search logs for 'OutOfMemoryError' in the last 6 hours"
+"Are there any active alerts?"
+```
+
+## Architecture
+
+```
+AI Assistant ←→ stdio (JSON-RPC) ←→ whatap-mcp ←→ WhaTap API
+                                        │
+                                        ├── 30 MCP tools
+                                        ├── MXQL query builders
+                                        ├── Project token caching
+                                        └── Markdown response formatting
+```
+
+- **Transport:** stdio via `@modelcontextprotocol/sdk`
+- **Data layer:** All metrics queried via [MXQL](https://docs.whatap.io/mxql/mxql-overview) (WhaTap's Monitoring Query Language)
+- **Auth:** Two-tier — account token for project listing, per-project tokens cached automatically
+- **Output:** Markdown tables optimized for LLM consumption
 
 ## Development
 
@@ -102,14 +148,39 @@ Once connected, you can ask your AI assistant:
 # Install dependencies
 npm install
 
-# Run in development mode
-WHATAP_API_TOKEN=your_token npx tsx src/index.ts
+# Development mode
+WHATAP_API_TOKEN=your_token npm run dev
 
-# Build for production
+# Build
 npm run build
 
 # Test with MCP Inspector
 npx @modelcontextprotocol/inspector node dist/index.js
+```
+
+### Project Structure
+
+```
+src/
+├── index.ts           # MCP server entry point (stdio transport)
+├── config.ts          # Environment variable loading
+├── api/
+│   ├── client.ts      # WhatapApiClient (HTTP, auth, token caching)
+│   ├── types.ts       # TypeScript interfaces
+│   └── mxql.ts        # MXQL query builders (23 functions)
+├── tools/
+│   ├── index.ts       # Tool registration hub
+│   ├── project.ts     # Project management (3 tools)
+│   ├── server.ts      # Server monitoring (7 tools)
+│   ├── apm.ts         # APM (6 tools)
+│   ├── kubernetes.ts  # Kubernetes (6 tools)
+│   ├── database.ts    # Database (4 tools)
+│   ├── log.ts         # Log monitoring (2 tools)
+│   ├── alert.ts       # Alerts (1 tool)
+│   └── mxql.ts        # Raw MXQL (1 tool)
+└── utils/
+    ├── time.ts        # Time range parser ("5m", "1h", "last 7 days")
+    └── format.ts      # Response formatters (Markdown tables)
 ```
 
 ## Requirements
@@ -119,4 +190,4 @@ npx @modelcontextprotocol/inspector node dist/index.js
 
 ## License
 
-MIT
+[MIT](LICENSE)
