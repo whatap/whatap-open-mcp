@@ -3,6 +3,11 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { WhatapApiClient } from "../api/client.js";
 import { parseTimeRange } from "../utils/time.js";
 import { formatMxqlResponse } from "../utils/format.js";
+import { PARAM_PROJECT_CODE, PARAM_TIME_RANGE_OPTIONAL } from "../utils/descriptions.js";
+import {
+  classifyAndBuildError,
+  appendNextSteps,
+} from "../utils/response.js";
 
 export function registerAlertTools(
   server: McpServer,
@@ -10,16 +15,18 @@ export function registerAlertTools(
 ) {
   server.tool(
     "whatap_alerts",
-    "Get active or recent alert events for a project. Tries both general events and Kubernetes events.",
+    "Use this when asked about alerts, incidents, or events. " +
+      "Tries general events first; falls back to Kubernetes events for K8s projects. " +
+      "Returns time, title, message, severity, status. Works with all project types. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "RELATED: Investigate causes with whatap_server_cpu, whatap_apm_error, whatap_k8s_events, whatap_db_stat.",
     {
-      projectCode: z.number().describe("Project code (pcode)"),
+      projectCode: z.number().describe(PARAM_PROJECT_CODE),
       timeRange: z
         .string()
         .optional()
         .default("1h")
-        .describe(
-          'Time range for recent alerts (default: "1h"). e.g. "5m", "1h", "6h", "1d"'
-        ),
+        .describe(PARAM_TIME_RANGE_OPTIONAL),
     },
     async ({ projectCode, timeRange }) => {
       try {
@@ -44,7 +51,11 @@ export function registerAlertTools(
           const text = formatMxqlResponse(eventResult, {
             title: "Alert Events",
           });
-          return { content: [{ type: "text", text }] };
+          return {
+            content: [
+              { type: "text" as const, text: appendNextSteps(text, "whatap_alerts") },
+            ],
+          };
         }
 
         // Fallback: try kube_event for Kubernetes projects
@@ -65,24 +76,33 @@ export function registerAlertTools(
           const text = formatMxqlResponse(kubeResult, {
             title: "Kubernetes Events",
           });
-          return { content: [{ type: "text", text }] };
+          return {
+            content: [
+              { type: "text" as const, text: appendNextSteps(text, "whatap_alerts") },
+            ],
+          };
         }
 
+        // No-data case — guided message (not isError)
+        const noDataLines = [
+          "No alert or event data found — this is normal if there are no active alerts.",
+          "",
+          '**Suggestions:**',
+          '- Try wider time range ("24h", "7d").',
+          `- Check \`whatap_check_availability(projectCode=${projectCode})\` to see which categories have data.`,
+          "- To proactively check health: `whatap_server_cpu`, `whatap_apm_error`, `whatap_k8s_pod_status`.",
+        ];
         return {
           content: [
-            {
-              type: "text",
-              text: "No alert or event data found for the specified time range.",
-            },
+            { type: "text" as const, text: noDataLines.join("\n") },
           ],
         };
       } catch (err) {
-        return {
-          content: [
-            { type: "text", text: `Error: ${(err as Error).message}` },
-          ],
-          isError: true,
-        };
+        return classifyAndBuildError(err, {
+          toolName: "whatap_alerts",
+          projectCode,
+          timeRange: timeRange ?? "1h",
+        });
       }
     }
   );

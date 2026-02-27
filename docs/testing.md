@@ -87,9 +87,55 @@ WHATAP_API_TOKEN=your_token npx tsx src/index.ts
 | 13 | Container top not sorting correctly | Fixed ORDER syntax: `{key:[field], sort:[desc]}` |
 | 14 | Time range parser not handling "last X" format | Added long-form parsing: "last 30 minutes", "last 1 hour" |
 
+## Automated Scenario Test
+
+### Overview
+
+`tests/scenario-test.ts` spawns the MCP server as a child process, connects via `StdioClientTransport`, and runs 3 customer-persona scenarios (21 tool calls) against the live WhaTap API. Generates a Markdown report at `tests/report.md`.
+
+```bash
+npm run build && npx tsx tests/scenario-test.ts
+```
+
+### Scenarios
+
+| Scenario | Persona | Project Type | Tools Tested |
+|----------|---------|-------------|-------------|
+| A | DevOps/SRE — Server Health Check | SERVER (INFRA) | list_projects, check_availability, server_cpu, server_memory, server_top, server_cpu_load, alerts |
+| B | Backend Dev — Java APM Investigation | JAVA (APM) | list_projects, apm_tps, apm_response_time, apm_error, apm_active_transactions, apm_apdex, apm_transaction_stats |
+| C | K8s Engineer — Cluster Incident Response | KUBERNETES (CPM) | list_projects, k8s_node_list, k8s_node_cpu, k8s_node_memory, k8s_pod_status, k8s_container_top, k8s_events |
+
+### Smart Project Selection
+
+The test probes candidate projects before selecting one, avoiding inactive demo projects:
+
+1. `extractAllProjectsByType()` — finds all projects matching the platform, skips `[limited]`/`[pending]`/`[trial]` status
+2. `findActiveProject()` — probes up to 5 candidates using `whatap_check_availability(categories=[primaryCategory], timeRange="1h")`
+3. Falls back to first candidate with a warning if no active project found
+
+Override with env vars: `SCENARIO_A_PCODE=12345`, `SCENARIO_B_PCODE=67890`, etc.
+
+### Report Features
+
+- **Executive summary** — success rate, has-data rate, next-steps rate, latency stats
+- **Per-scenario tables** — each tool call with latency, success, data, next-steps
+- **NL questions** — each step includes a natural language question (for LLM evaluation)
+- **MXQL debug** — no-data steps show reconstructed MXQL query and diagnosis
+- **Verification checklist** — automated pass/fail checks
+
+### Latest Results (Session 4)
+
+| Metric | Value |
+|--------|-------|
+| Success rate | 100% (21/21) |
+| Has-data rate | 81.0% (17/21) |
+| Next-steps rate | 95.2% (20/21) |
+| Avg latency | 52ms |
+| Verification | 7/7 checks pass |
+
 ## Limitations
 
-- **No unit tests** — Testing relies on live API with MCP Inspector
+- **No unit tests** — Testing relies on live API with MCP Inspector and scenario test
 - **No mock data** — All tests require a valid WhaTap account and active projects
 - **Category availability varies** — Not all MXQL categories exist for all project types (e.g., `kube_*` only for K8s projects)
-- **Rate limits** — WhaTap API may rate-limit rapid successive calls
+- **Rate limits** — WhaTap API may rate-limit rapid successive calls (429 errors seen during probing)

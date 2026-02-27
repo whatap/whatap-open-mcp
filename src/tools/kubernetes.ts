@@ -11,12 +11,16 @@ import {
 } from "../api/mxql.js";
 import { parseTimeRange } from "../utils/time.js";
 import { formatMxqlResponse } from "../utils/format.js";
+import { PARAM_PROJECT_CODE, PARAM_TIME_RANGE } from "../utils/descriptions.js";
+import {
+  classifyAndBuildError,
+  appendNextSteps,
+  buildNoDataResponse,
+} from "../utils/response.js";
 
 const k8sParams = {
-  projectCode: z.number().describe("Project code (pcode)"),
-  timeRange: z
-    .string()
-    .describe('Time range, e.g. "5m", "1h", "6h", "1d", "last 30 minutes"'),
+  projectCode: z.number().describe(PARAM_PROJECT_CODE),
+  timeRange: z.string().describe(PARAM_TIME_RANGE),
 };
 
 function registerK8sMetricTool(
@@ -37,13 +41,13 @@ function registerK8sMetricTool(
         mql,
         limit: 100,
       });
+      if (Array.isArray(result) && result.length === 0) {
+        return buildNoDataResponse({ toolName: name, projectCode, timeRange });
+      }
       const text = formatMxqlResponse(result, { title });
-      return { content: [{ type: "text", text }] };
+      return { content: [{ type: "text" as const, text: appendNextSteps(text, name) }] };
     } catch (err) {
-      return {
-        content: [{ type: "text", text: `Error: ${(err as Error).message}` }],
-        isError: true,
-      };
+      return classifyAndBuildError(err, { toolName: name, projectCode, timeRange });
     }
   });
 }
@@ -55,7 +59,10 @@ export function registerKubernetesTools(
   registerK8sMetricTool(
     server,
     "whatap_k8s_node_list",
-    "List Kubernetes nodes with CPU and memory overview.",
+    "Use this for Kubernetes cluster node overview with CPU and memory. " +
+      "Works only with KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects (must be K8s project). " +
+      "RELATED: whatap_k8s_node_cpu, whatap_k8s_node_memory, whatap_k8s_pod_status.",
     buildK8sNodeListQuery,
     "Kubernetes Nodes",
     client
@@ -64,7 +71,10 @@ export function registerKubernetesTools(
   registerK8sMetricTool(
     server,
     "whatap_k8s_node_cpu",
-    "Get Kubernetes node CPU usage.",
+    "Use this for detailed Kubernetes node CPU (total, user, system). " +
+      "Works only with KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects (must be K8s project). " +
+      "RELATED: whatap_k8s_node_memory, whatap_k8s_container_top(metric='cpu').",
     buildK8sNodeCpuQuery,
     "Kubernetes Node CPU",
     client
@@ -73,7 +83,10 @@ export function registerKubernetesTools(
   registerK8sMetricTool(
     server,
     "whatap_k8s_node_memory",
-    "Get Kubernetes node memory usage.",
+    "Use this for detailed Kubernetes node memory (usage%, used, total). " +
+      "Works only with KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects (must be K8s project). " +
+      "RELATED: whatap_k8s_node_cpu, whatap_k8s_container_top(metric='memory').",
     buildK8sNodeMemoryQuery,
     "Kubernetes Node Memory",
     client
@@ -82,7 +95,10 @@ export function registerKubernetesTools(
   registerK8sMetricTool(
     server,
     "whatap_k8s_pod_status",
-    "Get Kubernetes pod status and statistics.",
+    "Use this for Kubernetes pod health: status, namespace, node, restarts. " +
+      "Works only with KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects (must be K8s project). " +
+      "RELATED: whatap_k8s_events (warnings/errors), whatap_k8s_container_top (resource usage).",
     buildK8sPodStatusQuery,
     "Kubernetes Pod Status",
     client
@@ -91,9 +107,12 @@ export function registerKubernetesTools(
   // Container top - has extra metric param
   server.tool(
     "whatap_k8s_container_top",
-    "Get top containers by CPU or memory usage.",
+    "Use this to find the most resource-hungry containers, ranked by CPU or memory. " +
+      "Works only with KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects (must be K8s project). " +
+      "RELATED: whatap_k8s_pod_status, whatap_k8s_events.",
     {
-      projectCode: z.number().describe("Project code (pcode)"),
+      projectCode: z.number().describe(PARAM_PROJECT_CODE),
       metric: z
         .enum(["cpu", "memory"])
         .describe("Metric to rank by: cpu or memory"),
@@ -114,17 +133,25 @@ export function registerKubernetesTools(
           mql,
           limit: topN ?? 10,
         });
+        if (Array.isArray(result) && result.length === 0) {
+          return buildNoDataResponse({
+            toolName: "whatap_k8s_container_top",
+            projectCode,
+          });
+        }
         const text = formatMxqlResponse(result, {
           title: `Top ${topN ?? 10} Containers by ${metric.toUpperCase()}`,
         });
-        return { content: [{ type: "text", text }] };
-      } catch (err) {
         return {
           content: [
-            { type: "text", text: `Error: ${(err as Error).message}` },
+            { type: "text" as const, text: appendNextSteps(text, "whatap_k8s_container_top") },
           ],
-          isError: true,
         };
+      } catch (err) {
+        return classifyAndBuildError(err, {
+          toolName: "whatap_k8s_container_top",
+          projectCode,
+        });
       }
     }
   );
@@ -132,7 +159,10 @@ export function registerKubernetesTools(
   registerK8sMetricTool(
     server,
     "whatap_k8s_events",
-    "Get recent Kubernetes events (warnings, errors, etc.).",
+    "Use this for Kubernetes cluster events (Normal/Warning), reasons, and messages. " +
+      "Works only with KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects (must be K8s project). " +
+      "RELATED: whatap_k8s_pod_status (current state), whatap_alerts (platform alerts).",
     buildK8sEventsQuery,
     "Kubernetes Events",
     client

@@ -1,6 +1,6 @@
 # whatap-mcp — Claude Code Context
 
-MCP server bridging AI assistants to WhaTap monitoring. 30 tools, 8 categories, live-tested.
+MCP server bridging AI assistants to WhaTap monitoring. 34 tools, 9 categories, live-tested.
 
 ## Commands
 
@@ -18,11 +18,13 @@ src/
 ├── index.ts              # Entry: McpServer + StdioServerTransport
 ├── config.ts             # Loads WHATAP_API_TOKEN, WHATAP_API_URL from env
 ├── api/
-│   ├── client.ts         # WhatapApiClient — HTTP, two-tier auth, token cache
+│   ├── client.ts         # WhatapApiClient — HTTP, two-tier auth, token cache, error detection
 │   ├── types.ts          # TypeScript interfaces (Project, Agent, MxqlTextParams)
 │   └── mxql.ts           # 23 MXQL query builder functions
+├── data/                 # Category/field metadata for catalog tools
 ├── tools/
-│   ├── index.ts          # registerAllTools() — dispatches to 8 modules
+│   ├── index.ts          # registerAllTools() — dispatches to 9 modules
+│   ├── catalog.ts (4)    # list_categories, describe_fields, check_availability, query_category
 │   ├── project.ts (3)    # list_projects, project_info, list_agents
 │   ├── server.ts (7)     # cpu, memory, disk, network, process, cpu_load, top
 │   ├── apm.ts (6)        # tps, response_time, error, apdex, active_tx, tx_stats
@@ -33,7 +35,12 @@ src/
 │   └── mxql.ts (1)       # raw MXQL query
 └── utils/
     ├── time.ts           # parseTimeRange("5m","1h","last 7 days") → {stime,etime}
-    └── format.ts         # MXQL results → Markdown tables
+    ├── format.ts         # MXQL results → Markdown tables
+    ├── response.ts       # classifyAndBuildError(), appendNextSteps() — unified response system
+    └── descriptions.ts   # Shared parameter description constants
+tests/
+├── scenario-test.ts      # 3-scenario automated test (smart project selection, NL questions)
+└── report.md             # Generated test report (Markdown)
 ```
 
 ## Architecture
@@ -113,7 +120,7 @@ SELECT [field1, field2, ...]
 | Architecture | [docs/architecture.md](docs/architecture.md) |
 | API Client | [docs/api-client.md](docs/api-client.md) |
 | MXQL Reference | [docs/mxql-reference.md](docs/mxql-reference.md) |
-| Tool Catalog (30 tools) | [docs/tool-catalog.md](docs/tool-catalog.md) |
+| Tool Catalog (34 tools) | [docs/tool-catalog.md](docs/tool-catalog.md) |
 | Testing | [docs/testing.md](docs/testing.md) |
 | Contributing | [docs/contributing.md](docs/contributing.md) |
 | Release Process | [docs/release-process.md](docs/release-process.md) |
@@ -129,6 +136,7 @@ SELECT [field1, field2, ...]
 ## Current Status
 
 - **Version:** 1.0.0
-- **Tools:** 30 (all tested against live API)
-- **Last Session:** 3 — Documentation system created
-- **Next:** Unit tests, additional tool categories, or npm publish
+- **Tools:** 34 (30 domain + 4 catalog/discovery)
+- **Last Session:** 4 — Catalog tools, scenario test, smart project selection
+- **Test Results:** 100% success, 81% has-data, 95.2% next-steps (21 calls across 3 scenarios)
+- **Next:** DB/log scenario tests, npm publish, unit tests for MXQL builders

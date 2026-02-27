@@ -79,7 +79,17 @@ export class WhatapApiClient {
     );
     const data = await res.json();
     // Response is a flat array of row objects
-    return Array.isArray(data) ? data : [];
+    if (Array.isArray(data)) return data;
+    // Detect error objects returned as non-array JSON
+    if (data && typeof data === "object") {
+      const errMsg = data.error || data.message || data.msg;
+      if (errMsg) {
+        throw new Error(
+          `MXQL query error for project ${pcode}: ${errMsg}`
+        );
+      }
+    }
+    return [];
   }
 
   async executeMxqlPath(
@@ -99,7 +109,16 @@ export class WhatapApiClient {
       }
     );
     const data = await res.json();
-    return Array.isArray(data) ? data : [];
+    if (Array.isArray(data)) return data;
+    if (data && typeof data === "object") {
+      const errMsg = data.error || data.message || data.msg;
+      if (errMsg) {
+        throw new Error(
+          `MXQL path query error for project ${pcode}: ${errMsg}`
+        );
+      }
+    }
+    return [];
   }
 
   // --- Open API stat endpoints ---

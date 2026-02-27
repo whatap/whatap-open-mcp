@@ -4,6 +4,12 @@ import type { WhatapApiClient } from "../api/client.js";
 import { buildLogSearchQuery, buildLogStatsQuery } from "../api/mxql.js";
 import { parseTimeRange } from "../utils/time.js";
 import { formatMxqlResponse } from "../utils/format.js";
+import { PARAM_PROJECT_CODE, PARAM_TIME_RANGE } from "../utils/descriptions.js";
+import {
+  classifyAndBuildError,
+  appendNextSteps,
+  buildNoDataResponse,
+} from "../utils/response.js";
 
 export function registerLogTools(
   server: McpServer,
@@ -11,13 +17,15 @@ export function registerLogTools(
 ) {
   server.tool(
     "whatap_log_search",
-    "Search logs with a keyword filter. Returns matching log entries with timestamps.",
+    "Use this to search logs for keywords, errors, or patterns. " +
+      "Returns matching entries with timestamp, content, agent name, category. " +
+      "Works with APM and SERVER projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "RELATED: whatap_log_stats (volume trends), whatap_alerts (correlated alerts).",
     {
-      projectCode: z.number().describe("Project code (pcode)"),
+      projectCode: z.number().describe(PARAM_PROJECT_CODE),
       keyword: z.string().describe("Keyword to search for in log content"),
-      timeRange: z
-        .string()
-        .describe('Time range, e.g. "5m", "1h", "6h", "1d"'),
+      timeRange: z.string().describe(PARAM_TIME_RANGE),
       limit: z
         .number()
         .optional()
@@ -34,30 +42,42 @@ export function registerLogTools(
           mql,
           limit: limit ?? 50,
         });
+        if (Array.isArray(result) && result.length === 0) {
+          return buildNoDataResponse({
+            toolName: "whatap_log_search",
+            projectCode,
+            timeRange,
+          });
+        }
         const text = formatMxqlResponse(result, {
           title: `Log Search: "${keyword}"`,
           maxRows: limit ?? 50,
         });
-        return { content: [{ type: "text", text }] };
-      } catch (err) {
         return {
           content: [
-            { type: "text", text: `Error: ${(err as Error).message}` },
+            { type: "text" as const, text: appendNextSteps(text, "whatap_log_search") },
           ],
-          isError: true,
         };
+      } catch (err) {
+        return classifyAndBuildError(err, {
+          toolName: "whatap_log_search",
+          projectCode,
+          timeRange,
+        });
       }
     }
   );
 
   server.tool(
     "whatap_log_stats",
-    "Get log volume and rate statistics over a time period.",
+    "Use this for log volume and rate trends over time. " +
+      "Returns counts per time bucket and category. " +
+      "Works with APM and SERVER projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "RELATED: whatap_log_search(keyword) to drill into specific content.",
     {
-      projectCode: z.number().describe("Project code (pcode)"),
-      timeRange: z
-        .string()
-        .describe('Time range, e.g. "5m", "1h", "6h", "1d"'),
+      projectCode: z.number().describe(PARAM_PROJECT_CODE),
+      timeRange: z.string().describe(PARAM_TIME_RANGE),
     },
     async ({ projectCode, timeRange }) => {
       try {
@@ -69,17 +89,27 @@ export function registerLogTools(
           mql,
           limit: 100,
         });
+        if (Array.isArray(result) && result.length === 0) {
+          return buildNoDataResponse({
+            toolName: "whatap_log_stats",
+            projectCode,
+            timeRange,
+          });
+        }
         const text = formatMxqlResponse(result, {
           title: "Log Volume Statistics",
         });
-        return { content: [{ type: "text", text }] };
-      } catch (err) {
         return {
           content: [
-            { type: "text", text: `Error: ${(err as Error).message}` },
+            { type: "text" as const, text: appendNextSteps(text, "whatap_log_stats") },
           ],
-          isError: true,
         };
+      } catch (err) {
+        return classifyAndBuildError(err, {
+          toolName: "whatap_log_stats",
+          projectCode,
+          timeRange,
+        });
       }
     }
   );

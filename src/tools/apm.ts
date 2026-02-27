@@ -11,12 +11,16 @@ import {
 } from "../api/mxql.js";
 import { parseTimeRange } from "../utils/time.js";
 import { formatMxqlResponse } from "../utils/format.js";
+import { PARAM_PROJECT_CODE, PARAM_TIME_RANGE } from "../utils/descriptions.js";
+import {
+  classifyAndBuildError,
+  appendNextSteps,
+  buildNoDataResponse,
+} from "../utils/response.js";
 
 const apmParams = {
-  projectCode: z.number().describe("Project code (pcode)"),
-  timeRange: z
-    .string()
-    .describe('Time range, e.g. "5m", "1h", "6h", "1d", "last 30 minutes"'),
+  projectCode: z.number().describe(PARAM_PROJECT_CODE),
+  timeRange: z.string().describe(PARAM_TIME_RANGE),
 };
 
 function registerApmMetricTool(
@@ -37,13 +41,13 @@ function registerApmMetricTool(
         mql,
         limit: 100,
       });
+      if (Array.isArray(result) && result.length === 0) {
+        return buildNoDataResponse({ toolName: name, projectCode, timeRange });
+      }
       const text = formatMxqlResponse(result, { title });
-      return { content: [{ type: "text", text }] };
+      return { content: [{ type: "text" as const, text: appendNextSteps(text, name) }] };
     } catch (err) {
-      return {
-        content: [{ type: "text", text: `Error: ${(err as Error).message}` }],
-        isError: true,
-      };
+      return classifyAndBuildError(err, { toolName: name, projectCode, timeRange });
     }
   });
 }
@@ -55,7 +59,10 @@ export function registerApmTools(
   registerApmMetricTool(
     server,
     "whatap_apm_tps",
-    "Get transactions per second (TPS) for the application.",
+    "Use this when asked about application throughput or transaction volume. " +
+      "Returns transactions per second (TPS). Works with APM projects (JAVA, NODEJS, PYTHON, PHP, DOTNET, GO). " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "RELATED: whatap_apm_response_time (latency), whatap_apm_error (errors), whatap_apm_active_transactions (saturation).",
     buildApmTpsQuery,
     "APM - Transactions Per Second",
     client
@@ -64,7 +71,10 @@ export function registerApmTools(
   registerApmMetricTool(
     server,
     "whatap_apm_response_time",
-    "Get service response time metrics.",
+    "Use this when asked about application latency or response time. " +
+      "Returns average transaction time (ms) and count. Works with APM projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "RELATED: whatap_apm_tps (throughput), whatap_apm_apdex (satisfaction), whatap_apm_error.",
     buildApmResponseTimeQuery,
     "APM - Response Time",
     client
@@ -73,7 +83,10 @@ export function registerApmTools(
   registerApmMetricTool(
     server,
     "whatap_apm_error",
-    "Get transaction error count and rate.",
+    "Use this when asked about application errors or failure rates. " +
+      "Returns transaction error count and total count. Works with APM projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "RELATED: whatap_apm_transaction_stats, whatap_apm_tps, whatap_apm_response_time.",
     buildApmErrorQuery,
     "APM - Transaction Errors",
     client
@@ -82,7 +95,10 @@ export function registerApmTools(
   registerApmMetricTool(
     server,
     "whatap_apm_apdex",
-    "Get APDEX satisfaction score (satisfied, tolerated, total).",
+    "Use this when asked about user experience or satisfaction. " +
+      "Returns APDEX: satisfied, tolerated, total. Score = (satisfied + tolerated/2) / total. Works with APM projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "RELATED: whatap_apm_response_time, whatap_apm_error.",
     buildApmApdexQuery,
     "APM - APDEX Score",
     client
@@ -91,9 +107,14 @@ export function registerApmTools(
   // Active transactions - no time range needed (real-time)
   server.tool(
     "whatap_apm_active_transactions",
-    "Get currently active (in-flight) transactions. This is a real-time snapshot.",
+    "Use this for a real-time snapshot of in-flight transactions. " +
+      "Returns active transaction count bucketed by duration: <3s, 3-8s, >8s. " +
+      "High counts in >8s bucket indicate slow transactions. Works with APM projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "NOTE: Real-time snapshot — no timeRange needed. " +
+      "RELATED: whatap_apm_response_time, whatap_server_cpu (resource pressure).",
     {
-      projectCode: z.number().describe("Project code (pcode)"),
+      projectCode: z.number().describe(PARAM_PROJECT_CODE),
     },
     async ({ projectCode }) => {
       try {
@@ -106,17 +127,25 @@ export function registerApmTools(
           mql,
           limit: 100,
         });
+        if (Array.isArray(result) && result.length === 0) {
+          return buildNoDataResponse({
+            toolName: "whatap_apm_active_transactions",
+            projectCode,
+          });
+        }
         const text = formatMxqlResponse(result, {
           title: "APM - Active Transactions (Real-time)",
         });
-        return { content: [{ type: "text", text }] };
-      } catch (err) {
         return {
           content: [
-            { type: "text", text: `Error: ${(err as Error).message}` },
+            { type: "text" as const, text: appendNextSteps(text, "whatap_apm_active_transactions") },
           ],
-          isError: true,
         };
+      } catch (err) {
+        return classifyAndBuildError(err, {
+          toolName: "whatap_apm_active_transactions",
+          projectCode,
+        });
       }
     }
   );
@@ -124,7 +153,10 @@ export function registerApmTools(
   registerApmMetricTool(
     server,
     "whatap_apm_transaction_stats",
-    "Get transaction statistics (count, avg time, errors) for the period.",
+    "Use this for a statistical overview of transactions over a period. " +
+      "Returns count, average time, error count. Works with APM projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "RELATED: whatap_apm_error, whatap_apm_response_time.",
     buildApmTransactionStatsQuery,
     "APM - Transaction Statistics",
     client

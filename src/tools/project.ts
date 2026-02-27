@@ -2,6 +2,11 @@ import { z } from "zod";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { WhatapApiClient } from "../api/client.js";
 import { formatProjectList, formatAgentList } from "../utils/format.js";
+import { PARAM_PROJECT_CODE } from "../utils/descriptions.js";
+import {
+  classifyAndBuildError,
+  appendNextSteps,
+} from "../utils/response.js";
 
 export function registerProjectTools(
   server: McpServer,
@@ -9,7 +14,15 @@ export function registerProjectTools(
 ) {
   server.tool(
     "whatap_list_projects",
-    "List all monitoring projects accessible with the account token. Returns project name, pcode, platform, and product type.",
+    "Use this as the FIRST STEP in any WhaTap monitoring workflow. " +
+      "Returns all monitoring projects with pcode (project code), name, platform, and product type. " +
+      "Every other WhaTap tool requires a projectCode — get it from this tool.\n\n" +
+      "WORKFLOW for WhaTap monitoring analysis:\n" +
+      "1. whatap_list_projects (this tool) → find the target project, note its pcode and platform\n" +
+      "2. whatap_check_availability(projectCode) → discover which data categories have data\n" +
+      "3. whatap_describe_fields(category) → understand available fields\n" +
+      "4. whatap_query_category or domain tools → query the data\n\n" +
+      "Do NOT call other WhaTap tools before this one — you need a pcode first.",
     {},
     async () => {
       try {
@@ -17,20 +30,23 @@ export function registerProjectTools(
         const text = formatProjectList(
           projects as unknown as Array<Record<string, unknown>>
         );
-        return { content: [{ type: "text", text }] };
-      } catch (err) {
         return {
-          content: [{ type: "text", text: `Error: ${(err as Error).message}` }],
-          isError: true,
+          content: [
+            { type: "text" as const, text: appendNextSteps(text, "whatap_list_projects") },
+          ],
         };
+      } catch (err) {
+        return classifyAndBuildError(err, { toolName: "whatap_list_projects" });
       }
     }
   );
 
   server.tool(
     "whatap_project_info",
-    "Get detailed information about a specific monitoring project.",
-    { projectCode: z.number().describe("Project code (pcode)") },
+    "Use this to get detailed info about a specific project (platform, product type, status, gateway). " +
+      "PREREQUISITE: projectCode from whatap_list_projects. " +
+      "RELATED: whatap_list_agents (servers/instances), whatap_check_availability (data discovery).",
+    { projectCode: z.number().describe(PARAM_PROJECT_CODE) },
     async ({ projectCode }) => {
       try {
         const project = await client.getProjectInfo(projectCode);
@@ -45,32 +61,44 @@ export function registerProjectTools(
             ? [`- **Gateway**: ${project.gatewayName}`]
             : []),
         ];
-        return { content: [{ type: "text", text: lines.join("\n") }] };
-      } catch (err) {
+        const text = lines.join("\n");
         return {
-          content: [{ type: "text", text: `Error: ${(err as Error).message}` }],
-          isError: true,
+          content: [
+            { type: "text" as const, text: appendNextSteps(text, "whatap_project_info") },
+          ],
         };
+      } catch (err) {
+        return classifyAndBuildError(err, {
+          toolName: "whatap_project_info",
+          projectCode,
+        });
       }
     }
   );
 
   server.tool(
     "whatap_list_agents",
-    "List all agents (servers/instances) in a project with their status.",
-    { projectCode: z.number().describe("Project code (pcode)") },
+    "Use this to discover servers, app instances, or DB instances in a project. " +
+      "Returns agent name (oname), status (active/inactive), IP, and OID. " +
+      "OIDs can filter metrics in tools like whatap_server_cpu(oid=...) or whatap_db_stat(oid=...). " +
+      "PREREQUISITE: projectCode from whatap_list_projects.",
+    { projectCode: z.number().describe(PARAM_PROJECT_CODE) },
     async ({ projectCode }) => {
       try {
         const agents = await client.getAgents(projectCode);
         const text = formatAgentList(
           agents as unknown as Array<Record<string, unknown>>
         );
-        return { content: [{ type: "text", text }] };
-      } catch (err) {
         return {
-          content: [{ type: "text", text: `Error: ${(err as Error).message}` }],
-          isError: true,
+          content: [
+            { type: "text" as const, text: appendNextSteps(text, "whatap_list_agents") },
+          ],
         };
+      } catch (err) {
+        return classifyAndBuildError(err, {
+          toolName: "whatap_list_agents",
+          projectCode,
+        });
       }
     }
   );

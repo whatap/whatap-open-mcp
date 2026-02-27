@@ -11,16 +11,21 @@ import {
 } from "../api/mxql.js";
 import { parseTimeRange } from "../utils/time.js";
 import { formatMxqlResponse } from "../utils/format.js";
+import {
+  PARAM_PROJECT_CODE,
+  PARAM_TIME_RANGE,
+  PARAM_OID_SERVER,
+} from "../utils/descriptions.js";
+import {
+  classifyAndBuildError,
+  appendNextSteps,
+  buildNoDataResponse,
+} from "../utils/response.js";
 
 const serverParams = {
-  projectCode: z.number().describe("Project code (pcode)"),
-  timeRange: z
-    .string()
-    .describe('Time range, e.g. "5m", "1h", "6h", "1d", "last 30 minutes"'),
-  oid: z
-    .string()
-    .optional()
-    .describe("Agent OID to filter by (optional, omit for all servers)"),
+  projectCode: z.number().describe(PARAM_PROJECT_CODE),
+  timeRange: z.string().describe(PARAM_TIME_RANGE),
+  oid: z.string().optional().describe(PARAM_OID_SERVER),
 };
 
 function registerServerMetricTool(
@@ -41,13 +46,13 @@ function registerServerMetricTool(
         mql,
         limit: 100,
       });
+      if (Array.isArray(result) && result.length === 0) {
+        return buildNoDataResponse({ toolName: name, projectCode, timeRange });
+      }
       const text = formatMxqlResponse(result, { title });
-      return { content: [{ type: "text", text }] };
+      return { content: [{ type: "text" as const, text: appendNextSteps(text, name) }] };
     } catch (err) {
-      return {
-        content: [{ type: "text", text: `Error: ${(err as Error).message}` }],
-        isError: true,
-      };
+      return classifyAndBuildError(err, { toolName: name, projectCode, timeRange });
     }
   });
 }
@@ -59,7 +64,11 @@ export function registerServerTools(
   registerServerMetricTool(
     server,
     "whatap_server_cpu",
-    "Get server CPU usage metrics (cpu, cpu_usr, cpu_sys, cpu_idle).",
+    "Use this when asked about server CPU usage or CPU problems. " +
+      "Returns: total cpu%, user-space (cpu_usr), system (cpu_sys), idle (cpu_idle) per server. " +
+      "Works with SERVER and KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. Optional oid from whatap_list_agents. " +
+      "RELATED: whatap_server_memory, whatap_server_cpu_load, whatap_server_top(metric='cpu').",
     buildServerCpuQuery,
     "Server CPU Usage",
     client
@@ -68,7 +77,11 @@ export function registerServerTools(
   registerServerMetricTool(
     server,
     "whatap_server_memory",
-    "Get server memory usage metrics (memory_pused, memory_used, memory_total).",
+    "Use this when asked about server memory usage or memory problems. " +
+      "Returns: memory usage% (memory_pused), used bytes, total bytes per server. " +
+      "Works with SERVER and KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. Optional oid from whatap_list_agents. " +
+      "RELATED: whatap_server_cpu, whatap_server_process, whatap_server_top(metric='memory').",
     buildServerMemoryQuery,
     "Server Memory Usage",
     client
@@ -77,7 +90,11 @@ export function registerServerTools(
   registerServerMetricTool(
     server,
     "whatap_server_disk",
-    "Get disk I/O and usage metrics (readIops, writeIops, usedPercent, mountPoint).",
+    "Use this when asked about disk I/O or disk usage. " +
+      "Returns: read/write IOPS, usage% (usedPercent), mount point, filesystem per server. " +
+      "Works with SERVER and KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. Optional oid from whatap_list_agents. " +
+      "RELATED: whatap_server_top(metric='disk').",
     buildServerDiskQuery,
     "Server Disk I/O & Usage",
     client
@@ -86,7 +103,11 @@ export function registerServerTools(
   registerServerMetricTool(
     server,
     "whatap_server_network",
-    "Get network I/O metrics (in, out bytes per second).",
+    "Use this when asked about network I/O or bandwidth. " +
+      "Returns: bytes in/out per second per network interface per server. " +
+      "Works with SERVER and KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. Optional oid from whatap_list_agents. " +
+      "RELATED: whatap_server_cpu, whatap_server_memory for full server health.",
     buildServerNetworkQuery,
     "Server Network I/O",
     client
@@ -95,7 +116,11 @@ export function registerServerTools(
   registerServerMetricTool(
     server,
     "whatap_server_process",
-    "Get process-level CPU and memory usage.",
+    "Use this when asked which processes consume CPU or memory. " +
+      "Returns: PID, name, CPU%, memory%, RSS per process per server. " +
+      "Works with SERVER and KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. Optional oid from whatap_list_agents. " +
+      "RELATED: whatap_server_cpu (overall CPU), whatap_server_memory (overall memory).",
     buildServerProcessQuery,
     "Server Processes",
     client
@@ -104,7 +129,11 @@ export function registerServerTools(
   registerServerMetricTool(
     server,
     "whatap_server_cpu_load",
-    "Get CPU load averages (1/5/15 min).",
+    "Use this when asked about CPU load averages (1/5/15 minute). " +
+      "High load relative to CPU count indicates saturation. " +
+      "Works with SERVER and KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. Optional oid from whatap_list_agents. " +
+      "RELATED: whatap_server_cpu (CPU breakdown), whatap_server_process (top processes).",
     buildServerCpuLoadQuery,
     "Server CPU Load Averages",
     client
@@ -113,9 +142,12 @@ export function registerServerTools(
   // Top-N servers by metric
   server.tool(
     "whatap_server_top",
-    "Get top-N servers by a metric (cpu, memory, or disk usage). Useful for finding the most loaded servers.",
+    "Use this to find the most loaded servers, ranked by CPU, memory, or disk usage. " +
+      "Works with SERVER and KUBERNETES projects. " +
+      "PREREQUISITES: projectCode from whatap_list_projects. " +
+      "NEXT: Use oid of a top server with whatap_server_cpu(oid=...) for detailed drill-down.",
     {
-      projectCode: z.number().describe("Project code (pcode)"),
+      projectCode: z.number().describe(PARAM_PROJECT_CODE),
       metric: z
         .enum(["cpu", "memory", "disk"])
         .describe("Metric to rank by: cpu, memory, or disk"),
@@ -124,9 +156,7 @@ export function registerServerTools(
         .optional()
         .default(5)
         .describe("Number of top servers to return (default: 5)"),
-      timeRange: z
-        .string()
-        .describe('Time range, e.g. "5m", "1h", "6h", "1d"'),
+      timeRange: z.string().describe(PARAM_TIME_RANGE),
     },
     async ({ projectCode, metric, topN, timeRange }) => {
       try {
@@ -153,17 +183,19 @@ export function registerServerTools(
           mql,
           limit: topN ?? 5,
         });
+        if (Array.isArray(result) && result.length === 0) {
+          return buildNoDataResponse({ toolName: "whatap_server_top", projectCode, timeRange });
+        }
         const text = formatMxqlResponse(result, {
           title: `Top ${topN ?? 5} Servers by ${metric.toUpperCase()}`,
         });
-        return { content: [{ type: "text", text }] };
+        return { content: [{ type: "text" as const, text: appendNextSteps(text, "whatap_server_top") }] };
       } catch (err) {
-        return {
-          content: [
-            { type: "text", text: `Error: ${(err as Error).message}` },
-          ],
-          isError: true,
-        };
+        return classifyAndBuildError(err, {
+          toolName: "whatap_server_top",
+          projectCode,
+          timeRange,
+        });
       }
     }
   );

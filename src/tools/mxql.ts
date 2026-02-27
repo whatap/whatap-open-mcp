@@ -3,6 +3,12 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { WhatapApiClient } from "../api/client.js";
 import { parseTimeRange } from "../utils/time.js";
 import { formatMxqlResponse } from "../utils/format.js";
+import { PARAM_PROJECT_CODE, PARAM_TIME_RANGE } from "../utils/descriptions.js";
+import {
+  classifyAndBuildError,
+  appendNextSteps,
+  buildNoDataResponse,
+} from "../utils/response.js";
 
 export function registerMxqlTools(
   server: McpServer,
@@ -10,20 +16,25 @@ export function registerMxqlTools(
 ) {
   server.tool(
     "whatap_mxql_query",
-    `Execute a raw MXQL text query for advanced/custom data retrieval.
-MXQL is WhaTap's query language for monitoring data.
-Example: "CATEGORY server_base\\nTAGLOAD\\nSELECT [oid, oname, cpu, memory_pused]"
-Use this tool when the predefined tools don't cover your specific needs.`,
+    "Use this for advanced custom MXQL queries when predefined tools don't cover your needs. " +
+      "MXQL syntax: CATEGORY {name} → TAGLOAD → SELECT [field1, field2] → optional FILTER/ORDER.\n\n" +
+      "WORKFLOW (if unfamiliar with MXQL):\n" +
+      "1. whatap_list_categories → valid category names\n" +
+      "2. whatap_describe_fields(category) → valid field names + example query\n" +
+      "3. This tool → execute custom MXQL\n\n" +
+      "SYNTAX TIPS:\n" +
+      "- FILTER: {key:fieldName, value:val}  (colon syntax, not =)\n" +
+      "- ORDER: {key:[fieldName], sort:[desc]}  (brackets required)\n" +
+      "- Field names are case-sensitive\n\n" +
+      "Prefer domain tools (whatap_server_cpu, whatap_apm_tps) or whatap_query_category for simpler queries.",
     {
-      projectCode: z.number().describe("Project code (pcode)"),
+      projectCode: z.number().describe(PARAM_PROJECT_CODE),
       mxql: z
         .string()
         .describe(
           "MXQL query text. Each command on a new line. Example: CATEGORY server_base\\nTAGLOAD\\nSELECT [cpu, memory_pused]"
         ),
-      timeRange: z
-        .string()
-        .describe('Time range, e.g. "5m", "1h", "6h", "1d", "last 30 minutes"'),
+      timeRange: z.string().describe(PARAM_TIME_RANGE),
       limit: z
         .number()
         .optional()
@@ -46,21 +57,28 @@ Use this tool when the predefined tools don't cover your specific needs.`,
           limit: limit ?? 100,
           param,
         });
+        if (Array.isArray(result) && result.length === 0) {
+          return buildNoDataResponse({
+            toolName: "whatap_mxql_query",
+            projectCode,
+            timeRange,
+          });
+        }
         const text = formatMxqlResponse(result, {
           title: "MXQL Query Result",
           maxRows: limit ?? 100,
         });
-        return { content: [{ type: "text", text }] };
-      } catch (err) {
         return {
           content: [
-            {
-              type: "text",
-              text: `Error executing MXQL query: ${(err as Error).message}\n\nQuery:\n${mxql}`,
-            },
+            { type: "text" as const, text: appendNextSteps(text, "whatap_mxql_query") },
           ],
-          isError: true,
         };
+      } catch (err) {
+        return classifyAndBuildError(err, {
+          toolName: "whatap_mxql_query",
+          projectCode,
+          timeRange,
+        });
       }
     }
   );

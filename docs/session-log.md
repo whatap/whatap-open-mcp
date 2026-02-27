@@ -4,6 +4,61 @@ Reverse-chronological log of development sessions. Each session entry includes f
 
 ---
 
+## Session 4 — 2026-02-27 (Catalog Tools, Scenario Test, Smart Selection)
+
+**Focus:** Add 4 catalog/discovery tools, unified response system, automated scenario test with smart project selection
+
+### Tasks Completed
+
+| Task | Files Created/Modified | Notes |
+|------|----------------------|-------|
+| Add catalog tools (4) | `src/tools/catalog.ts`, `src/tools/index.ts` | `list_categories`, `describe_fields`, `check_availability`, `query_category` |
+| Add response utilities | `src/utils/response.ts` | `classifyAndBuildError()`, `appendNextSteps()` — unified error and guidance system |
+| Add description constants | `src/utils/descriptions.ts` | Shared parameter descriptions (PARAM_PROJECT_CODE, etc.) |
+| Add MXQL category registry | `src/data/` | Category/field metadata for discovery tools |
+| Refactor all 8 tool modules | `src/tools/*.ts` | Integrate response utils, improve error messages, add next-steps guidance |
+| Fix silent MXQL errors | `src/api/client.ts` | Detect non-array error objects in `executeMxqlText`/`executeMxqlPath` |
+| Build scenario test | `tests/scenario-test.ts` | 3 personas, 21 tool calls, Markdown report generation |
+| Smart project selection | `tests/scenario-test.ts` | Probe candidates with `check_availability` before selecting |
+| MXQL debug logging | `tests/scenario-test.ts` | Reconstructed MXQL in report for no-data steps |
+| NL evaluation questions | `tests/scenario-test.ts` | 21 natural language questions for LLM evaluation |
+
+### Test Results (Scenario Test — 34 tools registered)
+
+| Metric | Before Fix | After Fix |
+|--------|-----------|-----------|
+| Success rate | 95.2% (20/21) | **100% (21/21)** |
+| Has-data rate | 47.6% (10/21) | **81.0% (17/21)** |
+| Next-steps rate | 90.5% (19/21) | **95.2% (20/21)** |
+| Avg latency | 53ms | 52ms |
+
+Root cause of initial 47.6% has-data rate: test picked the first platform-matching project, which was often an inactive demo. Fix: probe up to 5 candidates with `check_availability` before selecting.
+
+### Projects Selected by Smart Selection
+
+| Scenario | Before | After | Probes |
+|----------|--------|-------|--------|
+| A (Server) | PHP-demo-infra (3413) — 0/15 categories | Server Inventory Demo GPU (29763) | 2 |
+| B (Java) | Java APM Demo (5490) — already active | Java APM Demo (5490) | 1 |
+| C (K8s) | K8s Demo Old (30793) — limited | K8s Demo EKS (33194) | 4 |
+
+### Decisions Made
+
+- Tool count increased from 30 to 34 (4 catalog/discovery tools)
+- Unified error/response system via `src/utils/response.ts`
+- Scenario test uses smart project selection over naive first-match
+- `categoryHasData()` handles both single-category (bullet) and multi-category (table) response formats
+
+### Notes for Next Session
+
+- 4 remaining no-data steps: `alerts` (no active alerts — normal), `k8s_pod_status` (partial data), `k8s_container_top`, `k8s_events`
+- K8s pod_status returns namespace table but no pod rows — may need different K8s project
+- Consider increasing `MAX_PROBE_CANDIDATES` beyond 5 for server projects (24 candidates, none in first 5 were active initially)
+- Database and log tools still untested in scenario test — consider adding Scenario D/E
+- `resume.sh` and `simple_opslake_mcp/` are untracked — decide whether to commit or gitignore
+
+---
+
 ## Session 3 — 2026-02-25 (Documentation)
 
 **Focus:** Documentation system implementation
