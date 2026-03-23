@@ -1,0 +1,35 @@
+# Source (dist/ is the published artifact)
+src/
+scripts/
+tests/
+yard/
+
+# Config & dev files
+tsconfig.json
+tsup.config.ts
+*.ts
+!dist/**
+
+# Documentation (user-manual linked from README, but not needed in package)
+docs/
+CLAUDE.md
+
+# Dev artifacts
+.claude/
+.github/
+.vscode/
+.idea/
+coverage/
+*.log
+*.tmp
+.cache/
+
+# Test files
+*.test.*
+*.spec.*
+codex-*
+resume.sh
+
+# OS
+.DS_Store
+Thumbs.db

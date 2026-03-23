@@ -1,0 +1,44 @@
+{
+  "name": "whatap-mcp",
+  "version": "1.0.0",
+  "description": "WhaTap monitoring platform MCP server - enables AI assistants to query server, APM, Kubernetes, database, and log monitoring data",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "whatap-mcp": "./bin/whatap-mcp.js"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "generate-catalog": "tsx scripts/generate-catalog.ts",
+    "generate-field-metadata": "tsx scripts/generate-field-metadata.ts"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "whatap",
+    "mcp",
+    "monitoring",
+    "apm",
+    "server",
+    "kubernetes",
+    "database",
+    "claude",
+    "ai"
+  ],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "yaml": "^2.8.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.5.0"
+  }
+}
