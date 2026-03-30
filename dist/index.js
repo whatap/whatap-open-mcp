@@ -43608,6 +43608,199 @@ var NPM_GUIDE = {
   ],
   notes: ["Supports Linux and Kubernetes."]
 };
+var OPENAGENT_TARGET_APPS = [
+  {
+    name: "Nginx",
+    description: "NGINX web server monitoring via nginx-prometheus-exporter + nginxlog-exporter",
+    exporterSetup: [
+      "# 1. Enable stub_status in Nginx config (/etc/nginx/conf.d/stub_status.conf):",
+      "#   server { listen 80; location /nginx_status { stub_status; allow 127.0.0.1; deny all; } }",
+      "# 2. Install nginx-prometheus-exporter:",
+      "curl -LO https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.11.0/nginx-prometheus-exporter_0.11.0_linux_amd64.tar.gz",
+      "tar -xzvf nginx-prometheus-exporter_0.11.0_linux_amd64.tar.gz",
+      "sudo mv nginx-prometheus-exporter /usr/local/bin/",
+      "# 3. Run: nginx-prometheus-exporter -nginx.scrape-uri http://localhost:80/nginx_status -web.listen-address :9113"
+    ],
+    scrapeConfig: `      - targetName: nginx-prometheus-exporter
+        type: StaticEndpoints
+        enabled: true
+        endpoints:
+          - address: "NGINX_HOST:9113"
+            path: "/metrics"
+            scheme: "http"
+            interval: "1m"`
+  },
+  {
+    name: "Apache Kafka",
+    description: "Apache Kafka monitoring via kafka_exporter (Kafka broker metrics)",
+    exporterSetup: [
+      "# Install kafka_exporter:",
+      "wget https://github.com/danielqsj/kafka_exporter/releases/download/v1.7.0/kafka_exporter-1.7.0.linux-amd64.tar.gz",
+      "tar -xzf kafka_exporter-1.7.0.linux-amd64.tar.gz",
+      "sudo mv kafka_exporter /usr/local/bin/",
+      "# Run: kafka_exporter --kafka.server=KAFKA_BROKER:9092 --web.listen-address=:9308"
+    ],
+    scrapeConfig: `      - targetName: kafka-exporter
+        type: StaticEndpoints
+        enabled: true
+        endpoints:
+          - address: "KAFKA_HOST:9308"
+            path: "/metrics"
+            scheme: "http"
+            interval: "1m"`
+  },
+  {
+    name: "Apache HTTP Server",
+    description: "Apache HTTP Server monitoring via apache_exporter (mod_status metrics)",
+    exporterSetup: [
+      "# 1. Enable mod_status in Apache:",
+      "#   sudo a2enmod status",
+      '#   <Location "/server-status"> SetHandler server-status Require local </Location>',
+      "# 2. Install apache_exporter:",
+      "wget https://github.com/Lusitaniae/apache_exporter/releases/download/v1.0.3/apache_exporter-1.0.3.linux-amd64.tar.gz",
+      "tar -xzf apache_exporter-1.0.3.linux-amd64.tar.gz",
+      "sudo mv apache_exporter /usr/local/bin/",
+      "# Run: apache_exporter --scrape_uri http://localhost/server-status?auto --web.listen-address=:9117"
+    ],
+    scrapeConfig: `      - targetName: apache-exporter
+        type: StaticEndpoints
+        enabled: true
+        endpoints:
+          - address: "APACHE_HOST:9117"
+            path: "/metrics"
+            scheme: "http"
+            interval: "1m"`
+  },
+  {
+    name: "Istio",
+    description: "Istio service mesh monitoring via built-in Prometheus metrics",
+    exporterSetup: [
+      "# Istio exposes Prometheus metrics natively. No separate exporter needed.",
+      "# Ensure Istio is installed with Prometheus metrics enabled.",
+      "# Metrics endpoint: http://ISTIO_PROXY:15090/stats/prometheus"
+    ],
+    scrapeConfig: `      - targetName: istio-proxy
+        type: StaticEndpoints
+        enabled: true
+        endpoints:
+          - address: "ISTIO_PROXY_HOST:15090"
+            path: "/stats/prometheus"
+            scheme: "http"
+            interval: "30s"`
+  },
+  {
+    name: "Milvus",
+    description: "Milvus vector database monitoring via built-in Prometheus metrics",
+    exporterSetup: [
+      "# Milvus exposes Prometheus metrics natively on port 9091.",
+      "# No separate exporter needed."
+    ],
+    scrapeConfig: `      - targetName: milvus
+        type: StaticEndpoints
+        enabled: true
+        endpoints:
+          - address: "MILVUS_HOST:9091"
+            path: "/metrics"
+            scheme: "http"
+            interval: "1m"`
+  },
+  {
+    name: "Aerospike",
+    description: "Aerospike database monitoring via aerospike-prometheus-exporter",
+    exporterSetup: [
+      "# Install aerospike-prometheus-exporter:",
+      "# See: https://github.com/aerospike/aerospike-prometheus-exporter",
+      "# Default metrics port: 9145"
+    ],
+    scrapeConfig: `      - targetName: aerospike-exporter
+        type: StaticEndpoints
+        enabled: true
+        endpoints:
+          - address: "AEROSPIKE_HOST:9145"
+            path: "/metrics"
+            scheme: "http"
+            interval: "1m"`
+  }
+];
+var OPENAGENT_GUIDE = {
+  platform: "OPENAGENT",
+  agentType: "whatap-openagent",
+  description: "WhaTap OpenAgent \u2014 collects Prometheus/OpenMetrics from any exporter. Supports Nginx, Kafka, Apache, Istio, Milvus, Aerospike, and any custom Prometheus exporter. Works with ALL WhaTap project types.",
+  steps: [
+    {
+      title: "Download OpenAgent binary",
+      commands: [
+        "mkdir -p /opt/whatap/openagent",
+        "cd /opt/whatap/openagent",
+        "",
+        "# AMD64 (Intel/AMD 64-bit):",
+        "wget https://repo.whatap.io/openagent/latest/amd/openagent",
+        "",
+        "# ARM64 (ARM processor \u2014 NOT macOS Apple Silicon):",
+        "# wget https://repo.whatap.io/openagent/latest/arm/openagent"
+      ]
+    },
+    {
+      title: "Set permissions",
+      commands: ["chmod +x openagent"]
+    },
+    {
+      title: "Create whatap.conf",
+      commands: [
+        'echo "WHATAP_LICENSE={accesskey}" > /opt/whatap/openagent/whatap.conf',
+        'echo "WHATAP_HOST={server_host}" >> /opt/whatap/openagent/whatap.conf',
+        'echo "WHATAP_PORT={server_port}" >> /opt/whatap/openagent/whatap.conf'
+      ]
+    },
+    {
+      title: "Create scrape_config.yaml",
+      description: "Configure targets to scrape. The file auto-reloads on change \u2014 no restart needed. Replace the endpoint address with your actual exporter host:port.",
+      commands: [
+        "cat > /opt/whatap/openagent/scrape_config.yaml << 'YAML'",
+        "#scrape_config.yaml",
+        "features:",
+        "  openAgent:",
+        "    enabled: true",
+        "    targets:",
+        "      - targetName: my-exporter",
+        "        type: StaticEndpoints",
+        "        enabled: true",
+        "        endpoints:",
+        '          - address: "EXPORTER_HOST:PORT"',
+        '            path: "/metrics"',
+        '            scheme: "http"',
+        '            interval: "1m"',
+        "            metricRelabelConfigs:",
+        "              - source_labels: [__name__]",
+        '                regex: ".*"',
+        "                action: keep",
+        "YAML"
+      ]
+    },
+    {
+      title: "Start OpenAgent",
+      commands: [
+        "# Foreground:",
+        "cd /opt/whatap/openagent && ./openagent standalone",
+        "",
+        "# Background:",
+        "cd /opt/whatap/openagent && nohup ./openagent standalone > openagent.log 2>&1 &"
+      ]
+    }
+  ],
+  notes: [
+    "Binary supports Linux AMD64 and ARM64.",
+    "Config files must be in the same directory as the openagent binary.",
+    "scrape_config.yaml auto-reloads on change \u2014 no restart needed.",
+    "Supports static endpoints, Azure Monitor params, and metric relabeling (keep/drop/replace)."
+  ]
+};
+function getOpenAgentGuide() {
+  return OPENAGENT_GUIDE;
+}
+function getTargetAppGuides() {
+  return OPENAGENT_TARGET_APPS;
+}
 var ALL_GUIDES = [
   INFRA_GUIDE,
   JAVA_GUIDE,
@@ -43714,6 +43907,8 @@ PREREQUISITES: projectCode from whatap_list_projects.
 
 The tool fetches the project's accesskey and server connection info, then generates platform-specific installation commands.
 
+Also includes OpenAgent installation for Prometheus/OpenMetrics collection (Nginx, Kafka, Apache, Istio, Milvus, Aerospike, custom exporters).
+
 IMPORTANT: The returned commands require shell access with appropriate privileges. Execute them step by step and verify each step succeeds.
 
 Supported platforms: ${platformList}
@@ -43779,11 +43974,33 @@ Example with OS: whatap_install_agent(projectCode=38, os="debian")`,
             "Refer to WhaTap documentation for platform-specific installation steps."
           );
         }
+        const openGuide = getOpenAgentGuide();
+        const targetApps = getTargetAppGuides();
         lines.push(
           "",
+          "---",
+          "",
+          "## Optional: OpenAgent (Prometheus/OpenMetrics Collection)",
+          "",
+          `${openGuide.description}`,
+          ""
+        );
+        lines.push(...renderGuide(openGuide, vars));
+        lines.push(
+          "",
+          "### Target Application Scrape Configs",
+          "",
+          "Replace the scrape_config.yaml targets section with one of these pre-built configs:",
+          ""
+        );
+        for (const app of targetApps) {
+          lines.push(`**${app.name}** \u2014 ${app.description}`, "```yaml", app.scrapeConfig, "```", "");
+        }
+        lines.push(
           "### Verify Installation",
           "",
-          `After starting the agent, verify: \`whatap_list_agents(projectCode=${projectCode})\``
+          `After starting the agent, verify: \`whatap_list_agents(projectCode=${projectCode})\``,
+          `For OpenMetrics data: \`whatap_data_availability(projectCode=${projectCode})\` \u2014 OpenMetrics section will appear.`
         );
         return {
           content: [

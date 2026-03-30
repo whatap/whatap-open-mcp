@@ -12,6 +12,8 @@ import {
 } from "../utils/response.js";
 import {
   getInstallGuide,
+  getOpenAgentGuide,
+  getTargetAppGuides,
   getAllPlatforms,
   type PlatformInstallGuide,
   type InstallStep,
@@ -127,6 +129,8 @@ export function registerInstallTools(
       "PREREQUISITES: projectCode from whatap_list_projects.\n\n" +
       "The tool fetches the project's accesskey and server connection info, " +
       "then generates platform-specific installation commands.\n\n" +
+      "Also includes OpenAgent installation for Prometheus/OpenMetrics collection " +
+      "(Nginx, Kafka, Apache, Istio, Milvus, Aerospike, custom exporters).\n\n" +
       "IMPORTANT: The returned commands require shell access with appropriate privileges. " +
       "Execute them step by step and verify each step succeeds.\n\n" +
       `Supported platforms: ${platformList}\n\n` +
@@ -204,11 +208,35 @@ export function registerInstallTools(
           );
         }
 
+        // OpenAgent section — available for all platforms
+        const openGuide = getOpenAgentGuide();
+        const targetApps = getTargetAppGuides();
         lines.push(
           "",
+          "---",
+          "",
+          "## Optional: OpenAgent (Prometheus/OpenMetrics Collection)",
+          "",
+          `${openGuide.description}`,
+          "",
+        );
+        lines.push(...renderGuide(openGuide, vars));
+        lines.push(
+          "",
+          "### Target Application Scrape Configs",
+          "",
+          "Replace the scrape_config.yaml targets section with one of these pre-built configs:",
+          "",
+        );
+        for (const app of targetApps) {
+          lines.push(`**${app.name}** — ${app.description}`, "```yaml", app.scrapeConfig, "```", "");
+        }
+
+        lines.push(
           "### Verify Installation",
           "",
           `After starting the agent, verify: \`whatap_list_agents(projectCode=${projectCode})\``,
+          `For OpenMetrics data: \`whatap_data_availability(projectCode=${projectCode})\` — OpenMetrics section will appear.`,
         );
 
         return {
