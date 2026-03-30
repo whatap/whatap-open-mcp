@@ -66,6 +66,14 @@ export interface MxqlRow {
   [key: string]: unknown;
 }
 
+// PromQL / OpenMetrics query params
+export interface PromqlParams {
+  stime: number;
+  etime: number;
+  query: string;
+  limit?: number;
+}
+
 // Project access (for agent installation)
 export interface ProjectAccess {
   pcode: number;

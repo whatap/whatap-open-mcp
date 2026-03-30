@@ -1,6 +1,6 @@
 # whatap-mcp — Claude Code Context
 
-MCP server bridging AI assistants to WhaTap monitoring. 9 tools (3 project + 3 yard + 2 mesh + 1 install), path-centric MXQL catalog (640 entries from yard), semantic result classification, live-tested.
+MCP server bridging AI assistants to WhaTap monitoring. 10 tools (3 project + 3 data + 2 mesh + 1 install + 1 promql), MXQL catalog (640 entries) + PromQL/OpenMetrics support, semantic result classification, live-tested.
 
 ## Commands
 
@@ -31,6 +31,8 @@ src/
 │   ├── mxql-catalog.ts   # AUTO-GENERATED: 640 CatalogEntry objects + raw MXQL (from yard)
 │   ├── field-metadata.ts # AUTO-GENERATED: 131 categories, 2,605 field descriptions (from YAML)
 │   └── install-guides.ts # 29 platforms, 9 INFRA OS variants, APM/DB/K8s/server-app guides
+└── utils/
+    ├── format-promql.ts  # PromQL result formatter (group by label set, OpenMetrics list)
 ├── yard/
 │   ├── catalog.ts        # Static catalog API: search, describe, fuzzyMatch, getPathsForCategory
 │   ├── parser.ts         # .mql file parser: extracts categories, params, fields, headers
@@ -38,9 +40,10 @@ src/
 ├── tools/
 │   ├── index.ts          # registerAllTools() — dispatches to project + yard + mesh + install modules
 │   ├── project.ts (3)    # list_projects, project_info, list_agents
-│   ├── yard.ts (3)       # data_availability, describe_mxql, query_mxql
+│   ├── yard.ts (3)       # data_availability, describe_query, query_data (+PromQL/savedQuery)
 │   ├── mesh.ts (2)       # apm_anomaly (4-query parallel), service_topology (NPM)
-│   └── install.ts (1)    # install_agent (fetch access + generate install commands for 29 platforms)
+│   ├── install.ts (1)    # install_agent (fetch access + generate install commands for 29 platforms)
+│   └── promql.ts (1)     # create_promql (validate + save reusable PromQL queries)
 └── utils/
     ├── time.ts           # parseTimeRange("5m","1h","last 7 days") → {stime,etime}
     ├── format.ts         # MXQL results → Markdown tables, unit annotations, semantic headers, summary stats, field guide
@@ -70,11 +73,21 @@ tests/
 ```
 whatap_list_projects → get projectCode
         ↓
-whatap_data_availability(projectCode) → returns MXQL paths with data
+whatap_data_availability(projectCode) → MXQL paths + OpenMetrics + saved PromQL
         ↓                                (2-min probe, path-centric response)
-whatap_describe_mxql(path) → verify params, fields, raw MXQL
+whatap_describe_query(path) → verify params, fields, raw MXQL
         ↓
-whatap_query_mxql(projectCode, path) → execute and get results
+whatap_query_data(projectCode, path) → execute and get results
+```
+
+## PromQL Workflow
+
+```
+whatap_data_availability(projectCode) → discover OpenMetrics + suggested PromQL
+        ↓
+whatap_create_promql(projectCode, name, query) → validate + save for reuse
+        ↓
+whatap_query_data(projectCode, savedQuery="name") → execute saved query
 ```
 
 ## Agent Install Workflow
@@ -125,16 +138,17 @@ SELECT [field1, field2, ...]
 | `/open-mcp/api/flush/mxql/path` | POST | Project | MXQL path queries (yard .mql files) |
 | `/open-mcp/api/json/project/access/{pcode}` | GET | Project | Agent access credentials (accesskey + server) |
 
-## Tools (9)
+## Tools (10)
 
 | Tool | Description |
 |------|-------------|
 | `whatap_list_projects` | List all monitoring projects with pcode, name, platform |
 | `whatap_project_info` | Get detailed info for a specific project |
 | `whatap_list_agents` | List agents/instances for a project |
-| `whatap_data_availability` | Browse catalog (640 queries), search, probe live data — with semantic badges |
-| `whatap_describe_mxql` | Describe a query path: params, fields, best-for hints, example calls |
-| `whatap_query_mxql` | Execute MXQL path query — semantic headers, unit annotations, summary stats |
+| `whatap_data_availability` | Browse MXQL catalog + OpenMetrics discovery + saved PromQL queries |
+| `whatap_describe_query` | Describe MXQL path or OpenMetrics metric (labels, type, suggested PromQL) |
+| `whatap_query_data` | Execute MXQL path, ad-hoc PromQL, or saved PromQL query |
+| `whatap_create_promql` | Create, validate, and save a reusable PromQL query for OpenMetrics data |
 | `whatap_apm_anomaly` | Multi-query APM anomaly detection (TPS, latency, errors, active TX per agent) |
 | `whatap_service_topology` | Service connectivity map with bottleneck detection (requires NPM) |
 | `whatap_install_agent` | Get agent install commands for 29 platforms with pre-filled credentials (auto-detects platform, optional OS filter) |
@@ -180,7 +194,7 @@ SELECT [field1, field2, ...]
 ## Current Status
 
 - **Version:** 1.0.0
-- **Tools:** 9 (3 project + 3 yard + 2 mesh + 1 install)
+- **Tools:** 10 (3 project + 3 data + 2 mesh + 1 install + 1 promql)
 - **Catalog:** 640 entries across 35 domains (generated from yard)
 - **English translations:** 120 entries (all Korean descriptions covered)
 - **LLM Pipeline Score:** 9.1/10

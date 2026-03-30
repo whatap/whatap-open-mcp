@@ -20,8 +20,8 @@ export function registerProjectTools(
       "WORKFLOW for WhaTap monitoring analysis:\n" +
       "1. whatap_list_projects (this tool) → find the target project, note its pcode and platform\n" +
       "2. whatap_data_availability() → browse available MXQL query domains\n" +
-      "3. whatap_describe_mxql(path) → understand query parameters and output fields\n" +
-      "4. whatap_query_mxql(projectCode, path) → execute and get live data\n\n" +
+      "3. whatap_describe_query(path) → understand query parameters and output fields\n" +
+      "4. whatap_query_data(projectCode, path) → execute and get live data\n\n" +
       "Do NOT call other WhaTap tools before this one — you need a pcode first.",
     {},
     async () => {
@@ -80,7 +80,7 @@ export function registerProjectTools(
     "whatap_list_agents",
     "Use this to discover servers, app instances, or DB instances in a project. " +
       "Returns agent name (oname), status (active/inactive), IP, and OID. " +
-      "OIDs can filter MXQL queries via params: whatap_query_mxql(params={oid: '...'}). " +
+      "OIDs can filter MXQL queries via params: whatap_query_data(params={oid: '...'}). " +
       "PREREQUISITE: projectCode from whatap_list_projects.",
     { projectCode: z.number().describe(PARAM_PROJECT_CODE) },
     async ({ projectCode }) => {

@@ -123,16 +123,16 @@ const NEXT_STEPS: Record<string, string[]> = {
     "**Next**: `whatap_data_availability(projectCode)` to see available queries.",
   ],
   whatap_data_availability: [
-    "**Next**: `whatap_describe_mxql(path)` for details, or `whatap_query_mxql(projectCode, path)` to query directly.",
+    "**Next**: `whatap_describe_query(path)` for details, or `whatap_query_data(projectCode, path)` to query directly.",
   ],
-  whatap_describe_mxql: [
-    "**Next**: `whatap_query_mxql(projectCode, path)` to execute.",
+  whatap_describe_query: [
+    "**Next**: `whatap_query_data(projectCode, path)` to execute.",
   ],
-  whatap_query_mxql: [
+  whatap_query_data: [
     "**Explore**: `whatap_data_availability(search=keyword)` to find related queries.",
   ],
   whatap_apm_anomaly: [
-    "**Next**: `whatap_query_mxql(projectCode, path=\"v2/app/tps_oid\")` to drill into agent data.",
+    "**Next**: `whatap_query_data(projectCode, path=\"v2/app/tps_oid\")` to drill into agent data.",
   ],
   whatap_service_topology: [
     "**Next**: `whatap_apm_anomaly(projectCode)` to detect performance issues.",

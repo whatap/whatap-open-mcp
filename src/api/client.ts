@@ -112,6 +112,59 @@ export class WhatapApiClient {
     return result;
   }
 
+  // --- PromQL / OpenMetrics operations ---
+
+  /**
+   * Execute a PromQL query via the MXQL text endpoint using OPENMX wrapper.
+   */
+  async executePromql(
+    pcode: number,
+    params: { query: string; stime: number; etime: number; limit?: number }
+  ): Promise<MxqlResult> {
+    const mql = `OPENMX ${params.query}`;
+    return this.executeMxqlText(pcode, {
+      stime: params.stime,
+      etime: params.etime,
+      mql,
+      limit: params.limit ?? 500,
+    });
+  }
+
+  /**
+   * List available OpenMetrics for a project via OPENMX ls.
+   * Returns rows with: time, metric, type (gauge/counter/histogram).
+   */
+  async listOpenMetrics(
+    pcode: number,
+    params: { stime: number; etime: number; filter?: string; limit?: number }
+  ): Promise<MxqlResult> {
+    const mql = params.filter
+      ? `OPENMX ls ${params.filter}`
+      : `OPENMX ls`;
+    return this.executeMxqlText(pcode, {
+      stime: params.stime,
+      etime: params.etime,
+      mql,
+      limit: params.limit ?? 500,
+    });
+  }
+
+  /**
+   * Describe an OpenMetric: type, label sets, cardinality via OPENMX status.
+   */
+  async describeOpenMetric(
+    pcode: number,
+    params: { stime: number; etime: number; metric: string }
+  ): Promise<MxqlResult> {
+    const mql = `OPENMX status ${params.metric}`;
+    return this.executeMxqlText(pcode, {
+      stime: params.stime,
+      etime: params.etime,
+      mql,
+      limit: 500,
+    });
+  }
+
   // --- MXQL operations ---
 
   async executeMxqlText(

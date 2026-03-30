@@ -495,6 +495,44 @@ var WhatapApiClient = class {
     }
     return result;
   }
+  // --- PromQL / OpenMetrics operations ---
+  /**
+   * Execute a PromQL query via the MXQL text endpoint using OPENMX wrapper.
+   */
+  async executePromql(pcode, params) {
+    const mql = `OPENMX ${params.query}`;
+    return this.executeMxqlText(pcode, {
+      stime: params.stime,
+      etime: params.etime,
+      mql,
+      limit: params.limit ?? 500
+    });
+  }
+  /**
+   * List available OpenMetrics for a project via OPENMX ls.
+   * Returns rows with: time, metric, type (gauge/counter/histogram).
+   */
+  async listOpenMetrics(pcode, params) {
+    const mql = params.filter ? `OPENMX ls ${params.filter}` : `OPENMX ls`;
+    return this.executeMxqlText(pcode, {
+      stime: params.stime,
+      etime: params.etime,
+      mql,
+      limit: params.limit ?? 500
+    });
+  }
+  /**
+   * Describe an OpenMetric: type, label sets, cardinality via OPENMX status.
+   */
+  async describeOpenMetric(pcode, params) {
+    const mql = `OPENMX status ${params.metric}`;
+    return this.executeMxqlText(pcode, {
+      stime: params.stime,
+      etime: params.etime,
+      mql,
+      limit: 500
+    });
+  }
   // --- MXQL operations ---
   async executeMxqlText(pcode, params) {
     const token = await this.getProjectToken(pcode);
@@ -16192,16 +16230,16 @@ var NEXT_STEPS = {
     "**Next**: `whatap_data_availability(projectCode)` to see available queries."
   ],
   whatap_data_availability: [
-    "**Next**: `whatap_describe_mxql(path)` for details, or `whatap_query_mxql(projectCode, path)` to query directly."
+    "**Next**: `whatap_describe_query(path)` for details, or `whatap_query_data(projectCode, path)` to query directly."
   ],
-  whatap_describe_mxql: [
-    "**Next**: `whatap_query_mxql(projectCode, path)` to execute."
+  whatap_describe_query: [
+    "**Next**: `whatap_query_data(projectCode, path)` to execute."
   ],
-  whatap_query_mxql: [
+  whatap_query_data: [
     "**Explore**: `whatap_data_availability(search=keyword)` to find related queries."
   ],
   whatap_apm_anomaly: [
-    '**Next**: `whatap_query_mxql(projectCode, path="v2/app/tps_oid")` to drill into agent data.'
+    '**Next**: `whatap_query_data(projectCode, path="v2/app/tps_oid")` to drill into agent data.'
   ],
   whatap_service_topology: [
     "**Next**: `whatap_apm_anomaly(projectCode)` to detect performance issues."
@@ -16262,7 +16300,7 @@ function buildNoDataResponse(opts) {
 function registerProjectTools(server, client) {
   server.tool(
     "whatap_list_projects",
-    "Use this as the FIRST STEP in any WhaTap monitoring workflow. Returns all monitoring projects with pcode (project code), name, platform, and product type. Every other WhaTap tool requires a projectCode \u2014 get it from this tool.\n\nWORKFLOW for WhaTap monitoring analysis:\n1. whatap_list_projects (this tool) \u2192 find the target project, note its pcode and platform\n2. whatap_data_availability() \u2192 browse available MXQL query domains\n3. whatap_describe_mxql(path) \u2192 understand query parameters and output fields\n4. whatap_query_mxql(projectCode, path) \u2192 execute and get live data\n\nDo NOT call other WhaTap tools before this one \u2014 you need a pcode first.",
+    "Use this as the FIRST STEP in any WhaTap monitoring workflow. Returns all monitoring projects with pcode (project code), name, platform, and product type. Every other WhaTap tool requires a projectCode \u2014 get it from this tool.\n\nWORKFLOW for WhaTap monitoring analysis:\n1. whatap_list_projects (this tool) \u2192 find the target project, note its pcode and platform\n2. whatap_data_availability() \u2192 browse available MXQL query domains\n3. whatap_describe_query(path) \u2192 understand query parameters and output fields\n4. whatap_query_data(projectCode, path) \u2192 execute and get live data\n\nDo NOT call other WhaTap tools before this one \u2014 you need a pcode first.",
     {},
     async () => {
       try {
@@ -16312,7 +16350,7 @@ function registerProjectTools(server, client) {
   );
   server.tool(
     "whatap_list_agents",
-    "Use this to discover servers, app instances, or DB instances in a project. Returns agent name (oname), status (active/inactive), IP, and OID. OIDs can filter MXQL queries via params: whatap_query_mxql(params={oid: '...'}). PREREQUISITE: projectCode from whatap_list_projects.",
+    "Use this to discover servers, app instances, or DB instances in a project. Returns agent name (oname), status (active/inactive), IP, and OID. OIDs can filter MXQL queries via params: whatap_query_data(params={oid: '...'}). PREREQUISITE: projectCode from whatap_list_projects.",
     { projectCode: z.number().describe(PARAM_PROJECT_CODE) },
     async ({ projectCode }) => {
       try {
@@ -16333,6 +16371,185 @@ function registerProjectTools(server, client) {
       }
     }
   );
+}
+
+// src/utils/format-promql.ts
+var META_KEYS = /* @__PURE__ */ new Set([
+  "time",
+  "value",
+  "_head_",
+  "_id_",
+  "_name_",
+  "_type_",
+  "_rows_",
+  "error"
+]);
+function formatPromqlResponse(data, options = {}) {
+  const { title, maxRows = 500, maxSeries = 20, queryMeta } = options;
+  const lines = [];
+  if (title) {
+    lines.push(`## PromQL: ${title}`, "");
+  }
+  if (!Array.isArray(data) || data.length === 0) {
+    return lines.concat("No OpenMetrics data found for the specified time range.").join("\n");
+  }
+  const allRows = data;
+  const dataRows = allRows.filter(
+    (row) => !row["_head_"] && !row["error"]
+  );
+  if (dataRows.length === 0) {
+    return lines.concat("No OpenMetrics data found for the specified time range.").join("\n");
+  }
+  const labelKeys = /* @__PURE__ */ new Set();
+  for (const row of dataRows.slice(0, 50)) {
+    for (const key of Object.keys(row)) {
+      if (!META_KEYS.has(key)) labelKeys.add(key);
+    }
+  }
+  const hasTime = dataRows.some((r) => "time" in r);
+  const hasValue = dataRows.some((r) => "value" in r);
+  const groups = /* @__PURE__ */ new Map();
+  const groupLabels = /* @__PURE__ */ new Map();
+  for (const row of dataRows.slice(0, maxRows)) {
+    const labels = {};
+    for (const key2 of labelKeys) {
+      if (key2 !== "value" && key2 !== "time" && row[key2] != null) {
+        labels[key2] = String(row[key2]);
+      }
+    }
+    const key = Object.entries(labels).sort(([a], [b]) => a.localeCompare(b)).map(([k, v]) => `${k}=${v}`).join(",");
+    if (!groups.has(key)) {
+      groups.set(key, []);
+      groupLabels.set(key, labels);
+    }
+    groups.get(key).push(row);
+  }
+  const resultType = hasTime && groups.size > 0 ? "matrix" : hasValue ? "vector" : "scalar";
+  lines.push(
+    `**Result**: ${resultType} | **Series**: ${groups.size} | **Rows**: ${dataRows.length}${dataRows.length >= maxRows ? "+" : ""}`
+  );
+  if (queryMeta) {
+    lines.push(
+      `**Period**: ${fmtTime2(queryMeta.stime)} \u2192 ${fmtTime2(queryMeta.etime)}`
+    );
+  }
+  lines.push("");
+  let seriesIdx = 0;
+  const allValues = [];
+  for (const [key, rows] of groups) {
+    if (seriesIdx >= maxSeries) {
+      lines.push(
+        `(+${groups.size - maxSeries} more series truncated)`,
+        ""
+      );
+      break;
+    }
+    const labels = groupLabels.get(key);
+    const labelStr = Object.entries(labels).map(([k, v]) => `${k}="${v}"`).join(", ");
+    lines.push(`### {${labelStr || "no labels"}}`, "");
+    if (hasTime && hasValue) {
+      lines.push("| time | value |", "| --- | --- |");
+      const shown = rows.slice(0, 20);
+      for (const row of shown) {
+        const t = typeof row.time === "number" && row.time > 1e12 ? fmtTime2(row.time) : String(row.time ?? "-");
+        const v = typeof row.value === "number" ? fmtNum2(row.value) : String(row.value ?? "-");
+        lines.push(`| ${t} | ${v} |`);
+        if (typeof row.value === "number") allValues.push(row.value);
+      }
+      if (rows.length > 20) {
+        lines.push(`| ... | (${rows.length - 20} more rows) |`);
+      }
+    } else {
+      const colKeys = Array.from(
+        new Set(rows.flatMap((r) => Object.keys(r)))
+      ).filter((k) => !META_KEYS.has(k));
+      if (colKeys.length > 0) {
+        lines.push(`| ${colKeys.join(" | ")} |`);
+        lines.push(`| ${colKeys.map(() => "---").join(" | ")} |`);
+        for (const row of rows.slice(0, 20)) {
+          lines.push(
+            `| ${colKeys.map((k) => fmtCell(row[k])).join(" | ")} |`
+          );
+        }
+      }
+    }
+    lines.push("");
+    seriesIdx++;
+  }
+  if (allValues.length >= 2) {
+    const min = Math.min(...allValues);
+    const max = Math.max(...allValues);
+    const avg = allValues.reduce((a, b) => a + b, 0) / allValues.length;
+    lines.push(
+      `**Summary** (${groups.size} series, ${dataRows.length} points): value ${fmtNum2(min)}\u2013${fmtNum2(max)}, avg ${fmtNum2(avg)}`
+    );
+  }
+  return lines.join("\n");
+}
+function formatOpenMetricsList(data, projectCode) {
+  const lines = [];
+  const metrics = [];
+  if (!Array.isArray(data) || data.length === 0) {
+    return { lines, metrics };
+  }
+  const rows = data.filter(
+    (r) => !r["_head_"] && !r["error"] && r["metric"]
+  );
+  if (rows.length === 0) {
+    return { lines, metrics };
+  }
+  const seen = /* @__PURE__ */ new Set();
+  for (const row of rows) {
+    const name = String(row["metric"] ?? "");
+    if (!name || seen.has(name)) continue;
+    seen.add(name);
+    const type = String(row["type"] ?? "gauge").toLowerCase();
+    const suggested = suggestPromql(name, type);
+    metrics.push({ name, type, suggested });
+  }
+  lines.push(`### Available OpenMetrics (${metrics.length})`, "");
+  for (const m of metrics.slice(0, 30)) {
+    lines.push(`- \`${m.name}\` (${m.type}) \u2192 suggested: \`${m.suggested}\``);
+  }
+  if (metrics.length > 30) {
+    lines.push(`  (+${metrics.length - 30} more \u2014 use \`whatap_data_availability(search="keyword")\` to filter)`);
+  }
+  lines.push("");
+  lines.push(
+    `**PromQL Workflow**: To create a reusable query from the metrics above:`,
+    "",
+    `\`whatap_create_promql(projectCode=${projectCode}, name="descriptive name", query="<suggested query>")\``,
+    "",
+    `Validated queries are saved permanently \u2014 reuse with \`whatap_query_data(savedQuery="name")\`.`,
+    `Common patterns: counter\u2192\`rate(m[5m])\`, gauge\u2192\`m\`, histogram\u2192\`histogram_quantile(0.95, rate(m_bucket[5m]))\``,
+    ""
+  );
+  return { lines, metrics };
+}
+function suggestPromql(name, type) {
+  switch (type) {
+    case "counter":
+      return `rate(${name}[5m])`;
+    case "histogram":
+      return `histogram_quantile(0.95, rate(${name}_bucket[5m]))`;
+    case "summary":
+      return name;
+    default:
+      return name;
+  }
+}
+function fmtTime2(ms) {
+  return new Date(ms).toISOString().replace("T", " ").slice(0, 19) + " UTC";
+}
+function fmtNum2(n) {
+  if (Number.isInteger(n)) return String(n);
+  if (Math.abs(n) < 0.01) return n.toExponential(2);
+  return n.toFixed(2);
+}
+function fmtCell(v) {
+  if (v === null || v === void 0) return "-";
+  if (typeof v === "number") return fmtNum2(v);
+  return String(v);
 }
 
 // src/utils/time.ts
@@ -41386,6 +41603,186 @@ function getCatalogSize() {
   return CATALOG_ENTRIES.length;
 }
 
+// src/tools/promql.ts
+var PromqlQueryStore = class {
+  queries = /* @__PURE__ */ new Map();
+  /** Save a validated query. */
+  save(query) {
+    this.queries.set(this.key(query.projectCode, query.name), query);
+  }
+  /** Get a saved query by project + name. */
+  get(projectCode, name) {
+    return this.queries.get(this.key(projectCode, name));
+  }
+  /** List all saved queries for a project. */
+  listForProject(projectCode) {
+    const result = [];
+    for (const q of this.queries.values()) {
+      if (q.projectCode === projectCode) result.push(q);
+    }
+    return result;
+  }
+  /** List all saved queries across all projects. */
+  listAll() {
+    return Array.from(this.queries.values());
+  }
+  /** Delete a saved query. */
+  delete(projectCode, name) {
+    return this.queries.delete(this.key(projectCode, name));
+  }
+  key(projectCode, name) {
+    return `${projectCode}:${name}`;
+  }
+};
+var queryStore = new PromqlQueryStore();
+function getPromqlQueryStore() {
+  return queryStore;
+}
+function registerPromqlTools(server, client) {
+  server.tool(
+    "whatap_create_promql",
+    'Create and validate a reusable PromQL query for OpenMetrics data. The query is validated by executing it against live data. If valid, the query is saved and appears in whatap_data_availability for future reuse. If invalid, returns the error so you can fix the query.\n\nWORKFLOW:\n1. whatap_data_availability(projectCode) \u2192 discover OpenMetrics + suggested queries\n2. whatap_create_promql(projectCode, name, query) \u2192 compose PromQL, validate, save\n3. whatap_query_data(projectCode, savedQuery=name) \u2192 reuse anytime\n\nCompose your query from metrics discovered in step 1:\n- Counter metrics: rate(metric_name[5m])\n- Gauge metrics: metric_name\n- Histogram: histogram_quantile(0.95, rate(metric_bucket[5m]))\n- Aggregate: sum by (label)(expression)\n\nExample: whatap_create_promql(projectCode=3730, name="CPU by Pod", query="sum by (pod)(rate(container_cpu_usage_seconds_total[5m]))")',
+    {
+      projectCode: z.number().describe(PARAM_PROJECT_CODE),
+      name: z.string().describe(
+        'A descriptive name for the query (e.g., "CPU Usage per Instance", "Memory by Pod"). Used as the key for reuse.'
+      ),
+      query: z.string().describe(
+        'PromQL expression to validate and save (e.g., "rate(node_cpu_seconds_total[5m])", "sum by (pod)(container_memory_usage_bytes)").'
+      ),
+      description: z.string().optional().describe("What this query measures. Helps LLMs understand the query purpose."),
+      timeRange: z.string().default("5m").describe(PARAM_TIME_RANGE_OPTIONAL)
+    },
+    async ({ projectCode, name, query, description, timeRange }) => {
+      try {
+        const { stime, etime } = parseTimeRange(timeRange);
+        const result = await client.executePromql(projectCode, {
+          query,
+          stime,
+          etime,
+          limit: 50
+        });
+        if (Array.isArray(result)) {
+          const errorRow = result.find(
+            (r) => r && typeof r === "object" && "error" in r
+          );
+          if (errorRow) {
+            const errMsg = String(
+              errorRow.error
+            );
+            return {
+              content: [
+                {
+                  type: "text",
+                  text: `**Query validation failed**: ${errMsg}
+
+**Query**: \`${query}\`
+
+**Fix the query and try again.** Check:
+- Metric name is correct (use \`whatap_data_availability\` to discover metrics)
+- Label names and syntax are valid
+- PromQL functions are correct (rate requires counter, histogram_quantile needs _bucket)
+`
+                }
+              ],
+              isError: true
+            };
+          }
+        }
+        const dataRows = Array.isArray(result) ? result.filter(
+          (r) => !r["_head_"] && !r["error"]
+        ) : [];
+        if (dataRows.length === 0) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: `**Query returned no data.**
+
+**Query**: \`${query}\`
+
+The query syntax may be valid but no metrics matched in the time range.
+**Suggestions:**
+- Check metric exists: \`whatap_data_availability(projectCode=${projectCode})\`
+- Try a wider time range
+- Verify OpenMetrics is enabled for this project (requires K8s with WhaTap Operator)
+`
+              }
+            ]
+          };
+        }
+        let metricType = "gauge";
+        if (query.includes("rate(") || query.includes("increase(")) {
+          metricType = "counter";
+        } else if (query.includes("histogram_quantile(")) {
+          metricType = "histogram";
+        }
+        const savedQuery = {
+          name,
+          description: description || `PromQL: ${query}`,
+          query,
+          projectCode,
+          metricType,
+          createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+          lastUsed: (/* @__PURE__ */ new Date()).toISOString()
+        };
+        queryStore.save(savedQuery);
+        const preview = formatPromqlResponse(result, {
+          title: name,
+          maxRows: 50,
+          maxSeries: 5,
+          queryMeta: { stime, etime }
+        });
+        const lines = [
+          `**Query saved**: "${name}"`,
+          "",
+          `**PromQL**: \`${query}\``,
+          `**Type**: ${metricType}`,
+          `**Data points**: ${dataRows.length}`,
+          "",
+          "### Preview",
+          "",
+          preview,
+          "",
+          "---",
+          `**Reuse**: \`whatap_query_data(projectCode=${projectCode}, savedQuery="${name}")\``,
+          `**View all saved**: \`whatap_data_availability(projectCode=${projectCode})\``
+        ];
+        return {
+          content: [
+            {
+              type: "text",
+              text: lines.join("\n")
+            }
+          ]
+        };
+      } catch (err) {
+        const msg = err.message ?? String(err);
+        if (msg.includes("OpenMx") || msg.includes("openmx")) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: `**PromQL execution error**: ${msg}
+
+OpenMetrics may not be enabled for this project. PromQL requires a Kubernetes project with WhaTap Operator installed.
+
+Check project type: \`whatap_project_info(projectCode=${projectCode})\``
+              }
+            ],
+            isError: true
+          };
+        }
+        return classifyAndBuildError(err, {
+          toolName: "whatap_create_promql",
+          projectCode,
+          timeRange
+        });
+      }
+    }
+  );
+}
+
 // src/tools/yard.ts
 var NON_METRIC_FIELDS = /* @__PURE__ */ new Set([
   "time",
@@ -41466,7 +41863,7 @@ var PROBE_CATEGORIES = [
 function registerYardTools(server, client) {
   server.tool(
     "whatap_data_availability",
-    'Browse available MXQL queries from the WhaTap yard (production query catalog). Use this to discover what data you can query.\n\nUSAGE:\n- No params \u2192 domain summary table (domain, count, description)\n- domain="v2/sys" \u2192 list all query paths in that domain\n- search="cpu" \u2192 keyword search across all paths/descriptions\n- category="server_base" \u2192 reverse lookup: which query paths use this category\n- projectCode=12345 \u2192 live probe: which data categories have active data\n\nWORKFLOW:\n1. whatap_data_availability() \u2192 see domains\n2. whatap_data_availability(domain="v2/sys") \u2192 see queries\n3. whatap_describe_mxql(path) \u2192 see query details\n4. whatap_query_mxql(projectCode, path) \u2192 execute query',
+    'Browse available MXQL queries from the WhaTap yard (production query catalog). Use this to discover what data you can query.\n\nUSAGE:\n- No params \u2192 domain summary table (domain, count, description)\n- domain="v2/sys" \u2192 list all query paths in that domain\n- search="cpu" \u2192 keyword search across all paths/descriptions\n- category="server_base" \u2192 reverse lookup: which query paths use this category\n- projectCode=12345 \u2192 live probe: which data categories have active data\n\nWORKFLOW:\n1. whatap_data_availability() \u2192 see domains\n2. whatap_data_availability(domain="v2/sys") \u2192 see queries\n3. whatap_describe_query(path) \u2192 see query details\n4. whatap_query_data(projectCode, path) \u2192 execute query',
     {
       domain: z.string().optional().describe(
         'Domain to list (e.g., "v2/sys", "v2/app", "v2/container", "v2/db"). Omit for summary.'
@@ -41542,8 +41939,38 @@ function registerYardTools(server, client) {
             );
           }
           lines2.push(
-            "**Next**: Call `whatap_describe_mxql(path)` to see parameters and fields, or `whatap_query_mxql(projectCode, path)` to execute directly."
+            "**Next**: Call `whatap_describe_query(path)` to see parameters and fields, or `whatap_query_data(projectCode, path)` to execute directly."
           );
+          try {
+            const omEtime = Date.now();
+            const omStime = omEtime - 10 * 6e4;
+            const omResult = await client.listOpenMetrics(projectCode, {
+              stime: omStime,
+              etime: omEtime,
+              limit: 200
+            });
+            const { lines: omLines, metrics } = formatOpenMetricsList(
+              omResult,
+              projectCode
+            );
+            if (omLines.length > 0) {
+              lines2.push("", ...omLines);
+            }
+          } catch {
+          }
+          const savedQueries = getPromqlQueryStore().listForProject(projectCode);
+          if (savedQueries.length > 0) {
+            lines2.push(`### Saved PromQL Queries (${savedQueries.length})`, "");
+            for (const sq of savedQueries) {
+              lines2.push(
+                `- **${sq.name}** \u2192 \`${sq.query}\`${sq.description ? ` \u2014 ${sq.description}` : ""}`
+              );
+            }
+            lines2.push(
+              "",
+              `**Execute**: \`whatap_query_data(projectCode=${projectCode}, savedQuery="<name>")\``
+            );
+          }
           return {
             content: [{ type: "text", text: lines2.join("\n") }]
           };
@@ -41573,7 +42000,7 @@ function registerYardTools(server, client) {
           }
           lines2.push(
             "",
-            "**Next**: Call `whatap_describe_mxql(path)` to see query details."
+            "**Next**: Call `whatap_describe_query(path)` to see query details."
           );
           return {
             content: [{ type: "text", text: lines2.join("\n") }]
@@ -41636,12 +42063,91 @@ function registerYardTools(server, client) {
     }
   );
   server.tool(
-    "whatap_describe_mxql",
-    'Describe a specific MXQL query from the catalog. Shows description, categories, parameters, output fields, header types, JOIN dependencies, and raw MXQL.\n\nUse this before whatap_query_mxql to understand what a query does and what parameters it accepts.\n\nExample: whatap_describe_mxql(path="v2/sys/server_base")',
+    "whatap_describe_query",
+    'Describe a specific MXQL query path or an OpenMetrics metric. For MXQL: shows description, categories, parameters, output fields, header types, JOIN dependencies, and raw MXQL.\nFor OpenMetrics: shows metric type, label sets, cardinality.\n\nUse this before whatap_query_data to understand what a query does and what parameters it accepts.\n\nMXQL example: whatap_describe_query(path="v2/sys/server_base")\nOpenMetrics example: whatap_describe_query(metric="node_cpu_seconds_total", projectCode=3730)',
     {
-      path: z.string().describe(PARAM_MXQL_PATH)
+      path: z.string().optional().describe(PARAM_MXQL_PATH),
+      metric: z.string().optional().describe(
+        'OpenMetrics/Prometheus metric name to describe (e.g., "node_cpu_seconds_total"). Requires projectCode.'
+      ),
+      projectCode: z.number().optional().describe("Project code \u2014 required when describing an OpenMetrics metric.")
     },
-    async ({ path }) => {
+    async ({ path, metric, projectCode }) => {
+      if (metric && projectCode) {
+        try {
+          const etime = Date.now();
+          const stime = etime - 10 * 6e4;
+          const result = await client.describeOpenMetric(projectCode, {
+            stime,
+            etime,
+            metric
+          });
+          const rows = Array.isArray(result) ? result.filter(
+            (r) => !r["_head_"] && !r["error"]
+          ) : [];
+          if (rows.length === 0) {
+            return {
+              content: [
+                {
+                  type: "text",
+                  text: `**No data found for metric "${metric}".**
+
+Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})\``
+                }
+              ]
+            };
+          }
+          const lines = [`## OpenMetric: ${metric}`, ""];
+          for (const row of rows) {
+            const type = row.type ?? "unknown";
+            const labelset = row.labelset ?? "?";
+            const label = row.label ?? "";
+            lines.push(`- **Type**: ${type}`);
+            lines.push(`- **Label sets**: ${labelset}`);
+            if (label) lines.push(`- **Example labels**: ${label}`);
+            lines.push("");
+          }
+          const firstRow = rows[0];
+          const mType = String(firstRow?.type ?? "gauge").toLowerCase();
+          let suggested;
+          if (mType === "counter") {
+            suggested = `rate(${metric}[5m])`;
+          } else if (mType === "histogram") {
+            suggested = `histogram_quantile(0.95, rate(${metric}_bucket[5m]))`;
+          } else {
+            suggested = metric;
+          }
+          lines.push(
+            `**Suggested PromQL**: \`${suggested}\``,
+            "",
+            `**Create reusable query**: \`whatap_create_promql(projectCode=${projectCode}, name="...", query="${suggested}")\``
+          );
+          return {
+            content: [
+              {
+                type: "text",
+                text: appendNextSteps(lines.join("\n"), "whatap_describe_query")
+              }
+            ]
+          };
+        } catch (err) {
+          return classifyAndBuildError(err, {
+            toolName: "whatap_describe_query",
+            projectCode
+          });
+        }
+      }
+      if (!path) {
+        return {
+          content: [
+            {
+              type: "text",
+              text: "**Error**: Provide either `path` (for MXQL) or `metric` + `projectCode` (for OpenMetrics)."
+            }
+          ],
+          isError: true
+        };
+      }
       try {
         const result = describeMql(path);
         if (!result) {
@@ -41804,7 +42310,7 @@ function registerYardTools(server, client) {
           "### Example",
           "",
           "```",
-          `whatap_query_mxql(projectCode=<PCODE>, path="${path}", timeRange="5m")`,
+          `whatap_query_data(projectCode=<PCODE>, path="${path}", timeRange="5m")`,
           "```"
         );
         const filterParams = metadata.parameters.filter(
@@ -41817,7 +42323,7 @@ function registerYardTools(server, client) {
             "To filter by agent:",
             "",
             "```",
-            `whatap_query_mxql(projectCode=<PCODE>, path="${path}", params={"${exampleParam}": "<VALUE>"})`,
+            `whatap_query_data(projectCode=<PCODE>, path="${path}", params={"${exampleParam}": "<VALUE>"})`,
             "```"
           );
         }
@@ -41825,30 +42331,110 @@ function registerYardTools(server, client) {
           content: [
             {
               type: "text",
-              text: appendNextSteps(lines.join("\n"), "whatap_describe_mxql")
+              text: appendNextSteps(lines.join("\n"), "whatap_describe_query")
             }
           ]
         };
       } catch (err) {
         return classifyAndBuildError(err, {
-          toolName: "whatap_describe_mxql"
+          toolName: "whatap_describe_query"
         });
       }
     }
   );
   server.tool(
-    "whatap_query_mxql",
-    'Execute an MXQL query from the yard via the WhaTap API path endpoint. The API server resolves the .mql file path and executes it.\n\nPREREQUISITES:\n- projectCode from whatap_list_projects\n- path from whatap_data_availability or whatap_describe_mxql\n\nExample: whatap_query_mxql(projectCode=12345, path="v2/sys/server_base")\n\nPass params for queries that accept $-prefixed parameters (e.g., $oid, $okind).',
+    "whatap_query_data",
+    'Execute an MXQL path query, a PromQL query, or a saved PromQL query.\n\nTHREE MODES:\n- MXQL: whatap_query_data(projectCode=X, path="v2/sys/server_base")\n- PromQL: whatap_query_data(projectCode=X, query="rate(node_cpu[5m])")\n- Saved: whatap_query_data(projectCode=X, savedQuery="CPU by Pod")\n\nPREREQUISITES:\n- projectCode from whatap_list_projects\n- path from whatap_data_availability (MXQL) OR\n- query: ad-hoc PromQL expression OR\n- savedQuery: name of a query created with whatap_create_promql\n\nPass params for MXQL queries that accept $-prefixed parameters (e.g., $oid, $okind).',
     {
       projectCode: z.number().describe(PARAM_PROJECT_CODE),
-      path: z.string().describe(PARAM_MXQL_PATH),
+      path: z.string().optional().describe(PARAM_MXQL_PATH),
+      query: z.string().optional().describe(
+        'PromQL expression to execute (e.g., "rate(node_cpu_seconds_total[5m])"). For reusable queries, use whatap_create_promql first.'
+      ),
+      savedQuery: z.string().optional().describe(
+        'Name of a saved PromQL query (created with whatap_create_promql). Example: "CPU by Pod"'
+      ),
       timeRange: z.string().default("5m").describe(PARAM_TIME_RANGE_OPTIONAL),
       params: z.record(z.string()).optional().describe(
-        'Query parameters for $-prefixed variables. Example: {"oid": "12345", "okind": "myApp"}'
+        'Query parameters for MXQL $-prefixed variables. Example: {"oid": "12345", "okind": "myApp"}'
       ),
       limit: z.number().default(100).describe("Maximum rows to return (default: 100).")
     },
-    async ({ projectCode, path, timeRange, params, limit }) => {
+    async ({ projectCode, path, query, savedQuery, timeRange, params, limit }) => {
+      if (savedQuery) {
+        const saved = getPromqlQueryStore().get(projectCode, savedQuery);
+        if (!saved) {
+          const available = getPromqlQueryStore().listForProject(projectCode);
+          const list = available.map((q) => `"${q.name}"`).join(", ") || "(none)";
+          return {
+            content: [
+              {
+                type: "text",
+                text: `**Error**: Saved query "${savedQuery}" not found for project ${projectCode}.
+
+**Available saved queries**: ${list}
+
+Create new queries with \`whatap_create_promql\`.`
+              }
+            ],
+            isError: true
+          };
+        }
+        saved.lastUsed = (/* @__PURE__ */ new Date()).toISOString();
+        query = saved.query;
+      }
+      if (query && !path) {
+        try {
+          const { stime, etime } = parseTimeRange(timeRange);
+          const result = await client.executePromql(projectCode, {
+            query,
+            stime,
+            etime,
+            limit
+          });
+          const dataRows = Array.isArray(result) ? result.filter(
+            (r) => !r["_head_"] && !r["error"]
+          ) : [];
+          if (dataRows.length === 0) {
+            return buildNoDataResponse({
+              toolName: "whatap_query_data",
+              projectCode,
+              timeRange
+            });
+          }
+          const text = formatPromqlResponse(result, {
+            title: savedQuery || query,
+            maxRows: limit,
+            maxSeries: 20,
+            queryMeta: { stime, etime }
+          });
+          return {
+            content: [
+              {
+                type: "text",
+                text: appendNextSteps(text, "whatap_query_data")
+              }
+            ]
+          };
+        } catch (err) {
+          return classifyAndBuildError(err, {
+            toolName: "whatap_query_data",
+            projectCode,
+            timeRange
+          });
+        }
+      }
+      if (!path) {
+        return {
+          content: [
+            {
+              type: "text",
+              text: "**Error**: Provide `path` (MXQL), `query` (PromQL), or `savedQuery` (saved name)."
+            }
+          ],
+          isError: true
+        };
+      }
       try {
         const { stime, etime } = parseTimeRange(timeRange);
         const mqlPath = path.startsWith("/") ? path : `/${path}`;
@@ -41861,7 +42447,7 @@ function registerYardTools(server, client) {
         });
         if (Array.isArray(result) && result.length === 0) {
           return buildNoDataResponse({
-            toolName: "whatap_query_mxql",
+            toolName: "whatap_query_data",
             projectCode,
             timeRange
           });
@@ -41887,7 +42473,7 @@ function registerYardTools(server, client) {
         ) : [];
         if (dataRows.length === 0) {
           return buildNoDataResponse({
-            toolName: "whatap_query_mxql",
+            toolName: "whatap_query_data",
             projectCode,
             timeRange,
             category: describeMql(path)?.entry.baseCategories[0]
@@ -41934,7 +42520,7 @@ function registerYardTools(server, client) {
           content: [
             {
               type: "text",
-              text: appendNextSteps(text, "whatap_query_mxql")
+              text: appendNextSteps(text, "whatap_query_data")
             }
           ]
         };
@@ -41954,7 +42540,7 @@ function registerYardTools(server, client) {
           return { content: [{ type: "text", text: lines.join("\n") }], isError: true };
         }
         return classifyAndBuildError(err, {
-          toolName: "whatap_query_mxql",
+          toolName: "whatap_query_data",
           projectCode,
           timeRange
         });
@@ -43223,6 +43809,7 @@ function registerAllTools(server, client) {
   registerYardTools(server, client);
   registerMeshTools(server, client);
   registerInstallTools(server, client);
+  registerPromqlTools(server, client);
 }
 
 // src/index.ts

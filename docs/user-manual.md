@@ -290,6 +290,15 @@ Show the service topology for project 12345.
 Are there any network bottlenecks between services?
 ```
 
+### PromQL / OpenMetrics (Kubernetes)
+
+```
+What OpenMetrics are available for project 12345?
+Show NGINX request rate for project 12345.
+Create a PromQL query for CPU usage by pod in project 12345.
+Run the saved query "NGINX Request Rate" on project 12345.
+```
+
 ### Agent Installation
 
 ```
@@ -314,7 +323,7 @@ and show me which agents are active.
 
 ## 6. Available Tools
 
-The MCP server provides 9 tools:
+The MCP server provides 10 tools:
 
 ### Core Tools
 
@@ -328,9 +337,9 @@ The MCP server provides 9 tools:
 
 | Tool | Description |
 |------|-------------|
-| `whatap_data_availability` | Browse 640 MXQL queries, probe live data by project |
-| `whatap_describe_mxql` | Describe a query path: parameters, fields, raw MXQL |
-| `whatap_query_mxql` | Execute an MXQL query and return results |
+| `whatap_data_availability` | Browse MXQL catalog + OpenMetrics discovery + saved PromQL queries |
+| `whatap_describe_query` | Describe MXQL path or OpenMetrics metric (labels, type, suggested PromQL) |
+| `whatap_query_data` | Execute MXQL path, ad-hoc PromQL, or saved PromQL query |
 
 ### Composite Analysis
 
@@ -338,6 +347,12 @@ The MCP server provides 9 tools:
 |------|-------------|
 | `whatap_apm_anomaly` | Multi-query APM anomaly detection (TPS, latency, errors, active TX) |
 | `whatap_service_topology` | Service connectivity map with bottleneck detection (requires NPM) |
+
+### PromQL / OpenMetrics
+
+| Tool | Description |
+|------|-------------|
+| `whatap_create_promql` | Create, validate, and save a reusable PromQL query for OpenMetrics data |
 
 ### Agent Installation
 
