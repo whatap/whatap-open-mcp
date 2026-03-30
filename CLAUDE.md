@@ -168,6 +168,15 @@ SELECT [field1, field2, ...]
 | `container` | Container | TAGLOAD |
 | `db_real_counter` | Database | TAGLOAD |
 | `db_agent_list` | DB Agent List | FLEXLOAD |
+| `db_oracle_dma_sqlstat` | Oracle DMA SQL Stats | TAGLOAD |
+| `db_oracle_sqlstat` | Oracle SQL Stats | TAGLOAD |
+| `db_mysql_sqlstat` | MySQL SQL Stats | TAGLOAD |
+| `db_postgresql_sqlstat` | PostgreSQL SQL Stats | TAGLOAD |
+| `db_mssql_sqlstat` | MSSQL SQL Stats | TAGLOAD |
+| `db_oracle_wait_class` | Oracle Wait Class | TAGLOAD |
+| `db_oracle_dma_wait_class` | Oracle DMA Wait Class | TAGLOAD |
+| `db_postgresql_wait_event` | PostgreSQL Wait Event | TAGLOAD |
+| `db_tablespace` | Tablespace | TAGLOAD |
 | `logsink_stats` | Log Sink | TAGLOAD |
 
 ## Catalog Domains (top 10)
@@ -195,6 +204,6 @@ SELECT [field1, field2, ...]
 
 - **Version:** 1.0.0
 - **Tools:** 10 (3 project + 3 data + 2 mesh + 1 install + 1 promql)
-- **Catalog:** 640 entries across 35 domains (generated from yard)
+- **Catalog:** 914 entries across 35+ domains (generated from yard)
 - **English translations:** 120 entries (all Korean descriptions covered)
 - **LLM Pipeline Score:** 9.1/10

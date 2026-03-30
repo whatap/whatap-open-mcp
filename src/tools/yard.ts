@@ -110,6 +110,15 @@ const PROBE_CATEGORIES: Array<{
   { name: "container", loadType: "TAGLOAD", label: "Container" },
   { name: "db_real_counter", loadType: "TAGLOAD", label: "Database" },
   { name: "db_agent_list", loadType: "FLEXLOAD", label: "DB Agent List" },
+  { name: "db_oracle_dma_sqlstat", loadType: "TAGLOAD", label: "Oracle DMA SQL Stats" },
+  { name: "db_oracle_sqlstat", loadType: "TAGLOAD", label: "Oracle SQL Stats" },
+  { name: "db_mysql_sqlstat", loadType: "TAGLOAD", label: "MySQL SQL Stats" },
+  { name: "db_postgresql_sqlstat", loadType: "TAGLOAD", label: "PostgreSQL SQL Stats" },
+  { name: "db_mssql_sqlstat", loadType: "TAGLOAD", label: "MSSQL SQL Stats" },
+  { name: "db_oracle_wait_class", loadType: "TAGLOAD", label: "Oracle Wait Class" },
+  { name: "db_oracle_dma_wait_class", loadType: "TAGLOAD", label: "Oracle DMA Wait Class" },
+  { name: "db_postgresql_wait_event", loadType: "TAGLOAD", label: "PostgreSQL Wait Event" },
+  { name: "db_tablespace", loadType: "TAGLOAD", label: "Tablespace" },
   { name: "logsink_stats", loadType: "TAGLOAD", label: "Log Sink" },
 ];
 

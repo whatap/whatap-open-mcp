@@ -16588,8 +16588,8 @@ function parseTimeRange(range) {
 // src/data/mxql-catalog.ts
 var CATALOG_ENTRIES = [
   {
-    "path": "app/act_tps_oid",
-    "domain": "app",
+    "path": "mxql/app/act_tps_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, TPS \uD569\uAC8C \uAC74\uC218  \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_counter"
@@ -16616,8 +16616,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/act_tx/act_tx_oid",
-    "domain": "app/act_tx",
+    "path": "mxql/app/act_tx/act_tx_oid",
+    "domain": "mxql/app/act_tx",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_counter"
@@ -16645,8 +16645,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/act_tx/agent_with_tx",
-    "domain": "app/act_tx",
+    "path": "mxql/app/act_tx/agent_with_tx",
+    "domain": "mxql/app/act_tx",
     "description": "",
     "categories": [
       "agent_list"
@@ -16667,8 +16667,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "app/act_tx_ext_oid",
-    "domain": "app",
+    "path": "mxql/app/act_tx_ext_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, INACTIVE \uC5D0\uC774\uC804\uD2B8 \uD3EC\uD568, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_counter"
@@ -16695,8 +16695,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/act_tx_oid",
-    "domain": "app",
+    "path": "mxql/app/act_tx_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_counter"
@@ -16723,8 +16723,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/act_tx_okind",
-    "domain": "app",
+    "path": "mxql/app/act_tx_okind",
+    "domain": "mxql/app",
     "description": "\uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_counter"
@@ -16753,8 +16753,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/act_tx_pcode",
-    "domain": "app",
+    "path": "mxql/app/act_tx_pcode",
+    "domain": "mxql/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_counter"
@@ -16782,8 +16782,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/active_stat_oid",
-    "domain": "app",
+    "path": "mxql/app/active_stat_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_active_stat"
@@ -16811,8 +16811,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/active_stat_okind",
-    "domain": "app",
+    "path": "mxql/app/active_stat_okind",
+    "domain": "mxql/app",
     "description": "\uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_active_stat"
@@ -16842,8 +16842,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/active_stat_pcode",
-    "domain": "app",
+    "path": "mxql/app/active_stat_pcode",
+    "domain": "mxql/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_active_stat"
@@ -16872,8 +16872,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/apdex_okind",
-    "domain": "app",
+    "path": "mxql/app/apdex_okind",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8 \uC885\uB958\uBCC4  <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704",
     "categories": [
       "app_counter",
@@ -16901,8 +16901,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/apdex_pcode",
-    "domain": "app",
+    "path": "mxql/app/apdex_pcode",
+    "domain": "mxql/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704",
     "categories": [
       "app_counter",
@@ -16930,8 +16930,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/con_user_oid",
-    "domain": "app",
+    "path": "mxql/app/con_user_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790",
     "categories": [
       "app_user",
@@ -16957,8 +16957,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/con_user_okind",
-    "domain": "app",
+    "path": "mxql/app/con_user_okind",
+    "domain": "mxql/app",
     "description": "\uC885\uB958\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790",
     "categories": [
       "app_user",
@@ -16984,8 +16984,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/con_user_okind_daily",
-    "domain": "app",
+    "path": "mxql/app/con_user_okind_daily",
+    "domain": "mxql/app",
     "description": "\uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12",
     "categories": [
       "app_user{m5}"
@@ -17009,8 +17009,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/con_user_pcode",
-    "domain": "app",
+    "path": "mxql/app/con_user_pcode",
+    "domain": "mxql/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uBCC4, \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uCD08\uAC12",
     "categories": [
       "app_user",
@@ -17036,8 +17036,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/con_user_pcode_daily",
-    "domain": "app",
+    "path": "mxql/app/con_user_pcode_daily",
+    "domain": "mxql/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12",
     "categories": [
       "app_user{m5}"
@@ -17061,8 +17061,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/cpu_oid",
-    "domain": "app",
+    "path": "mxql/app/cpu_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uD638\uC2A4\uD2B8 CPU%, 5\uCD08\uAC12",
     "categories": [
       "app_host_resource",
@@ -17088,8 +17088,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/dbnum_oid",
-    "domain": "app",
+    "path": "mxql/app/dbnum_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 DBConn \uAC74\uC218, 5\uCD08 \uB9C8\uB2E4",
     "categories": [
       "app_proc_counter",
@@ -17119,8 +17119,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/gc_oid",
-    "domain": "app",
+    "path": "mxql/app/gc_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568",
     "categories": [
       "app_proc_counter",
@@ -17151,8 +17151,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/heap_oid",
-    "domain": "app",
+    "path": "mxql/app/heap_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uD799\uBA54\uBAA8\uB9AC \uC0AC\uC6A9\uB7C9(B)",
     "categories": [
       "app_proc_counter",
@@ -17179,8 +17179,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/pull_act_tx_list",
-    "domain": "app",
+    "path": "mxql/app/pull_act_tx_list",
+    "domain": "mxql/app",
     "description": "\uAC01 \uC5D0\uC774\uC774\uC804\uD2B8\uB85C \uBD80\uD130 \uC561\uD2F0\uBE0C\uD2B8\uB79C\uC7AD\uC158 \uB9AC\uC2A4\uD2B8\uB97C \uC870\uD68C\uD55C\uB2E4.",
     "categories": [
       "pull_act_tx_list"
@@ -17199,8 +17199,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "app/resp_time_oid",
-    "domain": "app",
+    "path": "mxql/app/resp_time_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04",
     "categories": [
       "app_counter",
@@ -17226,8 +17226,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/resp_time_okind",
-    "domain": "app",
+    "path": "mxql/app/resp_time_okind",
+    "domain": "mxql/app",
     "description": "\uC885\uB958\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04",
     "categories": [
       "app_counter",
@@ -17254,8 +17254,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/resp_time_pcode",
-    "domain": "app",
+    "path": "mxql/app/resp_time_pcode",
+    "domain": "mxql/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04",
     "categories": [
       "app_counter",
@@ -17282,8 +17282,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/resp_time_pcode_daily",
-    "domain": "app",
+    "path": "mxql/app/resp_time_pcode_daily",
+    "domain": "mxql/app",
     "description": "\uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12",
     "categories": [
       "app_counter{m5}"
@@ -17307,8 +17307,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/resp_time_pcode_month",
-    "domain": "app",
+    "path": "mxql/app/resp_time_pcode_month",
+    "domain": "mxql/app",
     "description": "\uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12",
     "categories": [
       "app_counter{h1}"
@@ -17332,8 +17332,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/speed",
-    "domain": "app",
+    "path": "mxql/app/speed",
+    "domain": "mxql/app",
     "description": "Speed \uCC28\uD2B8\uC5D0 \uD544\uC694\uD55C \uB370\uC774\uD130\uB97C \uC870\uD68C\uD55C\uB2E4. / \uB2E8 java2.0_23\uC774\uD558\uC758 \uBC84\uC804\uC5D0\uC11C\uB294 arrival_rate\uAC00 \uC218\uC9D1\uB418\uC9C0 \uC54A\uC74C\uC73C\uB85C / \uAE30\uBCF8\uC740 tx_count\uB85C \uB300\uCCB4\uD55C\uB2E4.",
     "categories": [
       "app_counter"
@@ -17353,8 +17353,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/stat_error_pcode",
-    "domain": "app",
+    "path": "mxql/app/stat_error_pcode",
+    "domain": "mxql/app",
     "description": "\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4",
     "categories": [
       "stat_error"
@@ -17373,8 +17373,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "app/stat_httpc_pcode",
-    "domain": "app",
+    "path": "mxql/app/stat_httpc_pcode",
+    "domain": "mxql/app",
     "description": "\uC678\uBD80 \uD638\uCD9C \uD1B5\uACC4",
     "categories": [
       "stat_httpc"
@@ -17397,8 +17397,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "app/stat_sql_pcode",
-    "domain": "app",
+    "path": "mxql/app/stat_sql_pcode",
+    "domain": "mxql/app",
     "description": "SQL \uD1B5\uACC4",
     "categories": [
       "stat_sql"
@@ -17417,8 +17417,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "app/stat_tx_pcode",
-    "domain": "app",
+    "path": "mxql/app/stat_tx_pcode",
+    "domain": "mxql/app",
     "description": "\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4",
     "categories": [
       "stat_tx"
@@ -17437,8 +17437,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "app/tps_last_pcode",
-    "domain": "app",
+    "path": "mxql/app/tps_last_pcode",
+    "domain": "mxql/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12",
     "categories": [
       "app_counter"
@@ -17465,8 +17465,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/tps_oid",
-    "domain": "app",
+    "path": "mxql/app/tps_oid",
+    "domain": "mxql/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12",
     "categories": [
       "app_counter",
@@ -17494,8 +17494,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/tps_okind",
-    "domain": "app",
+    "path": "mxql/app/tps_okind",
+    "domain": "mxql/app",
     "description": "\uC885\uB958\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12",
     "categories": [
       "app_counter",
@@ -17521,8 +17521,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/tps_pcode",
-    "domain": "app",
+    "path": "mxql/app/tps_pcode",
+    "domain": "mxql/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12",
     "categories": [
       "app_counter",
@@ -17550,8 +17550,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/tps_pcode_daily",
-    "domain": "app",
+    "path": "mxql/app/tps_pcode_daily",
+    "domain": "mxql/app",
     "description": "\uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12",
     "categories": [
       "app_counter{m5}"
@@ -17578,8 +17578,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/tps_pcode_month",
-    "domain": "app",
+    "path": "mxql/app/tps_pcode_month",
+    "domain": "mxql/app",
     "description": "\uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12",
     "categories": [
       "app_counter{h1}"
@@ -17605,8 +17605,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/tps_topn",
-    "domain": "app",
+    "path": "mxql/app/tps_topn",
+    "domain": "mxql/app",
     "description": "",
     "categories": [
       "app_counter"
@@ -17632,8 +17632,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "app/visitor_okind_month",
-    "domain": "app",
+    "path": "mxql/app/visitor_okind_month",
+    "domain": "mxql/app",
     "description": "\uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12",
     "categories": [
       "visitor{h1}"
@@ -17657,8 +17657,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "app/visitor_pcode_month",
-    "domain": "app",
+    "path": "mxql/app/visitor_pcode_month",
+    "domain": "mxql/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12",
     "categories": [
       "visitor{h1}"
@@ -17682,8 +17682,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/apiserver_get_request_count_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_get_request_count_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17700,8 +17700,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_get_request_trend_by_resource_subresource_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_get_request_trend_by_resource_subresource_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17716,8 +17716,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_get_request_trend_per_sec",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_get_request_trend_per_sec",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17732,8 +17732,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_go_goroutines_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_go_goroutines_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_go_goroutines"
@@ -17748,8 +17748,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_go_threads_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_go_threads_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_go_threads"
@@ -17764,8 +17764,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_inflight_request_per_sec",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_inflight_request_per_sec",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_current_inflight_requests"
@@ -17780,8 +17780,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_pod_count_per_last",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_pod_count_per_last",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17796,8 +17796,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_pod_cpu_usage_per_last",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_pod_cpu_usage_per_last",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod"
@@ -17821,8 +17821,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/apiserver_pod_memory_usage_per_last",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_pod_memory_usage_per_last",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod"
@@ -17845,8 +17845,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/apiserver_pod_restart_count_per_last",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_pod_restart_count_per_last",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod"
@@ -17867,8 +17867,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/apiserver_post_request_count_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_post_request_count_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17885,8 +17885,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_post_request_trend_by_resource_subresource_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_post_request_trend_by_resource_subresource_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17901,8 +17901,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_post_request_trend_per_sec",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_post_request_trend_per_sec",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17917,8 +17917,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_request_count_by_2xx_code_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_request_count_by_2xx_code_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17933,8 +17933,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_request_count_by_3xx_code_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_request_count_by_3xx_code_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17949,8 +17949,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_request_count_by_4xx_over_code_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_request_count_by_4xx_over_code_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17965,8 +17965,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_request_trend_by_2xx_code_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_request_trend_by_2xx_code_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17981,8 +17981,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_request_trend_by_2xx_resource_subresource_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_request_trend_by_2xx_resource_subresource_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -17997,8 +17997,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_request_trend_by_3xx_code_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_request_trend_by_3xx_code_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -18013,8 +18013,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_request_trend_by_3xx_resource_subresource_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_request_trend_by_3xx_resource_subresource_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -18029,8 +18029,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_request_trend_by_4xx_over_code_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_request_trend_by_4xx_over_code_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -18045,8 +18045,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/apiserver_request_trend_by_4xx_over_resource_subresource_per_min",
-    "domain": "cpm",
+    "path": "mxql/cpm/apiserver_request_trend_by_4xx_over_resource_subresource_per_min",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_apiserver_request_total"
@@ -18061,8 +18061,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/container_app_cpu_quota_oid",
-    "domain": "cpm",
+    "path": "mxql/cpm/container_app_cpu_quota_oid",
+    "domain": "mxql/cpm",
     "description": "OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218",
     "categories": [
       "container",
@@ -18088,8 +18088,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/container_app_cpu_quota_okind",
-    "domain": "cpm",
+    "path": "mxql/cpm/container_app_cpu_quota_okind",
+    "domain": "mxql/cpm",
     "description": "OKIND\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218",
     "categories": [
       "container",
@@ -18116,8 +18116,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/container_app_cpu_quota_onode",
-    "domain": "cpm",
+    "path": "mxql/cpm/container_app_cpu_quota_onode",
+    "domain": "mxql/cpm",
     "description": "ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218",
     "categories": [
       "container",
@@ -18144,8 +18144,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/container_app_cpu_quota_pcode",
-    "domain": "cpm",
+    "path": "mxql/cpm/container_app_cpu_quota_pcode",
+    "domain": "mxql/cpm",
     "description": "PCODE CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218",
     "categories": [
       "container",
@@ -18174,8 +18174,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/container_cpu_top5",
-    "domain": "cpm",
+    "path": "mxql/cpm/container_cpu_top5",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "container"
@@ -18198,8 +18198,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/container_mem_top5",
-    "domain": "cpm",
+    "path": "mxql/cpm/container_mem_top5",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "container"
@@ -18222,8 +18222,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/etcd_apply",
-    "domain": "cpm",
+    "path": "mxql/cpm/etcd_apply",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_etcd_server_proposals_applied_total"
@@ -18238,8 +18238,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/etcd_commited",
-    "domain": "cpm",
+    "path": "mxql/cpm/etcd_commited",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_etcd_server_proposals_committed_total"
@@ -18254,8 +18254,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/etcd_cpu_mem_usage",
-    "domain": "cpm",
+    "path": "mxql/cpm/etcd_cpu_mem_usage",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod",
@@ -18272,8 +18272,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/etcd_cpu_mem_usage_sum",
-    "domain": "cpm",
+    "path": "mxql/cpm/etcd_cpu_mem_usage_sum",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod",
@@ -18290,8 +18290,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/etcd_has_leader",
-    "domain": "cpm",
+    "path": "mxql/cpm/etcd_has_leader",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_etcd_server_has_leader"
@@ -18306,8 +18306,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/etcd_leader_changes",
-    "domain": "cpm",
+    "path": "mxql/cpm/etcd_leader_changes",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "stat_gen_kube_etcd_server_leader_changes_seen_total"
@@ -18322,8 +18322,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/etcd_pod_count",
-    "domain": "cpm",
+    "path": "mxql/cpm/etcd_pod_count",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod",
@@ -18344,8 +18344,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/etcd_podip_list",
-    "domain": "cpm",
+    "path": "mxql/cpm/etcd_podip_list",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod",
@@ -18366,8 +18366,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/etcd_restart_count",
-    "domain": "cpm",
+    "path": "mxql/cpm/etcd_restart_count",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod",
@@ -18388,8 +18388,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_debug_agent_list",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_debug_agent_list",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "agent_list"
@@ -18404,8 +18404,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "cpm/kube_debug_last_app_counter",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_debug_last_app_counter",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "app_counter"
@@ -18420,8 +18420,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_debug_last_container",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_debug_last_container",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "container"
@@ -18436,8 +18436,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_debug_last_pod",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_debug_last_pod",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod"
@@ -18452,8 +18452,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_debug_last_server_base",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_debug_last_server_base",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "server_base"
@@ -18468,8 +18468,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_debug_last_server_disk",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_debug_last_server_disk",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "server_disk"
@@ -18484,8 +18484,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_debug_node_list",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_debug_node_list",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_node"
@@ -18500,8 +18500,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_event_last24h_limit30",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_event_last24h_limit30",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_event"
@@ -18535,8 +18535,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_event_stat",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_event_stat",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_event_stat"
@@ -18579,8 +18579,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_pod_stat",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_pod_stat",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod_stat"
@@ -18610,8 +18610,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/kube_stat",
-    "domain": "cpm",
+    "path": "mxql/cpm/kube_stat",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_stat"
@@ -18640,8 +18640,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/node_cpu_top5",
-    "domain": "cpm",
+    "path": "mxql/cpm/node_cpu_top5",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "server_base"
@@ -18673,8 +18673,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/node_disk_top5",
-    "domain": "cpm",
+    "path": "mxql/cpm/node_disk_top5",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "server_base"
@@ -18696,8 +18696,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/node_mem_top5",
-    "domain": "cpm",
+    "path": "mxql/cpm/node_mem_top5",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "server_base"
@@ -18726,8 +18726,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "cpm/pod_performance_pod_list",
-    "domain": "cpm",
+    "path": "mxql/cpm/pod_performance_pod_list",
+    "domain": "mxql/cpm",
     "description": "",
     "categories": [
       "kube_pod"
@@ -18757,8 +18757,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "db2/parameter_oid_range",
-    "domain": "db2",
+    "path": "mxql/db2/parameter_oid_range",
+    "domain": "mxql/db2",
     "description": "",
     "categories": [
       "db_db2_parameter"
@@ -18775,8 +18775,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "dbx/file",
-    "domain": "dbx",
+    "path": "mxql/dbx/file",
+    "domain": "mxql/dbx",
     "description": "TIME-RANGE {duration:1h, etime:$etime}",
     "categories": [
       "file"
@@ -18791,8 +18791,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "dbx/file_oid",
-    "domain": "dbx",
+    "path": "mxql/dbx/file_oid",
+    "domain": "mxql/dbx",
     "description": "TIME-RANGE {duration:1h, etime:$etime}",
     "categories": [
       "file"
@@ -18809,8 +18809,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "dbx/file_oid_file",
-    "domain": "dbx",
+    "path": "mxql/dbx/file_oid_file",
+    "domain": "mxql/dbx",
     "description": "TIME-RANGE {duration:1h, etime:$etime}",
     "categories": [
       "file"
@@ -18828,8 +18828,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "dbx/filename",
-    "domain": "dbx",
+    "path": "mxql/dbx/filename",
+    "domain": "mxql/dbx",
     "description": "TIME-RANGE {duration:1h, etime:$etime}",
     "categories": [
       "file"
@@ -18848,8 +18848,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "dbx/filename_oid",
-    "domain": "dbx",
+    "path": "mxql/dbx/filename_oid",
+    "domain": "mxql/dbx",
     "description": "TIME-RANGE {duration:1h, etime:$etime}",
     "categories": [
       "file"
@@ -18870,8 +18870,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/app_gc",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/app_gc",
+    "domain": "mxql/flexboard",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568",
     "categories": [
       "app_proc_counter",
@@ -18901,8 +18901,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/app_heap",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/app_heap",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "app_proc_counter",
@@ -18929,8 +18929,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/app_host_resource",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/app_host_resource",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "app_host_resource",
@@ -18955,8 +18955,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/app_host_resource_last",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/app_host_resource_last",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "app_host_resource",
@@ -18991,8 +18991,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/app_thread",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/app_thread",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "app_proc_counter",
@@ -19019,8 +19019,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_autoscaling_group_in_service_instances",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_autoscaling_group_in_service_instances",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -19042,8 +19042,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_autoscaling_group_pending_instances",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_autoscaling_group_pending_instances",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -19065,8 +19065,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_autoscaling_group_standby_instances",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_autoscaling_group_standby_instances",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -19088,8 +19088,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_autoscaling_group_teminating_instances",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_autoscaling_group_teminating_instances",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -19111,8 +19111,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_autoscaling_group_total_instances",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_autoscaling_group_total_instances",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -19134,8 +19134,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_cpu_credit_balance",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_cpu_credit_balance",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19158,8 +19158,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_cpu_utilization",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_cpu_utilization",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19182,8 +19182,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_disk_bytes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_disk_bytes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19206,8 +19206,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_disk_ops",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_disk_ops",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19230,8 +19230,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_ebs_bytes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_ebs_bytes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19255,8 +19255,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_ebs_ops copy",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_ebs_ops copy",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19280,8 +19280,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_ebs_ops",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_ebs_ops",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19305,8 +19305,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_environment_health",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_environment_health",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticbeanstalk"
@@ -19328,8 +19328,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_network_in",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_network_in",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19352,8 +19352,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_network_out",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_network_out",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19376,8 +19376,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_status_check_faild",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_status_check_faild",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19400,8 +19400,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_status_check_faild_instance",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_status_check_faild_instance",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19424,8 +19424,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_beanstalk_status_check_faild_system",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_beanstalk_status_check_faild_system",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19448,8 +19448,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_burst_balance",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_burst_balance",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19471,8 +19471,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_region_bytes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_region_bytes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19495,8 +19495,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_regions",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_regions",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19518,8 +19518,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_volume_bytes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_volume_bytes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19538,8 +19538,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_volume_queue_length",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_volume_queue_length",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19561,8 +19561,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_volume_read_bytes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_volume_read_bytes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19584,8 +19584,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_volume_read_ops",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_volume_read_ops",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19607,8 +19607,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_volume_write_bytes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_volume_write_bytes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19630,8 +19630,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_volume_write_ops",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_volume_write_ops",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19653,8 +19653,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ebs_volumes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ebs_volumes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -19675,8 +19675,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_cores",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_cores",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19697,8 +19697,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_cpu_credit_balance",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_cpu_credit_balance",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19722,8 +19722,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_cpu_credit_usage",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_cpu_credit_usage",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19747,8 +19747,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_cpu_utilization",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_cpu_utilization",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19769,8 +19769,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_disk_bytes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_disk_bytes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19792,8 +19792,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_disk_ops",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_disk_ops",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19815,8 +19815,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_instances",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_instances",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19836,8 +19836,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_memory_total",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_memory_total",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19856,8 +19856,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_network_packets",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_network_packets",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19879,8 +19879,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_network_traffic",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_network_traffic",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19902,8 +19902,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_network_traffic_total",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_network_traffic_total",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19927,8 +19927,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_regions",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_regions",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19950,8 +19950,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_state",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_state",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19972,8 +19972,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_ec2_status_failed",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_ec2_status_failed",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -19996,8 +19996,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elasticache_cpu_credit_balance",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elasticache_cpu_credit_balance",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -20019,8 +20019,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elasticache_cpu_credit_usage",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elasticache_cpu_credit_usage",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -20042,8 +20042,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elasticache_cpu_utilization",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elasticache_cpu_utilization",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -20065,8 +20065,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elasticache_curr_connections",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elasticache_curr_connections",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -20088,8 +20088,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elasticache_get_type_cmds",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elasticache_get_type_cmds",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -20111,8 +20111,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elasticache_network_bytes_in",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elasticache_network_bytes_in",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -20134,8 +20134,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elasticache_network_bytes_out",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elasticache_network_bytes_out",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -20157,8 +20157,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elasticache_new_connections",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elasticache_new_connections",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -20180,8 +20180,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elasticache_set_type_cmds",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elasticache_set_type_cmds",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -20203,8 +20203,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elb_active_connection_count",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elb_active_connection_count",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -20226,8 +20226,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elb_http_code_4xx",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elb_http_code_4xx",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -20249,8 +20249,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elb_http_code_5xx",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elb_http_code_5xx",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -20272,8 +20272,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elb_new_connection_count",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elb_new_connection_count",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -20295,8 +20295,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elb_request_count",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elb_request_count",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -20318,8 +20318,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elb_target_http_code_2xx",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elb_target_http_code_2xx",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -20341,8 +20341,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elb_target_http_code_3xx",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elb_target_http_code_3xx",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -20364,8 +20364,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elb_target_http_code_4xx",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elb_target_http_code_4xx",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -20387,8 +20387,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/aws_elb_target_response_time",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/aws_elb_target_response_time",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -20410,8 +20410,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/db_real_counter_bytes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/db_real_counter_bytes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -20442,8 +20442,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/db_real_counter_disk",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/db_real_counter_disk",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -20469,8 +20469,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/db_real_counter_lock",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/db_real_counter_lock",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -20501,8 +20501,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/db_real_counter_mysql",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/db_real_counter_mysql",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -20533,8 +20533,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/db_real_counter_read_requests",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/db_real_counter_read_requests",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -20565,8 +20565,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/db_real_counter_threads",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/db_real_counter_threads",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -20601,8 +20601,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_cpu_throttledperiods",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_cpu_throttledperiods",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20630,8 +20630,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_cpu_total",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_cpu_total",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20660,8 +20660,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_mem_failcnt",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_mem_failcnt",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20689,8 +20689,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_mem_percent",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_mem_percent",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20719,8 +20719,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_network_bps",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_network_bps",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20750,8 +20750,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_network_iops",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_network_iops",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20781,8 +20781,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_network_rbps",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_network_rbps",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20811,8 +20811,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_network_riops",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_network_riops",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20841,8 +20841,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_network_wbps",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_network_wbps",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20871,8 +20871,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/image_network_wiops",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/image_network_wiops",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20901,8 +20901,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/kube_container_list",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/kube_container_list",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -20950,8 +20950,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/kube_event",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/kube_event",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "kube_event",
@@ -20983,8 +20983,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/kube_node_list",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/kube_node_list",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "kube_node",
@@ -21025,8 +21025,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/kube_stat_containers",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/kube_stat_containers",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "kube_stat"
@@ -21054,8 +21054,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/kube_stat_containers_series",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/kube_stat_containers_series",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "kube_stat"
@@ -21083,8 +21083,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/kube_stat_nodes",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/kube_stat_nodes",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "kube_stat",
@@ -21113,8 +21113,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/kube_stat_pod",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/kube_stat_pod",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "kube_stat"
@@ -21142,8 +21142,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/kube_stat_request_cpu",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/kube_stat_request_cpu",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "kube_stat"
@@ -21171,8 +21171,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/kube_stat_request_memory",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/kube_stat_request_memory",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "kube_stat"
@@ -21200,8 +21200,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/namespace_cpu_total",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/namespace_cpu_total",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -21230,8 +21230,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/namespace_mem_percent",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/namespace_mem_percent",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -21260,8 +21260,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/node_cpu",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/node_cpu",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_base",
@@ -21288,8 +21288,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/node_memory_pused",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/node_memory_pused",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_base",
@@ -21316,8 +21316,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/pod_cpu_total",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/pod_cpu_total",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -21346,8 +21346,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/pod_mem_percent",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/pod_mem_percent",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "container",
@@ -21376,8 +21376,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_base",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_base",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_base",
@@ -21408,8 +21408,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_cpu",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_cpu",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_base",
@@ -21446,8 +21446,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_disk_bps",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_disk_bps",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_disk",
@@ -21473,8 +21473,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_disk_ioPercent",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_disk_ioPercent",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_disk",
@@ -21499,8 +21499,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_disk_iops",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_disk_iops",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_disk",
@@ -21526,8 +21526,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_disk_treemap",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_disk_treemap",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_disk",
@@ -21552,8 +21552,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_disk_usedInode",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_disk_usedInode",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_disk",
@@ -21578,8 +21578,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_disk_usedInodePercent",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_disk_usedInodePercent",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_disk",
@@ -21604,8 +21604,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_disk_usedPercent",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_disk_usedPercent",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_disk",
@@ -21630,8 +21630,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_disk_usedSpace",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_disk_usedSpace",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_disk",
@@ -21656,8 +21656,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_memory",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_memory",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_base",
@@ -21684,8 +21684,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_memory_treemap",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_memory_treemap",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_base",
@@ -21709,8 +21709,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_network_io",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_network_io",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_network",
@@ -21741,8 +21741,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_process",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_process",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_process",
@@ -21769,8 +21769,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/server_process_rw",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/server_process_rw",
+    "domain": "mxql/flexboard",
     "description": "",
     "categories": [
       "server_process",
@@ -21799,8 +21799,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "flexboard/tps_monthly",
-    "domain": "flexboard",
+    "path": "mxql/flexboard/tps_monthly",
+    "domain": "mxql/flexboard",
     "description": "\uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12",
     "categories": [
       "app_counter{h1}"
@@ -21826,8 +21826,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/EDB-12_state",
-    "domain": "ha",
+    "path": "mxql/ha/EDB-12_state",
+    "domain": "mxql/ha",
     "description": "SELECT [time, oid, oname, onode, server, EDB-12]	-- \uC804\uCCB4\uB97C \uAC00\uC838\uC624\uB3C4\uB85D SELECT \uB97C \uB9C9\uC74C.",
     "categories": [
       "spsmon"
@@ -21844,8 +21844,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/alert_event",
-    "domain": "ha",
+    "path": "mxql/ha/alert_event",
+    "domain": "mxql/ha",
     "description": "",
     "categories": [
       "alert_event"
@@ -21862,8 +21862,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/cluster",
-    "domain": "ha",
+    "path": "mxql/ha/cluster",
+    "domain": "mxql/ha",
     "description": "INJECT timepast / SELECT [time, oid, oname, onode, okind, group, node, section, status] / APPEND {query:'/app/tps_last_pcode', field:[pcode,tps]}",
     "categories": [
       "cluster"
@@ -21880,8 +21880,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/cluster_dep",
-    "domain": "ha",
+    "path": "mxql/ha/cluster_dep",
+    "domain": "mxql/ha",
     "description": "",
     "categories": [
       "cluster_dep"
@@ -21898,8 +21898,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/cluster_dep2",
-    "domain": "ha",
+    "path": "mxql/ha/cluster_dep2",
+    "domain": "mxql/ha",
     "description": "",
     "categories": [
       "cluster_dep"
@@ -21917,8 +21917,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/cluster_info",
-    "domain": "ha",
+    "path": "mxql/ha/cluster_info",
+    "domain": "mxql/ha",
     "description": "select \uAC00 \uC5C6\uC73C\uBA74 \uC804\uCCB4 \uCEEC\uB7FC\uC744 \uC804\uBD80 \uAC00\uC838\uC628\uB2E4.",
     "categories": [
       "cluster_info"
@@ -21935,8 +21935,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/cluster_level",
-    "domain": "ha",
+    "path": "mxql/ha/cluster_level",
+    "domain": "mxql/ha",
     "description": "",
     "categories": [
       "cluster"
@@ -21956,8 +21956,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/cluster_net",
-    "domain": "ha",
+    "path": "mxql/ha/cluster_net",
+    "domain": "mxql/ha",
     "description": "",
     "categories": [
       "cluster_net"
@@ -21974,8 +21974,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/cluster_sts",
-    "domain": "ha",
+    "path": "mxql/ha/cluster_sts",
+    "domain": "mxql/ha",
     "description": "SELECT [time, oid, oname, onode, okind, group, node, section, status] / FIRST-ONLY {key:oid}",
     "categories": [
       "cluster_sts"
@@ -21992,8 +21992,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "ha/cluster_sts2",
-    "domain": "ha",
+    "path": "mxql/ha/cluster_sts2",
+    "domain": "mxql/ha",
     "description": "SELECT [time, oid, oname, onode, okind, group, node, section, status] / FIRST-ONLY {key:oid} / INJECT",
     "categories": [
       "cluster_sts"
@@ -22011,8 +22011,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "log/stat/applog-rps-max-0d-1d-7d-28d",
-    "domain": "log/stat",
+    "path": "mxql/log/stat/applog-rps-max-0d-1d-7d-28d",
+    "domain": "mxql/log/stat",
     "description": "",
     "categories": [
       "AppLog",
@@ -22040,8 +22040,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "log/stat/applog-rps-max-0d-1d-7d",
-    "domain": "log/stat",
+    "path": "mxql/log/stat/applog-rps-max-0d-1d-7d",
+    "domain": "mxql/log/stat",
     "description": "",
     "categories": [
       "AppLog",
@@ -22068,8 +22068,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "log/stat/applog-rps-rows-0d-1d-7d-28d",
-    "domain": "log/stat",
+    "path": "mxql/log/stat/applog-rps-rows-0d-1d-7d-28d",
+    "domain": "mxql/log/stat",
     "description": "",
     "categories": [
       "AppLog",
@@ -22097,8 +22097,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "log/stat/applog-rps-rows-0d-1d-7d",
-    "domain": "log/stat",
+    "path": "mxql/log/stat/applog-rps-rows-0d-1d-7d",
+    "domain": "mxql/log/stat",
     "description": "",
     "categories": [
       "AppLog",
@@ -22125,8 +22125,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "mongo/agentinfo",
-    "domain": "mongo",
+    "path": "mxql/mongo/agentinfo",
+    "domain": "mxql/mongo",
     "description": "TAGLOAD / SELECT [time,pcode,oid] / CREATE {key:refershidx, value:'4'}",
     "categories": [
       "agentinfo"
@@ -22143,8 +22143,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/agentinfo_oid",
-    "domain": "mongo",
+    "path": "mxql/mongo/agentinfo_oid",
+    "domain": "mxql/mongo",
     "description": "TAGLOAD / SELECT [time,pcode,oid]",
     "categories": [
       "agentinfo"
@@ -22162,8 +22162,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/dbname",
-    "domain": "mongo",
+    "path": "mxql/mongo/dbname",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "dbname"
@@ -22180,8 +22180,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/dbname_oid",
-    "domain": "mongo",
+    "path": "mxql/mongo/dbname_oid",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "dbname"
@@ -22199,8 +22199,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/event_status",
-    "domain": "mongo",
+    "path": "mxql/mongo/event_status",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "stat"
@@ -22220,8 +22220,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/index",
-    "domain": "mongo",
+    "path": "mxql/mongo/index",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "db_index"
@@ -22238,8 +22238,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/index_oid",
-    "domain": "mongo",
+    "path": "mxql/mongo/index_oid",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "db_index"
@@ -22257,8 +22257,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/instance_list",
-    "domain": "mongo",
+    "path": "mxql/mongo/instance_list",
+    "domain": "mxql/mongo",
     "description": 'FIRST-ONLY {key:oid} / CREATE { key:status, expr: "0" }',
     "categories": [
       "stat"
@@ -22290,8 +22290,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/instance_list_range",
-    "domain": "mongo",
+    "path": "mxql/mongo/instance_list_range",
+    "domain": "mxql/mongo",
     "description": 'TIME-RANGE {duration:20s, etime:$etime} / INJECT / FIRST-ONLY {key:oid} / CREATE { key:status, expr: "0" }',
     "categories": [
       "stat"
@@ -22322,8 +22322,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/itest",
-    "domain": "mongo",
+    "path": "mxql/mongo/itest",
+    "domain": "mxql/mongo",
     "description": "INJECT timepast",
     "categories": [
       "stat"
@@ -22357,8 +22357,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/parameter",
-    "domain": "mongo",
+    "path": "mxql/mongo/parameter",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "parameter"
@@ -22375,8 +22375,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/parameter_oid",
-    "domain": "mongo",
+    "path": "mxql/mongo/parameter_oid",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "parameter"
@@ -22394,8 +22394,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/parameter_oid_range",
-    "domain": "mongo",
+    "path": "mxql/mongo/parameter_oid_range",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "parameter"
@@ -22412,8 +22412,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/paramtest",
-    "domain": "mongo",
+    "path": "mxql/mongo/paramtest",
+    "domain": "mxql/mongo",
     "description": "TAGLOAD",
     "categories": [
       "parameter"
@@ -22434,8 +22434,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/session",
-    "domain": "mongo",
+    "path": "mxql/mongo/session",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "session"
@@ -22452,8 +22452,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/session_oid",
-    "domain": "mongo",
+    "path": "mxql/mongo/session_oid",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "session"
@@ -22471,8 +22471,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/session_oid_range",
-    "domain": "mongo",
+    "path": "mxql/mongo/session_oid_range",
+    "domain": "mxql/mongo",
     "description": "TAGLOAD {backward:true} / FIRST-ONLY {key:oid, timebase:true}",
     "categories": [
       "session"
@@ -22489,8 +22489,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/stat",
-    "domain": "mongo",
+    "path": "mxql/mongo/stat",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "stat"
@@ -22507,8 +22507,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/stat_m5_oid_range",
-    "domain": "mongo",
+    "path": "mxql/mongo/stat_m5_oid_range",
+    "domain": "mxql/mongo",
     "description": "TIME-RANGE {duration:20s, etime:$etime} / FIRST-ONLY {key:oid}",
     "categories": [
       "stat{m5}"
@@ -22525,8 +22525,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/stat_oid",
-    "domain": "mongo",
+    "path": "mxql/mongo/stat_oid",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "stat"
@@ -22544,8 +22544,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/stat_oid_10m",
-    "domain": "mongo",
+    "path": "mxql/mongo/stat_oid_10m",
+    "domain": "mxql/mongo",
     "description": "",
     "categories": [
       "stat"
@@ -22563,8 +22563,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/stat_oid_range",
-    "domain": "mongo",
+    "path": "mxql/mongo/stat_oid_range",
+    "domain": "mxql/mongo",
     "description": "TIME-RANGE {duration:20s, etime:$etime} / FIRST-ONLY {key:oid}",
     "categories": [
       "stat"
@@ -22581,8 +22581,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/stat_oid_series",
-    "domain": "mongo",
+    "path": "mxql/mongo/stat_oid_series",
+    "domain": "mxql/mongo",
     "description": "SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]",
     "categories": [
       "stat"
@@ -22605,8 +22605,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/stat_oid_series_range",
-    "domain": "mongo",
+    "path": "mxql/mongo/stat_oid_series_range",
+    "domain": "mxql/mongo",
     "description": "TIME-RANGE {duration:20s, etime:$etime} / SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16] / FIRST-ONLY {key:oid}",
     "categories": [
       "stat"
@@ -22628,8 +22628,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "mongo/stat_range",
-    "domain": "mongo",
+    "path": "mxql/mongo/stat_range",
+    "domain": "mxql/mongo",
     "description": "TIME-RANGE {recent:20s} / TAGLOAD {backward:true} / FILTER [{key:oid, value:11223344}, {key:oid, value:2233445}] / FIRST-ONLY {key:oid}",
     "categories": [
       "stat"
@@ -22644,8 +22644,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "npm/all/linechart/app_name",
-    "domain": "npm/all/linechart",
+    "path": "mxql/npm/all/linechart/app_name",
+    "domain": "mxql/npm/all/linechart",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -22690,8 +22690,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/linechart/appname_and_processtype",
-    "domain": "npm/all/linechart",
+    "path": "mxql/npm/all/linechart/appname_and_processtype",
+    "domain": "mxql/npm/all/linechart",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -22739,8 +22739,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/linechart/process_type",
-    "domain": "npm/all/linechart",
+    "path": "mxql/npm/all/linechart/process_type",
+    "domain": "mxql/npm/all/linechart",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -22785,8 +22785,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/app_name",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/app_name",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -22837,8 +22837,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/app_name_bps",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/app_name_bps",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -22875,8 +22875,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/app_name_jitter",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/app_name_jitter",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -22913,8 +22913,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/app_name_latency",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/app_name_latency",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -22951,8 +22951,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/app_name_pps",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/app_name_pps",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -22989,8 +22989,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/app_name_session",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/app_name_session",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23026,8 +23026,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/appname_and_processtype",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/appname_and_processtype",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23081,8 +23081,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/appname_and_processtype_bps",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/appname_and_processtype_bps",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23121,8 +23121,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/appname_and_processtype_jitter",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/appname_and_processtype_jitter",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23161,8 +23161,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/appname_and_processtype_latency",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/appname_and_processtype_latency",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23201,8 +23201,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/appname_and_processtype_pps",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/appname_and_processtype_pps",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23241,8 +23241,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/appname_and_processtype_session",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/appname_and_processtype_session",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23280,8 +23280,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/process_type",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/process_type",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23332,8 +23332,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/process_type_bps",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/process_type_bps",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23369,8 +23369,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/process_type_jitter",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/process_type_jitter",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23406,8 +23406,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/process_type_latency",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/process_type_latency",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23443,8 +23443,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/process_type_pps",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/process_type_pps",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23480,8 +23480,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/all/topology/process_type_session",
-    "domain": "npm/all/topology",
+    "path": "mxql/npm/all/topology/process_type_session",
+    "domain": "mxql/npm/all/topology",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23516,8 +23516,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/linechart/app_name",
-    "domain": "npm/tcp/linechart",
+    "path": "mxql/npm/tcp/linechart/app_name",
+    "domain": "mxql/npm/tcp/linechart",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23562,8 +23562,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/linechart/app_name_node_summary",
-    "domain": "npm/tcp/linechart",
+    "path": "mxql/npm/tcp/linechart/app_name_node_summary",
+    "domain": "mxql/npm/tcp/linechart",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23589,8 +23589,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/linechart/appname_and_processtype",
-    "domain": "npm/tcp/linechart",
+    "path": "mxql/npm/tcp/linechart/appname_and_processtype",
+    "domain": "mxql/npm/tcp/linechart",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23638,8 +23638,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/linechart/appname_and_processtype_node_summary",
-    "domain": "npm/tcp/linechart",
+    "path": "mxql/npm/tcp/linechart/appname_and_processtype_node_summary",
+    "domain": "mxql/npm/tcp/linechart",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23666,8 +23666,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/linechart/process_type",
-    "domain": "npm/tcp/linechart",
+    "path": "mxql/npm/tcp/linechart/process_type",
+    "domain": "mxql/npm/tcp/linechart",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23712,8 +23712,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/linechart/process_type_node_summary",
-    "domain": "npm/tcp/linechart",
+    "path": "mxql/npm/tcp/linechart/process_type_node_summary",
+    "domain": "mxql/npm/tcp/linechart",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23739,8 +23739,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/topn/jitter/app_name",
-    "domain": "npm/tcp/topn/jitter",
+    "path": "mxql/npm/tcp/topn/jitter/app_name",
+    "domain": "mxql/npm/tcp/topn/jitter",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23787,8 +23787,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/topn/jitter/appname_and_processtype",
-    "domain": "npm/tcp/topn/jitter",
+    "path": "mxql/npm/tcp/topn/jitter/appname_and_processtype",
+    "domain": "mxql/npm/tcp/topn/jitter",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23838,8 +23838,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/topn/jitter/process_type",
-    "domain": "npm/tcp/topn/jitter",
+    "path": "mxql/npm/tcp/topn/jitter/process_type",
+    "domain": "mxql/npm/tcp/topn/jitter",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23886,8 +23886,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/topn/latency/app_name",
-    "domain": "npm/tcp/topn/latency",
+    "path": "mxql/npm/tcp/topn/latency/app_name",
+    "domain": "mxql/npm/tcp/topn/latency",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23934,8 +23934,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/topn/latency/appname_and_processtype",
-    "domain": "npm/tcp/topn/latency",
+    "path": "mxql/npm/tcp/topn/latency/appname_and_processtype",
+    "domain": "mxql/npm/tcp/topn/latency",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -23985,8 +23985,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "npm/tcp/topn/latency/process_type",
-    "domain": "npm/tcp/topn/latency",
+    "path": "mxql/npm/tcp/topn/latency/process_type",
+    "domain": "mxql/npm/tcp/topn/latency",
     "description": "",
     "categories": [
       "npm_process_tag_data",
@@ -24033,8 +24033,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "oracle_dma/parameter_oid_range",
-    "domain": "oracle_dma",
+    "path": "mxql/oracle_dma/parameter_oid_range",
+    "domain": "mxql/oracle_dma",
     "description": "",
     "categories": [
       "db_oracle_dma_parameter"
@@ -24051,8 +24051,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/agentinfo",
-    "domain": "redis",
+    "path": "mxql/redis/agentinfo",
+    "domain": "mxql/redis",
     "description": "TAGLOAD / SELECT [time,pcode,oid] / CREATE {key:refershidx, value:'4'}",
     "categories": [
       "agentinfo"
@@ -24069,8 +24069,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/agentinfo_oid",
-    "domain": "redis",
+    "path": "mxql/redis/agentinfo_oid",
+    "domain": "mxql/redis",
     "description": "TAGLOAD / SELECT [time,pcode,oid]",
     "categories": [
       "agentinfo"
@@ -24088,8 +24088,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/alert_event",
-    "domain": "redis",
+    "path": "mxql/redis/alert_event",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "alert_event"
@@ -24106,8 +24106,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/config",
-    "domain": "redis",
+    "path": "mxql/redis/config",
+    "domain": "mxql/redis",
     "description": "settings \uB85C \uC0AC\uC6A9\uD558\uC9C0 \uB9D0\uACE0 config \uB97C \uC0AC\uC6A9\uD558\uB3C4\uB85D \uD55C\uB2E4. 201109",
     "categories": [
       "config"
@@ -24124,8 +24124,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/dbname",
-    "domain": "redis",
+    "path": "mxql/redis/dbname",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "dbname"
@@ -24142,8 +24142,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/dbname_oid",
-    "domain": "redis",
+    "path": "mxql/redis/dbname_oid",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "dbname"
@@ -24161,8 +24161,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/event_status",
-    "domain": "redis",
+    "path": "mxql/redis/event_status",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "stat"
@@ -24182,8 +24182,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/index",
-    "domain": "redis",
+    "path": "mxql/redis/index",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "db_index"
@@ -24200,8 +24200,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/index_oid",
-    "domain": "redis",
+    "path": "mxql/redis/index_oid",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "db_index"
@@ -24219,8 +24219,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/instance_list",
-    "domain": "redis",
+    "path": "mxql/redis/instance_list",
+    "domain": "mxql/redis",
     "description": "FIRST-ONLY {key:oid}",
     "categories": [
       "stat"
@@ -24247,8 +24247,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/instance_list_range",
-    "domain": "redis",
+    "path": "mxql/redis/instance_list_range",
+    "domain": "mxql/redis",
     "description": "TIME-RANGE {duration:20s, etime:$etime} / INJECT / FIRST-ONLY {key:oid}",
     "categories": [
       "stat"
@@ -24273,8 +24273,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/parameter_oid",
-    "domain": "redis",
+    "path": "mxql/redis/parameter_oid",
+    "domain": "mxql/redis",
     "description": "settings \uB85C \uC0AC\uC6A9\uD558\uC9C0 \uB9D0\uACE0 config \uB97C \uC0AC\uC6A9\uD558\uB3C4\uB85D \uD55C\uB2E4. 201109",
     "categories": [
       "config"
@@ -24292,8 +24292,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/parameter_oid_range",
-    "domain": "redis",
+    "path": "mxql/redis/parameter_oid_range",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "config"
@@ -24310,8 +24310,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/session",
-    "domain": "redis",
+    "path": "mxql/redis/session",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "session"
@@ -24328,8 +24328,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/session_oid",
-    "domain": "redis",
+    "path": "mxql/redis/session_oid",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "session"
@@ -24347,8 +24347,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/session_oid_range",
-    "domain": "redis",
+    "path": "mxql/redis/session_oid_range",
+    "domain": "mxql/redis",
     "description": "TAGLOAD {backward:true} / FIRST-ONLY {key:oid, timebase:true}",
     "categories": [
       "session"
@@ -24365,8 +24365,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/stat",
-    "domain": "redis",
+    "path": "mxql/redis/stat",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "stat"
@@ -24383,8 +24383,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/stat_m5_oid_range",
-    "domain": "redis",
+    "path": "mxql/redis/stat_m5_oid_range",
+    "domain": "mxql/redis",
     "description": "TIME-RANGE {duration:20s, etime:$etime} / FIRST-ONLY {key:oid}",
     "categories": [
       "stat{m5}"
@@ -24401,8 +24401,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/stat_oid",
-    "domain": "redis",
+    "path": "mxql/redis/stat_oid",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "stat"
@@ -24420,8 +24420,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/stat_oid_10m",
-    "domain": "redis",
+    "path": "mxql/redis/stat_oid_10m",
+    "domain": "mxql/redis",
     "description": "",
     "categories": [
       "stat"
@@ -24439,8 +24439,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/stat_oid_range",
-    "domain": "redis",
+    "path": "mxql/redis/stat_oid_range",
+    "domain": "mxql/redis",
     "description": "TIME-RANGE {duration:20s, etime:$etime} / FIRST-ONLY {key:oid}",
     "categories": [
       "stat"
@@ -24457,8 +24457,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/stat_oid_series",
-    "domain": "redis",
+    "path": "mxql/redis/stat_oid_series",
+    "domain": "mxql/redis",
     "description": "SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]",
     "categories": [
       "stat"
@@ -24481,8 +24481,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/stat_oid_series_range",
-    "domain": "redis",
+    "path": "mxql/redis/stat_oid_series_range",
+    "domain": "mxql/redis",
     "description": "TIME-RANGE {duration:20s, etime:$etime} / SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16] / FIRST-ONLY {key:oid}",
     "categories": [
       "stat"
@@ -24504,8 +24504,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "redis/stat_range",
-    "domain": "redis",
+    "path": "mxql/redis/stat_range",
+    "domain": "mxql/redis",
     "description": "TIME-RANGE {recent:20s} / TAGLOAD {backward:true} / FILTER [{key:oid, value:11223344}, {key:oid, value:2233445}] / FIRST-ONLY {key:oid}",
     "categories": [
       "stat"
@@ -24520,8 +24520,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "sap_ase/parameter_oid_range",
-    "domain": "sap_ase",
+    "path": "mxql/sap_ase/parameter_oid_range",
+    "domain": "mxql/sap_ase",
     "description": "",
     "categories": [
       "db_sap_ase_parameter"
@@ -24538,8 +24538,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/agent_count",
-    "domain": "sys",
+    "path": "mxql/sys/agent_count",
+    "domain": "mxql/sys",
     "description": "\uC694\uC57D \uC5D0\uC774\uC804\uD2B8 \uAC74\uC218",
     "categories": [
       "agent_count"
@@ -24558,8 +24558,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "sys/agent_cpu",
-    "domain": "sys",
+    "path": "mxql/sys/agent_cpu",
+    "domain": "mxql/sys",
     "description": "\uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08",
     "categories": [
       "server_base"
@@ -24583,8 +24583,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/agent_inact",
-    "domain": "sys",
+    "path": "mxql/sys/agent_inact",
+    "domain": "mxql/sys",
     "description": "INACTIVE\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D",
     "categories": [
       "agent_list"
@@ -24607,8 +24607,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "sys/agent_list",
-    "domain": "sys",
+    "path": "mxql/sys/agent_list",
+    "domain": "mxql/sys",
     "description": "\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM",
     "categories": [
       "agent_list"
@@ -24637,8 +24637,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "sys/agent_list_ex",
-    "domain": "sys",
+    "path": "mxql/sys/agent_list_ex",
+    "domain": "mxql/sys",
     "description": "\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM",
     "categories": [
       "agent_list"
@@ -24670,8 +24670,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "sys/agent_list_simple",
-    "domain": "sys",
+    "path": "mxql/sys/agent_list_simple",
+    "domain": "mxql/sys",
     "description": "\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM",
     "categories": [
       "agent_list"
@@ -24700,8 +24700,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "sys/cpu_core_perf",
-    "domain": "sys",
+    "path": "mxql/sys/cpu_core_perf",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_cpu_core"
@@ -24730,8 +24730,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/cpu_load",
-    "domain": "sys",
+    "path": "mxql/sys/cpu_load",
+    "domain": "mxql/sys",
     "description": "\uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08",
     "categories": [
       "server_base",
@@ -24761,8 +24761,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/cpu_oid",
-    "domain": "sys",
+    "path": "mxql/sys/cpu_oid",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -24808,8 +24808,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/cpu_oid_daily",
-    "domain": "sys",
+    "path": "mxql/sys/cpu_oid_daily",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base{m5}"
@@ -24843,8 +24843,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/cpu_oid_last",
-    "domain": "sys",
+    "path": "mxql/sys/cpu_oid_last",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base"
@@ -24878,8 +24878,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/cpu_top5",
-    "domain": "sys",
+    "path": "mxql/sys/cpu_top5",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base"
@@ -24914,8 +24914,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/cpu_topn",
-    "domain": "sys",
+    "path": "mxql/sys/cpu_topn",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base"
@@ -24941,8 +24941,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/cpumem_oid",
-    "domain": "sys",
+    "path": "mxql/sys/cpumem_oid",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -24971,8 +24971,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/disk_bps_top5",
-    "domain": "sys",
+    "path": "mxql/sys/disk_bps_top5",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_disk"
@@ -25012,8 +25012,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/disk_iops_top5",
-    "domain": "sys",
+    "path": "mxql/sys/disk_iops_top5",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_disk"
@@ -25051,8 +25051,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/disk_max",
-    "domain": "sys",
+    "path": "mxql/sys/disk_max",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_disk"
@@ -25070,8 +25070,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/disk_oid",
-    "domain": "sys",
+    "path": "mxql/sys/disk_oid",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -25090,8 +25090,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/disk_topn",
-    "domain": "sys",
+    "path": "mxql/sys/disk_topn",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_disk"
@@ -25118,8 +25118,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/mem_oid",
-    "domain": "sys",
+    "path": "mxql/sys/mem_oid",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -25138,8 +25138,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/mem_oid_daily",
-    "domain": "sys",
+    "path": "mxql/sys/mem_oid_daily",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base{m5}"
@@ -25156,8 +25156,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/mem_oid_last",
-    "domain": "sys",
+    "path": "mxql/sys/mem_oid_last",
+    "domain": "mxql/sys",
     "description": "\uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08",
     "categories": [
       "server_base"
@@ -25175,8 +25175,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/mem_top5",
-    "domain": "sys",
+    "path": "mxql/sys/mem_top5",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -25207,8 +25207,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/memory_topn",
-    "domain": "sys",
+    "path": "mxql/sys/memory_topn",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base"
@@ -25235,8 +25235,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/netstat_oid",
-    "domain": "sys",
+    "path": "mxql/sys/netstat_oid",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "sm_netstat"
@@ -25260,8 +25260,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/network_bps_top5",
-    "domain": "sys",
+    "path": "mxql/sys/network_bps_top5",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_network",
@@ -25295,8 +25295,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/network_io_topn",
-    "domain": "sys",
+    "path": "mxql/sys/network_io_topn",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_network"
@@ -25325,8 +25325,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/network_max",
-    "domain": "sys",
+    "path": "mxql/sys/network_max",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_network"
@@ -25344,8 +25344,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/network_oid",
-    "domain": "sys",
+    "path": "mxql/sys/network_oid",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_network",
@@ -25378,8 +25378,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/network_pps_top5",
-    "domain": "sys",
+    "path": "mxql/sys/network_pps_top5",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_network"
@@ -25410,8 +25410,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/process_cpu_top5",
-    "domain": "sys",
+    "path": "mxql/sys/process_cpu_top5",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -25445,8 +25445,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/process_max",
-    "domain": "sys",
+    "path": "mxql/sys/process_max",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -25482,8 +25482,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/process_mem_top5",
-    "domain": "sys",
+    "path": "mxql/sys/process_mem_top5",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -25518,8 +25518,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/process_oid",
-    "domain": "sys",
+    "path": "mxql/sys/process_oid",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -25551,8 +25551,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/process_project",
-    "domain": "sys",
+    "path": "mxql/sys/process_project",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -25585,8 +25585,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/process_rw_topn",
-    "domain": "sys",
+    "path": "mxql/sys/process_rw_topn",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -25615,8 +25615,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/process_topn",
-    "domain": "sys",
+    "path": "mxql/sys/process_topn",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -25643,8 +25643,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/project_process",
-    "domain": "sys",
+    "path": "mxql/sys/project_process",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -25676,8 +25676,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "sys/project_resource",
-    "domain": "sys",
+    "path": "mxql/sys/project_resource",
+    "domain": "mxql/sys",
     "description": "",
     "categories": [
       "server_base"
@@ -25713,8 +25713,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/01/10m",
-    "domain": "techross/01",
+    "path": "mxql/techross/01/10m",
+    "domain": "mxql/techross/01",
     "description": "TIME-FILTER { date:'2020/07/28' , gmt:9}",
     "categories": [
       "UFD"
@@ -25734,8 +25734,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/01/fit1",
-    "domain": "techross/01",
+    "path": "mxql/techross/01/fit1",
+    "domain": "mxql/techross/01",
     "description": "",
     "categories": [
       "FIT{h1}"
@@ -25753,8 +25753,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/01/fit10m",
-    "domain": "techross/01",
+    "path": "mxql/techross/01/fit10m",
+    "domain": "mxql/techross/01",
     "description": "",
     "categories": [
       "FIT"
@@ -25772,8 +25772,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/01/main",
-    "domain": "techross/01",
+    "path": "mxql/techross/01/main",
+    "domain": "mxql/techross/01",
     "description": "TIME-FILTER { date:'2020/07/28' , gmt:9}",
     "categories": [
       "UFD{h1}"
@@ -25793,8 +25793,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/02/10m",
-    "domain": "techross/02",
+    "path": "mxql/techross/02/10m",
+    "domain": "mxql/techross/02",
     "description": "TIME-FILTER {time:'2020/06/02 15:40:00', gmt:9 } / TIME-FILTER {time:'2020/06/02 19:00:00', gmt:9 } / TIME-FILTER {time:'2020/06/23 02:00:00', gmt:9 } / TIME-FILTER {time:'2020/07/28 02:00:00', gmt:9 }",
     "categories": [
       "UFD"
@@ -25817,8 +25817,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/02/fit1",
-    "domain": "techross/02",
+    "path": "mxql/techross/02/fit1",
+    "domain": "mxql/techross/02",
     "description": "",
     "categories": [
       "FIT{h1}"
@@ -25836,8 +25836,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/02/fit10m",
-    "domain": "techross/02",
+    "path": "mxql/techross/02/fit10m",
+    "domain": "mxql/techross/02",
     "description": "",
     "categories": [
       "FIT"
@@ -25855,8 +25855,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/02/main",
-    "domain": "techross/02",
+    "path": "mxql/techross/02/main",
+    "domain": "mxql/techross/02",
     "description": "TIME-FILTER {time:'2020/06/02 15:40:00', gmt:9 } / TIME-FILTER {time:'2020/06/02 19:00:00', gmt:9 } / TIME-FILTER {time:'2020/06/23 02:00:00', gmt:9 } / TIME-FILTER {time:'2020/07/08 00:30:00', gmt:9 } / TIME-FILTER {time:'2020/07/17 04:30:00', gmt:9 } / TIME-FILTER {time:'2020/07/28 02:00:00', gmt:9 }",
     "categories": [
       "UFD{h1}"
@@ -25879,8 +25879,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/03/10m",
-    "domain": "techross/03",
+    "path": "mxql/techross/03/10m",
+    "domain": "mxql/techross/03",
     "description": "TIME-FILTER {date:'2020/07/08', gmt:9} / TIME-FILTER {date:'2020/07/30', gmt:9}",
     "categories": [
       "PIT"
@@ -25899,8 +25899,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/03/main",
-    "domain": "techross/03",
+    "path": "mxql/techross/03/main",
+    "domain": "mxql/techross/03",
     "description": "press.mql / TIME-FILTER {time:'2020/08/23 00:00:00', gmt:9 } / TIME-FILTER {time:'2020/07/08 04:00:00', gmt:9 } / TIME-FILTER {time:'2020/07/30 04:00:00', gmt:9 } / TIME-FILTER {time:'2020/08/03 22:00:00', gmt:9 } / TIME-FILTER {time:'2020/08/08 00:00:00', gmt:9 }",
     "categories": [
       "PIT{h1}"
@@ -25919,8 +25919,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "techross/dev/series",
-    "domain": "techross/dev",
+    "path": "mxql/techross/dev/series",
+    "domain": "mxql/techross/dev",
     "description": "",
     "categories": [
       "$category"
@@ -25940,8 +25940,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/act_tx/act_tx_oid",
-    "domain": "v2/app/act_tx",
+    "path": "mxql/v2/app/act_tx/act_tx_oid",
+    "domain": "mxql/v2/app/act_tx",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC11\uCD08",
     "categories": [
       "app_counter"
@@ -25970,8 +25970,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/act_tx/agent_with_tx",
-    "domain": "v2/app/act_tx",
+    "path": "mxql/v2/app/act_tx/agent_with_tx",
+    "domain": "mxql/v2/app/act_tx",
     "description": "",
     "categories": [
       "agent_list"
@@ -25992,8 +25992,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/app/act_tx_context",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/act_tx_context",
+    "domain": "mxql/v2/app",
     "description": "Context\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_context_stat"
@@ -26023,8 +26023,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/act_tx_ext_oid",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/act_tx_ext_oid",
+    "domain": "mxql/v2/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, INACTIVE \uC5D0\uC774\uC804\uD2B8 \uD3EC\uD568, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_counter"
@@ -26052,8 +26052,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/act_tx_oid",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/act_tx_oid",
+    "domain": "mxql/v2/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_counter"
@@ -26082,8 +26082,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/act_tx_okind",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/act_tx_okind",
+    "domain": "mxql/v2/app",
     "description": "\uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_counter"
@@ -26113,8 +26113,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/active_stat_oid",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/active_stat_oid",
+    "domain": "mxql/v2/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_active_stat"
@@ -26142,8 +26142,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/active_stat_okind",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/active_stat_okind",
+    "domain": "mxql/v2/app",
     "description": "\uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08",
     "categories": [
       "app_active_stat"
@@ -26173,8 +26173,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/apdex_okind",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/apdex_okind",
+    "domain": "mxql/v2/app",
     "description": "\uC5D0\uC774\uC804\uD2B8 \uC885\uB958\uBCC4  <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704",
     "categories": [
       "app_counter",
@@ -26203,8 +26203,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/apdex_pcode",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/apdex_pcode",
+    "domain": "mxql/v2/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704",
     "categories": [
       "app_counter",
@@ -26232,8 +26232,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/app_gc",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/app_gc",
+    "domain": "mxql/v2/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568",
     "categories": [
       "app_proc_counter",
@@ -26264,8 +26264,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/app_heap",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/app_heap",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_proc_counter",
@@ -26293,8 +26293,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/app_heap_pct",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/app_heap_pct",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_proc_counter",
@@ -26322,8 +26322,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/app_host_resource",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/app_host_resource",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_host_resource",
@@ -26351,8 +26351,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/app_host_resource_last",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/app_host_resource_last",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_host_resource",
@@ -26387,8 +26387,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/app_thread",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/app_thread",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_proc_counter",
@@ -26416,8 +26416,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/con_user_oid",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/con_user_oid",
+    "domain": "mxql/v2/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790",
     "categories": [
       "app_user",
@@ -26443,8 +26443,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/con_user_okind",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/con_user_okind",
+    "domain": "mxql/v2/app",
     "description": "\uC885\uB958\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790",
     "categories": [
       "app_user",
@@ -26470,8 +26470,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/con_user_okind_daily",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/con_user_okind_daily",
+    "domain": "mxql/v2/app",
     "description": "\uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12",
     "categories": [
       "app_user{m5}"
@@ -26496,8 +26496,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/con_user_pcode",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/con_user_pcode",
+    "domain": "mxql/v2/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uBCC4, \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uCD08\uAC12",
     "categories": [
       "app_user",
@@ -26522,8 +26522,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/con_user_pcode_daily",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/con_user_pcode_daily",
+    "domain": "mxql/v2/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12",
     "categories": [
       "app_user{m5}"
@@ -26547,8 +26547,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/dashboard/speed",
-    "domain": "v2/app/dashboard",
+    "path": "mxql/v2/app/dashboard/speed",
+    "domain": "mxql/v2/app/dashboard",
     "description": "",
     "categories": [
       "app_counter"
@@ -26580,8 +26580,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/resp_time_context",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/resp_time_context",
+    "domain": "mxql/v2/app",
     "description": "Context\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04",
     "categories": [
       "app_context_stat",
@@ -26609,8 +26609,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/resp_time_oid",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/resp_time_oid",
+    "domain": "mxql/v2/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04",
     "categories": [
       "app_counter",
@@ -26637,8 +26637,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/resp_time_okind",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/resp_time_okind",
+    "domain": "mxql/v2/app",
     "description": "\uC885\uB958\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04",
     "categories": [
       "app_counter",
@@ -26666,8 +26666,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/resp_time_pcode",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/resp_time_pcode",
+    "domain": "mxql/v2/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04",
     "categories": [
       "app_counter",
@@ -26694,8 +26694,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/resp_time_pcode_daily",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/resp_time_pcode_daily",
+    "domain": "mxql/v2/app",
     "description": "\uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12",
     "categories": [
       "app_counter{m5}"
@@ -26719,8 +26719,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/speed",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/speed",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_counter"
@@ -26752,8 +26752,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tps_context",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tps_context",
+    "domain": "mxql/v2/app",
     "description": "Context\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12",
     "categories": [
       "app_context_stat",
@@ -26781,8 +26781,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tps_oid",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tps_oid",
+    "domain": "mxql/v2/app",
     "description": "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12",
     "categories": [
       "app_counter",
@@ -26811,8 +26811,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tps_okind",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tps_okind",
+    "domain": "mxql/v2/app",
     "description": "\uC885\uB958\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12",
     "categories": [
       "app_counter",
@@ -26839,8 +26839,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tps_pcode",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tps_pcode",
+    "domain": "mxql/v2/app",
     "description": "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12",
     "categories": [
       "app_counter",
@@ -26868,8 +26868,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tps_pcode_daily",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tps_pcode_daily",
+    "domain": "mxql/v2/app",
     "description": "\uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12",
     "categories": [
       "app_counter{m5}"
@@ -26896,8 +26896,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tx_error_oid",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tx_error_oid",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_counter",
@@ -26926,8 +26926,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tx_error_okind",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tx_error_okind",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_counter",
@@ -26954,8 +26954,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tx_error_pcode",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tx_error_pcode",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_counter",
@@ -26983,8 +26983,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tx_error_pcode_daily",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tx_error_pcode_daily",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_counter{m5}"
@@ -27011,8 +27011,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tx_error_rate_context",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tx_error_rate_context",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_context_stat",
@@ -27037,8 +27037,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tx_error_rate_oid",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tx_error_rate_oid",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_counter",
@@ -27068,8 +27068,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tx_error_rate_okind",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tx_error_rate_okind",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_counter",
@@ -27099,8 +27099,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tx_error_rate_onode",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tx_error_rate_onode",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_counter",
@@ -27130,8 +27130,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/app/tx_error_rate_pcode",
-    "domain": "v2/app",
+    "path": "mxql/v2/app/tx_error_rate_pcode",
+    "domain": "mxql/v2/app",
     "description": "",
     "categories": [
       "app_counter",
@@ -27161,8 +27161,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_autoscaling_group_in_service_instances",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_autoscaling_group_in_service_instances",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -27184,8 +27184,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_autoscaling_group_pending_instances",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_autoscaling_group_pending_instances",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -27207,8 +27207,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_autoscaling_group_standby_instances",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_autoscaling_group_standby_instances",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -27230,8 +27230,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_autoscaling_group_teminating_instances",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_autoscaling_group_teminating_instances",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -27252,8 +27252,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_autoscaling_group_total_instances",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_autoscaling_group_total_instances",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_autoscaling"
@@ -27275,8 +27275,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_cpu_credit_balance",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_cpu_credit_balance",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27299,8 +27299,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_cpu_utilization",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_cpu_utilization",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27323,8 +27323,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_disk_bytes",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_disk_bytes",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27347,8 +27347,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_disk_ops",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_disk_ops",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27371,8 +27371,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_ebs_bytes",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_ebs_bytes",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27396,8 +27396,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_ebs_ops copy",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_ebs_ops copy",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27421,8 +27421,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_ebs_ops",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_ebs_ops",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27446,8 +27446,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_environment_health",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_environment_health",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticbeanstalk"
@@ -27469,8 +27469,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_network_in",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_network_in",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27493,8 +27493,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_network_out",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_network_out",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27517,8 +27517,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_status_check_faild",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_status_check_faild",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27541,8 +27541,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_status_check_faild_instance",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_status_check_faild_instance",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27565,8 +27565,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_beanstalk_status_check_faild_system",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_beanstalk_status_check_faild_system",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27589,8 +27589,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_burst_balance",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_burst_balance",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27612,8 +27612,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_names",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_names",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27632,8 +27632,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_region_bytes",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_region_bytes",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27654,8 +27654,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_regions",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_regions",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27675,8 +27675,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_volume_bytes",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_volume_bytes",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27695,8 +27695,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_volume_queue_length",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_volume_queue_length",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27718,8 +27718,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_volume_read_bytes",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_volume_read_bytes",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27741,8 +27741,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_volume_read_ops",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_volume_read_ops",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27764,8 +27764,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_volume_write_bytes",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_volume_write_bytes",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27787,8 +27787,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_volume_write_ops",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_volume_write_ops",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27810,8 +27810,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ebs_volumes",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ebs_volumes",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ebs"
@@ -27832,8 +27832,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_cores",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_cores",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27854,8 +27854,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_cpu_credit_balance",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_cpu_credit_balance",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27877,8 +27877,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_cpu_credit_usage",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_cpu_credit_usage",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27900,8 +27900,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_cpu_utilization",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_cpu_utilization",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27922,8 +27922,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_disk_bytes",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_disk_bytes",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27945,8 +27945,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_disk_ops",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_disk_ops",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27968,8 +27968,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_instances",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_instances",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -27989,8 +27989,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_memory_total",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_memory_total",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -28009,8 +28009,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_network_packets",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_network_packets",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -28032,8 +28032,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_network_traffic",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_network_traffic",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -28055,8 +28055,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_network_traffic_total",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_network_traffic_total",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -28078,8 +28078,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_regions",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_regions",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -28099,8 +28099,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_state",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_state",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -28119,8 +28119,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_ec2_status_failed",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_ec2_status_failed",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_ec2"
@@ -28141,8 +28141,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elasticache_cpu_credit_balance",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elasticache_cpu_credit_balance",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -28164,8 +28164,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elasticache_cpu_credit_usage",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elasticache_cpu_credit_usage",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -28187,8 +28187,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elasticache_cpu_utilization",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elasticache_cpu_utilization",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -28210,8 +28210,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elasticache_curr_connections",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elasticache_curr_connections",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -28233,8 +28233,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elasticache_get_type_cmds",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elasticache_get_type_cmds",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -28256,8 +28256,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elasticache_network_bytes_in",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elasticache_network_bytes_in",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -28279,8 +28279,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elasticache_network_bytes_out",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elasticache_network_bytes_out",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -28302,8 +28302,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elasticache_new_connections",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elasticache_new_connections",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -28325,8 +28325,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elasticache_set_type_cmds",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elasticache_set_type_cmds",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_elasticache"
@@ -28348,8 +28348,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elb_active_connection_count",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elb_active_connection_count",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -28371,8 +28371,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elb_http_code_4xx",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elb_http_code_4xx",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -28394,8 +28394,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elb_http_code_5xx",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elb_http_code_5xx",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -28417,8 +28417,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elb_new_connection_count",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elb_new_connection_count",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -28440,8 +28440,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elb_request_count",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elb_request_count",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -28463,8 +28463,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elb_target_http_code_2xx",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elb_target_http_code_2xx",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -28486,8 +28486,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elb_target_http_code_3xx",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elb_target_http_code_3xx",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -28509,8 +28509,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elb_target_http_code_4xx",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elb_target_http_code_4xx",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -28532,8 +28532,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/aws/aws_elb_target_response_time",
-    "domain": "v2/aws",
+    "path": "mxql/v2/aws/aws_elb_target_response_time",
+    "domain": "mxql/v2/aws",
     "description": "",
     "categories": [
       "aws_applicationelb"
@@ -28555,8 +28555,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_counts_okind",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_counts_okind",
+    "domain": "mxql/v2/container",
     "description": "\uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM okind\uBCC4 \uC218",
     "categories": [
       "container",
@@ -28584,8 +28584,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_counts_onode",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_counts_onode",
+    "domain": "mxql/v2/container",
     "description": "\uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM onode\uBCC4 \uC218",
     "categories": [
       "container",
@@ -28613,8 +28613,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_counts_pcode",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_counts_pcode",
+    "domain": "mxql/v2/container",
     "description": "\uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM \uC804\uCCB4 \uC218",
     "categories": [
       "container",
@@ -28640,8 +28640,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_cpu_quota_oid",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_cpu_quota_oid",
+    "domain": "mxql/v2/container",
     "description": "OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218",
     "categories": [
       "container",
@@ -28667,8 +28667,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_cpu_quota_oid_sum",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_cpu_quota_oid_sum",
+    "domain": "mxql/v2/container",
     "description": "OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0",
     "categories": [
       "container",
@@ -28696,8 +28696,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_cpu_quota_okind",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_cpu_quota_okind",
+    "domain": "mxql/v2/container",
     "description": "OKIND\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218",
     "categories": [
       "container",
@@ -28724,8 +28724,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_cpu_quota_okind_sum",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_cpu_quota_okind_sum",
+    "domain": "mxql/v2/container",
     "description": "OKIND CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0",
     "categories": [
       "container",
@@ -28754,8 +28754,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_cpu_quota_onode",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_cpu_quota_onode",
+    "domain": "mxql/v2/container",
     "description": "ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218",
     "categories": [
       "container",
@@ -28782,8 +28782,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_cpu_quota_onode_sum",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_cpu_quota_onode_sum",
+    "domain": "mxql/v2/container",
     "description": "ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0",
     "categories": [
       "container",
@@ -28812,8 +28812,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_cpu_quota_pcode",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_cpu_quota_pcode",
+    "domain": "mxql/v2/container",
     "description": "PCODE CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218",
     "categories": [
       "container",
@@ -28842,8 +28842,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_app_state",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_app_state",
+    "domain": "mxql/v2/container",
     "description": "\uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM oid\uBCC4 \uCD94\uC774",
     "categories": [
       "container",
@@ -28870,8 +28870,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_cpu_top5",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_cpu_top5",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container"
@@ -28894,8 +28894,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_gpu",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_gpu",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container_gpu",
@@ -28935,8 +28935,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/container_mem_top5",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/container_mem_top5",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container"
@@ -28959,8 +28959,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_cpu_throttledperiods",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_cpu_throttledperiods",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -28988,8 +28988,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_cpu_total",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_cpu_total",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29018,8 +29018,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_mem_failcnt",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_mem_failcnt",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29047,8 +29047,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_mem_percent",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_mem_percent",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29077,8 +29077,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_network_bps",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_network_bps",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29108,8 +29108,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_network_iops",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_network_iops",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29139,8 +29139,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_network_rbps",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_network_rbps",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29169,8 +29169,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_network_riops",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_network_riops",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29199,8 +29199,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_network_wbps",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_network_wbps",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29229,8 +29229,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/image_network_wiops",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/image_network_wiops",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29259,8 +29259,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_container_list",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_container_list",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29308,8 +29308,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_event",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_event",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_event",
@@ -29341,8 +29341,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_event_last24h_limit30",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_event_last24h_limit30",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_event"
@@ -29376,8 +29376,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_event_stat",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_event_stat",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_event_stat"
@@ -29420,8 +29420,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_node_list",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_node_list",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_node",
@@ -29462,8 +29462,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_pod_stat",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_pod_stat",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_pod_stat"
@@ -29493,8 +29493,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_stat",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_stat",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_stat"
@@ -29523,8 +29523,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_stat_containers",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_stat_containers",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_stat"
@@ -29552,8 +29552,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_stat_containers_series",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_stat_containers_series",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_stat",
@@ -29581,8 +29581,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_stat_nodes",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_stat_nodes",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_stat",
@@ -29611,8 +29611,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_stat_pod",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_stat_pod",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_stat"
@@ -29640,8 +29640,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_stat_request_cpu",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_stat_request_cpu",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_stat"
@@ -29669,8 +29669,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/kube_stat_request_memory",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/kube_stat_request_memory",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "kube_stat"
@@ -29698,8 +29698,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/namespace_cpu_total",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/namespace_cpu_total",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29728,8 +29728,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/namespace_mem_percent",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/namespace_mem_percent",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29758,8 +29758,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/node_cpu",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/node_cpu",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "server_base",
@@ -29786,8 +29786,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/node_cpu_top5",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/node_cpu_top5",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "server_base"
@@ -29819,8 +29819,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/node_disk_top5",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/node_disk_top5",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "server_disk"
@@ -29842,8 +29842,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/node_mem_top5",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/node_mem_top5",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "server_base"
@@ -29872,8 +29872,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/node_memory_pused",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/node_memory_pused",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "server_base",
@@ -29900,8 +29900,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/pod_cpu_total",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/pod_cpu_total",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29930,8 +29930,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/container/pod_mem_percent",
-    "domain": "v2/container",
+    "path": "mxql/v2/container/pod_mem_percent",
+    "domain": "mxql/v2/container",
     "description": "",
     "categories": [
       "container",
@@ -29960,8 +29960,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_agent_list",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_agent_list",
+    "domain": "mxql/v2/db",
     "description": "\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC",
     "categories": [
       "db_agent_list"
@@ -29986,8 +29986,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/db/db_mssql_active_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_mssql_active_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_mssql_counter",
@@ -30015,8 +30015,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_mssql_long_active_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_mssql_long_active_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_mssql_active_session"
@@ -30051,8 +30051,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_mssql_long_waiting_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_mssql_long_waiting_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_mssql_lockinfo",
@@ -30090,8 +30090,103 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_mysql_long_active_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_mssql_sqlstat_top_cpu",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_mssql_sqlstat"
+    ],
+    "baseCategories": [
+      "db_mssql_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "db",
+      "'user'",
+      "host",
+      "application",
+      "cpu_time",
+      "elapsed_time",
+      "execute_count",
+      "logical_reads",
+      "reads",
+      "writes"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_mssql_sqlstat_top_elapse",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_mssql_sqlstat"
+    ],
+    "baseCategories": [
+      "db_mssql_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "db",
+      "'user'",
+      "host",
+      "application",
+      "elapsed_time",
+      "elapsed_max",
+      "cpu_time",
+      "execute_count",
+      "logical_reads",
+      "reads",
+      "writes"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_mssql_sqlstat_top_exec",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_mssql_sqlstat"
+    ],
+    "baseCategories": [
+      "db_mssql_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "db",
+      "'user'",
+      "host",
+      "application",
+      "execute_count",
+      "elapsed_time",
+      "cpu_time",
+      "logical_reads"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_mysql_long_active_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_mysql_active_session"
@@ -30125,8 +30220,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_mysql_long_waiting_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_mysql_long_waiting_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_mysql_lockinfo",
@@ -30164,8 +30259,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_mysql_replication",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_mysql_replication",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_mysql_counter",
@@ -30219,8 +30314,123 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_oracle_dma_long_active_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_mysql_sqlstat_top_cpu",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_mysql_sqlstat"
+    ],
+    "baseCategories": [
+      "db_mysql_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "datname",
+      "usename",
+      "elapsed_time",
+      "elapsed_max",
+      "execute_count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_mysql_sqlstat_top_elapse",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_mysql_sqlstat"
+    ],
+    "baseCategories": [
+      "db_mysql_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "datname",
+      "usename",
+      "client_hostname",
+      "elapsed_time",
+      "elapsed_max",
+      "execute_count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_mysql_sqlstat_top_exec",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_mysql_sqlstat"
+    ],
+    "baseCategories": [
+      "db_mysql_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "datname",
+      "usename",
+      "execute_count",
+      "elapsed_time",
+      "elapsed_max"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_oracle_dma_counter_perf",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_counter"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_counter"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "active_sessions",
+      "lock_wait_sessions",
+      "long_running_sessions",
+      "total_sessions",
+      "'execute count'",
+      "'DB time'",
+      "'CPU used by this session'",
+      "'physical reads'",
+      "'session logical reads'",
+      "'parse count (hard)'",
+      "'parse count (total)'",
+      "'user commits'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_oracle_dma_long_active_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_oracle_dma_active_session"
@@ -30255,8 +30465,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_oracle_dma_long_waiting_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_oracle_dma_long_waiting_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_oracle_dma_lockinfo",
@@ -30294,8 +30504,102 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_oracle_dma_wait_event_last",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_oracle_dma_sqlstat_top_cpu",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_sqlstat"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "sql_id",
+      "sql_hash_value",
+      "plan_hash_value",
+      "schemaname",
+      "module",
+      "cpu_time",
+      "elapsed_time",
+      "execute_count",
+      "'physical reads'",
+      "'session logical reads'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_oracle_dma_sqlstat_top_elapse",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_sqlstat"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "sql_id",
+      "sql_hash_value",
+      "plan_hash_value",
+      "schemaname",
+      "module",
+      "con_name",
+      "elapsed_time",
+      "elapsed_max",
+      "cpu_time",
+      "execute_count",
+      "'physical reads'",
+      "'session logical reads'",
+      "elapsed_wait"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_oracle_dma_sqlstat_top_exec",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_sqlstat"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "sql_id",
+      "sql_hash_value",
+      "schemaname",
+      "module",
+      "execute_count",
+      "elapsed_time",
+      "cpu_time",
+      "'physical reads'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_oracle_dma_wait_event_last",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_oracle_dma_wait_class"
@@ -30314,8 +30618,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_oracle_dma_wait_event_series",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_oracle_dma_wait_event_series",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_oracle_dma_wait_class"
@@ -30336,8 +30640,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_oracle_long_active_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_oracle_long_active_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_oracle_active_session"
@@ -30372,8 +30676,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_oracle_long_waiting_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_oracle_long_waiting_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_oracle_lockinfo",
@@ -30411,8 +30715,99 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_oracle_wait_event_last",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_oracle_sqlstat_top_cpu",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_oracle_sqlstat"
+    ],
+    "baseCategories": [
+      "db_oracle_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "sql_id",
+      "sql_hash_value",
+      "schemaname",
+      "module",
+      "elapsed_time",
+      "execute_count",
+      "physical_reads",
+      "session_logical_reads",
+      "parse_count_hard"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_oracle_sqlstat_top_elapse",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_oracle_sqlstat"
+    ],
+    "baseCategories": [
+      "db_oracle_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "sql_id",
+      "sql_hash_value",
+      "plan_hash_value",
+      "schemaname",
+      "module",
+      "elapsed_time",
+      "elapsed_max",
+      "execute_count",
+      "physical_reads",
+      "session_logical_reads",
+      "db_block_changes"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_oracle_sqlstat_top_exec",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_oracle_sqlstat"
+    ],
+    "baseCategories": [
+      "db_oracle_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "sql_id",
+      "sql_hash_value",
+      "schemaname",
+      "module",
+      "execute_count",
+      "elapsed_time",
+      "physical_reads",
+      "session_logical_reads"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_oracle_wait_event_last",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_oracle_wait_class"
@@ -30431,8 +30826,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_oracle_wait_event_series",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_oracle_wait_event_series",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_oracle_wait_class"
@@ -30453,8 +30848,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_active_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_active_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_counter",
@@ -30482,8 +30877,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_client_ip",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_client_ip",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_client_ip"
@@ -30500,8 +30895,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_connection_usage",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_connection_usage",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_counter",
@@ -30532,8 +30927,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_counter",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_counter",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_counter",
@@ -30573,8 +30968,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_counter_series",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_counter_series",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_counter",
@@ -30599,8 +30994,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_long_active_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_long_active_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_active_session"
@@ -30635,8 +31030,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_long_waiting_session_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_long_waiting_session_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_lockinfo",
@@ -30674,8 +31069,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_replication",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_replication",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_counter",
@@ -30729,8 +31124,92 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_wait_event",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_sqlstat_top_cpu",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_postgresql_sqlstat"
+    ],
+    "baseCategories": [
+      "db_postgresql_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "datname",
+      "usename",
+      "elapsed_time",
+      "elapsed_wait",
+      "execute_count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_postgresql_sqlstat_top_elapse",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_postgresql_sqlstat"
+    ],
+    "baseCategories": [
+      "db_postgresql_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "datname",
+      "usename",
+      "application_name",
+      "elapsed_time",
+      "elapsed_max",
+      "elapsed_wait",
+      "execute_count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_postgresql_sqlstat_top_exec",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_postgresql_sqlstat"
+    ],
+    "baseCategories": [
+      "db_postgresql_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "datname",
+      "usename",
+      "application_name",
+      "execute_count",
+      "elapsed_time",
+      "elapsed_max"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_postgresql_wait_event",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_wait_event"
@@ -30747,8 +31226,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_wait_event_last",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_wait_event_last",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_wait_event"
@@ -30768,8 +31247,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_wait_event_series",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_wait_event_series",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_wait_event"
@@ -30790,8 +31269,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_postgresql_xview",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_postgresql_xview",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_xview"
@@ -30821,8 +31300,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_real_counter_bytes",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_real_counter_bytes",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -30853,8 +31332,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_real_counter_disk",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_real_counter_disk",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -30880,8 +31359,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_real_counter_lock",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_real_counter_lock",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -30912,8 +31391,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_real_counter_mysql",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_real_counter_mysql",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -30944,8 +31423,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_real_counter_mysql_series",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_real_counter_mysql_series",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -30983,8 +31462,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_real_counter_read_requests",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_real_counter_read_requests",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -31015,8 +31494,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_real_counter_threads",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_real_counter_threads",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_real_counter",
@@ -31051,8 +31530,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_replication_count",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_replication_count",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_set_info"
@@ -31074,8 +31553,28 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_xos_cpu_last",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_tablespace_usage",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_tablespace"
+    ],
+    "baseCategories": [
+      "db_tablespace"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_xos_cpu_last",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_counter",
@@ -31105,8 +31604,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_xos_disk_last",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_xos_disk_last",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_xos_disk_usage"
@@ -31134,8 +31633,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/db/db_xos_mem_last",
-    "domain": "v2/db",
+    "path": "mxql/v2/db/db_xos_mem_last",
+    "domain": "mxql/v2/db",
     "description": "",
     "categories": [
       "db_postgresql_counter",
@@ -31165,8 +31664,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/ha/cluster",
-    "domain": "v2/ha",
+    "path": "mxql/v2/ha/cluster",
+    "domain": "mxql/v2/ha",
     "description": "INJECT timepast / SELECT [time, oid, oname, onode, okind, group, node, section, status] / APPEND {query:'/app/tps_last_pcode', field:[pcode,tps]}",
     "categories": [
       "cluster"
@@ -31183,8 +31682,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/ha/cluster_dep",
-    "domain": "v2/ha",
+    "path": "mxql/v2/ha/cluster_dep",
+    "domain": "mxql/v2/ha",
     "description": "",
     "categories": [
       "cluster_dep"
@@ -31201,8 +31700,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/ha/cluster_dep2",
-    "domain": "v2/ha",
+    "path": "mxql/v2/ha/cluster_dep2",
+    "domain": "mxql/v2/ha",
     "description": "",
     "categories": [
       "cluster_dep"
@@ -31220,8 +31719,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/ha/cluster_info",
-    "domain": "v2/ha",
+    "path": "mxql/v2/ha/cluster_info",
+    "domain": "mxql/v2/ha",
     "description": "select \uAC00 \uC5C6\uC73C\uBA74 \uC804\uCCB4 \uCEEC\uB7FC\uC744 \uC804\uBD80 \uAC00\uC838\uC628\uB2E4.",
     "categories": [
       "cluster_info"
@@ -31238,8 +31737,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/ha/cluster_level",
-    "domain": "v2/ha",
+    "path": "mxql/v2/ha/cluster_level",
+    "domain": "mxql/v2/ha",
     "description": "",
     "categories": [
       "cluster{h1}"
@@ -31259,8 +31758,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/ha/cluster_net",
-    "domain": "v2/ha",
+    "path": "mxql/v2/ha/cluster_net",
+    "domain": "mxql/v2/ha",
     "description": "",
     "categories": [
       "cluster_net"
@@ -31277,8 +31776,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/ha/cluster_sts",
-    "domain": "v2/ha",
+    "path": "mxql/v2/ha/cluster_sts",
+    "domain": "mxql/v2/ha",
     "description": "SELECT [time, oid, oname, onode, okind, group, node, section, status] / FIRST-ONLY {key:oid}",
     "categories": [
       "cluster_sts"
@@ -31295,8 +31794,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/ha/cluster_sts2",
-    "domain": "v2/ha",
+    "path": "mxql/v2/ha/cluster_sts2",
+    "domain": "mxql/v2/ha",
     "description": "SELECT [time, oid, oname, onode, okind, group, node, section, status] / FIRST-ONLY {key:oid} / INJECT",
     "categories": [
       "cluster_sts"
@@ -31314,8 +31813,754 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/logs/logsink_aggr",
-    "domain": "v2/logs",
+    "path": "mxql/v2/llm/avg_latency",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/avg_tokens_per_request",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/avg_tpot",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/avg_ttft",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/cache_stream",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/call_count",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/cost_breakdown_bar",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/cost_per_request",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/error_count",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_error_stat",
+      "2h",
+      "llm_error_stat{m5}",
+      "1d",
+      "llm_error_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_error_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/error_rate",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/latency_distribution",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/percentile_tpot",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/percentile_tpot_pcode",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/percentile_ttft",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/percentile_ttft_pcode",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/perf_cost_bubble",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/stream_rate",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/token_detail_bar",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/token_ratio",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/total_cost",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/total_cost_full",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/total_tokens",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/total_tokens_with_call",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_token_usage",
+      "2h",
+      "llm_token_usage{m5}",
+      "1d",
+      "llm_token_usage{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_token_usage",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/tpot_distribution",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/llm/ttft_distribution",
+    "domain": "mxql/v2/llm",
+    "description": "",
+    "categories": [
+      "llm_perf_stat",
+      "2h",
+      "llm_perf_stat{m5}",
+      "1d",
+      "llm_perf_stat{h1}",
+      "unlimit"
+    ],
+    "baseCategories": [
+      "llm_perf_stat",
+      "2h",
+      "1d",
+      "unlimit"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode",
+      "$pk",
+      "$pk_name"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/logs/logsink_aggr",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category",
@@ -31343,8 +32588,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/logs/logsink_collection_status",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_collection_status",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "logsink_stats",
@@ -31373,8 +32618,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/logs/logsink_collection_status_v2",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_collection_status_v2",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "logsink_stats",
@@ -31402,8 +32647,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/logs/logsink_count_v1",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_count_v1",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category"
@@ -31425,8 +32670,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/logs/logsink_count_v2",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_count_v2",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category",
@@ -31454,8 +32699,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/logs/logsink_log_count_avg",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_log_count_avg",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category",
@@ -31483,8 +32728,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/logs/logsink_log_count_last",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_log_count_last",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category",
@@ -31512,8 +32757,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/logs/logsink_log_count_max",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_log_count_max",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category",
@@ -31542,8 +32787,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/logs/logsink_log_count_rows",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_log_count_rows",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category",
@@ -31571,8 +32816,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/logs/logsink_log_count_sum",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_log_count_sum",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category",
@@ -31600,8 +32845,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/logs/logsink_pii_job_history",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_pii_job_history",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "#WhaTapPIIClearHistory"
@@ -31616,8 +32861,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "v2/logs/logsink_rate",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_rate",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category",
@@ -31645,8 +32890,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/logs/logsink_rps",
-    "domain": "v2/logs",
+    "path": "mxql/v2/logs/logsink_rps",
+    "domain": "mxql/v2/logs",
     "description": "",
     "categories": [
       "$category"
@@ -31665,8 +32910,8 @@ var CATALOG_ENTRIES = [
     "loadType": "LogCountLoad"
   },
   {
-    "path": "v2/rum/pageload/daily_page_load_count",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/daily_page_load_count",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31687,8 +32932,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/daily_page_load_time",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/daily_page_load_time",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31709,8 +32954,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/front_back_time",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/front_back_time",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31732,8 +32977,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/onload_event_time",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/onload_event_time",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31753,8 +32998,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/onload_event_time_by_page_group",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/onload_event_time_by_page_group",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31776,8 +33021,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/onload_event_time_by_page_group_for_topn",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/onload_event_time_by_page_group_for_topn",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31801,8 +33046,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/order_onload_event_time_by_page_group",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/order_onload_event_time_by_page_group",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31824,8 +33069,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/order_page_load_count_by_page_group",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/order_page_load_count_by_page_group",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31847,8 +33092,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/order_page_load_time_by_page_group",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/order_page_load_time_by_page_group",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31870,8 +33115,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_count",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_count",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31891,8 +33136,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_count_by_kr",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_count_by_kr",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_KR_page_load_each_page",
@@ -31913,8 +33158,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_count_by_page_group",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_count_by_page_group",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31936,8 +33181,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_count_by_page_group_for_topn",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_count_by_page_group_for_topn",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -31961,8 +33206,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_count_by_world",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_count_by_world",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_world_page_load_all_page",
@@ -31983,8 +33228,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_table_by_page_group",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_table_by_page_group",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -32009,8 +33254,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_time",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_time",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -32030,8 +33275,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_time_by_kor",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_time_by_kor",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_KR_page_load_each_page",
@@ -32052,8 +33297,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_time_by_page_group",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_time_by_page_group",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -32075,8 +33320,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_time_by_page_group_for_topn",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_time_by_page_group_for_topn",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_page_load_each_page",
@@ -32100,8 +33345,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/rum/pageload/page_load_time_by_world",
-    "domain": "v2/rum/pageload",
+    "path": "mxql/v2/rum/pageload/page_load_time_by_world",
+    "domain": "mxql/v2/rum/pageload",
     "description": "",
     "categories": [
       "rum_world_page_load_all_page",
@@ -32122,8 +33367,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/active_agent_list",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/active_agent_list",
+    "domain": "mxql/v2/sys",
     "description": "\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM",
     "categories": [
       "agent_list"
@@ -32152,8 +33397,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/agent_count",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/agent_count",
+    "domain": "mxql/v2/sys",
     "description": "\uC694\uC57D \uC5D0\uC774\uC804\uD2B8 \uAC74\uC218",
     "categories": [
       "agent_count"
@@ -32172,8 +33417,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/agent_list",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/agent_list",
+    "domain": "mxql/v2/sys",
     "description": "\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM",
     "categories": [
       "agent_list"
@@ -32202,8 +33447,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/agent_list_subtype",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/agent_list_subtype",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "agent_list"
@@ -32229,8 +33474,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/cardview/cpu_core_perf",
-    "domain": "v2/sys/cardview",
+    "path": "mxql/v2/sys/cardview/cpu_core_perf",
+    "domain": "mxql/v2/sys/cardview",
     "description": "",
     "categories": [
       "server_cpu_core"
@@ -32259,8 +33504,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/cardview/cpu_oid",
-    "domain": "v2/sys/cardview",
+    "path": "mxql/v2/sys/cardview/cpu_oid",
+    "domain": "mxql/v2/sys/cardview",
     "description": "",
     "categories": [
       "server_base",
@@ -32296,8 +33541,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/cardview/mem_oid",
-    "domain": "v2/sys/cardview",
+    "path": "mxql/v2/sys/cardview/mem_oid",
+    "domain": "mxql/v2/sys/cardview",
     "description": "",
     "categories": [
       "server_base",
@@ -32318,8 +33563,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/cpu_load",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/cpu_load",
+    "domain": "mxql/v2/sys",
     "description": "\uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08",
     "categories": [
       "server_base",
@@ -32349,8 +33594,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/dashboard/agent_cpu",
-    "domain": "v2/sys/dashboard",
+    "path": "mxql/v2/sys/dashboard/agent_cpu",
+    "domain": "mxql/v2/sys/dashboard",
     "description": "\uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08",
     "categories": [
       "server_base"
@@ -32374,8 +33619,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/dashboard/agent_list",
-    "domain": "v2/sys/dashboard",
+    "path": "mxql/v2/sys/dashboard/agent_list",
+    "domain": "mxql/v2/sys/dashboard",
     "description": "\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM",
     "categories": [
       "agent_list"
@@ -32404,8 +33649,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/disk_topn",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/disk_topn",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk"
@@ -32434,8 +33679,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/disk_topn_used_percent",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/disk_topn_used_percent",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk"
@@ -32464,8 +33709,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/disk_topn_used_space",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/disk_topn_used_space",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk"
@@ -32494,8 +33739,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/memory_topn",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/memory_topn",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_base"
@@ -32522,8 +33767,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/network_io_topn",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/network_io_topn",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_network"
@@ -32554,8 +33799,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/process_rw_topn",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/process_rw_topn",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -32585,8 +33830,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/process_topn",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/process_topn",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -32614,8 +33859,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_agent_count",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_agent_count",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "agent_list",
@@ -32638,8 +33883,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/server_avg_cpu",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_avg_cpu",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -32668,8 +33913,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_avg_disk",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_avg_disk",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -32699,8 +33944,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_avg_mem",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_avg_mem",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -32729,8 +33974,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_base",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_base",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -32761,8 +34006,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_cpu",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_cpu",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -32799,8 +34044,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_bps",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_bps",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -32827,8 +34072,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_ioPercent",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_ioPercent",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -32854,8 +34099,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_iops",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_iops",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -32882,8 +34127,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_names",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_names",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk"
@@ -32905,8 +34150,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_treemap",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_treemap",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -32932,8 +34177,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_usedInode",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_usedInode",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -32959,8 +34204,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_usedInodePercent",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_usedInodePercent",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -32986,8 +34231,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_usedPercent",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_usedPercent",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -33013,8 +34258,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_usedSpace",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_usedSpace",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk",
@@ -33040,8 +34285,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_disk_used_oid",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_disk_used_oid",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_disk"
@@ -33065,8 +34310,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_group_topology",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_group_topology",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "agent_list"
@@ -33085,8 +34330,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/server_memory",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_memory",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -33113,8 +34358,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_memory_treemap",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_memory_treemap",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -33138,8 +34383,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_network_io",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_network_io",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_network",
@@ -33171,8 +34416,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_network_names",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_network_names",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_network"
@@ -33194,8 +34439,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_network_traffic_oid",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_network_traffic_oid",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_network"
@@ -33220,8 +34465,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_nvidiasmi",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_nvidiasmi",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_nvidiasmi",
@@ -33261,8 +34506,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_nvidiasmi_power",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_nvidiasmi_power",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_nvidiasmi"
@@ -33300,8 +34545,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_os_count",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_os_count",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "agent_list",
@@ -33323,8 +34568,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/server_process",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_process",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_process",
@@ -33351,8 +34596,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_process_names",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_process_names",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_process"
@@ -33373,8 +34618,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_process_rw",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_process_rw",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_process",
@@ -33403,8 +34648,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/sys/server_status_process_rotator",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_status_process_rotator",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "server_base",
@@ -33432,8 +34677,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/server_status_rotator",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_status_rotator",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "agent_list"
@@ -33452,8 +34697,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/sys/server_total_core_count",
-    "domain": "v2/sys",
+    "path": "mxql/v2/sys/server_total_core_count",
+    "domain": "mxql/v2/sys",
     "description": "",
     "categories": [
       "agent_list"
@@ -33470,8 +34715,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "v2/url/url_category_status",
-    "domain": "v2/url",
+    "path": "mxql/v2/url/url_category_status",
+    "domain": "mxql/v2/url",
     "description": "",
     "categories": [
       "url_stat_category",
@@ -33499,8 +34744,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/url/url_issue_status",
-    "domain": "v2/url",
+    "path": "mxql/v2/url/url_issue_status",
+    "domain": "mxql/v2/url",
     "description": "",
     "categories": [
       "url_stat_issue",
@@ -33528,8 +34773,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/url/url_status_by_category",
-    "domain": "v2/url",
+    "path": "mxql/v2/url/url_status_by_category",
+    "domain": "mxql/v2/url",
     "description": "",
     "categories": [
       "url_stat_category"
@@ -33554,8 +34799,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/url/url_status_by_issue",
-    "domain": "v2/url",
+    "path": "mxql/v2/url/url_status_by_issue",
+    "domain": "mxql/v2/url",
     "description": "",
     "categories": [
       "url_stat_issue"
@@ -33580,8 +34825,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "v2/url/url_total_status",
-    "domain": "v2/url",
+    "path": "mxql/v2/url/url_total_status",
+    "domain": "mxql/v2/url",
     "description": "",
     "categories": [
       "url_stat_all",
@@ -33606,22 +34851,4546 @@ var CATALOG_ENTRIES = [
     ],
     "joins": [],
     "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/daily/app_counter",
+    "domain": "src/main/resources/mxql/apm/daily",
+    "description": "",
+    "categories": [
+      "app_counter{h1}",
+      "app_counter{h1}"
+    ],
+    "baseCategories": [
+      "app_counter"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "tx_count",
+      "peak_hour",
+      "oid",
+      "oname",
+      "tx_error",
+      "tps",
+      "resp_time",
+      "active_tx_count",
+      "daily_tx_count",
+      "daily_tx_error",
+      "peak_hour_tps",
+      "peak_hour_resp_time",
+      "peak_hour_active_tx"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/daily/app_user",
+    "domain": "src/main/resources/mxql/apm/daily",
+    "description": "",
+    "categories": [
+      "visitor{h1}"
+    ],
+    "baseCategories": [
+      "visitor"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "oname",
+      "logbits",
+      "daily_bits",
+      "daily_visitor"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/error_diff",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/error_diff_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/error_series",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/error_series_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/error_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/error_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/httpc_diff",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/httpc_diff_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc[h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc[h1}"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/httpc_series",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/httpc_series_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/httpc_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/httpc_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/ip_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_ip"
+    ],
+    "baseCategories": [
+      "db3_stat_ip"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/ip_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_ip{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_ip"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/ip_url_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_ip-url"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_ip-url"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "ip",
+      "ipHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/ip_url_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_ip-url{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_ip-url"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "ip",
+      "ipHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/sql_diff",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/sql_diff_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/sql_series",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/sql_series_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/sql_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/sql_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/sql_stat_join",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql{h1}",
+      "db3_stat_sql"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/transaction_diff",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/transaction_diff_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/transaction_quantile_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_tx_quantile",
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_tx_quantile",
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "urlhash",
+      "quantile"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/transaction_quantile_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_tx_quantile{h1}",
+      "db3_stat_tx{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_tx_quantile",
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "urlhash",
+      "quantile"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/transaction_series",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/transaction_series_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/transaction_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/transaction_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/transaction_stat_join",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_caller_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_mt"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_mt"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_caller_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_mt{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_mt"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_domain_series",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_dom"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_dom"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_domain_series_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_dom{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_dom"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_domain_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_dom"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_dom"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "domain",
+      "domainHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_domain_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_dom{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_dom"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "domain",
+      "domainHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_login_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_login"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_login"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "login",
+      "loginHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_login_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_login{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_login"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "login",
+      "loginHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_referer_series",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_referer"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_referer"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_referer_series_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_referer{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_referer"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_referer_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_referer"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_referer"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "referer",
+      "refererHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/tx_referer_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_referer{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_referer"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "referer",
+      "refererHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/useragent_series",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_useragent"
+    ],
+    "baseCategories": [
+      "db3_stat_useragent"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/useragent_series_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_useragent{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_useragent"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/useragent_stat",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_useragent"
+    ],
+    "baseCategories": [
+      "db3_stat_useragent"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/apm/stat/useragent_stat_1h",
+    "domain": "src/main/resources/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_useragent{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_useragent"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/linkages/apm2db",
+    "domain": "src/main/resources/mxql/dbx/linkages",
+    "description": "",
+    "categories": [
+      "search_act_tx_run_sql"
+    ],
+    "baseCategories": [
+      "search_act_tx_run_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/linkages/db2apm",
+    "domain": "src/main/resources/mxql/dbx/linkages",
+    "description": "",
+    "categories": [
+      "<%category%>"
+    ],
+    "baseCategories": [
+      "<%category%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/linkages/db2apm_oracle",
+    "domain": "src/main/resources/mxql/dbx/linkages",
+    "description": "",
+    "categories": [
+      "<%category%>"
+    ],
+    "baseCategories": [
+      "<%category%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/parameter-history",
+    "domain": "src/main/resources/mxql/dbx",
+    "description": "",
+    "categories": [
+      "db_<%DB_TYPE%>_parameter"
+    ],
+    "baseCategories": [
+      "db_<%DB_TYPE%>_parameter"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/planchange/chart",
+    "domain": "src/main/resources/mxql/dbx/planchange",
+    "description": "",
+    "categories": [
+      "<%SQLSTAT_CATEGORY%>{h1}",
+      "<%SQLSTAT_CATEGORY%>{h1}",
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%SQLSTAT_CATEGORY%>",
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "sql_id",
+      "before_plan_hash_value",
+      "before_elapsed_time_per_exec",
+      "after_plan_hash_value",
+      "after_elapsed_time_per_exec",
+      "change_count",
+      "flag"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/planchange/history",
+    "domain": "src/main/resources/mxql/dbx/planchange",
+    "description": "",
+    "categories": [
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "sql_id",
+      "<%SQL_HASH_FIELD%>",
+      "sql_text",
+      "child_number",
+      "before_plan_hash_value",
+      "after_plan_hash_value",
+      "sid",
+      "user",
+      "program"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/planchange/summary",
+    "domain": "src/main/resources/mxql/dbx/planchange",
+    "description": "",
+    "categories": [
+      "<%SQLSTAT_CATEGORY%>{h1}",
+      "<%SQLSTAT_CATEGORY%>{h1}",
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%SQLSTAT_CATEGORY%>",
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "sql_id",
+      "before_plan_hash_value",
+      "before_elapsed_time_per_exec",
+      "after_plan_hash_value",
+      "after_elapsed_time_per_exec",
+      "time",
+      "sql_text",
+      "user",
+      "program",
+      "elapsed_time_diff",
+      "flag",
+      "change_count",
+      "sql_hash_value"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/stat/each_sql",
+    "domain": "src/main/resources/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/stat/each_sql_main",
+    "domain": "src/main/resources/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/stat/merged_sql",
+    "domain": "src/main/resources/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/stat/sql_stat_raw",
+    "domain": "src/main/resources/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "<%SELECT_FIELDS%><%ADD_GROUPS%>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/stat/summary_chart_all",
+    "domain": "src/main/resources/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "execute_count",
+      "elapsed_time",
+      "elapsed_max",
+      "<%SQL_HASH_FIELD_NAME%>",
+      "<%REQUEST_FIELD%>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/stat/summary_chart_group",
+    "domain": "src/main/resources/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "execute_count",
+      "elapsed_time",
+      "elapsed_max",
+      "<%SQL_HASH_FIELD_NAME%>",
+      "<%REQUEST_GROUP%>",
+      "<%REQUEST_FIELD%>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/group_name",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "schemaname",
+      "con_name",
+      "machine",
+      "program",
+      "module",
+      "osuser"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_class",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_wait_class<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_wait_class<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_cpu",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "pcode",
+      "oid",
+      "cpu(xos2)",
+      "cpu_sys(xos2)",
+      "cpu_user(xos2)",
+      "cpu_idle(xos2)",
+      "cpu_iowait(xos2)",
+      "'cpu_iowait(xos)'",
+      "'cpu_sys(xos)'",
+      "'cpu_user(xos)'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_enqueue",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'enq: TX - row lock contention'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_latch",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'latch: shared pool'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_mem",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "pcode",
+      "oid",
+      "mem(xos)"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_session",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "pcode",
+      "oid",
+      "active_sessions",
+      "total_sessions"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_stat",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_stat_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_stat_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'non-idle wait time'",
+      "'application wait time'",
+      "'logical read bytes from cache'",
+      "'redo synch time overhead (usec)'",
+      "'cell physical IO interconnect bytes'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_waitcount",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_event_wait_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_event_wait_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'SQL*Net message to client'",
+      "'control file sequential read'",
+      "'log file parallel write'",
+      "'log file sync'",
+      "'db file parallel write'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_waittime",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'enq: TX - row lock contention'",
+      "'log file sync'",
+      "'ADR block file read'",
+      "'ADR block file write'",
+      "'control file sequential read'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_sql_list_1",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_sql_list_2",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_sqlstat_event",
+      "db_index_event",
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_sqlstat_event",
+      "db_index_event",
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "@id",
+      "idx"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_summary",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_wait_class<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_wait_class<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/dbx/wait/wait_top_n",
+    "domain": "src/main/resources/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_index_wait_class",
+      "db_index_event",
+      "db_oracle_dma_sqlstat_event<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_index_wait_class",
+      "db_index_event",
+      "db_oracle_dma_sqlstat_event<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "class",
+      "class_name",
+      "event_no",
+      "event_name",
+      "wait_time",
+      "percentage"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/event/select-options",
+    "domain": "src/main/resources/mxql/event",
+    "description": "",
+    "categories": [
+      "<%"
+    ],
+    "baseCategories": [
+      "<%"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/ServerCommonService-getServerList",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_base",
+      "server_base{m5}",
+      "server_base{h1}"
+    ],
+    "baseCategories": [
+      "server_base"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "oname"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/ServerProcessService-getCpuMaxOrderTopList",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_process"
+    ],
+    "baseCategories": [
+      "server_process"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "hash",
+      "name",
+      "oname",
+      "user",
+      "cpu",
+      "count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/ServerProcessService-getMemMaxOrderTopList",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_process"
+    ],
+    "baseCategories": [
+      "server_process"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "hash",
+      "name",
+      "oname",
+      "user",
+      "memory",
+      "count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/ServerProcessService-getProcessList",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_process"
+    ],
+    "baseCategories": [
+      "server_process"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "hash",
+      "name",
+      "cmd1",
+      "oname",
+      "user",
+      "cpu",
+      "memory",
+      "riops",
+      "wiops",
+      "count",
+      "rss",
+      "rbps",
+      "wbps"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/file-systems-by-group-and-keys",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_filesystem",
+      "agent_list"
+    ],
+    "baseCategories": [
+      "infra_filesystem",
+      "agent_list"
+    ],
+    "parameters": [
+      "$etime"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "hostname"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-custom-field-keys",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "pivot_field"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-event-id-list",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "event_status_summary",
+      "agent_list"
+    ],
+    "baseCategories": [
+      "event_status_summary",
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "warning",
+      "critical"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-fold-category-desc-fields",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "<%"
+    ],
+    "baseCategories": [
+      "<%"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-inventory-keywords",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "<% COLUMN_NAME %>",
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-oids-by-infra-cpu-fixed-3h-range",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_cpu"
+    ],
+    "baseCategories": [
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-oids-by-infra-cpu-h1",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_cpu{h1}"
+    ],
+    "baseCategories": [
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-server-inventories-for-status",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "status",
+      "OSType",
+      "nCores"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-server-inventories-with-metric",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list",
+      "infra_disk_perf",
+      "infra_cpu",
+      "infra_mem",
+      "infra_swap",
+      "infra_network",
+      "infra_gpu"
+    ],
+    "baseCategories": [
+      "agent_list",
+      "infra_disk_perf",
+      "infra_cpu",
+      "infra_mem",
+      "infra_swap",
+      "infra_network",
+      "infra_gpu"
+    ],
+    "parameters": [
+      "$etime"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "active",
+      "oid",
+      "status",
+      "@id",
+      "name",
+      "busy",
+      "total",
+      "pUsed",
+      "rxbps",
+      "txbps",
+      "gpu_util_203",
+      "fb_total_250",
+      "power_usage_155",
+      "ecc_dbe_aggregate_total_313",
+      "server_agent_active",
+      "OSType",
+      "IP_all",
+      "hostname",
+      "hostAlias",
+      "nCores",
+      "lCores",
+      "memTotal",
+      "frequency",
+      "bootTime",
+      "serverType <% GROUP_FIELDS %>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-server-ostype-version",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "OSType",
+      "whatap_infradVersion"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/get-server-process-names",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_process"
+    ],
+    "baseCategories": [
+      "server_process"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "cmd"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/hostnames-by-all",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/hostnames-by-oid-list",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/inventory/check-exist-gpu",
+    "domain": "src/main/resources/mxql/infra/inventory",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/inventory/get-active-gpu-list",
+    "domain": "src/main/resources/mxql/infra/inventory",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "excludeKey"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/inventoryV2/gpu-search-agent-join",
+    "domain": "src/main/resources/mxql/infra/inventoryV2",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "ipAddress",
+      "OSVersion",
+      "active",
+      "excludeKey"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/inventoryV2/gpu-search-snapshot",
+    "domain": "src/main/resources/mxql/infra/inventoryV2",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "ipAddress",
+      "OSVersion",
+      "excludeKey"
+    ],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/inventoryV2/server-search-agent-join",
+    "domain": "src/main/resources/mxql/infra/inventoryV2",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "active"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/inventoryV2/server-search-snapshot",
+    "domain": "src/main/resources/mxql/infra/inventoryV2",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/metric-by-oid-list",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "<%"
+    ],
+    "baseCategories": [
+      "<%"
+    ],
+    "parameters": [
+      "$stime",
+      "$etime"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/metrics_explorer/get-agent-info-list",
+    "domain": "src/main/resources/mxql/infra/metrics_explorer",
+    "description": "",
+    "categories": [
+      "agent_list",
+      "infra_cpu",
+      "infra_cpu{m5}",
+      "infra_cpu{h1}"
+    ],
+    "baseCategories": [
+      "agent_list",
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "hostname"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/oid-list-by-filters",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/oid-list-by-top-n",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_cpu"
+    ],
+    "baseCategories": [
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "time",
+      "total"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/os-type-by-oids",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "OSType"
+    ],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/process-list-by-oid",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_process_group"
+    ],
+    "baseCategories": [
+      "infra_process_group"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/servers-by-group-and-keys",
+    "domain": "src/main/resources/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/infra/v4series/select-fold-category",
+    "domain": "src/main/resources/mxql/infra/v4series",
+    "description": "",
+    "categories": [
+      "<% CATEGORY_NAME %>{m5}",
+      "<% CATEGORY_NAME %>{h1}"
+    ],
+    "baseCategories": [
+      "<% CATEGORY_NAME %>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "@id",
+      "@pk",
+      "uuid",
+      "<% FIELD_LIST %>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/openmetric/stat/stat_gpu_trend_hitmap",
+    "domain": "src/main/resources/mxql/openmetric/stat",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/report/getReportBatchMenu",
+    "domain": "src/main/resources/mxql/report",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/server/inventory/agent",
+    "domain": "src/main/resources/mxql/server/inventory",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/server/inventory/custom",
+    "domain": "src/main/resources/mxql/server/inventory",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "src/main/resources/mxql/server/inventory/join",
+    "domain": "src/main/resources/mxql/server/inventory",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "active",
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/server/tmp_cube/tmp_category_filter",
+    "domain": "src/main/resources/mxql/server/tmp_cube",
+    "description": "",
+    "categories": [
+      "<%"
+    ],
+    "baseCategories": [
+      "<%"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "src/main/resources/mxql/server/ver20/get-top5-cpu-server-list",
+    "domain": "src/main/resources/mxql/server/ver20",
+    "description": "",
+    "categories": [
+      "infra_cpu",
+      "infra_cpu"
+    ],
+    "baseCategories": [
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "total",
+      "oid",
+      "oname",
+      "order"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/daily/app_counter",
+    "domain": "target/classes/mxql/apm/daily",
+    "description": "",
+    "categories": [
+      "app_counter{h1}",
+      "app_counter{h1}"
+    ],
+    "baseCategories": [
+      "app_counter"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "tx_count",
+      "peak_hour",
+      "oid",
+      "oname",
+      "tx_error",
+      "tps",
+      "resp_time",
+      "active_tx_count",
+      "daily_tx_count",
+      "daily_tx_error",
+      "peak_hour_tps",
+      "peak_hour_resp_time",
+      "peak_hour_active_tx"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/daily/app_user",
+    "domain": "target/classes/mxql/apm/daily",
+    "description": "",
+    "categories": [
+      "visitor{h1}"
+    ],
+    "baseCategories": [
+      "visitor"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "oname",
+      "logbits",
+      "daily_bits",
+      "daily_visitor"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/error_diff",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/error_diff_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/error_series",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/error_series_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/error_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/error_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/httpc_diff",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/httpc_diff_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc[h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc[h1}"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/httpc_series",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/httpc_series_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/httpc_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/httpc_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/ip_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_ip"
+    ],
+    "baseCategories": [
+      "db3_stat_ip"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/ip_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_ip{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_ip"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/ip_url_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_ip-url"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_ip-url"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "ip",
+      "ipHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/ip_url_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_ip-url{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_ip-url"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "ip",
+      "ipHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/sql_diff",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/sql_diff_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/sql_series",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/sql_series_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/sql_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/sql_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/sql_stat_join",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql{h1}",
+      "db3_stat_sql"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/transaction_diff",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/transaction_diff_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/transaction_quantile_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_tx_quantile",
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_tx_quantile",
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "urlhash",
+      "quantile"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/transaction_quantile_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_tx_quantile{h1}",
+      "db3_stat_tx{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_tx_quantile",
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "urlhash",
+      "quantile"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/transaction_series",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/transaction_series_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/transaction_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/transaction_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/transaction_stat_join",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_caller_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_mt"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_mt"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_caller_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_mt{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_mt"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_domain_series",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_dom"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_dom"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_domain_series_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_dom{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_dom"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_domain_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_dom"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_dom"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "domain",
+      "domainHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_domain_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_dom{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_dom"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "domain",
+      "domainHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_login_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_login"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_login"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "login",
+      "loginHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_login_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_login{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_login"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "login",
+      "loginHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_referer_series",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_referer"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_referer"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_referer_series_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_referer{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_referer"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_referer_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_referer"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_referer"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "referer",
+      "refererHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/tx_referer_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_gen_referer{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_gen_referer"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "referer",
+      "refererHash",
+      "url",
+      "urlHash",
+      "count",
+      "error",
+      "timeSum",
+      "timeAvg"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/useragent_series",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_useragent"
+    ],
+    "baseCategories": [
+      "db3_stat_useragent"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/useragent_series_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_useragent{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_useragent"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "count"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/useragent_stat",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_useragent"
+    ],
+    "baseCategories": [
+      "db3_stat_useragent"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/apm/stat/useragent_stat_1h",
+    "domain": "target/classes/mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_useragent{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_useragent"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/linkages/apm2db",
+    "domain": "target/classes/mxql/dbx/linkages",
+    "description": "",
+    "categories": [
+      "search_act_tx_run_sql"
+    ],
+    "baseCategories": [
+      "search_act_tx_run_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/dbx/linkages/db2apm",
+    "domain": "target/classes/mxql/dbx/linkages",
+    "description": "",
+    "categories": [
+      "<%category%>"
+    ],
+    "baseCategories": [
+      "<%category%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/linkages/db2apm_oracle",
+    "domain": "target/classes/mxql/dbx/linkages",
+    "description": "",
+    "categories": [
+      "<%category%>"
+    ],
+    "baseCategories": [
+      "<%category%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/parameter-history",
+    "domain": "target/classes/mxql/dbx",
+    "description": "",
+    "categories": [
+      "db_<%DB_TYPE%>_parameter"
+    ],
+    "baseCategories": [
+      "db_<%DB_TYPE%>_parameter"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/planchange/chart",
+    "domain": "target/classes/mxql/dbx/planchange",
+    "description": "",
+    "categories": [
+      "<%SQLSTAT_CATEGORY%>{h1}",
+      "<%SQLSTAT_CATEGORY%>{h1}",
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%SQLSTAT_CATEGORY%>",
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "sql_id",
+      "before_plan_hash_value",
+      "before_elapsed_time_per_exec",
+      "after_plan_hash_value",
+      "after_elapsed_time_per_exec",
+      "change_count",
+      "flag"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/planchange/history",
+    "domain": "target/classes/mxql/dbx/planchange",
+    "description": "",
+    "categories": [
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "sql_id",
+      "<%SQL_HASH_FIELD%>",
+      "sql_text",
+      "child_number",
+      "before_plan_hash_value",
+      "after_plan_hash_value",
+      "sid",
+      "user",
+      "program"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/planchange/summary",
+    "domain": "target/classes/mxql/dbx/planchange",
+    "description": "",
+    "categories": [
+      "<%SQLSTAT_CATEGORY%>{h1}",
+      "<%SQLSTAT_CATEGORY%>{h1}",
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%SQLSTAT_CATEGORY%>",
+      "<%PLAN_CHANGE_CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "sql_id",
+      "before_plan_hash_value",
+      "before_elapsed_time_per_exec",
+      "after_plan_hash_value",
+      "after_elapsed_time_per_exec",
+      "time",
+      "sql_text",
+      "user",
+      "program",
+      "elapsed_time_diff",
+      "flag",
+      "change_count",
+      "sql_hash_value"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/stat/each_sql",
+    "domain": "target/classes/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/stat/each_sql_main",
+    "domain": "target/classes/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/stat/merged_sql",
+    "domain": "target/classes/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/stat/sql_stat_raw",
+    "domain": "target/classes/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "<%SELECT_FIELDS%><%ADD_GROUPS%>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/stat/summary_chart_all",
+    "domain": "target/classes/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "execute_count",
+      "elapsed_time",
+      "elapsed_max",
+      "<%SQL_HASH_FIELD_NAME%>",
+      "<%REQUEST_FIELD%>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/stat/summary_chart_group",
+    "domain": "target/classes/mxql/dbx/stat",
+    "description": "",
+    "categories": [
+      "<%CATEGORY%>"
+    ],
+    "baseCategories": [
+      "<%CATEGORY%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "execute_count",
+      "elapsed_time",
+      "elapsed_max",
+      "<%SQL_HASH_FIELD_NAME%>",
+      "<%REQUEST_GROUP%>",
+      "<%REQUEST_FIELD%>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/group_name",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "schemaname",
+      "con_name",
+      "machine",
+      "program",
+      "module",
+      "osuser"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_class",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_wait_class<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_wait_class<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_cpu",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "pcode",
+      "oid",
+      "cpu(xos2)",
+      "cpu_sys(xos2)",
+      "cpu_user(xos2)",
+      "cpu_idle(xos2)",
+      "cpu_iowait(xos2)",
+      "'cpu_iowait(xos)'",
+      "'cpu_sys(xos)'",
+      "'cpu_user(xos)'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_enqueue",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'enq: TX - row lock contention'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_latch",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'latch: shared pool'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_mem",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "pcode",
+      "oid",
+      "mem(xos)"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_session",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_counter<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "pcode",
+      "oid",
+      "active_sessions",
+      "total_sessions"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_stat",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_stat_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_stat_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'non-idle wait time'",
+      "'application wait time'",
+      "'logical read bytes from cache'",
+      "'redo synch time overhead (usec)'",
+      "'cell physical IO interconnect bytes'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_waitcount",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_event_wait_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_event_wait_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'SQL*Net message to client'",
+      "'control file sequential read'",
+      "'log file parallel write'",
+      "'log file sync'",
+      "'db file parallel write'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_waittime",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "'enq: TX - row lock contention'",
+      "'log file sync'",
+      "'ADR block file read'",
+      "'ADR block file write'",
+      "'control file sequential read'"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_sql_list_1",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_sql_list_2",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_sqlstat_event",
+      "db_index_event",
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_sqlstat_event",
+      "db_index_event",
+      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "@id",
+      "idx"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_summary",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_oracle_dma_wait_class<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_oracle_dma_wait_class<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/dbx/wait/wait_top_n",
+    "domain": "target/classes/mxql/dbx/wait",
+    "description": "",
+    "categories": [
+      "db_index_wait_class",
+      "db_index_event",
+      "db_oracle_dma_sqlstat_event<%TIMEUNIT%>"
+    ],
+    "baseCategories": [
+      "db_index_wait_class",
+      "db_index_event",
+      "db_oracle_dma_sqlstat_event<%TIMEUNIT%>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "class",
+      "class_name",
+      "event_no",
+      "event_name",
+      "wait_time",
+      "percentage"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/event/select-options",
+    "domain": "target/classes/mxql/event",
+    "description": "",
+    "categories": [
+      "<%"
+    ],
+    "baseCategories": [
+      "<%"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/ServerCommonService-getServerList",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_base",
+      "server_base{m5}",
+      "server_base{h1}"
+    ],
+    "baseCategories": [
+      "server_base"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "oname"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/ServerProcessService-getCpuMaxOrderTopList",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_process"
+    ],
+    "baseCategories": [
+      "server_process"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "hash",
+      "name",
+      "oname",
+      "user",
+      "cpu",
+      "count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/ServerProcessService-getMemMaxOrderTopList",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_process"
+    ],
+    "baseCategories": [
+      "server_process"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "hash",
+      "name",
+      "oname",
+      "user",
+      "memory",
+      "count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/ServerProcessService-getProcessList",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_process"
+    ],
+    "baseCategories": [
+      "server_process"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "hash",
+      "name",
+      "cmd1",
+      "oname",
+      "user",
+      "cpu",
+      "memory",
+      "riops",
+      "wiops",
+      "count",
+      "rss",
+      "rbps",
+      "wbps"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/file-systems-by-group-and-keys",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_filesystem",
+      "agent_list"
+    ],
+    "baseCategories": [
+      "infra_filesystem",
+      "agent_list"
+    ],
+    "parameters": [
+      "$etime"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "hostname"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-custom-field-keys",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "pivot_field"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-event-id-list",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "event_status_summary",
+      "agent_list"
+    ],
+    "baseCategories": [
+      "event_status_summary",
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "warning",
+      "critical"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-fold-category-desc-fields",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "<%"
+    ],
+    "baseCategories": [
+      "<%"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-inventory-keywords",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "<% COLUMN_NAME %>",
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-oids-by-infra-cpu-fixed-3h-range",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_cpu"
+    ],
+    "baseCategories": [
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-oids-by-infra-cpu-h1",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_cpu{h1}"
+    ],
+    "baseCategories": [
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-server-inventories-for-status",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "status",
+      "OSType",
+      "nCores"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-server-inventories-with-metric",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list",
+      "infra_disk_perf",
+      "infra_cpu",
+      "infra_mem",
+      "infra_swap",
+      "infra_network",
+      "infra_gpu"
+    ],
+    "baseCategories": [
+      "agent_list",
+      "infra_disk_perf",
+      "infra_cpu",
+      "infra_mem",
+      "infra_swap",
+      "infra_network",
+      "infra_gpu"
+    ],
+    "parameters": [
+      "$etime"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "active",
+      "oid",
+      "status",
+      "@id",
+      "name",
+      "busy",
+      "total",
+      "pUsed",
+      "rxbps",
+      "txbps",
+      "gpu_util_203",
+      "fb_total_250",
+      "power_usage_155",
+      "ecc_dbe_aggregate_total_313",
+      "server_agent_active",
+      "OSType",
+      "IP_all",
+      "hostname",
+      "hostAlias",
+      "nCores",
+      "lCores",
+      "memTotal",
+      "frequency",
+      "bootTime",
+      "serverType <% GROUP_FIELDS %>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-server-ostype-version",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "OSType",
+      "whatap_infradVersion"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/get-server-process-names",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "server_process"
+    ],
+    "baseCategories": [
+      "server_process"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "cmd"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/hostnames-by-all",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/infra/hostnames-by-oid-list",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/infra/inventory/check-exist-gpu",
+    "domain": "target/classes/mxql/infra/inventory",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/inventory/get-active-gpu-list",
+    "domain": "target/classes/mxql/infra/inventory",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "excludeKey"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/inventoryV2/gpu-search-agent-join",
+    "domain": "target/classes/mxql/infra/inventoryV2",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "ipAddress",
+      "OSVersion",
+      "active",
+      "excludeKey"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/inventoryV2/gpu-search-snapshot",
+    "domain": "target/classes/mxql/infra/inventoryV2",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "ipAddress",
+      "OSVersion",
+      "excludeKey"
+    ],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/infra/inventoryV2/server-search-agent-join",
+    "domain": "target/classes/mxql/infra/inventoryV2",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "active"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/inventoryV2/server-search-snapshot",
+    "domain": "target/classes/mxql/infra/inventoryV2",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/infra/metric-by-oid-list",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "<%"
+    ],
+    "baseCategories": [
+      "<%"
+    ],
+    "parameters": [
+      "$stime",
+      "$etime"
+    ],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/metrics_explorer/get-agent-info-list",
+    "domain": "target/classes/mxql/infra/metrics_explorer",
+    "description": "",
+    "categories": [
+      "agent_list",
+      "infra_cpu",
+      "infra_cpu{m5}",
+      "infra_cpu{h1}"
+    ],
+    "baseCategories": [
+      "agent_list",
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "hostname"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/oid-list-by-filters",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/oid-list-by-top-n",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_cpu"
+    ],
+    "baseCategories": [
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid",
+      "time",
+      "total"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/os-type-by-oids",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "OSType"
+    ],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/infra/process-list-by-oid",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "infra_process_group"
+    ],
+    "baseCategories": [
+      "infra_process_group"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/servers-by-group-and-keys",
+    "domain": "target/classes/mxql/infra",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/infra/v4series/select-fold-category",
+    "domain": "target/classes/mxql/infra/v4series",
+    "description": "",
+    "categories": [
+      "<% CATEGORY_NAME %>{m5}",
+      "<% CATEGORY_NAME %>{h1}"
+    ],
+    "baseCategories": [
+      "<% CATEGORY_NAME %>"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "oid",
+      "@id",
+      "@pk",
+      "uuid",
+      "<% FIELD_LIST %>"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/openmetric/stat/stat_gpu_trend_hitmap",
+    "domain": "target/classes/mxql/openmetric/stat",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/report/getReportBatchMenu",
+    "domain": "target/classes/mxql/report",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/server/inventory/agent",
+    "domain": "target/classes/mxql/server/inventory",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/server/inventory/custom",
+    "domain": "target/classes/mxql/server/inventory",
+    "description": "",
+    "categories": [],
+    "baseCategories": [],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "unknown"
+  },
+  {
+    "path": "target/classes/mxql/server/inventory/join",
+    "domain": "target/classes/mxql/server/inventory",
+    "description": "",
+    "categories": [
+      "agent_list"
+    ],
+    "baseCategories": [
+      "agent_list"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "active",
+      "oid"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "target/classes/mxql/server/tmp_cube/tmp_category_filter",
+    "domain": "target/classes/mxql/server/tmp_cube",
+    "description": "",
+    "categories": [
+      "<%"
+    ],
+    "baseCategories": [
+      "<%"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "target/classes/mxql/server/ver20/get-top5-cpu-server-list",
+    "domain": "target/classes/mxql/server/ver20",
+    "description": "",
+    "categories": [
+      "infra_cpu",
+      "infra_cpu"
+    ],
+    "baseCategories": [
+      "infra_cpu"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [
+      "time",
+      "total",
+      "oid",
+      "oname",
+      "order"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
   }
 ];
 var CATALOG_RAW = {
-  "app/act_tps_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, TPS \uD569\uAC8C \uAC74\uC218  \uCD5C\uADFC15\uCD08\n\nHEADER { act0$:I, act3$:I, act8$:I, act$:I }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\n\nAPPEND {query:'/app/tps_last_pcode', field:[pcode,tps]}\n\nINJECT default\n\n",
-  "app/act_tx/act_tx_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER {  act0$:I, act3$:I, act8$:I, act$:I, tps$:I }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n",
-  "app/act_tx/agent_with_tx": "CATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\n\nJOIN {query:'/app/act_tx/act_tx_oid', pk:oid, field:[act0,act3,act8, act] }\n\nUPDATE {key:act0, notnull:0}\nUPDATE {key:act3, notnull:0}\nUPDATE {key:act8, notnull:0}\nUPDATE {key:act, notnull:0}\n\nRENAME {src:[act0, act3, act8, act],  dst:[normal, slow, verySlow, total]}\n\nINJECT default",
-  "app/act_tx_ext_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, INACTIVE \uC5D0\uC774\uC804\uD2B8 \uD3EC\uD568, \uCD5C\uADFC15\uCD08\n\nHEADER {act0$:I, act3$:I, act8$:I, act$:I, status$:S }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\n\nFIRST-ONLY {key:oid}\n\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\nCREATE {key:status, value:'ok'}\n\nAPPEND {query:'/sys/agent_inact'}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\nINJECT default\n",
-  "app/act_tx_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER {  act0$:I, act3$:I, act8$:I, act$:I}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\nINJECT default\n",
-  "app/act_tx_okind": "-- \uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { act0$:I, act3$:I, act8$:I, act$:I}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [ oid, oname, okind, okindName, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nGROUP {pk:okind, last:okindName, merge:[act0,act3,act8,act] }\n\nUPDATE {key:[act0,act3,act8,act], value:sum} \n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nINJECT default\n",
-  "app/act_tx_pcode": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { act0$:I, act3$:I, act8$:I, act$:I}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [ pcode, pname, oid, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nGROUP {pk:pcode, last:pname, merge:[act0,act3,act8,act] }\n\nUPDATE {key:[act0,act3,act8,act], value:sum} \n\nCREATE {key:_id_, from:pcode }\nCREATE {key:_name_, from:pname }\n\nINJECT default\n",
-  "app/active_stat_oid": '-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\nINJECT default',
-  "app/active_stat_okind": '\n-- \uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"\n        }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\n\nSELECT [ oid, oname, okind, okindName,   dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nGROUP {pk:okind, last:okindName, merge:[ dbc, method, socket, sql,httpc] }\n\nUPDATE {key:[dbc, method, socket, sql,httpc], value:sum} \n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nINJECT default',
-  "app/active_stat_pcode": '\n-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"\n        }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\n\nSELECT [ pcode, pname, oid,  dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nGROUP {pk:pcode, last: pname, merge:[dbc,method,socket,sql,httpc] }\n\nUPDATE { key:[dbc,method,socket,sql,httpc], value:sum } \n\nCREATE {key:_id_, from:pcode }\nCREATE {key:_name_, from:pname }\n\nINJECT default',
-  "app/apdex_okind": '-- \uC5D0\uC774\uC804\uD2B8 \uC885\uB958\uBCC4  <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704\n\nINJECT timepast\n\nHEADER { apdex_satisfied$:I, apdex_tolerated$:I, apdex_total$:I,  apdex$:F, category: app_counter}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [ time, okindName, okind, apdex_satisfied, apdex_tolerated, apdex_total]\nGROUP { timeunit:5000, pk:okind, last:okindName, merge:[apdex_satisfied, apdex_tolerated, apdex_total] }\n\nUPDATE { key:[apdex_satisfied, apdex_tolerated, apdex_total], value:sum }\nCREATE { key:apdex, expr:" ((apdex_satisfied+(apdex_tolerated*0.5))/apdex_total)*100 " }\n\nCREATE {key:_id_, from:okind}\nCREATE {key:_name_, from:okindName}\n\nINJECT default\n\nFILTER { expr: "apdex != 0" }',
-  "app/apdex_pcode": '\n-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704\n\nINJECT timepast\n\nHEADER { apdex_satisfied$:I, apdex_tolerated$:I, apdex_total$:I,  apdex$:F, category: app_counter}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n\nTAGLOAD\n\nSELECT [ time, pcode, pname, apdex_satisfied, apdex_tolerated, apdex_total]\nGROUP {timeunit:5000, pk:pcode}\n\nUPDATE { key:[apdex_satisfied, apdex_tolerated, apdex_total], value:sum }\nCREATE { key:apdex, expr:" ((apdex_satisfied+(apdex_tolerated*0.5))/apdex_total) * 100 " }\n\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\nDELETE [pcode, pname]\n\nINJECT default\n\nFILTER { expr: "apdex != 0" }',
-  "app/con_user_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790
+  "mxql/app/act_tps_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, TPS \uD569\uAC8C \uAC74\uC218  \uCD5C\uADFC15\uCD08\n\nHEADER { act0$:I, act3$:I, act8$:I, act$:I }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\n\nAPPEND {query:'/app/tps_last_pcode', field:[pcode,tps]}\n\nINJECT default\n\n",
+  "mxql/app/act_tx/act_tx_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER {  act0$:I, act3$:I, act8$:I, act$:I, tps$:I }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n",
+  "mxql/app/act_tx/agent_with_tx": "CATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\n\nJOIN {query:'/app/act_tx/act_tx_oid', pk:oid, field:[act0,act3,act8, act] }\n\nUPDATE {key:act0, notnull:0}\nUPDATE {key:act3, notnull:0}\nUPDATE {key:act8, notnull:0}\nUPDATE {key:act, notnull:0}\n\nRENAME {src:[act0, act3, act8, act],  dst:[normal, slow, verySlow, total]}\n\nINJECT default",
+  "mxql/app/act_tx_ext_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, INACTIVE \uC5D0\uC774\uC804\uD2B8 \uD3EC\uD568, \uCD5C\uADFC15\uCD08\n\nHEADER {act0$:I, act3$:I, act8$:I, act$:I, status$:S }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\n\nFIRST-ONLY {key:oid}\n\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\nCREATE {key:status, value:'ok'}\n\nAPPEND {query:'/sys/agent_inact'}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\nINJECT default\n",
+  "mxql/app/act_tx_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER {  act0$:I, act3$:I, act8$:I, act$:I}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\nINJECT default\n",
+  "mxql/app/act_tx_okind": "-- \uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { act0$:I, act3$:I, act8$:I, act$:I}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [ oid, oname, okind, okindName, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nGROUP {pk:okind, last:okindName, merge:[act0,act3,act8,act] }\n\nUPDATE {key:[act0,act3,act8,act], value:sum} \n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nINJECT default\n",
+  "mxql/app/act_tx_pcode": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { act0$:I, act3$:I, act8$:I, act$:I}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [ pcode, pname, oid, active_tx_0, active_tx_3, active_tx_8, active_tx_count]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nGROUP {pk:pcode, last:pname, merge:[act0,act3,act8,act] }\n\nUPDATE {key:[act0,act3,act8,act], value:sum} \n\nCREATE {key:_id_, from:pcode }\nCREATE {key:_name_, from:pname }\n\nINJECT default\n",
+  "mxql/app/active_stat_oid": '-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\nINJECT default',
+  "mxql/app/active_stat_okind": '\n-- \uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"\n        }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\n\nSELECT [ oid, oname, okind, okindName,   dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nGROUP {pk:okind, last:okindName, merge:[ dbc, method, socket, sql,httpc] }\n\nUPDATE {key:[dbc, method, socket, sql,httpc], value:sum} \n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nINJECT default',
+  "mxql/app/active_stat_pcode": '\n-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"\n        }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\n\nSELECT [ pcode, pname, oid,  dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nGROUP {pk:pcode, last: pname, merge:[dbc,method,socket,sql,httpc] }\n\nUPDATE { key:[dbc,method,socket,sql,httpc], value:sum } \n\nCREATE {key:_id_, from:pcode }\nCREATE {key:_name_, from:pname }\n\nINJECT default',
+  "mxql/app/apdex_okind": '-- \uC5D0\uC774\uC804\uD2B8 \uC885\uB958\uBCC4  <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704\n\nINJECT timepast\n\nHEADER { apdex_satisfied$:I, apdex_tolerated$:I, apdex_total$:I,  apdex$:F, category: app_counter}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [ time, okindName, okind, apdex_satisfied, apdex_tolerated, apdex_total]\nGROUP { timeunit:5000, pk:okind, last:okindName, merge:[apdex_satisfied, apdex_tolerated, apdex_total] }\n\nUPDATE { key:[apdex_satisfied, apdex_tolerated, apdex_total], value:sum }\nCREATE { key:apdex, expr:" ((apdex_satisfied+(apdex_tolerated*0.5))/apdex_total)*100 " }\n\nCREATE {key:_id_, from:okind}\nCREATE {key:_name_, from:okindName}\n\nINJECT default\n\nFILTER { expr: "apdex != 0" }',
+  "mxql/app/apdex_pcode": '\n-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704\n\nINJECT timepast\n\nHEADER { apdex_satisfied$:I, apdex_tolerated$:I, apdex_total$:I,  apdex$:F, category: app_counter}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n\nTAGLOAD\n\nSELECT [ time, pcode, pname, apdex_satisfied, apdex_tolerated, apdex_total]\nGROUP {timeunit:5000, pk:pcode}\n\nUPDATE { key:[apdex_satisfied, apdex_tolerated, apdex_total], value:sum }\nCREATE { key:apdex, expr:" ((apdex_satisfied+(apdex_tolerated*0.5))/apdex_total) * 100 " }\n\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\nDELETE [pcode, pname]\n\nINJECT default\n\nFILTER { expr: "apdex != 0" }',
+  "mxql/app/con_user_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790
 
 INJECT timepast
 
@@ -33640,7 +39409,7 @@ CREATE {key:_name_, from:oname}
 
 INJECT default
 `,
-  "app/con_user_okind": `-- \uC885\uB958\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790
+  "mxql/app/con_user_okind": `-- \uC885\uB958\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790
 
 INJECT timepast
 
@@ -33659,8 +39428,8 @@ CREATE {key:_id_, from:okind }
 CREATE {key:_name_, from:okindName}
 
 INJECT default`,
-  "app/con_user_okind_daily": "-- \uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' ,category:'app_user{m5}'}\n\nCATEGORY app_user{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, okindName, okind,logbits]\nGROUP {timeunit:5m, pk:okind, last:okindName,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nDELETE [okind, okid ]\n\nROWNUM\n\n",
-  "app/con_user_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uBCC4, \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uCD08\uAC12
+  "mxql/app/con_user_okind_daily": "-- \uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' ,category:'app_user{m5}'}\n\nCATEGORY app_user{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, okindName, okind,logbits]\nGROUP {timeunit:5m, pk:okind, last:okindName,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nDELETE [okind, okid ]\n\nROWNUM\n\n",
+  "mxql/app/con_user_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uBCC4, \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uCD08\uAC12
 INJECT timepast
 
 HEADER { user$:'#' }
@@ -33683,8 +39452,8 @@ ROWNUM
 CREATE {key:localtime, from:time}
 UPDATE {key:localtime, datetime:'yyyyMMdd HH:mm:ss', timezone:'GMT+9' }
 `,
-  "app/con_user_pcode_daily": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_user{m5}\n\nTAGLOAD\n\nSELECT [time, pcode, pname, logbits]\nGROUP {timeunit:5m , pk:pcode,   user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, from:pcode }\nCREATE {key:_name_, from:pname }\n\nDELETE [pcode, pname]\n\nINJECT default\n",
-  "app/cpu_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uD638\uC2A4\uD2B8 CPU%, 5\uCD08\uAC12
+  "mxql/app/con_user_pcode_daily": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_user{m5}\n\nTAGLOAD\n\nSELECT [time, pcode, pname, logbits]\nGROUP {timeunit:5m , pk:pcode,   user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, from:pcode }\nCREATE {key:_name_, from:pname }\n\nDELETE [pcode, pname]\n\nINJECT default\n",
+  "mxql/app/cpu_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uD638\uC2A4\uD2B8 CPU%, 5\uCD08\uAC12
 INJECT timepast
 
 HEADER {cpu$:'%'}
@@ -33702,7 +39471,7 @@ CREATE {key:_name_, from:oname}
 DELETE [oid,oname]
 ROWNUM
 `,
-  "app/dbnum_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 DBConn \uAC74\uC218, 5\uCD08 \uB9C8\uB2E4
+  "mxql/app/dbnum_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 DBConn \uAC74\uC218, 5\uCD08 \uB9C8\uB2E4
 INJECT timepast
 
 HEADER {active$:'I', idle$:'I'}
@@ -33724,7 +39493,7 @@ CREATE {key:_id_, from:oid}
 CREATE {key:_name_, from:oname}
 DELETE [oid,oname]
 `,
-  "app/gc_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568
+  "mxql/app/gc_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568
 INJECT timepast
 
 HEADER {gc_time$:ms, gc_count$:'I', gc_oldgen$:'I'}
@@ -33743,10 +39512,10 @@ CREATE {key:_name_, from:oname}
 DELETE [oid,oname]
 ROWNUM
 `,
-  "app/heap_oid": '\n-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uD799\uBA54\uBAA8\uB9AC \uC0AC\uC6A9\uB7C9(B)\nINJECT timepast\n\nHEADER {heap_use$:B, heap_tot$:B }\n\nCATEGORY {"app_proc_counter":6h, "app_proc_counter{m5}":3d, "app_proc_counter{h1}":unlimit }  \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, oid, oname, heap_use, heap_tot]\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\nDELETE [oid,oname]\nROWNUM\n',
-  "app/pull_act_tx_list": "-- \uAC01 \uC5D0\uC774\uC774\uC804\uD2B8\uB85C \uBD80\uD130 \uC561\uD2F0\uBE0C\uD2B8\uB79C\uC7AD\uC158 \uB9AC\uC2A4\uD2B8\uB97C \uC870\uD68C\uD55C\uB2E4. \n\nHEADER {oid$:id,oname$:S,okind$:id,okindName$:S,onode$:id,onodeName$:S,\n	otype$:S,tx_hash$:id,tx_name$:S,startTime$:ms,\n	elapsed$:ms,txid$:id,ip$:S,domain$:S,biz$:S,\n	userid$:id,cpuTime$:ms,malloc$:B,threadid$:id,\n	httpcCount$:I,httpcTime$:ms,sqlCount$:I,sqlTime$:ms,\n	act_status$:S,act$:S,act_yellow_time$:ms,act_red_time$:ms}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY pull_act_tx_list\n\nFLEXLOAD\n\nSELECT \n\nINJECT default\n",
-  "app/resp_time_oid": '-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, oid, oname, resp_time]\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\nINJECT default\n',
-  "app/resp_time_okind": `-- \uC885\uB958\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04
+  "mxql/app/heap_oid": '\n-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uD799\uBA54\uBAA8\uB9AC \uC0AC\uC6A9\uB7C9(B)\nINJECT timepast\n\nHEADER {heap_use$:B, heap_tot$:B }\n\nCATEGORY {"app_proc_counter":6h, "app_proc_counter{m5}":3d, "app_proc_counter{h1}":unlimit }  \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, oid, oname, heap_use, heap_tot]\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\nDELETE [oid,oname]\nROWNUM\n',
+  "mxql/app/pull_act_tx_list": "-- \uAC01 \uC5D0\uC774\uC774\uC804\uD2B8\uB85C \uBD80\uD130 \uC561\uD2F0\uBE0C\uD2B8\uB79C\uC7AD\uC158 \uB9AC\uC2A4\uD2B8\uB97C \uC870\uD68C\uD55C\uB2E4. \n\nHEADER {oid$:id,oname$:S,okind$:id,okindName$:S,onode$:id,onodeName$:S,\n	otype$:S,tx_hash$:id,tx_name$:S,startTime$:ms,\n	elapsed$:ms,txid$:id,ip$:S,domain$:S,biz$:S,\n	userid$:id,cpuTime$:ms,malloc$:B,threadid$:id,\n	httpcCount$:I,httpcTime$:ms,sqlCount$:I,sqlTime$:ms,\n	act_status$:S,act$:S,act_yellow_time$:ms,act_red_time$:ms}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY pull_act_tx_list\n\nFLEXLOAD\n\nSELECT \n\nINJECT default\n",
+  "mxql/app/resp_time_oid": '-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, oid, oname, resp_time]\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\nINJECT default\n',
+  "mxql/app/resp_time_okind": `-- \uC885\uB958\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04
 INJECT timepast
 
 HEADER {resp_time$:ms}
@@ -33769,16 +39538,16 @@ DELETE [okind,okindName,tx_count, tx_time]
 ROWNUM
 
 INJECT default`,
-  "app/resp_time_pcode": '-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04\n\nINJECT timepast\nHEADER {resp_time$:ms}\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nTAGLOAD\nSELECT [ time, pcode, pname, tx_time, tx_count]\nRENAME { src: pname, dst: _name_ } \nRENAME { src: pcode, dst: _id_ } \nCREATE { key:tx_time_sum , expr:" tx_time * tx_count " }\nGROUP {timeunit:5000, pk:_id_}\nUPDATE { key:[tx_time_sum, tx_count], value:sum }\nCREATE { key:resp_time , expr:" tx_time_sum / tx_count " }\nDELETE [ tx_time_sum, tx_count, tx_time ]\nINJECT default\n\n\n',
-  "app/resp_time_pcode_daily": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY app_counter{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n \nTAGLOAD\n\nSELECT [time, pcode, pname, resp_time]\nGROUP  {timeunit:5m, pk:pcode, last: pname, merge:resp_time}\nUPDATE {key:resp_time, value:avg}\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\n\nINJECT default\n",
-  "app/resp_time_pcode_month": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY app_counter{h1}\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n \nTAGLOAD\n\nSELECT [time, pcode, pname, resp_time]\nGROUP  {timeunit:1h, pk:pcode, last: pname, merge:resp_time}\nUPDATE {key:resp_time, value:avg}\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\n\nINJECT default\n\n",
-  "app/speed": '-- Speed \uCC28\uD2B8\uC5D0 \uD544\uC694\uD55C \uB370\uC774\uD130\uB97C \uC870\uD68C\uD55C\uB2E4. \n-- \uB2E8 java2.0_23\uC774\uD558\uC758 \uBC84\uC804\uC5D0\uC11C\uB294 arrival_rate\uAC00 \uC218\uC9D1\uB418\uC9C0 \uC54A\uC74C\uC73C\uB85C \n-- \uAE30\uBCF8\uC740 tx_count\uB85C \uB300\uCCB4\uD55C\uB2E4. \n\nHEADER {"start$":I,\n        "end$":I,"end0$":I,"end3$":I,"end8$":I,\n        "act$":I,"act0$":I,"act3$":I,"act8$":I }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count,\n       apdex_total, apdex_satisfied,apdex_tolerated]\n\nFIRST-ONLY {key:oid}\n\nGROUP {merge:[ active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated] }\nUPDATE {key:[ active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated ], value:sum}\n\nRENAME {src:tx_count, dst:start}\nRENAME {src:apdex_total, dst:end}\nRENAME {src:apdex_satisfied, dst:end0}\nRENAME {src:apdex_tolerated, dst:end3}\nCREATE {key:end8, expr:"end - (end0 + end3) "}\n\nRENAME {src:active_tx_0, dst:act0}\nRENAME {src:active_tx_3, dst:act3}\nRENAME {src:active_tx_8, dst:act8}\nRENAME {src:active_tx_count, dst:act}\n\nINJECT default\n\n\n',
-  "app/stat_error_pcode": "\n-- \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\nHEADER {tx_hash$:id, tx_count$:'#', tx_error$:'#', tx_time$:ms, tx_time_sum$:ms\n       ,sql_count$:'#', sql_time$:ms, sql_time_sum:ms, fetch_count:'#',fetch_time_sum$:ms\n       ,httpc_count$:'#', httpc_time$:ms, httpc_time_sum$:ms\n       }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY stat_error\n\nFLEXLOAD {rows:30000}\n\nORDER {key:count, sort:desc, rows:30000}\n\nINJECT default\n\n\n",
-  "app/stat_httpc_pcode": "-- \uC678\uBD80 \uD638\uCD9C \uD1B5\uACC4\n\nHEADER {httpc_count$:'I',httpc_error$:'I',httpc_time$:ms,\n        httpc_time_sum$:ms,httpc_time_std$:'I',\n        httpc_time_min$:ms,httpc_time_max$:ms\n        }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY stat_httpc\n\nFLEXLOAD {rows:30000}\n\nORDER {key:httpc_count, sort:desc, rows:30000}\n\nINJECT default",
-  "app/stat_sql_pcode": '-- SQL \uD1B5\uACC4\n\nHEADER {"dbc$":"S","dbc_hash$":"I","sql$":"S","sql_hash$":"I","sql_crud$":"S","sql_count$":"I"\n    ,"sql_error$":"I","sql_time$":"ms","sql_time_sum$":"ms","sql_time_std$":"ms","sql_time_min$":"ms"\n    ,"sql_time_max$":"ms","fetch_count$":"I","fetch_time_sum$":"ms","httpc_tx_hash$":"I","httpc_tx$":"S"\n    }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY stat_sql\n\nFLEXLOAD {rows:30000}\n\nORDER {key:sql_count, sort:desc, rows:30000}\n\nINJECT default\n\n\n',
-  "app/stat_tx_pcode": "\n-- \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\nHEADER {tx_hash$:id, tx_count$:'#', tx_error$:'#', tx_time$:ms, tx_time_sum$:ms\n       ,sql_count$:'#', sql_time$:ms, sql_time_sum:ms, fetch_count:'#',fetch_time_sum$:ms\n       ,httpc_count$:'#', httpc_time$:ms, httpc_time_sum$:ms\n        }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY stat_tx\n\nFLEXLOAD {rows:30000}\n\nORDER {key:tx_count, sort:desc, rows:30000}\n\nINJECT default\n\n\n",
-  "app/tps_last_pcode": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12\nINJECT timepast\n\nHEADER {tps$:'F' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_counter\n \nTAGLOAD {backward:true}\n\nSELECT [time,pcode, oid, tps]\n\nFIRST-ONLY {key:oid}\n\nGROUP  {last:pcode, merge:tps}\nUPDATE {key:tps, value:sum}\nDELETE [time]\n\nINJECT default",
-  "app/tps_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
+  "mxql/app/resp_time_pcode": '-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04\n\nINJECT timepast\nHEADER {resp_time$:ms}\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nTAGLOAD\nSELECT [ time, pcode, pname, tx_time, tx_count]\nRENAME { src: pname, dst: _name_ } \nRENAME { src: pcode, dst: _id_ } \nCREATE { key:tx_time_sum , expr:" tx_time * tx_count " }\nGROUP {timeunit:5000, pk:_id_}\nUPDATE { key:[tx_time_sum, tx_count], value:sum }\nCREATE { key:resp_time , expr:" tx_time_sum / tx_count " }\nDELETE [ tx_time_sum, tx_count, tx_time ]\nINJECT default\n\n\n',
+  "mxql/app/resp_time_pcode_daily": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY app_counter{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n \nTAGLOAD\n\nSELECT [time, pcode, pname, resp_time]\nGROUP  {timeunit:5m, pk:pcode, last: pname, merge:resp_time}\nUPDATE {key:resp_time, value:avg}\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\n\nINJECT default\n",
+  "mxql/app/resp_time_pcode_month": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY app_counter{h1}\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n \nTAGLOAD\n\nSELECT [time, pcode, pname, resp_time]\nGROUP  {timeunit:1h, pk:pcode, last: pname, merge:resp_time}\nUPDATE {key:resp_time, value:avg}\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\n\nINJECT default\n\n",
+  "mxql/app/speed": '-- Speed \uCC28\uD2B8\uC5D0 \uD544\uC694\uD55C \uB370\uC774\uD130\uB97C \uC870\uD68C\uD55C\uB2E4. \n-- \uB2E8 java2.0_23\uC774\uD558\uC758 \uBC84\uC804\uC5D0\uC11C\uB294 arrival_rate\uAC00 \uC218\uC9D1\uB418\uC9C0 \uC54A\uC74C\uC73C\uB85C \n-- \uAE30\uBCF8\uC740 tx_count\uB85C \uB300\uCCB4\uD55C\uB2E4. \n\nHEADER {"start$":I,\n        "end$":I,"end0$":I,"end3$":I,"end8$":I,\n        "act$":I,"act0$":I,"act3$":I,"act8$":I }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count,\n       apdex_total, apdex_satisfied,apdex_tolerated]\n\nFIRST-ONLY {key:oid}\n\nGROUP {merge:[ active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated] }\nUPDATE {key:[ active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated ], value:sum}\n\nRENAME {src:tx_count, dst:start}\nRENAME {src:apdex_total, dst:end}\nRENAME {src:apdex_satisfied, dst:end0}\nRENAME {src:apdex_tolerated, dst:end3}\nCREATE {key:end8, expr:"end - (end0 + end3) "}\n\nRENAME {src:active_tx_0, dst:act0}\nRENAME {src:active_tx_3, dst:act3}\nRENAME {src:active_tx_8, dst:act8}\nRENAME {src:active_tx_count, dst:act}\n\nINJECT default\n\n\n',
+  "mxql/app/stat_error_pcode": "\n-- \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\nHEADER {tx_hash$:id, tx_count$:'#', tx_error$:'#', tx_time$:ms, tx_time_sum$:ms\n       ,sql_count$:'#', sql_time$:ms, sql_time_sum:ms, fetch_count:'#',fetch_time_sum$:ms\n       ,httpc_count$:'#', httpc_time$:ms, httpc_time_sum$:ms\n       }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY stat_error\n\nFLEXLOAD {rows:30000}\n\nORDER {key:count, sort:desc, rows:30000}\n\nINJECT default\n\n\n",
+  "mxql/app/stat_httpc_pcode": "-- \uC678\uBD80 \uD638\uCD9C \uD1B5\uACC4\n\nHEADER {httpc_count$:'I',httpc_error$:'I',httpc_time$:ms,\n        httpc_time_sum$:ms,httpc_time_std$:'I',\n        httpc_time_min$:ms,httpc_time_max$:ms\n        }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY stat_httpc\n\nFLEXLOAD {rows:30000}\n\nORDER {key:httpc_count, sort:desc, rows:30000}\n\nINJECT default",
+  "mxql/app/stat_sql_pcode": '-- SQL \uD1B5\uACC4\n\nHEADER {"dbc$":"S","dbc_hash$":"I","sql$":"S","sql_hash$":"I","sql_crud$":"S","sql_count$":"I"\n    ,"sql_error$":"I","sql_time$":"ms","sql_time_sum$":"ms","sql_time_std$":"ms","sql_time_min$":"ms"\n    ,"sql_time_max$":"ms","fetch_count$":"I","fetch_time_sum$":"ms","httpc_tx_hash$":"I","httpc_tx$":"S"\n    }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY stat_sql\n\nFLEXLOAD {rows:30000}\n\nORDER {key:sql_count, sort:desc, rows:30000}\n\nINJECT default\n\n\n',
+  "mxql/app/stat_tx_pcode": "\n-- \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\nHEADER {tx_hash$:id, tx_count$:'#', tx_error$:'#', tx_time$:ms, tx_time_sum$:ms\n       ,sql_count$:'#', sql_time$:ms, sql_time_sum:ms, fetch_count:'#',fetch_time_sum$:ms\n       ,httpc_count$:'#', httpc_time$:ms, httpc_time_sum$:ms\n        }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY stat_tx\n\nFLEXLOAD {rows:30000}\n\nORDER {key:tx_count, sort:desc, rows:30000}\n\nINJECT default\n\n\n",
+  "mxql/app/tps_last_pcode": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12\nINJECT timepast\n\nHEADER {tps$:'F' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_counter\n \nTAGLOAD {backward:true}\n\nSELECT [time,pcode, oid, tps]\n\nFIRST-ONLY {key:oid}\n\nGROUP  {last:pcode, merge:tps}\nUPDATE {key:tps, value:sum}\nDELETE [time]\n\nINJECT default",
+  "mxql/app/tps_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
 
 INJECT timepast
 
@@ -33797,8 +39566,8 @@ DELETE [oid,oname]
 
 INJECT default
 `,
-  "app/tps_okind": '-- \uC885\uB958\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12\n\nINJECT timepast\n\nHEADER {tps$:F}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n \nTAGLOAD\n\nSELECT [time, okind, okindName, tps]\nGROUP {timeunit:5000, pk:okind, last:okindName, merge:tps }\nUPDATE {key:tps, value:sum}\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nDELETE [pcode,okind, okindName ]\n\nINJECT default\n',
-  "app/tps_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
+  "mxql/app/tps_okind": '-- \uC885\uB958\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12\n\nINJECT timepast\n\nHEADER {tps$:F}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n \nTAGLOAD\n\nSELECT [time, okind, okindName, tps]\nGROUP {timeunit:5000, pk:okind, last:okindName, merge:tps }\nUPDATE {key:tps, value:sum}\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nDELETE [pcode,okind, okindName ]\n\nINJECT default\n',
+  "mxql/app/tps_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
 INJECT timepast
 
 HEADER {tps$:'F'}
@@ -33819,8 +39588,8 @@ DELETE [pcode]
 INJECT default
 
 `,
-  "app/tps_pcode_daily": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {tps$:'F'}\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY app_counter{m5}\nTAGLOAD\nINJECT default\nUPDATE {key: tps, value: avg}\nSELECT [time, pcode, pname, oid, tps]\nGROUP {timeunit:5m, pk:[pcode, pname], merge:tps}\nUPDATE {key: tps, value: sum}\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\n\n",
-  "app/tps_pcode_month": `-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12
+  "mxql/app/tps_pcode_daily": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {tps$:'F'}\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY app_counter{m5}\nTAGLOAD\nINJECT default\nUPDATE {key: tps, value: avg}\nSELECT [time, pcode, pname, oid, tps]\nGROUP {timeunit:5m, pk:[pcode, pname], merge:tps}\nUPDATE {key: tps, value: sum}\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\n\n",
+  "mxql/app/tps_pcode_month": `-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12
 INJECT timepast
 
 HEADER {tps$:'F' }
@@ -33840,10 +39609,10 @@ CREATE {key:_name_, from:pname}
 INJECT default
 
 `,
-  "app/tps_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, tps]\n\nGROUP  {pk:oid, merge:tps}\nUPDATE {key:tps, value:avg}\nORDER  {key:tps, sort:desc}\n\nLIMIT  $limit\n\nINJECT default",
-  "app/visitor_okind_month": "-- \uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' }\n\nCATEGORY visitor{h1}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nSELECT [time, okind, okindName,logbits]\nGROUP {timeunit:1h, pk:okind, last:okindName,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nINJECT default\n\n\n",
-  "app/visitor_pcode_month": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY visitor{h1}\n\nTAGLOAD\n\nSELECT [time, pcode, pname, logbits]\nGROUP {timeunit:1h , pk:pcode,last: pname,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, from:pcode }\nCREATE {key:_name_, from:pname }\n\nINJECT default\n\n",
-  "cpm/apiserver_get_request_count_per_min": `HEADER {result$:'I'}
+  "mxql/app/tps_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\n\nSELECT [oid, tps]\n\nGROUP  {pk:oid, merge:tps}\nUPDATE {key:tps, value:avg}\nORDER  {key:tps, sort:desc}\n\nLIMIT  $limit\n\nINJECT default",
+  "mxql/app/visitor_okind_month": "-- \uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' }\n\nCATEGORY visitor{h1}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nSELECT [time, okind, okindName,logbits]\nGROUP {timeunit:1h, pk:okind, last:okindName,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\nINJECT default\n\n\n",
+  "mxql/app/visitor_pcode_month": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY visitor{h1}\n\nTAGLOAD\n\nSELECT [time, pcode, pname, logbits]\nGROUP {timeunit:1h , pk:pcode,last: pname,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, from:pcode }\nCREATE {key:_name_, from:pname }\n\nINJECT default\n\n",
+  "mxql/cpm/apiserver_get_request_count_per_min": `HEADER {result$:'I'}
 
 TIME-RANGE {recent: 181s}
 CATEGORY stat_gen_kube_apiserver_request_total
@@ -33862,7 +39631,7 @@ GROUP { timeunit:1m, merge:"result", pk:["verb"],last:verb}
 UPDATE { key: result, value: sum}
 
 FILTER { key: result, exist:true }`,
-  "cpm/apiserver_get_request_trend_by_resource_subresource_per_min": `HEADER {result$:I}
+  "mxql/cpm/apiserver_get_request_trend_by_resource_subresource_per_min": `HEADER {result$:I}
 CATEGORY stat_gen_kube_apiserver_request_total
 FLEXLOAD
 SELECT
@@ -33882,15 +39651,15 @@ FILTER { key: result, exist:true }
 
 CREATE { key: _id_, expr: resource+subresource+verb}
 CREATE { key: _name_, expr: resource+' '+subresource}`,
-  "cpm/apiserver_get_request_trend_per_sec": 'HEADER {result$:F}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { key: "verb", value:"GET" }\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"] ,last: verb }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : proccess_count, target : counter}\nADJUST {key:result ,over: 0}\n\nFILTER { key: proccess_count, exist:true }\n\nCREATE { key: result, expr: "proccess_count/60"}\nCREATE { key: _id_, from: instance}\nCREATE { key: _name_, from: instance}',
-  "cpm/apiserver_go_goroutines_per_min": 'HEADER {gauge$:I}\nCATEGORY stat_gen_kube_go_goroutines\nFLEXLOAD\nSELECT\n\nGROUP { timeunit:1m, merge:"gauge", last:["pname"], pk:["pcode"] }\nUPDATE { key: "gauge", value: sum }\n\nCREATE { key: _id_, from:pcode }\nCREATE { key: _name_, from:pname }',
-  "cpm/apiserver_go_threads_per_min": 'HEADER {gauge$:I}\nCATEGORY stat_gen_kube_go_threads\nFLEXLOAD\nSELECT\n\nGROUP { timeunit:1m, merge:"gauge", pk:["pcode"], last:pname}\nUPDATE { key: "gauge", value: sum }\n\nCREATE { key: _id_, from:pcode }\nCREATE { key: _name_, from:pname }',
-  "cpm/apiserver_inflight_request_per_sec": 'HEADER {gauge$:I}\nCATEGORY stat_gen_kube_apiserver_current_inflight_requests\nFLEXLOAD\n\nGROUP { timeunit:1m, merge:"gauge", pk:["pcode","requestKind"]}\nUPDATE { key: "gauge", value: sum }\n\nCREATE { key: _id_, from:requestKind }\nCREATE { key: _name_, from:requestKind }',
-  "cpm/apiserver_pod_count_per_last": 'TIME-RANGE {recent: 121s}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nGROUP { timeunit:1m, pk:["instance"] }\n\nROWNUM\n\nLAST-ONLY',
-  "cpm/apiserver_pod_cpu_usage_per_last": 'HEADER { cpu_total_milli$: "millicore" }\nTIME-RANGE { duration: 1m, etime: $etime }\nCATEGORY kube_pod\nTAGLOAD\nLAST-ONLY {key: [name, namespace]}\n\nSELECT [pcode, cpu_total_milli, name, namespace]\n\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "name", like: "kube-apiserver" }\n\nGROUP { pk: "pcode" }\nUPDATE { key: "cpu_total_milli", value: sum }',
-  "cpm/apiserver_pod_memory_usage_per_last": 'HEADER { mem_working_set$: "B" }\nCATEGORY kube_pod\nTAGLOAD { backward: true }\nSELECT [time, pcode, name,namespace, mem_working_set]\n\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "name", like: "kube-apiserver" }\n\nGROUP { timeunit:5s, pk:"pcode" }\nUPDATE { key: "mem_working_set", value: sum }\n\nFIRST-ONLY { key: pcode }',
-  "cpm/apiserver_pod_restart_count_per_last": 'CATEGORY kube_pod\nTAGLOAD { backward: true }\nSELECT [time, pcode, namespace, name, RestartCount]\n\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "name", like: "kube-apiserver" }\n\nGROUP { timeunit:5s, merge:"RestartCount", pk:"pcode" }\nUPDATE { key: "RestartCount", value: sum }\n\nLIMIT 1',
-  "cpm/apiserver_post_request_count_per_min": `HEADER {result$:'I'}
+  "mxql/cpm/apiserver_get_request_trend_per_sec": 'HEADER {result$:F}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { key: "verb", value:"GET" }\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"] ,last: verb }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : proccess_count, target : counter}\nADJUST {key:result ,over: 0}\n\nFILTER { key: proccess_count, exist:true }\n\nCREATE { key: result, expr: "proccess_count/60"}\nCREATE { key: _id_, from: instance}\nCREATE { key: _name_, from: instance}',
+  "mxql/cpm/apiserver_go_goroutines_per_min": 'HEADER {gauge$:I}\nCATEGORY stat_gen_kube_go_goroutines\nFLEXLOAD\nSELECT\n\nGROUP { timeunit:1m, merge:"gauge", last:["pname"], pk:["pcode"] }\nUPDATE { key: "gauge", value: sum }\n\nCREATE { key: _id_, from:pcode }\nCREATE { key: _name_, from:pname }',
+  "mxql/cpm/apiserver_go_threads_per_min": 'HEADER {gauge$:I}\nCATEGORY stat_gen_kube_go_threads\nFLEXLOAD\nSELECT\n\nGROUP { timeunit:1m, merge:"gauge", pk:["pcode"], last:pname}\nUPDATE { key: "gauge", value: sum }\n\nCREATE { key: _id_, from:pcode }\nCREATE { key: _name_, from:pname }',
+  "mxql/cpm/apiserver_inflight_request_per_sec": 'HEADER {gauge$:I}\nCATEGORY stat_gen_kube_apiserver_current_inflight_requests\nFLEXLOAD\n\nGROUP { timeunit:1m, merge:"gauge", pk:["pcode","requestKind"]}\nUPDATE { key: "gauge", value: sum }\n\nCREATE { key: _id_, from:requestKind }\nCREATE { key: _name_, from:requestKind }',
+  "mxql/cpm/apiserver_pod_count_per_last": 'TIME-RANGE {recent: 121s}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nGROUP { timeunit:1m, pk:["instance"] }\n\nROWNUM\n\nLAST-ONLY',
+  "mxql/cpm/apiserver_pod_cpu_usage_per_last": 'HEADER { cpu_total_milli$: "millicore" }\nTIME-RANGE { duration: 1m, etime: $etime }\nCATEGORY kube_pod\nTAGLOAD\nLAST-ONLY {key: [name, namespace]}\n\nSELECT [pcode, cpu_total_milli, name, namespace]\n\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "name", like: "kube-apiserver" }\n\nGROUP { pk: "pcode" }\nUPDATE { key: "cpu_total_milli", value: sum }',
+  "mxql/cpm/apiserver_pod_memory_usage_per_last": 'HEADER { mem_working_set$: "B" }\nCATEGORY kube_pod\nTAGLOAD { backward: true }\nSELECT [time, pcode, name,namespace, mem_working_set]\n\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "name", like: "kube-apiserver" }\n\nGROUP { timeunit:5s, pk:"pcode" }\nUPDATE { key: "mem_working_set", value: sum }\n\nFIRST-ONLY { key: pcode }',
+  "mxql/cpm/apiserver_pod_restart_count_per_last": 'CATEGORY kube_pod\nTAGLOAD { backward: true }\nSELECT [time, pcode, namespace, name, RestartCount]\n\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "name", like: "kube-apiserver" }\n\nGROUP { timeunit:5s, merge:"RestartCount", pk:"pcode" }\nUPDATE { key: "RestartCount", value: sum }\n\nLIMIT 1',
+  "mxql/cpm/apiserver_post_request_count_per_min": `HEADER {result$:'I'}
 
 TIME-RANGE {recent: 181s}
 CATEGORY stat_gen_kube_apiserver_request_total
@@ -33909,7 +39678,7 @@ GROUP { timeunit:1m, merge:"result", pk:["verb"],last:verb}
 UPDATE { key: result, value: sum}
 
 FILTER { key: result, exist:true }`,
-  "cpm/apiserver_post_request_trend_by_resource_subresource_per_min": `HEADER {result$:I}
+  "mxql/cpm/apiserver_post_request_trend_by_resource_subresource_per_min": `HEADER {result$:I}
 CATEGORY stat_gen_kube_apiserver_request_total
 FLEXLOAD
 SELECT
@@ -33929,12 +39698,12 @@ FILTER { key: result, exist:true }
 
 CREATE { key: _id_, expr: resource+subresource+verb}
 CREATE { key: _name_, expr: resource+' '+subresource}`,
-  "cpm/apiserver_post_request_trend_per_sec": 'HEADER {result$:F}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { key: "verb", value:"POST" }\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"] ,last: verb }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : proccess_count, target : counter}\nADJUST {key:result ,over: 0}\n\nFILTER { key: proccess_count, exist:true }\n\nCREATE { key: result, expr: "proccess_count/60"}\nCREATE { key: _id_, from: instance}\nCREATE { key: _name_, from: instance}',
-  "cpm/apiserver_request_count_by_2xx_code_per_min": 'HEADER {result$:I}\nTIME-RANGE {recent: 181s}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "200 <= code && code < 300"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"], last: [code, pcode] }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : result, target : counter}\nFILTER { key: result, exist:true }\n\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"pcode" }\nUPDATE { key: result, value: sum}',
-  "cpm/apiserver_request_count_by_3xx_code_per_min": 'HEADER {result$:I}\nTIME-RANGE {recent: 181s}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "300 <= code && code < 400"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"], last: [code, pcode] }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : result, target : counter}\nFILTER { key: result, exist:true }\n\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"pcode" }\nUPDATE { key: result, value: sum}',
-  "cpm/apiserver_request_count_by_4xx_over_code_per_min": 'HEADER {result$:I}\nTIME-RANGE {recent: 181s}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "400 <= code"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"], last: [code, pcode] }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : result, target : counter}\nFILTER { key: result, exist:true }\n\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"pcode" }\nUPDATE { key: result, value: sum}',
-  "cpm/apiserver_request_trend_by_2xx_code_per_min": 'HEADER {result$:I}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "200 <= code && code < 300"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance","code"], last: pcode }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : [instance, code], key : result, target : counter}\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"code" }\nUPDATE { key: result, value: sum}\n\nFILTER { key: result, exist:true }\n\nCREATE {key:_id_,from:code}\nCREATE {key:_name_,from:code}',
-  "cpm/apiserver_request_trend_by_2xx_resource_subresource_per_min": `HEADER {result$:I}
+  "mxql/cpm/apiserver_post_request_trend_per_sec": 'HEADER {result$:F}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { key: "verb", value:"POST" }\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"] ,last: verb }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : proccess_count, target : counter}\nADJUST {key:result ,over: 0}\n\nFILTER { key: proccess_count, exist:true }\n\nCREATE { key: result, expr: "proccess_count/60"}\nCREATE { key: _id_, from: instance}\nCREATE { key: _name_, from: instance}',
+  "mxql/cpm/apiserver_request_count_by_2xx_code_per_min": 'HEADER {result$:I}\nTIME-RANGE {recent: 181s}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "200 <= code && code < 300"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"], last: [code, pcode] }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : result, target : counter}\nFILTER { key: result, exist:true }\n\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"pcode" }\nUPDATE { key: result, value: sum}',
+  "mxql/cpm/apiserver_request_count_by_3xx_code_per_min": 'HEADER {result$:I}\nTIME-RANGE {recent: 181s}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "300 <= code && code < 400"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"], last: [code, pcode] }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : result, target : counter}\nFILTER { key: result, exist:true }\n\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"pcode" }\nUPDATE { key: result, value: sum}',
+  "mxql/cpm/apiserver_request_count_by_4xx_over_code_per_min": 'HEADER {result$:I}\nTIME-RANGE {recent: 181s}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "400 <= code"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance"], last: [code, pcode] }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : ["instance"], key : result, target : counter}\nFILTER { key: result, exist:true }\n\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"pcode" }\nUPDATE { key: result, value: sum}',
+  "mxql/cpm/apiserver_request_trend_by_2xx_code_per_min": 'HEADER {result$:I}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "200 <= code && code < 300"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance","code"], last: pcode }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : [instance, code], key : result, target : counter}\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"code" }\nUPDATE { key: result, value: sum}\n\nFILTER { key: result, exist:true }\n\nCREATE {key:_id_,from:code}\nCREATE {key:_name_,from:code}',
+  "mxql/cpm/apiserver_request_trend_by_2xx_resource_subresource_per_min": `HEADER {result$:I}
 CATEGORY stat_gen_kube_apiserver_request_total
 FLEXLOAD
 SELECT
@@ -33954,8 +39723,8 @@ FILTER { key: result, exist:true }
 
 CREATE { key: _id_, expr: resource+subresource}
 CREATE { key: _name_, expr: resource+' '+subresource}`,
-  "cpm/apiserver_request_trend_by_3xx_code_per_min": 'HEADER {result$:I}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "300 <= code && code < 400"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance","code"], last: pcode }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : [instance, code], key : result, target : counter}\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"code" }\nUPDATE { key: result, value: sum}\n\nFILTER { key: result, exist:true }\n\nCREATE {key:_id_,from:code}\nCREATE {key:_name_,from:code}',
-  "cpm/apiserver_request_trend_by_3xx_resource_subresource_per_min": `HEADER {result$:I}
+  "mxql/cpm/apiserver_request_trend_by_3xx_code_per_min": 'HEADER {result$:I}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "300 <= code && code < 400"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance","code"], last: pcode }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : [instance, code], key : result, target : counter}\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"code" }\nUPDATE { key: result, value: sum}\n\nFILTER { key: result, exist:true }\n\nCREATE {key:_id_,from:code}\nCREATE {key:_name_,from:code}',
+  "mxql/cpm/apiserver_request_trend_by_3xx_resource_subresource_per_min": `HEADER {result$:I}
 CATEGORY stat_gen_kube_apiserver_request_total
 FLEXLOAD
 SELECT
@@ -33975,8 +39744,8 @@ FILTER { key: result, exist:true }
 
 CREATE { key: _id_, expr: resource+subresource}
 CREATE { key: _name_, expr: resource+' '+subresource}`,
-  "cpm/apiserver_request_trend_by_4xx_over_code_per_min": 'HEADER {result$:I}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "400 <= code"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance","code"], last: pcode }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : [instance, code], key : result, target : counter}\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"code" }\nUPDATE { key: result, value: sum}\n\nFILTER { key: result, exist:true }\n\nCREATE {key:_id_,from:code}\nCREATE {key:_name_,from:code}',
-  "cpm/apiserver_request_trend_by_4xx_over_resource_subresource_per_min": `HEADER {result$:I}
+  "mxql/cpm/apiserver_request_trend_by_4xx_over_code_per_min": 'HEADER {result$:I}\nCATEGORY stat_gen_kube_apiserver_request_total\nFLEXLOAD\nSELECT\n\nFILTER { expr : "400 <= code"}\n\nGROUP { timeunit:1m, merge:"counter", pk:["instance","code"], last: pcode }\nUPDATE { key: counter, value: sum}\n\nDELTA {pk : [instance, code], key : result, target : counter}\nADJUST {key: result, over:0}\n\nGROUP { timeunit:1m, merge:"result", pk:"code" }\nUPDATE { key: result, value: sum}\n\nFILTER { key: result, exist:true }\n\nCREATE {key:_id_,from:code}\nCREATE {key:_name_,from:code}',
+  "mxql/cpm/apiserver_request_trend_by_4xx_over_resource_subresource_per_min": `HEADER {result$:I}
 CATEGORY stat_gen_kube_apiserver_request_total
 FLEXLOAD
 SELECT
@@ -33996,7 +39765,7 @@ FILTER { key: result, exist:true }
 
 CREATE { key: _id_, expr: resource+subresource}
 CREATE { key: _name_, expr: resource+' '+subresource}`,
-  "cpm/container_app_cpu_quota_oid": `-- OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
+  "mxql/cpm/container_app_cpu_quota_oid": `-- OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
 INJECT timepast
 
 HEADER { cpu_quota$:I}
@@ -34016,7 +39785,7 @@ CREATE {key:_id_, from: microOid }
 CREATE {key:_name_, from:oname }
 
 INJECT default`,
-  "cpm/container_app_cpu_quota_okind": `-- OKIND\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
+  "mxql/cpm/container_app_cpu_quota_okind": `-- OKIND\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
 INJECT timepast
 
 HEADER { cpu_quota$:I}
@@ -34040,7 +39809,7 @@ CREATE {key:_name_, from:okindName }
 DELETE [microOid]
 
 INJECT default`,
-  "cpm/container_app_cpu_quota_onode": `-- ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
+  "mxql/cpm/container_app_cpu_quota_onode": `-- ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
 INJECT timepast
 
 HEADER { cpu_quota$:I}
@@ -34063,7 +39832,7 @@ CREATE {key:_name_, from:onodeName }
 DELETE [microOid]
 
 INJECT default`,
-  "cpm/container_app_cpu_quota_pcode": `-- PCODE CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
+  "mxql/cpm/container_app_cpu_quota_pcode": `-- PCODE CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
 OIDSET {microOid:$oid, okind:$okind, onode:$onode}
 
 INJECT timepast
@@ -34087,7 +39856,7 @@ CREATE {key:_name_, from:pname }
 DELETE [microOid]
 
 INJECT default`,
-  "cpm/container_cpu_top5": `INJECT timepast
+  "mxql/cpm/container_cpu_top5": `INJECT timepast
 
 HEADER {cpu_per_quota$:'%'}
 
@@ -34104,7 +39873,7 @@ ROWNUM
 CREATE {key:_id_, from: containerId }
 CREATE {key:_name_, from: name }
 `,
-  "cpm/container_mem_top5": `INJECT timepast
+  "mxql/cpm/container_mem_top5": `INJECT timepast
 
 HEADER {mem_percent$:'%'}
 
@@ -34121,23 +39890,23 @@ ROWNUM
 CREATE {key:_id_, from: containerId }
 CREATE {key:_name_, from: name }
 `,
-  "cpm/etcd_apply": "CATEGORY stat_gen_kube_etcd_server_proposals_applied_total\nFLEXLOAD",
-  "cpm/etcd_commited": "CATEGORY stat_gen_kube_etcd_server_proposals_committed_total\nFLEXLOAD\nINJECT default",
-  "cpm/etcd_cpu_mem_usage": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nINJECT default\n\nSELECT\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "component", value: "etcd" }',
-  "cpm/etcd_cpu_mem_usage_sum": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nINJECT default\n\nSELECT\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "component", value: "etcd" }\n\nGROUP { merge:[cpu_total_millis,mem_working_set], pk:"component" }\nUPDATE { key: [cpu_total_millis,mem_working_set], value: sum }\nLAST-ONLY\n',
-  "cpm/etcd_has_leader": 'CATEGORY stat_gen_kube_etcd_server_has_leader\nFLEXLOAD\nSELECT\nGROUP { timeunit:1m, merge:"gauge", pk:"time" }\nUPDATE { key: "gauge", value: min }\nLAST-ONLY\n',
-  "cpm/etcd_leader_changes": 'CATEGORY stat_gen_kube_etcd_server_leader_changes_seen_total\nFLEXLOAD\nSELECT\nDELTA {pk: instance, key: result, target: counter}\nADJUST {key: result, over: 0}\n\nFILTER { key: "result", exist:"true" }',
-  "cpm/etcd_pod_count": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nSELECT\nFILTER { key: "namespace", like: "kube-system" }\nFILTER { key: "component", value: "etcd" }\nGROUP { pk:"component"}\nSELECT [time, _rows_, component]\nLAST-ONLY\n',
-  "cpm/etcd_podip_list": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nINJECT default\n\nSELECT [component, namespace, podIp]\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "component", value: "etcd" }\n\nLAST-ONLY {key: podIp}',
-  "cpm/etcd_restart_count": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nSELECT\nFILTER { key: "namespace", like: "kube-system" }\nFILTER { key: "component", value: "etcd" }\nSELECT [time, podName, RestartCount]',
-  "cpm/kube_debug_agent_list": "CATEGORY agent_list\nFLEXLOAD\nSELECT\nORDER {key:otype, sort: desc}",
-  "cpm/kube_debug_last_app_counter": "TIME-RANGE {recent: 10s}\nCATEGORY app_counter\nTAGLOAD\nSELECT\nLAST-ONLY {key: oid}\nLIMIT 50\n",
-  "cpm/kube_debug_last_container": "TIME-RANGE {recent: 10s}\nCATEGORY container\nTAGLOAD\nSELECT\nLAST-ONLY {key: containerId}\nLIMIT 50",
-  "cpm/kube_debug_last_pod": "TIME-RANGE {recent: 10s}\nCATEGORY kube_pod\nTAGLOAD\nSELECT\nLAST-ONLY {key: [namespace, podname, podUid]}\nLIMIT 50",
-  "cpm/kube_debug_last_server_base": "TIME-RANGE {recent: 10s}\nCATEGORY server_base\nTAGLOAD\nSELECT\nLAST-ONLY {key: [onode, host_ip, oid]}\n",
-  "cpm/kube_debug_last_server_disk": "TIME-RANGE {recent: 10s}\nCATEGORY server_disk\nTAGLOAD\nSELECT\nLAST-ONLY\nLIMIT 1\n",
-  "cpm/kube_debug_node_list": "CATEGORY kube_node\nTIME-RANGE {recent: 1m}\nTAGLOAD {backward: true}\nSELECT\nLAST-ONLY {key: onode}",
-  "cpm/kube_event_last24h_limit30": `INJECT timepast
+  "mxql/cpm/etcd_apply": "CATEGORY stat_gen_kube_etcd_server_proposals_applied_total\nFLEXLOAD",
+  "mxql/cpm/etcd_commited": "CATEGORY stat_gen_kube_etcd_server_proposals_committed_total\nFLEXLOAD\nINJECT default",
+  "mxql/cpm/etcd_cpu_mem_usage": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nINJECT default\n\nSELECT\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "component", value: "etcd" }',
+  "mxql/cpm/etcd_cpu_mem_usage_sum": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nINJECT default\n\nSELECT\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "component", value: "etcd" }\n\nGROUP { merge:[cpu_total_millis,mem_working_set], pk:"component" }\nUPDATE { key: [cpu_total_millis,mem_working_set], value: sum }\nLAST-ONLY\n',
+  "mxql/cpm/etcd_has_leader": 'CATEGORY stat_gen_kube_etcd_server_has_leader\nFLEXLOAD\nSELECT\nGROUP { timeunit:1m, merge:"gauge", pk:"time" }\nUPDATE { key: "gauge", value: min }\nLAST-ONLY\n',
+  "mxql/cpm/etcd_leader_changes": 'CATEGORY stat_gen_kube_etcd_server_leader_changes_seen_total\nFLEXLOAD\nSELECT\nDELTA {pk: instance, key: result, target: counter}\nADJUST {key: result, over: 0}\n\nFILTER { key: "result", exist:"true" }',
+  "mxql/cpm/etcd_pod_count": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nSELECT\nFILTER { key: "namespace", like: "kube-system" }\nFILTER { key: "component", value: "etcd" }\nGROUP { pk:"component"}\nSELECT [time, _rows_, component]\nLAST-ONLY\n',
+  "mxql/cpm/etcd_podip_list": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nINJECT default\n\nSELECT [component, namespace, podIp]\nFILTER { key: "namespace", value: "kube-system" }\nFILTER { key: "component", value: "etcd" }\n\nLAST-ONLY {key: podIp}',
+  "mxql/cpm/etcd_restart_count": 'CATEGORY {"kube_pod":6h, "kube_pod{m5}":3d, "kube_pod{h1}":unlimit }\nTAGLOAD\nSELECT\nFILTER { key: "namespace", like: "kube-system" }\nFILTER { key: "component", value: "etcd" }\nSELECT [time, podName, RestartCount]',
+  "mxql/cpm/kube_debug_agent_list": "CATEGORY agent_list\nFLEXLOAD\nSELECT\nORDER {key:otype, sort: desc}",
+  "mxql/cpm/kube_debug_last_app_counter": "TIME-RANGE {recent: 10s}\nCATEGORY app_counter\nTAGLOAD\nSELECT\nLAST-ONLY {key: oid}\nLIMIT 50\n",
+  "mxql/cpm/kube_debug_last_container": "TIME-RANGE {recent: 10s}\nCATEGORY container\nTAGLOAD\nSELECT\nLAST-ONLY {key: containerId}\nLIMIT 50",
+  "mxql/cpm/kube_debug_last_pod": "TIME-RANGE {recent: 10s}\nCATEGORY kube_pod\nTAGLOAD\nSELECT\nLAST-ONLY {key: [namespace, podname, podUid]}\nLIMIT 50",
+  "mxql/cpm/kube_debug_last_server_base": "TIME-RANGE {recent: 10s}\nCATEGORY server_base\nTAGLOAD\nSELECT\nLAST-ONLY {key: [onode, host_ip, oid]}\n",
+  "mxql/cpm/kube_debug_last_server_disk": "TIME-RANGE {recent: 10s}\nCATEGORY server_disk\nTAGLOAD\nSELECT\nLAST-ONLY\nLIMIT 1\n",
+  "mxql/cpm/kube_debug_node_list": "CATEGORY kube_node\nTIME-RANGE {recent: 1m}\nTAGLOAD {backward: true}\nSELECT\nLAST-ONLY {key: onode}",
+  "mxql/cpm/kube_event_last24h_limit30": `INJECT timepast
 
 HEADER {mem_percent$:'%'}
 
@@ -34154,8 +39923,8 @@ ROWNUM
 CREATE {key:_id_, from: name }
 CREATE {key:_name_, from: uid }
 `,
-  "cpm/kube_event_stat": "INJECT timepast\n\nHEADER {}\n\nTIME-RANGE {duration:60m, etime:$etime}\nCATEGORY kube_event_stat\nTAGLOAD \n\nSELECT [time, namespace, BackOff, CleanupLoadBalancerFailed, Created, ERROR, Failed, FailedComputeMetricsReplicas, FailedCreatePodSandBox, FailedGetResourceMetric, FailedKillPod, FailedScheduling, FailedToUpdateEndpoint, Killing, Pulled, Pulling, SandboxChanged, ScalingReplicaSet, Scheduled, Started, SuccessfulCreate, SuccessfulDelete, SuccessfulRescale, TaintManagerEviction, Unhealthy  ]\nROWNUM\n",
-  "cpm/kube_pod_stat": `INJECT timepast
+  "mxql/cpm/kube_event_stat": "INJECT timepast\n\nHEADER {}\n\nTIME-RANGE {duration:60m, etime:$etime}\nCATEGORY kube_event_stat\nTAGLOAD \n\nSELECT [time, namespace, BackOff, CleanupLoadBalancerFailed, Created, ERROR, Failed, FailedComputeMetricsReplicas, FailedCreatePodSandBox, FailedGetResourceMetric, FailedKillPod, FailedScheduling, FailedToUpdateEndpoint, Killing, Pulled, Pulling, SandboxChanged, ScalingReplicaSet, Scheduled, Started, SuccessfulCreate, SuccessfulDelete, SuccessfulRescale, TaintManagerEviction, Unhealthy  ]\nROWNUM\n",
+  "mxql/cpm/kube_pod_stat": `INJECT timepast
 
 HEADER {cpu_per_quota$:'%'}
 
@@ -34170,7 +39939,7 @@ ROWNUM
 CREATE {key:_id_, from: name }
 CREATE {key:_name_, from: name }
 `,
-  "cpm/kube_stat": `HEADER {cpu_per_quota$:'%'}
+  "mxql/cpm/kube_stat": `HEADER {cpu_per_quota$:'%'}
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -34180,8 +39949,8 @@ SELECT [available_pod, desired_pod, nodes, running_containers, stopped_container
 LIMIT 1
 ROWNUM
 `,
-  "cpm/node_cpu_top5": "INJECT timepast\n\nHEADER {cpu$:'%', cpu_usr$:'%', cpu_sys$:'%', cpu_idle$:'%',\n        cpu_nice$:'%', cpu_irq$:'%', cpu_softirq$:'%', cpu_steal$:'%',\n        cpu_iowait$:'%' }\n\nTIME-RANGE {duration:10s, etime:$etime}\nCATEGORY server_base\nTAGLOAD {backward : true}\n\nFIRST-ONLY oid\n\nSELECT [time, oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\nORDER {key:cpu, sort:desc}\nLIMIT 5\nROWNUM\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n",
-  "cpm/node_disk_top5": `INJECT timepast
+  "mxql/cpm/node_cpu_top5": "INJECT timepast\n\nHEADER {cpu$:'%', cpu_usr$:'%', cpu_sys$:'%', cpu_idle$:'%',\n        cpu_nice$:'%', cpu_irq$:'%', cpu_softirq$:'%', cpu_steal$:'%',\n        cpu_iowait$:'%' }\n\nTIME-RANGE {duration:10s, etime:$etime}\nCATEGORY server_base\nTAGLOAD {backward : true}\n\nFIRST-ONLY oid\n\nSELECT [time, oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\nORDER {key:cpu, sort:desc}\nLIMIT 5\nROWNUM\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n",
+  "mxql/cpm/node_disk_top5": `INJECT timepast
 
 HEADER {usedPercent$:'%'}
 
@@ -34198,7 +39967,7 @@ ROWNUM
 CREATE {key:_id_, from: oid }
 CREATE {key:_name_, from: oname }
 `,
-  "cpm/node_mem_top5": `INJECT timepast
+  "mxql/cpm/node_mem_top5": `INJECT timepast
 
 HEADER {memory_pused$:'%', memory_used$:'B', memory_swappused$:'%'}
 
@@ -34215,14 +39984,14 @@ ROWNUM
 CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 `,
-  "cpm/pod_performance_pod_list": 'TIME-RANGE {duration: 60s, etime: $etime}\nCATEGORY kube_pod\nTAGLOAD\nSELECT [time, qosClass, startTime, podUid, phase, podName, RestartCount, con_cpu_limit_total, memory_limit, cpu_request, memory_request, namespace]\nFILTER { key: "qosClass", exist: true }\nFILTER { key: "podUid", exist: true }\nFILTER { key: "startTime", over: 1 }\nFILTER { key: "phase", value:["Running","Succeeded"] }\nLAST-ONLY {key: [podUid, namespace]}\nRENAME {src:podName, dst:name}\nRENAME {src:RestartCount, dst:restartCount}\nRENAME {src:con_cpu_limit_total, dst:cpuLimits}\nRENAME {src:memory_limit, dst:memLimits}\nRENAME {src:cpu_request, dst:cpuRequests}\nRENAME {src:memory_request, dst:memRequests}',
-  "db2/parameter_oid_range": "CATEGORY db_db2_parameter\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\nUNFOLD [name, value]\nPIVOT-FIELD {key: [oname,pname,pcode,time], pivot_field:name, pivot_value:value}",
-  "dbx/file": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\nINJECT\nLIMIT 100\n",
-  "dbx/file_oid": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nLIMIT 100\n",
-  "dbx/file_oid_file": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFILTER {key:filename, value:$filename}\nLIMIT 100\n",
-  "dbx/filename": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\n\nSELECT [time, oid, filename]\n\nFIRST-ONLY {key:filename}\n\nINJECT\n",
-  "dbx/filename_oid": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\n\nSELECT [time, oid, filename]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:filename}\n\nINJECT\n",
-  "flexboard/app_gc": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568
+  "mxql/cpm/pod_performance_pod_list": 'TIME-RANGE {duration: 60s, etime: $etime}\nCATEGORY kube_pod\nTAGLOAD\nSELECT [time, qosClass, startTime, podUid, phase, podName, RestartCount, con_cpu_limit_total, memory_limit, cpu_request, memory_request, namespace]\nFILTER { key: "qosClass", exist: true }\nFILTER { key: "podUid", exist: true }\nFILTER { key: "startTime", over: 1 }\nFILTER { key: "phase", value:["Running","Succeeded"] }\nLAST-ONLY {key: [podUid, namespace]}\nRENAME {src:podName, dst:name}\nRENAME {src:RestartCount, dst:restartCount}\nRENAME {src:con_cpu_limit_total, dst:cpuLimits}\nRENAME {src:memory_limit, dst:memLimits}\nRENAME {src:cpu_request, dst:cpuRequests}\nRENAME {src:memory_request, dst:memRequests}',
+  "mxql/db2/parameter_oid_range": "CATEGORY db_db2_parameter\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\nUNFOLD [name, value]\nPIVOT-FIELD {key: [oname,pname,pcode,time], pivot_field:name, pivot_value:value}",
+  "mxql/dbx/file": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\nINJECT\nLIMIT 100\n",
+  "mxql/dbx/file_oid": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nLIMIT 100\n",
+  "mxql/dbx/file_oid_file": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFILTER {key:filename, value:$filename}\nLIMIT 100\n",
+  "mxql/dbx/filename": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\n\nSELECT [time, oid, filename]\n\nFIRST-ONLY {key:filename}\n\nINJECT\n",
+  "mxql/dbx/filename_oid": "--TIME-RANGE {duration:1h, etime:$etime}\n\nCATEGORY file\n\nTAGLOAD {backward:true}\n\nSELECT [time, oid, filename]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:filename}\n\nINJECT\n",
+  "mxql/flexboard/app_gc": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568
 INJECT timepast
 
 HEADER {gc_time$:ms, gc_count$:'I', gc_oldgen_count$:'I'}
@@ -34241,9 +40010,9 @@ RENAME {dst:_name_, src:oname}
 
 INJECT default
 `,
-  "flexboard/app_heap": 'INJECT timepast\n\nHEADER {heap_tot$:B, heap_use$:B}\n\nCATEGORY {"app_proc_counter":6h, "app_proc_counter{m5}":3d, "app_proc_counter{h1}":unlimit }  \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\n\nTAGLOAD\n\nSELECT [time, oid, oname, heap_tot, heap_use]\n\nRENAME {dst:_id_, src:oid}\nRENAME {dst:_name_, src:oname}\n\nINJECT default\n',
-  "flexboard/app_host_resource": 'INJECT timepast\n\nHEADER { "cpu$": "P", "disk$": "P", "mem$": "P" }\nCATEGORY {"app_host_resource":6h, "app_host_resource{m5}":3d, "app_host_resource{h1}":unlimit } \nOIDSET $oid\nTAGLOAD\nSELECT [time, oid, oname, $field ]\nRENAME { dst:_id_, src:oid }\nRENAME { dst:_name_, src:oname }\nINJECT default\n',
-  "flexboard/app_host_resource_last": `HEADER {cpu$:'P', 'cpu_proc': 'P', 'swap': 'B', mem$:'P', disk$:'P'}
+  "mxql/flexboard/app_heap": 'INJECT timepast\n\nHEADER {heap_tot$:B, heap_use$:B}\n\nCATEGORY {"app_proc_counter":6h, "app_proc_counter{m5}":3d, "app_proc_counter{h1}":unlimit }  \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\n\nTAGLOAD\n\nSELECT [time, oid, oname, heap_tot, heap_use]\n\nRENAME {dst:_id_, src:oid}\nRENAME {dst:_name_, src:oname}\n\nINJECT default\n',
+  "mxql/flexboard/app_host_resource": 'INJECT timepast\n\nHEADER { "cpu$": "P", "disk$": "P", "mem$": "P" }\nCATEGORY {"app_host_resource":6h, "app_host_resource{m5}":3d, "app_host_resource{h1}":unlimit } \nOIDSET $oid\nTAGLOAD\nSELECT [time, oid, oname, $field ]\nRENAME { dst:_id_, src:oid }\nRENAME { dst:_name_, src:oname }\nINJECT default\n',
+  "mxql/flexboard/app_host_resource_last": `HEADER {cpu$:'P', 'cpu_proc': 'P', 'swap': 'B', mem$:'P', disk$:'P'}
 OIDSET {oid:$oid, okind:$okind, onode:$onode}
 CATEGORY {"app_host_resource":6h, "app_host_resource{m5}":3d, "app_host_resource{h1}":unlimit } 
 TAGLOAD {backward: true}
@@ -34255,13 +40024,13 @@ CREATE {key:_name_, from:oname}
 FIRST-ONLY {key: _id_}
 DELETE [oid,oname, pcode, pname]
 INJECT default`,
-  "flexboard/app_thread": 'INJECT timepast\n\nHEADER {thread_count$:I, thread_daemon$:I, thread_peak_count$: I }\n\nCATEGORY {"app_proc_counter":6h, "app_proc_counter{m5}":3d, "app_proc_counter{h1}":unlimit }  \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\n\nTAGLOAD\n\nSELECT [time, oid, oname, $field]\n\nRENAME {dst:_id_, src:oid}\nRENAME {dst:_name_, src:oname}\n\nINJECT default\n',
-  "flexboard/aws_autoscaling_group_in_service_instances": "INJECT timepast\n\nHEADER {GroupInServiceInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupInServiceInstances.Average]\n\nRENAME { dst: GroupInServiceInstances, src: GroupInServiceInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_autoscaling_group_pending_instances": "INJECT timepast\n\nHEADER {GroupPendingInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupPendingInstances.Average ]\n\nRENAME { dst: GroupPendingInstances, src: GroupPendingInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_autoscaling_group_standby_instances": "INJECT timepast\n\nHEADER {GroupStandbyInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupStandbyInstances.Average ]\n\nRENAME { dst: GroupStandbyInstances, src: GroupStandbyInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_autoscaling_group_teminating_instances": "INJECT timepast\n\nHEADER {GroupTerminatingInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupTerminatingInstances]\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_autoscaling_group_total_instances": "INJECT timepast\n\nHEADER {GroupTotalInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupTotalInstances.Average ]\n\nRENAME { dst: GroupTotalInstances, src: GroupTotalInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_beanstalk_cpu_credit_balance": `INJECT timepast
+  "mxql/flexboard/app_thread": 'INJECT timepast\n\nHEADER {thread_count$:I, thread_daemon$:I, thread_peak_count$: I }\n\nCATEGORY {"app_proc_counter":6h, "app_proc_counter{m5}":3d, "app_proc_counter{h1}":unlimit }  \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\n\nTAGLOAD\n\nSELECT [time, oid, oname, $field]\n\nRENAME {dst:_id_, src:oid}\nRENAME {dst:_name_, src:oname}\n\nINJECT default\n',
+  "mxql/flexboard/aws_autoscaling_group_in_service_instances": "INJECT timepast\n\nHEADER {GroupInServiceInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupInServiceInstances.Average]\n\nRENAME { dst: GroupInServiceInstances, src: GroupInServiceInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_autoscaling_group_pending_instances": "INJECT timepast\n\nHEADER {GroupPendingInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupPendingInstances.Average ]\n\nRENAME { dst: GroupPendingInstances, src: GroupPendingInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_autoscaling_group_standby_instances": "INJECT timepast\n\nHEADER {GroupStandbyInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupStandbyInstances.Average ]\n\nRENAME { dst: GroupStandbyInstances, src: GroupStandbyInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_autoscaling_group_teminating_instances": "INJECT timepast\n\nHEADER {GroupTerminatingInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupTerminatingInstances]\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_autoscaling_group_total_instances": "INJECT timepast\n\nHEADER {GroupTotalInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\n\nSELECT [ time, AutoScalingGroupName, Name, GroupTotalInstances.Average ]\n\nRENAME { dst: GroupTotalInstances, src: GroupTotalInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_beanstalk_cpu_credit_balance": `INJECT timepast
 
 HEADER {CPUCreditBalance$: 'I'}
 
@@ -34279,7 +40048,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 INJECT default`,
-  "flexboard/aws_beanstalk_cpu_utilization": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_cpu_utilization": `INJECT timepast
 
 HEADER {CPUUtilization$: 'P'}
 
@@ -34298,7 +40067,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 INJECT default`,
-  "flexboard/aws_beanstalk_disk_bytes": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_disk_bytes": `INJECT timepast
 
 HEADER {DiskBytes$:'B'}
 
@@ -34315,7 +40084,7 @@ RENAME {src: 'elasticbeanstalk:environment-name', dst:environmentname }
 CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 INJECT default`,
-  "flexboard/aws_beanstalk_disk_ops": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_disk_ops": `INJECT timepast
 
 HEADER {DiskOps$:'F'}
 
@@ -34332,7 +40101,7 @@ RENAME {src: 'elasticbeanstalk:environment-name', dst:environmentname }
 CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 INJECT default`,
-  "flexboard/aws_beanstalk_ebs_bytes": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_ebs_bytes": `INJECT timepast
 
 HEADER {EBSBytes$:'B'}
 
@@ -34350,7 +40119,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 INJECT default
 `,
-  "flexboard/aws_beanstalk_ebs_ops copy": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_ebs_ops copy": `INJECT timepast
 
 HEADER {EBSOps$:'F'}
 
@@ -34366,7 +40135,7 @@ RENAME {src: 'elasticbeanstalk:environment-name', dst:environmentname }
 CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 INJECT default`,
-  "flexboard/aws_beanstalk_ebs_ops": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_ebs_ops": `INJECT timepast
 
 HEADER {EBSOps$:'F'}
 
@@ -34382,8 +40151,8 @@ RENAME {src: 'elasticbeanstalk:environment-name', dst:environmentname }
 CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 INJECT default`,
-  "flexboard/aws_beanstalk_environment_health": "INJECT timepast\n\nHEADER {EnvironmentHealth$:'I'}\n\n \nCATEGORY aws_elasticbeanstalk\nTAGLOAD\n\nSELECT [ time, Id, EnvironmentName, EnvironmentHealth.Average ]\n\nRENAME { dst: EnvironmentHealth, src: EnvironmentHealth.Average }\nCREATE {key:_id_, from: Id}\nCREATE {key:_name_, from: EnvironmentName}\nINJECT default",
-  "flexboard/aws_beanstalk_network_in": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_environment_health": "INJECT timepast\n\nHEADER {EnvironmentHealth$:'I'}\n\n \nCATEGORY aws_elasticbeanstalk\nTAGLOAD\n\nSELECT [ time, Id, EnvironmentName, EnvironmentHealth.Average ]\n\nRENAME { dst: EnvironmentHealth, src: EnvironmentHealth.Average }\nCREATE {key:_id_, from: Id}\nCREATE {key:_name_, from: EnvironmentName}\nINJECT default",
+  "mxql/flexboard/aws_beanstalk_network_in": `INJECT timepast
 
 HEADER {NetworkIn$: 'F'}
 
@@ -34401,7 +40170,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 INJECT default`,
-  "flexboard/aws_beanstalk_network_out": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_network_out": `INJECT timepast
 
 HEADER {NetworkOut$: 'F'}
 
@@ -34419,7 +40188,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 INJECT default`,
-  "flexboard/aws_beanstalk_status_check_faild": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_status_check_faild": `INJECT timepast
 
 HEADER {StatusCheckFailed$: 'I'}
 
@@ -34437,7 +40206,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 INJECT default`,
-  "flexboard/aws_beanstalk_status_check_faild_instance": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_status_check_faild_instance": `INJECT timepast
 
 HEADER {StatusCheckFailed_Instance$: 'I'}
 
@@ -34455,7 +40224,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 INJECT default`,
-  "flexboard/aws_beanstalk_status_check_faild_system": `INJECT timepast
+  "mxql/flexboard/aws_beanstalk_status_check_faild_system": `INJECT timepast
 
 HEADER {StatusCheckFailed_System$: 'I'}
 
@@ -34473,10 +40242,10 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 INJECT default`,
-  "flexboard/aws_ebs_burst_balance": "INJECT timepast\n\nHEADER {BurstBalance$:'I'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, BurstBalance.Minimum]\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nRENAME { dst: BurstBalance, src: BurstBalance.Minimum }\nINJECT default",
-  "flexboard/aws_ebs_region_bytes": 'INJECT timepast\n\nHEADER {}\n\nTIME-RANGE {duration:1500s, etime:$etime}\nCATEGORY aws_ebs\nTAGLOAD {backward : true}\n\nSELECT [time, Region, RegionDescription, VolumeId, volumeSize ]\nFILTER { key: VolumeId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], merge: volumeSize}\nUPDATE {key:volumeSize, value: sum}\nCREATE {key:_id_, from:Region}\nCREATE {key:_name_, from:RegionDescription}\nDELETE [ _rows_ ]\nCREATE {key: volumeSizeByte, expr: " volumeSize * 1000000000 "}\nFIRST-ONLY {key:_id_}\nORDER {key:volumeSize, sort:desc}\nINJECT default',
-  "flexboard/aws_ebs_regions": "INJECT timepast\n\nHEADER {}\n\nTIME-RANGE {duration:1500s, etime:$etime}\nCATEGORY aws_ebs\nTAGLOAD {backward : true}\n\nSELECT [time, Region, RegionDescription, VolumeId]\nFILTER { key: VolumeId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], listup: [Region, RegionDescription]}\nCREATE {key:_id_, from:Region}\nCREATE {key:_name_, from:RegionDescription}\nFIRST-ONLY {key:_id_}\nORDER {key:_rows_, sort:desc}\nRENAME { dst: count, src: _rows_ }\nINJECT default",
-  "flexboard/aws_ebs_volume_bytes": `INJECT timepast
+  "mxql/flexboard/aws_ebs_burst_balance": "INJECT timepast\n\nHEADER {BurstBalance$:'I'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, BurstBalance.Minimum]\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nRENAME { dst: BurstBalance, src: BurstBalance.Minimum }\nINJECT default",
+  "mxql/flexboard/aws_ebs_region_bytes": 'INJECT timepast\n\nHEADER {}\n\nTIME-RANGE {duration:1500s, etime:$etime}\nCATEGORY aws_ebs\nTAGLOAD {backward : true}\n\nSELECT [time, Region, RegionDescription, VolumeId, volumeSize ]\nFILTER { key: VolumeId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], merge: volumeSize}\nUPDATE {key:volumeSize, value: sum}\nCREATE {key:_id_, from:Region}\nCREATE {key:_name_, from:RegionDescription}\nDELETE [ _rows_ ]\nCREATE {key: volumeSizeByte, expr: " volumeSize * 1000000000 "}\nFIRST-ONLY {key:_id_}\nORDER {key:volumeSize, sort:desc}\nINJECT default',
+  "mxql/flexboard/aws_ebs_regions": "INJECT timepast\n\nHEADER {}\n\nTIME-RANGE {duration:1500s, etime:$etime}\nCATEGORY aws_ebs\nTAGLOAD {backward : true}\n\nSELECT [time, Region, RegionDescription, VolumeId]\nFILTER { key: VolumeId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], listup: [Region, RegionDescription]}\nCREATE {key:_id_, from:Region}\nCREATE {key:_name_, from:RegionDescription}\nFIRST-ONLY {key:_id_}\nORDER {key:_rows_, sort:desc}\nRENAME { dst: count, src: _rows_ }\nINJECT default",
+  "mxql/flexboard/aws_ebs_volume_bytes": `INJECT timepast
 
 HEADER {'Volume Size$': "F"}
 CATEGORY aws_ebs
@@ -34488,12 +40257,12 @@ CREATE {key: 'Volume Size', expr: " volumeSize * 1000000000 " }
 CREATE {key: _id_, value: 0}
 CREATE {key: _name_, value: 'Volume Size'}
 INJECT default`,
-  "flexboard/aws_ebs_volume_queue_length": "INJECT timepast\n\nHEADER {VolumeQueueLength$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeQueueLength.Average]\nRENAME { dst: VolumeQueueLength, src: VolumeQueueLength.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_ebs_volume_read_bytes": "INJECT timepast\n\nHEADER {VolumeReadBytes$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeReadBytes.Average]\nRENAME { dst: VolumeReadBytes, src:VolumeReadBytes.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_ebs_volume_read_ops": "INJECT timepast\n\nHEADER {VolumeReadOps$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeReadOps.Average]\nRENAME { dst: VolumeReadOps, src: VolumeReadOps.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_ebs_volume_write_bytes": "INJECT timepast\n\nHEADER {VolumeWriteBytes$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeWriteBytes.Average]\nRENAME { dst: VolumeWriteBytes, src: VolumeWriteBytes.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_ebs_volume_write_ops": "INJECT timepast\n\nHEADER {VolumeWriteOps$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeWriteOps.Average]\nRENAME { dst: VolumeWriteOps, src: VolumeWriteOps.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
-  "flexboard/aws_ebs_volumes": `INJECT timepast
+  "mxql/flexboard/aws_ebs_volume_queue_length": "INJECT timepast\n\nHEADER {VolumeQueueLength$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeQueueLength.Average]\nRENAME { dst: VolumeQueueLength, src: VolumeQueueLength.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_ebs_volume_read_bytes": "INJECT timepast\n\nHEADER {VolumeReadBytes$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeReadBytes.Average]\nRENAME { dst: VolumeReadBytes, src:VolumeReadBytes.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_ebs_volume_read_ops": "INJECT timepast\n\nHEADER {VolumeReadOps$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeReadOps.Average]\nRENAME { dst: VolumeReadOps, src: VolumeReadOps.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_ebs_volume_write_bytes": "INJECT timepast\n\nHEADER {VolumeWriteBytes$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeWriteBytes.Average]\nRENAME { dst: VolumeWriteBytes, src: VolumeWriteBytes.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_ebs_volume_write_ops": "INJECT timepast\n\nHEADER {VolumeWriteOps$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\n\nSELECT [ time, VolumeId, Name, VolumeWriteOps.Average]\nRENAME { dst: VolumeWriteOps, src: VolumeWriteOps.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nINJECT default",
+  "mxql/flexboard/aws_ebs_volumes": `INJECT timepast
 
 HEADER { Volumes$: "I" }
 
@@ -34506,8 +40275,8 @@ CREATE {key: _id_, value: 0}
 CREATE {key: _name_, value: 'Volumes'}
 RENAME {src: volumeSize, dst: 'Volumes'}
 INJECT default`,
-  "flexboard/aws_ec2_cores": 'INJECT timepast\n\nHEADER {cores$: "I"}\nCATEGORY aws_ec2\nTAGLOAD\n\nSELECT [ time, InstanceId, totalThreads ]\nFILTER { key: InstanceId, exist: true }\nGROUP { timeunit: "1h", merge: totalThreads}\n\nUPDATE {key: totalThreads, value: "sum" }\nRENAME {src: totalThreads, dst: "cores"}\nCREATE {key: _id_, value: 0}\nCREATE {key: _name_, value: cores}\n\nINJECT default',
-  "flexboard/aws_ec2_cpu_credit_balance": `INJECT timepast
+  "mxql/flexboard/aws_ec2_cores": 'INJECT timepast\n\nHEADER {cores$: "I"}\nCATEGORY aws_ec2\nTAGLOAD\n\nSELECT [ time, InstanceId, totalThreads ]\nFILTER { key: InstanceId, exist: true }\nGROUP { timeunit: "1h", merge: totalThreads}\n\nUPDATE {key: totalThreads, value: "sum" }\nRENAME {src: totalThreads, dst: "cores"}\nCREATE {key: _id_, value: 0}\nCREATE {key: _name_, value: cores}\n\nINJECT default',
+  "mxql/flexboard/aws_ec2_cpu_credit_balance": `INJECT timepast
 
 HEADER { CPUCreditBalance$: 'I' }
 
@@ -34524,9 +40293,9 @@ CREATE {key:_id_, from:InstanceId}
 CREATE {key:_name_, from:Name}
 ORDER {key:CPUCreditBalance, sort:asc}
 INJECT default`,
-  "flexboard/aws_ec2_cpu_credit_usage": 'INJECT timepast\n\nHEADER { CPUCreditUsage$:"P" }\n\nTIME-RANGE {duration:1800s, etime:$etime}\nCATEGORY aws_ec2\nTAGLOAD {backward : "true"}\n\nSELECT [ time, InstanceId, Name, CPUCreditUsage.Average ]\nFILTER { key: InstanceId, exist: true}\nFIRST-ONLY { key:InstanceId }\nRENAME { dst:_id_, src:InstanceId }\nRENAME { dst:_name_, src:Name }\nRENAME { dst:CPUCreditUsage, src: CPUCreditUsage.Average } \nORDER {key:CPUCreditUsage, sort:asc}\nINJECT default',
-  "flexboard/aws_ec2_cpu_utilization": "INJECT timepast\n\nHEADER {CPUUtilization$: 'P'}\n\n \nCATEGORY aws_ec2\nTAGLOAD {backward : true}\n\nSELECT [ time, InstanceType, CPUUtilization.Average]\nFILTER {key: InstanceType, exist: true}\nGROUP { timeunit: m5, pk:[InstanceType], merge: CPUUtilization.Average}\nUPDATE {key: CPUUtilization.Average, value: avg}\n\nRENAME { dst: CPUUtilization, src: CPUUtilization.Average }\nCREATE {key:_id_, from:InstanceType}\nCREATE {key:_name_, from:InstanceType}\n\nINJECT default",
-  "flexboard/aws_ec2_disk_bytes": `INJECT timepast
+  "mxql/flexboard/aws_ec2_cpu_credit_usage": 'INJECT timepast\n\nHEADER { CPUCreditUsage$:"P" }\n\nTIME-RANGE {duration:1800s, etime:$etime}\nCATEGORY aws_ec2\nTAGLOAD {backward : "true"}\n\nSELECT [ time, InstanceId, Name, CPUCreditUsage.Average ]\nFILTER { key: InstanceId, exist: true}\nFIRST-ONLY { key:InstanceId }\nRENAME { dst:_id_, src:InstanceId }\nRENAME { dst:_name_, src:Name }\nRENAME { dst:CPUCreditUsage, src: CPUCreditUsage.Average } \nORDER {key:CPUCreditUsage, sort:asc}\nINJECT default',
+  "mxql/flexboard/aws_ec2_cpu_utilization": "INJECT timepast\n\nHEADER {CPUUtilization$: 'P'}\n\n \nCATEGORY aws_ec2\nTAGLOAD {backward : true}\n\nSELECT [ time, InstanceType, CPUUtilization.Average]\nFILTER {key: InstanceType, exist: true}\nGROUP { timeunit: m5, pk:[InstanceType], merge: CPUUtilization.Average}\nUPDATE {key: CPUUtilization.Average, value: avg}\n\nRENAME { dst: CPUUtilization, src: CPUUtilization.Average }\nCREATE {key:_id_, from:InstanceType}\nCREATE {key:_name_, from:InstanceType}\n\nINJECT default",
+  "mxql/flexboard/aws_ec2_disk_bytes": `INJECT timepast
 
 HEADER { DiskBytes$:'B' }
 
@@ -34544,7 +40313,7 @@ CREATE { key:_id_, from: InstanceType }
 RENAME { src:_name_, dst:InstanceType }
 DELETE [DiskReadBytes.Average, DiskWriteBytes.Average]
 INJECT default`,
-  "flexboard/aws_ec2_disk_ops": `INJECT timepast
+  "mxql/flexboard/aws_ec2_disk_ops": `INJECT timepast
 
 HEADER { DiskOps$:'F' }
 
@@ -34563,8 +40332,8 @@ RENAME {dst:_name_, src:InstanceType}
 DELETE [DiskReadOps.Average, DiskWriteOps.Average]
 
 INJECT default`,
-  "flexboard/aws_ec2_instances": 'INJECT timepast\n\nHEADER {Instances$:"I"}\nCATEGORY aws_ec2\nSELECT [ time, InstanceId]\nTAGLOAD\nFILTER { key: InstanceId, exist: true }\nGROUP { timeunit: "5m", merge: xx }\nCREATE { key:_id_, value: Instances }\nCREATE { key:_name_, value: Instances }\nRENAME { src: _rows_, dst: Instances }\nINJECT default',
-  "flexboard/aws_ec2_memory_total": `INJECT timepast
+  "mxql/flexboard/aws_ec2_instances": 'INJECT timepast\n\nHEADER {Instances$:"I"}\nCATEGORY aws_ec2\nSELECT [ time, InstanceId]\nTAGLOAD\nFILTER { key: InstanceId, exist: true }\nGROUP { timeunit: "5m", merge: xx }\nCREATE { key:_id_, value: Instances }\nCREATE { key:_name_, value: Instances }\nRENAME { src: _rows_, dst: Instances }\nINJECT default',
+  "mxql/flexboard/aws_ec2_memory_total": `INJECT timepast
 
 HEADER {'Memory Bytes$': "B"}
 CATEGORY aws_ec2
@@ -34577,7 +40346,7 @@ CREATE {key: _id_, value: 0}
 CREATE {key: _name_, value: 'Memory Bytes'}
 RENAME {src: memoryBytes, dst: 'Memory Bytes'}
 INJECT default`,
-  "flexboard/aws_ec2_network_packets": `INJECT timepast
+  "mxql/flexboard/aws_ec2_network_packets": `INJECT timepast
 
 HEADER {NetworkPackets$:'F'}
 
@@ -34597,7 +40366,7 @@ DELETE [NetworkPacketsIn, NetworkPacketsOut]
 
 INJECT default
 `,
-  "flexboard/aws_ec2_network_traffic": `INJECT timepast
+  "mxql/flexboard/aws_ec2_network_traffic": `INJECT timepast
 
 HEADER {NetworkTraffic$:'F'}
 
@@ -34618,9 +40387,9 @@ DELETE [NetworkIn.Average, NetworkOut.Average]
 
 INJECT default
 `,
-  "flexboard/aws_ec2_network_traffic_total": 'INJECT timepast\n\nHEADER {NetworkTraffic$: "F"}\n\nTIME-RANGE {duration:1500s, etime:$etime}\n\nCATEGORY aws_ec2\n\nTAGLOAD {backward : "true"}\n\nSELECT [ time, InstanceId, NetworkIn.Average, NetworkOut.Average]\n\nFILTER { key: InstanceId, exist: "true" }\n\nGROUP { timeunit: "5m", merge: [NetworkIn.Average, NetworkOut.Average]}\n\nUPDATE {key: [NetworkIn.Average, NetworkOut.Average], value: "sum" }\n\nCREATE {key: NetworkTraffic, expr: " NetworkIn.Average + NetworkOut.Average "}\n\nCREATE {key: _id_, value: 0}\n\nFIRST-ONLY { key: id }\n\nINJECT default',
-  "flexboard/aws_ec2_regions": "INJECT timepast\n\nHEADER { count$:'#' }\n\nTIME-RANGE {duration:1200s, etime:$etime}\nCATEGORY aws_ec2\nTAGLOAD {backward : true}\n\nSELECT [ time, Region, RegionDescription, InstanceId]\nFILTER { key: InstanceId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], listup: [Region, RegionDescription]}\n\nRENAME {dst:_id_, src:Region}\nRENAME {dst:_name_, src:RegionDescription}\nRENAME { src: _rows_, dst: count }\n\nFIRST-ONLY {key:_id_}\nORDER {key:count, sort:desc}\n\n\nINJECT default",
-  "flexboard/aws_ec2_state": `INJECT timepast
+  "mxql/flexboard/aws_ec2_network_traffic_total": 'INJECT timepast\n\nHEADER {NetworkTraffic$: "F"}\n\nTIME-RANGE {duration:1500s, etime:$etime}\n\nCATEGORY aws_ec2\n\nTAGLOAD {backward : "true"}\n\nSELECT [ time, InstanceId, NetworkIn.Average, NetworkOut.Average]\n\nFILTER { key: InstanceId, exist: "true" }\n\nGROUP { timeunit: "5m", merge: [NetworkIn.Average, NetworkOut.Average]}\n\nUPDATE {key: [NetworkIn.Average, NetworkOut.Average], value: "sum" }\n\nCREATE {key: NetworkTraffic, expr: " NetworkIn.Average + NetworkOut.Average "}\n\nCREATE {key: _id_, value: 0}\n\nFIRST-ONLY { key: id }\n\nINJECT default',
+  "mxql/flexboard/aws_ec2_regions": "INJECT timepast\n\nHEADER { count$:'#' }\n\nTIME-RANGE {duration:1200s, etime:$etime}\nCATEGORY aws_ec2\nTAGLOAD {backward : true}\n\nSELECT [ time, Region, RegionDescription, InstanceId]\nFILTER { key: InstanceId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], listup: [Region, RegionDescription]}\n\nRENAME {dst:_id_, src:Region}\nRENAME {dst:_name_, src:RegionDescription}\nRENAME { src: _rows_, dst: count }\n\nFIRST-ONLY {key:_id_}\nORDER {key:count, sort:desc}\n\n\nINJECT default",
+  "mxql/flexboard/aws_ec2_state": `INJECT timepast
 
 HEADER { count$:'#' }
 
@@ -34643,8 +40412,8 @@ ORDER {key:count, sort:desc}
 
 
 INJECT default`,
-  "flexboard/aws_ec2_status_failed": 'INJECT timepast\n\nHEADER {StatusCheckFailed$: "I"}\n\n\nTIME-RANGE {duration:1200s, etime:$etime}\n\nCATEGORY aws_ec2\n\nTAGLOAD {backward : "true"}\n\nSELECT [ time, InstanceId, StatusCheckFailed.Average ]\n\nFILTER { key: StatusCheckFailed.Average, exist: true }\nGROUP { timeunit: "5m", merge: StatusCheckFailed.Average }\nUPDATE {key: StatusCheckFailed.Average, value: "sum" }\n\nRENAME { dst: StatusCheckFailed, src:StatusCheckFailed.Average }\nCREATE {key: _id_, value: 0}\nCREATE {key: _name_, value: StatusCheckFailed}\nFIRST-ONLY { key: _id_ }\n\nINJECT default',
-  "flexboard/aws_elasticache_cpu_credit_balance": `INJECT timepast
+  "mxql/flexboard/aws_ec2_status_failed": 'INJECT timepast\n\nHEADER {StatusCheckFailed$: "I"}\n\n\nTIME-RANGE {duration:1200s, etime:$etime}\n\nCATEGORY aws_ec2\n\nTAGLOAD {backward : "true"}\n\nSELECT [ time, InstanceId, StatusCheckFailed.Average ]\n\nFILTER { key: StatusCheckFailed.Average, exist: true }\nGROUP { timeunit: "5m", merge: StatusCheckFailed.Average }\nUPDATE {key: StatusCheckFailed.Average, value: "sum" }\n\nRENAME { dst: StatusCheckFailed, src:StatusCheckFailed.Average }\nCREATE {key: _id_, value: 0}\nCREATE {key: _name_, value: StatusCheckFailed}\nFIRST-ONLY { key: _id_ }\n\nINJECT default',
+  "mxql/flexboard/aws_elasticache_cpu_credit_balance": `INJECT timepast
 
 HEADER {CPUCreditBalance$:'I'}
 
@@ -34660,7 +40429,7 @@ RENAME { dst: CPUCreditBalance, src: CPUCreditBalance.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 INJECT default`,
-  "flexboard/aws_elasticache_cpu_credit_usage": `INJECT timepast
+  "mxql/flexboard/aws_elasticache_cpu_credit_usage": `INJECT timepast
 
 HEADER {CPUCreditUsage$:'I'}
 
@@ -34676,7 +40445,7 @@ RENAME { dst: CPUCreditUsage, src: CPUCreditUsage.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 INJECT default`,
-  "flexboard/aws_elasticache_cpu_utilization": `INJECT timepast
+  "mxql/flexboard/aws_elasticache_cpu_utilization": `INJECT timepast
 
 HEADER {CPUUtilization$:'P'}
 
@@ -34692,7 +40461,7 @@ RENAME { dst: CPUUtilization, src: CPUUtilization.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 INJECT default`,
-  "flexboard/aws_elasticache_curr_connections": `INJECT timepast
+  "mxql/flexboard/aws_elasticache_curr_connections": `INJECT timepast
 
 HEADER {CurrConnections$:'I'}
 
@@ -34708,7 +40477,7 @@ RENAME { dst: CurrConnections, src: CurrConnections.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 INJECT default`,
-  "flexboard/aws_elasticache_get_type_cmds": `INJECT timepast
+  "mxql/flexboard/aws_elasticache_get_type_cmds": `INJECT timepast
 
 HEADER {GetTypeCmds$:'I'}
 
@@ -34724,7 +40493,7 @@ RENAME { dst: GetTypeCmds, src: GetTypeCmds.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 INJECT default`,
-  "flexboard/aws_elasticache_network_bytes_in": `INJECT timepast
+  "mxql/flexboard/aws_elasticache_network_bytes_in": `INJECT timepast
 
 HEADER {NetworkBytesIn$:'I'}
 
@@ -34740,7 +40509,7 @@ RENAME { dst: NetworkBytesIn, src: NetworkBytesIn.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 INJECT default`,
-  "flexboard/aws_elasticache_network_bytes_out": `INJECT timepast
+  "mxql/flexboard/aws_elasticache_network_bytes_out": `INJECT timepast
 
 HEADER {NetworkBytesOut$:'I'}
 
@@ -34756,7 +40525,7 @@ RENAME { dst: NetworkBytesOut, src: NetworkBytesOut.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 INJECT default`,
-  "flexboard/aws_elasticache_new_connections": `INJECT timepast
+  "mxql/flexboard/aws_elasticache_new_connections": `INJECT timepast
 
 HEADER {NewConnections$:'I'}
 
@@ -34773,7 +40542,7 @@ RENAME { dst: NewConnections, src: NewConnections.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 INJECT default`,
-  "flexboard/aws_elasticache_set_type_cmds": `INJECT timepast
+  "mxql/flexboard/aws_elasticache_set_type_cmds": `INJECT timepast
 
 HEADER {SetTypeCmds$:'I'}
 
@@ -34789,16 +40558,16 @@ RENAME { dst: SetTypeCmds, src: SetTypeCmds.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 INJECT default`,
-  "flexboard/aws_elb_active_connection_count": "INJECT timepast\n\nHEADER {ActiveConnectionCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, ActiveConnectionCount.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: ActiveConnectionCount.Sum, exist: true }\n\nRENAME { dst: ActiveConnectionCount, src: ActiveConnectionCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
-  "flexboard/aws_elb_http_code_4xx": "INJECT timepast\n\nHEADER {HTTPCode_ELB_4XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_ELB_4XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_ELB_4XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_ELB_4XX_Count, src: HTTPCode_ELB_4XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
-  "flexboard/aws_elb_http_code_5xx": "INJECT timepast\n\nHEADER {HTTPCode_ELB_5XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_ELB_5XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_ELB_5XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_ELB_5XX_Count, src: HTTPCode_ELB_5XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
-  "flexboard/aws_elb_new_connection_count": "INJECT timepast\n\nHEADER {NewConnectionCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, NewConnectionCount.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: NewConnectionCount.Sum, exist: true }\n\nRENAME { dst: NewConnectionCount, src: NewConnectionCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
-  "flexboard/aws_elb_request_count": "INJECT timepast\n\nHEADER {RequestCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, RequestCount.Sum]\nRENAME { dst: RequestCount, src: RequestCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
-  "flexboard/aws_elb_target_http_code_2xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_2XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_2XX_Count.Sum ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_2XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_2XX_Count, src: HTTPCode_Target_2XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
-  "flexboard/aws_elb_target_http_code_3xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_3XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_3XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_3XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_3XX_Count, src: HTTPCode_Target_3XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
-  "flexboard/aws_elb_target_http_code_4xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_4XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_4XX_Count.Sum ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_4XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_4XX_Count, src: HTTPCode_Target_4XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
-  "flexboard/aws_elb_target_response_time": "INJECT timepast\n\nHEADER {TargetResponseTime$:'ms'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, TargetResponseTime.Average ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: TargetResponseTime.Average, exist: true }\n\nRENAME { dst:TargetResponseTime, src:TargetResponseTime.Average }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
-  "flexboard/db_real_counter_bytes": `
+  "mxql/flexboard/aws_elb_active_connection_count": "INJECT timepast\n\nHEADER {ActiveConnectionCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, ActiveConnectionCount.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: ActiveConnectionCount.Sum, exist: true }\n\nRENAME { dst: ActiveConnectionCount, src: ActiveConnectionCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
+  "mxql/flexboard/aws_elb_http_code_4xx": "INJECT timepast\n\nHEADER {HTTPCode_ELB_4XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_ELB_4XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_ELB_4XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_ELB_4XX_Count, src: HTTPCode_ELB_4XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
+  "mxql/flexboard/aws_elb_http_code_5xx": "INJECT timepast\n\nHEADER {HTTPCode_ELB_5XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_ELB_5XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_ELB_5XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_ELB_5XX_Count, src: HTTPCode_ELB_5XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
+  "mxql/flexboard/aws_elb_new_connection_count": "INJECT timepast\n\nHEADER {NewConnectionCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, NewConnectionCount.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: NewConnectionCount.Sum, exist: true }\n\nRENAME { dst: NewConnectionCount, src: NewConnectionCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
+  "mxql/flexboard/aws_elb_request_count": "INJECT timepast\n\nHEADER {RequestCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, RequestCount.Sum]\nRENAME { dst: RequestCount, src: RequestCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
+  "mxql/flexboard/aws_elb_target_http_code_2xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_2XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_2XX_Count.Sum ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_2XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_2XX_Count, src: HTTPCode_Target_2XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
+  "mxql/flexboard/aws_elb_target_http_code_3xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_3XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_3XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_3XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_3XX_Count, src: HTTPCode_Target_3XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
+  "mxql/flexboard/aws_elb_target_http_code_4xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_4XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_4XX_Count.Sum ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_4XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_4XX_Count, src: HTTPCode_Target_4XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
+  "mxql/flexboard/aws_elb_target_response_time": "INJECT timepast\n\nHEADER {TargetResponseTime$:'ms'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\n\nSELECT [ time, LoadBalancer, LoadBalancerName, TargetResponseTime.Average ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: TargetResponseTime.Average, exist: true }\n\nRENAME { dst:TargetResponseTime, src:TargetResponseTime.Average }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\nINJECT default",
+  "mxql/flexboard/db_real_counter_bytes": `
 HEADER {Bytes_received$: 'B', Bytes_sent$:'B', net_recv_bytes(xos)$: 'B', net_send_bytes(xos)$: 'B' }
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
@@ -34816,7 +40585,7 @@ RENAME {dst:_name_, src:oname}
 
 INJECT default
 `,
-  "flexboard/db_real_counter_disk": `
+  "mxql/flexboard/db_real_counter_disk": `
 HEADER { disk_reads(xos)$:'I', disk_writes(xos)$: 'I' }
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
@@ -34834,7 +40603,7 @@ RENAME {dst:_name_, src:oname}
 
 INJECT default
 `,
-  "flexboard/db_real_counter_lock": `
+  "mxql/flexboard/db_real_counter_lock": `
 HEADER { lock_wait_sessions$: 'I', deadlock_sessions$:'I', Innodb_row_lock_waits$: 'I', Innodb_row_lock_time$: 'ms' }
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
@@ -34852,7 +40621,7 @@ RENAME {dst:_name_, src:oname}
 
 INJECT default
 `,
-  "flexboard/db_real_counter_mysql": `
+  "mxql/flexboard/db_real_counter_mysql": `
 HEADER {Com_select$:'I', Writes$:'I', Sort_rows$:'I', replication_delay$:'I', cpu(xos)$:'P', mem(xos)$:'P'}
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
@@ -34874,7 +40643,7 @@ RENAME { dst: 'cpu(xos)', src:cpu }
 
 INJECT default
 `,
-  "flexboard/db_real_counter_read_requests": `HEADER {Innodb_buffer_pool_reads$: 'I', Innodb_buffer_pool_read_requests$:'I'}
+  "mxql/flexboard/db_real_counter_read_requests": `HEADER {Innodb_buffer_pool_reads$: 'I', Innodb_buffer_pool_read_requests$:'I'}
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
 
@@ -34892,7 +40661,7 @@ RENAME {dst:_name_, src:oname}
 
 INJECT default
 `,
-  "flexboard/db_real_counter_threads": `
+  "mxql/flexboard/db_real_counter_threads": `
 
 HEADER {Aborted_connects$: 'I', Max_used_connections$: 'I', Threads_created$: 'I', Threads_running$:'I', Threads_cached$: 'I', Threads_connected$: 'I' }
 
@@ -34911,7 +40680,7 @@ RENAME {dst:_name_, src:oname}
 
 INJECT default
 `,
-  "flexboard/image_cpu_throttledperiods": `INJECT timepast
+  "mxql/flexboard/image_cpu_throttledperiods": `INJECT timepast
 
 HEADER {cpu_throttledperiods$: 'I'}
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -34924,7 +40693,7 @@ CREATE {key:_id_, from: imageId}
 CREATE {key:_name_, from: image}
 DELETE [image, imageId]
 INJECT default`,
-  "flexboard/image_cpu_total": `INJECT timepast
+  "mxql/flexboard/image_cpu_total": `INJECT timepast
 
 HEADER { cpu_total$: 'P' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -34939,7 +40708,7 @@ CREATE {key:_name_, from:image}
 DELETE [imageId,image]
 
 INJECT default`,
-  "flexboard/image_mem_failcnt": `INJECT timepast
+  "mxql/flexboard/image_mem_failcnt": `INJECT timepast
 
 HEADER { mem_failcnt$: 'I' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -34953,7 +40722,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image ]
 
 INJECT default`,
-  "flexboard/image_mem_percent": `
+  "mxql/flexboard/image_mem_percent": `
 INJECT timepast
 
 HEADER { mem_percent$: 'P' }
@@ -34969,7 +40738,7 @@ CREATE {key:_name_, from:image}
 DELETE [imageId,image]
 
 INJECT default`,
-  "flexboard/image_network_bps": `INJECT timepast
+  "mxql/flexboard/image_network_bps": `INJECT timepast
 
 HEADER { network_rbps$: 'B' , network_wbps$: 'B' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -34983,7 +40752,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image ]
 
 INJECT default`,
-  "flexboard/image_network_iops": `INJECT timepast
+  "mxql/flexboard/image_network_iops": `INJECT timepast
 
 HEADER { network_riops$: 'F' , network_wiops$: 'F' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -34997,7 +40766,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image ]
 
 INJECT default`,
-  "flexboard/image_network_rbps": `
+  "mxql/flexboard/image_network_rbps": `
 INJECT timepast
 
 HEADER { network_rbps$: 'B' }
@@ -35013,7 +40782,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image]
 
 INJECT default`,
-  "flexboard/image_network_riops": `
+  "mxql/flexboard/image_network_riops": `
 INJECT timepast
 
 HEADER { network_rbps$: 'F' }
@@ -35029,7 +40798,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image]
 
 INJECT default`,
-  "flexboard/image_network_wbps": `
+  "mxql/flexboard/image_network_wbps": `
 INJECT timepast
 
 HEADER { network_wbps$: 'B' }
@@ -35045,7 +40814,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image]
 
 INJECT default`,
-  "flexboard/image_network_wiops": `
+  "mxql/flexboard/image_network_wiops": `
 INJECT timepast
 
 HEADER { network_rbps$: 'F' }
@@ -35061,7 +40830,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image]
 
 INJECT default`,
-  "flexboard/kube_container_list": `
+  "mxql/flexboard/kube_container_list": `
 INJECT timepast
 
 HEADER { cpu_quota$:"I", cpu_per_quota$:"P", cpu_throttledtime$:"I", mem_limit$:"B", mem_percent$:"P", mem_failcnt$:"I", network_rbps_byte$:"B", network_wbps_byte:"B", restart_count$:"I", state$:"#" }
@@ -35086,8 +40855,8 @@ CREATE { key: network_wbps_byte, expr:"network_wbps / 1024" }
 DELETE [pcode, pname, oid, containerId]
 
 INJECT default`,
-  "flexboard/kube_event": '\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY {"kube_event":6h, "kube_event{m5}":3d, "kube_event{h1}":unlimit } \nTAGLOAD {backward: true}\n\nSELECT [pcode, pname, oid, uid, kind, namespace, name, last_timestamp, message, reason]\n\nRENAME {dst: _id_, src: uid}\nRENAME {dst: projectName, src: pname}\nRENAME {dst: time, src: last_timestamp}\nRENAME {dst: title, src: reason}\nRENAME {dst: oname, src: name}\n\nLIMIT 100\nINJECT default',
-  "flexboard/kube_node_list": `HEADER { request_cpu$:"I", allocatable_cpu$:"I", limit_cpu$:"I", allocatable_memory$:"B", request_memory$:"B" , limit_memory$:"B"}
+  "mxql/flexboard/kube_event": '\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY {"kube_event":6h, "kube_event{m5}":3d, "kube_event{h1}":unlimit } \nTAGLOAD {backward: true}\n\nSELECT [pcode, pname, oid, uid, kind, namespace, name, last_timestamp, message, reason]\n\nRENAME {dst: _id_, src: uid}\nRENAME {dst: projectName, src: pname}\nRENAME {dst: time, src: last_timestamp}\nRENAME {dst: title, src: reason}\nRENAME {dst: oname, src: name}\n\nLIMIT 100\nINJECT default',
+  "mxql/flexboard/kube_node_list": `HEADER { request_cpu$:"I", allocatable_cpu$:"I", limit_cpu$:"I", allocatable_memory$:"B", request_memory$:"B" , limit_memory$:"B"}
 
 CATEGORY {"kube_node":6h, "kube_node{m5}":3d, "kube_node{h1}":unlimit } 
 OIDSET {oid:$oid, okind:$okind, onode:$onode}
@@ -35106,7 +40875,7 @@ JOIN {query:'/flexboard/server_base', pk:_name_, field:[cpu,memory_pused] }
 DELETE [pcode, pname, oid, onodeName]
 
 INJECT default`,
-  "flexboard/kube_stat_containers": `HEADER {running_containers$:'I',stopped_containers$:'I',waiting_containers$:'I'}
+  "mxql/flexboard/kube_stat_containers": `HEADER {running_containers$:'I',stopped_containers$:'I',waiting_containers$:'I'}
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -35120,7 +40889,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 INJECT default`,
-  "flexboard/kube_stat_containers_series": `HEADER {running_containers$:'I',stopped_containers$:'I',waiting_containers$:'I'}
+  "mxql/flexboard/kube_stat_containers_series": `HEADER {running_containers$:'I',stopped_containers$:'I',waiting_containers$:'I'}
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -35135,7 +40904,7 @@ DELETE [oid]
 
 INJECT default
 `,
-  "flexboard/kube_stat_nodes": `INJECT timepast
+  "mxql/flexboard/kube_stat_nodes": `INJECT timepast
 
 HEADER {nodes$:'I'}
 
@@ -35150,7 +40919,7 @@ CREATE { key:_id_, expr:"pcode + '-' + oid" }
 DELETE [oid]
 
 INJECT default`,
-  "flexboard/kube_stat_pod": `HEADER { available_pod$:'I', unavailable_pod$:'I', desired_pod$:'I'}
+  "mxql/flexboard/kube_stat_pod": `HEADER { available_pod$:'I', unavailable_pod$:'I', desired_pod$:'I'}
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -35165,7 +40934,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 INJECT default`,
-  "flexboard/kube_stat_request_cpu": `HEADER { alloctable_cpu$: 'I', total_available_cpu$: 'I', total_request_cpu$: 'I', }
+  "mxql/flexboard/kube_stat_request_cpu": `HEADER { alloctable_cpu$: 'I', total_available_cpu$: 'I', total_request_cpu$: 'I', }
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -35180,7 +40949,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 INJECT default`,
-  "flexboard/kube_stat_request_memory": `HEADER { alloctable_memory$: 'B', total_available_memory$: 'B', total_request_memory$: 'B', }
+  "mxql/flexboard/kube_stat_request_memory": `HEADER { alloctable_memory$: 'B', total_available_memory$: 'B', total_request_memory$: 'B', }
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -35195,7 +40964,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 INJECT default`,
-  "flexboard/namespace_cpu_total": `INJECT timepast
+  "mxql/flexboard/namespace_cpu_total": `INJECT timepast
 
 HEADER { cpu_total$: 'P' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -35212,7 +40981,7 @@ DELETE [namespaceHash, oid]
 
 
 INJECT default`,
-  "flexboard/namespace_mem_percent": `
+  "mxql/flexboard/namespace_mem_percent": `
 INJECT timepast
 
 HEADER { mem_percent$: 'P' }
@@ -35229,7 +40998,7 @@ CREATE {key: _id_, expr: "pcode + '-' + namespaceHash" }
 DELETE [namespaceHash, oid]
 
 INJECT default`,
-  "flexboard/node_cpu": `INJECT timepast
+  "mxql/flexboard/node_cpu": `INJECT timepast
 
 HEADER {cpu$: 'P'}
 CATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } 
@@ -35240,7 +41009,7 @@ CREATE {key:_id_, from: onodeName}
 CREATE {key:_name_, from: onodeName}
 DELETE [onodeName]
 INJECT default`,
-  "flexboard/node_memory_pused": `INJECT timepast
+  "mxql/flexboard/node_memory_pused": `INJECT timepast
 
 HEADER {memory_pused$: 'P'}
 CATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } 
@@ -35251,7 +41020,7 @@ CREATE {key:_id_, from: onodeName}
 CREATE {key:_name_, from: onodeName}
 DELETE [onodeName]
 INJECT default`,
-  "flexboard/pod_cpu_total": `INJECT timepast
+  "mxql/flexboard/pod_cpu_total": `INJECT timepast
 
 HEADER { cpu_total$: 'P' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -35262,7 +41031,7 @@ CREATE {key:_id_, from:podHash}
 CREATE {key:_name_, from:podName}
 DELETE [podHash,podName]
 INJECT default`,
-  "flexboard/pod_mem_percent": `INJECT timepast
+  "mxql/flexboard/pod_mem_percent": `INJECT timepast
 
 HEADER {mem_percent$: 'P'}
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -35273,7 +41042,7 @@ CREATE {key:_id_, from:podHash}
 CREATE {key:_name_, from:podName}
 DELETE [podHash,podName]
 INJECT default`,
-  "flexboard/server_base": `INJECT timepast
+  "mxql/flexboard/server_base": `INJECT timepast
 
 HEADER { cpu$:'P', memory_pused$: 'P' }
 
@@ -35289,7 +41058,7 @@ RENAME { dst:_id_, src:oid }
 RENAME { dst:_name_, src:oname }
 
 INJECT default`,
-  "flexboard/server_cpu": `INJECT timepast
+  "mxql/flexboard/server_cpu": `INJECT timepast
 
 HEADER {
     cpu$:'P', cpu_usr$:'P', cpu_sys$:'P', cpu_idle$:'P',
@@ -35309,7 +41078,7 @@ RENAME { dst:_id_, src:oid }
 RENAME { dst:_name_, src:oname }
 
 INJECT default`,
-  "flexboard/server_disk_bps": `INJECT timepast
+  "mxql/flexboard/server_disk_bps": `INJECT timepast
 
 HEADER { "readBps$": "F", "writeBps$": "F" }
 
@@ -35325,7 +41094,7 @@ CREATE {key: _name_, expr: "oname + ' - ' + mountPoint"}
 CREATE {key: _id_, expr: "mountPoint + oid" }
 DELETE [oid, oname, mountPoint]
 INJECT default`,
-  "flexboard/server_disk_ioPercent": `INJECT timepast
+  "mxql/flexboard/server_disk_ioPercent": `INJECT timepast
 
 HEADER { "ioPercent$": "P" }
 
@@ -35341,7 +41110,7 @@ CREATE {key: _name_, expr: "oname + ' - ' + mountPoint"}
 CREATE {key: _id_, expr: "mountPoint + oid" }
 DELETE [oid, oname, mountPoint]
 INJECT default`,
-  "flexboard/server_disk_iops": `INJECT timepast
+  "mxql/flexboard/server_disk_iops": `INJECT timepast
 
 HEADER { "readIops$": "F", "writeIops$": "F" }
 
@@ -35357,8 +41126,8 @@ CREATE {key: _name_, expr: "oname + ' - ' + mountPoint"}
 CREATE {key: _id_, expr: "mountPoint + oid" }
 DELETE [oid, oname, mountPoint]
 INJECT default`,
-  "flexboard/server_disk_treemap": 'HEADER {"totalSpace$": "B", "usedPercent$": "P"}\nCATEGORY {"server_disk":1h, "server_disk{m5}":3d, "server_disk{h1}":unlimit } \nOIDSET $oid\nTAGLOAD {backward:true}\nSELECT [oid, oname, mountPoint, totalSpace, usedPercent]\nCREATE {key:_id_, expr:"mountPoint + oid" }\nFIRST-ONLY  {key:_id_}\nRENAME {src: mountPoint, dst: _name_}\nRENAME {src: oname, dst: group}\nINJECT default',
-  "flexboard/server_disk_usedInode": `INJECT timepast
+  "mxql/flexboard/server_disk_treemap": 'HEADER {"totalSpace$": "B", "usedPercent$": "P"}\nCATEGORY {"server_disk":1h, "server_disk{m5}":3d, "server_disk{h1}":unlimit } \nOIDSET $oid\nTAGLOAD {backward:true}\nSELECT [oid, oname, mountPoint, totalSpace, usedPercent]\nCREATE {key:_id_, expr:"mountPoint + oid" }\nFIRST-ONLY  {key:_id_}\nRENAME {src: mountPoint, dst: _name_}\nRENAME {src: oname, dst: group}\nINJECT default',
+  "mxql/flexboard/server_disk_usedInode": `INJECT timepast
 
 HEADER {"usedInode$": "B"}
 
@@ -35374,7 +41143,7 @@ CREATE {key: _name_, expr: "oname + ' - ' + mountPoint"}
 CREATE {key: _id_, expr: "mountPoint + oid" }
 DELETE [oid, oname, mountPoint]
 INJECT default`,
-  "flexboard/server_disk_usedInodePercent": `INJECT timepast
+  "mxql/flexboard/server_disk_usedInodePercent": `INJECT timepast
 
 HEADER {"usedInodePercent$": "P"}
 
@@ -35390,7 +41159,7 @@ CREATE {key: _name_, expr: "oname + ' - ' + mountPoint"}
 CREATE {key: _id_, expr: "mountPoint + oid" }
 DELETE [oid, oname, mountPoint]
 INJECT default`,
-  "flexboard/server_disk_usedPercent": `INJECT timepast
+  "mxql/flexboard/server_disk_usedPercent": `INJECT timepast
 
 HEADER { "usedPercent$": "P" }
 
@@ -35406,7 +41175,7 @@ CREATE {key: _name_, expr: "oname + ' - ' + mountPoint"}
 CREATE {key: _id_, expr: "mountPoint + oid" }
 DELETE [oid, oname, mountPoint]
 INJECT default`,
-  "flexboard/server_disk_usedSpace": `INJECT timepast
+  "mxql/flexboard/server_disk_usedSpace": `INJECT timepast
 
 HEADER {"usedSpace$": "B"}
 
@@ -35422,9 +41191,9 @@ CREATE {key: _name_, expr: "oname + ' - ' + mountPoint"}
 CREATE {key: _id_, expr: "mountPoint + oid" }
 DELETE [oid, oname, mountPoint]
 INJECT default`,
-  "flexboard/server_memory": 'INJECT timepast\n\nHEADER { \n    "memory_pused$": "P", \n    "memory_used$": "B",\n    "memory_total$": "B",\n    "memory_available$": "B", \n    "memory_buffers$": "B", \n    "memory_cached$": "B",\n    "memory_shared$": "B", \n    "memory_free$": "B", \n    "memory_pageFaults$": "B",\n    "memory_slab$": "B", \n    "memory_sreclaimable$": "B",\n    "memory_sunreclaim$": "B",\n    "memory_swappused$": "P",\n}\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, oid, oname, $field]\n\nRENAME {dst:_id_, src: oid }\n\nRENAME {dst:_name_, src: oname }\n\nINJECT default\n',
-  "flexboard/server_memory_treemap": 'HEADER {"totalSpace$": "B", "usedPercent$": "P"}\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \nOIDSET $oid\nTAGLOAD {backward:true}\nSELECT [oid, oname, memory_total, memory_pused]\nFIRST-ONLY  {key:oid}\nRENAME {src:oid, dst: _id_ }\nRENAME {src: memory_total, dst: totalSpace}\nRENAME {src: memory_pused, dst: usedPercent}\nRENAME {src: oname, dst: _name_}\nINJECT default',
-  "flexboard/server_network_io": `INJECT timepast
+  "mxql/flexboard/server_memory": 'INJECT timepast\n\nHEADER { \n    "memory_pused$": "P", \n    "memory_used$": "B",\n    "memory_total$": "B",\n    "memory_available$": "B", \n    "memory_buffers$": "B", \n    "memory_cached$": "B",\n    "memory_shared$": "B", \n    "memory_free$": "B", \n    "memory_pageFaults$": "B",\n    "memory_slab$": "B", \n    "memory_sreclaimable$": "B",\n    "memory_sunreclaim$": "B",\n    "memory_swappused$": "P",\n}\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, oid, oname, $field]\n\nRENAME {dst:_id_, src: oid }\n\nRENAME {dst:_name_, src: oname }\n\nINJECT default\n',
+  "mxql/flexboard/server_memory_treemap": 'HEADER {"totalSpace$": "B", "usedPercent$": "P"}\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \nOIDSET $oid\nTAGLOAD {backward:true}\nSELECT [oid, oname, memory_total, memory_pused]\nFIRST-ONLY  {key:oid}\nRENAME {src:oid, dst: _id_ }\nRENAME {src: memory_total, dst: totalSpace}\nRENAME {src: memory_pused, dst: usedPercent}\nRENAME {src: oname, dst: _name_}\nINJECT default',
+  "mxql/flexboard/server_network_io": `INJECT timepast
 
 HEADER { "In$": "F", "Out$": "F" }
 
@@ -35445,7 +41214,7 @@ DELETE [oid, descHash, oname, desc]
 
 INJECT default
 `,
-  "flexboard/server_process": `INJECT timepast
+  "mxql/flexboard/server_process": `INJECT timepast
 
 HEADER { "cpu$": "P", "count$": "I", "rss$": "B", "memory$": "%", "openFileDescriptors$": "I"}
 CATEGORY {"server_process":1h, "server_process{m5}":3d, "server_process{h1}":unlimit } 
@@ -35457,7 +41226,7 @@ CREATE {key:_name_, expr: "oname + ' - ' + name" }
 DELETE [oid, oname, name, hash]
 
 INJECT default`,
-  "flexboard/server_process_rw": `INJECT timepast
+  "mxql/flexboard/server_process_rw": `INJECT timepast
 
 HEADER { "rbps$": "B", "wbps$": "B", "wiops$": "F", "riops$": "F"}
 CATEGORY {"server_process":1h, "server_process{m5}":3d, "server_process{h1}":unlimit } 
@@ -35468,7 +41237,7 @@ CREATE {key:_id_, expr: "oid + ' - ' + hash" }
 CREATE {key:_name_, expr: "oname + ' - ' + name" }
 DELETE [oid, oname, name, hash]
 INJECT default`,
-  "flexboard/tps_monthly": `-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12
+  "mxql/flexboard/tps_monthly": `-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12
 INJECT timepast
 
 HEADER {tps$:'F'}
@@ -35488,28 +41257,28 @@ RENAME {dst:_name_, src:pname}
 INJECT default
 
 `,
-  "ha/EDB-12_state": "INJECT timepast\n\nHEADER {oid:id , onode:node, server: server, EDB-12: state}\n\nTIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY spsmon\n\nTAGLOAD {backward:true}\n\n-- SELECT [time, oid, oname, onode, server, EDB-12]	-- \uC804\uCCB4\uB97C \uAC00\uC838\uC624\uB3C4\uB85D SELECT \uB97C \uB9C9\uC74C.\nFIRST-ONLY {key:oid}\nRENAME {src:EDB-12, dst: state}\n",
-  "ha/alert_event": "TIME-RANGE { duration:6h, etime: $etime }\n\nCATEGORY alert_event\n\nTAGLOAD { backward: true }\n\n\n",
-  "ha/cluster": "--INJECT timepast\n\nHEADER {oid:id , onode:node, server: server, EDB-12: state}\n\nTIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY cluster\n\nTAGLOAD {backward:true}\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\nFIRST-ONLY {key:oid}\n\nAPPEND {query:'/ha/cluster_net', field:[time, category, pcode, oid, group, node1, node2, status]}\n--APPEND {query:'/app/tps_last_pcode', field:[pcode,tps]}\n\n",
-  "ha/cluster_dep": "TIME-RANGE {duration:30m, etime:$etime}\nCATEGORY cluster_dep\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:[oid,name]}\n",
-  "ha/cluster_dep2": "TIME-RANGE {duration:30m, etime:$etime}\nCATEGORY cluster_dep\nTAGLOAD {backward:true}\nFILTER {key:group, value:$group}\nFIRST-ONLY {key:[oid,name]}\n",
-  "ha/cluster_info": "TIME-RANGE {duration:30m, etime:$etime}  -- \uC2E4\uC81C \uB370\uC774\uD0C0\uB294 30\uBD84 ~ 1\uC2DC\uAC04 \uC5D0 1\uD68C\uC815\uB3C4 \uBCF4\uB0BC\uAC83\uC774\uB77C recent 2h \uC815\uB3C4 \uD55C\uB2E4.\n\nCATEGORY cluster_info\n\nTAGLOAD {backward:true}\n\n-- select \uAC00 \uC5C6\uC73C\uBA74 \uC804\uCCB4 \uCEEC\uB7FC\uC744 \uC804\uBD80 \uAC00\uC838\uC628\uB2E4.\nINJECT\nFIRST-ONLY { key:oid }\n",
-  "ha/cluster_level": "CATEGORY cluster\n\nTAGLOAD {backward:true}\n\nSELECT [time, node, level, group]\n\nLIMIT 100\n",
-  "ha/cluster_net": "TIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY cluster_net\n\nTAGLOAD {backward:true}\n\nFIRST-ONLY {key:[node1,node2]}\n\n",
-  "ha/cluster_sts": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY cluster_sts\n\nTAGLOAD {backward:true}\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\n--FIRST-ONLY {key:oid}\nINJECT\n\nLIMIT 100\n",
-  "ha/cluster_sts2": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY cluster_sts\n\nTAGLOAD {backward:true}\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\n--FIRST-ONLY {key:oid}\n-- INJECT\nFILTER {key:node, value:$node}\n\nLIMIT 100\n",
-  "log/stat/applog-rps-max-0d-1d-7d-28d": 'HEADER {rps.max$:I}\n\nAPPEND q_today\nAPPEND q_yesterday\nAPPEND q_a_week_ago\nAPPEND q_four_week_ago\n\nSUB q_today\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "today" }\nEND\n\nSUB q_yesterday\nTIME-PAST {delta:1d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "yesterday" }\nEND\n\nSUB q_a_week_ago\nTIME-PAST {delta:7d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "a week ago" }\nEND\n\nSUB q_four_week_ago\nTIME-PAST {delta:28d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "four week ago" }\nEND',
-  "log/stat/applog-rps-max-0d-1d-7d": 'HEADER {rps.max$:I}\n\nAPPEND q_today\nAPPEND q_yesterday\nAPPEND q_a_week_ago\n\nSUB q_today\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "today" }\nEND\n\nSUB q_yesterday\nTIME-PAST {delta:1d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "yesterday" }\nEND\n\nSUB q_a_week_ago\nTIME-PAST {delta:7d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "a week ago" }\nEND',
-  "log/stat/applog-rps-rows-0d-1d-7d-28d": 'HEADER {rows$:I}\n\nAPPEND q_today\nAPPEND q_yesterday\nAPPEND q_a_week_ago\nAPPEND q_four_week_ago\n\nSUB q_today\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "today" }\nEND\n\nSUB q_yesterday\nTIME-PAST {delta:1d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "yesterday" }\nEND\n\nSUB q_a_week_ago\nTIME-PAST {delta:7d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "a week ago" }\nEND\n\nSUB q_four_week_ago\nTIME-PAST {delta:28d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "four week ago" }\nEND\n\n',
-  "log/stat/applog-rps-rows-0d-1d-7d": 'HEADER {rows$:I}\n\nAPPEND q_today\nAPPEND q_yesterday\nAPPEND q_a_week_ago\n\nSUB q_today\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "today" }\nEND\n\nSUB q_yesterday\nTIME-PAST {delta:1d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "yesterday" }\nEND\n\nSUB q_a_week_ago\nTIME-PAST {delta:7d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "a week ago" }\nEND',
-  "mongo/agentinfo": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY agentinfo\n\n--TAGLOAD\nTAGLOAD {backward:true}\n--SELECT [time,pcode,oid]\n--CREATE {key:refershidx, value:'4'}\nINJECT\nFIRST-ONLY {key:oid}\n",
-  "mongo/agentinfo_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY agentinfo\n\n--TAGLOAD\nTAGLOAD {backward:true}\n--SELECT [time,pcode,oid]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "mongo/dbname": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY dbname\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid, timebase:'true'}\n\n",
-  "mongo/dbname_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY dbname\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid, timebase:'true'}\n\n",
-  "mongo/event_status": 'TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [ time, oid ]\n\nINJECT\nFIRST-ONLY {key:oid}\n\nCREATE { key:status, expr: "10" }\n',
-  "mongo/index": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY db_index\n\nTAGLOAD {backward: true}\n\nFIRST-ONLY {key: oid, timebase: true}\n",
-  "mongo/index_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY db_index\n\nTAGLOAD {backward: true}\nFILTER {key: oid, value: $oid}\nFIRST-ONLY {key: oid, timebase: true}\n",
-  "mongo/instance_list": `TIME-RANGE {duration:20s, etime:$etime}
+  "mxql/ha/EDB-12_state": "INJECT timepast\n\nHEADER {oid:id , onode:node, server: server, EDB-12: state}\n\nTIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY spsmon\n\nTAGLOAD {backward:true}\n\n-- SELECT [time, oid, oname, onode, server, EDB-12]	-- \uC804\uCCB4\uB97C \uAC00\uC838\uC624\uB3C4\uB85D SELECT \uB97C \uB9C9\uC74C.\nFIRST-ONLY {key:oid}\nRENAME {src:EDB-12, dst: state}\n",
+  "mxql/ha/alert_event": "TIME-RANGE { duration:6h, etime: $etime }\n\nCATEGORY alert_event\n\nTAGLOAD { backward: true }\n\n\n",
+  "mxql/ha/cluster": "--INJECT timepast\n\nHEADER {oid:id , onode:node, server: server, EDB-12: state}\n\nTIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY cluster\n\nTAGLOAD {backward:true}\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\nFIRST-ONLY {key:oid}\n\nAPPEND {query:'/ha/cluster_net', field:[time, category, pcode, oid, group, node1, node2, status]}\n--APPEND {query:'/app/tps_last_pcode', field:[pcode,tps]}\n\n",
+  "mxql/ha/cluster_dep": "TIME-RANGE {duration:30m, etime:$etime}\nCATEGORY cluster_dep\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:[oid,name]}\n",
+  "mxql/ha/cluster_dep2": "TIME-RANGE {duration:30m, etime:$etime}\nCATEGORY cluster_dep\nTAGLOAD {backward:true}\nFILTER {key:group, value:$group}\nFIRST-ONLY {key:[oid,name]}\n",
+  "mxql/ha/cluster_info": "TIME-RANGE {duration:30m, etime:$etime}  -- \uC2E4\uC81C \uB370\uC774\uD0C0\uB294 30\uBD84 ~ 1\uC2DC\uAC04 \uC5D0 1\uD68C\uC815\uB3C4 \uBCF4\uB0BC\uAC83\uC774\uB77C recent 2h \uC815\uB3C4 \uD55C\uB2E4.\n\nCATEGORY cluster_info\n\nTAGLOAD {backward:true}\n\n-- select \uAC00 \uC5C6\uC73C\uBA74 \uC804\uCCB4 \uCEEC\uB7FC\uC744 \uC804\uBD80 \uAC00\uC838\uC628\uB2E4.\nINJECT\nFIRST-ONLY { key:oid }\n",
+  "mxql/ha/cluster_level": "CATEGORY cluster\n\nTAGLOAD {backward:true}\n\nSELECT [time, node, level, group]\n\nLIMIT 100\n",
+  "mxql/ha/cluster_net": "TIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY cluster_net\n\nTAGLOAD {backward:true}\n\nFIRST-ONLY {key:[node1,node2]}\n\n",
+  "mxql/ha/cluster_sts": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY cluster_sts\n\nTAGLOAD {backward:true}\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\n--FIRST-ONLY {key:oid}\nINJECT\n\nLIMIT 100\n",
+  "mxql/ha/cluster_sts2": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY cluster_sts\n\nTAGLOAD {backward:true}\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\n--FIRST-ONLY {key:oid}\n-- INJECT\nFILTER {key:node, value:$node}\n\nLIMIT 100\n",
+  "mxql/log/stat/applog-rps-max-0d-1d-7d-28d": 'HEADER {rps.max$:I}\n\nAPPEND q_today\nAPPEND q_yesterday\nAPPEND q_a_week_ago\nAPPEND q_four_week_ago\n\nSUB q_today\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "today" }\nEND\n\nSUB q_yesterday\nTIME-PAST {delta:1d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "yesterday" }\nEND\n\nSUB q_a_week_ago\nTIME-PAST {delta:7d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "a week ago" }\nEND\n\nSUB q_four_week_ago\nTIME-PAST {delta:28d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "four week ago" }\nEND',
+  "mxql/log/stat/applog-rps-max-0d-1d-7d": 'HEADER {rps.max$:I}\n\nAPPEND q_today\nAPPEND q_yesterday\nAPPEND q_a_week_ago\n\nSUB q_today\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "today" }\nEND\n\nSUB q_yesterday\nTIME-PAST {delta:1d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "yesterday" }\nEND\n\nSUB q_a_week_ago\nTIME-PAST {delta:7d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "a week ago" }\nEND',
+  "mxql/log/stat/applog-rps-rows-0d-1d-7d-28d": 'HEADER {rows$:I}\n\nAPPEND q_today\nAPPEND q_yesterday\nAPPEND q_a_week_ago\nAPPEND q_four_week_ago\n\nSUB q_today\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "today" }\nEND\n\nSUB q_yesterday\nTIME-PAST {delta:1d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "yesterday" }\nEND\n\nSUB q_a_week_ago\nTIME-PAST {delta:7d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "a week ago" }\nEND\n\nSUB q_four_week_ago\nTIME-PAST {delta:28d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "four week ago" }\nEND\n\n',
+  "mxql/log/stat/applog-rps-rows-0d-1d-7d": 'HEADER {rows$:I}\n\nAPPEND q_today\nAPPEND q_yesterday\nAPPEND q_a_week_ago\n\nSUB q_today\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "today" }\nEND\n\nSUB q_yesterday\nTIME-PAST {delta:1d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "yesterday" }\nEND\n\nSUB q_a_week_ago\nTIME-PAST {delta:7d}\nCATEGORY AppLog\nLogCountLoad {stat:"*"}\nSELECT [time, pcode, category, rps.max, rps.maxtime, rps.last, rows]\nCREATE { key: "maxStr", expr:"datetime(rps.maxtime)" }\nCREATE {key : _id_ , from : category}\nCREATE {key : _name_ , from : category}\nCREATE {key : $type, value : "a week ago" }\nEND',
+  "mxql/mongo/agentinfo": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY agentinfo\n\n--TAGLOAD\nTAGLOAD {backward:true}\n--SELECT [time,pcode,oid]\n--CREATE {key:refershidx, value:'4'}\nINJECT\nFIRST-ONLY {key:oid}\n",
+  "mxql/mongo/agentinfo_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY agentinfo\n\n--TAGLOAD\nTAGLOAD {backward:true}\n--SELECT [time,pcode,oid]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/mongo/dbname": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY dbname\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid, timebase:'true'}\n\n",
+  "mxql/mongo/dbname_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY dbname\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid, timebase:'true'}\n\n",
+  "mxql/mongo/event_status": 'TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [ time, oid ]\n\nINJECT\nFIRST-ONLY {key:oid}\n\nCREATE { key:status, expr: "10" }\n',
+  "mxql/mongo/index": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY db_index\n\nTAGLOAD {backward: true}\n\nFIRST-ONLY {key: oid, timebase: true}\n",
+  "mxql/mongo/index_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY db_index\n\nTAGLOAD {backward: true}\nFILTER {key: oid, value: $oid}\nFIRST-ONLY {key: oid, timebase: true}\n",
+  "mxql/mongo/instance_list": `TIME-RANGE {duration:20s, etime:$etime}
 
 CATEGORY stat
 
@@ -35533,7 +41302,7 @@ DELETE [ insert, query, update, delete, command ]
 
 JOIN { query:'/mongo/event_status', pk:oid, field:[status] }
 `,
-  "mongo/instance_list_range": `--TIME-RANGE {duration:20s, etime:$etime}
+  "mxql/mongo/instance_list_range": `--TIME-RANGE {duration:20s, etime:$etime}
 
 CATEGORY stat
 
@@ -35557,23 +41326,23 @@ DELETE [ insert, query, update, delete, command ]
 
 JOIN { query:'/mongo/event_status', pk:oid, field:[status] }
 `,
-  "mongo/itest": '--INJECT timepast\n\nHEADER { "time":I, "oid":I, "curr":I, "active":I, "1":I, "2":I, "3":I, "4":I }\n\nTIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [time,oid,connections$current,logicalSessionRecordCache$activeSessionsCount, opcounters$insert , opcounters$query , opcounters$update , opcounters$delete, opcounters$command ]\n\nCREATE { key:tt, expr: "4+2" }\n\nINJECT\nFIRST-ONLY {key:oid}\n',
-  "mongo/parameter": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY parameter\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid}\n",
-  "mongo/parameter_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY parameter\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "mongo/parameter_oid_range": "CATEGORY parameter\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "mongo/paramtest": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY parameter\n\n--TAGLOAD\nTAGLOAD {backward:true}\nSELECT [time,pcode,oid]\nCREATE {key:hello, value:'hello10'}\nINJECT\nFIRST-ONLY {key:oid}\n",
-  "mongo/session": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY session\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid, timebase:true}\n",
-  "mongo/session_oid": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY session\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid, timebase:true}\n",
-  "mongo/session_oid_range": "CATEGORY session\n\n--TAGLOAD {backward:true}\nTAGLOAD\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid, timebase:true}",
-  "mongo/stat": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid}\n",
-  "mongo/stat_m5_oid_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat{m5}\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
-  "mongo/stat_oid": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "mongo/stat_oid_10m": "TIME-RANGE {duration:10m, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}",
-  "mongo/stat_oid_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
-  "mongo/stat_oid_series": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n--SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]\nSELECT [time,oid,$index]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "mongo/stat_oid_series_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n--SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]\nSELECT [time,oid,$index]\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
-  "mongo/stat_range": "--TIME-RANGE {recent:20s}\n\nCATEGORY stat\n\n--TAGLOAD {backward:true}\nINJECT\n--FILTER [{key:oid, value:11223344}, {key:oid, value:2233445}]\n--FIRST-ONLY {key:oid}\n",
-  "npm/all/linechart/app_name": `INJECT timepast
+  "mxql/mongo/itest": '--INJECT timepast\n\nHEADER { "time":I, "oid":I, "curr":I, "active":I, "1":I, "2":I, "3":I, "4":I }\n\nTIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [time,oid,connections$current,logicalSessionRecordCache$activeSessionsCount, opcounters$insert , opcounters$query , opcounters$update , opcounters$delete, opcounters$command ]\n\nCREATE { key:tt, expr: "4+2" }\n\nINJECT\nFIRST-ONLY {key:oid}\n',
+  "mxql/mongo/parameter": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY parameter\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid}\n",
+  "mxql/mongo/parameter_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY parameter\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/mongo/parameter_oid_range": "CATEGORY parameter\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/mongo/paramtest": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY parameter\n\n--TAGLOAD\nTAGLOAD {backward:true}\nSELECT [time,pcode,oid]\nCREATE {key:hello, value:'hello10'}\nINJECT\nFIRST-ONLY {key:oid}\n",
+  "mxql/mongo/session": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY session\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid, timebase:true}\n",
+  "mxql/mongo/session_oid": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY session\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid, timebase:true}\n",
+  "mxql/mongo/session_oid_range": "CATEGORY session\n\n--TAGLOAD {backward:true}\nTAGLOAD\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid, timebase:true}",
+  "mxql/mongo/stat": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid}\n",
+  "mxql/mongo/stat_m5_oid_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat{m5}\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
+  "mxql/mongo/stat_oid": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/mongo/stat_oid_10m": "TIME-RANGE {duration:10m, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}",
+  "mxql/mongo/stat_oid_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
+  "mxql/mongo/stat_oid_series": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n--SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]\nSELECT [time,oid,$index]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/mongo/stat_oid_series_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n--SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]\nSELECT [time,oid,$index]\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
+  "mxql/mongo/stat_range": "--TIME-RANGE {recent:20s}\n\nCATEGORY stat\n\n--TAGLOAD {backward:true}\nINJECT\n--FILTER [{key:oid, value:11223344}, {key:oid, value:2233445}]\n--FIRST-ONLY {key:oid}\n",
+  "mxql/npm/all/linechart/app_name": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -35638,7 +41407,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/linechart/appname_and_processtype": `INJECT timepast
+  "mxql/npm/all/linechart/appname_and_processtype": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -35709,7 +41478,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/linechart/process_type": `INJECT timepast
+  "mxql/npm/all/linechart/process_type": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -35774,7 +41543,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/app_name": `INJECT timepast
+  "mxql/npm/all/topology/app_name": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -35872,7 +41641,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/app_name_bps": `INJECT timepast
+  "mxql/npm/all/topology/app_name_bps": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -35910,7 +41679,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/app_name_jitter": `INJECT timepast
+  "mxql/npm/all/topology/app_name_jitter": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -35945,7 +41714,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/app_name_latency": `INJECT timepast
+  "mxql/npm/all/topology/app_name_latency": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -35980,7 +41749,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/app_name_pps": `INJECT timepast
+  "mxql/npm/all/topology/app_name_pps": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36018,7 +41787,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/app_name_session": `INJECT timepast
+  "mxql/npm/all/topology/app_name_session": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36048,7 +41817,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/appname_and_processtype": `INJECT timepast
+  "mxql/npm/all/topology/appname_and_processtype": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36160,7 +41929,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/appname_and_processtype_bps": `INJECT timepast
+  "mxql/npm/all/topology/appname_and_processtype_bps": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36199,7 +41968,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/appname_and_processtype_jitter": `INJECT timepast
+  "mxql/npm/all/topology/appname_and_processtype_jitter": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36235,7 +42004,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/appname_and_processtype_latency": `INJECT timepast
+  "mxql/npm/all/topology/appname_and_processtype_latency": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36271,7 +42040,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/appname_and_processtype_pps": `INJECT timepast
+  "mxql/npm/all/topology/appname_and_processtype_pps": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36310,7 +42079,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/appname_and_processtype_session": `INJECT timepast
+  "mxql/npm/all/topology/appname_and_processtype_session": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36341,7 +42110,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/process_type": `INJECT timepast
+  "mxql/npm/all/topology/process_type": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36440,7 +42209,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/process_type_bps": `INJECT timepast
+  "mxql/npm/all/topology/process_type_bps": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36477,7 +42246,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/process_type_jitter": `INJECT timepast
+  "mxql/npm/all/topology/process_type_jitter": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36511,7 +42280,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/process_type_latency": `INJECT timepast
+  "mxql/npm/all/topology/process_type_latency": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36545,7 +42314,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/process_type_pps": `INJECT timepast
+  "mxql/npm/all/topology/process_type_pps": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36582,7 +42351,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/all/topology/process_type_session": `INJECT timepast
+  "mxql/npm/all/topology/process_type_session": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36611,7 +42380,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/tcp/linechart/app_name": `INJECT timepast
+  "mxql/npm/tcp/linechart/app_name": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36680,7 +42449,7 @@ END
 
 
 `,
-  "npm/tcp/linechart/app_name_node_summary": `INJECT timepast
+  "mxql/npm/tcp/linechart/app_name_node_summary": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36697,7 +42466,7 @@ GROUP { timeunit: 1m, merge: ['retransmission_count', 'lost_count'], pk: _id_, l
 UPDATE { key: ['retransmission_count'], value: sum }
 UPDATE { key: ['lost_count'], value: sum }
 `,
-  "npm/tcp/linechart/appname_and_processtype": `INJECT timepast
+  "mxql/npm/tcp/linechart/appname_and_processtype": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36773,7 +42542,7 @@ END
 
 
 `,
-  "npm/tcp/linechart/appname_and_processtype_node_summary": `INJECT timepast
+  "mxql/npm/tcp/linechart/appname_and_processtype_node_summary": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36790,7 +42559,7 @@ GROUP { timeunit: 1m, merge: ['retransmission_count', 'lost_count'], pk: _id_, l
 UPDATE { key: ['retransmission_count'], value: sum }
 UPDATE { key: ['lost_count'], value: sum }
 `,
-  "npm/tcp/linechart/process_type": `INJECT timepast
+  "mxql/npm/tcp/linechart/process_type": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36859,7 +42628,7 @@ END
 
 
 `,
-  "npm/tcp/linechart/process_type_node_summary": `INJECT timepast
+  "mxql/npm/tcp/linechart/process_type_node_summary": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36876,7 +42645,7 @@ GROUP { timeunit: 1m, merge: ['retransmission_count', 'lost_count'], pk: _id_, l
 UPDATE { key: ['retransmission_count'], value: sum }
 UPDATE { key: ['lost_count'], value: sum }
 `,
-  "npm/tcp/topn/jitter/app_name": `INJECT timepast
+  "mxql/npm/tcp/topn/jitter/app_name": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36923,7 +42692,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/tcp/topn/jitter/appname_and_processtype": `INJECT timepast
+  "mxql/npm/tcp/topn/jitter/appname_and_processtype": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -36978,7 +42747,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/tcp/topn/jitter/process_type": `INJECT timepast
+  "mxql/npm/tcp/topn/jitter/process_type": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -37025,7 +42794,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/tcp/topn/latency/app_name": `INJECT timepast
+  "mxql/npm/tcp/topn/latency/app_name": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -37072,7 +42841,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/tcp/topn/latency/appname_and_processtype": `INJECT timepast
+  "mxql/npm/tcp/topn/latency/appname_and_processtype": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -37127,7 +42896,7 @@ LIMIT 1000
 END
 
 `,
-  "npm/tcp/topn/latency/process_type": `INJECT timepast
+  "mxql/npm/tcp/topn/latency/process_type": `INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode}
 CATEGORY { "npm_process_tag_data":6h, "npm_process_tag_data{m5}":1d, "npm_process_tag_data{h1}":unlimit }
 TAGLOAD
@@ -37175,41 +42944,41 @@ LIMIT 1000
 END
 
 `,
-  "oracle_dma/parameter_oid_range": "CATEGORY db_oracle_dma_parameter\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\nUNFOLD [name, value]\nPIVOT-FIELD {key: [oname,pname,pcode,time], pivot_field:name, pivot_value:value}",
-  "redis/agentinfo": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY agentinfo\n\n--TAGLOAD\nTAGLOAD {backward:true}\n--SELECT [time,pcode,oid]\n--CREATE {key:refershidx, value:'4'}\nINJECT\nFIRST-ONLY {key:oid}\n",
-  "redis/agentinfo_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY agentinfo\n\n--TAGLOAD\nTAGLOAD {backward:true}\n--SELECT [time,pcode,oid]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "redis/alert_event": "TIME-RANGE { duration:6h, etime: $etime }\n\nCATEGORY alert_event\n\nTAGLOAD { backward: true }\n\n\n",
-  "redis/config": "TIME-RANGE {duration:1d, etime:$etime}\n-- settings \uB85C \uC0AC\uC6A9\uD558\uC9C0 \uB9D0\uACE0 config \uB97C \uC0AC\uC6A9\uD558\uB3C4\uB85D \uD55C\uB2E4. 201109\nCATEGORY config\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid}\n",
-  "redis/dbname": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY dbname\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid, timebase:true}\n",
-  "redis/dbname_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY dbname\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid, timebase:true}\n",
-  "redis/event_status": 'TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [ time, oid ]\n\nINJECT\nFIRST-ONLY {key:oid}\n\nCREATE { key:status, expr: "10" }\n',
-  "redis/index": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY db_index\n\nTAGLOAD {backward: true}\n\nFIRST-ONLY {key: oid, timebase: true}\n",
-  "redis/index_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY db_index\n\nTAGLOAD {backward: true}\nFILTER {key: oid, value: $oid}\nFIRST-ONLY {key: oid, timebase: true}\n",
-  "redis/instance_list": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [ time, oid, used_cpu, connected_clients, blocked_clients, total_commands_processed, used_memory ] \nINJECT\n--FIRST-ONLY {key:oid}\n\nJOIN { query: '/redis/event_status', pk:oid, field:[status] }\n",
-  "redis/instance_list_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [ time, oid, used_cpu, connected_clients, blocked_clients, total_commands_processed, used_memory ] \n--INJECT\n--FIRST-ONLY {key:oid}\n\nJOIN { query: '/redis/event_status', pk:oid, field:[status] }\n",
-  "redis/parameter_oid": "TIME-RANGE {duration:1d, etime:$etime}\n-- settings \uB85C \uC0AC\uC6A9\uD558\uC9C0 \uB9D0\uACE0 config \uB97C \uC0AC\uC6A9\uD558\uB3C4\uB85D \uD55C\uB2E4. 201109\nCATEGORY config\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "redis/parameter_oid_range": "CATEGORY config\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "redis/session": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY session\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid, timebase:true}\n",
-  "redis/session_oid": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY session\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid, timebase:true}\n",
-  "redis/session_oid_range": "CATEGORY session\n\n--TAGLOAD {backward:true}\nTAGLOAD\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid, timebase:true}",
-  "redis/stat": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid}\n",
-  "redis/stat_m5_oid_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat{m5}\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
-  "redis/stat_oid": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "redis/stat_oid_10m": "TIME-RANGE {duration:10m, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}",
-  "redis/stat_oid_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
-  "redis/stat_oid_series": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n--SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]\nSELECT [time,oid,$index]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
-  "redis/stat_oid_series_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n--SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]\nSELECT [time,oid,$index]\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
-  "redis/stat_range": "--TIME-RANGE {recent:20s}\n\nCATEGORY stat\n\n--TAGLOAD {backward:true}\nINJECT\n--FILTER [{key:oid, value:11223344}, {key:oid, value:2233445}]\n--FIRST-ONLY {key:oid}\n",
-  "sap_ase/parameter_oid_range": "CATEGORY db_sap_ase_parameter\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\nUNFOLD [name, value]\nPIVOT-FIELD {key: [oname,pname,pcode,time], pivot_field:name, pivot_value:value}",
-  "sys/agent_count": "-- \uC694\uC57D \uC5D0\uC774\uC804\uD2B8 \uAC74\uC218\nHEADER {hosts$:I,cores$:I,act$:I,inact$:I\n       ,act_meter_inst$:F, act_meter_host$:F}\n\nCATEGORY agent_count\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\n\nINJECT default",
-  "sys/agent_cpu": "-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nHEADER {cpu$:'%', mem$:B}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTAGLOAD {backward:true}\n\nSELECT [oid,  cpu, memory_pused]\nFIRST-ONLY {key:oid}\nRENAME {src:memory_pused,  dst:mem}\n",
-  "sys/agent_inact": "-- INACTIVE\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D\nHEADER {status$:S}\n\nCATEGORY agent_list\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\n\nSELECT [oid,oname, status ]\nFILTER {key:status, exclude:'ok'}\n\nINJECT default",
-  "sys/agent_list": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\n\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/sys/agent_cpu', pk:oid, field:[cpu,mem] }\n\nINJECT default",
-  "sys/agent_list_ex": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\n\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/sys/cpumem_oid', pk:oid, field:[cpu,mem] }\nJOIN {query:'/sys/disk_max', pk:oid, field:[disk_mountpoint,disk_usedpercent,disk_iopercent,disk_usedinodepercent] }\nJOIN {query:'/sys/network_max', pk:oid, field:[network_desc,network_trafficin, network_trafficout, network_packetin, network_packetout] }\nJOIN {query:'/sys/process_max', pk:oid, field:[process_name, process_cpu, process_memory, process_rss, process_rbps, process_wbps, process_count] }\n\nINJECT default\n",
-  "sys/agent_list_simple": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\n\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/sys/agent_cpu', pk:oid, field:[cpu,mem] }\n\nRENAME {src:cpu, dst: host_cpu}\nRENAME {src:mem, dst: host_mem}\n\nINJECT default\n",
-  "sys/cpu_core_perf": "INJECT timepast\n\nHEADER {idle$:'%', iowait$:'%', nice$:'%', steal$:'%', sys$:'%', usr$:'%', irq$:'%', softirq$:'%'}\n\nTIME-RANGE {duration:10s, etime:$etime}\n\nOID $oid\n\nCATEGORY server_cpu_core\n\nTAGLOAD {backward:true}\n\nSELECT [time,  cpu,  idle, iowait, nice, steal,sys,usr, irq, softirq]\n\nFIRST-ONLY {key:cpu }\n\nCREATE {key:_id_, from:cpu }\nCREATE {key:_name_, from:cpu }",
-  "sys/cpu_load": '-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nINJECT timepast\n\nHEADER {load1$:F, load5$:F, load15$:F}\n\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD \n\nSELECT [time,oid, oname, os,  host_ip, cpu_load1, cpu_load5, cpu_load15]\n\nRENAME {src:cpu_load1, dst:load1}\nRENAME {src:cpu_load5, dst:load5}\nRENAME {src:cpu_load15, dst:load15}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\nINJECT default',
-  "sys/cpu_oid": `INJECT timepast
+  "mxql/oracle_dma/parameter_oid_range": "CATEGORY db_oracle_dma_parameter\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\nUNFOLD [name, value]\nPIVOT-FIELD {key: [oname,pname,pcode,time], pivot_field:name, pivot_value:value}",
+  "mxql/redis/agentinfo": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY agentinfo\n\n--TAGLOAD\nTAGLOAD {backward:true}\n--SELECT [time,pcode,oid]\n--CREATE {key:refershidx, value:'4'}\nINJECT\nFIRST-ONLY {key:oid}\n",
+  "mxql/redis/agentinfo_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY agentinfo\n\n--TAGLOAD\nTAGLOAD {backward:true}\n--SELECT [time,pcode,oid]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/redis/alert_event": "TIME-RANGE { duration:6h, etime: $etime }\n\nCATEGORY alert_event\n\nTAGLOAD { backward: true }\n\n\n",
+  "mxql/redis/config": "TIME-RANGE {duration:1d, etime:$etime}\n-- settings \uB85C \uC0AC\uC6A9\uD558\uC9C0 \uB9D0\uACE0 config \uB97C \uC0AC\uC6A9\uD558\uB3C4\uB85D \uD55C\uB2E4. 201109\nCATEGORY config\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid}\n",
+  "mxql/redis/dbname": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY dbname\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid, timebase:true}\n",
+  "mxql/redis/dbname_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY dbname\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid, timebase:true}\n",
+  "mxql/redis/event_status": 'TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [ time, oid ]\n\nINJECT\nFIRST-ONLY {key:oid}\n\nCREATE { key:status, expr: "10" }\n',
+  "mxql/redis/index": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY db_index\n\nTAGLOAD {backward: true}\n\nFIRST-ONLY {key: oid, timebase: true}\n",
+  "mxql/redis/index_oid": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY db_index\n\nTAGLOAD {backward: true}\nFILTER {key: oid, value: $oid}\nFIRST-ONLY {key: oid, timebase: true}\n",
+  "mxql/redis/instance_list": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [ time, oid, used_cpu, connected_clients, blocked_clients, total_commands_processed, used_memory ] \nINJECT\n--FIRST-ONLY {key:oid}\n\nJOIN { query: '/redis/event_status', pk:oid, field:[status] }\n",
+  "mxql/redis/instance_list_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n\nSELECT [ time, oid, used_cpu, connected_clients, blocked_clients, total_commands_processed, used_memory ] \n--INJECT\n--FIRST-ONLY {key:oid}\n\nJOIN { query: '/redis/event_status', pk:oid, field:[status] }\n",
+  "mxql/redis/parameter_oid": "TIME-RANGE {duration:1d, etime:$etime}\n-- settings \uB85C \uC0AC\uC6A9\uD558\uC9C0 \uB9D0\uACE0 config \uB97C \uC0AC\uC6A9\uD558\uB3C4\uB85D \uD55C\uB2E4. 201109\nCATEGORY config\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/redis/parameter_oid_range": "CATEGORY config\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/redis/session": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY session\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid, timebase:true}\n",
+  "mxql/redis/session_oid": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY session\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid, timebase:true}\n",
+  "mxql/redis/session_oid_range": "CATEGORY session\n\n--TAGLOAD {backward:true}\nTAGLOAD\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid, timebase:true}",
+  "mxql/redis/stat": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nINJECT\nFIRST-ONLY {key:oid}\n",
+  "mxql/redis/stat_m5_oid_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat{m5}\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
+  "mxql/redis/stat_oid": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/redis/stat_oid_10m": "TIME-RANGE {duration:10m, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}",
+  "mxql/redis/stat_oid_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
+  "mxql/redis/stat_oid_series": "TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n--SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]\nSELECT [time,oid,$index]\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\n",
+  "mxql/redis/stat_oid_series_range": "--TIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY stat\n\nTAGLOAD {backward:true}\n--SELECT [time,oid,$p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$12,$p13,$p14,$p15,$p16]\nSELECT [time,oid,$index]\nFILTER {key:oid, value:$oid}\n--FIRST-ONLY {key:oid}\n",
+  "mxql/redis/stat_range": "--TIME-RANGE {recent:20s}\n\nCATEGORY stat\n\n--TAGLOAD {backward:true}\nINJECT\n--FILTER [{key:oid, value:11223344}, {key:oid, value:2233445}]\n--FIRST-ONLY {key:oid}\n",
+  "mxql/sap_ase/parameter_oid_range": "CATEGORY db_sap_ase_parameter\nTAGLOAD {backward:true}\nFILTER {key:oid, value:$oid}\nFIRST-ONLY {key:oid}\nUNFOLD [name, value]\nPIVOT-FIELD {key: [oname,pname,pcode,time], pivot_field:name, pivot_value:value}",
+  "mxql/sys/agent_count": "-- \uC694\uC57D \uC5D0\uC774\uC804\uD2B8 \uAC74\uC218\nHEADER {hosts$:I,cores$:I,act$:I,inact$:I\n       ,act_meter_inst$:F, act_meter_host$:F}\n\nCATEGORY agent_count\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\n\nINJECT default",
+  "mxql/sys/agent_cpu": "-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nHEADER {cpu$:'%', mem$:B}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTAGLOAD {backward:true}\n\nSELECT [oid,  cpu, memory_pused]\nFIRST-ONLY {key:oid}\nRENAME {src:memory_pused,  dst:mem}\n",
+  "mxql/sys/agent_inact": "-- INACTIVE\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D\nHEADER {status$:S}\n\nCATEGORY agent_list\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\n\nSELECT [oid,oname, status ]\nFILTER {key:status, exclude:'ok'}\n\nINJECT default",
+  "mxql/sys/agent_list": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\n\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/sys/agent_cpu', pk:oid, field:[cpu,mem] }\n\nINJECT default",
+  "mxql/sys/agent_list_ex": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\n\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/sys/cpumem_oid', pk:oid, field:[cpu,mem] }\nJOIN {query:'/sys/disk_max', pk:oid, field:[disk_mountpoint,disk_usedpercent,disk_iopercent,disk_usedinodepercent] }\nJOIN {query:'/sys/network_max', pk:oid, field:[network_desc,network_trafficin, network_trafficout, network_packetin, network_packetout] }\nJOIN {query:'/sys/process_max', pk:oid, field:[process_name, process_cpu, process_memory, process_rss, process_rbps, process_wbps, process_count] }\n\nINJECT default\n",
+  "mxql/sys/agent_list_simple": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\n\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/sys/agent_cpu', pk:oid, field:[cpu,mem] }\n\nRENAME {src:cpu, dst: host_cpu}\nRENAME {src:mem, dst: host_mem}\n\nINJECT default\n",
+  "mxql/sys/cpu_core_perf": "INJECT timepast\n\nHEADER {idle$:'%', iowait$:'%', nice$:'%', steal$:'%', sys$:'%', usr$:'%', irq$:'%', softirq$:'%'}\n\nTIME-RANGE {duration:10s, etime:$etime}\n\nOID $oid\n\nCATEGORY server_cpu_core\n\nTAGLOAD {backward:true}\n\nSELECT [time,  cpu,  idle, iowait, nice, steal,sys,usr, irq, softirq]\n\nFIRST-ONLY {key:cpu }\n\nCREATE {key:_id_, from:cpu }\nCREATE {key:_name_, from:cpu }",
+  "mxql/sys/cpu_load": '-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nINJECT timepast\n\nHEADER {load1$:F, load5$:F, load15$:F}\n\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD \n\nSELECT [time,oid, oname, os,  host_ip, cpu_load1, cpu_load5, cpu_load15]\n\nRENAME {src:cpu_load1, dst:load1}\nRENAME {src:cpu_load5, dst:load5}\nRENAME {src:cpu_load15, dst:load15}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\nINJECT default',
+  "mxql/sys/cpu_oid": `INJECT timepast
 
 HEADER {cpu$:'P', cpu_usr$:'P', cpu_sys$:'P', cpu_idle$:'P',
         cpu_nice$:'P', cpu_irq$:'P', cpu_softirq$:'P', cpu_steal$:'P',
@@ -37227,9 +42996,9 @@ CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 
 INJECT default`,
-  "sys/cpu_oid_daily": "INJECT timepast\n\nHEADER {cpu$:'%', cpu_usr$:'%', cpu_sys$:'%', cpu_idle$:'%',\n        cpu_nice$:'%', cpu_irq$:'%', cpu_softirq$:'%', cpu_steal$:'%',\n        cpu_iowait$:'%' }\n\nCATEGORY server_base{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\nINJECT default",
-  "sys/cpu_oid_last": "HEADER {cpu$:'%', cpu_usr$:'%', cpu_sys$:'%', cpu_idle$:'%', \n        cpu_nice$:'%', cpu_irq$:'%', cpu_softirq$:'%', cpu_steal$:'%', \n        cpu_iowait$:'%'}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\nINJECT default",
-  "sys/cpu_top5": `INJECT timepast
+  "mxql/sys/cpu_oid_daily": "INJECT timepast\n\nHEADER {cpu$:'%', cpu_usr$:'%', cpu_sys$:'%', cpu_idle$:'%',\n        cpu_nice$:'%', cpu_irq$:'%', cpu_softirq$:'%', cpu_steal$:'%',\n        cpu_iowait$:'%' }\n\nCATEGORY server_base{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\n\nSELECT [time, oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\nINJECT default",
+  "mxql/sys/cpu_oid_last": "HEADER {cpu$:'%', cpu_usr$:'%', cpu_sys$:'%', cpu_idle$:'%', \n        cpu_nice$:'%', cpu_irq$:'%', cpu_softirq$:'%', cpu_steal$:'%', \n        cpu_iowait$:'%'}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTAGLOAD {backward:true}\n\nSELECT [oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\nINJECT default",
+  "mxql/sys/cpu_top5": `INJECT timepast
 
 HEADER {cpu$:'%', cpu_usr$:'%', cpu_sys$:'%', cpu_idle$:'%',
         cpu_nice$:'%', cpu_irq$:'%', cpu_softirq$:'%', cpu_steal$:'%',
@@ -37252,8 +43021,8 @@ CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 
 INJECT default`,
-  "sys/cpu_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nCATEGORY server_base\n\nTAGLOAD {backward:true}\n\nSELECT [oid, cpu]\n\nGROUP  {pk:oid, merge: cpu}\nUPDATE {key: cpu, value: avg}\nORDER  {key: cpu, sort:desc}\n\nLIMIT  $limit\n\nINJECT default",
-  "sys/cpumem_oid": `INJECT timepast
+  "mxql/sys/cpu_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nCATEGORY server_base\n\nTAGLOAD {backward:true}\n\nSELECT [oid, cpu]\n\nGROUP  {pk:oid, merge: cpu}\nUPDATE {key: cpu, value: avg}\nORDER  {key: cpu, sort:desc}\n\nLIMIT  $limit\n\nINJECT default",
+  "mxql/sys/cpumem_oid": `INJECT timepast
 
 HEADER {cpu$:'%', mem$:'%' }
 
@@ -37270,7 +43039,7 @@ CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 
 INJECT default`,
-  "sys/disk_bps_top5": `INJECT timepast
+  "mxql/sys/disk_bps_top5": `INJECT timepast
 
 HEADER {bps$:'B' }
 
@@ -37292,7 +43061,7 @@ ROWNUM
 CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 `,
-  "sys/disk_iops_top5": `INJECT timepast
+  "mxql/sys/disk_iops_top5": `INJECT timepast
 
 HEADER {iops$:'', usedPercent$:'%' }
 
@@ -37315,13 +43084,13 @@ ROWNUM
 CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 `,
-  "sys/disk_max": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "deviceId$": "S",\n        "deviceIdHash$": "I",\n        "mountPoint$": "S",\n        "fileSystem$": "S",\n        "fileSystemHash$": "I",\n        "freeSpace$": "I",\n        "usedSpace$": "I",\n        "totalSpace$": "I",\n        "freePercent$": "F",\n        "usedPercent$": "F",\n        "blksize$": "I",\n        "readIops$": "F",\n        "writeIops$": "F",\n        "readBps$": "F",\n        "writeBps$": "F",\n        "ioPercent$": "F",\n        "count$": "I",\n        "queueLength$": "F",\n        "totalInode$": "I",\n        "usedInode$": "I",\n        "usedInodePercent$": "F"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET $oid\n\nCATEGORY server_disk\n\nTAGLOAD {backward: "true"}\n\nSELECT [time,pcode,oid,oname,os,deviceId,deviceIdHash,mountPoint,fileSystem,fileSystemHash\n       ,freeSpace,usedSpace,totalSpace\n       ,freePercent,usedPercent,blksize\n       ,readIops,writeIops,readBps,writeBps,ioPercent\n       ,count,queueLength,totalInode\n       ,usedInode,usedInodePercent\n       ,ioutilOrder,usedSpaceOrder\n       ]\nFILTER {key:ioutilOrder, value:1}\nRENAME {src: mountPoint, dst: disk_mountpoint}\nRENAME {src: usedPercent, dst: disk_usedpercent}\nRENAME {src: ioPercent, dst: disk_iopercent}\nRENAME {src: usedInodePercent, dst: disk_usedinodepercent}\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n',
-  "sys/disk_oid": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "deviceId$": "S",\n        "deviceIdHash$": "I",\n        "mountPoint$": "S",\n        "fileSystem$": "S",\n        "fileSystemHash$": "I",\n        "freeSpace$": "I",\n        "usedSpace$": "I",\n        "totalSpace$": "I",\n        "freePercent$": "F",\n        "usedPercent$": "F",\n        "blksize$": "I",\n        "readIops$": "F",\n        "writeIops$": "F",\n        "readBps$": "F",\n        "writeBps$": "F",\n        "ioPercent$": "F",\n        "count$": "I",\n        "queueLength$": "F",\n        "totalInode$": "I",\n        "usedInode$": "I",\n        "usedInodePercent$": "F"}\n\nCATEGORY {"server_disk":1h, "server_disk{m5}":3d, "server_disk{h1}":unlimit } \n\nOIDSET $oid\n\nTAGLOAD\n\nSELECT [time,pcode,oid,oname,os,deviceId,deviceIdHash,mountPoint,fileSystem,fileSystemHash\n       ,freeSpace,usedSpace,totalSpace\n       ,freePercent,usedPercent,blksize\n       ,readIops,writeIops,readBps,writeBps,ioPercent\n       ,count,queueLength,totalInode\n       ,usedInode,usedInodePercent\n       ]\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n',
-  "sys/disk_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_disk\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, $field]\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n\nINJECT default",
-  "sys/mem_oid": 'INJECT timepast\n\nHEADER {  "memory_pused$": "F",\n            "os$": "S",\n            "memory_used$": "I",\n            "memory_slab$": "I",\n            "memory_total$": "I",\n            "memory_swappused$": "F",\n            "memory_free$": "I",\n            "memory_sreclaimable$": "I",\n            "memory_available$": "I",\n            "memory_pavailable$": "F",\n            "memory_swaptotal$": "I",\n            "memory_buffers$": "I",\n            "memory_sunreclaim$": "I",\n            "memory_cached$": "I",\n            "memory_shared$": "I",\n            "memory_pageFaults$": "F",\n            "host_ip$": "S",\n            "memory_swapused$": "I"}\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET $oid\n\nTAGLOAD\n\nSELECT [time, oid, oname, os,  host_ip\n       ,memory_total,memory_free,memory_cached,memory_used,memory_pused,memory_available,memory_pavailable     \n       ,memory_buffers,memory_shared,memory_swapused,memory_swappused,memory_swaptotal\n       ,memory_pageFaults,memory_slab,memory_sreclaimable,memory_sunreclaim\n       ]\n       \nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }',
-  "sys/mem_oid_daily": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "host_ip$": "S",\n        "memory_total$": "I",\n        "memory_free$": "I",\n        "memory_cached$": "I",\n        "memory_used$": "I",\n        "memory_pused$": "I",\n        "memory_available$": "I",\n        "memory_pavailable$": "I",\n        "memory_buffers$": "I",\n        "memory_shared$": "I",\n        "memory_swapused$": "I",\n        "memory_swappused$": "I",\n        "memory_swaptotal$": "I",\n        "memory_pageFaults$": "I",\n        "memory_slab$": "I",\n        "memory_sreclaimable$": "I",\n        "memory_sunreclaim$": "I"\n     }\n\nCATEGORY server_base{m5}\n\nOIDSET $oid\n\nTAGLOAD\n\nSELECT [time,oid, oname, os,  host_ip\n       ,memory_total,memory_free,memory_cached,memory_used,memory_pused,memory_available,memory_pavailable     \n       ,memory_buffers,memory_shared,memory_swapused,memory_swappused,memory_swaptotal\n       ,memory_pageFaults,memory_slab,memory_sreclaimable,memory_sunreclaim\n       ]\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\n',
-  "sys/mem_oid_last": '-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nHEADER {  "os$": "S",\n        "host_ip$": "S",\n        "memory_total$": "I",\n        "memory_free$": "I",\n        "memory_cached$": "I",\n        "memory_used$": "I",\n        "memory_pused$": "F",\n        "memory_available$": "I",\n        "memory_pavailable$": "F",\n        "memory_buffers$": "I",\n        "memory_shared$": "I",\n        "memory_swapused$": "I",\n        "memory_swappused$": "F",\n        "memory_swaptotal$": "I",\n        "memory_pageFaults$": "F",\n        "memory_slab$": "I",\n        "memory_sreclaimable$": "I",\n        "memory_sunreclaim$": "I"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY server_base\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\n\nSELECT [oid, oname, os,  host_ip\n       ,memory_total,memory_free,memory_cached,memory_used,memory_pused,memory_available,memory_pavailable     \n       ,memory_buffers,memory_shared,memory_swapused,memory_swappused,memory_swaptotal\n       ,memory_pageFaults,memory_slab,memory_sreclaimable,memory_sunreclaim\n       ]\n\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\n',
-  "sys/mem_top5": `INJECT timepast
+  "mxql/sys/disk_max": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "deviceId$": "S",\n        "deviceIdHash$": "I",\n        "mountPoint$": "S",\n        "fileSystem$": "S",\n        "fileSystemHash$": "I",\n        "freeSpace$": "I",\n        "usedSpace$": "I",\n        "totalSpace$": "I",\n        "freePercent$": "F",\n        "usedPercent$": "F",\n        "blksize$": "I",\n        "readIops$": "F",\n        "writeIops$": "F",\n        "readBps$": "F",\n        "writeBps$": "F",\n        "ioPercent$": "F",\n        "count$": "I",\n        "queueLength$": "F",\n        "totalInode$": "I",\n        "usedInode$": "I",\n        "usedInodePercent$": "F"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET $oid\n\nCATEGORY server_disk\n\nTAGLOAD {backward: "true"}\n\nSELECT [time,pcode,oid,oname,os,deviceId,deviceIdHash,mountPoint,fileSystem,fileSystemHash\n       ,freeSpace,usedSpace,totalSpace\n       ,freePercent,usedPercent,blksize\n       ,readIops,writeIops,readBps,writeBps,ioPercent\n       ,count,queueLength,totalInode\n       ,usedInode,usedInodePercent\n       ,ioutilOrder,usedSpaceOrder\n       ]\nFILTER {key:ioutilOrder, value:1}\nRENAME {src: mountPoint, dst: disk_mountpoint}\nRENAME {src: usedPercent, dst: disk_usedpercent}\nRENAME {src: ioPercent, dst: disk_iopercent}\nRENAME {src: usedInodePercent, dst: disk_usedinodepercent}\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n',
+  "mxql/sys/disk_oid": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "deviceId$": "S",\n        "deviceIdHash$": "I",\n        "mountPoint$": "S",\n        "fileSystem$": "S",\n        "fileSystemHash$": "I",\n        "freeSpace$": "I",\n        "usedSpace$": "I",\n        "totalSpace$": "I",\n        "freePercent$": "F",\n        "usedPercent$": "F",\n        "blksize$": "I",\n        "readIops$": "F",\n        "writeIops$": "F",\n        "readBps$": "F",\n        "writeBps$": "F",\n        "ioPercent$": "F",\n        "count$": "I",\n        "queueLength$": "F",\n        "totalInode$": "I",\n        "usedInode$": "I",\n        "usedInodePercent$": "F"}\n\nCATEGORY {"server_disk":1h, "server_disk{m5}":3d, "server_disk{h1}":unlimit } \n\nOIDSET $oid\n\nTAGLOAD\n\nSELECT [time,pcode,oid,oname,os,deviceId,deviceIdHash,mountPoint,fileSystem,fileSystemHash\n       ,freeSpace,usedSpace,totalSpace\n       ,freePercent,usedPercent,blksize\n       ,readIops,writeIops,readBps,writeBps,ioPercent\n       ,count,queueLength,totalInode\n       ,usedInode,usedInodePercent\n       ]\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n',
+  "mxql/sys/disk_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_disk\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, $field]\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n\nINJECT default",
+  "mxql/sys/mem_oid": 'INJECT timepast\n\nHEADER {  "memory_pused$": "F",\n            "os$": "S",\n            "memory_used$": "I",\n            "memory_slab$": "I",\n            "memory_total$": "I",\n            "memory_swappused$": "F",\n            "memory_free$": "I",\n            "memory_sreclaimable$": "I",\n            "memory_available$": "I",\n            "memory_pavailable$": "F",\n            "memory_swaptotal$": "I",\n            "memory_buffers$": "I",\n            "memory_sunreclaim$": "I",\n            "memory_cached$": "I",\n            "memory_shared$": "I",\n            "memory_pageFaults$": "F",\n            "host_ip$": "S",\n            "memory_swapused$": "I"}\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET $oid\n\nTAGLOAD\n\nSELECT [time, oid, oname, os,  host_ip\n       ,memory_total,memory_free,memory_cached,memory_used,memory_pused,memory_available,memory_pavailable     \n       ,memory_buffers,memory_shared,memory_swapused,memory_swappused,memory_swaptotal\n       ,memory_pageFaults,memory_slab,memory_sreclaimable,memory_sunreclaim\n       ]\n       \nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }',
+  "mxql/sys/mem_oid_daily": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "host_ip$": "S",\n        "memory_total$": "I",\n        "memory_free$": "I",\n        "memory_cached$": "I",\n        "memory_used$": "I",\n        "memory_pused$": "I",\n        "memory_available$": "I",\n        "memory_pavailable$": "I",\n        "memory_buffers$": "I",\n        "memory_shared$": "I",\n        "memory_swapused$": "I",\n        "memory_swappused$": "I",\n        "memory_swaptotal$": "I",\n        "memory_pageFaults$": "I",\n        "memory_slab$": "I",\n        "memory_sreclaimable$": "I",\n        "memory_sunreclaim$": "I"\n     }\n\nCATEGORY server_base{m5}\n\nOIDSET $oid\n\nTAGLOAD\n\nSELECT [time,oid, oname, os,  host_ip\n       ,memory_total,memory_free,memory_cached,memory_used,memory_pused,memory_available,memory_pavailable     \n       ,memory_buffers,memory_shared,memory_swapused,memory_swappused,memory_swaptotal\n       ,memory_pageFaults,memory_slab,memory_sreclaimable,memory_sunreclaim\n       ]\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\n',
+  "mxql/sys/mem_oid_last": '-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nHEADER {  "os$": "S",\n        "host_ip$": "S",\n        "memory_total$": "I",\n        "memory_free$": "I",\n        "memory_cached$": "I",\n        "memory_used$": "I",\n        "memory_pused$": "F",\n        "memory_available$": "I",\n        "memory_pavailable$": "F",\n        "memory_buffers$": "I",\n        "memory_shared$": "I",\n        "memory_swapused$": "I",\n        "memory_swappused$": "F",\n        "memory_swaptotal$": "I",\n        "memory_pageFaults$": "F",\n        "memory_slab$": "I",\n        "memory_sreclaimable$": "I",\n        "memory_sunreclaim$": "I"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY server_base\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\n\nSELECT [oid, oname, os,  host_ip\n       ,memory_total,memory_free,memory_cached,memory_used,memory_pused,memory_available,memory_pavailable     \n       ,memory_buffers,memory_shared,memory_swapused,memory_swappused,memory_swaptotal\n       ,memory_pageFaults,memory_slab,memory_sreclaimable,memory_sunreclaim\n       ]\n\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\n',
+  "mxql/sys/mem_top5": `INJECT timepast
 
 HEADER {memory_pused$:'%', memory_used$:'B', memory_swappused$:'%'}
 CATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit }
@@ -37339,9 +43108,9 @@ ROWNUM
 CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 `,
-  "sys/memory_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, $field]\n\nRENAME {src: $field, dst: value}\nGROUP  {pk: oid, merge: value}\nUPDATE {key: value, value: max}\nORDER  {key: value, sort:desc}\n\nLIMIT $limit\n\nINJECT default",
-  "sys/netstat_oid": "INJECT timepast\n\nHEADER {netstat_Established$:'', category:sm_netstat}\n\nCATEGORY sm_netstat\n\nTAGLOAD\n\nSELECT [time, oid, oname, os,  host_ip, netstat_Established ]\n\nOIDSET $oid\n\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n",
-  "sys/network_bps_top5": `INJECT timepast
+  "mxql/sys/memory_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, $field]\n\nRENAME {src: $field, dst: value}\nGROUP  {pk: oid, merge: value}\nUPDATE {key: value, value: max}\nORDER  {key: value, sort:desc}\n\nLIMIT $limit\n\nINJECT default",
+  "mxql/sys/netstat_oid": "INJECT timepast\n\nHEADER {netstat_Established$:'', category:sm_netstat}\n\nCATEGORY sm_netstat\n\nTAGLOAD\n\nSELECT [time, oid, oname, os,  host_ip, netstat_Established ]\n\nOIDSET $oid\n\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n",
+  "mxql/sys/network_bps_top5": `INJECT timepast
 
 HEADER {trafficBps$:'B' }
 CATEGORY {"server_network":1h, "server_network{m5}":3d, "server_network{h1}":unlimit }
@@ -37360,7 +43129,7 @@ ROWNUM
 CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 `,
-  "sys/network_io_topn": `HEADER {oid$:'I' }
+  "mxql/sys/network_io_topn": `HEADER {oid$:'I' }
 
 OIDSET {oid:$oid, okind:$okind, onode:$onode}
 
@@ -37382,9 +43151,9 @@ ORDER  {key: value, sort:desc}
 LIMIT $limit
 
 INJECT default`,
-  "sys/network_max": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "desc$": "S",\n        "descHash$": "I",\n        "droppedIn$": "l",\n	"droppedOut$": "l",\n	"errorIn$": "l",\n	"errorOut$": "l",\n	"packetIn$": "F",\n	"packetOut$": "F",\n	"trafficIn$": "F",\n	"trafficOut$": "F"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET $oid\n\nCATEGORY server_network\n\nTAGLOAD {backward: "true"}\n\nSELECT [time,pcode,oid,oname,os,desc, droppedIn, droppedOut\n	, errorIn, errorOut, packetIn, packetOut, trafficIn\n	, trafficOut, bandwidthOrder ]\nFILTER {key: bandwidthOrder, value:1}\nRENAME {src: desc, dst: network_desc}\nRENAME {src: trafficIn, dst: network_trafficin}\nRENAME {src: trafficOut, dst: network_trafficout}\nRENAME {src: packetIn, dst: network_packetin}\nRENAME {src: packetOut, dst: network_packetout}\nRENAME {src: desc, dst: network_desc}\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n',
-  "sys/network_oid": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "desc$": "S",\n        "descHash$": "I",\n        "droppedIn$": "l",\n	"droppedOut$": "l",\n	"errorIn$": "l",\n	"errorOut$": "l",\n	"packetIn$": "F",\n	"packetOut$": "F",\n	"trafficIn$": "F",\n	"trafficOut$": "F"}\n\nCATEGORY {"server_network":1h, "server_network{m5}":3d, "server_network{h1}":unlimit } \n\nOIDSET $oid\n\nTAGLOAD\n\nSELECT [time,pcode,oid,oname,os,droppedIn, droppedOut, errorIn, errorOut, packetIn, packetOut, trafficIn, trafficOut ]\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n',
-  "sys/network_pps_top5": `INJECT timepast
+  "mxql/sys/network_max": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "desc$": "S",\n        "descHash$": "I",\n        "droppedIn$": "l",\n	"droppedOut$": "l",\n	"errorIn$": "l",\n	"errorOut$": "l",\n	"packetIn$": "F",\n	"packetOut$": "F",\n	"trafficIn$": "F",\n	"trafficOut$": "F"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET $oid\n\nCATEGORY server_network\n\nTAGLOAD {backward: "true"}\n\nSELECT [time,pcode,oid,oname,os,desc, droppedIn, droppedOut\n	, errorIn, errorOut, packetIn, packetOut, trafficIn\n	, trafficOut, bandwidthOrder ]\nFILTER {key: bandwidthOrder, value:1}\nRENAME {src: desc, dst: network_desc}\nRENAME {src: trafficIn, dst: network_trafficin}\nRENAME {src: trafficOut, dst: network_trafficout}\nRENAME {src: packetIn, dst: network_packetin}\nRENAME {src: packetOut, dst: network_packetout}\nRENAME {src: desc, dst: network_desc}\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n',
+  "mxql/sys/network_oid": 'INJECT timepast\n\nHEADER { "os$": "S",\n        "desc$": "S",\n        "descHash$": "I",\n        "droppedIn$": "l",\n	"droppedOut$": "l",\n	"errorIn$": "l",\n	"errorOut$": "l",\n	"packetIn$": "F",\n	"packetOut$": "F",\n	"trafficIn$": "F",\n	"trafficOut$": "F"}\n\nCATEGORY {"server_network":1h, "server_network{m5}":3d, "server_network{h1}":unlimit } \n\nOIDSET $oid\n\nTAGLOAD\n\nSELECT [time,pcode,oid,oname,os,droppedIn, droppedOut, errorIn, errorOut, packetIn, packetOut, trafficIn, trafficOut ]\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n',
+  "mxql/sys/network_pps_top5": `INJECT timepast
 
 HEADER {pps$:'' }
 
@@ -37406,7 +43175,7 @@ ROWNUM
 CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 `,
-  "sys/process_cpu_top5": `INJECT timepast
+  "mxql/sys/process_cpu_top5": `INJECT timepast
 
 HEADER {    "cpu$": "%",
             "rss$": "B",
@@ -37434,8 +43203,8 @@ JOIN {query:'/sys/agent_list_simple', pk:oid, field:[oname, status, host_cpu,hos
 CREATE {key:_id_, from:hash }
 CREATE {key:_name_, from:name }
 `,
-  "sys/process_max": 'INJECT timepast\n\nHEADER {    "cpu$": "%",\n            "rss$": "B",\n            "memory$": "%",\n            "openFileDescriptors$": "I",\n            "wbps$": "B",\n            "rbps$": "B"}\n\nTIME-RANGE {duration:40s, etime:$etime}\n\nCATEGORY server_process\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nFIRST-ONLY [oid, hash]\n\nSELECT [ oid, time,name, hash, count, cpu, cpuAccmulated, memory, memoryAccmulated, rss, openFileDescriptors, rbps, wbps, riops, wiops, cpuOrder, memOrder ]\nFILTER {key:cpuOrder, value:1 }\nRENAME {src: name, dst: process_name}\nRENAME {src: count, dst: process_count}\nRENAME {src: cpu, dst: process_cpu}\nRENAME {src: memory, dst: process_memory}\nRENAME {src: rss, dst: process_rss}\nRENAME {src: openFileDescriptors, dst: process_openfiledescriptors}\nRENAME {src: rbps, dst: process_rbps}\nRENAME {src: wbps, dst: process_wbps}\nCREATE {key:_id_, from:hash }\nCREATE {key:_name_, from:name }\nORDER {key:cpu, sort:desc}\n',
-  "sys/process_mem_top5": `INJECT timepast
+  "mxql/sys/process_max": 'INJECT timepast\n\nHEADER {    "cpu$": "%",\n            "rss$": "B",\n            "memory$": "%",\n            "openFileDescriptors$": "I",\n            "wbps$": "B",\n            "rbps$": "B"}\n\nTIME-RANGE {duration:40s, etime:$etime}\n\nCATEGORY server_process\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nFIRST-ONLY [oid, hash]\n\nSELECT [ oid, time,name, hash, count, cpu, cpuAccmulated, memory, memoryAccmulated, rss, openFileDescriptors, rbps, wbps, riops, wiops, cpuOrder, memOrder ]\nFILTER {key:cpuOrder, value:1 }\nRENAME {src: name, dst: process_name}\nRENAME {src: count, dst: process_count}\nRENAME {src: cpu, dst: process_cpu}\nRENAME {src: memory, dst: process_memory}\nRENAME {src: rss, dst: process_rss}\nRENAME {src: openFileDescriptors, dst: process_openfiledescriptors}\nRENAME {src: rbps, dst: process_rbps}\nRENAME {src: wbps, dst: process_wbps}\nCREATE {key:_id_, from:hash }\nCREATE {key:_name_, from:name }\nORDER {key:cpu, sort:desc}\n',
+  "mxql/sys/process_mem_top5": `INJECT timepast
 
 HEADER {    "cpu$": "%",
             "rss$": "B",
@@ -37463,9 +43232,9 @@ JOIN {query:'/sys/agent_list_simple', pk:oid, field:[oname, status, host_cpu,hos
 CREATE {key:_id_, from:hash }
 CREATE {key:_name_, from:name }
 `,
-  "sys/process_oid": 'INJECT timepast\n\nHEADER {    "cpu$": "%",\n            "rss$": "B",\n            "memory$": "%",\n            "openFileDescriptors$": "I",\n            "wbps$": "B",\n            "rbps$": "B"}\n\nTIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY server_process\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nFIRST-ONLY [oid, hash]\n\nSELECT [ oid, time,name, hash, cpu, cpuAccmulated, memory, memoryAccmulated, openFileDescriptors, rbps, wbps, riops, wiops ]\nCREATE {key:_id_, from:hash }\nCREATE {key:_name_, from:name }\n',
-  "sys/process_project": 'INJECT timepast\n\nHEADER {    "cpu$": "%",\n            "rss$": "B",\n            "memory$": "%",\n            "openFileDescriptors$": "I",\n            "wbps$": "B",\n            "rbps$": "B"}\n\nTIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY server_process\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nFIRST-ONLY [oid, hash]\n\nSELECT [ oid, time,name, hash, cpu, cpuAccmulated, memory, rss, memoryAccmulated, openFileDescriptors, rbps, wbps, riops, wiops ]\n\nGROUP {timeunit:20s, pk:hash,last:name, merge:[cpu, rss, memory, wbps, rbps, openFileDescriptors] }\nUPDATE {key:[cpu, rss, memory, wbps, rbps, openFileDescriptors], value:sum}\nCREATE {key:_id_, from:hash }\nCREATE {key:_name_, from:name }\n',
-  "sys/process_rw_topn": `HEADER {oid$:'I' }
+  "mxql/sys/process_oid": 'INJECT timepast\n\nHEADER {    "cpu$": "%",\n            "rss$": "B",\n            "memory$": "%",\n            "openFileDescriptors$": "I",\n            "wbps$": "B",\n            "rbps$": "B"}\n\nTIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY server_process\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nFIRST-ONLY [oid, hash]\n\nSELECT [ oid, time,name, hash, cpu, cpuAccmulated, memory, memoryAccmulated, openFileDescriptors, rbps, wbps, riops, wiops ]\nCREATE {key:_id_, from:hash }\nCREATE {key:_name_, from:name }\n',
+  "mxql/sys/process_project": 'INJECT timepast\n\nHEADER {    "cpu$": "%",\n            "rss$": "B",\n            "memory$": "%",\n            "openFileDescriptors$": "I",\n            "wbps$": "B",\n            "rbps$": "B"}\n\nTIME-RANGE {duration:20s, etime:$etime}\n\nCATEGORY server_process\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nFIRST-ONLY [oid, hash]\n\nSELECT [ oid, time,name, hash, cpu, cpuAccmulated, memory, rss, memoryAccmulated, openFileDescriptors, rbps, wbps, riops, wiops ]\n\nGROUP {timeunit:20s, pk:hash,last:name, merge:[cpu, rss, memory, wbps, rbps, openFileDescriptors] }\nUPDATE {key:[cpu, rss, memory, wbps, rbps, openFileDescriptors], value:sum}\nCREATE {key:_id_, from:hash }\nCREATE {key:_name_, from:name }\n',
+  "mxql/sys/process_rw_topn": `HEADER {oid$:'I' }
 
 OIDSET {oid:$oid, okind:$okind, onode:$onode}
 
@@ -37490,29 +43259,29 @@ ORDER  {key: value, sort:desc}
 LIMIT $limit
 
 INJECT default`,
-  "sys/process_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_process\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, $field]\n\nGROUP  {pk: oid, merge: $field}\n\nUPDATE {key: $field, value: max}\n\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n\nINJECT default",
-  "sys/project_process": 'INJECT timepast\n\nHEADER {    "cpu$": "%",\n            "rss$": "B",\n            "memory$": "%",\n            "openFileDescriptors$": "I",\n            "rbps$": "B",\n            "wbps$": "B",\n            "wiops$": "B",\n            "riops$": "B"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY server_process\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nSELECT [ oid, time,name, hash, cpu, cpuAccmulated, memory, memoryAccmulated, openFileDescriptors, rbps, wbps, riops, wiops ]\n\nCREATE {key:_id_, from:hash }\nCREATE {key:_name_, from:name }\n',
-  "sys/project_resource": "INJECT timepast\n\nHEADER {core_physical_sum$:'', cpu_pct_avg$:'%', cpu_pct_sum$:'%', mem_physical_sum$:'B', \n        mem_rss_sum$:'B', disk_physical_sum$:'B', disk_used_sum$:'B', mem_bps_sum$:'B', \n        server_total$:'B'}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY server_base\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nSELECT [ time, core_physical_sum, cpu_pct_avg, cpu_pct_sum, mem_physical_sum, mem_rss_sum, disk_physical_sum, disk_used_sum, mem_bps_sum, server_total ]\nFIRST-ONLY {key:time}\n",
-  "techross/01/10m": "CATEGORY UFD\n\nTAGLOAD\n\nSELECT [time, 'P1_PV_AI_UF_1\uCC28\uC555']\n\nGROUP {timeunit:10m, merge:[P1_PV_AI_UF_1\uCC28\uC555] }\nUPDATE {key:[P1_PV_AI_UF_1\uCC28\uC555], value:avg}\n\n\nADJUST 100\n\nJOIN {query:'/techross/01/fit10m', pk:time, rows:10000 }\n\nRENAME {src:[P1_PV_AI_UF_1\uCC28\uC555, 204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9]\n      , dst:[1\uCC28\uC555,AB\uC0DD\uC0B0\uB7C9] }\n      \n--TIME-FILTER { date:'2020/07/28' , gmt:9}\n\nINJECT default",
-  "techross/01/fit1": "CATEGORY FIT{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\nTAGLOAD\n\nSELECT [time,'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9_m'] ",
-  "techross/01/fit10m": "CATEGORY FIT\n\nTAGLOAD\n\nSELECT [time,'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9'] \n\nGROUP {timeunit:10m, merge:[204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9] }\nUPDATE {key:[204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9], value:avg}",
-  "techross/01/main": "CATEGORY UFD{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\nTAGLOAD\n\nSELECT [time, 'P1_PV_AI_UF_1\uCC28\uC555_m']\nADJUST 100\n\nJOIN {query:'/techross/01/fit1', pk:time, rows:10000 }\n\nRENAME {src:[P1_PV_AI_UF_1\uCC28\uC555_m, 204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9_m]\n      , dst:[1\uCC28\uC555,AB\uC0DD\uC0B0\uB7C9] }\n      \n--TIME-FILTER { date:'2020/07/28' , gmt:9}\n\nINJECT default",
-  "techross/02/10m": "CATEGORY UFD\nTAGLOAD\n\nSELECT [time,'P1_PV_AI_UF_1\uCC28\uC555'\n,'P3_PV_AI_UF_3\uCC28\uC555'\n,'P5_PV_AI_UF_5\uCC28\uC555'\n,'P7_PV_AI_UF_7\uCC28\uC555'\n]\n\nRENAME { src:['P1_PV_AI_UF_1\uCC28\uC555'\n            ,'P3_PV_AI_UF_3\uCC28\uC555'\n            ,'P5_PV_AI_UF_5\uCC28\uC555'\n            ,'P7_PV_AI_UF_7\uCC28\uC555'\n            ],\n         dst:[v1,v3,v5,v7] }\n\nGROUP {timeunit:10m, merge:[v1,v3,v5,v7] }\nUPDATE {key:[v1,v3,v5,v7], value:avg}\n\n\nJOIN {query:'/techross/02/fit10m', pk:time, rows:10000}\n\nCREATE {key:'1\uCC28\uC555', expr:'(uf_ab/v1)/9900' }\nCREATE {key:'3\uCC28\uC555', expr:'(uf_ab/v3)/9900' }\nCREATE {key:'5\uCC28\uC555', expr:'(uf_ab/v5)/9900' }\nCREATE {key:'7\uCC28\uC555', expr:'(uf_ab/v7)/9900' }\n\nSELECT [time,'1\uCC28\uC555','3\uCC28\uC555','5\uCC28\uC555','7\uCC28\uC555']\n\nADJUST 100\n\n--TIME-FILTER {time:'2020/06/02 15:40:00', gmt:9 }\n--TIME-FILTER {time:'2020/06/02 19:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/06/23 02:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/28 02:00:00', gmt:9 }\n\n\nINJECT default",
-  "techross/02/fit1": "CATEGORY FIT{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\n\nTAGLOAD\n\nSELECT [time,'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9_m']\n\nRENAME { src:'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9_m', dst:'uf_ab'}",
-  "techross/02/fit10m": "CATEGORY FIT\n\nTAGLOAD\n\nSELECT [time,'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9']\n\nRENAME { src:'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9', dst:'uf_ab'}\n\nGROUP {timeunit:10m, merge:[uf_ab] }\n\nUPDATE {key:[uf_ab], value:avg}\n",
-  "techross/02/main": "CATEGORY UFD{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\nTAGLOAD\n\nSELECT [time,'P1_PV_AI_UF_1\uCC28\uC555_m'\n,'P3_PV_AI_UF_3\uCC28\uC555_m'\n,'P5_PV_AI_UF_5\uCC28\uC555_m'\n,'P7_PV_AI_UF_7\uCC28\uC555_m'\n]\n\nRENAME { src:['P1_PV_AI_UF_1\uCC28\uC555_m'\n			,'P3_PV_AI_UF_3\uCC28\uC555_m'\n			,'P5_PV_AI_UF_5\uCC28\uC555_m'\n			,'P7_PV_AI_UF_7\uCC28\uC555_m'\n			],  \n		 dst:[v1,v3,v5,v7] }\n\nJOIN {query:'/techross/02/fit1', pk:time, rows:10000}\n\nCREATE {key:'1\uCC28\uC555', expr:'(uf_ab/v1)/9900' }\nCREATE {key:'3\uCC28\uC555', expr:'(uf_ab/v3)/9900' }\nCREATE {key:'5\uCC28\uC555', expr:'(uf_ab/v5)/9900' }\nCREATE {key:'7\uCC28\uC555', expr:'(uf_ab/v7)/9900' }\n\nSELECT [time,'1\uCC28\uC555','3\uCC28\uC555','5\uCC28\uC555','7\uCC28\uC555']\n\nADJUST 100\n\n--TIME-FILTER {time:'2020/06/02 15:40:00', gmt:9 }\n--TIME-FILTER {time:'2020/06/02 19:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/06/23 02:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/08 00:30:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/17 04:30:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/28 02:00:00', gmt:9 }\n\nINJECT default\n",
-  "techross/03/10m": "CATEGORY PIT\nTAGLOAD\n\nSELECT [time, 314A_PV_AI_RO_A\uC720\uC785\uC555 ,314C_PV_AI_\uB18D\uCD95\uC218\uC555]\n\nRENAME {src:[314A_PV_AI_RO_A\uC720\uC785\uC555 ,314C_PV_AI_\uB18D\uCD95\uC218\uC555], dst:[ip1,wp1] }\n\n\nGROUP {timeunit:10m, merge:[ip1,wp1] }\n\nUPDATE {key:[ip1,wp1], value:avg}\n\nCREATE {key:d1, expr:'ip1-wp1'}\n\nRENAME { src:[ip1,wp1,d1], dst:['\uC720\uC785\uC555','\uB18D\uCD95\uC218\uC555','\uCC28\uC555']}\n\nINJECT default\n\n--TIME-FILTER {date:'2020/07/08', gmt:9}\n--TIME-FILTER {date:'2020/07/30', gmt:9}\n",
-  "techross/03/main": "-- press.mql\n \nCATEGORY PIT{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\nTAGLOAD\n\nSELECT [time, 314A_PV_AI_RO_A\uC720\uC785\uC555 ,314C_PV_AI_\uB18D\uCD95\uC218\uC555]\n\nRENAME {src:[314A_PV_AI_RO_A\uC720\uC785\uC555 ,314C_PV_AI_\uB18D\uCD95\uC218\uC555], dst:[ip1,wp1] }\n\nCREATE {key:d1, expr:'ip1-wp1'}\n\nRENAME { src:[ip1,wp1,d1], dst:['\uC720\uC785\uC555','\uB18D\uCD95\uC218\uC555','\uCC28\uC555']}\n\n\n--TIME-FILTER {time:'2020/08/23 00:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/08 04:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/30 04:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/08/03 22:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/08/08 00:00:00', gmt:9 }\n\nINJECT default\n",
-  "techross/dev/series": "\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY $category\nTAGLOAD\nSELECT \n\nINJECT default\nDELETE ['pcode', 'oid', 'okind', 'onode']",
-  "v2/app/act_tx/act_tx_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC11\uCD08\n\nTIME-RANGE {duration:11s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, pcode, tps]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\n",
-  "v2/app/act_tx/agent_with_tx": "CATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\n\nJOIN {query:'/v2/app/act_tx/act_tx_oid', pk:oid, field:[act0,act3,act8, act] }\n\nRENAME {src:[act0, act3, act8, act],  dst:[normal, slow, verySlow, total]}\n\nINJECT default",
-  "v2/app/act_tx_context": "-- Context\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER { act0$:I, act3$:I, act8$:I, act$:I, tps$:I }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_context_stat\n\nTAGLOAD \nSELECT [pcode, oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps, path]\nLAST-ONLY {key:oid}\n\nUNFOLD [active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps, path]\nINJECT default\nGROUP {pk: path, last: [pcode], merge:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps]}\nUPDATE { key: [active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps], value: sum }\n\nRENAME {src:active_tx_0, dst:act0}\nRENAME {src:active_tx_3, dst:act3}\nRENAME {src:active_tx_8, dst:act8}\nRENAME {src:active_tx_count, dst:act}\n\nCREATE {key:_id_, from: path}\nCREATE {key:_name_, from: path}",
-  "v2/app/act_tx_ext_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, INACTIVE \uC5D0\uC774\uC804\uD2B8 \uD3EC\uD568, \uCD5C\uADFC15\uCD08\n\nHEADER {act0$:I, act3$:I, act8$:I, act$:I, status$:S }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, pcode]\n\nFIRST-ONLY {key:oid}\n\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\nCREATE {key:status, value:'ok'}\n\nAPPEND {query:'/sys/agent_inact'}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\n\n",
-  "v2/app/act_tx_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER {  act0$:I, act3$:I, act8$:I, act$:I, tps$:I }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, pcode, tps]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n",
-  "v2/app/act_tx_okind": "-- \uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { act0$:I, act3$:I, act8$:I, act$:I}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [ oid, oname, okind, okindName, active_tx_0, active_tx_3, active_tx_8, active_tx_count, pcode]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nGROUP {pk:okind, last:okindName, merge:[act0,act3,act8,act, pcode] }\n\nUPDATE {key:[act0,act3,act8,act], value:sum} \n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\n\n",
-  "v2/app/active_stat_oid": '-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\n',
-  "v2/app/active_stat_okind": '\n-- \uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"\n        }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [ oid, oname, okind, okindName,   dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nGROUP {pk:okind, last:okindName, merge:[ dbc, method, socket, sql,httpc] }\n\nUPDATE {key:[dbc, method, socket, sql,httpc], value:sum} \n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n',
-  "v2/app/apdex_okind": `-- \uC5D0\uC774\uC804\uD2B8 \uC885\uB958\uBCC4  <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704
+  "mxql/sys/process_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_process\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, $field]\n\nGROUP  {pk: oid, merge: $field}\n\nUPDATE {key: $field, value: max}\n\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n\nINJECT default",
+  "mxql/sys/project_process": 'INJECT timepast\n\nHEADER {    "cpu$": "%",\n            "rss$": "B",\n            "memory$": "%",\n            "openFileDescriptors$": "I",\n            "rbps$": "B",\n            "wbps$": "B",\n            "wiops$": "B",\n            "riops$": "B"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY server_process\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nSELECT [ oid, time,name, hash, cpu, cpuAccmulated, memory, memoryAccmulated, openFileDescriptors, rbps, wbps, riops, wiops ]\n\nCREATE {key:_id_, from:hash }\nCREATE {key:_name_, from:name }\n',
+  "mxql/sys/project_resource": "INJECT timepast\n\nHEADER {core_physical_sum$:'', cpu_pct_avg$:'%', cpu_pct_sum$:'%', mem_physical_sum$:'B', \n        mem_rss_sum$:'B', disk_physical_sum$:'B', disk_used_sum$:'B', mem_bps_sum$:'B', \n        server_total$:'B'}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY server_base\n\nOIDSET $oid\n\nTAGLOAD {backward:true}\n\nSELECT [ time, core_physical_sum, cpu_pct_avg, cpu_pct_sum, mem_physical_sum, mem_rss_sum, disk_physical_sum, disk_used_sum, mem_bps_sum, server_total ]\nFIRST-ONLY {key:time}\n",
+  "mxql/techross/01/10m": "CATEGORY UFD\n\nTAGLOAD\n\nSELECT [time, 'P1_PV_AI_UF_1\uCC28\uC555']\n\nGROUP {timeunit:10m, merge:[P1_PV_AI_UF_1\uCC28\uC555] }\nUPDATE {key:[P1_PV_AI_UF_1\uCC28\uC555], value:avg}\n\n\nADJUST 100\n\nJOIN {query:'/techross/01/fit10m', pk:time, rows:10000 }\n\nRENAME {src:[P1_PV_AI_UF_1\uCC28\uC555, 204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9]\n      , dst:[1\uCC28\uC555,AB\uC0DD\uC0B0\uB7C9] }\n      \n--TIME-FILTER { date:'2020/07/28' , gmt:9}\n\nINJECT default",
+  "mxql/techross/01/fit1": "CATEGORY FIT{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\nTAGLOAD\n\nSELECT [time,'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9_m'] ",
+  "mxql/techross/01/fit10m": "CATEGORY FIT\n\nTAGLOAD\n\nSELECT [time,'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9'] \n\nGROUP {timeunit:10m, merge:[204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9] }\nUPDATE {key:[204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9], value:avg}",
+  "mxql/techross/01/main": "CATEGORY UFD{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\nTAGLOAD\n\nSELECT [time, 'P1_PV_AI_UF_1\uCC28\uC555_m']\nADJUST 100\n\nJOIN {query:'/techross/01/fit1', pk:time, rows:10000 }\n\nRENAME {src:[P1_PV_AI_UF_1\uCC28\uC555_m, 204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9_m]\n      , dst:[1\uCC28\uC555,AB\uC0DD\uC0B0\uB7C9] }\n      \n--TIME-FILTER { date:'2020/07/28' , gmt:9}\n\nINJECT default",
+  "mxql/techross/02/10m": "CATEGORY UFD\nTAGLOAD\n\nSELECT [time,'P1_PV_AI_UF_1\uCC28\uC555'\n,'P3_PV_AI_UF_3\uCC28\uC555'\n,'P5_PV_AI_UF_5\uCC28\uC555'\n,'P7_PV_AI_UF_7\uCC28\uC555'\n]\n\nRENAME { src:['P1_PV_AI_UF_1\uCC28\uC555'\n            ,'P3_PV_AI_UF_3\uCC28\uC555'\n            ,'P5_PV_AI_UF_5\uCC28\uC555'\n            ,'P7_PV_AI_UF_7\uCC28\uC555'\n            ],\n         dst:[v1,v3,v5,v7] }\n\nGROUP {timeunit:10m, merge:[v1,v3,v5,v7] }\nUPDATE {key:[v1,v3,v5,v7], value:avg}\n\n\nJOIN {query:'/techross/02/fit10m', pk:time, rows:10000}\n\nCREATE {key:'1\uCC28\uC555', expr:'(uf_ab/v1)/9900' }\nCREATE {key:'3\uCC28\uC555', expr:'(uf_ab/v3)/9900' }\nCREATE {key:'5\uCC28\uC555', expr:'(uf_ab/v5)/9900' }\nCREATE {key:'7\uCC28\uC555', expr:'(uf_ab/v7)/9900' }\n\nSELECT [time,'1\uCC28\uC555','3\uCC28\uC555','5\uCC28\uC555','7\uCC28\uC555']\n\nADJUST 100\n\n--TIME-FILTER {time:'2020/06/02 15:40:00', gmt:9 }\n--TIME-FILTER {time:'2020/06/02 19:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/06/23 02:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/28 02:00:00', gmt:9 }\n\n\nINJECT default",
+  "mxql/techross/02/fit1": "CATEGORY FIT{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\n\nTAGLOAD\n\nSELECT [time,'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9_m']\n\nRENAME { src:'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9_m', dst:'uf_ab'}",
+  "mxql/techross/02/fit10m": "CATEGORY FIT\n\nTAGLOAD\n\nSELECT [time,'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9']\n\nRENAME { src:'204A_PV_AI_UF_AB\uC0DD\uC0B0\uB7C9', dst:'uf_ab'}\n\nGROUP {timeunit:10m, merge:[uf_ab] }\n\nUPDATE {key:[uf_ab], value:avg}\n",
+  "mxql/techross/02/main": "CATEGORY UFD{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\nTAGLOAD\n\nSELECT [time,'P1_PV_AI_UF_1\uCC28\uC555_m'\n,'P3_PV_AI_UF_3\uCC28\uC555_m'\n,'P5_PV_AI_UF_5\uCC28\uC555_m'\n,'P7_PV_AI_UF_7\uCC28\uC555_m'\n]\n\nRENAME { src:['P1_PV_AI_UF_1\uCC28\uC555_m'\n			,'P3_PV_AI_UF_3\uCC28\uC555_m'\n			,'P5_PV_AI_UF_5\uCC28\uC555_m'\n			,'P7_PV_AI_UF_7\uCC28\uC555_m'\n			],  \n		 dst:[v1,v3,v5,v7] }\n\nJOIN {query:'/techross/02/fit1', pk:time, rows:10000}\n\nCREATE {key:'1\uCC28\uC555', expr:'(uf_ab/v1)/9900' }\nCREATE {key:'3\uCC28\uC555', expr:'(uf_ab/v3)/9900' }\nCREATE {key:'5\uCC28\uC555', expr:'(uf_ab/v5)/9900' }\nCREATE {key:'7\uCC28\uC555', expr:'(uf_ab/v7)/9900' }\n\nSELECT [time,'1\uCC28\uC555','3\uCC28\uC555','5\uCC28\uC555','7\uCC28\uC555']\n\nADJUST 100\n\n--TIME-FILTER {time:'2020/06/02 15:40:00', gmt:9 }\n--TIME-FILTER {time:'2020/06/02 19:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/06/23 02:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/08 00:30:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/17 04:30:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/28 02:00:00', gmt:9 }\n\nINJECT default\n",
+  "mxql/techross/03/10m": "CATEGORY PIT\nTAGLOAD\n\nSELECT [time, 314A_PV_AI_RO_A\uC720\uC785\uC555 ,314C_PV_AI_\uB18D\uCD95\uC218\uC555]\n\nRENAME {src:[314A_PV_AI_RO_A\uC720\uC785\uC555 ,314C_PV_AI_\uB18D\uCD95\uC218\uC555], dst:[ip1,wp1] }\n\n\nGROUP {timeunit:10m, merge:[ip1,wp1] }\n\nUPDATE {key:[ip1,wp1], value:avg}\n\nCREATE {key:d1, expr:'ip1-wp1'}\n\nRENAME { src:[ip1,wp1,d1], dst:['\uC720\uC785\uC555','\uB18D\uCD95\uC218\uC555','\uCC28\uC555']}\n\nINJECT default\n\n--TIME-FILTER {date:'2020/07/08', gmt:9}\n--TIME-FILTER {date:'2020/07/30', gmt:9}\n",
+  "mxql/techross/03/main": "-- press.mql\n \nCATEGORY PIT{h1}\nTIME-RANGE {sdate:'2020/06/01', edate:'2020/10/30', timezone:'GMT+9' }\nTAGLOAD\n\nSELECT [time, 314A_PV_AI_RO_A\uC720\uC785\uC555 ,314C_PV_AI_\uB18D\uCD95\uC218\uC555]\n\nRENAME {src:[314A_PV_AI_RO_A\uC720\uC785\uC555 ,314C_PV_AI_\uB18D\uCD95\uC218\uC555], dst:[ip1,wp1] }\n\nCREATE {key:d1, expr:'ip1-wp1'}\n\nRENAME { src:[ip1,wp1,d1], dst:['\uC720\uC785\uC555','\uB18D\uCD95\uC218\uC555','\uCC28\uC555']}\n\n\n--TIME-FILTER {time:'2020/08/23 00:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/08 04:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/07/30 04:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/08/03 22:00:00', gmt:9 }\n--TIME-FILTER {time:'2020/08/08 00:00:00', gmt:9 }\n\nINJECT default\n",
+  "mxql/techross/dev/series": "\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY $category\nTAGLOAD\nSELECT \n\nINJECT default\nDELETE ['pcode', 'oid', 'okind', 'onode']",
+  "mxql/v2/app/act_tx/act_tx_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC11\uCD08\n\nTIME-RANGE {duration:11s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, pcode, tps]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\n",
+  "mxql/v2/app/act_tx/agent_with_tx": "CATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\n\nJOIN {query:'/v2/app/act_tx/act_tx_oid', pk:oid, field:[act0,act3,act8, act] }\n\nRENAME {src:[act0, act3, act8, act],  dst:[normal, slow, verySlow, total]}\n\nINJECT default",
+  "mxql/v2/app/act_tx_context": "-- Context\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER { act0$:I, act3$:I, act8$:I, act$:I, tps$:I }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_context_stat\n\nTAGLOAD \nSELECT [pcode, oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps, path]\nLAST-ONLY {key:oid}\n\nUNFOLD [active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps, path]\nINJECT default\nGROUP {pk: path, last: [pcode], merge:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps]}\nUPDATE { key: [active_tx_0, active_tx_3, active_tx_8, active_tx_count, tps], value: sum }\n\nRENAME {src:active_tx_0, dst:act0}\nRENAME {src:active_tx_3, dst:act3}\nRENAME {src:active_tx_8, dst:act8}\nRENAME {src:active_tx_count, dst:act}\n\nCREATE {key:_id_, from: path}\nCREATE {key:_name_, from: path}",
+  "mxql/v2/app/act_tx_ext_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, INACTIVE \uC5D0\uC774\uC804\uD2B8 \uD3EC\uD568, \uCD5C\uADFC15\uCD08\n\nHEADER {act0$:I, act3$:I, act8$:I, act$:I, status$:S }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, pcode]\n\nFIRST-ONLY {key:oid}\n\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\nCREATE {key:status, value:'ok'}\n\nAPPEND {query:'/sys/agent_inact'}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\n\n",
+  "mxql/v2/app/act_tx_oid": "-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER {  act0$:I, act3$:I, act8$:I, act$:I, tps$:I }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, active_tx_0, active_tx_3, active_tx_8, active_tx_count, pcode, tps]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n",
+  "mxql/v2/app/act_tx_okind": "-- \uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { act0$:I, act3$:I, act8$:I, act$:I}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [ oid, oname, okind, okindName, active_tx_0, active_tx_3, active_tx_8, active_tx_count, pcode]\nFIRST-ONLY {key:oid}\nRENAME {src:active_tx_0,  dst:act0}\nRENAME {src:active_tx_3,  dst:act3}\nRENAME {src:active_tx_8,  dst:act8}\nRENAME {src:active_tx_count,  dst:act}\n\nGROUP {pk:okind, last:okindName, merge:[act0,act3,act8,act, pcode] }\n\nUPDATE {key:[act0,act3,act8,act], value:sum} \n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n\n\n",
+  "mxql/v2/app/active_stat_oid": '-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\n\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nCREATE {key:_id_, from:oid}\nCREATE {key:_name_, from:oname}\n\n',
+  "mxql/v2/app/active_stat_okind": '\n-- \uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08\nHEADER { "dbc$": "I",\n        "method$": "I",\n        "socket$": "I",\n        "sql$": "I",\n        "httpc$": "I"\n        }\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_active_stat\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [ oid, oname, okind, okindName,   dbc, method, socket, sql,httpc]\nFIRST-ONLY {key:oid}\n\nGROUP {pk:okind, last:okindName, merge:[ dbc, method, socket, sql,httpc] }\n\nUPDATE {key:[dbc, method, socket, sql,httpc], value:sum} \n\nCREATE {key:_id_, from:okind }\nCREATE {key:_name_, from:okindName }\n',
+  "mxql/v2/app/apdex_okind": `-- \uC5D0\uC774\uC804\uD2B8 \uC885\uB958\uBCC4  <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704
 
 INJECT timepast
 
@@ -37535,8 +43304,8 @@ CREATE {key:_id_, expr:pcode+'_'+okindName}
 CREATE {key:_name_, from:okindName}
 
 FILTER { expr: "apdex != 0" }`,
-  "v2/app/apdex_pcode": '\n-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704\n\nINJECT timepast\n\nHEADER { apdex_satisfied$:I, apdex_tolerated$:I, apdex_total$:I,  apdex$:F, category: app_counter}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n\nTAGLOAD\nINJECT default\nSELECT [ time, pcode, pname, apdex_satisfied, apdex_tolerated, apdex_total]\nGROUP {timeunit:5000, pk:pcode}\n\nUPDATE { key:[apdex_satisfied, apdex_tolerated, apdex_total], value:sum }\nCREATE { key:apdex, expr:" ((apdex_satisfied+(apdex_tolerated*0.5))/apdex_total) * 100 " }\n\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\nDELETE [pcode]\n\nFILTER { expr: "apdex != 0" }',
-  "v2/app/app_gc": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568
+  "mxql/v2/app/apdex_pcode": '\n-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704\n\nINJECT timepast\n\nHEADER { apdex_satisfied$:I, apdex_tolerated$:I, apdex_total$:I,  apdex$:F, category: app_counter}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY {"app_counter":6h, "app_counter{m5}":3d, "app_counter{h1}":unlimit } \n\nTAGLOAD\nINJECT default\nSELECT [ time, pcode, pname, apdex_satisfied, apdex_tolerated, apdex_total]\nGROUP {timeunit:5000, pk:pcode}\n\nUPDATE { key:[apdex_satisfied, apdex_tolerated, apdex_total], value:sum }\nCREATE { key:apdex, expr:" ((apdex_satisfied+(apdex_tolerated*0.5))/apdex_total) * 100 " }\n\nCREATE {key:_id_, from:pcode}\nCREATE {key:_name_, from:pname}\nDELETE [pcode]\n\nFILTER { expr: "apdex != 0" }',
+  "mxql/v2/app/app_gc": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568
 INJECT timepast
 
 HEADER {gc_time$:ms, gc_count$:'I', gc_oldgen_count$:'I'}
@@ -37549,7 +43318,7 @@ CREATE {key:_id_, expr:pcode+'_'+oname}
 RENAME {dst:_name_, src:oname}
 
 `,
-  "v2/app/app_heap": `INJECT timepast
+  "mxql/v2/app/app_heap": `INJECT timepast
 
 HEADER {heap_tot$:B, heap_use$:B}
 
@@ -37566,7 +43335,7 @@ CREATE {key:_id_, expr:pcode+'_'+oname}
 RENAME {dst:_name_, src:oname}
 
 `,
-  "v2/app/app_heap_pct": `INJECT timepast
+  "mxql/v2/app/app_heap_pct": `INJECT timepast
 
 HEADER {heap_tot$:B, heap_use$:B, heap_pct$:P}
 
@@ -37581,7 +43350,7 @@ SELECT [time, pcode, oid, oname, heap_tot, heap_use]
 CREATE {key:"heap_pct", expr: "heap_use / heap_tot * 100"}
 CREATE {key:_id_, expr:pcode+'_'+oname}
 RENAME {dst:_name_, src:oname}`,
-  "v2/app/app_host_resource": `INJECT timepast
+  "mxql/v2/app/app_host_resource": `INJECT timepast
 
 HEADER { "cpu$": "P", "disk$": "P", "mem$": "P" }
 CATEGORY {"app_host_resource":6h, "app_host_resource{m5}":3d, "app_host_resource{h1}":unlimit } 
@@ -37593,7 +43362,7 @@ CREATE { key:_id_, expr:pcode+'_'+oname }
 RENAME { dst:_name_, src:oname }
 
 `,
-  "v2/app/app_host_resource_last": `HEADER {cpu$:'P', 'cpu_proc': 'P', 'swap': 'B', mem$:'P', disk$:'P'}
+  "mxql/v2/app/app_host_resource_last": `HEADER {cpu$:'P', 'cpu_proc': 'P', 'swap': 'B', mem$:'P', disk$:'P'}
 OIDSET {oid:$oid, okind:$okind, onode:$onode}
 CATEGORY {"app_host_resource":6h, "app_host_resource{m5}":3d, "app_host_resource{h1}":unlimit } 
 TAGLOAD {backward: true}
@@ -37605,7 +43374,7 @@ CREATE {key:_name_, from:oname}
 FIRST-ONLY {key: _id_}
 DELETE [oid,oname, pcode, pname]
 `,
-  "v2/app/app_thread": `INJECT timepast
+  "mxql/v2/app/app_thread": `INJECT timepast
 
 HEADER {thread_count$:I, thread_daemon$:I, thread_peak_count$: I }
 
@@ -37623,7 +43392,7 @@ RENAME {dst:_name_, src:oname}
 
 
 `,
-  "v2/app/con_user_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790
+  "mxql/v2/app/con_user_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790
 
 INJECT timepast
 
@@ -37642,7 +43411,7 @@ CREATE {key:_name_, from:oname}
 
 
 `,
-  "v2/app/con_user_okind": `-- \uC885\uB958\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790
+  "mxql/v2/app/con_user_okind": `-- \uC885\uB958\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790
 
 INJECT timepast
 
@@ -37660,8 +43429,8 @@ RENAME {src:logbits, dst:user}
 CREATE {key:_id_, expr:pcode+'_'+okindName }
 CREATE {key:_name_, from:okindName}
 `,
-  "v2/app/con_user_okind_daily": "-- \uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' ,category:'app_user{m5}'}\n\nCATEGORY app_user{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nINJECT default\nSELECT [time, pcode, okindName, okind,logbits]\nGROUP {timeunit:5m, pk:[pcode, okind], last:okindName,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, expr: pcode+'_'+okindName }\nCREATE {key:_name_, from:okindName }\n\nDELETE [okind, okid ]\n\nROWNUM\n\n",
-  "v2/app/con_user_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uBCC4, \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uCD08\uAC12
+  "mxql/v2/app/con_user_okind_daily": "-- \uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' ,category:'app_user{m5}'}\n\nCATEGORY app_user{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nINJECT default\nSELECT [time, pcode, okindName, okind,logbits]\nGROUP {timeunit:5m, pk:[pcode, okind], last:okindName,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, expr: pcode+'_'+okindName }\nCREATE {key:_name_, from:okindName }\n\nDELETE [okind, okid ]\n\nROWNUM\n\n",
+  "mxql/v2/app/con_user_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uBCC4, \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uCD08\uAC12
 INJECT timepast
 
 HEADER { user$:'#' }
@@ -37684,10 +43453,10 @@ ROWNUM
 CREATE {key:localtime, from:time}
 UPDATE {key:localtime, datetime:'yyyyMMdd HH:mm:ss', timezone:'GMT+9' }
 `,
-  "v2/app/con_user_pcode_daily": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_user{m5}\n\nTAGLOAD\nINJECT default\nSELECT [time, pcode,logbits, pname]\nGROUP {timeunit:5m , pk:pcode,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, expr:pcode+'_'+pname }\nCREATE {key:_name_, from:pname }\n\nDELETE [pcode, pname]\n",
-  "v2/app/dashboard/speed": 'OIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate]\n\nFIRST-ONLY {key:oid}\n\nGROUP {merge:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate] }\nUPDATE {key:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate], value:sum}\n\nRENAME {src:tx_count, dst:start}\nRENAME {src:apdex_total, dst:end}\nRENAME {src:apdex_satisfied, dst:end0}\nRENAME {src:apdex_tolerated, dst:end3}\nCREATE {key:end8, expr:"end - (end0 + end3) "}\n\nRENAME {src:active_tx_0, dst:act0}\nRENAME {src:active_tx_3, dst:act3}\nRENAME {src:active_tx_8, dst:act8}\nRENAME {src:active_tx_count, dst:act}\n\nRENAME {src:arrival_rate, dst:rps}',
-  "v2/app/resp_time_context": '-- Context\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY {"app_context_stat":6h, "app_context_stat{m5}":3d, "app_context_stat{h1}":unlimit }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nSELECT [time, oid, oname, tx_time_sum, tx_count, path]\n\nUNFOLD [tx_time_sum, tx_count, path]\nINJECT default\nGROUP { timeunit:5s, merge:[tx_time_sum, tx_count], pk:"path" }\nUPDATE { key: ["tx_time_sum", "tx_count"], value: sum }\n\nCREATE { key: resp_time, expr: "tx_time_sum / tx_count" }\nCREATE {key:_id_, from:path}\nCREATE {key:_name_, from:path}\n\nINJECT default\n',
-  "v2/app/resp_time_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04
+  "mxql/v2/app/con_user_pcode_daily": "-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER { user$:'#' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY app_user{m5}\n\nTAGLOAD\nINJECT default\nSELECT [time, pcode,logbits, pname]\nGROUP {timeunit:5m , pk:pcode,  user:logbits }\nRENAME {src:logbits, dst:user}\n\nCREATE {key:_id_, expr:pcode+'_'+pname }\nCREATE {key:_name_, from:pname }\n\nDELETE [pcode, pname]\n",
+  "mxql/v2/app/dashboard/speed": 'OIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate]\n\nFIRST-ONLY {key:oid}\n\nGROUP {merge:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate] }\nUPDATE {key:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate], value:sum}\n\nRENAME {src:tx_count, dst:start}\nRENAME {src:apdex_total, dst:end}\nRENAME {src:apdex_satisfied, dst:end0}\nRENAME {src:apdex_tolerated, dst:end3}\nCREATE {key:end8, expr:"end - (end0 + end3) "}\n\nRENAME {src:active_tx_0, dst:act0}\nRENAME {src:active_tx_3, dst:act3}\nRENAME {src:active_tx_8, dst:act8}\nRENAME {src:active_tx_count, dst:act}\n\nRENAME {src:arrival_rate, dst:rps}',
+  "mxql/v2/app/resp_time_context": '-- Context\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY {"app_context_stat":6h, "app_context_stat{m5}":3d, "app_context_stat{h1}":unlimit }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nSELECT [time, oid, oname, tx_time_sum, tx_count, path]\n\nUNFOLD [tx_time_sum, tx_count, path]\nINJECT default\nGROUP { timeunit:5s, merge:[tx_time_sum, tx_count], pk:"path" }\nUPDATE { key: ["tx_time_sum", "tx_count"], value: sum }\n\nCREATE { key: resp_time, expr: "tx_time_sum / tx_count" }\nCREATE {key:_id_, from:path}\nCREATE {key:_name_, from:path}\n\nINJECT default\n',
+  "mxql/v2/app/resp_time_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04
 INJECT timepast
 
 HEADER {resp_time$:ms}
@@ -37704,7 +43473,7 @@ CREATE {key:_name_, from:oname}
 
 
 `,
-  "v2/app/resp_time_okind": `-- \uC885\uB958\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04
+  "mxql/v2/app/resp_time_okind": `-- \uC885\uB958\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04
 INJECT timepast
 
 HEADER {resp_time$:ms}
@@ -37726,7 +43495,7 @@ CREATE {key:_name_, from:okindName }
 DELETE [okind,okindName,tx_count, tx_time] 
 ROWNUM
 `,
-  "v2/app/resp_time_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04
+  "mxql/v2/app/resp_time_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04
 
 INJECT timepast
 HEADER {resp_time$:ms}
@@ -37745,9 +43514,9 @@ INJECT default
 
 
 `,
-  "v2/app/resp_time_pcode_daily": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY app_counter{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n \nTAGLOAD\nINJECT default\nSELECT [time, pcode, pname, resp_time]\nGROUP  {timeunit:5m, pk:pcode, last: pname, merge:resp_time}\nUPDATE {key:resp_time, value:avg}\nCREATE {key:_id_, expr:pcode+'_'+pname}\nCREATE {key:_name_, from:pname}\n\n",
-  "v2/app/speed": 'OIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate]\n\nFIRST-ONLY {key:oid}\n\nGROUP {merge:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate] }\nUPDATE {key:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate], value:sum}\n\nRENAME {src:tx_count, dst:start}\nRENAME {src:apdex_total, dst:end}\nRENAME {src:apdex_satisfied, dst:end0}\nRENAME {src:apdex_tolerated, dst:end3}\nCREATE {key:end8, expr:"end - (end0 + end3) "}\n\nRENAME {src:active_tx_0, dst:act0}\nRENAME {src:active_tx_3, dst:act3}\nRENAME {src:active_tx_8, dst:act8}\nRENAME {src:active_tx_count, dst:act}\n\nRENAME {src:arrival_rate, dst:rps}',
-  "v2/app/tps_context": `-- Context\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
+  "mxql/v2/app/resp_time_pcode_daily": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {resp_time$:ms}\n\nCATEGORY app_counter{m5}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n \nTAGLOAD\nINJECT default\nSELECT [time, pcode, pname, resp_time]\nGROUP  {timeunit:5m, pk:pcode, last: pname, merge:resp_time}\nUPDATE {key:resp_time, value:avg}\nCREATE {key:_id_, expr:pcode+'_'+pname}\nCREATE {key:_name_, from:pname}\n\n",
+  "mxql/v2/app/speed": 'OIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nCATEGORY app_counter\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate]\n\nFIRST-ONLY {key:oid}\n\nGROUP {merge:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate] }\nUPDATE {key:[active_tx_0, active_tx_3, active_tx_8, active_tx_count, tx_count, apdex_total, apdex_satisfied, apdex_tolerated, tps, arrival_rate], value:sum}\n\nRENAME {src:tx_count, dst:start}\nRENAME {src:apdex_total, dst:end}\nRENAME {src:apdex_satisfied, dst:end0}\nRENAME {src:apdex_tolerated, dst:end3}\nCREATE {key:end8, expr:"end - (end0 + end3) "}\n\nRENAME {src:active_tx_0, dst:act0}\nRENAME {src:active_tx_3, dst:act3}\nRENAME {src:active_tx_8, dst:act8}\nRENAME {src:active_tx_count, dst:act}\n\nRENAME {src:arrival_rate, dst:rps}',
+  "mxql/v2/app/tps_context": `-- Context\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
 
 INJECT timepast
 
@@ -37769,7 +43538,7 @@ CREATE { key:_id_, from: "path" }
 CREATE { key:_name_, from: "path" }
 
 INJECT default`,
-  "v2/app/tps_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
+  "mxql/v2/app/tps_oid": `-- \uC5D0\uC774\uC804\uD2B8\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
 
 INJECT timepast
 
@@ -37788,7 +43557,7 @@ DELETE [oid,oname]
 
 
 `,
-  "v2/app/tps_okind": `-- \uC885\uB958\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
+  "mxql/v2/app/tps_okind": `-- \uC885\uB958\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
 
 INJECT timepast
 
@@ -37809,7 +43578,7 @@ CREATE {key:_id_, expr:pcode+'_'+okindName }
 CREATE {key:_name_, from:okindName }
 
 DELETE [pcode,okind, okindName ]`,
-  "v2/app/tps_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
+  "mxql/v2/app/tps_pcode": `-- \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12
 INJECT timepast
 
 HEADER {tps$:'F'}
@@ -37829,8 +43598,8 @@ CREATE {key:_id_, expr:pcode+'_'+pname}
 CREATE {key:_name_, from:pname}
 
 DELETE [pcode, pname]`,
-  "v2/app/tps_pcode_daily": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {tps$:'F'}\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY app_counter{m5}\nTAGLOAD\nINJECT default\nUPDATE {key: tps, value: avg}\nSELECT [time, pcode, pname, oid, tps]\nGROUP {timeunit:5m, pk:[pcode, pname], merge:tps}\nUPDATE {key: tps, value: sum}\nCREATE {key:_id_, expr:pcode+'_'+pname}\nCREATE {key:_name_, from:pname}\n\n",
-  "v2/app/tx_error_oid": `
+  "mxql/v2/app/tps_pcode_daily": "-- \uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12\nINJECT timepast\n\nHEADER {tps$:'F'}\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY app_counter{m5}\nTAGLOAD\nINJECT default\nUPDATE {key: tps, value: avg}\nSELECT [time, pcode, pname, oid, tps]\nGROUP {timeunit:5m, pk:[pcode, pname], merge:tps}\nUPDATE {key: tps, value: sum}\nCREATE {key:_id_, expr:pcode+'_'+pname}\nCREATE {key:_name_, from:pname}\n\n",
+  "mxql/v2/app/tx_error_oid": `
 
 INJECT timepast
 
@@ -37849,7 +43618,7 @@ DELETE [oid,oname]
 
 
 `,
-  "v2/app/tx_error_okind": `
+  "mxql/v2/app/tx_error_okind": `
 
 INJECT timepast
 
@@ -37871,7 +43640,7 @@ DELETE [pcode,okind, okindName ]
 
 
 `,
-  "v2/app/tx_error_pcode": `
+  "mxql/v2/app/tx_error_pcode": `
 INJECT timepast
 
 HEADER {tx_error$:'F'}
@@ -37892,8 +43661,8 @@ DELETE [pcode, pname]
 
 
 `,
-  "v2/app/tx_error_pcode_daily": "\nINJECT timepast\n\nHEADER {tx_error$:'F'}\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY app_counter{m5}\nTAGLOAD\nINJECT default\nUPDATE {key: tx_error, value: avg}\nSELECT [time, pcode, pname, oid, tx_error]\nGROUP {timeunit:5m, pk:[pcode, pname], merge:tx_error}\nUPDATE {key: tx_error, value: sum}\nCREATE {key:_id_, expr:pcode+'_'+pname}\nCREATE {key:_name_, from:pname}\n\n",
-  "v2/app/tx_error_rate_context": `INJECT timepast
+  "mxql/v2/app/tx_error_pcode_daily": "\nINJECT timepast\n\nHEADER {tx_error$:'F'}\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY app_counter{m5}\nTAGLOAD\nINJECT default\nUPDATE {key: tx_error, value: avg}\nSELECT [time, pcode, pname, oid, tx_error]\nGROUP {timeunit:5m, pk:[pcode, pname], merge:tx_error}\nUPDATE {key: tx_error, value: sum}\nCREATE {key:_id_, expr:pcode+'_'+pname}\nCREATE {key:_name_, from:pname}\n\n",
+  "mxql/v2/app/tx_error_rate_context": `INJECT timepast
 
 HEADER { "err_rate$":"pct#" }
 
@@ -37912,7 +43681,7 @@ CREATE { key:_id_, from: path }
 CREATE { key:_name_, from: path }
 
 INJECT default`,
-  "v2/app/tx_error_rate_oid": `INJECT timepast
+  "mxql/v2/app/tx_error_rate_oid": `INJECT timepast
 
 HEADER { "err_rate$":"pct#" }
 
@@ -37939,7 +43708,7 @@ UPDATE { key: ['tx_count','tx_error'], value: $OBJECT_MERGE_PLACE }
 CREATE { key: "err_rate", expr: "tx_error*100.0/tx_count" }
 DELETE [tx_error, tx_count]
 `,
-  "v2/app/tx_error_rate_okind": `INJECT timepast
+  "mxql/v2/app/tx_error_rate_okind": `INJECT timepast
 
 HEADER { "err_rate$":"pct#" }
 
@@ -37966,7 +43735,7 @@ UPDATE { key: ['tx_count','tx_error'], value: $OBJECT_MERGE_PLACE }
 CREATE { key: "err_rate", expr: "tx_error*100.0/tx_count" }
 DELETE [tx_error, tx_count]
 `,
-  "v2/app/tx_error_rate_onode": `INJECT timepast
+  "mxql/v2/app/tx_error_rate_onode": `INJECT timepast
 
 HEADER { "err_rate$":"pct#" }
 
@@ -37993,7 +43762,7 @@ UPDATE { key: ['tx_count','tx_error'], value: $OBJECT_MERGE_PLACE }
 CREATE { key: "err_rate", expr: "tx_error*100.0/tx_count" }
 DELETE [tx_error, tx_count]
 `,
-  "v2/app/tx_error_rate_pcode": `INJECT timepast
+  "mxql/v2/app/tx_error_rate_pcode": `INJECT timepast
 
 HEADER { "err_rate$":"pct#" }
 
@@ -38020,12 +43789,12 @@ UPDATE { key: ['tx_count','tx_error'], value: $OBJECT_MERGE_PLACE }
 CREATE { key: "err_rate", expr: "tx_error*100.0/tx_count" }
 DELETE [tx_error, tx_count]
 `,
-  "v2/aws/aws_autoscaling_group_in_service_instances": "INJECT timepast\n\nHEADER {GroupInServiceInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, Name, GroupInServiceInstances.Average]\n\nRENAME { dst: GroupInServiceInstances, src: GroupInServiceInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_autoscaling_group_pending_instances": "INJECT timepast\n\nHEADER {GroupPendingInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, Name, GroupPendingInstances.Average ]\n\nRENAME { dst: GroupPendingInstances, src: GroupPendingInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_autoscaling_group_standby_instances": "INJECT timepast\n\nHEADER {GroupStandbyInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, Name, GroupStandbyInstances.Average ]\n\nRENAME { dst: GroupStandbyInstances, src: GroupStandbyInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_autoscaling_group_teminating_instances": "INJECT timepast\nHEADER {GroupTerminatingInstances.Average$:'I'}\nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, GroupTerminatingInstances.Average]\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_autoscaling_group_total_instances": "INJECT timepast\n\nHEADER {GroupTotalInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, Name, GroupTotalInstances.Average ]\n\nRENAME { dst: GroupTotalInstances, src: GroupTotalInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_beanstalk_cpu_credit_balance": `INJECT timepast
+  "mxql/v2/aws/aws_autoscaling_group_in_service_instances": "INJECT timepast\n\nHEADER {GroupInServiceInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, Name, GroupInServiceInstances.Average]\n\nRENAME { dst: GroupInServiceInstances, src: GroupInServiceInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_autoscaling_group_pending_instances": "INJECT timepast\n\nHEADER {GroupPendingInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, Name, GroupPendingInstances.Average ]\n\nRENAME { dst: GroupPendingInstances, src: GroupPendingInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_autoscaling_group_standby_instances": "INJECT timepast\n\nHEADER {GroupStandbyInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, Name, GroupStandbyInstances.Average ]\n\nRENAME { dst: GroupStandbyInstances, src: GroupStandbyInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_autoscaling_group_teminating_instances": "INJECT timepast\nHEADER {GroupTerminatingInstances.Average$:'I'}\nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, GroupTerminatingInstances.Average]\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_autoscaling_group_total_instances": "INJECT timepast\n\nHEADER {GroupTotalInstances$:'I'}\n\n \nCATEGORY aws_autoscaling\nTAGLOAD\nINJECT default\nSELECT [ time, AutoScalingGroupName, Name, GroupTotalInstances.Average ]\n\nRENAME { dst: GroupTotalInstances, src: GroupTotalInstances.Average }\nCREATE {key:_id_, from: AutoScalingGroupName}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_beanstalk_cpu_credit_balance": `INJECT timepast
 
 HEADER {CPUCreditBalance$: 'I'}
 
@@ -38043,7 +43812,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 `,
-  "v2/aws/aws_beanstalk_cpu_utilization": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_cpu_utilization": `INJECT timepast
 
 HEADER {CPUUtilization$: 'P'}
 
@@ -38062,7 +43831,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 `,
-  "v2/aws/aws_beanstalk_disk_bytes": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_disk_bytes": `INJECT timepast
 
 HEADER {DiskBytes$:'B'}
 
@@ -38079,7 +43848,7 @@ RENAME {src: 'elasticbeanstalk:environment-name', dst:environmentname }
 CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 `,
-  "v2/aws/aws_beanstalk_disk_ops": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_disk_ops": `INJECT timepast
 
 HEADER {DiskOps$:'F'}
 
@@ -38096,7 +43865,7 @@ RENAME {src: 'elasticbeanstalk:environment-name', dst:environmentname }
 CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 `,
-  "v2/aws/aws_beanstalk_ebs_bytes": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_ebs_bytes": `INJECT timepast
 
 HEADER {EBSBytes$:'B'}
 
@@ -38114,7 +43883,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 `,
-  "v2/aws/aws_beanstalk_ebs_ops copy": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_ebs_ops copy": `INJECT timepast
 
 HEADER {EBSOps$:'F'}
 
@@ -38131,7 +43900,7 @@ RENAME {src: 'elasticbeanstalk:environment-name', dst:environmentname }
 CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 `,
-  "v2/aws/aws_beanstalk_ebs_ops": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_ebs_ops": `INJECT timepast
 
 HEADER {EBSOps$:'F'}
 
@@ -38148,8 +43917,8 @@ RENAME {src: 'elasticbeanstalk:environment-name', dst:environmentname }
 CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 `,
-  "v2/aws/aws_beanstalk_environment_health": "INJECT timepast\n\nHEADER {EnvironmentHealth$:'I'}\n\n \nCATEGORY aws_elasticbeanstalk\nTAGLOAD\nINJECT default\nSELECT [ time, Id, EnvironmentName, EnvironmentHealth.Average ]\n\nRENAME { dst: EnvironmentHealth, src: EnvironmentHealth.Average }\nCREATE {key:_id_, from: Id}\nCREATE {key:_name_, from: EnvironmentName}\n",
-  "v2/aws/aws_beanstalk_network_in": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_environment_health": "INJECT timepast\n\nHEADER {EnvironmentHealth$:'I'}\n\n \nCATEGORY aws_elasticbeanstalk\nTAGLOAD\nINJECT default\nSELECT [ time, Id, EnvironmentName, EnvironmentHealth.Average ]\n\nRENAME { dst: EnvironmentHealth, src: EnvironmentHealth.Average }\nCREATE {key:_id_, from: Id}\nCREATE {key:_name_, from: EnvironmentName}\n",
+  "mxql/v2/aws/aws_beanstalk_network_in": `INJECT timepast
 
 HEADER {NetworkIn$: 'F'}
 
@@ -38167,7 +43936,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 `,
-  "v2/aws/aws_beanstalk_network_out": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_network_out": `INJECT timepast
 
 HEADER {NetworkOut$: 'F'}
 
@@ -38185,7 +43954,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 `,
-  "v2/aws/aws_beanstalk_status_check_faild": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_status_check_faild": `INJECT timepast
 
 HEADER {StatusCheckFailed$: 'I'}
 
@@ -38203,7 +43972,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 `,
-  "v2/aws/aws_beanstalk_status_check_faild_instance": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_status_check_faild_instance": `INJECT timepast
 
 HEADER {StatusCheckFailed_Instance$: 'I'}
 
@@ -38221,7 +43990,7 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 `,
-  "v2/aws/aws_beanstalk_status_check_faild_system": `INJECT timepast
+  "mxql/v2/aws/aws_beanstalk_status_check_faild_system": `INJECT timepast
 
 HEADER {StatusCheckFailed_System$: 'I'}
 
@@ -38239,11 +44008,11 @@ CREATE {key:_id_, expr: " environmentid + ' ' + InstanceId " }
 CREATE {key:_name_, expr: " environmentname + ' ' + InstanceId "}
 
 `,
-  "v2/aws/aws_ebs_burst_balance": "INJECT timepast\n\nHEADER {BurstBalance$:'I'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, BurstBalance.Minimum]\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nRENAME { dst: BurstBalance, src: BurstBalance.Minimum }\n",
-  "v2/aws/aws_ebs_names": "HEADER {Name$:'#', Region$:'#', volumeDevice$:'#'}\nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [Name, Region, volumeDevice]\nFIRST-ONLY [Name, Region, volumeDevice]\n",
-  "v2/aws/aws_ebs_region_bytes": 'INJECT timepast\n\nHEADER {}\nCATEGORY aws_ebs\nTAGLOAD {backward : true}\nINJECT default\nSELECT [time, Region, RegionDescription, VolumeId, volumeSize ]\nFILTER { key: VolumeId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], merge: volumeSize}\nUPDATE {key:volumeSize, value: sum}\nCREATE {key:_id_, from:Region}\nCREATE {key:_name_, from:RegionDescription}\nDELETE [ _rows_ ]\nCREATE {key: volumeSizeByte, expr: " volumeSize * 1000000000 "}\nFIRST-ONLY {key:_id_}\nORDER {key:volumeSize, sort:desc}\n',
-  "v2/aws/aws_ebs_regions": "INJECT timepast\n\nHEADER {}\nCATEGORY aws_ebs\nTAGLOAD {backward : true}\nINJECT default\nSELECT [time, Region, RegionDescription, VolumeId]\nFILTER { key: VolumeId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], listup: [Region, RegionDescription]}\nCREATE {key:_id_, from:Region}\nCREATE {key:_name_, from:RegionDescription}\nFIRST-ONLY {key:_id_}\nORDER {key:_rows_, sort:desc}\nRENAME { dst: count, src: _rows_ }\n",
-  "v2/aws/aws_ebs_volume_bytes": `INJECT timepast
+  "mxql/v2/aws/aws_ebs_burst_balance": "INJECT timepast\n\nHEADER {BurstBalance$:'I'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, BurstBalance.Minimum]\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\nRENAME { dst: BurstBalance, src: BurstBalance.Minimum }\n",
+  "mxql/v2/aws/aws_ebs_names": "HEADER {Name$:'#', Region$:'#', volumeDevice$:'#'}\nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [Name, Region, volumeDevice]\nFIRST-ONLY [Name, Region, volumeDevice]\n",
+  "mxql/v2/aws/aws_ebs_region_bytes": 'INJECT timepast\n\nHEADER {}\nCATEGORY aws_ebs\nTAGLOAD {backward : true}\nINJECT default\nSELECT [time, Region, RegionDescription, VolumeId, volumeSize ]\nFILTER { key: VolumeId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], merge: volumeSize}\nUPDATE {key:volumeSize, value: sum}\nCREATE {key:_id_, from:Region}\nCREATE {key:_name_, from:RegionDescription}\nDELETE [ _rows_ ]\nCREATE {key: volumeSizeByte, expr: " volumeSize * 1000000000 "}\nFIRST-ONLY {key:_id_}\nORDER {key:volumeSize, sort:desc}\n',
+  "mxql/v2/aws/aws_ebs_regions": "INJECT timepast\n\nHEADER {}\nCATEGORY aws_ebs\nTAGLOAD {backward : true}\nINJECT default\nSELECT [time, Region, RegionDescription, VolumeId]\nFILTER { key: VolumeId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], listup: [Region, RegionDescription]}\nCREATE {key:_id_, from:Region}\nCREATE {key:_name_, from:RegionDescription}\nFIRST-ONLY {key:_id_}\nORDER {key:_rows_, sort:desc}\nRENAME { dst: count, src: _rows_ }\n",
+  "mxql/v2/aws/aws_ebs_volume_bytes": `INJECT timepast
 
 HEADER {'Volume Size$': "F"}
 CATEGORY aws_ebs
@@ -38257,12 +44026,12 @@ CREATE {key: 'Volume Size', expr: " volumeSize * 1000000000 " }
 CREATE {key: _id_, value: 0}
 CREATE {key: _name_, value: 'Volume Size'}
 `,
-  "v2/aws/aws_ebs_volume_queue_length": "INJECT timepast\n\nHEADER {VolumeQueueLength$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeQueueLength.Average]\nRENAME { dst: VolumeQueueLength, src: VolumeQueueLength.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_ebs_volume_read_bytes": "INJECT timepast\n\nHEADER {VolumeReadBytes$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeReadBytes.Average]\nRENAME { dst: VolumeReadBytes, src:VolumeReadBytes.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_ebs_volume_read_ops": "INJECT timepast\n\nHEADER {VolumeReadOps$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeReadOps.Average]\nRENAME { dst: VolumeReadOps, src: VolumeReadOps.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_ebs_volume_write_bytes": "INJECT timepast\n\nHEADER {VolumeWriteBytes$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeWriteBytes.Average]\nRENAME { dst: VolumeWriteBytes, src: VolumeWriteBytes.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_ebs_volume_write_ops": "INJECT timepast\n\nHEADER {VolumeWriteOps$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeWriteOps.Average]\nRENAME { dst: VolumeWriteOps, src: VolumeWriteOps.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
-  "v2/aws/aws_ebs_volumes": `INJECT timepast
+  "mxql/v2/aws/aws_ebs_volume_queue_length": "INJECT timepast\n\nHEADER {VolumeQueueLength$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeQueueLength.Average]\nRENAME { dst: VolumeQueueLength, src: VolumeQueueLength.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_ebs_volume_read_bytes": "INJECT timepast\n\nHEADER {VolumeReadBytes$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeReadBytes.Average]\nRENAME { dst: VolumeReadBytes, src:VolumeReadBytes.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_ebs_volume_read_ops": "INJECT timepast\n\nHEADER {VolumeReadOps$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeReadOps.Average]\nRENAME { dst: VolumeReadOps, src: VolumeReadOps.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_ebs_volume_write_bytes": "INJECT timepast\n\nHEADER {VolumeWriteBytes$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeWriteBytes.Average]\nRENAME { dst: VolumeWriteBytes, src: VolumeWriteBytes.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_ebs_volume_write_ops": "INJECT timepast\n\nHEADER {VolumeWriteOps$:'F'}\n\n \nCATEGORY aws_ebs\nTAGLOAD\nINJECT default\nSELECT [ time, VolumeId, Name, VolumeWriteOps.Average]\nRENAME { dst: VolumeWriteOps, src: VolumeWriteOps.Average }\nCREATE {key:_id_, from: VolumeId}\nCREATE {key:_name_, from: Name}\n",
+  "mxql/v2/aws/aws_ebs_volumes": `INJECT timepast
 
 HEADER { Volumes$: "I" }
 
@@ -38277,8 +44046,8 @@ CREATE {key: _id_, value: 0}
 CREATE {key: _name_, value: 'Volumes'}
 RENAME {src: volumeSize, dst: 'Volumes'}
 `,
-  "v2/aws/aws_ec2_cores": 'INJECT timepast\n\nHEADER {cores$: "I"}\nCATEGORY aws_ec2\nTAGLOAD\nINJECT default\nSELECT [ time, InstanceId, totalThreads ]\nFILTER { key: InstanceId, exist: true }\nGROUP { timeunit: "1h", pk: InstanceId, last: totalThreads}\nGROUP { timeunit: "1h", merge: totalThreads}\n\nUPDATE {key: totalThreads, value: "sum" }\nRENAME {src: totalThreads, dst: "cores"}\nCREATE {key: _id_, value: 0}\nCREATE {key: _name_, value: cores}\n\n',
-  "v2/aws/aws_ec2_cpu_credit_balance": `INJECT timepast
+  "mxql/v2/aws/aws_ec2_cores": 'INJECT timepast\n\nHEADER {cores$: "I"}\nCATEGORY aws_ec2\nTAGLOAD\nINJECT default\nSELECT [ time, InstanceId, totalThreads ]\nFILTER { key: InstanceId, exist: true }\nGROUP { timeunit: "1h", pk: InstanceId, last: totalThreads}\nGROUP { timeunit: "1h", merge: totalThreads}\n\nUPDATE {key: totalThreads, value: "sum" }\nRENAME {src: totalThreads, dst: "cores"}\nCREATE {key: _id_, value: 0}\nCREATE {key: _name_, value: cores}\n\n',
+  "mxql/v2/aws/aws_ec2_cpu_credit_balance": `INJECT timepast
 
 HEADER { CPUCreditBalance$: 'I' }
 CATEGORY aws_ec2
@@ -38293,9 +44062,9 @@ CREATE {key:_id_, from:InstanceId}
 CREATE {key:_name_, from:Name}
 ORDER {key:CPUCreditBalance, sort:asc}
 `,
-  "v2/aws/aws_ec2_cpu_credit_usage": 'INJECT timepast\n\nHEADER { CPUCreditUsage$:"P" }\nCATEGORY aws_ec2\nTAGLOAD {backward : "true"}\nINJECT default\nSELECT [ time, InstanceId, Name, CPUCreditUsage.Average ]\nFILTER { key: InstanceId, exist: true}\nFIRST-ONLY { key:InstanceId }\nRENAME { dst:_id_, src:InstanceId }\nRENAME { dst:_name_, src:Name }\nRENAME { dst:CPUCreditUsage, src: CPUCreditUsage.Average } \nORDER {key:CPUCreditUsage, sort:asc}\n',
-  "v2/aws/aws_ec2_cpu_utilization": "INJECT timepast\n\nHEADER {CPUUtilization$: 'P'}\n\n \nCATEGORY aws_ec2\nTAGLOAD {backward : true}\nINJECT default\nSELECT [ time, InstanceType, CPUUtilization.Average]\nFILTER {key: InstanceType, exist: true}\nGROUP { timeunit: m5, pk:[InstanceType], merge: CPUUtilization.Average}\nUPDATE {key: CPUUtilization.Average, value: avg}\n\nRENAME { dst: CPUUtilization, src: CPUUtilization.Average }\nCREATE {key:_id_, from:InstanceType}\nCREATE {key:_name_, from:InstanceType}\n\n",
-  "v2/aws/aws_ec2_disk_bytes": `INJECT timepast
+  "mxql/v2/aws/aws_ec2_cpu_credit_usage": 'INJECT timepast\n\nHEADER { CPUCreditUsage$:"P" }\nCATEGORY aws_ec2\nTAGLOAD {backward : "true"}\nINJECT default\nSELECT [ time, InstanceId, Name, CPUCreditUsage.Average ]\nFILTER { key: InstanceId, exist: true}\nFIRST-ONLY { key:InstanceId }\nRENAME { dst:_id_, src:InstanceId }\nRENAME { dst:_name_, src:Name }\nRENAME { dst:CPUCreditUsage, src: CPUCreditUsage.Average } \nORDER {key:CPUCreditUsage, sort:asc}\n',
+  "mxql/v2/aws/aws_ec2_cpu_utilization": "INJECT timepast\n\nHEADER {CPUUtilization$: 'P'}\n\n \nCATEGORY aws_ec2\nTAGLOAD {backward : true}\nINJECT default\nSELECT [ time, InstanceType, CPUUtilization.Average]\nFILTER {key: InstanceType, exist: true}\nGROUP { timeunit: m5, pk:[InstanceType], merge: CPUUtilization.Average}\nUPDATE {key: CPUUtilization.Average, value: avg}\n\nRENAME { dst: CPUUtilization, src: CPUUtilization.Average }\nCREATE {key:_id_, from:InstanceType}\nCREATE {key:_name_, from:InstanceType}\n\n",
+  "mxql/v2/aws/aws_ec2_disk_bytes": `INJECT timepast
 
 HEADER { DiskBytes$:'B' }
 
@@ -38313,7 +44082,7 @@ CREATE { key:_id_, from: InstanceType }
 RENAME { src:_name_, dst:InstanceType }
 DELETE [DiskReadBytes.Average, DiskWriteBytes.Average]
 `,
-  "v2/aws/aws_ec2_disk_ops": `INJECT timepast
+  "mxql/v2/aws/aws_ec2_disk_ops": `INJECT timepast
 
 HEADER { DiskOps$:'F' }
 
@@ -38332,8 +44101,8 @@ RENAME {dst:_name_, src:InstanceType}
 DELETE [DiskReadOps.Average, DiskWriteOps.Average]
 
 `,
-  "v2/aws/aws_ec2_instances": 'INJECT timepast\n\nHEADER {Instances$:"I"}\nCATEGORY aws_ec2\nSELECT [ time, InstanceId]\nTAGLOAD\nINJECT default\nFILTER { key: InstanceId, exist: true }\nGROUP { timeunit: "5m", merge: xx }\nCREATE { key:_id_, value: Instances }\nCREATE { key:_name_, value: Instances }\nRENAME { src: _rows_, dst: Instances }\n',
-  "v2/aws/aws_ec2_memory_total": `INJECT timepast
+  "mxql/v2/aws/aws_ec2_instances": 'INJECT timepast\n\nHEADER {Instances$:"I"}\nCATEGORY aws_ec2\nSELECT [ time, InstanceId]\nTAGLOAD\nINJECT default\nFILTER { key: InstanceId, exist: true }\nGROUP { timeunit: "5m", merge: xx }\nCREATE { key:_id_, value: Instances }\nCREATE { key:_name_, value: Instances }\nRENAME { src: _rows_, dst: Instances }\n',
+  "mxql/v2/aws/aws_ec2_memory_total": `INJECT timepast
 
 HEADER {'Memory Bytes$': "B"}
 CATEGORY aws_ec2
@@ -38348,7 +44117,7 @@ CREATE {key: _id_, value: 0}
 CREATE {key: _name_, value: 'Memory Bytes'}
 RENAME {src: memoryBytes, dst: 'Memory Bytes'}
 `,
-  "v2/aws/aws_ec2_network_packets": `INJECT timepast
+  "mxql/v2/aws/aws_ec2_network_packets": `INJECT timepast
 
 HEADER {NetworkPackets$:'F'}
 
@@ -38368,7 +44137,7 @@ RENAME {dst:_name_, src:InstanceType}
 DELETE [NetworkPacketsIn, NetworkPacketsOut]
 
 `,
-  "v2/aws/aws_ec2_network_traffic": `INJECT timepast
+  "mxql/v2/aws/aws_ec2_network_traffic": `INJECT timepast
 
 HEADER {NetworkTraffic$:'F'}
 
@@ -38389,9 +44158,9 @@ RENAME {dst:_name_, src:InstanceType}
 DELETE [NetworkIn.Average, NetworkOut.Average]
 
 `,
-  "v2/aws/aws_ec2_network_traffic_total": 'INJECT timepast\n\nHEADER {NetworkTraffic$: "F"}\n\nCATEGORY aws_ec2\n\nTAGLOAD {backward : "true"}\nINJECT default\nSELECT [ time, InstanceId, NetworkIn.Average, NetworkOut.Average]\n\nFILTER { key: InstanceId, exist: "true" }\n\nGROUP { timeunit: "5m", merge: [NetworkIn.Average, NetworkOut.Average]}\n\nUPDATE {key: [NetworkIn.Average, NetworkOut.Average], value: "sum" }\n\nCREATE {key: NetworkTraffic, expr: " NetworkIn.Average + NetworkOut.Average "}\n\nCREATE {key: _id_, value: 0}\n\nFIRST-ONLY { key: id }\n\n',
-  "v2/aws/aws_ec2_regions": "INJECT timepast\n\nHEADER { count$:'#' }\nCATEGORY aws_ec2\nTAGLOAD {backward : true}\nINJECT default\nSELECT [ time, Region, RegionDescription, InstanceId]\nFILTER { key: InstanceId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], listup: [Region, RegionDescription]}\n\nRENAME {dst:_id_, src:Region}\nRENAME {dst:_name_, src:RegionDescription}\nRENAME { src: _rows_, dst: count }\n\nFIRST-ONLY {key:_id_}\nORDER {key:count, sort:desc}\n\n\n",
-  "v2/aws/aws_ec2_state": `INJECT timepast
+  "mxql/v2/aws/aws_ec2_network_traffic_total": 'INJECT timepast\n\nHEADER {NetworkTraffic$: "F"}\n\nCATEGORY aws_ec2\n\nTAGLOAD {backward : "true"}\nINJECT default\nSELECT [ time, InstanceId, NetworkIn.Average, NetworkOut.Average]\n\nFILTER { key: InstanceId, exist: "true" }\n\nGROUP { timeunit: "5m", merge: [NetworkIn.Average, NetworkOut.Average]}\n\nUPDATE {key: [NetworkIn.Average, NetworkOut.Average], value: "sum" }\n\nCREATE {key: NetworkTraffic, expr: " NetworkIn.Average + NetworkOut.Average "}\n\nCREATE {key: _id_, value: 0}\n\nFIRST-ONLY { key: id }\n\n',
+  "mxql/v2/aws/aws_ec2_regions": "INJECT timepast\n\nHEADER { count$:'#' }\nCATEGORY aws_ec2\nTAGLOAD {backward : true}\nINJECT default\nSELECT [ time, Region, RegionDescription, InstanceId]\nFILTER { key: InstanceId, exist: true}\nGROUP { timeunit: m5, pk:[Region, RegionDescription], listup: [Region, RegionDescription]}\n\nRENAME {dst:_id_, src:Region}\nRENAME {dst:_name_, src:RegionDescription}\nRENAME { src: _rows_, dst: count }\n\nFIRST-ONLY {key:_id_}\nORDER {key:count, sort:desc}\n\n\n",
+  "mxql/v2/aws/aws_ec2_state": `INJECT timepast
 
 HEADER { count$:'#' }
 
@@ -38412,8 +44181,8 @@ ORDER {key:count, sort:desc}
 
 
 `,
-  "v2/aws/aws_ec2_status_failed": 'INJECT timepast\n\nHEADER {StatusCheckFailed$: "I"}\nCATEGORY aws_ec2\n\nTAGLOAD {backward : "true"}\nINJECT default\nSELECT [ time, InstanceId, StatusCheckFailed.Average ]\n\nFILTER { key: StatusCheckFailed.Average, exist: true }\nGROUP { timeunit: "5m", merge: StatusCheckFailed.Average }\nUPDATE {key: StatusCheckFailed.Average, value: "sum" }\n\nRENAME { dst: StatusCheckFailed, src:StatusCheckFailed.Average }\nCREATE {key: _id_, value: 0}\nCREATE {key: _name_, value: StatusCheckFailed}\nFIRST-ONLY { key: _id_ }\n\n',
-  "v2/aws/aws_elasticache_cpu_credit_balance": `INJECT timepast
+  "mxql/v2/aws/aws_ec2_status_failed": 'INJECT timepast\n\nHEADER {StatusCheckFailed$: "I"}\nCATEGORY aws_ec2\n\nTAGLOAD {backward : "true"}\nINJECT default\nSELECT [ time, InstanceId, StatusCheckFailed.Average ]\n\nFILTER { key: StatusCheckFailed.Average, exist: true }\nGROUP { timeunit: "5m", merge: StatusCheckFailed.Average }\nUPDATE {key: StatusCheckFailed.Average, value: "sum" }\n\nRENAME { dst: StatusCheckFailed, src:StatusCheckFailed.Average }\nCREATE {key: _id_, value: 0}\nCREATE {key: _name_, value: StatusCheckFailed}\nFIRST-ONLY { key: _id_ }\n\n',
+  "mxql/v2/aws/aws_elasticache_cpu_credit_balance": `INJECT timepast
 
 HEADER {CPUCreditBalance$:'I'}
 
@@ -38429,7 +44198,7 @@ RENAME { dst: CPUCreditBalance, src: CPUCreditBalance.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 `,
-  "v2/aws/aws_elasticache_cpu_credit_usage": `INJECT timepast
+  "mxql/v2/aws/aws_elasticache_cpu_credit_usage": `INJECT timepast
 
 HEADER {CPUCreditUsage$:'I'}
 
@@ -38445,7 +44214,7 @@ RENAME { dst: CPUCreditUsage, src: CPUCreditUsage.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 `,
-  "v2/aws/aws_elasticache_cpu_utilization": `INJECT timepast
+  "mxql/v2/aws/aws_elasticache_cpu_utilization": `INJECT timepast
 
 HEADER {CPUUtilization$:'P'}
 
@@ -38461,7 +44230,7 @@ RENAME { dst: CPUUtilization, src: CPUUtilization.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 `,
-  "v2/aws/aws_elasticache_curr_connections": `INJECT timepast
+  "mxql/v2/aws/aws_elasticache_curr_connections": `INJECT timepast
 
 HEADER {CurrConnections$:'I'}
 
@@ -38477,7 +44246,7 @@ RENAME { dst: CurrConnections, src: CurrConnections.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 `,
-  "v2/aws/aws_elasticache_get_type_cmds": `INJECT timepast
+  "mxql/v2/aws/aws_elasticache_get_type_cmds": `INJECT timepast
 
 HEADER {GetTypeCmds$:'I'}
 
@@ -38493,7 +44262,7 @@ RENAME { dst: GetTypeCmds, src: GetTypeCmds.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 `,
-  "v2/aws/aws_elasticache_network_bytes_in": `INJECT timepast
+  "mxql/v2/aws/aws_elasticache_network_bytes_in": `INJECT timepast
 
 HEADER {NetworkBytesIn$:'I'}
 
@@ -38509,7 +44278,7 @@ RENAME { dst: NetworkBytesIn, src: NetworkBytesIn.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 `,
-  "v2/aws/aws_elasticache_network_bytes_out": `INJECT timepast
+  "mxql/v2/aws/aws_elasticache_network_bytes_out": `INJECT timepast
 
 HEADER {NetworkBytesOut$:'I'}
 
@@ -38525,7 +44294,7 @@ RENAME { dst: NetworkBytesOut, src: NetworkBytesOut.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 `,
-  "v2/aws/aws_elasticache_new_connections": `INJECT timepast
+  "mxql/v2/aws/aws_elasticache_new_connections": `INJECT timepast
 
 HEADER {NewConnections$:'I'}
 
@@ -38542,7 +44311,7 @@ RENAME { dst: NewConnections, src: NewConnections.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 `,
-  "v2/aws/aws_elasticache_set_type_cmds": `INJECT timepast
+  "mxql/v2/aws/aws_elasticache_set_type_cmds": `INJECT timepast
 
 HEADER {SetTypeCmds$:'I'}
 
@@ -38558,16 +44327,16 @@ RENAME { dst: SetTypeCmds, src: SetTypeCmds.Average }
 CREATE {key:_id_, expr:" CacheClusterId + ' ' + CacheNodeId "}
 CREATE {key:_name_, expr: " CacheClusterId + ' ' + CacheNodeId "}
 `,
-  "v2/aws/aws_elb_active_connection_count": "INJECT timepast\n\nHEADER {ActiveConnectionCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, ActiveConnectionCount.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: ActiveConnectionCount.Sum, exist: true }\n\nRENAME { dst: ActiveConnectionCount, src: ActiveConnectionCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
-  "v2/aws/aws_elb_http_code_4xx": "INJECT timepast\n\nHEADER {HTTPCode_ELB_4XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_ELB_4XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_ELB_4XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_ELB_4XX_Count, src: HTTPCode_ELB_4XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
-  "v2/aws/aws_elb_http_code_5xx": "INJECT timepast\n\nHEADER {HTTPCode_ELB_5XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_ELB_5XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_ELB_5XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_ELB_5XX_Count, src: HTTPCode_ELB_5XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
-  "v2/aws/aws_elb_new_connection_count": "INJECT timepast\n\nHEADER {NewConnectionCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, NewConnectionCount.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: NewConnectionCount.Sum, exist: true }\n\nRENAME { dst: NewConnectionCount, src: NewConnectionCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
-  "v2/aws/aws_elb_request_count": "INJECT timepast\n\nHEADER {RequestCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, RequestCount.Sum]\nRENAME { dst: RequestCount, src: RequestCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
-  "v2/aws/aws_elb_target_http_code_2xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_2XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_2XX_Count.Sum ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_2XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_2XX_Count, src: HTTPCode_Target_2XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
-  "v2/aws/aws_elb_target_http_code_3xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_3XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_3XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_3XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_3XX_Count, src: HTTPCode_Target_3XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
-  "v2/aws/aws_elb_target_http_code_4xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_4XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_4XX_Count.Sum ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_4XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_4XX_Count, src: HTTPCode_Target_4XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
-  "v2/aws/aws_elb_target_response_time": "INJECT timepast\n\nHEADER {TargetResponseTime$:'ms'}\n\nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\n\nSELECT [ time, LoadBalancer, LoadBalancerName, TargetResponseTime.Average ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: TargetResponseTime.Average, exist: true }\n\nRENAME { dst:TargetResponseTime, src:TargetResponseTime.Average }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}",
-  "v2/container/container_app_counts_okind": `-- \uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM okind\uBCC4 \uC218
+  "mxql/v2/aws/aws_elb_active_connection_count": "INJECT timepast\n\nHEADER {ActiveConnectionCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, ActiveConnectionCount.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: ActiveConnectionCount.Sum, exist: true }\n\nRENAME { dst: ActiveConnectionCount, src: ActiveConnectionCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
+  "mxql/v2/aws/aws_elb_http_code_4xx": "INJECT timepast\n\nHEADER {HTTPCode_ELB_4XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_ELB_4XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_ELB_4XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_ELB_4XX_Count, src: HTTPCode_ELB_4XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
+  "mxql/v2/aws/aws_elb_http_code_5xx": "INJECT timepast\n\nHEADER {HTTPCode_ELB_5XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_ELB_5XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_ELB_5XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_ELB_5XX_Count, src: HTTPCode_ELB_5XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
+  "mxql/v2/aws/aws_elb_new_connection_count": "INJECT timepast\n\nHEADER {NewConnectionCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, NewConnectionCount.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: NewConnectionCount.Sum, exist: true }\n\nRENAME { dst: NewConnectionCount, src: NewConnectionCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
+  "mxql/v2/aws/aws_elb_request_count": "INJECT timepast\n\nHEADER {RequestCount$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, RequestCount.Sum]\nRENAME { dst: RequestCount, src: RequestCount.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
+  "mxql/v2/aws/aws_elb_target_http_code_2xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_2XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_2XX_Count.Sum ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_2XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_2XX_Count, src: HTTPCode_Target_2XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
+  "mxql/v2/aws/aws_elb_target_http_code_3xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_3XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_3XX_Count.Sum]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_3XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_3XX_Count, src: HTTPCode_Target_3XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
+  "mxql/v2/aws/aws_elb_target_http_code_4xx": "INJECT timepast\n\nHEADER {HTTPCode_Target_4XX_Count$:'I'}\n\n \nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\nSELECT [ time, LoadBalancer, LoadBalancerName, HTTPCode_Target_4XX_Count.Sum ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: HTTPCode_Target_4XX_Count.Sum, exist: true }\n\nRENAME { dst: HTTPCode_Target_4XX_Count, src: HTTPCode_Target_4XX_Count.Sum }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}\n",
+  "mxql/v2/aws/aws_elb_target_response_time": "INJECT timepast\n\nHEADER {TargetResponseTime$:'ms'}\n\nCATEGORY aws_applicationelb\nTAGLOAD\nINJECT default\n\nSELECT [ time, LoadBalancer, LoadBalancerName, TargetResponseTime.Average ]\n\nFILTER { key: LoadBalancer, exist: true }\nFILTER { key: TargetResponseTime.Average, exist: true }\n\nRENAME { dst:TargetResponseTime, src:TargetResponseTime.Average }\nCREATE {key:_id_, from: LoadBalancer}\nCREATE {key:_name_, from: LoadBalancerName}",
+  "mxql/v2/container/container_app_counts_okind": `-- \uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM okind\uBCC4 \uC218
 
 INJECT timepast
 
@@ -38588,7 +44357,7 @@ RENAME {src:_rows_,  dst:okind_application_counts}
 CREATE {key:_id_, from:okind }
 CREATE {key:_name_, from:okindName }
 DELETE [microOid]`,
-  "v2/container/container_app_counts_onode": `-- \uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM onode\uBCC4 \uC218
+  "mxql/v2/container/container_app_counts_onode": `-- \uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM onode\uBCC4 \uC218
 INJECT timepast
 
 HEADER { onode_application_counts$:I}
@@ -38610,7 +44379,7 @@ CREATE {key:_id_, from:onode }
 CREATE {key:_name_, from:onodeName }
 
 DELETE [microOid]`,
-  "v2/container/container_app_counts_pcode": `-- \uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM \uC804\uCCB4 \uC218
+  "mxql/v2/container/container_app_counts_pcode": `-- \uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM \uC804\uCCB4 \uC218
 INJECT timepast
 
 HEADER { total_application_counts$:I}
@@ -38629,7 +44398,7 @@ RENAME {src:_rows_,  dst:total_application_counts}
 CREATE {key:_id_, from:pcode }
 CREATE {key:_name_, from:pname }
 DELETE [microOid]`,
-  "v2/container/container_app_cpu_quota_oid": `-- OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
+  "mxql/v2/container/container_app_cpu_quota_oid": `-- OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
 INJECT timepast
 
 HEADER { cpu_quota$:I}
@@ -38646,7 +44415,7 @@ CREATE {key:_id_, from: microOid }
 CREATE {key:_name_, from:oname }
 
 `,
-  "v2/container/container_app_cpu_quota_oid_sum": `-- OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0
+  "mxql/v2/container/container_app_cpu_quota_oid_sum": `-- OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0
 INJECT timepast
 
 HEADER { cpu_quota$:I}
@@ -38668,7 +44437,7 @@ CREATE {key:_id_, from: pcode }
 CREATE {key:_name_, from: pname }
 
 `,
-  "v2/container/container_app_cpu_quota_okind": `-- OKIND\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
+  "mxql/v2/container/container_app_cpu_quota_okind": `-- OKIND\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
 INJECT timepast
 
 HEADER { cpu_quota$:I}
@@ -38691,7 +44460,7 @@ CREATE {key:_name_, from:okindName }
 DELETE [microOid]
 
 `,
-  "v2/container/container_app_cpu_quota_okind_sum": `-- OKIND CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0
+  "mxql/v2/container/container_app_cpu_quota_okind_sum": `-- OKIND CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0
 INJECT timepast
 
 HEADER { cpu_quota$:I}
@@ -38713,7 +44482,7 @@ CREATE {key:_name_, from:pname }
 DELETE [microOid, pname, pcode]
 
 `,
-  "v2/container/container_app_cpu_quota_onode": `-- ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
+  "mxql/v2/container/container_app_cpu_quota_onode": `-- ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
 INJECT timepast
 
 HEADER { cpu_quota$:I}
@@ -38735,7 +44504,7 @@ CREATE {key:_name_, from:onodeName }
 DELETE [microOid]
 
 `,
-  "v2/container/container_app_cpu_quota_onode_sum": `-- ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0
+  "mxql/v2/container/container_app_cpu_quota_onode_sum": `-- ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0
 INJECT timepast
 
 HEADER { cpu_quota$:I}
@@ -38757,7 +44526,7 @@ CREATE {key:_name_, from:pname }
 DELETE [microOid, pname, pcode]
 
 `,
-  "v2/container/container_app_cpu_quota_pcode": `-- PCODE CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
+  "mxql/v2/container/container_app_cpu_quota_pcode": `-- PCODE CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218
 OIDSET {microOid:$oid, okind:$okind, onode:$onode}
 
 INJECT timepast
@@ -38778,7 +44547,7 @@ CREATE {key:_id_, from:pcode }
 CREATE {key:_name_, from:pname }
 DELETE [microOid, pcode, pname]
 `,
-  "v2/container/container_app_state": `-- \uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM oid\uBCC4 \uCD94\uC774
+  "mxql/v2/container/container_app_state": `-- \uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM oid\uBCC4 \uCD94\uC774
 INJECT timepast
 
 HEADER { count$:I }
@@ -38797,7 +44566,7 @@ GROUP { timeunit: 5s, pk: state }
 CREATE { key: _name_, from: state }
 CREATE { key: _id_, from: state }
 RENAME {src: _rows_, dst: count }`,
-  "v2/container/container_cpu_top5": `INJECT timepast
+  "mxql/v2/container/container_cpu_top5": `INJECT timepast
 
 HEADER {cpu_per_quota$:'%'}
 
@@ -38815,7 +44584,7 @@ ROWNUM
 CREATE {key:_id_, from: containerId }
 CREATE {key:_name_, from: name }
 `,
-  "v2/container/container_gpu": `INJECT timepast
+  "mxql/v2/container/container_gpu": `INJECT timepast
 
 HEADER {
    DCGM_FI_DEV_DEC_UTIL$:'P',  DCGM_FI_DEV_ENC_UTIL$:'P', DCGM_FI_DEV_FB_FREE$:'B', DCGM_FI_DEV_FB_USED$:'B',
@@ -38837,7 +44606,7 @@ GROUP {timeunit:5s, pk: _name_ }
 CREATE { key:_id_, from: _name_ }
 
 `,
-  "v2/container/container_mem_top5": `INJECT timepast
+  "mxql/v2/container/container_mem_top5": `INJECT timepast
 
 HEADER {mem_percent$:'%'}
 
@@ -38855,7 +44624,7 @@ ROWNUM
 CREATE {key:_id_, from: containerId }
 CREATE {key:_name_, from: name }
 `,
-  "v2/container/image_cpu_throttledperiods": `INJECT timepast
+  "mxql/v2/container/image_cpu_throttledperiods": `INJECT timepast
 
 HEADER {cpu_throttledperiods$: 'I'}
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -38870,7 +44639,7 @@ CREATE {key:_id_, from: imageId}
 CREATE {key:_name_, from: image}
 DELETE [image, imageId]
 `,
-  "v2/container/image_cpu_total": `INJECT timepast
+  "mxql/v2/container/image_cpu_total": `INJECT timepast
 
 HEADER { cpu_total$: 'P' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -38887,7 +44656,7 @@ CREATE {key:_name_, from:image}
 DELETE [imageId,image]
 
 `,
-  "v2/container/image_mem_failcnt": `INJECT timepast
+  "mxql/v2/container/image_mem_failcnt": `INJECT timepast
 
 HEADER { mem_failcnt$: 'I' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -38903,7 +44672,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image ]
 
 `,
-  "v2/container/image_mem_percent": `
+  "mxql/v2/container/image_mem_percent": `
 INJECT timepast
 
 HEADER { mem_percent$: 'P' }
@@ -38921,7 +44690,7 @@ CREATE {key:_name_, from:image}
 DELETE [imageId,image]
 
 `,
-  "v2/container/image_network_bps": `INJECT timepast
+  "mxql/v2/container/image_network_bps": `INJECT timepast
 
 HEADER { network_rbps$: 'B' , network_wbps$: 'B' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -38936,7 +44705,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image ]
 
 `,
-  "v2/container/image_network_iops": `INJECT timepast
+  "mxql/v2/container/image_network_iops": `INJECT timepast
 
 HEADER { network_riops$: 'F' , network_wiops$: 'F' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -38951,7 +44720,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image ]
 
 `,
-  "v2/container/image_network_rbps": `
+  "mxql/v2/container/image_network_rbps": `
 INJECT timepast
 
 HEADER { network_rbps$: 'B' }
@@ -38968,7 +44737,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image]
 
 `,
-  "v2/container/image_network_riops": `
+  "mxql/v2/container/image_network_riops": `
 INJECT timepast
 
 HEADER { network_rbps$: 'F' }
@@ -38985,7 +44754,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image]
 
 `,
-  "v2/container/image_network_wbps": `
+  "mxql/v2/container/image_network_wbps": `
 INJECT timepast
 
 HEADER { network_wbps$: 'B' }
@@ -39002,7 +44771,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image]
 
 `,
-  "v2/container/image_network_wiops": `
+  "mxql/v2/container/image_network_wiops": `
 INJECT timepast
 
 HEADER { network_rbps$: 'F' }
@@ -39019,7 +44788,7 @@ CREATE {key:_name_, from: image}
 DELETE [imageId, image]
 
 `,
-  "v2/container/kube_container_list": `
+  "mxql/v2/container/kube_container_list": `
 INJECT timepast
 
 HEADER { cpu_quota$:"I", cpu_per_quota$:"P", cpu_throttledtime$:"I", mem_limit$:"B", mem_percent$:"P", mem_failcnt$:"I", network_rbps_byte$:"B", network_wbps_byte:"B", restart_count$:"I", state$:"#" }
@@ -39044,8 +44813,8 @@ CREATE { key: network_wbps_byte, expr:"network_wbps / 1024" }
 DELETE [pcode, pname, oid, containerId]
 
 `,
-  "v2/container/kube_event": '\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY {"kube_event":6h, "kube_event{m5}":3d, "kube_event{h1}":unlimit } \nTAGLOAD {backward: true}\nINJECT default\nSELECT [pcode, pname, oid, uid, kind, namespace, name, last_timestamp, message, reason]\n\nRENAME {dst: _id_, src: uid}\nRENAME {dst: projectName, src: pname}\nRENAME {dst: time, src: last_timestamp}\nRENAME {dst: title, src: reason}\nRENAME {dst: oname, src: name}\n\nLIMIT 100\n',
-  "v2/container/kube_event_last24h_limit30": `INJECT timepast
+  "mxql/v2/container/kube_event": '\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY {"kube_event":6h, "kube_event{m5}":3d, "kube_event{h1}":unlimit } \nTAGLOAD {backward: true}\nINJECT default\nSELECT [pcode, pname, oid, uid, kind, namespace, name, last_timestamp, message, reason]\n\nRENAME {dst: _id_, src: uid}\nRENAME {dst: projectName, src: pname}\nRENAME {dst: time, src: last_timestamp}\nRENAME {dst: title, src: reason}\nRENAME {dst: oname, src: name}\n\nLIMIT 100\n',
+  "mxql/v2/container/kube_event_last24h_limit30": `INJECT timepast
 
 HEADER {mem_percent$:'%'}
 
@@ -39062,8 +44831,8 @@ ROWNUM
 CREATE {key:_id_, from: name }
 CREATE {key:_name_, from: uid }
 `,
-  "v2/container/kube_event_stat": "INJECT timepast\n\nHEADER {}\n\nTIME-RANGE {duration:60m, etime:$etime}\nCATEGORY kube_event_stat\nTAGLOAD \nINJECT default\n\nSELECT [time, namespace, BackOff, CleanupLoadBalancerFailed, Created, ERROR, Failed, FailedComputeMetricsReplicas, FailedCreatePodSandBox, FailedGetResourceMetric, FailedKillPod, FailedScheduling, FailedToUpdateEndpoint, Killing, Pulled, Pulling, SandboxChanged, ScalingReplicaSet, Scheduled, Started, SuccessfulCreate, SuccessfulDelete, SuccessfulRescale, TaintManagerEviction, Unhealthy  ]\nROWNUM\n",
-  "v2/container/kube_node_list": `HEADER { request_cpu$:"I", allocatable_cpu$:"I", limit_cpu$:"I", allocatable_memory$:"B", request_memory$:"B" , limit_memory$:"B"}
+  "mxql/v2/container/kube_event_stat": "INJECT timepast\n\nHEADER {}\n\nTIME-RANGE {duration:60m, etime:$etime}\nCATEGORY kube_event_stat\nTAGLOAD \nINJECT default\n\nSELECT [time, namespace, BackOff, CleanupLoadBalancerFailed, Created, ERROR, Failed, FailedComputeMetricsReplicas, FailedCreatePodSandBox, FailedGetResourceMetric, FailedKillPod, FailedScheduling, FailedToUpdateEndpoint, Killing, Pulled, Pulling, SandboxChanged, ScalingReplicaSet, Scheduled, Started, SuccessfulCreate, SuccessfulDelete, SuccessfulRescale, TaintManagerEviction, Unhealthy  ]\nROWNUM\n",
+  "mxql/v2/container/kube_node_list": `HEADER { request_cpu$:"I", allocatable_cpu$:"I", limit_cpu$:"I", allocatable_memory$:"B", request_memory$:"B" , limit_memory$:"B"}
 
 CATEGORY {"kube_node":6h, "kube_node{m5}":3d, "kube_node{h1}":unlimit } 
 OIDSET {oid:$oid, okind:$okind, onode:$onode}
@@ -39082,7 +44851,7 @@ JOIN {query:'/v2/sys/server_base', pk:_name_, field:[cpu,memory_pused] }
 DELETE [pcode, pname, oid, onodeName]
 
 `,
-  "v2/container/kube_pod_stat": `INJECT timepast
+  "mxql/v2/container/kube_pod_stat": `INJECT timepast
 
 HEADER {cpu_per_quota$:'%'}
 
@@ -39097,7 +44866,7 @@ ROWNUM
 CREATE {key:_id_, from: name }
 CREATE {key:_name_, from: name }
 `,
-  "v2/container/kube_stat": `HEADER {cpu_per_quota$:'%'}
+  "mxql/v2/container/kube_stat": `HEADER {cpu_per_quota$:'%'}
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -39107,7 +44876,7 @@ SELECT [available_pod, desired_pod, nodes, running_containers, stopped_container
 LIMIT 1
 ROWNUM
 `,
-  "v2/container/kube_stat_containers": `HEADER {running_containers$:'I',stopped_containers$:'I',waiting_containers$:'I'}
+  "mxql/v2/container/kube_stat_containers": `HEADER {running_containers$:'I',stopped_containers$:'I',waiting_containers$:'I'}
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -39121,7 +44890,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 `,
-  "v2/container/kube_stat_containers_series": `HEADER {running_containers$:'I',stopped_containers$:'I',waiting_containers$:'I'}
+  "mxql/v2/container/kube_stat_containers_series": `HEADER {running_containers$:'I',stopped_containers$:'I',waiting_containers$:'I'}
 
 CATEGORY {"kube_stat":6h, "kube_stat{m5}":3d, "kube_stat{h1}":unlimit } 
 TAGLOAD {backward : "true"}
@@ -39135,7 +44904,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 `,
-  "v2/container/kube_stat_nodes": `INJECT timepast
+  "mxql/v2/container/kube_stat_nodes": `INJECT timepast
 
 HEADER {nodes$:'I'}
 
@@ -39150,7 +44919,7 @@ CREATE { key:_id_, expr:"pcode + '-' + oid" }
 DELETE [oid]
 
 `,
-  "v2/container/kube_stat_pod": `HEADER { available_pod$:'I', unavailable_pod$:'I', desired_pod$:'I'}
+  "mxql/v2/container/kube_stat_pod": `HEADER { available_pod$:'I', unavailable_pod$:'I', desired_pod$:'I'}
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -39165,7 +44934,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 `,
-  "v2/container/kube_stat_request_cpu": `HEADER { alloctable_cpu$: 'I', total_available_cpu$: 'I', total_request_cpu$: 'I', }
+  "mxql/v2/container/kube_stat_request_cpu": `HEADER { alloctable_cpu$: 'I', total_available_cpu$: 'I', total_request_cpu$: 'I', }
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -39180,7 +44949,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 `,
-  "v2/container/kube_stat_request_memory": `HEADER { alloctable_memory$: 'B', total_available_memory$: 'B', total_request_memory$: 'B', }
+  "mxql/v2/container/kube_stat_request_memory": `HEADER { alloctable_memory$: 'B', total_available_memory$: 'B', total_request_memory$: 'B', }
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY kube_stat
@@ -39195,7 +44964,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 `,
-  "v2/container/namespace_cpu_total": `INJECT timepast
+  "mxql/v2/container/namespace_cpu_total": `INJECT timepast
 
 HEADER { cpu_total$: 'P' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -39210,7 +44979,7 @@ CREATE {key: _id_, expr: "pcode + '-' + namespaceHash" }
 RENAME {src: namespace, dst: _name_ }
 DELETE [namespaceHash, oid]
 `,
-  "v2/container/namespace_mem_percent": `
+  "mxql/v2/container/namespace_mem_percent": `
 INJECT timepast
 
 HEADER { mem_percent$: 'P' }
@@ -39228,7 +44997,7 @@ CREATE {key: _id_, expr: "pcode + '-' + namespaceHash" }
 DELETE [namespaceHash, oid]
 
 `,
-  "v2/container/node_cpu": `INJECT timepast
+  "mxql/v2/container/node_cpu": `INJECT timepast
 
 HEADER {cpu$: 'P'}
 CATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } 
@@ -39240,8 +45009,8 @@ CREATE {key:_id_, from: onodeName}
 CREATE {key:_name_, from: onodeName}
 DELETE [onodeName]
 `,
-  "v2/container/node_cpu_top5": "INJECT timepast\n\nHEADER {cpu$:'%', cpu_usr$:'%', cpu_sys$:'%', cpu_idle$:'%',\n        cpu_nice$:'%', cpu_irq$:'%', cpu_softirq$:'%', cpu_steal$:'%',\n        cpu_iowait$:'%' }\n\nTIME-RANGE {duration:10s, etime:$etime}\nCATEGORY server_base\nTAGLOAD {backward : true}\nINJECT default\nFIRST-ONLY oid\n\nSELECT [time, oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\nORDER {key:cpu, sort:desc}\nLIMIT 5\nROWNUM\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n",
-  "v2/container/node_disk_top5": `INJECT timepast
+  "mxql/v2/container/node_cpu_top5": "INJECT timepast\n\nHEADER {cpu$:'%', cpu_usr$:'%', cpu_sys$:'%', cpu_idle$:'%',\n        cpu_nice$:'%', cpu_irq$:'%', cpu_softirq$:'%', cpu_steal$:'%',\n        cpu_iowait$:'%' }\n\nTIME-RANGE {duration:10s, etime:$etime}\nCATEGORY server_base\nTAGLOAD {backward : true}\nINJECT default\nFIRST-ONLY oid\n\nSELECT [time, oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\nORDER {key:cpu, sort:desc}\nLIMIT 5\nROWNUM\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n",
+  "mxql/v2/container/node_disk_top5": `INJECT timepast
 
 HEADER {usedPercent$:'%'}
 
@@ -39258,7 +45027,7 @@ ROWNUM
 CREATE {key:_id_, from: oid }
 CREATE {key:_name_, from: oname }
 `,
-  "v2/container/node_mem_top5": `INJECT timepast
+  "mxql/v2/container/node_mem_top5": `INJECT timepast
 
 HEADER {memory_pused$:'%', memory_used$:'B', memory_swappused$:'%'}
 
@@ -39275,7 +45044,7 @@ ROWNUM
 CREATE {key:_id_, from:oid }
 CREATE {key:_name_, from:oname }
 `,
-  "v2/container/node_memory_pused": `INJECT timepast
+  "mxql/v2/container/node_memory_pused": `INJECT timepast
 
 HEADER {memory_pused$: 'P'}
 CATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } 
@@ -39287,7 +45056,7 @@ CREATE {key:_id_, from: onodeName}
 CREATE {key:_name_, from: onodeName}
 DELETE [onodeName]
 `,
-  "v2/container/pod_cpu_total": `INJECT timepast
+  "mxql/v2/container/pod_cpu_total": `INJECT timepast
 
 HEADER { cpu_total$: 'P' }
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -39299,7 +45068,7 @@ CREATE {key:_id_, from:podHash}
 CREATE {key:_name_, from:podName}
 DELETE [podHash,podName]
 `,
-  "v2/container/pod_mem_percent": `INJECT timepast
+  "mxql/v2/container/pod_mem_percent": `INJECT timepast
 
 HEADER {mem_percent$: 'P'}
 CATEGORY {"container":6h, "container{m5}":3d, "container{h1}":unlimit } 
@@ -39311,8 +45080,8 @@ CREATE {key:_id_, from:podHash}
 CREATE {key:_name_, from:podName}
 DELETE [podHash,podName]
 `,
-  "v2/db/db_agent_list": "-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC\n\nCATEGORY db_agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\nINJECT default\nSELECT [oid, server_name, status, pcode, pname]\nRENAME {src: server_name, dst: _name_}\nRENAME {src: oid, dst: _id_}\n",
-  "v2/db/db_mssql_active_session_count": `CATEGORY {"db_mssql_counter":6h, "db_mssql_counter{m5}":3d, "db_mssql_counter{h1}":unlimit }
+  "mxql/v2/db/db_agent_list": "-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC\n\nCATEGORY db_agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\nINJECT default\nSELECT [oid, server_name, status, pcode, pname]\nRENAME {src: server_name, dst: _name_}\nRENAME {src: oid, dst: _id_}\n",
+  "mxql/v2/db/db_mssql_active_session_count": `CATEGORY {"db_mssql_counter":6h, "db_mssql_counter{m5}":3d, "db_mssql_counter{h1}":unlimit }
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 TAGLOAD
 SELECT [ 'pcode', 'time', 'oid', 'active_sessions', 'oname', 'dbName' ]
@@ -39325,7 +45094,7 @@ CREATE { key: _name_, expr: "oname" }
 
 LAST-ONLY { key: _id_ }
 ORDER { key: [oname, active_sessions], sort: [asc, desc] }`,
-  "v2/db/db_mssql_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
+  "mxql/v2/db/db_mssql_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_mssql_active_session
@@ -39360,7 +45129,7 @@ IFUPDATE { if: "pivot_field == 'L2'", key: _name_, value: '< 10'}
 
 IFUPDATE { if: "pivot_field == 'L1'", key: "color_key", value: '1'}
 IFUPDATE { if: "pivot_field == 'L1'", key: _name_, value: '< 3'}`,
-  "v2/db/db_mssql_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
+  "mxql/v2/db/db_mssql_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_mssql_lockinfo
@@ -39409,7 +45178,10 @@ INJECT default
 SELECT ['pcode','pname','oid', 'time', 'oname', 'elapse_time', 'id']
 UNFOLD ['elapse_time', 'id']
 END`,
-  "v2/db/db_mysql_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
+  "mxql/v2/db/db_mssql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, cpu_time, elapsed_time, execute_count, logical_reads, reads, writes]\nORDER {key:[cpu_time], sort:[desc]}\n",
+  "mxql/v2/db/db_mssql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, elapsed_time, elapsed_max, cpu_time, execute_count, logical_reads, reads, writes]\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_mssql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, execute_count, elapsed_time, cpu_time, logical_reads]\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_mysql_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_mysql_active_session
@@ -39444,7 +45216,7 @@ IFUPDATE { if: "pivot_field == 'L2'", key: _name_, value: '< 10'}
 
 IFUPDATE { if: "pivot_field == 'L1'", key: "color_key", value: '1'}
 IFUPDATE { if: "pivot_field == 'L1'", key: _name_, value: '< 3'}`,
-  "v2/db/db_mysql_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
+  "mxql/v2/db/db_mysql_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_mysql_lockinfo
@@ -39493,7 +45265,7 @@ INJECT default
 SELECT ['pcode','pname','oid', 'time', 'oname', 'time1', 'id']
 UNFOLD ['time1', 'id']
 END`,
-  "v2/db/db_mysql_replication": `TIME-RANGE {duration:15s, etime:$etime}
+  "mxql/v2/db/db_mysql_replication": `TIME-RANGE {duration:15s, etime:$etime}
 
 CATEGORY db_mysql_counter
 TAGLOAD
@@ -39550,7 +45322,11 @@ TAGLOAD
 SELECT ['oid','replication_name','Master_User','Master_Host','Relay_Master_Log_File','Read_Master_Log_Pos','Relay_Log_File','Relay_Log_Pos','Seconds_Behind_Master','Slave_IO_Running','Slave_SQL_Running','Replicate_Ignore_Table','Last_Errno','Last_Error','Skip_Counter','Exec_Master_Log_Pos','Last_IO_Errno','Last_IO_Error','Last_SQL_Errno','Last_SQL_Error','Master_Server_Id','Master_UUID','SQL_Delay','SQL_Remaining_Delay','Slave_SQL_Running_State']
 END
 `,
-  "v2/db/db_oracle_dma_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
+  "mxql/v2/db/db_mysql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, elapsed_time, elapsed_max, execute_count]\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_mysql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, client_hostname, elapsed_time, elapsed_max, execute_count]\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_mysql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, execute_count, elapsed_time, elapsed_max]\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_dma_counter_perf": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_counter\nTAGLOAD\nSELECT [active_sessions, lock_wait_sessions, long_running_sessions, total_sessions, 'execute count', 'DB time', 'CPU used by this session', 'physical reads', 'session logical reads', 'parse count (hard)', 'parse count (total)', 'user commits']\n",
+  "mxql/v2/db/db_oracle_dma_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_oracle_dma_active_session
@@ -39585,7 +45361,7 @@ IFUPDATE { if: "pivot_field == 'L2'", key: _name_, value: '< 10'}
 
 IFUPDATE { if: "pivot_field == 'L1'", key: "color_key", value: '1'}
 IFUPDATE { if: "pivot_field == 'L1'", key: _name_, value: '< 3'}`,
-  "v2/db/db_oracle_dma_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
+  "mxql/v2/db/db_oracle_dma_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_oracle_dma_lockinfo
@@ -39634,7 +45410,10 @@ INJECT default
 SELECT ['pcode','pname','oid', 'time', 'oname', 'last_call_et', 'sid']
 UNFOLD ['last_call_et', 'sid']
 END`,
-  "v2/db/db_oracle_dma_wait_event_last": `OIDSET { oid:$oid, okind:$okind, onode:$onode }
+  "mxql/v2/db/db_oracle_dma_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, plan_hash_value, schemaname, module, cpu_time, elapsed_time, execute_count, 'physical reads', 'session logical reads']\nORDER {key:[cpu_time], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_dma_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, plan_hash_value, schemaname, module, con_name, elapsed_time, elapsed_max, cpu_time, execute_count, 'physical reads', 'session logical reads', elapsed_wait]\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_dma_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, execute_count, elapsed_time, cpu_time, 'physical reads']\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_dma_wait_event_last": `OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_oracle_dma_wait_class
 TAGLOAD
@@ -39646,7 +45425,7 @@ FILTER { expr: "pivot_field != 'Idle'" }
 CREATE { key: _id_, expr: "oid + '_' + pivot_field" }
 CREATE { key: _name_, from: "pivot_field" }
 LAST-ONLY { key: _id_ }`,
-  "v2/db/db_oracle_dma_wait_event_series": `HEADER { pivot_value$: "I" }
+  "mxql/v2/db/db_oracle_dma_wait_event_series": `HEADER { pivot_value$: "I" }
 
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
@@ -39659,7 +45438,7 @@ PIVOT-HEAD { key: ["oid","oname","time"], except: [ "pcode", "pname", "_no_5m_ho
 FILTER { expr: "pivot_field != 'Idle'" }
 CREATE { key: _id_, expr: "oid + '_' + pivot_field" }
 CREATE { key: _name_, from: "pivot_field" }`,
-  "v2/db/db_oracle_long_active_session_count": `TIME-RANGE { duration: 15s, etime: $etime }
+  "mxql/v2/db/db_oracle_long_active_session_count": `TIME-RANGE { duration: 15s, etime: $etime }
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_oracle_active_session
@@ -39694,7 +45473,7 @@ IFUPDATE { if: "pivot_field == 'L2'", key: _name_, value: '< 10'}
 
 IFUPDATE { if: "pivot_field == 'L1'", key: "color_key", value: '1'}
 IFUPDATE { if: "pivot_field == 'L1'", key: _name_, value: '< 3'}`,
-  "v2/db/db_oracle_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
+  "mxql/v2/db/db_oracle_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_oracle_lockinfo
@@ -39743,7 +45522,10 @@ INJECT default
 SELECT ['pcode','pname','oid', 'time', 'oname', 'last_call_et', 'sid']
 UNFOLD ['last_call_et', 'sid']
 END`,
-  "v2/db/db_oracle_wait_event_last": `OIDSET { oid:$oid, okind:$okind, onode:$onode }
+  "mxql/v2/db/db_oracle_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, elapsed_time, execute_count, physical_reads, session_logical_reads, parse_count_hard]\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, plan_hash_value, schemaname, module, elapsed_time, elapsed_max, execute_count, physical_reads, session_logical_reads, db_block_changes]\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, execute_count, elapsed_time, physical_reads, session_logical_reads]\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_wait_event_last": `OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_oracle_wait_class
 TAGLOAD
@@ -39755,7 +45537,7 @@ FILTER { expr: "pivot_field != 'Idle'" }
 CREATE { key: _id_, expr: "oid + '_' + pivot_field" }
 CREATE { key: _name_, from: "pivot_field" }
 LAST-ONLY { key: _id_ }`,
-  "v2/db/db_oracle_wait_event_series": `HEADER { pivot_value$: "I" }
+  "mxql/v2/db/db_oracle_wait_event_series": `HEADER { pivot_value$: "I" }
 
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
@@ -39768,7 +45550,7 @@ PIVOT-HEAD { key: ["oid","oname","time"], except: [ "pcode", "pname", "_no_5m_ho
 FILTER { expr: "pivot_field != 'Idle'" }
 CREATE { key: _id_, expr: "oid + '_' + pivot_field" }
 CREATE { key: _name_, from: "pivot_field" }`,
-  "v2/db/db_postgresql_active_session_count": `CATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } 
+  "mxql/v2/db/db_postgresql_active_session_count": `CATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } 
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 TAGLOAD
 SELECT [ 'pcode', 'time', 'oid', 'active_sessions', 'oname', 'dbName' ]
@@ -39781,7 +45563,7 @@ CREATE { key: _name_, expr: "oname" }
 
 LAST-ONLY { key: _id_ }
 ORDER { key: [oname, active_sessions], sort: [asc, desc] }`,
-  "v2/db/db_postgresql_client_ip": `CATEGORY db_postgresql_client_ip
+  "mxql/v2/db/db_postgresql_client_ip": `CATEGORY db_postgresql_client_ip
 OID $oid
 TAGLOAD
 SELECT
@@ -39793,7 +45575,7 @@ CREATE { key: _name_, expr: "client_addr == '' ? 'Local' : client_addr" }
 
 LAST-ONLY { key: _id_ }
 ORDER { key: [oname, count], sort: [asc, desc] }`,
-  "v2/db/db_postgresql_connection_usage": `HEADER { "max_connections$": "F", "total_sessions$": "F" }
+  "mxql/v2/db/db_postgresql_connection_usage": `HEADER { "max_connections$": "F", "total_sessions$": "F" }
 
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 CATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } 
@@ -39815,9 +45597,9 @@ GROUP { timeunit: 5s, merge: ['max_connections','total_sessions'], pk: _id_, las
 UPDATE { key: ['max_connections','total_sessions'], value: $OBJECT_MERGE_PLACE }
 
 FIRST-ONLY { key: _id_ }`,
-  "v2/db/db_postgresql_counter": 'CATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } \nOID $oid\nTAGLOAD\n\nSELECT [time, pcode, pname, oid, dbName, mem_swapfree(xos), mem_swaptotal(xos), blks_hit_ratio,commit_count, rollback_count, connect_error, cpu(xos), cpu_iowait(xos), mem(xos), node_state, lock_wait_sessions, replication_count, numbackends, wal_count, replication_delay]\n\nFILTER { key: "dbName", value: ["TOTAL", ""] }\nGROUP { timeunit: 5s, pk: pcode }\nUPDATE { key: [mem_swapfree(xos), mem_swaptotal(xos), blks_hit_ratio,commit_count, rollback_count, connect_error, cpu(xos), cpu_iowait(xos), mem(xos), node_state, lock_wait_sessions, replication_count, numbackends, wal_count, replication_delay], value: avg }\n\nRENAME { src: mem_swapfree(xos), dst: mem_swapfree }\nRENAME { src: mem_swaptotal(xos), dst: mem_swaptotal }\nCREATE { key: "mem_swap_usage", expr: "100-(mem_swapfree/mem_swaptotal)*100" }\nCREATE { key: "tx_success_rate", expr:" commit_count * 100 / (commit_count + rollback_count)" }\n\nLAST-ONLY { key: pcode }\nDELETE [oid, mem_swapfree, mem_swaptotal, commit_count, rollback_count]',
-  "v2/db/db_postgresql_counter_series": 'INJECT timepast\n\nCATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } \n\nOID $oid\n\nTAGLOAD\nINJECT default\n\nSELECT [time, oid, oname, $field]\nCREATE {key: value, from: $field}\nFILTER {key: value, exist: true}\n\n\nRENAME {dst:_id_, src:oid}\nRENAME {dst:_name_, src:oname}\n\nDELETE [value]',
-  "v2/db/db_postgresql_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
+  "mxql/v2/db/db_postgresql_counter": 'CATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } \nOID $oid\nTAGLOAD\n\nSELECT [time, pcode, pname, oid, dbName, mem_swapfree(xos), mem_swaptotal(xos), blks_hit_ratio,commit_count, rollback_count, connect_error, cpu(xos), cpu_iowait(xos), mem(xos), node_state, lock_wait_sessions, replication_count, numbackends, wal_count, replication_delay]\n\nFILTER { key: "dbName", value: ["TOTAL", ""] }\nGROUP { timeunit: 5s, pk: pcode }\nUPDATE { key: [mem_swapfree(xos), mem_swaptotal(xos), blks_hit_ratio,commit_count, rollback_count, connect_error, cpu(xos), cpu_iowait(xos), mem(xos), node_state, lock_wait_sessions, replication_count, numbackends, wal_count, replication_delay], value: avg }\n\nRENAME { src: mem_swapfree(xos), dst: mem_swapfree }\nRENAME { src: mem_swaptotal(xos), dst: mem_swaptotal }\nCREATE { key: "mem_swap_usage", expr: "100-(mem_swapfree/mem_swaptotal)*100" }\nCREATE { key: "tx_success_rate", expr:" commit_count * 100 / (commit_count + rollback_count)" }\n\nLAST-ONLY { key: pcode }\nDELETE [oid, mem_swapfree, mem_swaptotal, commit_count, rollback_count]',
+  "mxql/v2/db/db_postgresql_counter_series": 'INJECT timepast\n\nCATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } \n\nOID $oid\n\nTAGLOAD\nINJECT default\n\nSELECT [time, oid, oname, $field]\nCREATE {key: value, from: $field}\nFILTER {key: value, exist: true}\n\n\nRENAME {dst:_id_, src:oid}\nRENAME {dst:_name_, src:oname}\n\nDELETE [value]',
+  "mxql/v2/db/db_postgresql_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_postgresql_active_session
@@ -39852,7 +45634,7 @@ IFUPDATE { if: "pivot_field == 'L2'", key: _name_, value: '< 10'}
 
 IFUPDATE { if: "pivot_field == 'L1'", key: "color_key", value: '1'}
 IFUPDATE { if: "pivot_field == 'L1'", key: _name_, value: '< 3'}`,
-  "v2/db/db_postgresql_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
+  "mxql/v2/db/db_postgresql_long_waiting_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_postgresql_lockinfo
@@ -39901,7 +45683,7 @@ INJECT default
 SELECT ['pcode','pname','oid', 'time', 'oname', 'runtime', 'pid']
 UNFOLD ['runtime', 'pid']
 END`,
-  "v2/db/db_postgresql_replication": `TIME-RANGE {duration:15s, etime:$etime}
+  "mxql/v2/db/db_postgresql_replication": `TIME-RANGE {duration:15s, etime:$etime}
 
 CATEGORY db_postgresql_counter
 TAGLOAD
@@ -39956,7 +45738,10 @@ SELECT ['oid', 'current_location', 'replication_name']
 FILTER { key: "current_location", exist: true }
 FILTER { expr: "current_location != ''" }
 END`,
-  "v2/db/db_postgresql_wait_event": `CATEGORY db_postgresql_wait_event
+  "mxql/v2/db/db_postgresql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, elapsed_time, elapsed_wait, execute_count]\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_postgresql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, application_name, elapsed_time, elapsed_max, elapsed_wait, execute_count]\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_postgresql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, application_name, execute_count, elapsed_time, elapsed_max]\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_postgresql_wait_event": `CATEGORY db_postgresql_wait_event
 OID $oid
 TAGLOAD
 SELECT
@@ -39968,7 +45753,7 @@ CREATE { key: _name_, expr: "wait_event == null || wait_event == '' ? 'Local' : 
 
 LAST-ONLY { key: _id_ }
 ORDER { key: [oname, count], sort: [asc, desc] }`,
-  "v2/db/db_postgresql_wait_event_last": `TIME-RANGE {duration:10s, etime:$etime}
+  "mxql/v2/db/db_postgresql_wait_event_last": `TIME-RANGE {duration:10s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_postgresql_wait_event
@@ -39981,7 +45766,7 @@ CREATE { key: _id_, expr: "oid + '_' + wait_event_name" }
 CREATE { key: _name_, from: "wait_event_name" }
 
 LAST-ONLY { key: _id_ }`,
-  "v2/db/db_postgresql_wait_event_series": `HEADER { count$: "I" }
+  "mxql/v2/db/db_postgresql_wait_event_series": `HEADER { count$: "I" }
 
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
@@ -39993,8 +45778,8 @@ unfold [wait_event, count]
 CREATE { key: "wait_event_name", expr: "wait_event == null || wait_event == '' ? 'Unnamed' : wait_event" }
 CREATE { key: _id_, expr: "oid + '_' + wait_event_name" }
 CREATE { key: _name_, from: "wait_event_name" }`,
-  "v2/db/db_postgresql_xview": 'CATEGORY db_postgresql_xview\nOID $oid\nTAGLOAD\nSELECT [time, pcode, pname, oid, oname, runtime, query_hash, datname, usename, application_name, user, host]\nUNFOLD [query_hash, datname, usename, runtime, application_name, user, host]\nHvText {hash : query_hash, type : sql, key : query_text, checktime: 2h }\nCREATE { key: converted_time, expr: "time / 1000" }',
-  "v2/db/db_real_counter_bytes": `
+  "mxql/v2/db/db_postgresql_xview": 'CATEGORY db_postgresql_xview\nOID $oid\nTAGLOAD\nSELECT [time, pcode, pname, oid, oname, runtime, query_hash, datname, usename, application_name, user, host]\nUNFOLD [query_hash, datname, usename, runtime, application_name, user, host]\nHvText {hash : query_hash, type : sql, key : query_text, checktime: 2h }\nCREATE { key: converted_time, expr: "time / 1000" }',
+  "mxql/v2/db/db_real_counter_bytes": `
 HEADER {Bytes_received$: 'B', Bytes_sent$:'B', net_recv_bytes(xos)$: 'B', net_send_bytes(xos)$: 'B' }
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
@@ -40017,7 +45802,7 @@ RENAME {dst:_name_, src:oname}
 DELETE [value]
 
 `,
-  "v2/db/db_real_counter_disk": `
+  "mxql/v2/db/db_real_counter_disk": `
 HEADER { disk_reads(xos)$:'I', disk_writes(xos)$: 'I' }
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
@@ -40037,7 +45822,7 @@ RENAME {dst:_id_, src:oid}
 RENAME {dst:_name_, src:oname}
 
 `,
-  "v2/db/db_real_counter_lock": `
+  "mxql/v2/db/db_real_counter_lock": `
 HEADER { lock_wait_sessions$: 'I', deadlock_sessions$:'I', Innodb_row_lock_waits$: 'I', Innodb_row_lock_time$: 'ms' }
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
@@ -40059,7 +45844,7 @@ RENAME {dst:_name_, src:oname}
 DELETE [value]
 
 `,
-  "v2/db/db_real_counter_mysql": `
+  "mxql/v2/db/db_real_counter_mysql": `
 HEADER {Com_select$:'I', Writes$:'I', Sort_rows$:'I', replication_delay$:'I', cpu(xos)$:'P', mem(xos)$:'P'}
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
@@ -40081,7 +45866,7 @@ RENAME {dst:_name_, src:oname}
 DELETE [value]
 
 `,
-  "v2/db/db_real_counter_mysql_series": `
+  "mxql/v2/db/db_real_counter_mysql_series": `
 INJECT timepast
 
 HEADER {Com_select$:'I', Writes$:'I', Sort_rows$:'I', replication_delay$:'I', cpu(xos)$:'P', mem(xos)$:'P', innodb_buffer_pool_reads$: 'I', active_sessions$: 'I', innodb_row_lock_waits$: 'I', lock_wait_sessions$: 'I', Questions$: 'I', long_running_sessions$: 'I' }
@@ -40104,7 +45889,7 @@ RENAME {dst:_name_, src:oname}
 DELETE [value]
 
 `,
-  "v2/db/db_real_counter_read_requests": `HEADER {Innodb_buffer_pool_reads$: 'I', Innodb_buffer_pool_read_requests$:'I'}
+  "mxql/v2/db/db_real_counter_read_requests": `HEADER {Innodb_buffer_pool_reads$: 'I', Innodb_buffer_pool_read_requests$:'I'}
 
 CATEGORY {"db_real_counter":6h, "db_real_counter{m5}":3d, "db_real_counter{h1}":unlimit } 
 
@@ -40127,7 +45912,7 @@ RENAME {dst:_name_, src:oname}
 DELETE [value]
 
 `,
-  "v2/db/db_real_counter_threads": `
+  "mxql/v2/db/db_real_counter_threads": `
 
 HEADER {Aborted_connects$: 'I', Max_used_connections$: 'I', Threads_created$: 'I', Threads_running$:'I', Threads_cached$: 'I', Threads_connected$: 'I' }
 
@@ -40151,8 +45936,9 @@ RENAME {dst:_name_, src:oname}
 DELETE [value]
 
 `,
-  "v2/db/db_replication_count": 'TIME-RANGE { recent: 1h }\nOID $oid\n\nCATEGORY db_set_info\nTAGLOAD\nSELECT [time, oid, replication_name, node_state]\nLAST-ONLY { key: ["oid", "replication_name"] }\n\n# \uB9C8\uC2A4\uD130 \uAC2F\uC218\nCREATE { key: "master_cnt", expr: "node_state == 1 ? 1 : 0" }\n# \uC2AC\uB808\uC774\uBE0C \uAC2F\uC218\nCREATE { key: "slave_cnt", expr: "node_state == 2 ? 1 : 0" }\n\nDELETE ["time"]\n\nGROUP { pk: ["replication_name"], merge:[master_cnt, slave_cnt] }\nUPDATE { key: [master_cnt, slave_cnt], value: sum }\n\nRENAME { src:[_rows_], dst: "tot_cnt" } \nCREATE { key: "unavailable", expr:"tot_cnt-master_cnt-slave_cnt" }',
-  "v2/db/db_xos_cpu_last": `HEADER { "cpu(xos)$":"pct" }
+  "mxql/v2/db/db_replication_count": 'TIME-RANGE { recent: 1h }\nOID $oid\n\nCATEGORY db_set_info\nTAGLOAD\nSELECT [time, oid, replication_name, node_state]\nLAST-ONLY { key: ["oid", "replication_name"] }\n\n# \uB9C8\uC2A4\uD130 \uAC2F\uC218\nCREATE { key: "master_cnt", expr: "node_state == 1 ? 1 : 0" }\n# \uC2AC\uB808\uC774\uBE0C \uAC2F\uC218\nCREATE { key: "slave_cnt", expr: "node_state == 2 ? 1 : 0" }\n\nDELETE ["time"]\n\nGROUP { pk: ["replication_name"], merge:[master_cnt, slave_cnt] }\nUPDATE { key: [master_cnt, slave_cnt], value: sum }\n\nRENAME { src:[_rows_], dst: "tot_cnt" } \nCREATE { key: "unavailable", expr:"tot_cnt-master_cnt-slave_cnt" }',
+  "mxql/v2/db/db_tablespace_usage": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_tablespace\nTAGLOAD\nSELECT\n",
+  "mxql/v2/db/db_xos_cpu_last": `HEADER { "cpu(xos)$":"pct" }
 
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 CATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } 
@@ -40174,7 +45960,7 @@ GROUP { timeunit: 5s, merge: ['cpu(xos)'], pk: _id_, last: [_name_, 'pcode', 'on
 UPDATE { key: ['cpu(xos)'], value: $OBJECT_MERGE_PLACE }
 
 FIRST-ONLY { key: _id_ }`,
-  "v2/db/db_xos_disk_last": `CATEGORY db_xos_disk_usage
+  "mxql/v2/db/db_xos_disk_last": `CATEGORY db_xos_disk_usage
 OIDSET { oid: $oid, onode: $onode, okind: $okind }
 TAGLOAD
 INJECT default
@@ -40186,7 +45972,7 @@ CREATE { key: "usage", expr:"round((1-free/size)*100,1)" }
 CREATE { key: _id_, expr: "oid + '_' + mount_point" }
 
 LAST-ONLY { key: _id_ }`,
-  "v2/db/db_xos_mem_last": `HEADER { "mem(xos)$":"pct" }
+  "mxql/v2/db/db_xos_mem_last": `HEADER { "mem(xos)$":"pct" }
 
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 CATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } 
@@ -40208,16 +45994,41 @@ GROUP { timeunit: 5s, merge: ['mem(xos)'], pk: _id_, last: [_name_, "pcode", "on
 UPDATE { key: ['mem(xos)'], value: $OBJECT_MERGE_PLACE }
 
 FIRST-ONLY { key: _id_ }`,
-  "v2/ha/cluster": "--INJECT timepast\n\nHEADER {oid:id , onode:node, server: server, EDB-12: state}\n\nTIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY cluster\n\nTAGLOAD {backward:true}\nINJECT default\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\nFIRST-ONLY {key:oid}\n\nAPPEND {query:'/v2/ha/cluster_net', field:[time, category, pcode, oid, group, node1, node2, status]}\n--APPEND {query:'/app/tps_last_pcode', field:[pcode,tps]}\n\n",
-  "v2/ha/cluster_dep": "TIME-RANGE {duration:30m, etime:$etime}\nCATEGORY cluster_dep\nTAGLOAD {backward:true}\nINJECT default\n\nFIRST-ONLY {key:[oid,name]}\n",
-  "v2/ha/cluster_dep2": "TIME-RANGE {duration:30m, etime:$etime}\nCATEGORY cluster_dep\nTAGLOAD {backward:true}\nINJECT default\n\nFILTER {key:group, value:$group}\nFIRST-ONLY {key:[oid,name]}\n",
-  "v2/ha/cluster_info": "TIME-RANGE {duration:30m, etime:$etime}  -- \uC2E4\uC81C \uB370\uC774\uD0C0\uB294 30\uBD84 ~ 1\uC2DC\uAC04 \uC5D0 1\uD68C\uC815\uB3C4 \uBCF4\uB0BC\uAC83\uC774\uB77C recent 2h \uC815\uB3C4 \uD55C\uB2E4.\n\nCATEGORY cluster_info\n\nTAGLOAD {backward:true}\nINJECT default\n\n\n-- select \uAC00 \uC5C6\uC73C\uBA74 \uC804\uCCB4 \uCEEC\uB7FC\uC744 \uC804\uBD80 \uAC00\uC838\uC628\uB2E4.\nFIRST-ONLY { key:oid }\n",
-  "v2/ha/cluster_level": "CATEGORY cluster{h1}\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [time, node, level, group]\n\nLIMIT 5000",
-  "v2/ha/cluster_net": "TIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY cluster_net\n\nTAGLOAD {backward:true}\nINJECT default\n\nFIRST-ONLY {key:[node1,node2]}\n\n",
-  "v2/ha/cluster_sts": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY cluster_sts\n\nTAGLOAD {backward:true}\nINJECT default\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\n--FIRST-ONLY {key:oid}\n\nLIMIT 100\n",
-  "v2/ha/cluster_sts2": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY cluster_sts\n\nTAGLOAD {backward:true}\nINJECT default\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\n--FIRST-ONLY {key:oid}\n-- INJECT\nFILTER {key:node, value:$node}\n\nLIMIT 100\n",
-  "v2/logs/logsink_aggr": 'LogTag {key : $denominator_filter_keys, value : $denominator_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: denominator_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nJOIN {pk : $group_keys, query :exclude_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count]}\nJOIN {pk : $group_keys, query :include_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count, include_count]}\nCREATE { key : _pk_, value : $group_keys}\nCREATE { key: include_minus_exclude_count, expr: "include_count - exclude_count" }\nCREATE { key: count_rate, expr: "(include_count - exclude_count)/denominator_count" }\n\nSUB include_query\nLogTag {key : $include_filter_keys, value : $include_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: include_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND\n\nSUB exclude_query\nLogTag {key : $exclude_filter_keys, value : $exclude_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: exclude_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND',
-  "v2/logs/logsink_collection_status": `CATEGORY logsink_stats
+  "mxql/v2/ha/cluster": "--INJECT timepast\n\nHEADER {oid:id , onode:node, server: server, EDB-12: state}\n\nTIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY cluster\n\nTAGLOAD {backward:true}\nINJECT default\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\nFIRST-ONLY {key:oid}\n\nAPPEND {query:'/v2/ha/cluster_net', field:[time, category, pcode, oid, group, node1, node2, status]}\n--APPEND {query:'/app/tps_last_pcode', field:[pcode,tps]}\n\n",
+  "mxql/v2/ha/cluster_dep": "TIME-RANGE {duration:30m, etime:$etime}\nCATEGORY cluster_dep\nTAGLOAD {backward:true}\nINJECT default\n\nFIRST-ONLY {key:[oid,name]}\n",
+  "mxql/v2/ha/cluster_dep2": "TIME-RANGE {duration:30m, etime:$etime}\nCATEGORY cluster_dep\nTAGLOAD {backward:true}\nINJECT default\n\nFILTER {key:group, value:$group}\nFIRST-ONLY {key:[oid,name]}\n",
+  "mxql/v2/ha/cluster_info": "TIME-RANGE {duration:30m, etime:$etime}  -- \uC2E4\uC81C \uB370\uC774\uD0C0\uB294 30\uBD84 ~ 1\uC2DC\uAC04 \uC5D0 1\uD68C\uC815\uB3C4 \uBCF4\uB0BC\uAC83\uC774\uB77C recent 2h \uC815\uB3C4 \uD55C\uB2E4.\n\nCATEGORY cluster_info\n\nTAGLOAD {backward:true}\nINJECT default\n\n\n-- select \uAC00 \uC5C6\uC73C\uBA74 \uC804\uCCB4 \uCEEC\uB7FC\uC744 \uC804\uBD80 \uAC00\uC838\uC628\uB2E4.\nFIRST-ONLY { key:oid }\n",
+  "mxql/v2/ha/cluster_level": "CATEGORY cluster{h1}\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [time, node, level, group]\n\nLIMIT 5000",
+  "mxql/v2/ha/cluster_net": "TIME-RANGE {duration:1m, etime:$etime}\n\nCATEGORY cluster_net\n\nTAGLOAD {backward:true}\nINJECT default\n\nFIRST-ONLY {key:[node1,node2]}\n\n",
+  "mxql/v2/ha/cluster_sts": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY cluster_sts\n\nTAGLOAD {backward:true}\nINJECT default\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\n--FIRST-ONLY {key:oid}\n\nLIMIT 100\n",
+  "mxql/v2/ha/cluster_sts2": "TIME-RANGE {duration:1d, etime:$etime}\n\nCATEGORY cluster_sts\n\nTAGLOAD {backward:true}\nINJECT default\n\n--SELECT [time, oid, oname, onode, okind, group, node, section, status]\n--FIRST-ONLY {key:oid}\n-- INJECT\nFILTER {key:node, value:$node}\n\nLIMIT 100\n",
+  "mxql/v2/llm/avg_latency": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nHEADER { "avg_latency$":"ms" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count","latency_sum"]\nGROUP { merge:["call_count","latency_sum"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","latency_sum"], value:"sum" }\nCREATE { key:"avg_latency", expr:"latency_sum / call_count" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/avg_tokens_per_request": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "avg_tokens_per_request$":"F" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count","total_tokens"]\nGROUP { merge:["call_count","total_tokens"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_tokens"], value:"sum" }\nCREATE { key:"avg_tokens_per_request", expr:"total_tokens / call_count" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/avg_tpot": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nHEADER { "avg_tpot$":"ms" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","tpot_count","tpot_sum"]\nGROUP { merge:["tpot_count","tpot_sum"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["tpot_count","tpot_sum"], value:"sum" }\nCREATE { key:"avg_tpot", expr:"tpot_sum / tpot_count" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/avg_ttft": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nHEADER { "avg_ttft$":"ms" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","ttft_count","ttft_sum"]\nGROUP { merge:["ttft_count","ttft_sum"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["ttft_count","ttft_sum"], value:"sum" }\nCREATE { key:"avg_ttft", expr:"ttft_sum / ttft_count" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/cache_stream": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "total_tokens$":"#" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count","total_tokens","stream_count"]\nGROUP { merge:["call_count","total_tokens","stream_count"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_tokens","stream_count"], value:"sum" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/call_count": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "call_count$":"#" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count"]\nGROUP { merge:["call_count"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count"], value:"sum" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/cost_breakdown_bar": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "total_cost$":"dollar" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nDELETE [time]\nUNFOLD ["operation_type","call_count","total_tokens","total_cost"]\nGROUP { merge:["call_count","total_tokens","total_cost"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_tokens","total_cost"], value:"sum" }\nCREATE { key:"_name_", from:"$pk_name" }\nCREATE { key:"_id_", from:"$pk" }\n',
+  "mxql/v2/llm/cost_per_request": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "avg_cost_per_request$":"dollar" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count","total_cost"]\nGROUP { merge:["call_count","total_cost"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_cost"], value:"sum" }\nCREATE { key:"avg_cost_per_request", expr:"total_cost / call_count" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/error_count": 'CATEGORY {"llm_error_stat":"2h", "llm_error_stat{m5}":"1d", "llm_error_stat{h1}":"unlimit"}\nHEADER { "error_count$":"#", "api_error_count$":"#" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","error_count","api_error_count"]\nGROUP { merge:["error_count","api_error_count"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["error_count","api_error_count"], value:"sum" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/error_rate": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "error_rate$":"P" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count","error_count"]\nGROUP { merge:["call_count","error_count"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","error_count"], value:"sum" }\nCREATE { key:"error_rate", expr:"error_count * 100 / call_count" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/latency_distribution": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nDELETE [time]\nUNFOLD ["operation_type","latency_count","latency_sum","latency_sketch"]\nGROUP { quantile2:"latency_sketch", rank:[0,0.25,0.5,0.75,1.0], pk:"$pk", merge:["latency_count","latency_sum"], last:["$pk_name"] }\nUPDATE { key:["latency_count","latency_sum"], value:"sum" }\nDELETE [latency_sketch]\nCREATE { key:"_name_", from:"$pk_name" }\nCREATE { key:"_id_", from:"$pk" }\n',
+  "mxql/v2/llm/percentile_tpot": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nHEADER { "$percentile$":"ms" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","tpot_count","tpot_sum","tpot_sketch"]\nGROUP { quantile2:"tpot_sketch", rank:[0.5,0.75,0.95,0.99], pk:"$pk", merge:["tpot_count","tpot_sum"], last:["operation_type","$pk_name"] }\nUPDATE { key:["tpot_count","tpot_sum"], value:"sum" }\nDELETE [tpot_sketch]\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/percentile_tpot_pcode": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nHEADER { "percentile_50$":"ms", "percentile_75$":"ms", "percentile_95$":"ms", "percentile_99$":"ms" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","tpot_count","tpot_sum","tpot_sketch"]\nGROUP { quantile2:"tpot_sketch", rank:[0.5,0.75,0.95,0.99], pk:["pcode","pname"], merge:["tpot_count","tpot_sum"], last:["operation_type"] }\nUPDATE { key:["tpot_count","tpot_sum"], value:"sum" }\nDELETE [tpot_sketch]\nRENAME [[p50, percentile_50],[p75, percentile_75],[p95, percentile_95],[p99, percentile_99]]\nCREATE { key:"_id_", from:"pcode" }\nCREATE { key:"_name_", from:"pname" }\n',
+  "mxql/v2/llm/percentile_ttft": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nHEADER { "$percentile$":"ms" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","ttft_count","ttft_sum","ttft_sketch"]\nGROUP { quantile2:"ttft_sketch", rank:[0.5,0.75,0.95,0.99], pk:"$pk", merge:["ttft_count","ttft_sum"], last:["operation_type","$pk_name"] }\nUPDATE { key:["ttft_count","ttft_sum"], value:"sum" }\nDELETE [ttft_sketch]\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/percentile_ttft_pcode": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nHEADER { "percentile_50$":"ms", "percentile_75$":"ms", "percentile_95$":"ms", "percentile_99$":"ms" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","ttft_count","ttft_sum","ttft_sketch"]\nGROUP { quantile2:"ttft_sketch", rank:[0.5,0.75,0.95,0.99], pk:["pcode","pname"], merge:["ttft_count","ttft_sum"], last:["operation_type"] }\nUPDATE { key:["ttft_count","ttft_sum"], value:"sum" }\nDELETE [ttft_sketch]\nRENAME [[p50, percentile_50],[p75, percentile_75],[p95, percentile_95],[p99, percentile_99]]\nCREATE { key:"_id_", from:"pcode" }\nCREATE { key:"_name_", from:"pname" }\n',
+  "mxql/v2/llm/perf_cost_bubble": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nDELETE [time]\nUNFOLD ["operation_type","call_count","total_tokens","total_cost"]\nGROUP { merge:["call_count","total_tokens","total_cost"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_tokens","total_cost"], value:"sum" }\nCREATE { key:"avg_cost_per_request", expr:"total_cost / call_count" }\nCREATE { key:"_name_", from:"$pk_name" }\nCREATE { key:"_id_", from:"$pk" }\n',
+  "mxql/v2/llm/stream_rate": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "stream_rate$":"P" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","stream_count","call_count"]\nGROUP { merge:["stream_count","call_count"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["stream_count","call_count"], value:"sum" }\nCREATE { key:"stream_rate", expr:"stream_count * 100 / call_count" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/token_detail_bar": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "total_tokens$":"count" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nDELETE [time]\nUNFOLD ["operation_type","call_count","total_tokens"]\nGROUP { merge:["call_count","total_tokens"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_tokens"], value:"sum" }\nCREATE { key:"_name_", from:"$pk_name" }\nCREATE { key:"_id_", from:"$pk" }\n',
+  "mxql/v2/llm/token_ratio": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "total_tokens$":"#" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count","total_tokens"]\nGROUP { merge:["call_count","total_tokens"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_tokens"], value:"sum" }\nCREATE { key:"token_ratio", expr:"total_tokens / call_count" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/total_cost": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "total_cost$":"dollar" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count","total_cost"]\nGROUP { merge:["call_count","total_cost"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_cost"], value:"sum" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/total_cost_full": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "total_cost$":"dollar" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count","total_cost","total_tokens"]\nGROUP { merge:["call_count","total_cost","total_tokens"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_cost","total_tokens"], value:"sum" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/total_tokens": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "total_tokens$":"#" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","total_tokens"]\nGROUP { merge:["total_tokens"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["total_tokens"], value:"sum" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/total_tokens_with_call": 'CATEGORY {"llm_token_usage":"2h", "llm_token_usage{m5}":"1d", "llm_token_usage{h1}":"unlimit"}\nHEADER { "total_tokens$":"#" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nUNFOLD ["operation_type","call_count","total_tokens"]\nGROUP { merge:["call_count","total_tokens"], pk:"$pk", last:["operation_type","$pk_name"] }\nUPDATE { key:["call_count","total_tokens"], value:"sum" }\nCREATE { key:"_id_", from:"$pk" }\nCREATE { key:"_name_", from:"$pk_name" }\n',
+  "mxql/v2/llm/tpot_distribution": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nDELETE [time]\nUNFOLD ["operation_type","tpot_count","tpot_sum","tpot_sketch"]\nGROUP { quantile2:"tpot_sketch", rank:[0,0.25,0.5,0.75,1.0], pk:"$pk", merge:["tpot_count","tpot_sum"], last:["$pk_name"] }\nUPDATE { key:["tpot_count","tpot_sum"], value:"sum" }\nDELETE [tpot_sketch]\nCREATE { key:"_name_", from:"$pk_name" }\nCREATE { key:"_id_", from:"$pk" }\n',
+  "mxql/v2/llm/ttft_distribution": 'CATEGORY {"llm_perf_stat":"2h", "llm_perf_stat{m5}":"1d", "llm_perf_stat{h1}":"unlimit"}\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nTAGLOAD\nSELECT\nINJECT default\nDELETE [time]\nUNFOLD ["operation_type","ttft_count","ttft_sum","ttft_sketch"]\nGROUP { quantile2:"ttft_sketch", rank:[0,0.25,0.5,0.75,1.0], pk:"$pk", merge:["ttft_count","ttft_sum"], last:["$pk_name"] }\nUPDATE { key:["ttft_count","ttft_sum"], value:"sum" }\nDELETE [ttft_sketch]\nCREATE { key:"_name_", from:"$pk_name" }\nCREATE { key:"_id_", from:"$pk" }\n',
+  "mxql/v2/logs/logsink_aggr": 'LogTag {key : $denominator_filter_keys, value : $denominator_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: denominator_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nJOIN {pk : $group_keys, query :exclude_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count]}\nJOIN {pk : $group_keys, query :include_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count, include_count]}\nCREATE { key : _pk_, value : $group_keys}\nCREATE { key: include_minus_exclude_count, expr: "include_count - exclude_count" }\nCREATE { key: count_rate, expr: "(include_count - exclude_count)/denominator_count" }\n\nSUB include_query\nLogTag {key : $include_filter_keys, value : $include_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: include_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND\n\nSUB exclude_query\nLogTag {key : $exclude_filter_keys, value : $exclude_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: exclude_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND',
+  "mxql/v2/logs/logsink_collection_status": `CATEGORY logsink_stats
 TAGLOAD
 SELECT [oname, file, fileSize, checkedLocalTime, lastupdatedLocalTime, firstCheck]
 CREATE {key : _pk_, from : oname}
@@ -40236,7 +46047,7 @@ CATEGORY agent_list
 FLEXLOAD
 CREATE {key : _pk_, from : oname}
 END`,
-  "v2/logs/logsink_collection_status_v2": `CATEGORY logsink_stats
+  "mxql/v2/logs/logsink_collection_status_v2": `CATEGORY logsink_stats
 TAGLOAD
 SELECT [oname, file, fileSize, checkedLocalTime, lastupdatedLocalTime, firstCheck]
 CREATE {key : _pk_, from : oname}
@@ -40255,9 +46066,9 @@ CATEGORY agent_list
 FLEXLOAD
 CREATE {key : _pk_, from : oname}
 END`,
-  "v2/logs/logsink_count_v1": "LogTag { key : $filter_keys, value : $filter_values, exclude: $filter_excludes}\nCATEGORY $category\nLogCountLoad\nSELECT\nGROUP { timeunit:$group_time_unit, pk:$group_keys, merge:[rows] }\nCREATE { key : _pk_, value : $group_keys}\nUPDATE {key:rows, value:sum}",
-  "v2/logs/logsink_count_v2": 'LogTag {key : $denominator_filter_keys, value : $denominator_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: denominator_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nJOIN {pk : $group_keys, query :exclude_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count]}\nJOIN {pk : $group_keys, query :include_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count, include_count]}\nCREATE { key : _pk_, value : $group_keys}\nCREATE { key: include_minus_exclude_count, expr: "include_count - exclude_count" }\nCREATE { key: count_rate, expr: "(include_count - exclude_count)/denominator_count" }\n\nSUB include_query\nLogTag {key : $include_filter_keys, value : $include_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: include_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND\n\nSUB exclude_query\nLogTag {key : $exclude_filter_keys, value : $exclude_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: exclude_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND',
-  "v2/logs/logsink_log_count_avg": `# \uCE74\uD14C\uACE0\uB9AC \uBCC4 RPS\uC758 \uD3C9\uADE0
+  "mxql/v2/logs/logsink_count_v1": "LogTag { key : $filter_keys, value : $filter_values, exclude: $filter_excludes}\nCATEGORY $category\nLogCountLoad\nSELECT\nGROUP { timeunit:$group_time_unit, pk:$group_keys, merge:[rows] }\nCREATE { key : _pk_, value : $group_keys}\nUPDATE {key:rows, value:sum}",
+  "mxql/v2/logs/logsink_count_v2": 'LogTag {key : $denominator_filter_keys, value : $denominator_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: denominator_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nJOIN {pk : $group_keys, query :exclude_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count]}\nJOIN {pk : $group_keys, query :include_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count, include_count]}\nCREATE { key : _pk_, value : $group_keys}\nCREATE { key: include_minus_exclude_count, expr: "include_count - exclude_count" }\nCREATE { key: count_rate, expr: "(include_count - exclude_count)/denominator_count" }\n\nSUB include_query\nLogTag {key : $include_filter_keys, value : $include_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: include_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND\n\nSUB exclude_query\nLogTag {key : $exclude_filter_keys, value : $exclude_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: exclude_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND',
+  "mxql/v2/logs/logsink_log_count_avg": `# \uCE74\uD14C\uACE0\uB9AC \uBCC4 RPS\uC758 \uD3C9\uADE0
 HEADER {rps.avg$:"I"}
 
 APPEND q_four_week_ago
@@ -40324,7 +46135,7 @@ CREATE {key : _timetype_, value : "past 4w" }
 CREATE {key : _id_ , expr : "pcode+'_'+displayCategory+'_'+'rps.avg'"}
 CREATE {key : _name_ , expr : "displayCategory+' '+'rps.avg'"}
 END`,
-  "v2/logs/logsink_log_count_last": `HEADER {rps.last$:"I"}
+  "mxql/v2/logs/logsink_log_count_last": `HEADER {rps.last$:"I"}
 
 APPEND q_four_week_ago
 APPEND q_a_week_ago
@@ -40389,7 +46200,7 @@ CREATE {key : _timetype_, value : "past 4w" }
 CREATE {key : _id_ , expr : "pcode+'_'+displayCategory+'_'+'rps.last'"}
 CREATE {key : _name_ , expr : "displayCategory+' '+'rps.last'"}
 END`,
-  "v2/logs/logsink_log_count_max": `HEADER {rps.max$:"I" }
+  "mxql/v2/logs/logsink_log_count_max": `HEADER {rps.max$:"I" }
 
 APPEND q_four_week_ago
 APPEND q_a_week_ago
@@ -40458,7 +46269,7 @@ CREATE {key : _timetype_, value : "past 4w" }
 CREATE {key : _id_ , expr : "pcode+'_'+displayCategory+'_'+'rps.max'"}
 CREATE {key : _name_ , expr : "displayCategory+' '+'rps.max'"}
 END`,
-  "v2/logs/logsink_log_count_rows": `HEADER {rows$:"I"}
+  "mxql/v2/logs/logsink_log_count_rows": `HEADER {rows$:"I"}
 
 APPEND q_four_week_ago
 APPEND q_a_week_ago
@@ -40523,7 +46334,7 @@ CREATE {key : _timetype_, value : "past 4w" }
 CREATE {key : _id_ , expr : "pcode+'_'+displayCategory+'_'+'rows'"}
 CREATE {key : _name_ , expr : "displayCategory+' '+'rows'"}
 END`,
-  "v2/logs/logsink_log_count_sum": `# \uCE74\uD14C\uACE0\uB9AC \uBCC4 RPS\uC758 \uD569
+  "mxql/v2/logs/logsink_log_count_sum": `# \uCE74\uD14C\uACE0\uB9AC \uBCC4 RPS\uC758 \uD569
 HEADER {rps.avg$:"I"}
 
 APPEND q_four_week_ago
@@ -40590,9 +46401,9 @@ CREATE {key : _timetype_, value : "past 4w" }
 CREATE {key : _id_ , expr : "pcode+'_'+displayCategory+'_'+'rps.sum'"}
 CREATE {key : _name_ , expr : "displayCategory+' '+'rps.sum'"}
 END`,
-  "v2/logs/logsink_pii_job_history": "CATEGORY #WhaTapPIIClearHistory\nLogSink { backward: true }\nSELECT\nGROUP { timeunit:1h, pk:JobId }\nRENAME {src:_rows_, dst:dfsCount}\nUPDATE {key:[ScannedLogCount, MatchedLogCount], value:sum}",
-  "v2/logs/logsink_rate": 'LogTag {key : $denominator_filter_keys, value : $denominator_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: denominator_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nJOIN {pk : $group_keys, query :exclude_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count]}\nJOIN {pk : $group_keys, query :include_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count, include_count]}\nCREATE { key : _pk_, value : $group_keys}\nCREATE { key: include_minus_exclude_count, expr: "include_count - exclude_count" }\nCREATE { key: count_rate, expr: "(include_count - exclude_count)/denominator_count" }\n\nSUB include_query\nLogTag {key : $include_filter_keys, value : $include_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: include_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND\n\nSUB exclude_query\nLogTag {key : $exclude_filter_keys, value : $exclude_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: exclude_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND',
-  "v2/logs/logsink_rps": `CATEGORY $category
+  "mxql/v2/logs/logsink_pii_job_history": "CATEGORY #WhaTapPIIClearHistory\nLogSink { backward: true }\nSELECT\nGROUP { timeunit:1h, pk:JobId }\nRENAME {src:_rows_, dst:dfsCount}\nUPDATE {key:[ScannedLogCount, MatchedLogCount], value:sum}",
+  "mxql/v2/logs/logsink_rate": 'LogTag {key : $denominator_filter_keys, value : $denominator_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: denominator_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nJOIN {pk : $group_keys, query :exclude_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count]}\nJOIN {pk : $group_keys, query :include_query, last :[pname], field : [pcode, time, $group_keys, $aggr_keys, exclude_count, include_count]}\nCREATE { key : _pk_, value : $group_keys}\nCREATE { key: include_minus_exclude_count, expr: "include_count - exclude_count" }\nCREATE { key: count_rate, expr: "(include_count - exclude_count)/denominator_count" }\n\nSUB include_query\nLogTag {key : $include_filter_keys, value : $include_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: include_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND\n\nSUB exclude_query\nLogTag {key : $exclude_filter_keys, value : $exclude_filter_values }\nCATEGORY $category\nLogCountLoad {group : $group_keys, aggr :$aggr_keys}\nGROUP { timeunit:$group_time_unit, pk:[$group_keys]}\nUPDATE { key : $aggr_keys, value : aggr }\nUPDATE { key: "count", value: sum }\nCREATE { key: exclude_count, from : "count" }\nLAST-ONLY { key : [$group_keys]}\nEND',
+  "mxql/v2/logs/logsink_rps": `CATEGORY $category
 LogCountLoad {group : $group_keys}
 FILTER {expr : "startsWith(category, '#') == false"}
 GROUP { timeunit:1m, pk:[$group_keys]}
@@ -40605,7 +46416,7 @@ UPDATE { key: rps, value: avg }
 UPDATE { key: count, value: sum }
 LAST-ONLY { key : [$group_keys]}
 CREATE { key: "_pk_", value: $group_keys}`,
-  "v2/rum/pageload/daily_page_load_count": `HEADER { "page_load_count$":"I" }
+  "mxql/v2/rum/pageload/daily_page_load_count": `HEADER { "page_load_count$":"I" }
 CATEGORY {"rum_page_load_each_page":6h, "rum_page_load_each_page{m5}":3d, "rum_page_load_each_page{h1}":unlimit }
 TAGLOAD
 INJECT default
@@ -40615,7 +46426,7 @@ CREATE { key:_id_, value: " " }
 GROUP { timeunit: 5m, merge: "page_load_count", pk: _id_ }
 UPDATE { key: "page_load_count", value: sum }
 CREATE { key:_id_, expr: _name_ }`,
-  "v2/rum/pageload/daily_page_load_time": `HEADER { "page_load_time$":"ms" }
+  "mxql/v2/rum/pageload/daily_page_load_time": `HEADER { "page_load_time$":"ms" }
 CATEGORY {"rum_page_load_each_page":6h, "rum_page_load_each_page{m5}":3d, "rum_page_load_each_page{h1}":unlimit }
 TAGLOAD
 INJECT default
@@ -40628,7 +46439,7 @@ GROUP { timeunit: 5m, merge: "page_load_time", pk: _id_ }
 UPDATE { key: "page_load_time", value: "avg" }
 CREATE { key:_name_, expr: _id_ }
 `,
-  "v2/rum/pageload/front_back_time": `HEADER { "Backend Time$":"ms", "Frontend Time$":"ms" }
+  "mxql/v2/rum/pageload/front_back_time": `HEADER { "Backend Time$":"ms", "Frontend Time$":"ms" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40640,7 +46451,7 @@ UPDATE { key: ["page_load_backend_time","page_load_frontend_time"], value: "avg"
 RENAME {src: "page_load_backend_time", dst: "Backend Time"}
 RENAME {src: "page_load_frontend_time", dst: "Frontend Time"}
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/onload_event_time": `HEADER { "page_load_event_time$":"ms" }
+  "mxql/v2/rum/pageload/onload_event_time": `HEADER { "page_load_event_time$":"ms" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40651,7 +46462,7 @@ CREATE { key: _id_, value: "onload event time" }
 GROUP { timeunit: 5s, merge:"page_load_event_time", pk:_id_ }
 UPDATE { key: "page_load_event_time", value: avg }
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/onload_event_time_by_page_group": `HEADER { "page_load_event_time$":"ms" }
+  "mxql/v2/rum/pageload/onload_event_time_by_page_group": `HEADER { "page_load_event_time$":"ms" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40661,7 +46472,7 @@ CREATE { key:_id_, expr: "page_group" }
 GROUP { timeunit: 5s, merge: "page_load_event_time", pk: _id_ }
 UPDATE { key: "page_load_event_time", value: "avg" }
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/onload_event_time_by_page_group_for_topn": `HEADER { "page_load_event_time$":"ms" }
+  "mxql/v2/rum/pageload/onload_event_time_by_page_group_for_topn": `HEADER { "page_load_event_time$":"ms" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40673,7 +46484,7 @@ CREATE { key:_id_, expr: "page_group" }
 GROUP { timeunit: 5s, merge: "page_load_event_time", pk: _id_ }
 UPDATE { key: "page_load_event_time", value: "avg" }
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/order_onload_event_time_by_page_group": `HEADER { "page_group$":"#" }
+  "mxql/v2/rum/pageload/order_onload_event_time_by_page_group": `HEADER { "page_group$":"#" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40683,7 +46494,7 @@ GROUP { merge: "page_load_event_time", pk: page_group }
 UPDATE { key: "page_load_event_time", value: max }
 ORDER {key:"page_load_event_time", sort: desc}
 LIMIT $limit`,
-  "v2/rum/pageload/order_page_load_count_by_page_group": `HEADER { "page_group$":"#" }
+  "mxql/v2/rum/pageload/order_page_load_count_by_page_group": `HEADER { "page_group$":"#" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40693,7 +46504,7 @@ GROUP { merge: "page_load_count", pk: page_group }
 UPDATE { key: "page_load_count", value: sum }
 ORDER {key:"page_load_count", sort: desc}
 LIMIT $limit`,
-  "v2/rum/pageload/order_page_load_time_by_page_group": `HEADER { "page_group$":"#" }
+  "mxql/v2/rum/pageload/order_page_load_time_by_page_group": `HEADER { "page_group$":"#" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40703,7 +46514,7 @@ GROUP { merge: "page_load_duration", pk: page_group }
 UPDATE { key: "page_load_duration", value: max }
 ORDER {key:"page_load_duration", sort: desc}
 LIMIT $limit`,
-  "v2/rum/pageload/page_load_count": `HEADER { "page_load_count$":"I" }
+  "mxql/v2/rum/pageload/page_load_count": `HEADER { "page_load_count$":"I" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40714,7 +46525,7 @@ CREATE { key: _id_, value: "page load count" }
 GROUP { timeunit: 5s, merge:"page_load_count", pk:_id_ }
 UPDATE { key: "page_load_count", value: sum }
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/page_load_count_by_kr": `HEADER { "page_load_count$":"I" }
+  "mxql/v2/rum/pageload/page_load_count_by_kr": `HEADER { "page_load_count$":"I" }
 CATEGORY {"rum_KR_page_load_each_page":6h, "rum_KR_page_load_each_page{m5}":3d, "rum_KR_page_load_each_page{h1}":unlimit } 
 TAGLOAD
 INJECT default
@@ -40723,7 +46534,7 @@ SELECT [ 'pcode', 'page_load_count', 'region' ]
 CREATE { key:_name_, expr: "region" }
 GROUP { merge: "page_load_count", pk: _name_ }
 UPDATE { key: "page_load_count", value: sum }`,
-  "v2/rum/pageload/page_load_count_by_page_group": `HEADER { "page_load_count$":"I" }
+  "mxql/v2/rum/pageload/page_load_count_by_page_group": `HEADER { "page_load_count$":"I" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40733,7 +46544,7 @@ CREATE { key:_id_, expr: "page_group" }
 GROUP { timeunit: 5s, merge: "page_load_count", pk: _id_ }
 UPDATE { key: "page_load_count", value: "sum" }
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/page_load_count_by_page_group_for_topn": `HEADER { "page_load_count$":"I" }
+  "mxql/v2/rum/pageload/page_load_count_by_page_group_for_topn": `HEADER { "page_load_count$":"I" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40744,7 +46555,7 @@ CREATE { key:_id_, expr: "page_group" }
 GROUP { timeunit: 5s, merge: "page_load_count", pk: _id_ }
 UPDATE { key: "page_load_count", value: "sum" }
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/page_load_count_by_world": `HEADER { "page_load_count$":"I" }
+  "mxql/v2/rum/pageload/page_load_count_by_world": `HEADER { "page_load_count$":"I" }
 CATEGORY {"rum_world_page_load_all_page":6h, "rum_world_page_load_all_page{m5}":3d, "rum_world_page_load_all_page{h1}":unlimit } 
 TAGLOAD
 INJECT default
@@ -40753,8 +46564,8 @@ SELECT [ 'pcode', 'page_load_count', 'country' ]
 CREATE { key:_name_, expr: "country" }
 GROUP { merge: "page_load_count", pk: _name_ }
 UPDATE { key: "page_load_count", value: sum }`,
-  "v2/rum/pageload/page_load_table_by_page_group": 'HEADER { "page_group$":"#","page_load_backend_time$":"ms",\n"page_load_event_time$":"ms",\n"page_load_count$":"I","page_load_duration$":"ms","page_load_frontend_time$":"ms" }\nCATEGORY {"rum_page_load_each_page":6h, "rum_page_load_each_page{m5}":3d, "rum_page_load_each_page{h1}":unlimit }\nTAGLOAD\nINJECT default\nUPDATE { key: ["page_load_event_time","page_load_backend_time","page_load_duration","page_load_frontend_time"], value: avg }\nUPDATE { key: ["page_load_count"], value: sum }\nSELECT ["pcode","page_group","page_load_backend_time","page_load_count","page_load_duration","page_load_frontend_time","page_load_event_time"]\nGROUP { merge:["page_load_backend_time","page_load_count","page_load_duration","page_load_frontend_time","page_load_event_time"], pk:"page_group" }\nUPDATE { key: ["page_load_count"], value: sum }\nUPDATE { key: ["page_load_backend_time","page_load_duration","page_load_frontend_time","page_load_event_time"], value: avg }',
-  "v2/rum/pageload/page_load_time": `HEADER { "page_load_time$":"ms" }
+  "mxql/v2/rum/pageload/page_load_table_by_page_group": 'HEADER { "page_group$":"#","page_load_backend_time$":"ms",\n"page_load_event_time$":"ms",\n"page_load_count$":"I","page_load_duration$":"ms","page_load_frontend_time$":"ms" }\nCATEGORY {"rum_page_load_each_page":6h, "rum_page_load_each_page{m5}":3d, "rum_page_load_each_page{h1}":unlimit }\nTAGLOAD\nINJECT default\nUPDATE { key: ["page_load_event_time","page_load_backend_time","page_load_duration","page_load_frontend_time"], value: avg }\nUPDATE { key: ["page_load_count"], value: sum }\nSELECT ["pcode","page_group","page_load_backend_time","page_load_count","page_load_duration","page_load_frontend_time","page_load_event_time"]\nGROUP { merge:["page_load_backend_time","page_load_count","page_load_duration","page_load_frontend_time","page_load_event_time"], pk:"page_group" }\nUPDATE { key: ["page_load_count"], value: sum }\nUPDATE { key: ["page_load_backend_time","page_load_duration","page_load_frontend_time","page_load_event_time"], value: avg }',
+  "mxql/v2/rum/pageload/page_load_time": `HEADER { "page_load_time$":"ms" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40766,7 +46577,7 @@ RENAME { src: "page_load_duration", dst: page_load_time }
 GROUP { timeunit: 5s, merge:"page_load_time", pk:_id_ }
 UPDATE { key: "page_load_time", value: avg }
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/page_load_time_by_kor": `HEADER { "page_load_duration$":"ms" }
+  "mxql/v2/rum/pageload/page_load_time_by_kor": `HEADER { "page_load_duration$":"ms" }
 CATEGORY {"rum_KR_page_load_each_page":6h, "rum_KR_page_load_each_page{m5}":3d, "rum_KR_page_load_each_page{h1}":unlimit } 
 TAGLOAD
 INJECT default
@@ -40775,7 +46586,7 @@ SELECT [ 'pcode', 'page_load_duration', 'region' ]
 CREATE { key:_name_, expr: "region" }
 GROUP { merge: "page_load_duration", pk: _name_ }
 UPDATE { key: "page_load_duration", value: avg }`,
-  "v2/rum/pageload/page_load_time_by_page_group": `HEADER { "page_load_time$":"ms" }
+  "mxql/v2/rum/pageload/page_load_time_by_page_group": `HEADER { "page_load_time$":"ms" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40787,7 +46598,7 @@ CREATE { key:_id_, expr: "page_group" }
 GROUP { timeunit: 5s, merge: "page_load_time", pk: _id_ }
 UPDATE { key: "page_load_time", value: "avg" }
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/page_load_time_by_page_group_for_topn": `HEADER { "page_load_time$":"ms" }
+  "mxql/v2/rum/pageload/page_load_time_by_page_group_for_topn": `HEADER { "page_load_time$":"ms" }
 CATEGORY {"rum_page_load_each_page": 6h, "rum_page_load_each_page{m5}": 3d, "rum_page_load_each_page{h1}": unlimit}
 TAGLOAD
 INJECT default
@@ -40799,7 +46610,7 @@ CREATE { key:_id_, expr: "page_group" }
 GROUP { timeunit: 5s, merge: "page_load_time", pk: _id_ }
 UPDATE { key: "page_load_time", value: "avg" }
 CREATE { key: _name_, expr: _id_ }`,
-  "v2/rum/pageload/page_load_time_by_world": `HEADER { "page_load_duration$":"ms" }
+  "mxql/v2/rum/pageload/page_load_time_by_world": `HEADER { "page_load_duration$":"ms" }
 CATEGORY {"rum_world_page_load_all_page":6h, "rum_world_page_load_all_page{m5}":3d, "rum_world_page_load_all_page{h1}":unlimit } 
 TAGLOAD
 INJECT default
@@ -40808,7 +46619,7 @@ SELECT [ 'pcode', 'page_load_duration', 'country' ]
 CREATE { key:_name_, expr: "country" }
 GROUP { merge: "page_load_duration", pk: _name_ }
 UPDATE { key: "page_load_duration", value: avg }`,
-  "v2/sys/active_agent_list": `
+  "mxql/v2/sys/active_agent_list": `
 -- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM
 
 HEADER {cpu$:'%', mem$:'B'}
@@ -40823,20 +46634,20 @@ SELECT [oid,oname,otype, subtype, status ]
 FILTER { expr: "status != 'inactive'" }
 
 JOIN {query:'/v2/sys/dashboard/agent_cpu', pk:oid, field:[cpu,mem] }`,
-  "v2/sys/agent_count": "-- \uC694\uC57D \uC5D0\uC774\uC804\uD2B8 \uAC74\uC218\nHEADER {hosts$:I,cores$:I,act$:I,inact$:I\n       ,act_meter_inst$:F, act_meter_host$:F}\n\nCATEGORY agent_count\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\nINJECT default\n",
-  "v2/sys/agent_list": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\nINJECT default\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/v2/sys/dashboard/agent_cpu', pk:oid, field:[cpu,mem] }\n\n",
-  "v2/sys/agent_list_subtype": 'CATEGORY agent_list\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nFLEXLOAD\nINJECT default\nSELECT [oid, oname, otype, okind, subtype, status]\nRENAME { dst: "pk", src: "oid" }\n\n',
-  "v2/sys/cardview/cpu_core_perf": "OID $oid\n\nTIME-RANGE {duration:10s, etime:$etime}\n\nCATEGORY server_cpu_core\n\nTAGLOAD {backward:true}\nINJECT default\n\nSELECT [time,  cpu,  idle, iowait, nice, steal,sys,usr, irq, softirq]\n\nFIRST-ONLY {key:cpu }",
-  "v2/sys/cardview/cpu_oid": 'CATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nINJECT default\n\nSELECT [time, oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\n\n',
-  "v2/sys/cardview/mem_oid": 'CATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nINJECT default\n\nSELECT [time, oid, oname, os,  host_ip\n       ,memory_total,memory_free,memory_cached,memory_used,memory_pused,memory_available,memory_pavailable     \n       ,memory_buffers,memory_shared,memory_swapused,memory_swappused,memory_swaptotal\n       ,memory_pageFaults,memory_slab,memory_sreclaimable,memory_sunreclaim\n       ]\n',
-  "v2/sys/cpu_load": '-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nINJECT timepast\n\nHEADER {load1$:F, load5$:F, load15$:F}\n\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD \nINJECT default\nSELECT [time,oid, oname, os,  host_ip, cpu_load1, cpu_load5, cpu_load15]\n\nRENAME {src:cpu_load1, dst:load1}\nRENAME {src:cpu_load5, dst:load5}\nRENAME {src:cpu_load15, dst:load15}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\n',
-  "v2/sys/dashboard/agent_cpu": "-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nHEADER {cpu$:'%', mem$:B}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTAGLOAD {backward:true}\nINJECT default\n\nSELECT [oid,  cpu, memory_pused]\nFIRST-ONLY {key:oid}\nRENAME {src:memory_pused,  dst:mem}\n",
-  "v2/sys/dashboard/agent_list": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\nINJECT default\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/v2/sys/dashboard/agent_cpu', pk:oid, field:[cpu,mem] }\n\n",
-  "v2/sys/disk_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_disk\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\nINJECT default\n\nSELECT [oid, fileSystem, mountPoint, $field]\n\n\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n",
-  "v2/sys/disk_topn_used_percent": "# 2021-09-28 hwanseok\n# flex alert\nHEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_disk\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, fileSystem, mountPoint, $field]\n\nINJECT default\n\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n",
-  "v2/sys/disk_topn_used_space": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_disk\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, fileSystem, mountPoint, $field]\n\nINJECT default\n\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n",
-  "v2/sys/memory_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, $field]\n\nRENAME {src: $field, dst: value}\nGROUP  {pk: oid, merge: value}\nUPDATE {key: value, value: max}\nORDER  {key: value, sort:desc}\n\nLIMIT $limit\n\n",
-  "v2/sys/network_io_topn": `HEADER {oid$:'I' }
+  "mxql/v2/sys/agent_count": "-- \uC694\uC57D \uC5D0\uC774\uC804\uD2B8 \uAC74\uC218\nHEADER {hosts$:I,cores$:I,act$:I,inact$:I\n       ,act_meter_inst$:F, act_meter_host$:F}\n\nCATEGORY agent_count\n\nOID $oid\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nONODE $onode\n\nFLEXLOAD\nINJECT default\n",
+  "mxql/v2/sys/agent_list": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\nINJECT default\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/v2/sys/dashboard/agent_cpu', pk:oid, field:[cpu,mem] }\n\n",
+  "mxql/v2/sys/agent_list_subtype": 'CATEGORY agent_list\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\nFLEXLOAD\nINJECT default\nSELECT [oid, oname, otype, okind, subtype, status]\nRENAME { dst: "pk", src: "oid" }\n\n',
+  "mxql/v2/sys/cardview/cpu_core_perf": "OID $oid\n\nTIME-RANGE {duration:10s, etime:$etime}\n\nCATEGORY server_cpu_core\n\nTAGLOAD {backward:true}\nINJECT default\n\nSELECT [time,  cpu,  idle, iowait, nice, steal,sys,usr, irq, softirq]\n\nFIRST-ONLY {key:cpu }",
+  "mxql/v2/sys/cardview/cpu_oid": 'CATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nINJECT default\n\nSELECT [time, oid, oname, os,  host_ip, cpu, cpu_usr, cpu_sys, cpu_idle, cpu_nice, cpu_irq, cpu_softirq, cpu_steal, cpu_iowait ]\n\n',
+  "mxql/v2/sys/cardview/mem_oid": 'CATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nINJECT default\n\nSELECT [time, oid, oname, os,  host_ip\n       ,memory_total,memory_free,memory_cached,memory_used,memory_pused,memory_available,memory_pavailable     \n       ,memory_buffers,memory_shared,memory_swapused,memory_swappused,memory_swaptotal\n       ,memory_pageFaults,memory_slab,memory_sreclaimable,memory_sunreclaim\n       ]\n',
+  "mxql/v2/sys/cpu_load": '-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nINJECT timepast\n\nHEADER {load1$:F, load5$:F, load15$:F}\n\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD \nINJECT default\nSELECT [time,oid, oname, os,  host_ip, cpu_load1, cpu_load5, cpu_load15]\n\nRENAME {src:cpu_load1, dst:load1}\nRENAME {src:cpu_load5, dst:load5}\nRENAME {src:cpu_load15, dst:load15}\n\nCREATE {key:_id_, from:oid }\nCREATE {key:_name_, from:oname }\n\n',
+  "mxql/v2/sys/dashboard/agent_cpu": "-- \uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08\nHEADER {cpu$:'%', mem$:B}\n\nTIME-RANGE {duration:15s, etime:$etime}\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTAGLOAD {backward:true}\nINJECT default\n\nSELECT [oid,  cpu, memory_pused]\nFIRST-ONLY {key:oid}\nRENAME {src:memory_pused,  dst:mem}\n",
+  "mxql/v2/sys/dashboard/agent_list": "\n-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM\n\nHEADER {cpu$:'%', mem$:'B'}\n\nCATEGORY agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\nINJECT default\nSELECT [oid,oname,otype, subtype, status ]\n\nJOIN {query:'/v2/sys/dashboard/agent_cpu', pk:oid, field:[cpu,mem] }\n\n",
+  "mxql/v2/sys/disk_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_disk\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\nINJECT default\n\nSELECT [oid, fileSystem, mountPoint, $field]\n\n\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n",
+  "mxql/v2/sys/disk_topn_used_percent": "# 2021-09-28 hwanseok\n# flex alert\nHEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_disk\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, fileSystem, mountPoint, $field]\n\nINJECT default\n\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n",
+  "mxql/v2/sys/disk_topn_used_space": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_disk\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\n\nSELECT [oid, fileSystem, mountPoint, $field]\n\nINJECT default\n\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n",
+  "mxql/v2/sys/memory_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_base\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, $field]\n\nRENAME {src: $field, dst: value}\nGROUP  {pk: oid, merge: value}\nUPDATE {key: value, value: max}\nORDER  {key: value, sort:desc}\n\nLIMIT $limit\n\n",
+  "mxql/v2/sys/network_io_topn": `HEADER {oid$:'I' }
 
 OIDSET {oid:$oid, okind:$okind, onode:$onode}
 
@@ -40860,7 +46671,7 @@ ORDER  {key: value, sort:desc}
 
 LIMIT $limit
 `,
-  "v2/sys/process_rw_topn": `HEADER {oid$:'I' }
+  "mxql/v2/sys/process_rw_topn": `HEADER {oid$:'I' }
 
 OIDSET {oid:$oid, okind:$okind, onode:$onode}
 
@@ -40887,8 +46698,8 @@ ORDER  {key: value, sort:desc}
 
 LIMIT $limit
 `,
-  "v2/sys/process_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_process\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, name, $field]\n\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n",
-  "v2/sys/server_agent_count": `CATEGORY agent_list
+  "mxql/v2/sys/process_topn": "HEADER {oid$:'I' }\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nCATEGORY server_process\n\nTIME-RANGE {duration:30s, etime:$etime}\n\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, name, $field]\n\nGROUP  {pk: oid, merge: $field}\nUPDATE {key: $field, value: max}\nORDER  {key: $field, sort:desc}\n\nLIMIT $limit\n",
+  "mxql/v2/sys/server_agent_count": `CATEGORY agent_list
 FLEXLOAD
 SELECT [oid, status]
 GROUP { pk: "pcode" }
@@ -40914,7 +46725,7 @@ FILTER { key: "status", value: "inactive" }
 GROUP { pk: "pcode" }
 CREATE { key: "inactive_agents", expr: _rows_ }
 END`,
-  "v2/sys/server_avg_cpu": `HEADER { "cpu$":"pct" }
+  "mxql/v2/sys/server_avg_cpu": `HEADER { "cpu$":"pct" }
 TIME-RANGE {duration: 5m, etime: $etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 CATEGORY {"server_base":6h, "server_base{m5}":3d, "server_base{h1}":unlimit } 
@@ -40927,7 +46738,7 @@ FILTER { key: "pcode", exist: true }
 GROUP { timeunit: 1m, merge: ['cpu'], pk: pcode, last: pname }
 UPDATE { key: ['cpu'], value: avg }
 LAST-ONLY { key: pcode }`,
-  "v2/sys/server_avg_disk": `HEADER { "usedPercent$":"pct" }
+  "mxql/v2/sys/server_avg_disk": `HEADER { "usedPercent$":"pct" }
 TIME-RANGE {duration: 5m, etime: $etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 CATEGORY {"server_disk":6h, "server_disk{m5}":3d, "server_disk{h1}":unlimit } 
@@ -40940,7 +46751,7 @@ FILTER { key: "pname", exist: true }
 GROUP { timeunit: 1m, merge: ['usedPercent'], pk: pcode, last: pname }
 UPDATE { key: ['usedPercent'], value: avg }
 LAST-ONLY {key: pcode}`,
-  "v2/sys/server_avg_mem": `HEADER { "memory_pused$":"pct" }
+  "mxql/v2/sys/server_avg_mem": `HEADER { "memory_pused$":"pct" }
 TIME-RANGE {duration: 5m, etime: $etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 CATEGORY {"server_base":6h, "server_base{m5}":3d, "server_base{h1}":unlimit } 
@@ -40953,7 +46764,7 @@ FILTER { key: "pcode", exist: true }
 GROUP { timeunit: 1m, merge: ['memory_pused'], pk: pcode, last: pname }
 UPDATE { key: ['memory_pused'], value: avg }
 LAST-ONLY { key: pcode }`,
-  "v2/sys/server_base": `INJECT timepast
+  "mxql/v2/sys/server_base": `INJECT timepast
 
 HEADER { cpu$:'P', memory_pused$: 'P' }
 
@@ -40969,7 +46780,7 @@ RENAME { dst:_id_, src:oid }
 RENAME { dst:_name_, src:oname }
 
 `,
-  "v2/sys/server_cpu": `INJECT timepast
+  "mxql/v2/sys/server_cpu": `INJECT timepast
 
 HEADER {
     cpu$:'P', cpu_usr$:'P', cpu_sys$:'P', cpu_idle$:'P',
@@ -40989,7 +46800,7 @@ RENAME { dst:_id_, src:oid }
 RENAME { dst:_name_, src:oname }
 
 `,
-  "v2/sys/server_disk_bps": `INJECT timepast
+  "mxql/v2/sys/server_disk_bps": `INJECT timepast
 
 HEADER { "readBps$": "F", "writeBps$": "F" }
 
@@ -41007,7 +46818,7 @@ CREATE {key: _id_, expr: "mountPoint + oid" }
 
 
 DELETE [oid, oname, mountPoint, fileSystem]`,
-  "v2/sys/server_disk_ioPercent": `INJECT timepast
+  "mxql/v2/sys/server_disk_ioPercent": `INJECT timepast
 
 HEADER { "ioPercent$": "P" }
 
@@ -41027,7 +46838,7 @@ CREATE {key: _id_, expr: "mountPoint + oid" }
 DELETE [oid, oname, fileSystem, mountPoint]
 
 `,
-  "v2/sys/server_disk_iops": `INJECT timepast
+  "mxql/v2/sys/server_disk_iops": `INJECT timepast
 
 HEADER { "readIops$": "F", "writeIops$": "F" }
 
@@ -41045,7 +46856,7 @@ CREATE {key: _id_, expr: "mountPoint + oid" }
 
 
 DELETE [oid, oname, fileSystem, mountPoint]`,
-  "v2/sys/server_disk_names": `HEADER {fileSystem$:'#', mountPoint$:'#'}
+  "mxql/v2/sys/server_disk_names": `HEADER {fileSystem$:'#', mountPoint$:'#'}
 
 TIME-RANGE {duration:10m, etime:$etime}
 CATEGORY server_disk
@@ -41056,8 +46867,8 @@ SELECT [oid, deviceIdHash, fileSystem, mountPoint]
 CREATE {key: _id_, expr: "oid + '_' + deviceIdHash" }
 FIRST-ONLY {key:_id_}
 `,
-  "v2/sys/server_disk_treemap": 'HEADER {"totalSpace$": "B", "usedPercent$": "P"}\nCATEGORY {"server_disk":1h, "server_disk{m5}":3d, "server_disk{h1}":unlimit } \nOIDSET $oid\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, fileSystem, mountPoint, totalSpace, usedPercent]\n\nCREATE {key:_id_, expr:"mountPoint + oid" }\nFIRST-ONLY  {key:_id_}\n\nCREATE {from: mountPoint, key: _name_}\nCREATE {from: oname, key: group}',
-  "v2/sys/server_disk_usedInode": `INJECT timepast
+  "mxql/v2/sys/server_disk_treemap": 'HEADER {"totalSpace$": "B", "usedPercent$": "P"}\nCATEGORY {"server_disk":1h, "server_disk{m5}":3d, "server_disk{h1}":unlimit } \nOIDSET $oid\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, fileSystem, mountPoint, totalSpace, usedPercent]\n\nCREATE {key:_id_, expr:"mountPoint + oid" }\nFIRST-ONLY  {key:_id_}\n\nCREATE {from: mountPoint, key: _name_}\nCREATE {from: oname, key: group}',
+  "mxql/v2/sys/server_disk_usedInode": `INJECT timepast
 
 HEADER {"usedInode$": "B"}
 
@@ -41075,7 +46886,7 @@ CREATE {key: _id_, expr: "mountPoint + oid" }
 
 
 DELETE [oid, oname, fileSystem, mountPoint]`,
-  "v2/sys/server_disk_usedInodePercent": `INJECT timepast
+  "mxql/v2/sys/server_disk_usedInodePercent": `INJECT timepast
 
 HEADER {"usedInodePercent$": "P"}
 
@@ -41093,7 +46904,7 @@ CREATE {key: _id_, expr: "mountPoint + oid" }
 
 
 DELETE [oid, oname, fileSystem, mountPoint]`,
-  "v2/sys/server_disk_usedPercent": `INJECT timepast
+  "mxql/v2/sys/server_disk_usedPercent": `INJECT timepast
 
 HEADER { "usedPercent$": "P" }
 
@@ -41111,7 +46922,7 @@ CREATE {key: _id_, expr: "mountPoint + oid" }
 
 
 DELETE [oid, oname, fileSystem, mountPoint]`,
-  "v2/sys/server_disk_usedSpace": `INJECT timepast
+  "mxql/v2/sys/server_disk_usedSpace": `INJECT timepast
 
 HEADER {"usedSpace$": "B"}
 
@@ -41129,11 +46940,11 @@ CREATE {key: _id_, expr: "mountPoint + oid" }
 
 
 DELETE [oid, oname, fileSystem, mountPoint]`,
-  "v2/sys/server_disk_used_oid": 'OIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY server_disk\nTIME-RANGE {duration:30s, etime:$etime}\nTAGLOAD\nINJECT default\nSELECT [oid, usedSpace, totalSpace]\nGROUP  {pk: oid}\nUPDATE {key: usedSpace, value: sum}\nUPDATE {key: totalSpace, value: sum}\nCREATE {key: usedPercent, expr: "(usedSpace / totalSpace) * 100"}\nFIRST-ONLY {key: oid}\n',
-  "v2/sys/server_group_topology": 'CATEGORY agent_list\nFLEXLOAD\nSELECT [os_name, oname, oid]\n# deprecated\nCREATE {key:group1, expr:"os_name"}\n# deprecated\nCREATE {key:group2, expr:"oid"}\n\nCREATE {key:group1_key, expr:"os_name"}\nCREATE {key:group2_key, expr:"oid"}\nCREATE {key:group1_display_name, expr:"os_name"}\nCREATE {key:group2_display_name, expr:"oname"}\n',
-  "v2/sys/server_memory": 'INJECT timepast\n\nHEADER { \n    "memory_pused$": "P", \n    "memory_used$": "B",\n    "memory_total$": "B",\n    "memory_available$": "B", \n    "memory_buffers$": "B", \n    "memory_cached$": "B",\n    "memory_shared$": "B", \n    "memory_free$": "B", \n    "memory_pageFaults$": "B",\n    "memory_slab$": "B", \n    "memory_sreclaimable$": "B",\n    "memory_sunreclaim$": "B",\n    "memory_swappused$": "P",\n}\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nINJECT default\nSELECT [time, oid, oname, $field]\n\nRENAME {dst:_id_, src: oid }\n\nRENAME {dst:_name_, src: oname }\n\n\n',
-  "v2/sys/server_memory_treemap": 'HEADER {"totalSpace$": "B", "usedPercent$": "P"}\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \nOIDSET $oid\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, memory_total, memory_pused]\nFIRST-ONLY  {key:oid}\nRENAME {src:oid, dst: _id_ }\nRENAME {src: memory_total, dst: totalSpace}\nRENAME {src: memory_pused, dst: usedPercent}\nRENAME {src: oname, dst: _name_}\n',
-  "v2/sys/server_network_io": `INJECT timepast
+  "mxql/v2/sys/server_disk_used_oid": 'OIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY server_disk\nTIME-RANGE {duration:30s, etime:$etime}\nTAGLOAD\nINJECT default\nSELECT [oid, usedSpace, totalSpace]\nGROUP  {pk: oid}\nUPDATE {key: usedSpace, value: sum}\nUPDATE {key: totalSpace, value: sum}\nCREATE {key: usedPercent, expr: "(usedSpace / totalSpace) * 100"}\nFIRST-ONLY {key: oid}\n',
+  "mxql/v2/sys/server_group_topology": 'CATEGORY agent_list\nFLEXLOAD\nSELECT [os_name, oname, oid]\n# deprecated\nCREATE {key:group1, expr:"os_name"}\n# deprecated\nCREATE {key:group2, expr:"oid"}\n\nCREATE {key:group1_key, expr:"os_name"}\nCREATE {key:group2_key, expr:"oid"}\nCREATE {key:group1_display_name, expr:"os_name"}\nCREATE {key:group2_display_name, expr:"oname"}\n',
+  "mxql/v2/sys/server_memory": 'INJECT timepast\n\nHEADER { \n    "memory_pused$": "P", \n    "memory_used$": "B",\n    "memory_total$": "B",\n    "memory_available$": "B", \n    "memory_buffers$": "B", \n    "memory_cached$": "B",\n    "memory_shared$": "B", \n    "memory_free$": "B", \n    "memory_pageFaults$": "B",\n    "memory_slab$": "B", \n    "memory_sreclaimable$": "B",\n    "memory_sunreclaim$": "B",\n    "memory_swappused$": "P",\n}\n\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nTAGLOAD\nINJECT default\nSELECT [time, oid, oname, $field]\n\nRENAME {dst:_id_, src: oid }\n\nRENAME {dst:_name_, src: oname }\n\n\n',
+  "mxql/v2/sys/server_memory_treemap": 'HEADER {"totalSpace$": "B", "usedPercent$": "P"}\nCATEGORY {"server_base":1h, "server_base{m5}":3d, "server_base{h1}":unlimit } \nOIDSET $oid\nTAGLOAD {backward:true}\nINJECT default\nSELECT [oid, oname, memory_total, memory_pused]\nFIRST-ONLY  {key:oid}\nRENAME {src:oid, dst: _id_ }\nRENAME {src: memory_total, dst: totalSpace}\nRENAME {src: memory_pused, dst: usedPercent}\nRENAME {src: oname, dst: _name_}\n',
+  "mxql/v2/sys/server_network_io": `INJECT timepast
 
 HEADER { "in$": "F", "out$": "F" }
 
@@ -41156,7 +46967,7 @@ CREATE {key:_name_, expr: "oname + ' - ' + desc" }
 DELETE [oid, descHash, oname, desc, ip]
 
 `,
-  "v2/sys/server_network_names": `HEADER {ip$:'#', desc$:'#'}
+  "mxql/v2/sys/server_network_names": `HEADER {ip$:'#', desc$:'#'}
 
 TIME-RANGE {duration:10m, etime:$etime}
 CATEGORY server_network
@@ -41167,8 +46978,8 @@ CREATE {key: _id_, expr: "oid + '_' + descHash" }
 FIRST-ONLY {key:_id_}
 
 `,
-  "v2/sys/server_network_traffic_oid": "OIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY server_network\nTIME-RANGE {duration:30s, etime:$etime}\nTAGLOAD {backward: true}\nINJECT default\nSELECT [time, oid, trafficIn, trafficOut]\nGROUP  {timeunit: 5s, pk: oid}\nUPDATE {key: trafficIn, value: sum}\nUPDATE {key: trafficOut, value: sum}\nFIRST-ONLY {key: oid}\n",
-  "v2/sys/server_nvidiasmi": `INJECT timepast
+  "mxql/v2/sys/server_network_traffic_oid": "OIDSET {oid:$oid, okind:$okind, onode:$onode}\nCATEGORY server_network\nTIME-RANGE {duration:30s, etime:$etime}\nTAGLOAD {backward: true}\nINJECT default\nSELECT [time, oid, trafficIn, trafficOut]\nGROUP  {timeunit: 5s, pk: oid}\nUPDATE {key: trafficIn, value: sum}\nUPDATE {key: trafficOut, value: sum}\nFIRST-ONLY {key: oid}\n",
+  "mxql/v2/sys/server_nvidiasmi": `INJECT timepast
 
 HEADER {
    GpuUtil$:'P',  GpuTemp$:'F', MemoryUtil$:'P', Used$:'B',
@@ -41188,7 +46999,7 @@ RENAME { dst:_id_, src:oid }
 RENAME { dst:_name_, src:oname }
 
 `,
-  "v2/sys/server_nvidiasmi_power": `HEADER { PowerDraw$: 'I', PowerLimit$: 'I', MaxPowerLimit$: 'I', MinPowerLimit$: 'I', DefaultPowerLimit$: 'I', EnforcedPowerLimit$: 'I', PowerState$: 'S', PowerManagement$: 'S' }
+  "mxql/v2/sys/server_nvidiasmi_power": `HEADER { PowerDraw$: 'I', PowerLimit$: 'I', MaxPowerLimit$: 'I', MinPowerLimit$: 'I', DefaultPowerLimit$: 'I', EnforcedPowerLimit$: 'I', PowerState$: 'S', PowerManagement$: 'S' }
 
 TIME-RANGE {duration:10s, etime:$etime}
 CATEGORY server_nvidiasmi
@@ -41203,7 +47014,7 @@ RENAME {src: pname, dst: _name_ }
 DELETE [oid]
 
 `,
-  "v2/sys/server_os_count": `CATEGORY agent_list
+  "mxql/v2/sys/server_os_count": `CATEGORY agent_list
 FLEXLOAD
 SELECT [oid, pcode, subtype]
 JOIN { query: linux, pk: "pcode", field: ["linux_agents"] }
@@ -41250,7 +47061,7 @@ GROUP { pk: "pcode" }
 CREATE { key: "other_agents", expr: _rows_ }
 END
 `,
-  "v2/sys/server_process": `INJECT timepast
+  "mxql/v2/sys/server_process": `INJECT timepast
 
 HEADER { "cpu$": "P", "count$": "I", "rss$": "B", "memory$": "%", "openFileDescriptors$": "I"}
 CATEGORY {"server_process":1h, "server_process{m5}":3d, "server_process{h1}":unlimit } 
@@ -41265,7 +47076,7 @@ CREATE {key:_name_, expr: "oname + ' - ' + name" }
 
 DELETE [oid, oname, name, hash]
 `,
-  "v2/sys/server_process_names": `HEADER {fileSystem$:'#', mountPoint$:'#'}
+  "mxql/v2/sys/server_process_names": `HEADER {fileSystem$:'#', mountPoint$:'#'}
 
 TIME-RANGE {duration:10m, etime:$etime}
 CATEGORY server_process
@@ -41276,7 +47087,7 @@ CREATE {key: _id_, expr: "oid + '_' + hash" }
 FIRST-ONLY {key:_id_}
 
 `,
-  "v2/sys/server_process_rw": `INJECT timepast
+  "mxql/v2/sys/server_process_rw": `INJECT timepast
 
 HEADER { "rbps$": "B", "wbps$": "B", "wiops$": "F", "riops$": "F"}
 CATEGORY {"server_process":1h, "server_process{m5}":3d, "server_process{h1}":unlimit } 
@@ -41290,7 +47101,7 @@ CREATE {key:_name_, expr: "oname + ' - ' + name" }
 
 
 DELETE [oid, oname, name, hash]`,
-  "v2/sys/server_status_process_rotator": `TIME-RANGE {recent: 10s, etime:$etime}
+  "mxql/v2/sys/server_status_process_rotator": `TIME-RANGE {recent: 10s, etime:$etime}
 CATEGORY server_base
 TAGLOAD {backward: true}
 CREATE { key: _id_, expr: "pcode+'_'+oid" }
@@ -41311,9 +47122,9 @@ FLEXLOAD
 SELECT [oid, oname, status]
 END
 `,
-  "v2/sys/server_status_rotator": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY agent_list \nFLEXLOAD\n",
-  "v2/sys/server_total_core_count": 'CATEGORY agent_list\nFLEXLOAD\nGROUP { pk: pcode, merge: ["metering"] }\nUPDATE { key:[metering], value:sum }\nSELECT ["metering"]',
-  "v2/url/url_category_status": `TIME-RANGE { recent: '10m' }
+  "mxql/v2/sys/server_status_rotator": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY agent_list \nFLEXLOAD\n",
+  "mxql/v2/sys/server_total_core_count": 'CATEGORY agent_list\nFLEXLOAD\nGROUP { pk: pcode, merge: ["metering"] }\nUPDATE { key:[metering], value:sum }\nSELECT ["metering"]',
+  "mxql/v2/url/url_category_status": `TIME-RANGE { recent: '10m' }
 
 INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
@@ -41326,7 +47137,7 @@ FILTER { key: "category_name", exist: true }
 LAST-ONLY { key: category_name }
 GROUP { timeunit: 1h, merge: ['error_url', 'normal_url', 'total_url'], pk: pcode }
 UPDATE { key: ['error_url', 'normal_url', 'total_url'], value: sum }`,
-  "v2/url/url_issue_status": `TIME-RANGE { recent: '10m' }
+  "mxql/v2/url/url_issue_status": `TIME-RANGE { recent: '10m' }
 
 INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
@@ -41339,7 +47150,7 @@ FILTER { key: "issue_name", exist: true }
 LAST-ONLY { key: issue_name }
 GROUP { timeunit: 1h, merge: ['error_url', 'normal_url', 'total_url'], pk: pcode }
 UPDATE { key: ['error_url', 'normal_url', 'total_url'], value: sum }`,
-  "v2/url/url_status_by_category": `HEADER { "category_name$": "S", "normal_url$": "I", "error_url$": "I" }
+  "mxql/v2/url/url_status_by_category": `HEADER { "category_name$": "S", "normal_url$": "I", "error_url$": "I" }
 TIME-RANGE { recent: '10m' }
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 CATEGORY url_stat_category
@@ -41350,7 +47161,7 @@ FILTER { key: "category_name", exist: true }
 LAST-ONLY { key: _pk_}
 CREATE { key: _id_, from: _pk_ }
 CREATE { key: _name_, from: category_name }`,
-  "v2/url/url_status_by_issue": `HEADER { "issue_name$": "S", "normal_url$": "I", "error_url$": "I" }
+  "mxql/v2/url/url_status_by_issue": `HEADER { "issue_name$": "S", "normal_url$": "I", "error_url$": "I" }
 TIME-RANGE { recent: '10m' }
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 CATEGORY url_stat_issue
@@ -41361,7 +47172,7 @@ FILTER { key: "issue_name", exist: true }
 LAST-ONLY { key: _pk_}
 CREATE { key: _id_, from: _pk_ }
 CREATE { key: _name_, from: issue_name }`,
-  "v2/url/url_total_status": `TIME-RANGE { recent: '10m' }
+  "mxql/v2/url/url_total_status": `TIME-RANGE { recent: '10m' }
 
 INJECT timepast
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
@@ -41370,7 +47181,1231 @@ TAGLOAD
 INJECT default
 SELECT [ 'pcode', 'time', 'error_url', 'normal_url', 'total_url' ]
 
-LAST-ONLY { key: pcode }`
+LAST-ONLY { key: pcode }`,
+  "src/main/resources/mxql/apm/daily/app_counter": 'SUB {id:findMax}\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, tx_count]\nGROUP {timeunit:1h, merge:[tx_count]}\nUPDATE {key:tx_count, value:sum}\nRENAME {src:time,dst:peak_hour}\nORDER {key:tx_count, sort:desc}\nCREATE { key: time, from:peak_hour}\nSELECT [time,peak_hour]\nLIMIT 1\nEND\n\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, oid, oname, tx_count,tx_error, tps, resp_time,active_tx_count]\nUPDATE { key:[tx_count,tx_error], value:sum }\nUPDATE { key:[tps,active_tx_count] , value:avg }\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\n\nJOIN {pk:[time], query:findMax}\n\nDELETE time\nIFUPDATE {if:"(peak_hour>0)==false", key:[tps,resp_time,active_tx_count], value:null}\nGROUP { merge:[tx_count,tps,tx_error, resp_time,active_tx_count], pk:[oid, oname], last:peak_hour }\n\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\nUPDATE {key:[tx_count,tps,tx_error, active_tx_count],  value:sum }\n\nRENAME [\n     [tx_count, daily_tx_count]\n    ,[tx_error, daily_tx_error]\n    ,[tps, peak_hour_tps]\n    ,[active_tx_count, peak_hour_active_tx]\n    ,[resp_time, peak_hour_resp_time]\n]\n\nSELECT [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nFOLD [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }\n',
+  "src/main/resources/mxql/apm/daily/app_user": "\nCATEGORY visitor{h1}\nTAGLOAD\nSELECT [time, oid, oname, logbits]\n\nDELETE time\nGROUP { user:logbits, pk:[oid, oname] }\n\nRENAME [\n     [userbytes, daily_bits]\n    ,[logbits, daily_visitor]\n]\n\nSELECT [oid,oname, daily_bits, daily_visitor]\nFOLD [oid,oname, daily_bits, daily_visitor]\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }",
+  "src/main/resources/mxql/apm/stat/error_diff": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "src/main/resources/mxql/apm/stat/error_diff_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	, last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "src/main/resources/mxql/apm/stat/error_series": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "src/main/resources/mxql/apm/stat/error_series_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n\n<% FILTER %>\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] , last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "src/main/resources/mxql/apm/stat/error_stat": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {\n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/error_stat_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/httpc_diff": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
+  "src/main/resources/mxql/apm/stat/httpc_diff_1h": 'CATEGORY db3_stat_httpc[h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
+  "src/main/resources/mxql/apm/stat/httpc_series": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
+  "src/main/resources/mxql/apm/stat/httpc_series_1h": 'CATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
+  "src/main/resources/mxql/apm/stat/httpc_stat": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\n#<% ORDER1 %>\n#<% LIMIT1 %>\n\nDELETE time\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max],\n	pk:[httpc_host_hash,httpc_url_hash,httpc_port] , last:[httpc_tx_hash,tt] \n\n}\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/httpc_stat_1h": '\nCATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n   	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/ip_stat": "CATEGORY db3_stat_ip\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "src/main/resources/mxql/apm/stat/ip_stat_1h": "CATEGORY db3_stat_ip{h1}\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "src/main/resources/mxql/apm/stat/ip_url_stat": 'CATEGORY db3_stat_gen_ip-url\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/ip_url_stat_1h": 'CATEGORY db3_stat_gen_ip-url{h1}\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/sql_diff": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "src/main/resources/mxql/apm/stat/sql_diff_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "src/main/resources/mxql/apm/stat/sql_series": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "src/main/resources/mxql/apm/stat/sql_series_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "src/main/resources/mxql/apm/stat/sql_stat": '\nCATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/sql_stat_1h": '\nCATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/sql_stat_join": '\n\n# 1\uC2DC\uAC04 \uD1B5\uACC4 \uC870\uD68C \nCATEGORY db3_stat_sql{h1}\n<% TIME_1H %>\n\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\n##################################################\n# 1\uC2DC\uAC04 \uD1B5\uACC4\uC5D0 5\uBD84\uD1B5\uACC4 \uACB0\uD569 2\uCC28 GROUP \uD544\uC694  \nAPPEND stat5m\n\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n##################################################\n\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>\n\n\n##################################################\n# 5\uBD84\uD1B5\uACC4 \uC870\uD68C \nSUB stat5m\nCATEGORY db3_stat_sql\n<% TIME_5M %>\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n\nEND\n##################################################',
+  "src/main/resources/mxql/apm/stat/transaction_diff": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:5m, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\n\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]',
+  "src/main/resources/mxql/apm/stat/transaction_diff_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:1h, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]       ',
+  "src/main/resources/mxql/apm/stat/transaction_quantile_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile\n<% AGENT %>\nFLEXLOAD\nGROUP { timeunit:1h, quantile:quantile, pk:urlhash }\nSELECT [time,urlhash, quantile]\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx\n<% AGENT %>\n\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt] }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n<% ORDER1 %>\n<% LIMIT1 %>\n\nJOINByTime {query:quan,  pk:[tx_hash]}\nDELETE time\nGROUP {   merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt], quantile:quantile}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std],value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/transaction_quantile_stat_1h": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile{h1}\n<% AGENT %>\nFLEXLOAD\nSELECT [urlhash,quantile]\nGROUP {quantile:quantile, pk:urlhash }\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\n\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt]}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n\nJOIN {query:quan,  pk:[tx_hash]}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/transaction_series": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]',
+  "src/main/resources/mxql/apm/stat/transaction_series_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]\n',
+  "src/main/resources/mxql/apm/stat/transaction_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/transaction_stat_1h": '#1\uC2DC\uAC04 \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 \uD55C\uBC88\uB9CC \uADF8\uB8F9\uD551\uD55C\uB2E4.  \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated]\n    , pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n\nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n \nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/transaction_stat_join": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/tx_caller_stat": 'CATEGORY db3_stat_gen_mt\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/tx_caller_stat_1h": '\nCATEGORY db3_stat_gen_mt{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP  {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE {value:sum }\nCREATE {key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/tx_domain_series": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "src/main/resources/mxql/apm/stat/tx_domain_series_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "src/main/resources/mxql/apm/stat/tx_domain_stat": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/tx_domain_stat_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/tx_login_stat": 'CATEGORY db3_stat_gen_login\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[login,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/tx_login_stat_1h": 'CATEGORY db3_stat_gen_login{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/tx_referer_series": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "src/main/resources/mxql/apm/stat/tx_referer_series_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "src/main/resources/mxql/apm/stat/tx_referer_stat": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[referer,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/tx_referer_stat_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "src/main/resources/mxql/apm/stat/useragent_series": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:5m, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
+  "src/main/resources/mxql/apm/stat/useragent_series_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:1h, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
+  "src/main/resources/mxql/apm/stat/useragent_stat": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count], pk:[hash], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "src/main/resources/mxql/apm/stat/useragent_stat_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "src/main/resources/mxql/dbx/linkages/apm2db": "CATEGORY search_act_tx_run_sql\n<%flexload%>\nSELECT",
+  "src/main/resources/mxql/dbx/linkages/db2apm": "CATEGORY <%category%>\nTAGLOAD\nUNFOLD { <%keyName%> }\nFILTER { key: <%keyName%>, value: <%value%> }\nGROUP { merge:[ <%keyName%> ], pk:oid }\nSELECT [ oid ]",
+  "src/main/resources/mxql/dbx/linkages/db2apm_oracle": "CATEGORY <%category%>\nTAGLOAD\nSELECT\nUNFOLD { sid, serial, inst }\n<%filter1%>\n<%filter2%>\n<%filter3%>\nLASTONLY { key: oid }",
+  "src/main/resources/mxql/dbx/parameter-history": "CATEGORY db_<%DB_TYPE%>_parameter\nTAGLOAD\nFILTER {key:oid, value:<%OID%>}\nUNFOLD [name, value]",
+  "src/main/resources/mxql/dbx/planchange/chart": `SUB sqlstat_before
+CATEGORY <%SQLSTAT_CATEGORY%>{h1}
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
+UPDATE {key: plan_hash_value, cast: long}
+FILTER execute_count > 0
+GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
+UPDATE { key: "elapsed_time", value: sum }
+UPDATE { key: "execute_count", value: sum }
+
+CREATE {key: before_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
+RENAME {src: plan_hash_value, dst: before_plan_hash_value}
+SELECT [time, sql_id, before_plan_hash_value, before_elapsed_time_per_exec]
+END
+
+SUB sqlstat_after
+CATEGORY <%SQLSTAT_CATEGORY%>{h1}
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
+UPDATE {key: plan_hash_value, cast: long}
+FILTER execute_count > 0
+GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
+UPDATE { key: "elapsed_time", value: sum }
+UPDATE { key: "execute_count", value: sum }
+
+CREATE {key: after_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
+RENAME {src: plan_hash_value, dst: after_plan_hash_value}
+SELECT [time, sql_id, after_plan_hash_value, after_elapsed_time_per_exec]
+END
+
+CATEGORY <%PLAN_CHANGE_CATEGORY%>
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [time, sql_id, before_plan_hash_value, after_plan_hash_value, <%SQL_HASH_FIELD%>]
+UPDATE {key: <%SQL_HASH_FIELD%>, cast: long}
+UPDATE {key: before_plan_hash_value, cast: long}
+UPDATE {key: after_plan_hash_value, cast: long}
+
+GROUP {timeunit: 1d, pk: [sql_id, before_plan_hash_value, after_plan_hash_value, <%SQL_HASH_FIELD%>]}
+RENAME {src:"_rows_", dst: "change_count"}
+
+JOIN {query: "sqlstat_before", pk: [time, sql_id, before_plan_hash_value]}
+JOIN {query: "sqlstat_after", pk: [time, sql_id, after_plan_hash_value]}
+UPDATE {key: "before_elapsed_time_per_exec", notnull: 0}
+UPDATE {key: "after_elapsed_time_per_exec", notnull: 0}
+
+CREATE {key: "flag", expr: "after_elapsed_time_per_exec < before_elapsed_time_per_exec ? 'good' : 'bad'"}
+
+SELECT [time,change_count,flag]
+GROUP { timeunit:1d, merge:[change_count], pk: [flag]}
+UPDATE { key: "change_count", value: sum }
+PIVOT-FIELD { key:time, pivot_field:flag, pivot_value:change_count}`,
+  "src/main/resources/mxql/dbx/planchange/history": 'CATEGORY <%PLAN_CHANGE_CATEGORY%>\nTAGLOAD\nFILTER { key: "oid", value: <%OID%> }\nUNFOLD [time, sql_id, <%SQL_HASH_FIELD%>, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\nUPDATE {key: <%SQL_HASH_FIELD%>, cast: long}\nUPDATE {key: before_plan_hash_value, cast: long}\nUPDATE {key: after_plan_hash_value, cast: long}\n\nHVTEXT {hash: <%SQL_HASH_FIELD%>, key: sql_text, type: sql, checktime: 2h}\n\nORDER {key: time, sort: asc}\n\nSELECT [time, sql_id, <%SQL_HASH_FIELD%>, sql_text, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\n',
+  "src/main/resources/mxql/dbx/planchange/summary": `SUB sqlstat_before
+CATEGORY <%SQLSTAT_CATEGORY%>{h1}
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
+UPDATE {key: plan_hash_value, cast: long}
+FILTER execute_count > 0
+GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
+UPDATE { key: "elapsed_time", value: sum }
+UPDATE { key: "execute_count", value: sum }
+
+CREATE {key: before_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
+RENAME {src: plan_hash_value, dst: before_plan_hash_value}
+SELECT [sql_id, before_plan_hash_value, before_elapsed_time_per_exec]
+END
+
+SUB sqlstat_after
+CATEGORY <%SQLSTAT_CATEGORY%>{h1}
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
+UPDATE {key: plan_hash_value, cast: long}
+FILTER execute_count > 0
+GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
+UPDATE { key: "elapsed_time", value: sum }
+UPDATE { key: "execute_count", value: sum }
+
+CREATE {key: after_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
+RENAME {src: plan_hash_value, dst: after_plan_hash_value}
+SELECT [sql_id, after_plan_hash_value, after_elapsed_time_per_exec]
+END
+
+CATEGORY <%PLAN_CHANGE_CATEGORY%>
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [time, sql_id, before_plan_hash_value, after_plan_hash_value, user, program, <%SQL_HASH_FIELD%>]
+UPDATE {key: <%SQL_HASH_FIELD%>, cast: long}
+UPDATE {key: before_plan_hash_value, cast: long}
+UPDATE {key: after_plan_hash_value, cast: long}
+
+GROUP {timeunit:1d, pk: [sql_id, before_plan_hash_value, after_plan_hash_value, <%SQL_HASH_FIELD%>], first: [user, program]}
+RENAME {src:"_rows_", dst: "change_count"}
+HVTEXT {hash: <%SQL_HASH_FIELD%>, key: sql_text, type: sql, checktime: 2h}
+
+JOIN {query: "sqlstat_before", pk: [sql_id, before_plan_hash_value]}
+JOIN {query: "sqlstat_after", pk: [sql_id, after_plan_hash_value]}
+
+UPDATE {key: "before_elapsed_time_per_exec", notnull: 0}
+UPDATE {key: "after_elapsed_time_per_exec", notnull: 0}
+
+CREATE {key: "flag", expr: "after_elapsed_time_per_exec < before_elapsed_time_per_exec ? 'GOOD' : 'BAD'"}
+
+CREATE {key: "elapsed_time_diff", expr: "round(after_elapsed_time_per_exec - before_elapsed_time_per_exec, 3)"}
+
+RENAME {src: <%SQL_HASH_FIELD%>, dst: "sql_hash_value"}
+SELECT [time, sql_id, sql_text, user, program, before_plan_hash_value, after_plan_hash_value, before_elapsed_time_per_exec, after_elapsed_time_per_exec, elapsed_time_diff, flag, change_count, sql_hash_value]`,
+  "src/main/resources/mxql/dbx/stat/each_sql": '# \uD558\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield:tt}\n<%ADD_HVTEXT%>\n\nFILTER {key:name, value:"<%GROUP_VALUE%>"}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nGROUP { merge:[<%GROUP_MERGE%>], pk: [<%SQL_HASH_FIELD_NAME%><%ADD_GROUPS%>,<%SQL_HASH_FIELD_NAME_2%>], listup:[plan_hash_value<%ADD_GROUPS%>], last:tt }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n\nUPDATE { key:elapsed_max, value:max }\nUPDATE { value:sum }\n\nCREATE { key:elapsed_avg, expr:"elapsed_time/execute_count"}\n\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
+  "src/main/resources/mxql/dbx/stat/each_sql_main": '# \uBA54\uC778 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%USER_FIELD_HASH%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%USER_FIELD_HASH%>, key:<%USER_FIELD_NAME%>, type:db_attribute}\n<%ADD_HVTEXT%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%SQL_HASH_FIELD_NAME%>, listup:[oname,<%USER_FIELD_NAME%>,sql_id,plan_hash_value<%ADD_GROUPS%>], last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
+  "src/main/resources/mxql/dbx/stat/merged_sql": '# \uC0C1\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:[<%GROUP_KEY%>,<%SQL_HASH_FIELD_NAME%>,<%SQL_HASH_FIELD_NAME_2%>] }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n<%FILTER_TEXT%>\n\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\n<%FILTER_NUMBER%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%GROUP_KEY%>, last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield: tt}\n\nFILTER { key:name, exist:true }\n\nORDER {key:name}\nDELETE tt\nDELETE _rows_\nDELETE <%GROUP_KEY%>\n\nSELECT',
+  "src/main/resources/mxql/dbx/stat/sql_stat_raw": "CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [<%UNFOLD_FIELDS%><%ADD_GROUPS%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n<%ADD_HVTEXT%>\nSELECT [<%SELECT_FIELDS%><%ADD_GROUPS%>]\n",
+  "src/main/resources/mxql/dbx/stat/summary_chart_all": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\n\n<%FILTER%>\n\nGROUP {merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}',
+  "src/main/resources/mxql/dbx/stat/summary_chart_group": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nFILTER <%REQUEST_GROUP%> != 0\n\n<%FILTER%>\n\nGROUP {pk: <%REQUEST_GROUP%>, merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}\n\nHVTEXT {hash: <%REQUEST_GROUP%>, key: <%REQUEST_GROUP%>, type: db_attribute}',
+  "src/main/resources/mxql/dbx/wait/group_name": "CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>\nTAGLOAD\nOID [ <%OID%> ]\nUNFOLD [schemaname, con_name,machine, program, module, osuser]\nSELECT [schemaname, con_name,machine, program, module, osuser]\n\nHVTEXT {hash: schemaname, key: schemaname_str, type: db_attribute}\nHVTEXT {hash: con_name, key: con_name_str, type: db_attribute}\nHVTEXT {hash: machine, key: machine_str, type: db_attribute}\nHVTEXT {hash: program, key: program_str, type: db_attribute}\nHVTEXT {hash: module, key: module_str, type: db_attribute}\nHVTEXT {hash: osuser, key: osuser_str, type: db_attribute}\n\nGROUP { listup: [schemaname_str, con_name_str,machine_str, program_str, module_str, osuser_str] }",
+  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_class": "CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER {key: con_name, value: ['']}\nDELETE ['con_id', 'con_name', 'oname',  '_no_5m_hour_',  'oid', 'pcode',  'pname']\nDELETE ['show_in', 'show_out']",
+  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_cpu": `CATEGORY db_oracle_dma_counter<%TIMEUNIT%>
+OID [ <%OID%> ]
+TAGLOAD
+FILTER con_id == 0
+SELECT [time,pcode,oid, cpu(xos2), cpu_sys(xos2), cpu_user(xos2), cpu_idle(xos2), cpu_iowait(xos2), 'cpu_iowait(xos)','cpu_sys(xos)','cpu_user(xos)']
+RENAME { src: cpu(xos), dst: cpu_xos}
+RENAME { src: cpu(xos2), dst: cpu2}
+CREATE {key:'cpu(xos)', expr:"cpu2 == null ? cpu_xos : cpu2"}
+RENAME { src: cpu_sys(xos), dst: cpu_sys}
+RENAME { src: cpu_sys(xos2), dst: cpu_sys2}
+CREATE {key:'cpu_sys(xos)', expr:"cpu_sys2 == null ? cpu_sys : cpu_sys2"}
+RENAME { src: cpu_user(xos), dst: cpu_user}
+RENAME { src: cpu_user(xos2), dst: cpu_user2}
+CREATE {key:'cpu_user(xos)', expr:"cpu_user2 == null ? cpu_user : cpu_user2"}
+RENAME { src: cpu_idle(xos), dst: cpu_idle}
+RENAME { src: cpu_idle(xos2), dst: cpu_idle2}
+CREATE {key:'cpu_idle(xos)', expr:"cpu_idle2 == null ? cpu_idle : cpu_idle2"}
+RENAME { src: cpu_iowait(xos), dst: cpu_iowait}
+RENAME { src: cpu_iowait(xos2), dst: cpu_iowait2}
+CREATE {key:'cpu_iowait(xos)', expr:"cpu_iowait2 == null ? cpu_iowait : cpu_iowait2"}
+DELETE [cpu_xos, cpu2, cpu_sys, cpu_sys2, cpu_user, cpu_user2, cpu_idle, cpu_idle2, cpu_iowait, cpu_iowait2]
+DELETE ['show_in', 'show_out']`,
+  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_enqueue": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention']\nDELETE ['show_in', 'show_out']",
+  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_latch": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'latch: shared pool']\nFILTER {key: con_name, value: ['']}\nDELETE ['show_in', 'show_out']",
+  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_mem": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time, pcode, oid, mem(xos)]\nDELETE ['show_in', 'show_out']",
+  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_session": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time,pcode,oid,active_sessions,total_sessions]\nDELETE ['show_in', 'show_out']",
+  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_stat": "CATEGORY db_oracle_dma_stat_top<%TIMEUNIT%>\nOID [  <%OID%> ]\nTAGLOAD\nSELECT [time, 'non-idle wait time','application wait time','logical read bytes from cache','redo synch time overhead (usec)','cell physical IO interconnect bytes']\nDELETE ['show_in', 'show_out']",
+  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_waitcount": "CATEGORY db_oracle_dma_event_wait_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'SQL*Net message to client','control file sequential read','log file parallel write','log file sync','db file parallel write']\nDELETE ['show_in', 'show_out']",
+  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_waittime": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention','log file sync','ADR block file read','ADR block file write','control file sequential read']\nDELETE ['show_in', 'show_out']",
+  "src/main/resources/mxql/dbx/wait/wait_sql_list_1": `CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>
+OID <%OID%>
+TAGLOAD
+UNFOLD ["@id","con_id","con_name","cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","machine","module","osuser","physical reads","plan_hash_value","program","redo size","schemaname","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","sql_id","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"]
+SELECT
+
+HVTEXT {hash: schemaname, key: schema, type: db_attribute}
+HVTEXT {hash: con_name, key: con_name, type: db_attribute}
+HVTEXT {hash: machine, key: machine, type: db_attribute}
+HVTEXT {hash: program, key: program, type: db_attribute}
+HVTEXT {hash: module, key: module, type: db_attribute}
+HVTEXT {hash: osuser, key: osuser, type: db_attribute}
+
+DELETE time
+GROUP {pk: "sql_hash_value", listup: ["schema","con_name", "machine", "program", "module", "osuser", "plan_hash_value", "sql_id"], merge: ["cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","physical reads","redo size","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"] }
+
+UPDATE {key: "<%REQUEST_ORDER_KEY%>", value: sum}
+FILTER {expr: "\${<%REQUEST_ORDER_KEY%>} > 0"}
+ORDER {key: "<%REQUEST_ORDER_KEY%>", sort: desc}
+LIMIT 50
+
+HVTEXT {hash: sql_hash_value, key: sql_query, type: sql}
+UPDATE {value: sum}
+
+<%FILTER_TEXT%>
+<%FILTER_NUMBER%>
+
+CREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}
+
+DELETE _rows_
+DELETE ['show_in', 'show_out']`,
+  "src/main/resources/mxql/dbx/wait/wait_sql_list_2": `SUB q1
+TIME-RANGE {recent: 1d}
+CATEGORY db_oracle_dma_sqlstat_event
+OID <%OID%>
+TAGLOAD
+UNFOLD [class, event_no]
+UPDATE { key: "event_no", cast: int }
+FILTER-SUBQUERY {key: event_no, query: q2}
+SELECT [@id]
+UPDATE { key: "@id", cast: long }
+END
+
+SUB q2
+TIME-RANGE {recent: 1d}
+CATEGORY db_index_event
+OID <%OID%>
+TAGLOAD
+LASTONLY
+UNFOLD [class, idx, name]
+FILTER {key: name, value: "<%REQUEST_EVENT_NAME%>"}
+SELECT [idx]
+RENAME {src:idx, dst:event_no}
+UPDATE { key: "event_no", cast: int }
+END
+
+CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>
+OID <%OID%>
+TAGLOAD
+UNFOLD ["@id","con_id","con_name","cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","machine","module","osuser","physical reads","plan_hash_value","program","redo size","schemaname","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","sql_id","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"]
+SELECT
+UPDATE { key: "@id", cast: long }
+FILTER-SUBQUERY {key:@id, query:q1}
+
+HVTEXT {hash: schemaname, key: schema, type: db_attribute}
+HVTEXT {hash: con_name, key: con_name, type: db_attribute}
+HVTEXT {hash: machine, key: machine, type: db_attribute}
+HVTEXT {hash: program, key: program, type: db_attribute}
+HVTEXT {hash: module, key: module, type: db_attribute}
+HVTEXT {hash: osuser, key: osuser, type: db_attribute}
+
+DELETE time
+GROUP {pk: "sql_hash_value", listup: ["schema","con_name", "machine", "program", "module", "osuser", "plan_hash_value" , "sql_id"], merge: ["cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","physical reads","redo size","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"] }
+ORDER {key: elapsed_wait, sort: desc}
+LIMIT 50
+
+HVTEXT {hash: sql_hash_value, key: sql_query, type: sql}
+UPDATE {value: sum}
+
+<%FILTER_TEXT%>
+<%FILTER_NUMBER%>
+
+CREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}
+DELETE _rows_
+
+DELETE ['show_in', 'show_out']`,
+  "src/main/resources/mxql/dbx/wait/wait_summary": `CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>
+OID [ <%OID%> ]
+TAGLOAD
+SELECT
+PIVOT-HEAD { key: ['time'], except: ['_no_5m_hour_','pname','pcode','oid','oname','con_id','con_name','Idle'] }
+DELETE ['time']
+GROUP { merge: "pivot_value", pk: "pivot_field" }
+PIVOT-FIELD { pivot_field: "pivot_field", pivot_value: "pivot_value" }
+UPDATE { value: sum }
+DELETE ['show_in', 'show_out']`,
+  "src/main/resources/mxql/dbx/wait/wait_top_n": `SUB q1
+TIME-RANGE {recent: 1d}
+CATEGORY db_index_wait_class
+OID <%OID%>
+TAGLOAD
+LASTONLY
+UNFOLD [idx, name]
+<%FILTER_CLASS_NAME%>
+RENAME {src:idx, dst:class}
+RENAME {src:name, dst:class_name}
+UPDATE {key: class, cast: int}
+SELECT [ class, class_name ]
+END
+
+SUB q2
+TIME-RANGE {recent: 1d}
+CATEGORY db_index_event
+OID <%OID%>
+TAGLOAD
+LASTONLY
+UNFOLD [idx, name, class]
+RENAME {src:idx, dst: event_no}
+UPDATE { key: event_no, cast: int}
+END
+
+CATEGORY db_oracle_dma_sqlstat_event<%TIMEUNIT%>
+OID <%OID%>
+TAGLOAD
+UNFOLD [class, event_no, wait_time]
+UPDATE {key: class, cast: int}
+FILTER-SUBQUERY { key: class, query: q1 }
+UPDATE { key: event_no, cast: int}
+DELETE time
+GROUP { pk: [event_no,class], merge: wait_time }
+
+JOIN {pk: [event_no,class], query: q2}
+RENAME {src:name, dst: event_name}
+UPDATE {key: wait_time, value: sum}
+
+PART-BY {
+    task: [
+        {key: total, from: wait_time, func: sum}
+    ]
+}
+
+CREATE {key: percentage, expr: "wait_time * 100 / total"}
+
+ORDER {key:percentage, sort: desc}
+SELECT [event_no,event_name,wait_time,percentage,class]
+JOIN {pk: class, query: q1}
+DELETE ['show_in', 'show_out']`,
+  "src/main/resources/mxql/event/select-options": "TIME-RANGE {recent: <% TIMEUNIT %>}\nCATEGORY <% CATEGORY %>\nTAGLOAD\nUNFOLD <% UNFOLD %>\nSELECT <% SELECT %>\nGROUP {timeunit:<% TIMEUNIT %>, pk:<% PK %>}",
+  "src/main/resources/mxql/infra/ServerCommonService-getServerList": 'CATEGORY {"server_base": 30m, "server_base{m5}": 2h, "server_base{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [time, oid, oname]\n\n',
+  "src/main/resources/mxql/infra/ServerProcessService-getCpuMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, cpu, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [cpu, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: cpuAvg, from: cpu }\nCREATE { key: cpuMax, from: cpu }\nCREATE { key: cpuMin, from: cpu }\nUPDATE { key: cpuMax, value: max }\nUPDATE { key: cpuMin, value: min }\n\nORDER {key:[cpuMax], sort: [desc]}\n',
+  "src/main/resources/mxql/infra/ServerProcessService-getMemMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, memory, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [memory, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: memAvg, from: memory }\nCREATE { key: memMax, from: memory }\nCREATE { key: memMin, from: memory }\nUPDATE { key: memMax, value: max }\nUPDATE { key: memMin, value: min }\n\nORDER {key:[memMax], sort: [desc]}\n',
+  "src/main/resources/mxql/infra/ServerProcessService-getProcessList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, cmd1, oname, user, cpu, memory, riops, wiops, count, rss, rbps, wbps]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash]}\n',
+  "src/main/resources/mxql/infra/file-systems-by-group-and-keys": "\n# \uADF8\uB8F9 \uBC0F \uD544\uD130\uB9C1\uC5D0 \uC758\uD574 \uD544\uD130\uB9C1\uB41C oid \uB85C \uD30C\uC77C \uC2DC\uC2A4\uD15C \uBAA9\uB85D \uC870\uD68C\n\nSUB sub_custom\nKV.LOAD server_inventory_custom\nEND\n\nSUB sub_inv\nKV.LOAD server_inventory\nJOIN {pk: pk0, query: sub_custom}\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid, hostname]\nEND\n\nTIME-RANGE {duration: 1m, etime: $etime}\nCATEGORY infra_filesystem\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[oid], query:sub_inv, type:inner}\n\nselect [oid, hostname, mountName, pUsed, totalSize, free, used, pInodeUsed]\n\nORDER {key:[hostname, mountName], sort: asc}",
+  "src/main/resources/mxql/infra/get-custom-field-keys": "# \uBAA8\uB4E0 custom field \uC758 \uD0A4\uAC12\uC744 \uC870\uD68C\uD55C\uB2E4.\n# \uB514\uBE44 \uAC19\uC774 entity\uAC00 \uBA85\uD655\uD558\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uBBC0\uB85C \uC804\uCCB4 \uB370\uC774\uD130\uC5D0\uC11C \uACF5\uD1B5\uB41C \uAC12\uC744 \uAC00\uC838\uC628\uB2E4\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nKV.LOAD server_inventory_custom\nJOIN {pk:pk0, query: agents, type: inner}\n\nPIVOT-HEAD\nFIRST-ONLY {key:[pivot_field]}\nSELECT [pivot_field]",
+  "src/main/resources/mxql/infra/get-event-id-list": '# \uC911\uBCF5 \uC81C\uAC70\uD558\uACE0 oid : event id set \uC73C\uB85C \uC774\uC6A9\uD558\uAE30?\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\nSUB filtered_inventory\nKV.LOAD server_inventory\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid]\nEND\n\nTIME-RANGE {recent: 20s}\nCATEGORY event_status_summary\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[pcode]}\nSELECT\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: stat, type: inner}\nJOIN {pk:[oid], query:filtered_inventory, type: inner}\n\nFILTER { expr: "warningCount > 0 || criticalCount > 0"}\n\n# NOTE: warning \uC640 critical \uC740 \uCF64\uB9C8\uB85C \uC5F0\uACB0\uB41C \uC774\uBCA4\uD2B8 \uC544\uC774\uB514\uC784\nSELECT [oid, warning, critical]\n',
+  "src/main/resources/mxql/infra/get-fold-category-desc-fields": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAM %>\nUNFOLD\nFIRST-ONLY {key:[oid, @id]}\n\n# metric value \uCC98\uB9AC\nUPDATE { key: pid, value: last }\nUPDATE { key: pid, cast: long }\n\nUPDATE { key: ppid, value: last }\nUPDATE { key: ppid, cast: long }\n\nUPDATE { key: stime, value: last }\nUPDATE { key: stime, cast: long }\n",
+  "src/main/resources/mxql/infra/get-inventory-keywords": "APPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\n\n<% FILTER_PARAM %>\nSELECT [ <% COLUMN_NAME %> ]\nGROUP {merge: <% COLUMN_NAME %>, pk: <% COLUMN_NAME %>}\nORDER {key: <% COLUMN_NAME %>, sort: asc}\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nSUB inv\nKV.LOAD <% CATEGORY_NAME %>\nEND",
+  "src/main/resources/mxql/infra/get-oids-by-infra-cpu-fixed-3h-range": "# cube{1h} \uAC00 \uC5C6\uB294 \uACBD\uC6B0 oid \uC870\uD68C\uD558\uAE30 \uC704\uD55C mql\n# time-range \uB294 \uB3D9\uC791\uD558\uC9C0 \uC54A\uC73C\uBBC0\uB85C MxqlExecutor \uC5D0\uC11C stime, etime \uC744 \uB123\uC5B4\uC918\uC57C \uD55C\uB2E4\n#TIME-RANGE {recent: 3h}\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]\n",
+  "src/main/resources/mxql/infra/get-oids-by-infra-cpu-h1": "# \uCC28\uD2B8 \uC775\uC2A4\uD50C\uB85C\uB7EC\uB97C \uC704\uD574 \uC0AC\uC6A9\uB428\n# \uC9C0\uC815\uB41C \uC2DC\uAC04\uC5D0\uC11C infra_cpu{h1} \uAC00 \uC788\uB294 oid \uB9AC\uC2A4\uD2B8\uB9CC \uAC00\uC838\uC640 \uD544\uD130\uB9C1\uC5D0 \uC0AC\uC6A9\uD55C\uB2E4.\nCATEGORY infra_cpu{h1}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]",
+  "src/main/resources/mxql/infra/get-server-inventories-for-status": "\n# group \uD654\uBA74 \uC0C1\uB2E8\uC758 \uC804\uCCB4 \uD1B5\uACC4 \uC870\uD68C\uB97C \uC704\uD574 \uC0AC\uC6A9\uD568\n# os \uBCC4 { active(not inactive/paused), total, total core count) }\n\n# NOTE: \uACFC\uAC70\uC758 \uC0C1\uD0DC\uB97C \uC870\uD68C\uD558\uB294 \uAE30\uB2A5\uC740 \uC5C6\uC74C, \uC2DC\uACC4\uC5F4\uC774 \uC544\uB2C8\uAE30 \uB54C\uBB38\uC5D0 stime, etime \uC774 \uC758\uBBF8 \uC5C6\uC74C\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, status]\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nSELECT [oid, OSType, nCores]\n\nJOIN {pk:[oid], query:stat, type: inner}\n",
+  "src/main/resources/mxql/infra/get-server-inventories-with-metric": `/**
+NOTE: \uADF8\uB8F9\uBCC4 \uC8FC\uC694 \uBA54\uD2B8\uB9AD\uC774 \uD3EC\uD568\uB41C \uC11C\uBC84 \uC815\uBCF4
+      \uBE0C\uB77C\uC6B0\uC800\uC640 \uC11C\uBC84\uC758 \uC2DC\uAC04\uCC28? \uAC00 \uC788\uB294 \uACBD\uC6B0 \uC624\uCC28\uB85C \uC778\uD574 cpu, ~ \uAC12\uC774 \uC81C\uB300\uB85C \uC548\uB098\uC62C \uC218 \uC788\uC74C
+      \uC774 \uACBD\uC6B0\uC5D0\uB3C4 diskBusy \uB294 \uAC12\uC774 \uB098\uC634(20\uCD08), cpu, \uB4F1 (5\uCD08)
+      \uC77C\uAD04 20\uCD08\uB85C \uD558\uB3C4\uB85D \uD568
+*/
+# \uC2E4\uC2DC\uAC04 \uC11C\uBC84 \uB370\uC774\uD130\uB9CC \uC0AC\uC6A9\uD55C\uB2E4
+# \uC11C\uBC84\uBAA9\uB85D\uC5D0\uC11C \uC0AD\uC81C\uD55C \uC11C\uBC84 \uBC18\uC601\uC744 \uC704\uD55C \uAE30\uBCF8 \uD544\uD130\uB85C \uC0AC\uC6A9\uD55C\uB2E4
+SUB agents
+CATEGORY agent_list
+FLEXLOAD
+SELECT [active, oid, status]
+RENAME {src: active, dst: server_agent_active}
+END
+
+# metric key \uAC12\uC740 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD558\uC9C0 \uC54A\uACE0 \uC544\uB798\uC640 \uAC19\uC740 \uAC12\uC73C\uB85C \uBCC0\uD658\uD55C\uB2E4.
+# public static String[] KEY_METRIC = new String[] {
+#   "cpu", "mem", "swap", "rx", "tx", "diskBusy" + diskName
+
+SUB diskBusy
+#time-range {duration:20s, etime:$etime}
+CATEGORY infra_disk_perf
+TAGLOAD {backward: true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, @id, name, busy]
+RENAME {src:name, dst:diskName}
+RENAME {src:busy, dst:diskBusy}
+END
+
+SUB cpu
+CATEGORY infra_cpu
+TAGLOAD {backward:true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, total]
+RENAME {src:total, dst:cpu}
+END
+
+SUB mem
+CATEGORY infra_mem
+TAGLOAD {backward:true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, pUsed]
+RENAME {src:pUsed, dst:mem}
+END
+
+SUB swap
+CATEGORY infra_swap
+TAGLOAD {backward:true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, pUsed]
+RENAME {src:pUsed, dst:swap}
+END
+
+SUB network
+CATEGORY infra_network
+TAGLOAD {backward:true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, rxbps, txbps]
+RENAME [[rxbps, rx],[txbps, tx]]
+END
+
+SUB sub-gpu-data
+CATEGORY infra_gpu
+TAGLOAD {backward: true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, gpu_util_203, fb_total_250, power_usage_155, ecc_dbe_aggregate_total_313]
+CREATE {key: hasGpu, value: true}
+RENAME [[gpu_util_203, gpuUtil], [fb_total_250, fbMemoryUsage], [power_usage_155, powerUsage], [ecc_dbe_aggregate_total_313, eccDbeErrorCount]]
+END
+
+SUB inventory_custom
+kv.load server_inventory_custom
+END
+
+# \uC2DC\uAC04\uC5D0 \uBB34\uAD00\uD568
+SUB inventory
+KV.LOAD server_inventory
+END
+
+APPEND {query: agents}
+JOIN {pk: oid, query: inventory, type: inner}
+JOIN {pk:[pk0], query:inventory_custom}
+
+<% FILTER_PARAM %>
+
+# NOTE: inventory + custom \uC815\uBCF4 \uC800\uC7A5\uC744 \uC704\uD574\uC11C \uD50C\uB7EC\uADF8\uC778\uC744 \uC0AC\uC6A9\uD55C\uB2E4
+PLUGIN
+
+# group fields \uB294 \uC5C6\uAC70\uB098(''), n\uAC1C \uC874\uC7AC\uD558\uAC70\uB098 (', g1, g2') \uC784
+SELECT [oid, status, server_agent_active, OSType, IP_all, hostname, hostAlias, nCores, lCores, memTotal, frequency, bootTime, serverType <% GROUP_FIELDS %>]
+
+/*
+NOTE: \uD50C\uB7EC\uADF8\uC778\uC744 \uD1B5\uD574 map \uCC98\uB9AC\uB97C \uD588\uB2E4\uBA74
+      join\uC5D0 \uC0AC\uC6A9\uB418\uB294 \uD0A4\uAC00 \uC5C6\uC744 \uC218 \uC788\uB2E4
+      mxql\uC740 \uC21C\uCC28 \uCC98\uB9AC\uB77C\uC11C
+      invenory \uC640 custom \uC758 join \uC740 \uD50C\uB7EC\uADF8\uC778\uBCF4\uB2E4 \uC55E\uC5D0 \uC788\uC5B4\uC57C \uD568
+
+TODO: plugin\uC744 \uD1B5\uD574 \uC720\uC5F0\uD55C \uB370\uC774\uD130 \uC804\uCC98\uB9AC\uB3C4 \uAD1C\uCC2E\uC9C0\uB9CC
+      select(map) key\uAC00 java\uC640 mxql\uC5D0 \uB098\uB220\uC838 \uC788\uC5B4 \uBCF4\uAE30\uAC00 \uD798\uB4E0\uB4EF
+      \uCC28\uB77C\uB9AC param text\uB97C \uD65C\uC6A9\uD558\uB294\uAC8C \uB098\uC744\uB7F0\uC9C0
+*/
+
+JOIN {pk:[oid], query:cpu}
+JOIN {pk:[oid], query:mem}
+JOIN {pk:[oid], query:swap}
+JOIN {pk:[oid], query:network}
+JOIN {pk:[oid], query:diskBusy}
+JOIN {pk:[oid], query:sub-gpu-data}
+# filter & order
+<% ORDER_PARAM %>`,
+  "src/main/resources/mxql/infra/get-server-ostype-version": "# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nJOIN {pk:pk0, query: agents, type: inner}\nFIRST-ONLY {key:[OSType, whatap_infradVersion]}\nSELECT [OSType, whatap_infradVersion]\nRENAME { src:whatap_infradVersion, dst:version }\n",
+  "src/main/resources/mxql/infra/get-server-process-names": `APPEND {query: recent_list}
+APPEND {query: m5_list}
+
+CREATE { key: cmd, expr: "isEmpty(cmd2) ? cmd1 : cmd2" }
+SELECT [cmd]
+FIRST-ONLY {key:[cmd]}
+
+SUB m5_list
+TIME-RANGE {recent: 3h}
+CATEGORY {'server_process{m5}': unlimit}
+TAGLOAD {backward: true}
+END
+
+
+SUB recent_list
+TIME-RANGE {recent: 10m}
+CATEGORY server_process
+TAGLOAD {backward: true}
+END
+
+`,
+  "src/main/resources/mxql/infra/hostnames-by-all": "# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nselect [oid, hostname]",
+  "src/main/resources/mxql/infra/hostnames-by-oid-list": '# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nFILTER { key: "oid", value: [<% OID_LIST_PARAM %>] }\nselect [oid, hostname]',
+  "src/main/resources/mxql/infra/inventory/check-exist-gpu": 'SUB currentAgents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load gpu_inventory\nFILTER-SUBQUERY { key: oid, include: "currentAgents" }\n<% FILTER_GROUP_OIDS %>\nLIMIT 1',
+  "src/main/resources/mxql/infra/inventory/get-active-gpu-list": `
+kv.load gpu_inventory
+FILTER-SUBQUERY {key: oid, include: "currentAgentList"}
+CREATE { key: excludeKey, expr: "StartsWith(uuid, 'MIG') ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
+FILTER-SUBQUERY { key: excludeKey, exclude: "filterMigList" }
+
+SUB currentAgentList
+CATEGORY agent_list
+FLEXLOAD
+SELECT [oid]
+<% FILTER_OIDS %>
+END
+
+SUB filterMigList
+kv.load gpu_inventory
+FILTER { expr: "migModeCurrent == 'Disabled'" }
+CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
+SELECT [excludeKey]
+END`,
+  "src/main/resources/mxql/infra/inventoryV2/gpu-search-agent-join": `# \uC2E4\uC2DC\uAC04 gpu inventory \uC870\uD68C
+# agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568
+
+kv.load gpu_inventory
+CREATE { key: excludeKey, expr: "gpuType == 'MIG' ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
+FILTER-SUBQUERY { key: excludeKey, exclude: "filterMigList" }
+DELETE [excludeKey]
+JOIN {pk: [pk0], query: gpu_inv_custom}
+JOIN {pk: [oid], query: server_inventory}
+JOIN {pk: [oid], query: agent_active_status}
+
+# for total count
+PLUGIN
+
+<% FILTER_PARAM %>
+<% ORDER_PARAM %>
+
+sub server_inventory
+  kv.load server_inventory
+  SELECT [oid, ipAddress, OSVersion]
+end
+
+sub agent_active_status
+  CATEGORY agent_list
+  FLEXLOAD
+  SELECT [oid, active]
+  RENAME {src: active, dst: __agent_is_active__}
+end
+
+sub gpu_inv_custom
+  kv.load gpu_inventory_custom
+end
+
+# [\uBC29\uC5B4\uB85C\uC9C1] MIG Disabled \uC0C1\uD0DC\uC778 Physical GPU \uD558\uC704\uC758 MIG \uC778\uC2A4\uD134\uC2A4 \uC81C\uC678 (\uC5D0\uC774\uC804\uD2B8\uC5D0\uC11C 1\uCC28 \uD544\uD130\uB9C1, \uBC31\uC5D4\uB4DC 2\uCC28 \uBC29\uC5B4)
+sub filterMigList
+  kv.load gpu_inventory
+  FILTER { expr: "gpuType == 'Physical' && migModeCurrent == 'Disabled'" }
+  CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
+  SELECT [excludeKey]
+end`,
+  "src/main/resources/mxql/infra/inventoryV2/gpu-search-snapshot": `# \uACFC\uAC70 gpu inventory \uC870\uD68C
+# server_inventory \uC5D0\uC11C ipAddress, OSVersion \uC870\uD68C
+# NOTE: gpu/server \uC2A4\uB0C5\uC0F7 \uC800\uC7A5 \uC8FC\uAE30\uAC00 \uB2EC\uB77C \uC815\uD655\uD55C \uC2DC\uC810\uC758 server \uC2A4\uB0C5\uC0F7\uC744 \uC870\uD68C\uD560 \uC218 \uC5C6\uC73C\uBBC0\uB85C \uC2E4\uC2DC\uAC04 \uB370\uC774\uD130\uB97C \uC0AC\uC6A9\uD568
+# TODO: \uC5D0\uC774\uC804\uD2B8\uAC00 gpu_inventory \uC5D0 ipAddress, OSVersion \uC744 \uC9C1\uC811 \uC218\uC9D1\uD558\uBA74 server_inv JOIN \uC81C\uAC70
+
+APPEND {query: inv}
+CREATE { key: excludeKey, expr: "gpuType == 'MIG' ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
+FILTER-SUBQUERY { key: excludeKey, exclude: "filterMigList" }
+DELETE [excludeKey]
+JOIN {pk: pk0, query: custom}
+JOIN {pk: [oid], query: server_inv}
+
+PLUGIN
+
+<% FILTER_PARAM %>
+<% ORDER_PARAM %>
+
+SUB inv
+KV.SNAPSHOT {table: gpu_inventory, target: <% SNAPSHOT_DATE %> }
+END
+
+SUB custom
+KV.SNAPSHOT {table: gpu_inventory_custom, target: <% SNAPSHOT_DATE %> }
+END
+
+
+SUB server_inv
+kv.load server_inventory
+SELECT [oid, ipAddress, OSVersion]
+END
+
+# [\uBC29\uC5B4\uB85C\uC9C1] MIG Disabled \uC0C1\uD0DC\uC778 Physical GPU \uD558\uC704\uC758 MIG \uC778\uC2A4\uD134\uC2A4 \uC81C\uC678 (\uC5D0\uC774\uC804\uD2B8\uC5D0\uC11C 1\uCC28 \uD544\uD130\uB9C1, \uBC31\uC5D4\uB4DC 2\uCC28 \uBC29\uC5B4)
+SUB filterMigList
+KV.SNAPSHOT {table: gpu_inventory, target: <% SNAPSHOT_DATE %> }
+FILTER { expr: "gpuType == 'Physical' && migModeCurrent == 'Disabled'" }
+CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
+SELECT [excludeKey]
+END
+`,
+  "src/main/resources/mxql/infra/inventoryV2/server-search-agent-join": "# \uC2E4\uC2DC\uAC04 server inventory \uC870\uD68C\n# agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568\n\nAPPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\nJOIN {pk: pk0, query: custom}\n\n# for total count\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\n# end of main query\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, active]\nRENAME {src: oid, dst: pk0}\nRENAME {src: active, dst: __agent_is_active__}\nEND\n\nSUB inv\nKV.LOAD server_inventory\nEND\n\nSUB custom\nKV.LOAD server_inventory_custom\nEND\n\n",
+  "src/main/resources/mxql/infra/inventoryV2/server-search-snapshot": "# \uACFC\uAC70 server inventory \uC870\uD68C\n\nAPPEND {query: inv}\nJOIN {pk: pk0, query: custom}\n\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\nSUB inv\nKV.SNAPSHOT {table: server_inventory, target: <% SNAPSHOT_DATE %> }\nEND\n\nSUB custom\nKV.SNAPSHOT {table: server_inventory_custom, target: <% SNAPSHOT_DATE %> }\nEND\n",
+  "src/main/resources/mxql/infra/metric-by-oid-list": "\n# server list \uC870\uD68C\uD6C4 \uD68D\uB4DD\uD55C oid list \uB97C \uC870\uAC74\uC73C\uB85C \uC0AC\uC6A9\uD55C\uB2E4.\n\n#TIME-RANGE {stime: $stime, etime: $etime}\n#TIME-RANGE {recent: 5m}\n# <% CATEGORY_NAME %>\nCATEGORY <% CATEGORY_NAME %>\nTAGLOAD {backward:true}\n\n<% FILTER_OID_LIST %>\n\n# TODO: \uD55C\uBC88\uC5D0 \uC5EC\uB7EC \uBA54\uD2B8\uB9AD\uC758 \uCC28\uD2B8\uB97C \uADF8\uB9AC\uB294 \uACBD\uC6B0\uC5D0\uB294 \uD558\uB098\uC758 \uBA54\uD2B8\uB9AD\uC774 \uC544\uB2CC \uBCF5\uC218\uC758 \uBA54\uD2B8\uB9AD \uD544\uB4DC\uB97C \uC785\uB825\uD574\uC57C??\n#       \uC5EC\uB7EC \uCE74\uD14C\uACE0\uB9AC\uB3C4 \uB9C8\uCC2C\uAC00\uC9C0??\n#       \uD0ED\uC744 \uD1B5\uD574 \uCE74\uD14C\uACE0\uB9AC\uBCC4\uB85C \uAC00\uC838\uC628\uB2E4\uACE0 \uC0DD\uAC01\uD558\uC790?\n# time, oid, <% FIELD_NAME %>\nselect [time, oid, <% FIELD_NAME %>]\n\n\n",
+  "src/main/resources/mxql/infra/metrics_explorer/get-agent-info-list": '\nCATEGORY agent_list\nFLEXLOAD\n\nJOIN {pk: [oid], query: sub_infra, type: inner}\nJOIN {pk: [oid], query: sub_svr_inventory}\n\nSUB sub_infra\nCATEGORY {"infra_cpu": 1h, "infra_cpu{m5}": 3h, "infra_cpu{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nEND\n\nSUB sub_svr_inventory\nKV.LOAD server_inventory\nSELECT [oid, hostname]\nEND',
+  "src/main/resources/mxql/infra/oid-list-by-filters": "# server_inventory, server_inventory_custom\n\nsub custom\nkv.load server_inventory_custom\nend\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load server_inventory\nJOIN {pk:oid, query: agents, type: inner}\njoin {pk: pk0, query: custom}\n\n<% FILTER_PARAM %>\n\nselect [oid]\n",
+  "src/main/resources/mxql/infra/oid-list-by-top-n": '/*\n TODO: \uC870\uAC74\uC5D0 \uB530\uB77C\uC11C\n       \uCE74\uD14C\uACE0\uB9AC\uC640 \uD544\uB4DC, \uB9AC\uBBF8\uD2B8\uB97C\n       \uBCC0\uACBD\uD558\uAC8C \uD560 \uC218 \uB3C4 \uC788\uC74C\n*/\n\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nSELECT [oid, time, total]\nFILTER {key: "oid", value: [<% OID_LIST_PARAM %>]}\n\nGROUP {timeunit:1h, merge:"total", pk:"oid"}\nUPDATE {key: "total", value: sum }\nORDER {key:[total], sort: desc}\nLIMIT 50',
+  "src/main/resources/mxql/infra/os-type-by-oids": "# oid list \uB85C os type \uC744 \uBAA8\uB450 \uC870\uD68C\uD55C\uB2E4.\nKV.LOAD server_inventory\n<% FILTER_PARAM %>\nFILTER {key:pk0, value:[<% OID_LIST_PARAM %>]}\nFIRST-ONLY {key: [OSType]}\nSELECT [OSType]",
+  "src/main/resources/mxql/infra/process-list-by-oid": '/**\n NOTE: process list for group detail - event\n */\n\nCATEGORY infra_process_group\nTAGLOAD\nFILTER { key: "oid", value: <% OID_PARAM %>}\n\n# unfold / filtering order \uB294 java \uC5D0\uC11C \uCC98\uB9AC\uD55C\uB2E4.',
+  "src/main/resources/mxql/infra/servers-by-group-and-keys": "# dashboard page \uC6B0\uCE21 \uC0C1\uC138 \uD328\uB110 / \uADF8\uB8F9\uC815\uBCF4\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nKV.LOAD server_inventory\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT\n\nORDER {key: [hostname], sort: asc}",
+  "src/main/resources/mxql/infra/v4series/select-fold-category": 'CATEGORY {<% CATEGORY_NAME %>:3h, "<% CATEGORY_NAME %>{m5}":15d, "<% CATEGORY_NAME %>{h1}":unlimit }\n<% OID_FILTER %>\nTAGLOAD\nSELECT [time, oid, @id, @pk, uuid, <% FIELD_LIST %>]\nUNFOLD\n<% SUB_KEY_FILTER %>\n\n',
+  "src/main/resources/mxql/openmetric/stat/stat_gpu_trend_hitmap": 'SUB origin\nkv.load {table:"stat_gpu_trend_hitmap-@{query_date}" , ifexist:true}\nEND\n\nSUB avg_data\n>> 100*sum by (UUID)(sum_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h])) / sum by (UUID) (count_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nORDER {key:UUID, sort: desc}\nEND\n\nSUB max_data\n>> 100*max by (UUID)(max_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:max_value}\nEND\n\nSUB min_data\n>> 100*min by (UUID)(min_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:min_value}\nEND\n\nSUB target\nAPPEND {query: avg_data}\nJOIN {query: max_data, pk: [t, UUID]}\nJOIN {query: min_data, pk: [t, UUID]}\nFOLD {pk:t, key:[UUID,value,max_value,min_value]}\nEND\n\nAPPEND {query: origin}\nAPPEND {query: target}\n\nORDER {key:t, sort: asc}\n\nkv.insert {table: "stat_gpu_trend_hitmap-@{query_date}", pk.key:[t]}\n',
+  "src/main/resources/mxql/report/getReportBatchMenu": "kv.select {table: report_batch_menu, pk.val:0}",
+  "src/main/resources/mxql/server/inventory/agent": "## agent \uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\nkv.load server_inventory",
+  "src/main/resources/mxql/server/inventory/custom": "## \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\nkv.load server_inventory_custom",
+  "src/main/resources/mxql/server/inventory/join": "## agent\uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\uC640 \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\uB97C join\n\n# \uC11C\uBC84\uBAA9\uB85D\uC5D0\uC11C \uC0AD\uC81C\uD55C \uC11C\uBC84 \uBC18\uC601\uC744 \uC704\uD55C \uAE30\uBCF8 \uD544\uD130\uB85C \uC0AC\uC6A9\uD55C\uB2E4\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [active, oid]\nRENAME {src: active, dst: server_agent_active}\nEND\n\nSUB custom\nkv.load server_inventory_custom\nEND\n\nSUB inventory\nkv.load server_inventory\nEND\n\nAPPEND {query: agents}\nJOIN {pk: oid, query: inventory, type: inner}\nJOIN {pk: [pk0], query: custom}\n# total count \uACC4\uC0B0\uC744 \uC704\uD55C plugin \uCD94\uAC00\n# TODO: filtered count / total count \uB97C \uC870\uD68C\uD560 \uC218 \uC788\uB294 mxql \uC778\uD130\uD398\uC774\uC2A4\uAC00 \uC788\uB2E4\uBA74?\nPLUGIN\n# \uD544\uD130\uB294 \uD50C\uB7EC\uADF8\uC778\uC73C\uB85C \uD558\uC9C0 \uC54A\uACE0, filter \uBB38\uBC95\uC744 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD568\n<% FILTER %>",
+  "src/main/resources/mxql/server/tmp_cube/tmp_category_filter": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAMS %>\n",
+  "src/main/resources/mxql/server/ver20/get-top5-cpu-server-list": '# \uCD5C\uADFC 10\uBD84\uAC04 cpu \uC0C1\uC704 5\uAC1C \uC11C\uBC84 \uBAA9\uB85D \uBC0F cpu \uC0AC\uC6A9 \uC870\uD68C\nTIME-RANGE {recent: 10m}\n\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\n\nFILTER-SUBQUERY {key: oid, query: top5}\nJOIN {pk:oid, query:top5}\nRENAME {src:time, dst: t}\nORDER {key:[order, t], sort: [asc, asc]}\n\n\nSUB top5\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\nGROUP { timeunit:10m, pk:"oid" }\nORDER {key:total, sort: desc}\nROWNUM\nRENAME {src:rownum, dst:order}\nSELECT [oid, order]\nLIMIT 5\nEND',
+  "target/classes/mxql/apm/daily/app_counter": 'SUB {id:findMax}\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, tx_count]\nGROUP {timeunit:1h, merge:[tx_count]}\nUPDATE {key:tx_count, value:sum}\nRENAME {src:time,dst:peak_hour}\nORDER {key:tx_count, sort:desc}\nCREATE { key: time, from:peak_hour}\nSELECT [time,peak_hour]\nLIMIT 1\nEND\n\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, oid, oname, tx_count,tx_error, tps, resp_time,active_tx_count]\nUPDATE { key:[tx_count,tx_error], value:sum }\nUPDATE { key:[tps,active_tx_count] , value:avg }\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\n\nJOIN {pk:[time], query:findMax}\n\nDELETE time\nIFUPDATE {if:"(peak_hour>0)==false", key:[tps,resp_time,active_tx_count], value:null}\nGROUP { merge:[tx_count,tps,tx_error, resp_time,active_tx_count], pk:[oid, oname], last:peak_hour }\n\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\nUPDATE {key:[tx_count,tps,tx_error, active_tx_count],  value:sum }\n\nRENAME [\n     [tx_count, daily_tx_count]\n    ,[tx_error, daily_tx_error]\n    ,[tps, peak_hour_tps]\n    ,[active_tx_count, peak_hour_active_tx]\n    ,[resp_time, peak_hour_resp_time]\n]\n\nSELECT [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nFOLD [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }\n',
+  "target/classes/mxql/apm/daily/app_user": "\nCATEGORY visitor{h1}\nTAGLOAD\nSELECT [time, oid, oname, logbits]\n\nDELETE time\nGROUP { user:logbits, pk:[oid, oname] }\n\nRENAME [\n     [userbytes, daily_bits]\n    ,[logbits, daily_visitor]\n]\n\nSELECT [oid,oname, daily_bits, daily_visitor]\nFOLD [oid,oname, daily_bits, daily_visitor]\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }",
+  "target/classes/mxql/apm/stat/error_diff": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "target/classes/mxql/apm/stat/error_diff_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	, last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "target/classes/mxql/apm/stat/error_series": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "target/classes/mxql/apm/stat/error_series_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n\n<% FILTER %>\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] , last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "target/classes/mxql/apm/stat/error_stat": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {\n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/error_stat_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/httpc_diff": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
+  "target/classes/mxql/apm/stat/httpc_diff_1h": 'CATEGORY db3_stat_httpc[h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
+  "target/classes/mxql/apm/stat/httpc_series": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
+  "target/classes/mxql/apm/stat/httpc_series_1h": 'CATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
+  "target/classes/mxql/apm/stat/httpc_stat": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\n#<% ORDER1 %>\n#<% LIMIT1 %>\n\nDELETE time\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max],\n	pk:[httpc_host_hash,httpc_url_hash,httpc_port] , last:[httpc_tx_hash,tt] \n\n}\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/httpc_stat_1h": '\nCATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n   	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/ip_stat": "CATEGORY db3_stat_ip\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "target/classes/mxql/apm/stat/ip_stat_1h": "CATEGORY db3_stat_ip{h1}\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "target/classes/mxql/apm/stat/ip_url_stat": 'CATEGORY db3_stat_gen_ip-url\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/ip_url_stat_1h": 'CATEGORY db3_stat_gen_ip-url{h1}\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/sql_diff": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "target/classes/mxql/apm/stat/sql_diff_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "target/classes/mxql/apm/stat/sql_series": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "target/classes/mxql/apm/stat/sql_series_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "target/classes/mxql/apm/stat/sql_stat": '\nCATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/sql_stat_1h": '\nCATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/sql_stat_join": '\n\n# 1\uC2DC\uAC04 \uD1B5\uACC4 \uC870\uD68C \nCATEGORY db3_stat_sql{h1}\n<% TIME_1H %>\n\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\n##################################################\n# 1\uC2DC\uAC04 \uD1B5\uACC4\uC5D0 5\uBD84\uD1B5\uACC4 \uACB0\uD569 2\uCC28 GROUP \uD544\uC694  \nAPPEND stat5m\n\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n##################################################\n\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>\n\n\n##################################################\n# 5\uBD84\uD1B5\uACC4 \uC870\uD68C \nSUB stat5m\nCATEGORY db3_stat_sql\n<% TIME_5M %>\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n\nEND\n##################################################',
+  "target/classes/mxql/apm/stat/transaction_diff": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:5m, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\n\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]',
+  "target/classes/mxql/apm/stat/transaction_diff_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:1h, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]       ',
+  "target/classes/mxql/apm/stat/transaction_quantile_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile\n<% AGENT %>\nFLEXLOAD\nGROUP { timeunit:1h, quantile:quantile, pk:urlhash }\nSELECT [time,urlhash, quantile]\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx\n<% AGENT %>\n\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt] }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n<% ORDER1 %>\n<% LIMIT1 %>\n\nJOINByTime {query:quan,  pk:[tx_hash]}\nDELETE time\nGROUP {   merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt], quantile:quantile}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std],value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/transaction_quantile_stat_1h": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile{h1}\n<% AGENT %>\nFLEXLOAD\nSELECT [urlhash,quantile]\nGROUP {quantile:quantile, pk:urlhash }\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\n\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt]}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n\nJOIN {query:quan,  pk:[tx_hash]}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/transaction_series": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]',
+  "target/classes/mxql/apm/stat/transaction_series_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]\n',
+  "target/classes/mxql/apm/stat/transaction_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/transaction_stat_1h": '#1\uC2DC\uAC04 \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 \uD55C\uBC88\uB9CC \uADF8\uB8F9\uD551\uD55C\uB2E4.  \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated]\n    , pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n\nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n \nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/transaction_stat_join": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/tx_caller_stat": 'CATEGORY db3_stat_gen_mt\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/tx_caller_stat_1h": '\nCATEGORY db3_stat_gen_mt{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP  {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE {value:sum }\nCREATE {key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/tx_domain_series": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "target/classes/mxql/apm/stat/tx_domain_series_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "target/classes/mxql/apm/stat/tx_domain_stat": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/tx_domain_stat_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/tx_login_stat": 'CATEGORY db3_stat_gen_login\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[login,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/tx_login_stat_1h": 'CATEGORY db3_stat_gen_login{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/tx_referer_series": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "target/classes/mxql/apm/stat/tx_referer_series_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "target/classes/mxql/apm/stat/tx_referer_stat": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[referer,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/tx_referer_stat_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "target/classes/mxql/apm/stat/useragent_series": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:5m, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
+  "target/classes/mxql/apm/stat/useragent_series_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:1h, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
+  "target/classes/mxql/apm/stat/useragent_stat": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count], pk:[hash], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "target/classes/mxql/apm/stat/useragent_stat_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "target/classes/mxql/dbx/linkages/apm2db": "CATEGORY search_act_tx_run_sql\n<%flexload%>\nSELECT",
+  "target/classes/mxql/dbx/linkages/db2apm": "CATEGORY <%category%>\nTAGLOAD\nUNFOLD { <%keyName%> }\nFILTER { key: <%keyName%>, value: <%value%> }\nGROUP { merge:[ <%keyName%> ], pk:oid }\nSELECT [ oid ]",
+  "target/classes/mxql/dbx/linkages/db2apm_oracle": "CATEGORY <%category%>\nTAGLOAD\nSELECT\nUNFOLD { sid, serial, inst }\n<%filter1%>\n<%filter2%>\n<%filter3%>\nLASTONLY { key: oid }",
+  "target/classes/mxql/dbx/parameter-history": "CATEGORY db_<%DB_TYPE%>_parameter\nTAGLOAD\nFILTER {key:oid, value:<%OID%>}\nUNFOLD [name, value]",
+  "target/classes/mxql/dbx/planchange/chart": `SUB sqlstat_before
+CATEGORY <%SQLSTAT_CATEGORY%>{h1}
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
+UPDATE {key: plan_hash_value, cast: long}
+FILTER execute_count > 0
+GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
+UPDATE { key: "elapsed_time", value: sum }
+UPDATE { key: "execute_count", value: sum }
+
+CREATE {key: before_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
+RENAME {src: plan_hash_value, dst: before_plan_hash_value}
+SELECT [time, sql_id, before_plan_hash_value, before_elapsed_time_per_exec]
+END
+
+SUB sqlstat_after
+CATEGORY <%SQLSTAT_CATEGORY%>{h1}
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
+UPDATE {key: plan_hash_value, cast: long}
+FILTER execute_count > 0
+GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
+UPDATE { key: "elapsed_time", value: sum }
+UPDATE { key: "execute_count", value: sum }
+
+CREATE {key: after_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
+RENAME {src: plan_hash_value, dst: after_plan_hash_value}
+SELECT [time, sql_id, after_plan_hash_value, after_elapsed_time_per_exec]
+END
+
+CATEGORY <%PLAN_CHANGE_CATEGORY%>
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [time, sql_id, before_plan_hash_value, after_plan_hash_value, <%SQL_HASH_FIELD%>]
+UPDATE {key: <%SQL_HASH_FIELD%>, cast: long}
+UPDATE {key: before_plan_hash_value, cast: long}
+UPDATE {key: after_plan_hash_value, cast: long}
+
+GROUP {timeunit: 1d, pk: [sql_id, before_plan_hash_value, after_plan_hash_value, <%SQL_HASH_FIELD%>]}
+RENAME {src:"_rows_", dst: "change_count"}
+
+JOIN {query: "sqlstat_before", pk: [time, sql_id, before_plan_hash_value]}
+JOIN {query: "sqlstat_after", pk: [time, sql_id, after_plan_hash_value]}
+UPDATE {key: "before_elapsed_time_per_exec", notnull: 0}
+UPDATE {key: "after_elapsed_time_per_exec", notnull: 0}
+
+CREATE {key: "flag", expr: "after_elapsed_time_per_exec < before_elapsed_time_per_exec ? 'good' : 'bad'"}
+
+SELECT [time,change_count,flag]
+GROUP { timeunit:1d, merge:[change_count], pk: [flag]}
+UPDATE { key: "change_count", value: sum }
+PIVOT-FIELD { key:time, pivot_field:flag, pivot_value:change_count}`,
+  "target/classes/mxql/dbx/planchange/history": 'CATEGORY <%PLAN_CHANGE_CATEGORY%>\nTAGLOAD\nFILTER { key: "oid", value: <%OID%> }\nUNFOLD [time, sql_id, <%SQL_HASH_FIELD%>, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\nUPDATE {key: <%SQL_HASH_FIELD%>, cast: long}\nUPDATE {key: before_plan_hash_value, cast: long}\nUPDATE {key: after_plan_hash_value, cast: long}\n\nHVTEXT {hash: <%SQL_HASH_FIELD%>, key: sql_text, type: sql, checktime: 2h}\n\nORDER {key: time, sort: asc}\n\nSELECT [time, sql_id, <%SQL_HASH_FIELD%>, sql_text, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\n',
+  "target/classes/mxql/dbx/planchange/summary": `SUB sqlstat_before
+CATEGORY <%SQLSTAT_CATEGORY%>{h1}
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
+UPDATE {key: plan_hash_value, cast: long}
+FILTER execute_count > 0
+GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
+UPDATE { key: "elapsed_time", value: sum }
+UPDATE { key: "execute_count", value: sum }
+
+CREATE {key: before_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
+RENAME {src: plan_hash_value, dst: before_plan_hash_value}
+SELECT [sql_id, before_plan_hash_value, before_elapsed_time_per_exec]
+END
+
+SUB sqlstat_after
+CATEGORY <%SQLSTAT_CATEGORY%>{h1}
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
+UPDATE {key: plan_hash_value, cast: long}
+FILTER execute_count > 0
+GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
+UPDATE { key: "elapsed_time", value: sum }
+UPDATE { key: "execute_count", value: sum }
+
+CREATE {key: after_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
+RENAME {src: plan_hash_value, dst: after_plan_hash_value}
+SELECT [sql_id, after_plan_hash_value, after_elapsed_time_per_exec]
+END
+
+CATEGORY <%PLAN_CHANGE_CATEGORY%>
+TAGLOAD
+FILTER { key: "oid", value: <%OID%> }
+UNFOLD [time, sql_id, before_plan_hash_value, after_plan_hash_value, user, program, <%SQL_HASH_FIELD%>]
+UPDATE {key: <%SQL_HASH_FIELD%>, cast: long}
+UPDATE {key: before_plan_hash_value, cast: long}
+UPDATE {key: after_plan_hash_value, cast: long}
+
+GROUP {timeunit:1d, pk: [sql_id, before_plan_hash_value, after_plan_hash_value, <%SQL_HASH_FIELD%>], first: [user, program]}
+RENAME {src:"_rows_", dst: "change_count"}
+HVTEXT {hash: <%SQL_HASH_FIELD%>, key: sql_text, type: sql, checktime: 2h}
+
+JOIN {query: "sqlstat_before", pk: [sql_id, before_plan_hash_value]}
+JOIN {query: "sqlstat_after", pk: [sql_id, after_plan_hash_value]}
+
+UPDATE {key: "before_elapsed_time_per_exec", notnull: 0}
+UPDATE {key: "after_elapsed_time_per_exec", notnull: 0}
+
+CREATE {key: "flag", expr: "after_elapsed_time_per_exec < before_elapsed_time_per_exec ? 'GOOD' : 'BAD'"}
+
+CREATE {key: "elapsed_time_diff", expr: "round(after_elapsed_time_per_exec - before_elapsed_time_per_exec, 3)"}
+
+RENAME {src: <%SQL_HASH_FIELD%>, dst: "sql_hash_value"}
+SELECT [time, sql_id, sql_text, user, program, before_plan_hash_value, after_plan_hash_value, before_elapsed_time_per_exec, after_elapsed_time_per_exec, elapsed_time_diff, flag, change_count, sql_hash_value]`,
+  "target/classes/mxql/dbx/stat/each_sql": '# \uD558\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield:tt}\n<%ADD_HVTEXT%>\n\nFILTER {key:name, value:"<%GROUP_VALUE%>"}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nGROUP { merge:[<%GROUP_MERGE%>], pk: [<%SQL_HASH_FIELD_NAME%><%ADD_GROUPS%>,<%SQL_HASH_FIELD_NAME_2%>], listup:[plan_hash_value<%ADD_GROUPS%>], last:tt }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n\nUPDATE { key:elapsed_max, value:max }\nUPDATE { value:sum }\n\nCREATE { key:elapsed_avg, expr:"elapsed_time/execute_count"}\n\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
+  "target/classes/mxql/dbx/stat/each_sql_main": '# \uBA54\uC778 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%USER_FIELD_HASH%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%USER_FIELD_HASH%>, key:<%USER_FIELD_NAME%>, type:db_attribute}\n<%ADD_HVTEXT%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%SQL_HASH_FIELD_NAME%>, listup:[oname,<%USER_FIELD_NAME%>,sql_id,plan_hash_value<%ADD_GROUPS%>], last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
+  "target/classes/mxql/dbx/stat/merged_sql": '# \uC0C1\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:[<%GROUP_KEY%>,<%SQL_HASH_FIELD_NAME%>,<%SQL_HASH_FIELD_NAME_2%>] }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n<%FILTER_TEXT%>\n\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\n<%FILTER_NUMBER%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%GROUP_KEY%>, last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield: tt}\n\nFILTER { key:name, exist:true }\n\nORDER {key:name}\nDELETE tt\nDELETE _rows_\nDELETE <%GROUP_KEY%>\n\nSELECT',
+  "target/classes/mxql/dbx/stat/sql_stat_raw": "CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [<%UNFOLD_FIELDS%><%ADD_GROUPS%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n<%ADD_HVTEXT%>\nSELECT [<%SELECT_FIELDS%><%ADD_GROUPS%>]\n",
+  "target/classes/mxql/dbx/stat/summary_chart_all": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\n\n<%FILTER%>\n\nGROUP {merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}',
+  "target/classes/mxql/dbx/stat/summary_chart_group": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nFILTER <%REQUEST_GROUP%> != 0\n\n<%FILTER%>\n\nGROUP {pk: <%REQUEST_GROUP%>, merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}\n\nHVTEXT {hash: <%REQUEST_GROUP%>, key: <%REQUEST_GROUP%>, type: db_attribute}',
+  "target/classes/mxql/dbx/wait/group_name": "CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>\nTAGLOAD\nOID [ <%OID%> ]\nUNFOLD [schemaname, con_name,machine, program, module, osuser]\nSELECT [schemaname, con_name,machine, program, module, osuser]\n\nHVTEXT {hash: schemaname, key: schemaname_str, type: db_attribute}\nHVTEXT {hash: con_name, key: con_name_str, type: db_attribute}\nHVTEXT {hash: machine, key: machine_str, type: db_attribute}\nHVTEXT {hash: program, key: program_str, type: db_attribute}\nHVTEXT {hash: module, key: module_str, type: db_attribute}\nHVTEXT {hash: osuser, key: osuser_str, type: db_attribute}\n\nGROUP { listup: [schemaname_str, con_name_str,machine_str, program_str, module_str, osuser_str] }",
+  "target/classes/mxql/dbx/wait/wait_analysis_chart_class": "CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER {key: con_name, value: ['']}\nDELETE ['con_id', 'con_name', 'oname',  '_no_5m_hour_',  'oid', 'pcode',  'pname']\nDELETE ['show_in', 'show_out']",
+  "target/classes/mxql/dbx/wait/wait_analysis_chart_cpu": `CATEGORY db_oracle_dma_counter<%TIMEUNIT%>
+OID [ <%OID%> ]
+TAGLOAD
+FILTER con_id == 0
+SELECT [time,pcode,oid, cpu(xos2), cpu_sys(xos2), cpu_user(xos2), cpu_idle(xos2), cpu_iowait(xos2), 'cpu_iowait(xos)','cpu_sys(xos)','cpu_user(xos)']
+RENAME { src: cpu(xos), dst: cpu_xos}
+RENAME { src: cpu(xos2), dst: cpu2}
+CREATE {key:'cpu(xos)', expr:"cpu2 == null ? cpu_xos : cpu2"}
+RENAME { src: cpu_sys(xos), dst: cpu_sys}
+RENAME { src: cpu_sys(xos2), dst: cpu_sys2}
+CREATE {key:'cpu_sys(xos)', expr:"cpu_sys2 == null ? cpu_sys : cpu_sys2"}
+RENAME { src: cpu_user(xos), dst: cpu_user}
+RENAME { src: cpu_user(xos2), dst: cpu_user2}
+CREATE {key:'cpu_user(xos)', expr:"cpu_user2 == null ? cpu_user : cpu_user2"}
+RENAME { src: cpu_idle(xos), dst: cpu_idle}
+RENAME { src: cpu_idle(xos2), dst: cpu_idle2}
+CREATE {key:'cpu_idle(xos)', expr:"cpu_idle2 == null ? cpu_idle : cpu_idle2"}
+RENAME { src: cpu_iowait(xos), dst: cpu_iowait}
+RENAME { src: cpu_iowait(xos2), dst: cpu_iowait2}
+CREATE {key:'cpu_iowait(xos)', expr:"cpu_iowait2 == null ? cpu_iowait : cpu_iowait2"}
+DELETE [cpu_xos, cpu2, cpu_sys, cpu_sys2, cpu_user, cpu_user2, cpu_idle, cpu_idle2, cpu_iowait, cpu_iowait2]
+DELETE ['show_in', 'show_out']`,
+  "target/classes/mxql/dbx/wait/wait_analysis_chart_enqueue": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention']\nDELETE ['show_in', 'show_out']",
+  "target/classes/mxql/dbx/wait/wait_analysis_chart_latch": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'latch: shared pool']\nFILTER {key: con_name, value: ['']}\nDELETE ['show_in', 'show_out']",
+  "target/classes/mxql/dbx/wait/wait_analysis_chart_mem": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time, pcode, oid, mem(xos)]\nDELETE ['show_in', 'show_out']",
+  "target/classes/mxql/dbx/wait/wait_analysis_chart_session": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time,pcode,oid,active_sessions,total_sessions]\nDELETE ['show_in', 'show_out']",
+  "target/classes/mxql/dbx/wait/wait_analysis_chart_stat": "CATEGORY db_oracle_dma_stat_top<%TIMEUNIT%>\nOID [  <%OID%> ]\nTAGLOAD\nSELECT [time, 'non-idle wait time','application wait time','logical read bytes from cache','redo synch time overhead (usec)','cell physical IO interconnect bytes']\nDELETE ['show_in', 'show_out']",
+  "target/classes/mxql/dbx/wait/wait_analysis_chart_waitcount": "CATEGORY db_oracle_dma_event_wait_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'SQL*Net message to client','control file sequential read','log file parallel write','log file sync','db file parallel write']\nDELETE ['show_in', 'show_out']",
+  "target/classes/mxql/dbx/wait/wait_analysis_chart_waittime": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention','log file sync','ADR block file read','ADR block file write','control file sequential read']\nDELETE ['show_in', 'show_out']",
+  "target/classes/mxql/dbx/wait/wait_sql_list_1": `CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>
+OID <%OID%>
+TAGLOAD
+UNFOLD ["@id","con_id","con_name","cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","machine","module","osuser","physical reads","plan_hash_value","program","redo size","schemaname","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","sql_id","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"]
+SELECT
+
+HVTEXT {hash: schemaname, key: schema, type: db_attribute}
+HVTEXT {hash: con_name, key: con_name, type: db_attribute}
+HVTEXT {hash: machine, key: machine, type: db_attribute}
+HVTEXT {hash: program, key: program, type: db_attribute}
+HVTEXT {hash: module, key: module, type: db_attribute}
+HVTEXT {hash: osuser, key: osuser, type: db_attribute}
+
+DELETE time
+GROUP {pk: "sql_hash_value", listup: ["schema","con_name", "machine", "program", "module", "osuser", "plan_hash_value", "sql_id"], merge: ["cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","physical reads","redo size","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"] }
+
+UPDATE {key: "<%REQUEST_ORDER_KEY%>", value: sum}
+FILTER {expr: "\${<%REQUEST_ORDER_KEY%>} > 0"}
+ORDER {key: "<%REQUEST_ORDER_KEY%>", sort: desc}
+LIMIT 50
+
+HVTEXT {hash: sql_hash_value, key: sql_query, type: sql}
+UPDATE {value: sum}
+
+<%FILTER_TEXT%>
+<%FILTER_NUMBER%>
+
+CREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}
+
+DELETE _rows_
+DELETE ['show_in', 'show_out']`,
+  "target/classes/mxql/dbx/wait/wait_sql_list_2": `SUB q1
+TIME-RANGE {recent: 1d}
+CATEGORY db_oracle_dma_sqlstat_event
+OID <%OID%>
+TAGLOAD
+UNFOLD [class, event_no]
+UPDATE { key: "event_no", cast: int }
+FILTER-SUBQUERY {key: event_no, query: q2}
+SELECT [@id]
+UPDATE { key: "@id", cast: long }
+END
+
+SUB q2
+TIME-RANGE {recent: 1d}
+CATEGORY db_index_event
+OID <%OID%>
+TAGLOAD
+LASTONLY
+UNFOLD [class, idx, name]
+FILTER {key: name, value: "<%REQUEST_EVENT_NAME%>"}
+SELECT [idx]
+RENAME {src:idx, dst:event_no}
+UPDATE { key: "event_no", cast: int }
+END
+
+CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>
+OID <%OID%>
+TAGLOAD
+UNFOLD ["@id","con_id","con_name","cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","machine","module","osuser","physical reads","plan_hash_value","program","redo size","schemaname","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","sql_id","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"]
+SELECT
+UPDATE { key: "@id", cast: long }
+FILTER-SUBQUERY {key:@id, query:q1}
+
+HVTEXT {hash: schemaname, key: schema, type: db_attribute}
+HVTEXT {hash: con_name, key: con_name, type: db_attribute}
+HVTEXT {hash: machine, key: machine, type: db_attribute}
+HVTEXT {hash: program, key: program, type: db_attribute}
+HVTEXT {hash: module, key: module, type: db_attribute}
+HVTEXT {hash: osuser, key: osuser, type: db_attribute}
+
+DELETE time
+GROUP {pk: "sql_hash_value", listup: ["schema","con_name", "machine", "program", "module", "osuser", "plan_hash_value" , "sql_id"], merge: ["cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","physical reads","redo size","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"] }
+ORDER {key: elapsed_wait, sort: desc}
+LIMIT 50
+
+HVTEXT {hash: sql_hash_value, key: sql_query, type: sql}
+UPDATE {value: sum}
+
+<%FILTER_TEXT%>
+<%FILTER_NUMBER%>
+
+CREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}
+DELETE _rows_
+
+DELETE ['show_in', 'show_out']`,
+  "target/classes/mxql/dbx/wait/wait_summary": `CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>
+OID [ <%OID%> ]
+TAGLOAD
+SELECT
+PIVOT-HEAD { key: ['time'], except: ['_no_5m_hour_','pname','pcode','oid','oname','con_id','con_name','Idle'] }
+DELETE ['time']
+GROUP { merge: "pivot_value", pk: "pivot_field" }
+PIVOT-FIELD { pivot_field: "pivot_field", pivot_value: "pivot_value" }
+UPDATE { value: sum }
+DELETE ['show_in', 'show_out']`,
+  "target/classes/mxql/dbx/wait/wait_top_n": `SUB q1
+TIME-RANGE {recent: 1d}
+CATEGORY db_index_wait_class
+OID <%OID%>
+TAGLOAD
+LASTONLY
+UNFOLD [idx, name]
+<%FILTER_CLASS_NAME%>
+RENAME {src:idx, dst:class}
+RENAME {src:name, dst:class_name}
+UPDATE {key: class, cast: int}
+SELECT [ class, class_name ]
+END
+
+SUB q2
+TIME-RANGE {recent: 1d}
+CATEGORY db_index_event
+OID <%OID%>
+TAGLOAD
+LASTONLY
+UNFOLD [idx, name, class]
+RENAME {src:idx, dst: event_no}
+UPDATE { key: event_no, cast: int}
+END
+
+CATEGORY db_oracle_dma_sqlstat_event<%TIMEUNIT%>
+OID <%OID%>
+TAGLOAD
+UNFOLD [class, event_no, wait_time]
+UPDATE {key: class, cast: int}
+FILTER-SUBQUERY { key: class, query: q1 }
+UPDATE { key: event_no, cast: int}
+DELETE time
+GROUP { pk: [event_no,class], merge: wait_time }
+
+JOIN {pk: [event_no,class], query: q2}
+RENAME {src:name, dst: event_name}
+UPDATE {key: wait_time, value: sum}
+
+PART-BY {
+    task: [
+        {key: total, from: wait_time, func: sum}
+    ]
+}
+
+CREATE {key: percentage, expr: "wait_time * 100 / total"}
+
+ORDER {key:percentage, sort: desc}
+SELECT [event_no,event_name,wait_time,percentage,class]
+JOIN {pk: class, query: q1}
+DELETE ['show_in', 'show_out']`,
+  "target/classes/mxql/event/select-options": "TIME-RANGE {recent: <% TIMEUNIT %>}\nCATEGORY <% CATEGORY %>\nTAGLOAD\nUNFOLD <% UNFOLD %>\nSELECT <% SELECT %>\nGROUP {timeunit:<% TIMEUNIT %>, pk:<% PK %>}",
+  "target/classes/mxql/infra/ServerCommonService-getServerList": 'CATEGORY {"server_base": 30m, "server_base{m5}": 2h, "server_base{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [time, oid, oname]\n\n',
+  "target/classes/mxql/infra/ServerProcessService-getCpuMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, cpu, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [cpu, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: cpuAvg, from: cpu }\nCREATE { key: cpuMax, from: cpu }\nCREATE { key: cpuMin, from: cpu }\nUPDATE { key: cpuMax, value: max }\nUPDATE { key: cpuMin, value: min }\n\nORDER {key:[cpuMax], sort: [desc]}\n',
+  "target/classes/mxql/infra/ServerProcessService-getMemMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, memory, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [memory, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: memAvg, from: memory }\nCREATE { key: memMax, from: memory }\nCREATE { key: memMin, from: memory }\nUPDATE { key: memMax, value: max }\nUPDATE { key: memMin, value: min }\n\nORDER {key:[memMax], sort: [desc]}\n',
+  "target/classes/mxql/infra/ServerProcessService-getProcessList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, cmd1, oname, user, cpu, memory, riops, wiops, count, rss, rbps, wbps]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash]}\n',
+  "target/classes/mxql/infra/file-systems-by-group-and-keys": "\n# \uADF8\uB8F9 \uBC0F \uD544\uD130\uB9C1\uC5D0 \uC758\uD574 \uD544\uD130\uB9C1\uB41C oid \uB85C \uD30C\uC77C \uC2DC\uC2A4\uD15C \uBAA9\uB85D \uC870\uD68C\n\nSUB sub_custom\nKV.LOAD server_inventory_custom\nEND\n\nSUB sub_inv\nKV.LOAD server_inventory\nJOIN {pk: pk0, query: sub_custom}\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid, hostname]\nEND\n\nTIME-RANGE {duration: 1m, etime: $etime}\nCATEGORY infra_filesystem\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[oid], query:sub_inv, type:inner}\n\nselect [oid, hostname, mountName, pUsed, totalSize, free, used, pInodeUsed]\n\nORDER {key:[hostname, mountName], sort: asc}",
+  "target/classes/mxql/infra/get-custom-field-keys": "# \uBAA8\uB4E0 custom field \uC758 \uD0A4\uAC12\uC744 \uC870\uD68C\uD55C\uB2E4.\n# \uB514\uBE44 \uAC19\uC774 entity\uAC00 \uBA85\uD655\uD558\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uBBC0\uB85C \uC804\uCCB4 \uB370\uC774\uD130\uC5D0\uC11C \uACF5\uD1B5\uB41C \uAC12\uC744 \uAC00\uC838\uC628\uB2E4\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nKV.LOAD server_inventory_custom\nJOIN {pk:pk0, query: agents, type: inner}\n\nPIVOT-HEAD\nFIRST-ONLY {key:[pivot_field]}\nSELECT [pivot_field]",
+  "target/classes/mxql/infra/get-event-id-list": '# \uC911\uBCF5 \uC81C\uAC70\uD558\uACE0 oid : event id set \uC73C\uB85C \uC774\uC6A9\uD558\uAE30?\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\nSUB filtered_inventory\nKV.LOAD server_inventory\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid]\nEND\n\nTIME-RANGE {recent: 20s}\nCATEGORY event_status_summary\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[pcode]}\nSELECT\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: stat, type: inner}\nJOIN {pk:[oid], query:filtered_inventory, type: inner}\n\nFILTER { expr: "warningCount > 0 || criticalCount > 0"}\n\n# NOTE: warning \uC640 critical \uC740 \uCF64\uB9C8\uB85C \uC5F0\uACB0\uB41C \uC774\uBCA4\uD2B8 \uC544\uC774\uB514\uC784\nSELECT [oid, warning, critical]\n',
+  "target/classes/mxql/infra/get-fold-category-desc-fields": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAM %>\nUNFOLD\nFIRST-ONLY {key:[oid, @id]}\n\n# metric value \uCC98\uB9AC\nUPDATE { key: pid, value: last }\nUPDATE { key: pid, cast: long }\n\nUPDATE { key: ppid, value: last }\nUPDATE { key: ppid, cast: long }\n\nUPDATE { key: stime, value: last }\nUPDATE { key: stime, cast: long }\n",
+  "target/classes/mxql/infra/get-inventory-keywords": "APPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\n\n<% FILTER_PARAM %>\nSELECT [ <% COLUMN_NAME %> ]\nGROUP {merge: <% COLUMN_NAME %>, pk: <% COLUMN_NAME %>}\nORDER {key: <% COLUMN_NAME %>, sort: asc}\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nSUB inv\nKV.LOAD <% CATEGORY_NAME %>\nEND",
+  "target/classes/mxql/infra/get-oids-by-infra-cpu-fixed-3h-range": "# cube{1h} \uAC00 \uC5C6\uB294 \uACBD\uC6B0 oid \uC870\uD68C\uD558\uAE30 \uC704\uD55C mql\n# time-range \uB294 \uB3D9\uC791\uD558\uC9C0 \uC54A\uC73C\uBBC0\uB85C MxqlExecutor \uC5D0\uC11C stime, etime \uC744 \uB123\uC5B4\uC918\uC57C \uD55C\uB2E4\n#TIME-RANGE {recent: 3h}\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]\n",
+  "target/classes/mxql/infra/get-oids-by-infra-cpu-h1": "# \uCC28\uD2B8 \uC775\uC2A4\uD50C\uB85C\uB7EC\uB97C \uC704\uD574 \uC0AC\uC6A9\uB428\n# \uC9C0\uC815\uB41C \uC2DC\uAC04\uC5D0\uC11C infra_cpu{h1} \uAC00 \uC788\uB294 oid \uB9AC\uC2A4\uD2B8\uB9CC \uAC00\uC838\uC640 \uD544\uD130\uB9C1\uC5D0 \uC0AC\uC6A9\uD55C\uB2E4.\nCATEGORY infra_cpu{h1}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]",
+  "target/classes/mxql/infra/get-server-inventories-for-status": "\n# group \uD654\uBA74 \uC0C1\uB2E8\uC758 \uC804\uCCB4 \uD1B5\uACC4 \uC870\uD68C\uB97C \uC704\uD574 \uC0AC\uC6A9\uD568\n# os \uBCC4 { active(not inactive/paused), total, total core count) }\n\n# NOTE: \uACFC\uAC70\uC758 \uC0C1\uD0DC\uB97C \uC870\uD68C\uD558\uB294 \uAE30\uB2A5\uC740 \uC5C6\uC74C, \uC2DC\uACC4\uC5F4\uC774 \uC544\uB2C8\uAE30 \uB54C\uBB38\uC5D0 stime, etime \uC774 \uC758\uBBF8 \uC5C6\uC74C\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, status]\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nSELECT [oid, OSType, nCores]\n\nJOIN {pk:[oid], query:stat, type: inner}\n",
+  "target/classes/mxql/infra/get-server-inventories-with-metric": `/**
+NOTE: \uADF8\uB8F9\uBCC4 \uC8FC\uC694 \uBA54\uD2B8\uB9AD\uC774 \uD3EC\uD568\uB41C \uC11C\uBC84 \uC815\uBCF4
+      \uBE0C\uB77C\uC6B0\uC800\uC640 \uC11C\uBC84\uC758 \uC2DC\uAC04\uCC28? \uAC00 \uC788\uB294 \uACBD\uC6B0 \uC624\uCC28\uB85C \uC778\uD574 cpu, ~ \uAC12\uC774 \uC81C\uB300\uB85C \uC548\uB098\uC62C \uC218 \uC788\uC74C
+      \uC774 \uACBD\uC6B0\uC5D0\uB3C4 diskBusy \uB294 \uAC12\uC774 \uB098\uC634(20\uCD08), cpu, \uB4F1 (5\uCD08)
+      \uC77C\uAD04 20\uCD08\uB85C \uD558\uB3C4\uB85D \uD568
+*/
+# \uC2E4\uC2DC\uAC04 \uC11C\uBC84 \uB370\uC774\uD130\uB9CC \uC0AC\uC6A9\uD55C\uB2E4
+# \uC11C\uBC84\uBAA9\uB85D\uC5D0\uC11C \uC0AD\uC81C\uD55C \uC11C\uBC84 \uBC18\uC601\uC744 \uC704\uD55C \uAE30\uBCF8 \uD544\uD130\uB85C \uC0AC\uC6A9\uD55C\uB2E4
+SUB agents
+CATEGORY agent_list
+FLEXLOAD
+SELECT [active, oid, status]
+RENAME {src: active, dst: server_agent_active}
+END
+
+# metric key \uAC12\uC740 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD558\uC9C0 \uC54A\uACE0 \uC544\uB798\uC640 \uAC19\uC740 \uAC12\uC73C\uB85C \uBCC0\uD658\uD55C\uB2E4.
+# public static String[] KEY_METRIC = new String[] {
+#   "cpu", "mem", "swap", "rx", "tx", "diskBusy" + diskName
+
+SUB diskBusy
+#time-range {duration:20s, etime:$etime}
+CATEGORY infra_disk_perf
+TAGLOAD {backward: true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, @id, name, busy]
+RENAME {src:name, dst:diskName}
+RENAME {src:busy, dst:diskBusy}
+END
+
+SUB cpu
+CATEGORY infra_cpu
+TAGLOAD {backward:true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, total]
+RENAME {src:total, dst:cpu}
+END
+
+SUB mem
+CATEGORY infra_mem
+TAGLOAD {backward:true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, pUsed]
+RENAME {src:pUsed, dst:mem}
+END
+
+SUB swap
+CATEGORY infra_swap
+TAGLOAD {backward:true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, pUsed]
+RENAME {src:pUsed, dst:swap}
+END
+
+SUB network
+CATEGORY infra_network
+TAGLOAD {backward:true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, rxbps, txbps]
+RENAME [[rxbps, rx],[txbps, tx]]
+END
+
+SUB sub-gpu-data
+CATEGORY infra_gpu
+TAGLOAD {backward: true}
+FIRST-ONLY {key:[oid]}
+SELECT [oid, gpu_util_203, fb_total_250, power_usage_155, ecc_dbe_aggregate_total_313]
+CREATE {key: hasGpu, value: true}
+RENAME [[gpu_util_203, gpuUtil], [fb_total_250, fbMemoryUsage], [power_usage_155, powerUsage], [ecc_dbe_aggregate_total_313, eccDbeErrorCount]]
+END
+
+SUB inventory_custom
+kv.load server_inventory_custom
+END
+
+# \uC2DC\uAC04\uC5D0 \uBB34\uAD00\uD568
+SUB inventory
+KV.LOAD server_inventory
+END
+
+APPEND {query: agents}
+JOIN {pk: oid, query: inventory, type: inner}
+JOIN {pk:[pk0], query:inventory_custom}
+
+<% FILTER_PARAM %>
+
+# NOTE: inventory + custom \uC815\uBCF4 \uC800\uC7A5\uC744 \uC704\uD574\uC11C \uD50C\uB7EC\uADF8\uC778\uC744 \uC0AC\uC6A9\uD55C\uB2E4
+PLUGIN
+
+# group fields \uB294 \uC5C6\uAC70\uB098(''), n\uAC1C \uC874\uC7AC\uD558\uAC70\uB098 (', g1, g2') \uC784
+SELECT [oid, status, server_agent_active, OSType, IP_all, hostname, hostAlias, nCores, lCores, memTotal, frequency, bootTime, serverType <% GROUP_FIELDS %>]
+
+/*
+NOTE: \uD50C\uB7EC\uADF8\uC778\uC744 \uD1B5\uD574 map \uCC98\uB9AC\uB97C \uD588\uB2E4\uBA74
+      join\uC5D0 \uC0AC\uC6A9\uB418\uB294 \uD0A4\uAC00 \uC5C6\uC744 \uC218 \uC788\uB2E4
+      mxql\uC740 \uC21C\uCC28 \uCC98\uB9AC\uB77C\uC11C
+      invenory \uC640 custom \uC758 join \uC740 \uD50C\uB7EC\uADF8\uC778\uBCF4\uB2E4 \uC55E\uC5D0 \uC788\uC5B4\uC57C \uD568
+
+TODO: plugin\uC744 \uD1B5\uD574 \uC720\uC5F0\uD55C \uB370\uC774\uD130 \uC804\uCC98\uB9AC\uB3C4 \uAD1C\uCC2E\uC9C0\uB9CC
+      select(map) key\uAC00 java\uC640 mxql\uC5D0 \uB098\uB220\uC838 \uC788\uC5B4 \uBCF4\uAE30\uAC00 \uD798\uB4E0\uB4EF
+      \uCC28\uB77C\uB9AC param text\uB97C \uD65C\uC6A9\uD558\uB294\uAC8C \uB098\uC744\uB7F0\uC9C0
+*/
+
+JOIN {pk:[oid], query:cpu}
+JOIN {pk:[oid], query:mem}
+JOIN {pk:[oid], query:swap}
+JOIN {pk:[oid], query:network}
+JOIN {pk:[oid], query:diskBusy}
+JOIN {pk:[oid], query:sub-gpu-data}
+# filter & order
+<% ORDER_PARAM %>`,
+  "target/classes/mxql/infra/get-server-ostype-version": "# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nJOIN {pk:pk0, query: agents, type: inner}\nFIRST-ONLY {key:[OSType, whatap_infradVersion]}\nSELECT [OSType, whatap_infradVersion]\nRENAME { src:whatap_infradVersion, dst:version }\n",
+  "target/classes/mxql/infra/get-server-process-names": `APPEND {query: recent_list}
+APPEND {query: m5_list}
+
+CREATE { key: cmd, expr: "isEmpty(cmd2) ? cmd1 : cmd2" }
+SELECT [cmd]
+FIRST-ONLY {key:[cmd]}
+
+SUB m5_list
+TIME-RANGE {recent: 3h}
+CATEGORY {'server_process{m5}': unlimit}
+TAGLOAD {backward: true}
+END
+
+
+SUB recent_list
+TIME-RANGE {recent: 10m}
+CATEGORY server_process
+TAGLOAD {backward: true}
+END
+
+`,
+  "target/classes/mxql/infra/hostnames-by-all": "# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nselect [oid, hostname]",
+  "target/classes/mxql/infra/hostnames-by-oid-list": '# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nFILTER { key: "oid", value: [<% OID_LIST_PARAM %>] }\nselect [oid, hostname]',
+  "target/classes/mxql/infra/inventory/check-exist-gpu": 'SUB currentAgents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load gpu_inventory\nFILTER-SUBQUERY { key: oid, include: "currentAgents" }\n<% FILTER_GROUP_OIDS %>\nLIMIT 1',
+  "target/classes/mxql/infra/inventory/get-active-gpu-list": `
+kv.load gpu_inventory
+FILTER-SUBQUERY {key: oid, include: "currentAgentList"}
+CREATE { key: excludeKey, expr: "StartsWith(uuid, 'MIG') ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
+FILTER-SUBQUERY { key: excludeKey, exclude: "filterMigList" }
+
+SUB currentAgentList
+CATEGORY agent_list
+FLEXLOAD
+SELECT [oid]
+<% FILTER_OIDS %>
+END
+
+SUB filterMigList
+kv.load gpu_inventory
+FILTER { expr: "migModeCurrent == 'Disabled'" }
+CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
+SELECT [excludeKey]
+END`,
+  "target/classes/mxql/infra/inventoryV2/gpu-search-agent-join": `# \uC2E4\uC2DC\uAC04 gpu inventory \uC870\uD68C
+# agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568
+
+kv.load gpu_inventory
+CREATE { key: excludeKey, expr: "gpuType == 'MIG' ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
+FILTER-SUBQUERY { key: excludeKey, exclude: "filterMigList" }
+DELETE [excludeKey]
+JOIN {pk: [pk0], query: gpu_inv_custom}
+JOIN {pk: [oid], query: server_inventory}
+JOIN {pk: [oid], query: agent_active_status}
+
+# for total count
+PLUGIN
+
+<% FILTER_PARAM %>
+<% ORDER_PARAM %>
+
+sub server_inventory
+  kv.load server_inventory
+  SELECT [oid, ipAddress, OSVersion]
+end
+
+sub agent_active_status
+  CATEGORY agent_list
+  FLEXLOAD
+  SELECT [oid, active]
+  RENAME {src: active, dst: __agent_is_active__}
+end
+
+sub gpu_inv_custom
+  kv.load gpu_inventory_custom
+end
+
+# [\uBC29\uC5B4\uB85C\uC9C1] MIG Disabled \uC0C1\uD0DC\uC778 Physical GPU \uD558\uC704\uC758 MIG \uC778\uC2A4\uD134\uC2A4 \uC81C\uC678 (\uC5D0\uC774\uC804\uD2B8\uC5D0\uC11C 1\uCC28 \uD544\uD130\uB9C1, \uBC31\uC5D4\uB4DC 2\uCC28 \uBC29\uC5B4)
+sub filterMigList
+  kv.load gpu_inventory
+  FILTER { expr: "gpuType == 'Physical' && migModeCurrent == 'Disabled'" }
+  CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
+  SELECT [excludeKey]
+end`,
+  "target/classes/mxql/infra/inventoryV2/gpu-search-snapshot": `# \uACFC\uAC70 gpu inventory \uC870\uD68C
+# server_inventory \uC5D0\uC11C ipAddress, OSVersion \uC870\uD68C
+# NOTE: gpu/server \uC2A4\uB0C5\uC0F7 \uC800\uC7A5 \uC8FC\uAE30\uAC00 \uB2EC\uB77C \uC815\uD655\uD55C \uC2DC\uC810\uC758 server \uC2A4\uB0C5\uC0F7\uC744 \uC870\uD68C\uD560 \uC218 \uC5C6\uC73C\uBBC0\uB85C \uC2E4\uC2DC\uAC04 \uB370\uC774\uD130\uB97C \uC0AC\uC6A9\uD568
+# TODO: \uC5D0\uC774\uC804\uD2B8\uAC00 gpu_inventory \uC5D0 ipAddress, OSVersion \uC744 \uC9C1\uC811 \uC218\uC9D1\uD558\uBA74 server_inv JOIN \uC81C\uAC70
+
+APPEND {query: inv}
+CREATE { key: excludeKey, expr: "gpuType == 'MIG' ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
+FILTER-SUBQUERY { key: excludeKey, exclude: "filterMigList" }
+DELETE [excludeKey]
+JOIN {pk: pk0, query: custom}
+JOIN {pk: [oid], query: server_inv}
+
+PLUGIN
+
+<% FILTER_PARAM %>
+<% ORDER_PARAM %>
+
+SUB inv
+KV.SNAPSHOT {table: gpu_inventory, target: <% SNAPSHOT_DATE %> }
+END
+
+SUB custom
+KV.SNAPSHOT {table: gpu_inventory_custom, target: <% SNAPSHOT_DATE %> }
+END
+
+
+SUB server_inv
+kv.load server_inventory
+SELECT [oid, ipAddress, OSVersion]
+END
+
+# [\uBC29\uC5B4\uB85C\uC9C1] MIG Disabled \uC0C1\uD0DC\uC778 Physical GPU \uD558\uC704\uC758 MIG \uC778\uC2A4\uD134\uC2A4 \uC81C\uC678 (\uC5D0\uC774\uC804\uD2B8\uC5D0\uC11C 1\uCC28 \uD544\uD130\uB9C1, \uBC31\uC5D4\uB4DC 2\uCC28 \uBC29\uC5B4)
+SUB filterMigList
+KV.SNAPSHOT {table: gpu_inventory, target: <% SNAPSHOT_DATE %> }
+FILTER { expr: "gpuType == 'Physical' && migModeCurrent == 'Disabled'" }
+CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
+SELECT [excludeKey]
+END
+`,
+  "target/classes/mxql/infra/inventoryV2/server-search-agent-join": "# \uC2E4\uC2DC\uAC04 server inventory \uC870\uD68C\n# agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568\n\nAPPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\nJOIN {pk: pk0, query: custom}\n\n# for total count\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\n# end of main query\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, active]\nRENAME {src: oid, dst: pk0}\nRENAME {src: active, dst: __agent_is_active__}\nEND\n\nSUB inv\nKV.LOAD server_inventory\nEND\n\nSUB custom\nKV.LOAD server_inventory_custom\nEND\n\n",
+  "target/classes/mxql/infra/inventoryV2/server-search-snapshot": "# \uACFC\uAC70 server inventory \uC870\uD68C\n\nAPPEND {query: inv}\nJOIN {pk: pk0, query: custom}\n\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\nSUB inv\nKV.SNAPSHOT {table: server_inventory, target: <% SNAPSHOT_DATE %> }\nEND\n\nSUB custom\nKV.SNAPSHOT {table: server_inventory_custom, target: <% SNAPSHOT_DATE %> }\nEND\n",
+  "target/classes/mxql/infra/metric-by-oid-list": "\n# server list \uC870\uD68C\uD6C4 \uD68D\uB4DD\uD55C oid list \uB97C \uC870\uAC74\uC73C\uB85C \uC0AC\uC6A9\uD55C\uB2E4.\n\n#TIME-RANGE {stime: $stime, etime: $etime}\n#TIME-RANGE {recent: 5m}\n# <% CATEGORY_NAME %>\nCATEGORY <% CATEGORY_NAME %>\nTAGLOAD {backward:true}\n\n<% FILTER_OID_LIST %>\n\n# TODO: \uD55C\uBC88\uC5D0 \uC5EC\uB7EC \uBA54\uD2B8\uB9AD\uC758 \uCC28\uD2B8\uB97C \uADF8\uB9AC\uB294 \uACBD\uC6B0\uC5D0\uB294 \uD558\uB098\uC758 \uBA54\uD2B8\uB9AD\uC774 \uC544\uB2CC \uBCF5\uC218\uC758 \uBA54\uD2B8\uB9AD \uD544\uB4DC\uB97C \uC785\uB825\uD574\uC57C??\n#       \uC5EC\uB7EC \uCE74\uD14C\uACE0\uB9AC\uB3C4 \uB9C8\uCC2C\uAC00\uC9C0??\n#       \uD0ED\uC744 \uD1B5\uD574 \uCE74\uD14C\uACE0\uB9AC\uBCC4\uB85C \uAC00\uC838\uC628\uB2E4\uACE0 \uC0DD\uAC01\uD558\uC790?\n# time, oid, <% FIELD_NAME %>\nselect [time, oid, <% FIELD_NAME %>]\n\n\n",
+  "target/classes/mxql/infra/metrics_explorer/get-agent-info-list": '\nCATEGORY agent_list\nFLEXLOAD\n\nJOIN {pk: [oid], query: sub_infra, type: inner}\nJOIN {pk: [oid], query: sub_svr_inventory}\n\nSUB sub_infra\nCATEGORY {"infra_cpu": 1h, "infra_cpu{m5}": 3h, "infra_cpu{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nEND\n\nSUB sub_svr_inventory\nKV.LOAD server_inventory\nSELECT [oid, hostname]\nEND',
+  "target/classes/mxql/infra/oid-list-by-filters": "# server_inventory, server_inventory_custom\n\nsub custom\nkv.load server_inventory_custom\nend\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load server_inventory\nJOIN {pk:oid, query: agents, type: inner}\njoin {pk: pk0, query: custom}\n\n<% FILTER_PARAM %>\n\nselect [oid]\n",
+  "target/classes/mxql/infra/oid-list-by-top-n": '/*\n TODO: \uC870\uAC74\uC5D0 \uB530\uB77C\uC11C\n       \uCE74\uD14C\uACE0\uB9AC\uC640 \uD544\uB4DC, \uB9AC\uBBF8\uD2B8\uB97C\n       \uBCC0\uACBD\uD558\uAC8C \uD560 \uC218 \uB3C4 \uC788\uC74C\n*/\n\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nSELECT [oid, time, total]\nFILTER {key: "oid", value: [<% OID_LIST_PARAM %>]}\n\nGROUP {timeunit:1h, merge:"total", pk:"oid"}\nUPDATE {key: "total", value: sum }\nORDER {key:[total], sort: desc}\nLIMIT 50',
+  "target/classes/mxql/infra/os-type-by-oids": "# oid list \uB85C os type \uC744 \uBAA8\uB450 \uC870\uD68C\uD55C\uB2E4.\nKV.LOAD server_inventory\n<% FILTER_PARAM %>\nFILTER {key:pk0, value:[<% OID_LIST_PARAM %>]}\nFIRST-ONLY {key: [OSType]}\nSELECT [OSType]",
+  "target/classes/mxql/infra/process-list-by-oid": '/**\n NOTE: process list for group detail - event\n */\n\nCATEGORY infra_process_group\nTAGLOAD\nFILTER { key: "oid", value: <% OID_PARAM %>}\n\n# unfold / filtering order \uB294 java \uC5D0\uC11C \uCC98\uB9AC\uD55C\uB2E4.',
+  "target/classes/mxql/infra/servers-by-group-and-keys": "# dashboard page \uC6B0\uCE21 \uC0C1\uC138 \uD328\uB110 / \uADF8\uB8F9\uC815\uBCF4\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nKV.LOAD server_inventory\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT\n\nORDER {key: [hostname], sort: asc}",
+  "target/classes/mxql/infra/v4series/select-fold-category": 'CATEGORY {<% CATEGORY_NAME %>:3h, "<% CATEGORY_NAME %>{m5}":15d, "<% CATEGORY_NAME %>{h1}":unlimit }\n<% OID_FILTER %>\nTAGLOAD\nSELECT [time, oid, @id, @pk, uuid, <% FIELD_LIST %>]\nUNFOLD\n<% SUB_KEY_FILTER %>\n\n',
+  "target/classes/mxql/openmetric/stat/stat_gpu_trend_hitmap": 'SUB origin\nkv.load {table:"stat_gpu_trend_hitmap-@{query_date}" , ifexist:true}\nEND\n\nSUB avg_data\n>> 100*sum by (UUID)(sum_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h])) / sum by (UUID) (count_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nORDER {key:UUID, sort: desc}\nEND\n\nSUB max_data\n>> 100*max by (UUID)(max_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:max_value}\nEND\n\nSUB min_data\n>> 100*min by (UUID)(min_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:min_value}\nEND\n\nSUB target\nAPPEND {query: avg_data}\nJOIN {query: max_data, pk: [t, UUID]}\nJOIN {query: min_data, pk: [t, UUID]}\nFOLD {pk:t, key:[UUID,value,max_value,min_value]}\nEND\n\nAPPEND {query: origin}\nAPPEND {query: target}\n\nORDER {key:t, sort: asc}\n\nkv.insert {table: "stat_gpu_trend_hitmap-@{query_date}", pk.key:[t]}\n',
+  "target/classes/mxql/report/getReportBatchMenu": "kv.select {table: report_batch_menu, pk.val:0}",
+  "target/classes/mxql/server/inventory/agent": "## agent \uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\nkv.load server_inventory",
+  "target/classes/mxql/server/inventory/custom": "## \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\nkv.load server_inventory_custom",
+  "target/classes/mxql/server/inventory/join": "## agent\uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\uC640 \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\uB97C join\n\n# \uC11C\uBC84\uBAA9\uB85D\uC5D0\uC11C \uC0AD\uC81C\uD55C \uC11C\uBC84 \uBC18\uC601\uC744 \uC704\uD55C \uAE30\uBCF8 \uD544\uD130\uB85C \uC0AC\uC6A9\uD55C\uB2E4\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [active, oid]\nRENAME {src: active, dst: server_agent_active}\nEND\n\nSUB custom\nkv.load server_inventory_custom\nEND\n\nSUB inventory\nkv.load server_inventory\nEND\n\nAPPEND {query: agents}\nJOIN {pk: oid, query: inventory, type: inner}\nJOIN {pk: [pk0], query: custom}\n# total count \uACC4\uC0B0\uC744 \uC704\uD55C plugin \uCD94\uAC00\n# TODO: filtered count / total count \uB97C \uC870\uD68C\uD560 \uC218 \uC788\uB294 mxql \uC778\uD130\uD398\uC774\uC2A4\uAC00 \uC788\uB2E4\uBA74?\nPLUGIN\n# \uD544\uD130\uB294 \uD50C\uB7EC\uADF8\uC778\uC73C\uB85C \uD558\uC9C0 \uC54A\uACE0, filter \uBB38\uBC95\uC744 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD568\n<% FILTER %>",
+  "target/classes/mxql/server/tmp_cube/tmp_category_filter": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAMS %>\n",
+  "target/classes/mxql/server/ver20/get-top5-cpu-server-list": '# \uCD5C\uADFC 10\uBD84\uAC04 cpu \uC0C1\uC704 5\uAC1C \uC11C\uBC84 \uBAA9\uB85D \uBC0F cpu \uC0AC\uC6A9 \uC870\uD68C\nTIME-RANGE {recent: 10m}\n\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\n\nFILTER-SUBQUERY {key: oid, query: top5}\nJOIN {pk:oid, query:top5}\nRENAME {src:time, dst: t}\nORDER {key:[order, t], sort: [asc, asc]}\n\n\nSUB top5\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\nGROUP { timeunit:10m, pk:"oid" }\nORDER {key:total, sort: desc}\nROWNUM\nRENAME {src:rownum, dst:order}\nSELECT [oid, order]\nLIMIT 5\nEND'
 };
 
 // src/yard/parser.ts
@@ -41858,6 +48893,15 @@ var PROBE_CATEGORIES = [
   { name: "container", loadType: "TAGLOAD", label: "Container" },
   { name: "db_real_counter", loadType: "TAGLOAD", label: "Database" },
   { name: "db_agent_list", loadType: "FLEXLOAD", label: "DB Agent List" },
+  { name: "db_oracle_dma_sqlstat", loadType: "TAGLOAD", label: "Oracle DMA SQL Stats" },
+  { name: "db_oracle_sqlstat", loadType: "TAGLOAD", label: "Oracle SQL Stats" },
+  { name: "db_mysql_sqlstat", loadType: "TAGLOAD", label: "MySQL SQL Stats" },
+  { name: "db_postgresql_sqlstat", loadType: "TAGLOAD", label: "PostgreSQL SQL Stats" },
+  { name: "db_mssql_sqlstat", loadType: "TAGLOAD", label: "MSSQL SQL Stats" },
+  { name: "db_oracle_wait_class", loadType: "TAGLOAD", label: "Oracle Wait Class" },
+  { name: "db_oracle_dma_wait_class", loadType: "TAGLOAD", label: "Oracle DMA Wait Class" },
+  { name: "db_postgresql_wait_event", loadType: "TAGLOAD", label: "PostgreSQL Wait Event" },
+  { name: "db_tablespace", loadType: "TAGLOAD", label: "Tablespace" },
   { name: "logsink_stats", loadType: "TAGLOAD", label: "Log Sink" }
 ];
 function registerYardTools(server, client) {
