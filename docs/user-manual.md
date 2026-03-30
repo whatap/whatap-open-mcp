@@ -290,6 +290,16 @@ Show the service topology for project 12345.
 Are there any network bottlenecks between services?
 ```
 
+### Agent Installation
+
+```
+Install the WhaTap server monitoring agent on project 12345.
+Install WhaTap Java APM agent for project 12345.
+Set up database monitoring for my PostgreSQL project 12345.
+Show me how to install the Kubernetes agent for project 12345.
+Install the server agent on project 12345 for Debian.
+```
+
 ### Multi-Step Investigation
 
 ```
@@ -304,7 +314,7 @@ and show me which agents are active.
 
 ## 6. Available Tools
 
-The MCP server provides 8 tools:
+The MCP server provides 9 tools:
 
 ### Core Tools
 
@@ -328,6 +338,35 @@ The MCP server provides 8 tools:
 |------|-------------|
 | `whatap_apm_anomaly` | Multi-query APM anomaly detection (TPS, latency, errors, active TX) |
 | `whatap_service_topology` | Service connectivity map with bottleneck detection (requires NPM) |
+
+### Agent Installation
+
+| Tool | Description |
+|------|-------------|
+| `whatap_install_agent` | Get agent installation commands with pre-filled credentials (29 platforms, auto-detects platform) |
+
+#### Supported Platforms
+
+**Infrastructure**: Debian/Ubuntu, Amazon Linux, RHEL/CentOS/Rocky/Oracle/Fedora, SUSE, FreeBSD, AIX, Solaris, HP-UX, Windows Server
+
+**APM**: Java, Node.js, Python, PHP, .NET, Go
+
+**Database**: PostgreSQL, Oracle, Oracle Pro, MySQL/MariaDB, SQL Server, Tibero, CUBRID, Altibase, Redis, MongoDB, IBM DB2, SAP ASE
+
+**Container**: Kubernetes (Helm)
+
+**Server Applications**: Kafka, NGINX, Apache, Aerospike, Apache Pulsar, Milvus, vCenter
+
+**Other**: Log, NPM (Network Performance Monitoring)
+
+#### Agent Installation Prompts
+
+```
+Install the WhaTap server agent on project 12345.
+Install WhaTap Java APM agent for project 12345.
+Set up WhaTap monitoring for my PostgreSQL database (project 12345).
+Install the Kubernetes monitoring agent for project 12345.
+```
 
 ---
 

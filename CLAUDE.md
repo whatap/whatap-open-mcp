@@ -1,6 +1,6 @@
 # whatap-mcp — Claude Code Context
 
-MCP server bridging AI assistants to WhaTap monitoring. 8 tools (3 project + 3 yard + 2 mesh), path-centric MXQL catalog (640 entries from yard), semantic result classification, live-tested.
+MCP server bridging AI assistants to WhaTap monitoring. 9 tools (3 project + 3 yard + 2 mesh + 1 install), path-centric MXQL catalog (640 entries from yard), semantic result classification, live-tested.
 
 ## Commands
 
@@ -29,16 +29,18 @@ src/
 │   └── types.ts          # TypeScript interfaces (Project, Agent, MxqlTextParams, MxqlPathParams)
 ├── data/
 │   ├── mxql-catalog.ts   # AUTO-GENERATED: 640 CatalogEntry objects + raw MXQL (from yard)
-│   └── field-metadata.ts # AUTO-GENERATED: 131 categories, 2,605 field descriptions (from YAML)
+│   ├── field-metadata.ts # AUTO-GENERATED: 131 categories, 2,605 field descriptions (from YAML)
+│   └── install-guides.ts # 29 platforms, 9 INFRA OS variants, APM/DB/K8s/server-app guides
 ├── yard/
 │   ├── catalog.ts        # Static catalog API: search, describe, fuzzyMatch, getPathsForCategory
 │   ├── parser.ts         # .mql file parser: extracts categories, params, fields, headers
 │   └── types.ts          # CatalogEntry, MqlMetadata, DomainSummary types
 ├── tools/
-│   ├── index.ts          # registerAllTools() — dispatches to project + yard + mesh modules
+│   ├── index.ts          # registerAllTools() — dispatches to project + yard + mesh + install modules
 │   ├── project.ts (3)    # list_projects, project_info, list_agents
 │   ├── yard.ts (3)       # data_availability, describe_mxql, query_mxql
-│   └── mesh.ts (2)       # apm_anomaly (4-query parallel), service_topology (NPM)
+│   ├── mesh.ts (2)       # apm_anomaly (4-query parallel), service_topology (NPM)
+│   └── install.ts (1)    # install_agent (fetch access + generate install commands for 29 platforms)
 └── utils/
     ├── time.ts           # parseTimeRange("5m","1h","last 7 days") → {stime,etime}
     ├── format.ts         # MXQL results → Markdown tables, unit annotations, semantic headers, summary stats, field guide
@@ -75,6 +77,18 @@ whatap_describe_mxql(path) → verify params, fields, raw MXQL
 whatap_query_mxql(projectCode, path) → execute and get results
 ```
 
+## Agent Install Workflow
+
+```
+whatap_list_projects → get projectCode + platform
+        ↓
+whatap_install_agent(projectCode) → access credentials + install commands
+        ↓                           (auto-detects platform from project)
+Execute commands on target server → install, configure, start agent
+        ↓
+whatap_list_agents(projectCode) → verify agent appears
+```
+
 ## MXQL Critical Gotchas
 
 > These cause silent failures (empty results, not errors). Memorize them.
@@ -109,8 +123,9 @@ SELECT [field1, field2, ...]
 | `/open-mcp/json/agents` | GET | Project | Agent list |
 | `/open-mcp/api/flush/mxql/text` | POST | Project | MXQL text queries (probing) |
 | `/open-mcp/api/flush/mxql/path` | POST | Project | MXQL path queries (yard .mql files) |
+| `/open-mcp/api/json/project/access/{pcode}` | GET | Project | Agent access credentials (accesskey + server) |
 
-## Tools (8)
+## Tools (9)
 
 | Tool | Description |
 |------|-------------|
@@ -122,6 +137,7 @@ SELECT [field1, field2, ...]
 | `whatap_query_mxql` | Execute MXQL path query — semantic headers, unit annotations, summary stats |
 | `whatap_apm_anomaly` | Multi-query APM anomaly detection (TPS, latency, errors, active TX per agent) |
 | `whatap_service_topology` | Service connectivity map with bottleneck detection (requires NPM) |
+| `whatap_install_agent` | Get agent install commands for 29 platforms with pre-filled credentials (auto-detects platform, optional OS filter) |
 
 ## Key Probe Categories
 
@@ -164,7 +180,7 @@ SELECT [field1, field2, ...]
 ## Current Status
 
 - **Version:** 1.0.0
-- **Tools:** 8 (3 project + 3 yard + 2 mesh)
+- **Tools:** 9 (3 project + 3 yard + 2 mesh + 1 install)
 - **Catalog:** 640 entries across 35 domains (generated from yard)
 - **English translations:** 120 entries (all Korean descriptions covered)
 - **LLM Pipeline Score:** 9.1/10

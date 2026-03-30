@@ -66,6 +66,13 @@ export interface MxqlRow {
   [key: string]: unknown;
 }
 
+// Project access (for agent installation)
+export interface ProjectAccess {
+  pcode: number;
+  accesskey: string;
+  whatap_server: Array<{ host: string; port: number }>;
+}
+
 // API error
 export interface ApiError {
   code: number;

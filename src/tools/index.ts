@@ -3,6 +3,7 @@ import type { WhatapApiClient } from "../api/client.js";
 import { registerProjectTools } from "./project.js";
 import { registerYardTools } from "./yard.js";
 import { registerMeshTools } from "./mesh.js";
+import { registerInstallTools } from "./install.js";
 
 export function registerAllTools(
   server: McpServer,
@@ -11,4 +12,5 @@ export function registerAllTools(
   registerProjectTools(server, client);
   registerYardTools(server, client);
   registerMeshTools(server, client);
+  registerInstallTools(server, client);
 }

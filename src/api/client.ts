@@ -2,6 +2,7 @@ import type { Config } from "../config.js";
 import type {
   Project,
   ProjectInfo,
+  ProjectAccess,
   Agent,
   MxqlTextParams,
   MxqlPathParams,
@@ -45,6 +46,16 @@ export class WhatapApiClient {
     const token = await this.getProjectToken(pcode);
     const res = await this.fetchProject(
       "/open-mcp/api/json/project",
+      pcode,
+      token
+    );
+    return res.json();
+  }
+
+  async getProjectAccess(pcode: number): Promise<ProjectAccess> {
+    const token = await this.getProjectToken(pcode);
+    const res = await this.fetchProject(
+      `/open-mcp/api/json/project/access/${pcode}`,
       pcode,
       token
     );
