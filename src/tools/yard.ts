@@ -869,16 +869,31 @@ export function registerYardTools(
       try {
         const { stime, etime } = parseTimeRange(timeRange);
 
-        // Path endpoint requires leading "/"
-        const mqlPath = path.startsWith("/") ? path : `/${path}`;
+        // Local catalog priority: if raw MXQL exists in catalog, use text endpoint
+        const catalogInfo = describeMql(path);
+        const rawMxql = catalogInfo?.raw;
 
-        const result = await client.executeMxqlPath(projectCode, {
-          stime,
-          etime,
-          mql: mqlPath,
-          limit,
-          param: params,
-        });
+        let result;
+        if (rawMxql) {
+          // Local catalog has the raw MXQL — execute via text endpoint (no server deployment needed)
+          result = await client.executeMxqlText(projectCode, {
+            stime,
+            etime,
+            mql: rawMxql,
+            limit,
+            param: params,
+          });
+        } else {
+          // Not in local catalog — fallback to path endpoint
+          const mqlPath = path.startsWith("/") ? path : `/${path}`;
+          result = await client.executeMxqlPath(projectCode, {
+            stime,
+            etime,
+            mql: mqlPath,
+            limit,
+            param: params,
+          });
+        }
 
         if (Array.isArray(result) && result.length === 0) {
           return buildNoDataResponse({
@@ -956,8 +971,7 @@ export function registerYardTools(
           }
         }
 
-        // Classify result type from catalog metadata
-        const catalogInfo = describeMql(path);
+        // Classify result type from catalog metadata (reuse catalogInfo from above)
         const querySem = classifyResultType(path, {
           selectFields: catalogInfo?.selectFields,
           rawMxql: catalogInfo?.raw,

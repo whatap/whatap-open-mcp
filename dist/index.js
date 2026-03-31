@@ -49481,14 +49481,27 @@ Create new queries with \`whatap_create_promql\`.`
       }
       try {
         const { stime, etime } = parseTimeRange(timeRange);
-        const mqlPath = path.startsWith("/") ? path : `/${path}`;
-        const result = await client.executeMxqlPath(projectCode, {
-          stime,
-          etime,
-          mql: mqlPath,
-          limit,
-          param: params
-        });
+        const catalogInfo = describeMql(path);
+        const rawMxql = catalogInfo?.raw;
+        let result;
+        if (rawMxql) {
+          result = await client.executeMxqlText(projectCode, {
+            stime,
+            etime,
+            mql: rawMxql,
+            limit,
+            param: params
+          });
+        } else {
+          const mqlPath = path.startsWith("/") ? path : `/${path}`;
+          result = await client.executeMxqlPath(projectCode, {
+            stime,
+            etime,
+            mql: mqlPath,
+            limit,
+            param: params
+          });
+        }
         if (Array.isArray(result) && result.length === 0) {
           return buildNoDataResponse({
             toolName: "whatap_query_data",
@@ -49547,7 +49560,6 @@ Create new queries with \`whatap_create_promql\`.`
             }
           }
         }
-        const catalogInfo = describeMql(path);
         const querySem = classifyResultType(path, {
           selectFields: catalogInfo?.selectFields,
           rawMxql: catalogInfo?.raw
