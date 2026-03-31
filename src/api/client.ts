@@ -112,6 +112,38 @@ export class WhatapApiClient {
     return result;
   }
 
+  // --- Event history ---
+
+  /**
+   * Get alert/event history for a project via REST API.
+   * Works for all project types (APM, DB, Server, K8s, etc.).
+   */
+  async getEventHistory(
+    pcode: number,
+    params: { stime: number; etime: number }
+  ): Promise<{ records: Array<Record<string, unknown>>; total: number }> {
+    const token = await this.getProjectToken(pcode);
+    const qs = `stime=${params.stime}&etime=${params.etime}&progress=true`;
+    const res = await this.fetchProject(
+      `/open-mcp/api/json/event/history?${qs}`,
+      pcode,
+      token
+    );
+    const text = await res.text();
+    if (!text || text.trim() === "") {
+      return { records: [], total: 0 };
+    }
+    const body = JSON.parse(text);
+    // Handle 204 no content
+    if (body?.code === 204 || body?.result === "no content") {
+      return { records: [], total: 0 };
+    }
+    return {
+      records: body?.records ?? body?.data ?? [],
+      total: body?.total ?? 0,
+    };
+  }
+
   // --- PromQL / OpenMetrics operations ---
 
   /**

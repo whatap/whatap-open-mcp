@@ -137,6 +137,9 @@ const NEXT_STEPS: Record<string, string[]> = {
   whatap_service_topology: [
     "**Next**: `whatap_apm_anomaly(projectCode)` to detect performance issues.",
   ],
+  whatap_event_history: [
+    "**Next**: `whatap_data_availability(projectCode)` to explore available monitoring data.",
+  ],
 };
 
 export function appendNextSteps(text: string, toolName: string): string {
