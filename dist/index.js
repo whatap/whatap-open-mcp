@@ -29986,6 +29986,89 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
+    "path": "mxql/v2/db/db_db2_sqlstat_top_cpu",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_db2_sqlstat"
+    ],
+    "baseCategories": [
+      "db_db2_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "username",
+      "application_name",
+      "elapsed_time",
+      "elapsed_wait",
+      "execute_count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_db2_sqlstat_top_elapse",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_db2_sqlstat"
+    ],
+    "baseCategories": [
+      "db_db2_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "username",
+      "application_name",
+      "client_hostname",
+      "elapsed_time",
+      "elapsed_max",
+      "elapsed_wait",
+      "execute_count"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_db2_sqlstat_top_exec",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_db2_sqlstat"
+    ],
+    "baseCategories": [
+      "db_db2_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "username",
+      "application_name",
+      "execute_count",
+      "elapsed_time",
+      "elapsed_max"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
     "path": "mxql/v2/db/db_mssql_active_session_count",
     "domain": "mxql/v2/db",
     "description": "",
@@ -30180,6 +30263,40 @@ var CATALOG_ENTRIES = [
       "elapsed_time",
       "cpu_time",
       "logical_reads"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_mysql_counter_perf",
+    "domain": "mxql/v2/db",
+    "description": "MySQL key performance counters",
+    "categories": [
+      "db_mysql_counter"
+    ],
+    "baseCategories": [
+      "db_mysql_counter"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "active_sessions",
+      "lock_wait_sessions",
+      "Questions",
+      "Slow_queries",
+      "Com_select",
+      "Com_insert",
+      "Com_update",
+      "Com_delete",
+      "Connections",
+      "Threads_running",
+      "Threads_connected",
+      "Innodb_row_lock_waits",
+      "replication_delay"
     ],
     "joins": [],
     "loadType": "TAGLOAD"
@@ -30391,6 +30508,39 @@ var CATALOG_ENTRIES = [
       "execute_count",
       "elapsed_time",
       "elapsed_max"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_oracle_counter_perf",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_oracle_counter"
+    ],
+    "baseCategories": [
+      "db_oracle_counter"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "active_sessions",
+      "lock_wait_sessions",
+      "long_running_sessions",
+      "total_sessions",
+      "'execute count'",
+      "'DB time'",
+      "'CPU used by this session'",
+      "'physical reads'",
+      "'session logical reads'",
+      "'parse count (hard)'",
+      "'parse count (total)'",
+      "'user commits'"
     ],
     "joins": [],
     "loadType": "TAGLOAD"
@@ -30967,6 +31117,40 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
+    "path": "mxql/v2/db/db_postgresql_counter_perf",
+    "domain": "mxql/v2/db",
+    "description": "PostgreSQL key performance counters",
+    "categories": [
+      "db_postgresql_counter"
+    ],
+    "baseCategories": [
+      "db_postgresql_counter"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "active_sessions",
+      "lock_wait_sessions",
+      "numbackends",
+      "temp_files",
+      "deadlocks",
+      "blks_read",
+      "blks_hit",
+      "tup_returned",
+      "tup_fetched",
+      "tup_inserted",
+      "tup_updated",
+      "tup_deleted",
+      "check_point"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
     "path": "mxql/v2/db/db_postgresql_counter_series",
     "domain": "mxql/v2/db",
     "description": "",
@@ -30991,6 +31175,92 @@ var CATALOG_ENTRIES = [
     ],
     "joins": [],
     "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_postgresql_deadtuple",
+    "domain": "mxql/v2/db",
+    "description": "PostgreSQL dead tuple analysis",
+    "categories": [
+      "db_postgresql_deadtuple"
+    ],
+    "baseCategories": [
+      "db_postgresql_deadtuple"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "schemaname",
+      "datname",
+      "tablename",
+      "live_tuple",
+      "dead_tuple",
+      "dead_tuple_ratio",
+      "total_tuple",
+      "total_relation_size"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_postgresql_index_bloating",
+    "domain": "mxql/v2/db",
+    "description": "PostgreSQL index bloating analysis",
+    "categories": [
+      "db_postgresql_index_bloating"
+    ],
+    "baseCategories": [
+      "db_postgresql_index_bloating"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "schemaname",
+      "datname",
+      "tablename",
+      "indexname",
+      "index_size",
+      "bloat_size",
+      "bloat_ratio",
+      "index_scans"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_postgresql_indexes_stat",
+    "domain": "mxql/v2/db",
+    "description": "PostgreSQL index usage statistics",
+    "categories": [
+      "db_postgresql_indexes_stat"
+    ],
+    "baseCategories": [
+      "db_postgresql_indexes_stat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "schemaname",
+      "datname",
+      "tablename",
+      "indexname",
+      "idx_scan",
+      "idx_tup_read",
+      "idx_tup_fetch"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
   },
   {
     "path": "mxql/v2/db/db_postgresql_long_active_session_count",
@@ -31205,6 +31475,94 @@ var CATALOG_ENTRIES = [
     ],
     "joins": [],
     "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_postgresql_table_bloating",
+    "domain": "mxql/v2/db",
+    "description": "PostgreSQL table bloating analysis",
+    "categories": [
+      "db_postgresql_table_bloating"
+    ],
+    "baseCategories": [
+      "db_postgresql_table_bloating"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "schemaname",
+      "datname",
+      "tablename",
+      "table_size",
+      "bloat_size",
+      "bloat_ratio",
+      "est_rows"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_postgresql_tables_stat",
+    "domain": "mxql/v2/db",
+    "description": "PostgreSQL table access statistics",
+    "categories": [
+      "db_postgresql_tables_stat"
+    ],
+    "baseCategories": [
+      "db_postgresql_tables_stat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "schemaname",
+      "datname",
+      "tablename",
+      "n_tup_ins",
+      "n_tup_upd",
+      "n_tup_del",
+      "n_mod_since_analyze",
+      "analyze_count",
+      "last_autoanalyze",
+      "last_autovacuum"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_postgresql_vacuum_candidate",
+    "domain": "mxql/v2/db",
+    "description": "PostgreSQL tables needing vacuum",
+    "categories": [
+      "db_postgresql_vacuum_candidate"
+    ],
+    "baseCategories": [
+      "db_postgresql_vacuum_candidate"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "schemaname",
+      "datname",
+      "tablename",
+      "table_size",
+      "dead_tuples",
+      "xid_age",
+      "autovacuum_vacuum_tuples",
+      "autovacuum_freeze_max_age"
+    ],
+    "joins": [],
+    "loadType": "FLEXLOAD"
   },
   {
     "path": "mxql/v2/db/db_postgresql_wait_event",
@@ -31547,6 +31905,98 @@ var CATALOG_ENTRIES = [
       "oid",
       "replication_name",
       "node_state"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_sap_ase_sqlstat_top_cpu",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_sap_ase_sqlstat"
+    ],
+    "baseCategories": [
+      "db_sap_ase_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "DBName",
+      "Login",
+      "Application",
+      "CPUTime",
+      "elapsed_time",
+      "execute_count",
+      "PhysicalReads",
+      "LogicalReads"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_sap_ase_sqlstat_top_elapse",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_sap_ase_sqlstat"
+    ],
+    "baseCategories": [
+      "db_sap_ase_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "DBName",
+      "Login",
+      "Application",
+      "ClientHost",
+      "elapsed_time",
+      "elapsed_max",
+      "CPUTime",
+      "execute_count",
+      "PhysicalReads",
+      "LogicalReads",
+      "elapsed_wait"
+    ],
+    "joins": [],
+    "loadType": "TAGLOAD"
+  },
+  {
+    "path": "mxql/v2/db/db_sap_ase_sqlstat_top_exec",
+    "domain": "mxql/v2/db",
+    "description": "",
+    "categories": [
+      "db_sap_ase_sqlstat"
+    ],
+    "baseCategories": [
+      "db_sap_ase_sqlstat"
+    ],
+    "parameters": [
+      "$oid",
+      "$okind",
+      "$onode"
+    ],
+    "headerTypes": {},
+    "selectFields": [
+      "query_hash",
+      "DBName",
+      "Login",
+      "Application",
+      "execute_count",
+      "elapsed_time",
+      "CPUTime",
+      "PhysicalReads"
     ],
     "joins": [],
     "loadType": "TAGLOAD"
@@ -45080,6 +45530,9 @@ CREATE {key:_name_, from:podName}
 DELETE [podHash,podName]
 `,
   "mxql/v2/db/db_agent_list": "-- \uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC\n\nCATEGORY db_agent_list\n\nOIDSET {oid:$oid, okind:$okind, onode:$onode}\n\nFLEXLOAD\nINJECT default\nSELECT [oid, server_name, status, pcode, pname]\nRENAME {src: server_name, dst: _name_}\nRENAME {src: oid, dst: _id_}\n",
+  "mxql/v2/db/db_db2_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_db2_sqlstat\nTAGLOAD\nSELECT [query_hash, username, application_name, elapsed_time, elapsed_wait, execute_count]\nUNFOLD [query_hash, username, application_name, elapsed_time, elapsed_wait, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_db2_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_db2_sqlstat\nTAGLOAD\nSELECT [query_hash, username, application_name, client_hostname, elapsed_time, elapsed_max, elapsed_wait, execute_count]\nUNFOLD [query_hash, username, application_name, client_hostname, elapsed_time, elapsed_max, elapsed_wait, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_db2_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_db2_sqlstat\nTAGLOAD\nSELECT [query_hash, username, application_name, execute_count, elapsed_time, elapsed_max]\nUNFOLD [query_hash, username, application_name, execute_count, elapsed_time, elapsed_max]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
   "mxql/v2/db/db_mssql_active_session_count": `CATEGORY {"db_mssql_counter":6h, "db_mssql_counter{m5}":3d, "db_mssql_counter{h1}":unlimit }
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 TAGLOAD
@@ -45180,6 +45633,7 @@ END`,
   "mxql/v2/db/db_mssql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, cpu_time, elapsed_time, execute_count, logical_reads, reads, writes]\nUNFOLD [query_hash, db, 'user', host, application, cpu_time, elapsed_time, execute_count, logical_reads, reads, writes]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[cpu_time], sort:[desc]}\n",
   "mxql/v2/db/db_mssql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, elapsed_time, elapsed_max, cpu_time, execute_count, logical_reads, reads, writes]\nUNFOLD [query_hash, db, 'user', host, application, elapsed_time, elapsed_max, cpu_time, execute_count, logical_reads, reads, writes]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
   "mxql/v2/db/db_mssql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, execute_count, elapsed_time, cpu_time, logical_reads]\nUNFOLD [query_hash, db, 'user', host, application, execute_count, elapsed_time, cpu_time, logical_reads]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_mysql_counter_perf": "-- MySQL key performance counters\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_counter\nTAGLOAD\nSELECT [active_sessions, lock_wait_sessions, Questions, Slow_queries, Com_select, Com_insert, Com_update, Com_delete, Connections, Threads_running, Threads_connected, Innodb_row_lock_waits, replication_delay]\n",
   "mxql/v2/db/db_mysql_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
@@ -45324,6 +45778,7 @@ END
   "mxql/v2/db/db_mysql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, elapsed_time, elapsed_max, execute_count]\nUNFOLD [query_hash, datname, usename, elapsed_time, elapsed_max, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
   "mxql/v2/db/db_mysql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, client_hostname, elapsed_time, elapsed_max, execute_count]\nUNFOLD [query_hash, datname, usename, client_hostname, elapsed_time, elapsed_max, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
   "mxql/v2/db/db_mysql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, execute_count, elapsed_time, elapsed_max]\nUNFOLD [query_hash, datname, usename, execute_count, elapsed_time, elapsed_max]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_counter_perf": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_counter\nTAGLOAD\nSELECT [active_sessions, lock_wait_sessions, long_running_sessions, total_sessions, 'execute count', 'DB time', 'CPU used by this session', 'physical reads', 'session logical reads', 'parse count (hard)', 'parse count (total)', 'user commits']\n",
   "mxql/v2/db/db_oracle_dma_counter_perf": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_counter\nTAGLOAD\nSELECT [active_sessions, lock_wait_sessions, long_running_sessions, total_sessions, 'execute count', 'DB time', 'CPU used by this session', 'physical reads', 'session logical reads', 'parse count (hard)', 'parse count (total)', 'user commits']\n",
   "mxql/v2/db/db_oracle_dma_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
@@ -45597,7 +46052,11 @@ UPDATE { key: ['max_connections','total_sessions'], value: $OBJECT_MERGE_PLACE }
 
 FIRST-ONLY { key: _id_ }`,
   "mxql/v2/db/db_postgresql_counter": 'CATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } \nOID $oid\nTAGLOAD\n\nSELECT [time, pcode, pname, oid, dbName, mem_swapfree(xos), mem_swaptotal(xos), blks_hit_ratio,commit_count, rollback_count, connect_error, cpu(xos), cpu_iowait(xos), mem(xos), node_state, lock_wait_sessions, replication_count, numbackends, wal_count, replication_delay]\n\nFILTER { key: "dbName", value: ["TOTAL", ""] }\nGROUP { timeunit: 5s, pk: pcode }\nUPDATE { key: [mem_swapfree(xos), mem_swaptotal(xos), blks_hit_ratio,commit_count, rollback_count, connect_error, cpu(xos), cpu_iowait(xos), mem(xos), node_state, lock_wait_sessions, replication_count, numbackends, wal_count, replication_delay], value: avg }\n\nRENAME { src: mem_swapfree(xos), dst: mem_swapfree }\nRENAME { src: mem_swaptotal(xos), dst: mem_swaptotal }\nCREATE { key: "mem_swap_usage", expr: "100-(mem_swapfree/mem_swaptotal)*100" }\nCREATE { key: "tx_success_rate", expr:" commit_count * 100 / (commit_count + rollback_count)" }\n\nLAST-ONLY { key: pcode }\nDELETE [oid, mem_swapfree, mem_swaptotal, commit_count, rollback_count]',
+  "mxql/v2/db/db_postgresql_counter_perf": "-- PostgreSQL key performance counters\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_counter\nTAGLOAD\nSELECT [active_sessions, lock_wait_sessions, numbackends, temp_files, deadlocks, blks_read, blks_hit, tup_returned, tup_fetched, tup_inserted, tup_updated, tup_deleted, check_point]\n",
   "mxql/v2/db/db_postgresql_counter_series": 'INJECT timepast\n\nCATEGORY {"db_postgresql_counter":6h, "db_postgresql_counter{m5}":3d, "db_postgresql_counter{h1}":unlimit } \n\nOID $oid\n\nTAGLOAD\nINJECT default\n\nSELECT [time, oid, oname, $field]\nCREATE {key: value, from: $field}\nFILTER {key: value, exist: true}\n\n\nRENAME {dst:_id_, src:oid}\nRENAME {dst:_name_, src:oname}\n\nDELETE [value]',
+  "mxql/v2/db/db_postgresql_deadtuple": "-- PostgreSQL dead tuple analysis\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_deadtuple\nFLEXLOAD\nSELECT [schemaname, datname, tablename, live_tuple, dead_tuple, dead_tuple_ratio, total_tuple, total_relation_size]\n",
+  "mxql/v2/db/db_postgresql_index_bloating": "-- PostgreSQL index bloating analysis\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_index_bloating\nFLEXLOAD\nSELECT [schemaname, datname, tablename, indexname, index_size, bloat_size, bloat_ratio, index_scans]\n",
+  "mxql/v2/db/db_postgresql_indexes_stat": "-- PostgreSQL index usage statistics\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_indexes_stat\nFLEXLOAD\nSELECT [schemaname, datname, tablename, indexname, idx_scan, idx_tup_read, idx_tup_fetch]\n",
   "mxql/v2/db/db_postgresql_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
@@ -45740,6 +46199,9 @@ END`,
   "mxql/v2/db/db_postgresql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, elapsed_time, elapsed_wait, execute_count]\nUNFOLD [query_hash, datname, usename, elapsed_time, elapsed_wait, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
   "mxql/v2/db/db_postgresql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, application_name, elapsed_time, elapsed_max, elapsed_wait, execute_count]\nUNFOLD [query_hash, datname, usename, application_name, elapsed_time, elapsed_max, elapsed_wait, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
   "mxql/v2/db/db_postgresql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, application_name, execute_count, elapsed_time, elapsed_max]\nUNFOLD [query_hash, datname, usename, application_name, execute_count, elapsed_time, elapsed_max]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_postgresql_table_bloating": "-- PostgreSQL table bloating analysis\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_table_bloating\nFLEXLOAD\nSELECT [schemaname, datname, tablename, table_size, bloat_size, bloat_ratio, est_rows]\n",
+  "mxql/v2/db/db_postgresql_tables_stat": "-- PostgreSQL table access statistics\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_tables_stat\nFLEXLOAD\nSELECT [schemaname, datname, tablename, n_tup_ins, n_tup_upd, n_tup_del, n_mod_since_analyze, analyze_count, last_autoanalyze, last_autovacuum]\n",
+  "mxql/v2/db/db_postgresql_vacuum_candidate": "-- PostgreSQL tables needing vacuum\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_vacuum_candidate\nFLEXLOAD\nSELECT [schemaname, datname, tablename, table_size, dead_tuples, xid_age, autovacuum_vacuum_tuples, autovacuum_freeze_max_age]\n",
   "mxql/v2/db/db_postgresql_wait_event": `CATEGORY db_postgresql_wait_event
 OID $oid
 TAGLOAD
@@ -45936,6 +46398,9 @@ DELETE [value]
 
 `,
   "mxql/v2/db/db_replication_count": 'TIME-RANGE { recent: 1h }\nOID $oid\n\nCATEGORY db_set_info\nTAGLOAD\nSELECT [time, oid, replication_name, node_state]\nLAST-ONLY { key: ["oid", "replication_name"] }\n\n# \uB9C8\uC2A4\uD130 \uAC2F\uC218\nCREATE { key: "master_cnt", expr: "node_state == 1 ? 1 : 0" }\n# \uC2AC\uB808\uC774\uBE0C \uAC2F\uC218\nCREATE { key: "slave_cnt", expr: "node_state == 2 ? 1 : 0" }\n\nDELETE ["time"]\n\nGROUP { pk: ["replication_name"], merge:[master_cnt, slave_cnt] }\nUPDATE { key: [master_cnt, slave_cnt], value: sum }\n\nRENAME { src:[_rows_], dst: "tot_cnt" } \nCREATE { key: "unavailable", expr:"tot_cnt-master_cnt-slave_cnt" }',
+  "mxql/v2/db/db_sap_ase_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_sap_ase_sqlstat\nTAGLOAD\nSELECT [query_hash, DBName, Login, Application, CPUTime, elapsed_time, execute_count, PhysicalReads, LogicalReads]\nUNFOLD [query_hash, DBName, Login, Application, CPUTime, elapsed_time, execute_count, PhysicalReads, LogicalReads]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[CPUTime], sort:[desc]}\n",
+  "mxql/v2/db/db_sap_ase_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_sap_ase_sqlstat\nTAGLOAD\nSELECT [query_hash, DBName, Login, Application, ClientHost, elapsed_time, elapsed_max, CPUTime, execute_count, PhysicalReads, LogicalReads, elapsed_wait]\nUNFOLD [query_hash, DBName, Login, Application, ClientHost, elapsed_time, elapsed_max, CPUTime, execute_count, PhysicalReads, LogicalReads, elapsed_wait]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_sap_ase_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_sap_ase_sqlstat\nTAGLOAD\nSELECT [query_hash, DBName, Login, Application, execute_count, elapsed_time, CPUTime, PhysicalReads]\nUNFOLD [query_hash, DBName, Login, Application, execute_count, elapsed_time, CPUTime, PhysicalReads]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
   "mxql/v2/db/db_tablespace_usage": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_tablespace\nTAGLOAD\nSELECT\n",
   "mxql/v2/db/db_xos_cpu_last": `HEADER { "cpu(xos)$":"pct" }
 
@@ -48897,6 +49362,8 @@ var PROBE_CATEGORIES = [
   { name: "db_mysql_sqlstat", loadType: "TAGLOAD", label: "MySQL SQL Stats" },
   { name: "db_postgresql_sqlstat", loadType: "TAGLOAD", label: "PostgreSQL SQL Stats" },
   { name: "db_mssql_sqlstat", loadType: "TAGLOAD", label: "MSSQL SQL Stats" },
+  { name: "db_db2_sqlstat", loadType: "TAGLOAD", label: "DB2 SQL Stats" },
+  { name: "db_sap_ase_sqlstat", loadType: "TAGLOAD", label: "SAP ASE SQL Stats" },
   { name: "db_oracle_wait_class", loadType: "TAGLOAD", label: "Oracle Wait Class" },
   { name: "db_oracle_dma_wait_class", loadType: "TAGLOAD", label: "Oracle DMA Wait Class" },
   { name: "db_postgresql_wait_event", loadType: "TAGLOAD", label: "PostgreSQL Wait Event" },

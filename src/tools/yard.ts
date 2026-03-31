@@ -115,6 +115,8 @@ const PROBE_CATEGORIES: Array<{
   { name: "db_mysql_sqlstat", loadType: "TAGLOAD", label: "MySQL SQL Stats" },
   { name: "db_postgresql_sqlstat", loadType: "TAGLOAD", label: "PostgreSQL SQL Stats" },
   { name: "db_mssql_sqlstat", loadType: "TAGLOAD", label: "MSSQL SQL Stats" },
+  { name: "db_db2_sqlstat", loadType: "TAGLOAD", label: "DB2 SQL Stats" },
+  { name: "db_sap_ase_sqlstat", loadType: "TAGLOAD", label: "SAP ASE SQL Stats" },
   { name: "db_oracle_wait_class", loadType: "TAGLOAD", label: "Oracle Wait Class" },
   { name: "db_oracle_dma_wait_class", loadType: "TAGLOAD", label: "Oracle DMA Wait Class" },
   { name: "db_postgresql_wait_event", loadType: "TAGLOAD", label: "PostgreSQL Wait Event" },
