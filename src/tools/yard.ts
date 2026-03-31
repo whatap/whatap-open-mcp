@@ -120,6 +120,7 @@ const PROBE_CATEGORIES: Array<{
   { name: "db_oracle_wait_class", loadType: "TAGLOAD", label: "Oracle Wait Class" },
   { name: "db_oracle_dma_wait_class", loadType: "TAGLOAD", label: "Oracle DMA Wait Class" },
   { name: "db_postgresql_wait_event", loadType: "TAGLOAD", label: "PostgreSQL Wait Event" },
+  { name: "alert_event", loadType: "TAGLOAD", label: "Alert Events" },
   { name: "db_tablespace", loadType: "TAGLOAD", label: "Tablespace" },
   { name: "logsink_stats", loadType: "TAGLOAD", label: "Log Sink" },
 ];
