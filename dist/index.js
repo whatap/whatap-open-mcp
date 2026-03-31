@@ -30522,7 +30522,6 @@ var CATALOG_ENTRIES = [
     "selectFields": [
       "sql_id",
       "sql_hash_value",
-      "plan_hash_value",
       "schemaname",
       "module",
       "cpu_time",
@@ -45178,9 +45177,9 @@ INJECT default
 SELECT ['pcode','pname','oid', 'time', 'oname', 'elapse_time', 'id']
 UNFOLD ['elapse_time', 'id']
 END`,
-  "mxql/v2/db/db_mssql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, cpu_time, elapsed_time, execute_count, logical_reads, reads, writes]\nORDER {key:[cpu_time], sort:[desc]}\n",
-  "mxql/v2/db/db_mssql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, elapsed_time, elapsed_max, cpu_time, execute_count, logical_reads, reads, writes]\nORDER {key:[elapsed_time], sort:[desc]}\n",
-  "mxql/v2/db/db_mssql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, execute_count, elapsed_time, cpu_time, logical_reads]\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_mssql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, cpu_time, elapsed_time, execute_count, logical_reads, reads, writes]\nUNFOLD [query_hash, db, 'user', host, application, cpu_time, elapsed_time, execute_count, logical_reads, reads, writes]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[cpu_time], sort:[desc]}\n",
+  "mxql/v2/db/db_mssql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, elapsed_time, elapsed_max, cpu_time, execute_count, logical_reads, reads, writes]\nUNFOLD [query_hash, db, 'user', host, application, elapsed_time, elapsed_max, cpu_time, execute_count, logical_reads, reads, writes]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_mssql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mssql_sqlstat\nTAGLOAD\nSELECT [query_hash, db, 'user', host, application, execute_count, elapsed_time, cpu_time, logical_reads]\nUNFOLD [query_hash, db, 'user', host, application, execute_count, elapsed_time, cpu_time, logical_reads]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
   "mxql/v2/db/db_mysql_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
@@ -45322,9 +45321,9 @@ TAGLOAD
 SELECT ['oid','replication_name','Master_User','Master_Host','Relay_Master_Log_File','Read_Master_Log_Pos','Relay_Log_File','Relay_Log_Pos','Seconds_Behind_Master','Slave_IO_Running','Slave_SQL_Running','Replicate_Ignore_Table','Last_Errno','Last_Error','Skip_Counter','Exec_Master_Log_Pos','Last_IO_Errno','Last_IO_Error','Last_SQL_Errno','Last_SQL_Error','Master_Server_Id','Master_UUID','SQL_Delay','SQL_Remaining_Delay','Slave_SQL_Running_State']
 END
 `,
-  "mxql/v2/db/db_mysql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, elapsed_time, elapsed_max, execute_count]\nORDER {key:[elapsed_time], sort:[desc]}\n",
-  "mxql/v2/db/db_mysql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, client_hostname, elapsed_time, elapsed_max, execute_count]\nORDER {key:[elapsed_time], sort:[desc]}\n",
-  "mxql/v2/db/db_mysql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, execute_count, elapsed_time, elapsed_max]\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_mysql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, elapsed_time, elapsed_max, execute_count]\nUNFOLD [query_hash, datname, usename, elapsed_time, elapsed_max, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_mysql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, client_hostname, elapsed_time, elapsed_max, execute_count]\nUNFOLD [query_hash, datname, usename, client_hostname, elapsed_time, elapsed_max, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_mysql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_mysql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, execute_count, elapsed_time, elapsed_max]\nUNFOLD [query_hash, datname, usename, execute_count, elapsed_time, elapsed_max]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
   "mxql/v2/db/db_oracle_dma_counter_perf": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_counter\nTAGLOAD\nSELECT [active_sessions, lock_wait_sessions, long_running_sessions, total_sessions, 'execute count', 'DB time', 'CPU used by this session', 'physical reads', 'session logical reads', 'parse count (hard)', 'parse count (total)', 'user commits']\n",
   "mxql/v2/db/db_oracle_dma_long_active_session_count": `TIME-RANGE {duration: 15s, etime:$etime}
 OIDSET { oid:$oid, okind:$okind, onode:$onode }
@@ -45410,9 +45409,9 @@ INJECT default
 SELECT ['pcode','pname','oid', 'time', 'oname', 'last_call_et', 'sid']
 UNFOLD ['last_call_et', 'sid']
 END`,
-  "mxql/v2/db/db_oracle_dma_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, plan_hash_value, schemaname, module, cpu_time, elapsed_time, execute_count, 'physical reads', 'session logical reads']\nORDER {key:[cpu_time], sort:[desc]}\n",
-  "mxql/v2/db/db_oracle_dma_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, plan_hash_value, schemaname, module, con_name, elapsed_time, elapsed_max, cpu_time, execute_count, 'physical reads', 'session logical reads', elapsed_wait]\nORDER {key:[elapsed_time], sort:[desc]}\n",
-  "mxql/v2/db/db_oracle_dma_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, execute_count, elapsed_time, cpu_time, 'physical reads']\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_dma_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, cpu_time, elapsed_time, execute_count, 'physical reads', 'session logical reads']\nUNFOLD [sql_id, sql_hash_value, schemaname, module, cpu_time, elapsed_time, execute_count, 'physical reads', 'session logical reads']\nHvText {hash : sql_hash_value, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[cpu_time], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_dma_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, plan_hash_value, schemaname, module, con_name, elapsed_time, elapsed_max, cpu_time, execute_count, 'physical reads', 'session logical reads', elapsed_wait]\nUNFOLD [sql_id, sql_hash_value, plan_hash_value, schemaname, module, con_name, elapsed_time, elapsed_max, cpu_time, execute_count, 'physical reads', 'session logical reads', elapsed_wait]\nHvText {hash : sql_hash_value, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_dma_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_dma_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, execute_count, elapsed_time, cpu_time, 'physical reads']\nUNFOLD [sql_id, sql_hash_value, schemaname, module, execute_count, elapsed_time, cpu_time, 'physical reads']\nHvText {hash : sql_hash_value, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
   "mxql/v2/db/db_oracle_dma_wait_event_last": `OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_oracle_dma_wait_class
@@ -45522,9 +45521,9 @@ INJECT default
 SELECT ['pcode','pname','oid', 'time', 'oname', 'last_call_et', 'sid']
 UNFOLD ['last_call_et', 'sid']
 END`,
-  "mxql/v2/db/db_oracle_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, elapsed_time, execute_count, physical_reads, session_logical_reads, parse_count_hard]\nORDER {key:[elapsed_time], sort:[desc]}\n",
-  "mxql/v2/db/db_oracle_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, plan_hash_value, schemaname, module, elapsed_time, elapsed_max, execute_count, physical_reads, session_logical_reads, db_block_changes]\nORDER {key:[elapsed_time], sort:[desc]}\n",
-  "mxql/v2/db/db_oracle_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, execute_count, elapsed_time, physical_reads, session_logical_reads]\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, elapsed_time, execute_count, physical_reads, session_logical_reads, parse_count_hard]\nUNFOLD [sql_id, sql_hash_value, schemaname, module, elapsed_time, execute_count, physical_reads, session_logical_reads, parse_count_hard]\nHvText {hash : sql_hash_value, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, plan_hash_value, schemaname, module, elapsed_time, elapsed_max, execute_count, physical_reads, session_logical_reads, db_block_changes]\nUNFOLD [sql_id, sql_hash_value, plan_hash_value, schemaname, module, elapsed_time, elapsed_max, execute_count, physical_reads, session_logical_reads, db_block_changes]\nHvText {hash : sql_hash_value, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_oracle_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_oracle_sqlstat\nTAGLOAD\nSELECT [sql_id, sql_hash_value, schemaname, module, execute_count, elapsed_time, physical_reads, session_logical_reads]\nUNFOLD [sql_id, sql_hash_value, schemaname, module, execute_count, elapsed_time, physical_reads, session_logical_reads]\nHvText {hash : sql_hash_value, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
   "mxql/v2/db/db_oracle_wait_event_last": `OIDSET { oid:$oid, okind:$okind, onode:$onode }
 
 CATEGORY db_oracle_wait_class
@@ -45738,9 +45737,9 @@ SELECT ['oid', 'current_location', 'replication_name']
 FILTER { key: "current_location", exist: true }
 FILTER { expr: "current_location != ''" }
 END`,
-  "mxql/v2/db/db_postgresql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, elapsed_time, elapsed_wait, execute_count]\nORDER {key:[elapsed_time], sort:[desc]}\n",
-  "mxql/v2/db/db_postgresql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, application_name, elapsed_time, elapsed_max, elapsed_wait, execute_count]\nORDER {key:[elapsed_time], sort:[desc]}\n",
-  "mxql/v2/db/db_postgresql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, application_name, execute_count, elapsed_time, elapsed_max]\nORDER {key:[execute_count], sort:[desc]}\n",
+  "mxql/v2/db/db_postgresql_sqlstat_top_cpu": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, elapsed_time, elapsed_wait, execute_count]\nUNFOLD [query_hash, datname, usename, elapsed_time, elapsed_wait, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_postgresql_sqlstat_top_elapse": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, application_name, elapsed_time, elapsed_max, elapsed_wait, execute_count]\nUNFOLD [query_hash, datname, usename, application_name, elapsed_time, elapsed_max, elapsed_wait, execute_count]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[elapsed_time], sort:[desc]}\n",
+  "mxql/v2/db/db_postgresql_sqlstat_top_exec": "OIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY db_postgresql_sqlstat\nTAGLOAD\nSELECT [query_hash, datname, usename, application_name, execute_count, elapsed_time, elapsed_max]\nUNFOLD [query_hash, datname, usename, application_name, execute_count, elapsed_time, elapsed_max]\nHvText {hash : query_hash, type : sql, key : sql_text, checktime: 2h }\nORDER {key:[execute_count], sort:[desc]}\n",
   "mxql/v2/db/db_postgresql_wait_event": `CATEGORY db_postgresql_wait_event
 OID $oid
 TAGLOAD
