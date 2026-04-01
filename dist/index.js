@@ -495,32 +495,6 @@ var WhatapApiClient = class {
     }
     return result;
   }
-  // --- Event history ---
-  /**
-   * Get alert/event history for a project via REST API.
-   * Works for all project types (APM, DB, Server, K8s, etc.).
-   */
-  async getEventHistory(pcode, params) {
-    const token = await this.getProjectToken(pcode);
-    const qs = `stime=${params.stime}&etime=${params.etime}&progress=true`;
-    const res = await this.fetchProject(
-      `/open-mcp/api/json/event/history?${qs}`,
-      pcode,
-      token
-    );
-    const text = await res.text();
-    if (!text || text.trim() === "") {
-      return { records: [], total: 0 };
-    }
-    const body = JSON.parse(text);
-    if (body?.code === 204 || body?.result === "no content") {
-      return { records: [], total: 0 };
-    }
-    return {
-      records: body?.records ?? body?.data ?? [],
-      total: body?.total ?? 0
-    };
-  }
   // --- PromQL / OpenMetrics operations ---
   /**
    * Execute a PromQL query via the MXQL text endpoint using OPENMX wrapper.
@@ -16001,39 +15975,6 @@ function computeSummaryStats(rows, headerTypes, rowCounts) {
   return `**Summary** (${label}): ${parts.join(" | ")}`;
 }
 
-// src/utils/time.ts
-var UNIT_MS = {
-  s: 1e3,
-  m: 6e4,
-  h: 36e5,
-  d: 864e5,
-  w: 6048e5
-};
-function parseTimeRange(range) {
-  const etime = Date.now();
-  const trimmed = range.trim().toLowerCase();
-  const shortMatch = trimmed.match(/^(\d+)\s*([smhdw])$/);
-  if (shortMatch) {
-    const amount = parseInt(shortMatch[1], 10);
-    const unit = shortMatch[2];
-    const ms = amount * UNIT_MS[unit];
-    return { stime: etime - ms, etime };
-  }
-  const longMatch = trimmed.match(
-    /^(?:last\s+)?(\d+)\s+(second|minute|hour|day|week)s?$/
-  );
-  if (longMatch) {
-    const amount = parseInt(longMatch[1], 10);
-    const unit = longMatch[2];
-    const unitKey = unit === "second" ? "s" : unit === "minute" ? "m" : unit === "hour" ? "h" : unit === "day" ? "d" : "w";
-    const ms = amount * UNIT_MS[unitKey];
-    return { stime: etime - ms, etime };
-  }
-  throw new Error(
-    `Invalid time range format: "${range}". Use formats like "5m", "1h", "7d", or "last 30 minutes".`
-  );
-}
-
 // src/utils/descriptions.ts
 var PARAM_PROJECT_CODE = "Project code (pcode). Get this by calling whatap_list_projects first \u2014 it returns all accessible projects with their pcodes.";
 var PARAM_TIME_RANGE_OPTIONAL = 'Time range (default: "5m"). Examples: "5m", "1h", "6h", "1d", "last 30 minutes".';
@@ -16302,9 +16243,6 @@ var NEXT_STEPS = {
   ],
   whatap_service_topology: [
     "**Next**: `whatap_apm_anomaly(projectCode)` to detect performance issues."
-  ],
-  whatap_event_history: [
-    "**Next**: `whatap_data_availability(projectCode)` to explore available monitoring data."
   ]
 };
 function appendNextSteps(text, toolName) {
@@ -16429,81 +16367,6 @@ function registerProjectTools(server, client) {
         return classifyAndBuildError(err, {
           toolName: "whatap_list_agents",
           projectCode
-        });
-      }
-    }
-  );
-  server.tool(
-    "whatap_event_history",
-    `Check alert and event history for any WhaTap project. Works for ALL platforms (APM, DB, Server, Kubernetes, etc.).
-
-Returns recent alerts with time, instance name (oname), severity level, title, and message.
-
-Use this to answer: 'Are there any alerts?', 'What errors occurred?', 'Show recent events.'
-
-PREREQUISITE: projectCode from whatap_list_projects.
-
-Example: whatap_event_history(projectCode=641, timeRange="1h")`,
-    {
-      projectCode: z.number().describe(PARAM_PROJECT_CODE),
-      timeRange: z.string().default("1h").describe(PARAM_TIME_RANGE_OPTIONAL)
-    },
-    async ({ projectCode, timeRange }) => {
-      try {
-        const { stime, etime } = parseTimeRange(timeRange);
-        const { records, total } = await client.getEventHistory(projectCode, {
-          stime,
-          etime
-        });
-        if (records.length === 0) {
-          return {
-            content: [
-              {
-                type: "text",
-                text: `## Event History \u2014 Project ${projectCode}
-
-**Period**: ${new Date(stime).toISOString().slice(0, 19)} \u2192 ${new Date(etime).toISOString().slice(0, 19)} UTC
-
-**No events found** in this period.
-
-Try a wider time range: \`whatap_event_history(projectCode=${projectCode}, timeRange="24h")\``
-              }
-            ]
-          };
-        }
-        const lines = [
-          `## Event History \u2014 Project ${projectCode}`,
-          "",
-          `**Period**: ${new Date(stime).toISOString().slice(0, 19)} \u2192 ${new Date(etime).toISOString().slice(0, 19)} UTC`,
-          `**Total events**: ${total}`,
-          "",
-          "| Time | Instance | Level | Title | Message |",
-          "| --- | --- | --- | --- | --- |"
-        ];
-        for (const r of records.slice(0, 50)) {
-          const time = typeof r.time === "number" && r.time > 1e12 ? new Date(r.time).toISOString().replace("T", " ").slice(0, 19) + " UTC" : String(r.time ?? "-");
-          const oname = String(r.oname ?? "-");
-          const level = String(r.level ?? "-");
-          const title = String(r.title ?? "-").replace(/\|/g, "\\|");
-          const message = String(r.message ?? "-").replace(/\|/g, "\\|").slice(0, 100);
-          lines.push(`| ${time} | ${oname} | ${level} | ${title} | ${message} |`);
-        }
-        if (records.length > 50) {
-          lines.push(`| ... | (${records.length - 50} more events) | | | |`);
-        }
-        return {
-          content: [
-            {
-              type: "text",
-              text: appendNextSteps(lines.join("\n"), "whatap_event_history")
-            }
-          ]
-        };
-      } catch (err) {
-        return classifyAndBuildError(err, {
-          toolName: "whatap_event_history",
-          projectCode,
-          timeRange
         });
       }
     }
@@ -16687,6 +16550,39 @@ function fmtCell(v) {
   if (v === null || v === void 0) return "-";
   if (typeof v === "number") return fmtNum2(v);
   return String(v);
+}
+
+// src/utils/time.ts
+var UNIT_MS = {
+  s: 1e3,
+  m: 6e4,
+  h: 36e5,
+  d: 864e5,
+  w: 6048e5
+};
+function parseTimeRange(range) {
+  const etime = Date.now();
+  const trimmed = range.trim().toLowerCase();
+  const shortMatch = trimmed.match(/^(\d+)\s*([smhdw])$/);
+  if (shortMatch) {
+    const amount = parseInt(shortMatch[1], 10);
+    const unit = shortMatch[2];
+    const ms = amount * UNIT_MS[unit];
+    return { stime: etime - ms, etime };
+  }
+  const longMatch = trimmed.match(
+    /^(?:last\s+)?(\d+)\s+(second|minute|hour|day|week)s?$/
+  );
+  if (longMatch) {
+    const amount = parseInt(longMatch[1], 10);
+    const unit = longMatch[2];
+    const unitKey = unit === "second" ? "s" : unit === "minute" ? "m" : unit === "hour" ? "h" : unit === "day" ? "d" : "w";
+    const ms = amount * UNIT_MS[unitKey];
+    return { stime: etime - ms, etime };
+  }
+  throw new Error(
+    `Invalid time range format: "${range}". Use formats like "5m", "1h", "7d", or "last 30 minutes".`
+  );
 }
 
 // src/data/mxql-catalog.ts
@@ -49551,7 +49447,6 @@ var PROBE_CATEGORIES = [
   { name: "db_oracle_wait_class", loadType: "TAGLOAD", label: "Oracle Wait Class" },
   { name: "db_oracle_dma_wait_class", loadType: "TAGLOAD", label: "Oracle DMA Wait Class" },
   { name: "db_postgresql_wait_event", loadType: "TAGLOAD", label: "PostgreSQL Wait Event" },
-  { name: "alert_event", loadType: "TAGLOAD", label: "Alert Events" },
   { name: "db_tablespace", loadType: "TAGLOAD", label: "Tablespace" },
   { name: "logsink_stats", loadType: "TAGLOAD", label: "Log Sink" }
 ];

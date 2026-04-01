@@ -2,11 +2,7 @@ import { z } from "../mcp/schema.js";
 import type { McpServer } from "../mcp/server.js";
 import type { WhatapApiClient } from "../api/client.js";
 import { formatProjectList, formatAgentList } from "../utils/format.js";
-import { parseTimeRange } from "../utils/time.js";
-import {
-  PARAM_PROJECT_CODE,
-  PARAM_TIME_RANGE_OPTIONAL,
-} from "../utils/descriptions.js";
+import { PARAM_PROJECT_CODE } from "../utils/descriptions.js";
 import {
   classifyAndBuildError,
   appendNextSteps,
@@ -107,84 +103,4 @@ export function registerProjectTools(
     }
   );
 
-  server.tool(
-    "whatap_event_history",
-    "Check alert and event history for any WhaTap project. " +
-      "Works for ALL platforms (APM, DB, Server, Kubernetes, etc.).\n\n" +
-      "Returns recent alerts with time, instance name (oname), severity level, title, and message.\n\n" +
-      "Use this to answer: 'Are there any alerts?', 'What errors occurred?', 'Show recent events.'\n\n" +
-      "PREREQUISITE: projectCode from whatap_list_projects.\n\n" +
-      'Example: whatap_event_history(projectCode=641, timeRange="1h")',
-    {
-      projectCode: z.number().describe(PARAM_PROJECT_CODE),
-      timeRange: z
-        .string()
-        .default("1h")
-        .describe(PARAM_TIME_RANGE_OPTIONAL),
-    },
-    async ({ projectCode, timeRange }) => {
-      try {
-        const { stime, etime } = parseTimeRange(timeRange);
-        const { records, total } = await client.getEventHistory(projectCode, {
-          stime,
-          etime,
-        });
-
-        if (records.length === 0) {
-          return {
-            content: [
-              {
-                type: "text" as const,
-                text:
-                  `## Event History — Project ${projectCode}\n\n` +
-                  `**Period**: ${new Date(stime).toISOString().slice(0, 19)} → ${new Date(etime).toISOString().slice(0, 19)} UTC\n\n` +
-                  `**No events found** in this period.\n\n` +
-                  `Try a wider time range: \`whatap_event_history(projectCode=${projectCode}, timeRange="24h")\``,
-              },
-            ],
-          };
-        }
-
-        const lines = [
-          `## Event History — Project ${projectCode}`,
-          "",
-          `**Period**: ${new Date(stime).toISOString().slice(0, 19)} → ${new Date(etime).toISOString().slice(0, 19)} UTC`,
-          `**Total events**: ${total}`,
-          "",
-          "| Time | Instance | Level | Title | Message |",
-          "| --- | --- | --- | --- | --- |",
-        ];
-
-        for (const r of records.slice(0, 50)) {
-          const time = typeof r.time === "number" && r.time > 1_000_000_000_000
-            ? new Date(r.time as number).toISOString().replace("T", " ").slice(0, 19) + " UTC"
-            : String(r.time ?? "-");
-          const oname = String(r.oname ?? "-");
-          const level = String(r.level ?? "-");
-          const title = String(r.title ?? "-").replace(/\|/g, "\\|");
-          const message = String(r.message ?? "-").replace(/\|/g, "\\|").slice(0, 100);
-          lines.push(`| ${time} | ${oname} | ${level} | ${title} | ${message} |`);
-        }
-
-        if (records.length > 50) {
-          lines.push(`| ... | (${records.length - 50} more events) | | | |`);
-        }
-
-        return {
-          content: [
-            {
-              type: "text" as const,
-              text: appendNextSteps(lines.join("\n"), "whatap_event_history"),
-            },
-          ],
-        };
-      } catch (err) {
-        return classifyAndBuildError(err, {
-          toolName: "whatap_event_history",
-          projectCode,
-          timeRange,
-        });
-      }
-    }
-  );
 }
