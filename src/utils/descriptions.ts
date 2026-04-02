@@ -213,6 +213,19 @@ export const ENGLISH_DESCRIPTIONS: Record<string, string> = {
   "v2/app/tps_context": "TPS per context/endpoint, 5s interval",
   "v2/container/container_app_counts_okind": "APM agent count per okind in container",
   "v2/db/db_agent_list": "Database agent list with status",
+
+  // --- v2/db: long session counts (all duration thresholds in SECONDS) ---
+  "v2/db/db_mssql_long_active_session_count": "Long-running active session count per MSSQL instance. L1-L4 = session counts by duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: elapse_time (seconds)",
+  "v2/db/db_mssql_long_waiting_session_count": "Long-waiting (lock-blocked) session count per MSSQL instance. L1-L4 = session counts by wait duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: elapse_time (seconds)",
+  "v2/db/db_mysql_long_active_session_count": "Long-running active session count per MySQL instance. L1-L4 = session counts by duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: time1 (seconds)",
+  "v2/db/db_mysql_long_waiting_session_count": "Long-waiting (lock-blocked) session count per MySQL instance. L1-L4 = session counts by wait duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: time1 (seconds)",
+  "v2/db/db_oracle_long_active_session_count": "Long-running active session count per Oracle instance. L1-L4 = session counts by duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: last_call_et (seconds)",
+  "v2/db/db_oracle_long_waiting_session_count": "Long-waiting (lock-blocked) session count per Oracle instance. L1-L4 = session counts by wait duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: last_call_et (seconds)",
+  "v2/db/db_oracle_dma_long_active_session_count": "Long-running active session count per Oracle DMA instance. L1-L4 = session counts by duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: last_call_et (seconds)",
+  "v2/db/db_oracle_dma_long_waiting_session_count": "Long-waiting (lock-blocked) session count per Oracle DMA instance. L1-L4 = session counts by wait duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: last_call_et (seconds)",
+  "v2/db/db_postgresql_long_active_session_count": "Long-running active session count per PostgreSQL instance. L1-L4 = session counts by duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: runtime (seconds)",
+  "v2/db/db_postgresql_long_waiting_session_count": "Long-waiting (lock-blocked) session count per PostgreSQL instance. L1-L4 = session counts by wait duration threshold (in SECONDS): L1 <3s, L2 3-10s, L3 10-15s, L4 ≥15s. Duration field: runtime (seconds)",
+
   "v2/ha/cluster_info": "Cluster info (returns all columns)",
   "v2/sys/active_agent_list": "Active agent list with status, CPU & memory",
   "v2/sys/cpu_load": "CPU load average, last 15s",
