@@ -243,5 +243,7 @@ export function translateDescription(
   path: string,
   original: string
 ): string {
-  return ENGLISH_DESCRIPTIONS[path] ?? original;
+  return ENGLISH_DESCRIPTIONS[path]
+    ?? ENGLISH_DESCRIPTIONS[path.replace(/^mxql\//, "")]
+    ?? original;
 }

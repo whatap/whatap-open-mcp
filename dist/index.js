@@ -16163,7 +16163,7 @@ var ENGLISH_DESCRIPTIONS = {
   "v2/sys/dashboard/agent_list": "Agent list with status, CPU & memory"
 };
 function translateDescription(path, original) {
-  return ENGLISH_DESCRIPTIONS[path] ?? original;
+  return ENGLISH_DESCRIPTIONS[path] ?? ENGLISH_DESCRIPTIONS[path.replace(/^mxql\//, "")] ?? original;
 }
 
 // src/utils/response.ts
@@ -49781,7 +49781,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
         }
         const { entry, ...metadata } = result;
         const lines = [`## MXQL: ${path}`, ""];
-        const englishDesc = ENGLISH_DESCRIPTIONS[path];
+        const englishDesc = ENGLISH_DESCRIPTIONS[path] ?? ENGLISH_DESCRIPTIONS[path.replace(/^mxql\//, "")];
         if (englishDesc) {
           lines.push(`**Description**: ${englishDesc}`, "");
         } else if (metadata.comments.length > 0) {

@@ -523,7 +523,8 @@ export function registerYardTools(
         const lines = [`## MXQL: ${path}`, ""];
 
         // Description — prefer English overlay, fall back to original comments
-        const englishDesc = ENGLISH_DESCRIPTIONS[path];
+        const englishDesc = ENGLISH_DESCRIPTIONS[path]
+          ?? ENGLISH_DESCRIPTIONS[path.replace(/^mxql\//, "")];
         if (englishDesc) {
           lines.push(`**Description**: ${englishDesc}`, "");
         } else if (metadata.comments.length > 0) {
