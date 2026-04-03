@@ -49409,7 +49409,8 @@ var AUTO_PARAMS = /* @__PURE__ */ new Set([
   "$limit"
 ]);
 function formatPathEntry(entry) {
-  const desc = entry.description ? ` \u2014 ${translateDescription(entry.path, entry.description)}` : "";
+  const translatedDesc = translateDescription(entry.path, entry.description);
+  const desc = translatedDesc ? ` \u2014 ${translatedDesc}` : "";
   const sem = classifyResultType(entry.path, {
     selectFields: entry.selectFields
   });

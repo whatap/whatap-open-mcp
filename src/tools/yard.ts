@@ -56,9 +56,8 @@ const AUTO_PARAMS = new Set([
 
 /** Format a path listing entry with optional semantic badge. */
 function formatPathEntry(entry: CatalogEntry): string {
-  const desc = entry.description
-    ? ` — ${translateDescription(entry.path, entry.description)}`
-    : "";
+  const translatedDesc = translateDescription(entry.path, entry.description);
+  const desc = translatedDesc ? ` — ${translatedDesc}` : "";
   const sem = classifyResultType(entry.path, {
     selectFields: entry.selectFields,
   });
