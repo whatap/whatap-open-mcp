@@ -7,6 +7,7 @@ import {
   classifyAndBuildError,
   appendNextSteps,
 } from "../utils/response.js";
+import { VERSION } from "../version.js";
 
 export function registerProjectTools(
   server: McpServer,
@@ -30,9 +31,10 @@ export function registerProjectTools(
         const text = formatProjectList(
           projects as unknown as Array<Record<string, unknown>>
         );
+        const versioned = `*whatap-mcp v${VERSION}*\n\n${text}`;
         return {
           content: [
-            { type: "text" as const, text: appendNextSteps(text, "whatap_list_projects") },
+            { type: "text" as const, text: appendNextSteps(versioned, "whatap_list_projects") },
           ],
         };
       } catch (err) {

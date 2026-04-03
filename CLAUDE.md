@@ -16,7 +16,8 @@ npx @modelcontextprotocol/inspector node dist/index.js   # Test with MCP Inspect
 
 ```
 src/
-├── index.ts              # Entry: McpServer + StdioTransport
+├── index.ts              # Entry: McpServer + StdioTransport + --version flag
+├── version.ts            # Single source of truth for VERSION constant
 ├── config.ts             # Loads WHATAP_API_TOKEN, WHATAP_API_URL from env
 ├── mcp/
 │   ├── types.ts          # JSON-RPC + MCP protocol interfaces
@@ -202,8 +203,8 @@ SELECT [field1, field2, ...]
 
 ## Current Status
 
-- **Version:** 1.0.0
+- **Version:** 1.2.1 (single source: `src/version.ts`)
 - **Tools:** 10 (3 project + 3 data + 2 mesh + 1 install + 1 promql)
 - **Catalog:** 914 entries across 35+ domains (generated from yard)
-- **English translations:** 120 entries (all Korean descriptions covered)
+- **English translations:** 130 entries (120 base + 10 DB long session with unit info)
 - **LLM Pipeline Score:** 9.1/10

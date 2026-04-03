@@ -16307,6 +16307,9 @@ function buildNoDataResponse(opts) {
   return { content: [{ type: "text", text: lines.join("\n") }] };
 }
 
+// src/version.ts
+var VERSION = "1.2.1";
+
 // src/tools/project.ts
 function registerProjectTools(server, client) {
   server.tool(
@@ -16319,9 +16322,12 @@ function registerProjectTools(server, client) {
         const text = formatProjectList(
           projects
         );
+        const versioned = `*whatap-mcp v${VERSION}*
+
+${text}`;
         return {
           content: [
-            { type: "text", text: appendNextSteps(text, "whatap_list_projects") }
+            { type: "text", text: appendNextSteps(versioned, "whatap_list_projects") }
           ]
         };
       } catch (err) {
@@ -51644,12 +51650,16 @@ function registerAllTools(server, client) {
 }
 
 // src/index.ts
+if (process.argv.includes("--version") || process.argv.includes("-v")) {
+  console.log(`whatap-mcp ${VERSION}`);
+  process.exit(0);
+}
 async function main() {
   const config = loadConfig();
   const client = new WhatapApiClient(config);
   const server = new McpServer({
     name: "whatap-mcp",
-    version: "1.0.0"
+    version: VERSION
   });
   registerAllTools(server, client);
   const transport = new StdioTransport();
@@ -51659,4 +51669,7 @@ main().catch((err) => {
   console.error("Failed to start WhaTap MCP server:", err);
   process.exit(1);
 });
+export {
+  VERSION
+};
 //# sourceMappingURL=index.js.map

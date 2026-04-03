@@ -3,6 +3,14 @@ import { StdioTransport } from "./mcp/transport.js";
 import { loadConfig } from "./config.js";
 import { WhatapApiClient } from "./api/client.js";
 import { registerAllTools } from "./tools/index.js";
+import { VERSION } from "./version.js";
+
+export { VERSION };
+
+if (process.argv.includes("--version") || process.argv.includes("-v")) {
+  console.log(`whatap-mcp ${VERSION}`);
+  process.exit(0);
+}
 
 async function main() {
   const config = loadConfig();
@@ -10,7 +18,7 @@ async function main() {
 
   const server = new McpServer({
     name: "whatap-mcp",
-    version: "1.0.0",
+    version: VERSION,
   });
 
   registerAllTools(server, client);

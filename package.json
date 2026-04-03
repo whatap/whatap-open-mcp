@@ -1,6 +1,6 @@
 {
   "name": "whatap-mcp",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "WhaTap monitoring platform MCP server - enables AI assistants to query server, APM, Kubernetes, database, and log monitoring data",
   "type": "module",
   "main": "./dist/index.js",
