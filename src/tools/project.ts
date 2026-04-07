@@ -15,15 +15,11 @@ export function registerProjectTools(
 ) {
   server.tool(
     "whatap_list_projects",
-    "Use this as the FIRST STEP in any WhaTap monitoring workflow. " +
-      "Returns all monitoring projects with pcode (project code), name, platform, and product type. " +
-      "Every other WhaTap tool requires a projectCode — get it from this tool.\n\n" +
-      "WORKFLOW for WhaTap monitoring analysis:\n" +
-      "1. whatap_list_projects (this tool) → find the target project, note its pcode and platform\n" +
-      "2. whatap_data_availability() → browse available MXQL query domains\n" +
-      "3. whatap_describe_query(path) → understand query parameters and output fields\n" +
-      "4. whatap_query_data(projectCode, path) → execute and get live data\n\n" +
-      "Do NOT call other WhaTap tools before this one — you need a pcode first.",
+    "Returns all monitoring projects with pcode (project code), name, platform, and product type.\n\n" +
+      "WHEN TO CALL:\n" +
+      "- Call this ONLY if you do NOT already have a projectCode.\n" +
+      "- If the user provides a projectCode (e.g., 'project 5490'), skip this and call the needed tool directly.\n" +
+      "- Do NOT call this as a prerequisite when you already know the pcode.",
     {},
     async () => {
       try {
@@ -45,9 +41,9 @@ export function registerProjectTools(
 
   server.tool(
     "whatap_project_info",
-    "Use this to get detailed info about a specific project (platform, product type, status, gateway). " +
-      "PREREQUISITE: projectCode from whatap_list_projects. " +
-      "RELATED: whatap_list_agents (servers/instances), whatap_data_availability (query discovery).",
+    "Get detailed info about a specific project (platform, product type, status, gateway). " +
+      "Only call this when the user explicitly asks about project details. " +
+      "Do NOT call as a prerequisite before querying data — it is not needed for data queries.",
     { projectCode: z.number().describe(PARAM_PROJECT_CODE) },
     async ({ projectCode }) => {
       try {
@@ -80,10 +76,10 @@ export function registerProjectTools(
 
   server.tool(
     "whatap_list_agents",
-    "Use this to discover servers, app instances, or DB instances in a project. " +
+    "List servers, app instances, or DB instances in a project. " +
       "Returns agent name (oname), status (active/inactive), IP, and OID. " +
-      "OIDs can filter MXQL queries via params: whatap_query_data(params={oid: '...'}). " +
-      "PREREQUISITE: projectCode from whatap_list_projects.",
+      "Only call this when the user asks about agents/instances, or when you need an OID to filter query results. " +
+      "Do NOT call as a prerequisite before data queries — it is not needed.",
     { projectCode: z.number().describe(PARAM_PROJECT_CODE) },
     async ({ projectCode }) => {
       try {

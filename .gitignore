@@ -35,6 +35,8 @@ coverage/
 tests/codex-results*/
 tests/*-report*.md
 tests/*.jsonl
+test-results/
+test-results-local/
 
 # Scripts with session data
 resume.sh

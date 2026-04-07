@@ -1,0 +1,113 @@
+name: AI Review
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  ai-review:
+    name: AI Code Review
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Get PR diff size
+        id: diff
+        run: |
+          git diff origin/${{ github.event.pull_request.base.ref }}...HEAD > /tmp/pr-diff.txt
+          DIFF_SIZE=$(wc -c < /tmp/pr-diff.txt | tr -d ' ')
+          echo "diff_size=$DIFF_SIZE" >> "$GITHUB_OUTPUT"
+          echo "Diff size: $DIFF_SIZE bytes"
+
+      - name: Skip if empty diff
+        if: steps.diff.outputs.diff_size == '0'
+        run: echo "No changes to review" && exit 0
+
+      - name: Install Codex CLI
+        run: npm install -g @openai/codex
+
+      - name: Run AI review
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          # Use codex built-in review against the base branch
+          # with project-specific review instructions
+          REVIEW_PROMPT=$(cat << 'EOF'
+          You are reviewing the whatap-open-mcp project — an MCP server bridging AI assistants
+          to WhaTap monitoring (10 tools, 640+ MXQL catalog entries, zero-dependency MCP impl).
+
+          Focus your review on these critical areas:
+
+          1. MXQL CORRECTNESS (silent failures — the worst kind):
+             - Field must be "mql" not "mxql", "param" not "params"
+             - pageKey: "mxql" required, TAGLOAD must follow CATEGORY
+             - Field names are case-sensitive, times are Unix ms
+
+          2. RESPONSE QUALITY (LLM user satisfaction):
+             - Tool descriptions guide workflow: list_projects → data_availability → describe → query
+             - Errors include actionable next steps (classifyAndBuildError pattern)
+             - Format functions preserve unit annotations (%, ms, bytes) and semantic headers
+             - English descriptions (120+) not removed or corrupted
+
+          3. SECURITY: no token exposure, no command injection, input validation
+
+          4. REGRESSIONS: tool count >= 10, catalog >= 640, no removed exports
+
+          Output structured markdown: Summary, Findings ([CRITICAL|WARNING|INFO]), Verdict (APPROVE or REQUEST_CHANGES).
+          EOF
+          )
+
+          codex review \
+            --base "origin/${{ github.event.pull_request.base.ref }}" \
+            -o /tmp/review-result.txt \
+            "$REVIEW_PROMPT" || true
+
+          # Fallback if -o didn't work (write something)
+          if [[ ! -s /tmp/review-result.txt ]]; then
+            echo "Review completed but no output captured." > /tmp/review-result.txt
+          fi
+
+          # Determine verdict from output
+          if grep -qi "REQUEST_CHANGES" /tmp/review-result.txt; then
+            echo "verdict=request_changes" >> "$GITHUB_ENV"
+          else
+            echo "verdict=approve" >> "$GITHUB_ENV"
+          fi
+
+      - name: Post review comment
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let review = 'Review output not available.';
+            if (fs.existsSync('/tmp/review-result.txt')) {
+              review = fs.readFileSync('/tmp/review-result.txt', 'utf8');
+            }
+            const verdict = process.env.verdict || 'approve';
+            const emoji = verdict === 'approve' ? ':white_check_mark:' : ':warning:';
+
+            const body = `## ${emoji} AI Code Review\n\n${review}\n\n---\n_Reviewed by Codex CLI \`codex review\`_`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body
+            });
+
+            if (verdict === 'request_changes') {
+              core.setFailed('AI review requested changes. See PR comment for details.');
+            }
