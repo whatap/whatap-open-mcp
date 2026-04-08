@@ -26,8 +26,9 @@ jobs:
           npm ci
           npm run build
 
-      - name: Configure Codex MCP
+      - name: Configure Codex auth and MCP
         run: |
+          echo "$OPENAI_API_KEY" | codex login --with-api-key
           mkdir -p ~/.codex
           printf '[mcp_servers.whatap]\ncommand = "node"\nargs = ["%s/dist/index.js"]\n\n[mcp_servers.whatap.env]\nWHATAP_API_TOKEN = "%s"\n' \
             "${{ github.workspace }}" "$WHATAP_API_TOKEN" > ~/.codex/config.toml

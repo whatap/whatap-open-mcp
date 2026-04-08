@@ -21,6 +21,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Configure Codex auth
+        run: echo "$OPENAI_API_KEY" | codex login --with-api-key
+
       - name: Get PR diff
         run: |
           git diff origin/${{ github.event.pull_request.base.ref }}...HEAD -- ':!dist/' ':!package-lock.json' > /tmp/pr-diff.txt
