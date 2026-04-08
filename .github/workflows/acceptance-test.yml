@@ -33,6 +33,7 @@ jobs:
           printf '[mcp_servers.whatap]\ncommand = "node"\nargs = ["%s/dist/index.js"]\n\n[mcp_servers.whatap.env]\nWHATAP_API_TOKEN = "%s"\n' \
             "${{ github.workspace }}" "$WHATAP_API_TOKEN" > ~/.codex/config.toml
 
+
       - name: Run acceptance tests
         run: |
           RESULTS_DIR="${{ github.workspace }}/test-results"
@@ -138,3 +139,9 @@ jobs:
           name: acceptance-test-results
           path: test-results/
           retention-days: 14
+
+      - name: Cleanup secrets from runner
+        if: always()
+        run: |
+          rm -f ~/.codex/config.toml
+          codex logout 2>/dev/null || true
