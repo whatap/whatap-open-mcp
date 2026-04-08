@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "category": "discovery",
+    "prompt": "List all my WhaTap monitoring projects",
+    "expected_tools": ["whatap_list_projects"],
+    "required_patterns": ["pcode", "5490|28458|33194"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 3
+  },
+  {
+    "id": 2,
+    "category": "discovery",
+    "prompt": "Show detailed info for project 29763",
+    "expected_tools": ["whatap_project_info"],
+    "required_patterns": ["29763", "SMS|INFRA|platform"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 3,
+    "category": "discovery",
+    "prompt": "List all agents running in project 5490",
+    "expected_tools": ["whatap_list_agents"],
+    "required_patterns": ["agent|oname", "active|inactive"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 4,
+    "category": "discovery",
+    "prompt": "What data is available for project 29763?",
+    "expected_tools": ["whatap_data_availability"],
+    "required_patterns": ["server_base|MXQL|category|Available"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 5,
+    "category": "discovery",
+    "prompt": "Describe the query path v2/app/tps_pcode",
+    "expected_tools": ["whatap_describe_query"],
+    "required_patterns": ["tps|TPS", "parameter|field|MXQL"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 6,
+    "category": "infra",
+    "prompt": "Show CPU usage for project 29763 over the last 5 minutes",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["cpu|CPU", "\\d+\\.\\d+|\\d+%"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 7,
+    "category": "infra",
+    "prompt": "Show memory usage for project 29763 last 30 minutes",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["mem|memory|Memory", "\\d+"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 8,
+    "category": "infra",
+    "prompt": "Show disk usage for project 29763",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["disk|Disk", "\\d+"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 9,
+    "category": "infra",
+    "prompt": "Show network I/O for project 29763 last 1 hour",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["network|Network|traffic|byte", "\\d+"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 10,
+    "category": "infra",
+    "prompt": "What server metrics are available for project 29763?",
+    "expected_tools": ["whatap_data_availability"],
+    "required_patterns": ["server|Server|v2/sys"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 11,
+    "category": "apm",
+    "prompt": "Show TPS for project 5490 last 5 minutes",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["tps|TPS", "\\d+"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 12,
+    "category": "apm",
+    "prompt": "What is the average response time for project 5490?",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["resp|response|latency", "\\d+"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 13,
+    "category": "apm",
+    "prompt": "Show error count for project 5490 last 1 hour",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["error|Error", "\\d+"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 14,
+    "category": "apm",
+    "prompt": "List active transactions for project 5490",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["active|Active|transaction"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 15,
+    "category": "apm",
+    "prompt": "Detect APM anomalies for project 5490 with high sensitivity over last 1 hour",
+    "expected_tools": ["whatap_apm_anomaly"],
+    "required_patterns": ["anomal|Anomal|agent|sensitivity|high"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 6
+  },
+  {
+    "id": 16,
+    "category": "database",
+    "prompt": "List database instances in project 28458",
+    "expected_tools": ["whatap_list_agents"],
+    "required_patterns": ["agent|instance|oname"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 17,
+    "category": "database",
+    "prompt": "What data is available for project 28458?",
+    "expected_tools": ["whatap_data_availability"],
+    "required_patterns": ["db_|database|Database|postgresql"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 18,
+    "category": "database",
+    "prompt": "Show database active sessions for project 28458 last 5 minutes",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["session|Session|active|\\d+"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 19,
+    "category": "database",
+    "prompt": "Show SQL statistics for project 28458",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["sql|SQL|query"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 20,
+    "category": "database",
+    "prompt": "What are the slowest queries in project 28458 last 1 hour?",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["sql|SQL|elapse|slow"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 10
+  },
+  {
+    "id": 21,
+    "category": "k8s",
+    "prompt": "Show pod status for project 33194",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["pod|Pod"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 22,
+    "category": "k8s",
+    "prompt": "List Kubernetes nodes with CPU and memory for project 33194",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["node|Node"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 23,
+    "category": "k8s",
+    "prompt": "Show container resource usage for project 33194",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["container|Container"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 24,
+    "category": "k8s",
+    "prompt": "Are there any Kubernetes events or warnings in project 33194?",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["event|Event|warning|Warning"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 8
+  },
+  {
+    "id": 25,
+    "category": "promql",
+    "prompt": "What OpenMetrics are available for project 33194?",
+    "expected_tools": ["whatap_data_availability"],
+    "required_patterns": ["metric|Metric|OpenMetric"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 26,
+    "category": "promql",
+    "prompt": "Create a PromQL query for container CPU usage by pod in project 33194",
+    "expected_tools": ["whatap_create_promql"],
+    "required_patterns": ["PromQL|promql|cpu|CPU"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 12
+  },
+  {
+    "id": 27,
+    "category": "url_rum",
+    "prompt": "What monitoring data is available for project 48403?",
+    "expected_tools": ["whatap_data_availability"],
+    "required_patterns": ["48403|available|Available|category|inactive|Inactive|active|Active|probed|Probed"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 28,
+    "category": "url_rum",
+    "prompt": "What monitoring data is available for project 27506?",
+    "expected_tools": ["whatap_data_availability"],
+    "required_patterns": ["27506|available|Available|category|inactive|Inactive|active|Active|probed|Probed"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 4
+  },
+  {
+    "id": 29,
+    "category": "install",
+    "prompt": "How do I install the WhaTap monitoring agent for project 29763?",
+    "expected_tools": ["whatap_install_agent"],
+    "required_patterns": ["install|Install|accesskey|server"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 5
+  },
+  {
+    "id": 30,
+    "category": "edge",
+    "prompt": "Show server CPU usage for project 5490 using path v2/sys/server_base",
+    "expected_tools": ["whatap_query_data"],
+    "required_patterns": ["(cpu|CPU|No data|no data|mismatch|server)"],
+    "forbidden_patterns": ["WHATAP_API_TOKEN", "Error.*required", "Failed to start"],
+    "min_length": 100,
+    "max_tool_calls": 6
+  }
+]

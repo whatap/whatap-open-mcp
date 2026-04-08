@@ -131,19 +131,13 @@ export function registerYardTools(
 
   server.tool(
     "whatap_data_availability",
-    "Browse available MXQL queries from the WhaTap yard (production query catalog). " +
-      "Use this to discover what data you can query.\n\n" +
-      "USAGE:\n" +
-      "- No params → domain summary table (domain, count, description)\n" +
-      '- domain="v2/sys" → list all query paths in that domain\n' +
-      '- search="cpu" → keyword search across all paths/descriptions\n' +
-      '- category="server_base" → reverse lookup: which query paths use this category\n' +
-      "- projectCode=12345 → live probe: which data categories have active data\n\n" +
-      "WORKFLOW:\n" +
-      "1. whatap_data_availability() → see domains\n" +
-      '2. whatap_data_availability(domain="v2/sys") → see queries\n' +
-      "3. whatap_describe_query(path) → see query details\n" +
-      "4. whatap_query_data(projectCode, path) → execute query",
+    "Discover available MXQL query paths for a project. Call this ONCE — do NOT call multiple times with different params.\n\n" +
+      "BEST USAGE (pick ONE):\n" +
+      "- projectCode=12345 → RECOMMENDED: live probe showing which categories have data + query paths\n" +
+      '- search="cpu" → keyword search across all 900+ paths (fast, single call)\n' +
+      '- category="server_base" → find paths for a specific MXQL category\n' +
+      "- No params → domain summary overview\n\n" +
+      "IMPORTANT: One call is enough. Do NOT chain multiple data_availability calls (e.g., domain then search). Use search= to find what you need in one call.",
     {
       domain: z
         .string()
@@ -385,10 +379,12 @@ export function registerYardTools(
 
   server.tool(
     "whatap_describe_query",
-    "Describe a specific MXQL query path or an OpenMetrics metric. " +
-      "For MXQL: shows description, categories, parameters, output fields, header types, JOIN dependencies, and raw MXQL.\n" +
-      "For OpenMetrics: shows metric type, label sets, cardinality.\n\n" +
-      "Use this before whatap_query_data to understand what a query does and what parameters it accepts.\n\n" +
+    "Describe a specific MXQL query path or an OpenMetrics metric in detail. " +
+      "Shows parameters, output fields, header types, and raw MXQL.\n\n" +
+      "WHEN TO CALL:\n" +
+      "- Only when the user asks what a query does or what fields it returns.\n" +
+      "- Do NOT call this as a prerequisite before whatap_query_data — just call query_data directly.\n" +
+      "- query_data already returns formatted results with field names and units.\n\n" +
       'MXQL example: whatap_describe_query(path="v2/sys/server_base")\n' +
       'OpenMetrics example: whatap_describe_query(metric="node_cpu_seconds_total", projectCode=3730)',
     {
@@ -738,16 +734,20 @@ export function registerYardTools(
 
   server.tool(
     "whatap_query_data",
-    "Execute an MXQL path query, a PromQL query, or a saved PromQL query.\n\n" +
+    "Execute a data query. Call this directly when you know the projectCode — no prerequisite tools needed.\n\n" +
       "THREE MODES:\n" +
       '- MXQL: whatap_query_data(projectCode=X, path="v2/sys/server_base")\n' +
       '- PromQL: whatap_query_data(projectCode=X, query="rate(node_cpu[5m])")\n' +
       '- Saved: whatap_query_data(projectCode=X, savedQuery="CPU by Pod")\n\n' +
-      "PREREQUISITES:\n" +
-      "- projectCode from whatap_list_projects\n" +
-      "- path from whatap_data_availability (MXQL) OR\n" +
-      "- query: ad-hoc PromQL expression OR\n" +
-      "- savedQuery: name of a query created with whatap_create_promql\n\n" +
+      "COMMON PATHS (use directly — no need to call data_availability or describe_query first):\n" +
+      "- Server: cpu/mem/disk/net → v2/sys/server_base, v2/sys/server_disk, v2/sys/server_network\n" +
+      "- APM: tps/response/error → v2/app/tps_pcode, v2/app/resp_time_pcode, v2/app/tx_error_pcode\n" +
+      "- APM per agent: → v2/app/tps_oid, v2/app/resp_time_oid, v2/app/act_tx/act_tx_oid\n" +
+      "- K8s: pods/nodes/events → v2/container/kube_pod, v2/container/kube_node, v2/container/kube_event\n" +
+      "- Container: → v2/container/container_stat\n" +
+      "- DB active sessions: → v2/db/instance_active_session\n" +
+      "- DB SQL stats: → db_oracle_dma_sqlstat_top_elapse, db_postgresql_sqlstat_top_elapse, db_mysql_sqlstat_top_elapse\n\n" +
+      "If the path returns no data, THEN call data_availability(projectCode=X) to find the right path.\n\n" +
       "Pass params for MXQL queries that accept $-prefixed parameters (e.g., $oid, $okind).",
     {
       projectCode: z.number().describe(PARAM_PROJECT_CODE),

@@ -1,0 +1,147 @@
+name: Acceptance Test
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  acceptance:
+    name: Live Acceptance Test (30 prompts)
+    runs-on: self-hosted
+    if: github.event.pull_request.draft == false
+    timeout-minutes: 30
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      WHATAP_API_TOKEN: ${{ secrets.WHATAP_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build MCP server
+        run: |
+          npm ci
+          npm run build
+
+      - name: Configure Codex auth and MCP
+        run: |
+          echo "$OPENAI_API_KEY" | codex login --with-api-key
+          mkdir -p ~/.codex
+          printf '[mcp_servers.whatap]\ncommand = "node"\nargs = ["%s/dist/index.js"]\n\n[mcp_servers.whatap.env]\nWHATAP_API_TOKEN = "%s"\n' \
+            "${{ github.workspace }}" "$WHATAP_API_TOKEN" > ~/.codex/config.toml
+
+
+      - name: Run acceptance tests
+        run: |
+          RESULTS_DIR="${{ github.workspace }}/test-results"
+          mkdir -p "$RESULTS_DIR"
+
+          PASS=0
+          FAIL=0
+          TOTAL=30
+          REPORT=""
+
+          for id in $(seq 1 $TOTAL); do
+            PROMPT=$(jq -r ".[$id - 1].prompt" tests/acceptance/prompts.json)
+            CATEGORY=$(jq -r ".[$id - 1].category" tests/acceptance/prompts.json)
+
+            echo "::group::Test $id/$TOTAL [$CATEGORY]"
+            echo "Prompt: $PROMPT"
+
+            OUTPUT_FILE="$RESULTS_DIR/prompt_${id}.txt"
+            set +e
+            timeout 180 codex exec --dangerously-bypass-approvals-and-sandbox --json "$PROMPT" > "$OUTPUT_FILE" 2>/dev/null
+            EXIT_CODE=$?
+            set -e
+
+            echo "Exit: $EXIT_CODE, Output: $(wc -c < "$OUTPUT_FILE") bytes"
+
+            if [ $EXIT_CODE -eq 124 ]; then
+              echo '{"item":{"type":"agent_message","text":"TIMEOUT"}}' > "$OUTPUT_FILE"
+            fi
+
+            VALIDATION=$(npx tsx tests/acceptance/validate.ts \
+              --output "$OUTPUT_FILE" \
+              --prompt-id "$id" \
+              --prompts-file tests/acceptance/prompts.json 2>&1) || true
+
+            STATUS=$(echo "$VALIDATION" | jq -r '.status' 2>/dev/null || echo "FAIL")
+            REASON=$(echo "$VALIDATION" | jq -r '.reason // "unknown"' 2>/dev/null || echo "validation error")
+
+            if [ "$STATUS" = "PASS" ]; then
+              PASS=$((PASS + 1))
+              echo "::notice::Test $id: PASS"
+            else
+              FAIL=$((FAIL + 1))
+              echo "::warning::Test $id: FAIL — $REASON"
+            fi
+
+            REPORT="${REPORT}| ${id} | ${CATEGORY} | ${PROMPT:0:60}... | **${STATUS}** | ${REASON:0:80} |\n"
+            echo "::endgroup::"
+
+            sleep 2
+          done
+
+          PASS_RATE=$((PASS * 100 / TOTAL))
+          echo "pass_rate=$PASS_RATE" >> "$GITHUB_ENV"
+          echo "pass_count=$PASS" >> "$GITHUB_ENV"
+          echo "fail_count=$FAIL" >> "$GITHUB_ENV"
+
+          cat > "$RESULTS_DIR/report.md" << EOF
+          ## Acceptance Test Report
+
+          **Result**: ${PASS}/${TOTAL} passed (${PASS_RATE}%)
+          **Threshold**: 90%
+          **Status**: $([ $PASS_RATE -ge 90 ] && echo "PASS" || echo "FAIL")
+
+          | # | Category | Prompt | Status | Reason |
+          |---|----------|--------|--------|--------|
+          $(echo -e "$REPORT")
+          EOF
+
+          cat "$RESULTS_DIR/report.md"
+
+          if [ $PASS_RATE -lt 90 ]; then
+            echo "::error::Acceptance test failed: ${PASS_RATE}% (threshold: 90%)"
+            exit 1
+          fi
+
+      - name: Post test report
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const fs = require('fs');
+            const reportPath = '${{ github.workspace }}/test-results/report.md';
+            let report = 'Report not generated.';
+            if (fs.existsSync(reportPath)) {
+              report = fs.readFileSync(reportPath, 'utf8');
+            }
+            const passRate = process.env.pass_rate || '0';
+            const emoji = parseInt(passRate) >= 90 ? ':white_check_mark:' : ':x:';
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `${emoji} **Acceptance Test**: ${process.env.pass_count || 0}/30 passed (${passRate}%)\n\n${report}`
+            });
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: acceptance-test-results
+          path: test-results/
+          retention-days: 14
+
+      - name: Cleanup secrets from runner
+        if: always()
+        run: |
+          rm -f ~/.codex/config.toml
+          codex logout 2>/dev/null || true

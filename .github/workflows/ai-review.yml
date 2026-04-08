@@ -1,0 +1,94 @@
+name: AI Review
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  ai-review:
+    name: AI Code Review
+    runs-on: self-hosted
+    if: github.event.pull_request.draft == false
+    timeout-minutes: 10
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Codex auth
+        run: echo "$OPENAI_API_KEY" | codex login --with-api-key
+
+      - name: Get PR diff
+        run: |
+          git diff origin/${{ github.event.pull_request.base.ref }}...HEAD -- ':!dist/' ':!package-lock.json' > /tmp/pr-diff.txt
+          echo "Diff size: $(wc -c < /tmp/pr-diff.txt) bytes"
+
+      - name: Run AI review
+        run: |
+          head -c 15000 /tmp/pr-diff.txt > /tmp/pr-diff-truncated.txt
+
+          cat > /tmp/review-input.txt << 'INSTRUCTIONS'
+          Review this whatap-open-mcp PR diff. This is an MCP server (10 tools, 640+ catalog entries).
+
+          Check for:
+          1. MXQL CORRECTNESS: field "mql" not "mxql", "param" not "params", pageKey required, TAGLOAD after CATEGORY
+          2. RESPONSE QUALITY: tool descriptions guide efficient LLM workflow, errors have next steps, units preserved
+          3. SECURITY: no token exposure, no injection, input validation
+          4. REGRESSIONS: tool count >= 10, catalog >= 640
+
+          Output: ## Summary, ## Findings ([CRITICAL|WARNING|INFO]), ## Verdict (APPROVE or REQUEST_CHANGES).
+
+          <diff>
+          INSTRUCTIONS
+
+          cat /tmp/pr-diff-truncated.txt >> /tmp/review-input.txt
+          echo -e "\n</diff>" >> /tmp/review-input.txt
+
+          codex exec \
+            --dangerously-bypass-approvals-and-sandbox \
+            -o /tmp/review-result.txt \
+            - < /tmp/review-input.txt || true
+
+          if [[ ! -s /tmp/review-result.txt ]]; then
+            echo "AI review produced no structured output." > /tmp/review-result.txt
+          fi
+
+          if grep -qi "REQUEST_CHANGES" /tmp/review-result.txt; then
+            echo "verdict=request_changes" >> "$GITHUB_ENV"
+          else
+            echo "verdict=approve" >> "$GITHUB_ENV"
+          fi
+
+      - name: Post review comment
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const fs = require('fs');
+            let review = 'Review output not available.';
+            if (fs.existsSync('/tmp/review-result.txt')) {
+              review = fs.readFileSync('/tmp/review-result.txt', 'utf8');
+            }
+            const verdict = process.env.verdict || 'approve';
+            const emoji = verdict === 'approve' ? ':white_check_mark:' : ':warning:';
+
+            const body = `## ${emoji} AI Code Review\n\n${review}\n\n---\n_Reviewed by Codex CLI on self-hosted runner_`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body
+            });
+
+            if (verdict === 'request_changes') {
+              core.setFailed('AI review requested changes.');
+            }

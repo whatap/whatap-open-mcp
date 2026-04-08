@@ -16314,7 +16314,7 @@ var VERSION = "1.2.1";
 function registerProjectTools(server, client) {
   server.tool(
     "whatap_list_projects",
-    "Use this as the FIRST STEP in any WhaTap monitoring workflow. Returns all monitoring projects with pcode (project code), name, platform, and product type. Every other WhaTap tool requires a projectCode \u2014 get it from this tool.\n\nWORKFLOW for WhaTap monitoring analysis:\n1. whatap_list_projects (this tool) \u2192 find the target project, note its pcode and platform\n2. whatap_data_availability() \u2192 browse available MXQL query domains\n3. whatap_describe_query(path) \u2192 understand query parameters and output fields\n4. whatap_query_data(projectCode, path) \u2192 execute and get live data\n\nDo NOT call other WhaTap tools before this one \u2014 you need a pcode first.",
+    "Returns all monitoring projects with pcode (project code), name, platform, and product type.\n\nWHEN TO CALL:\n- Call this ONLY if you do NOT already have a projectCode.\n- If the user provides a projectCode (e.g., 'project 5490'), skip this and call the needed tool directly.\n- Do NOT call this as a prerequisite when you already know the pcode.",
     {},
     async () => {
       try {
@@ -16337,7 +16337,7 @@ ${text}`;
   );
   server.tool(
     "whatap_project_info",
-    "Use this to get detailed info about a specific project (platform, product type, status, gateway). PREREQUISITE: projectCode from whatap_list_projects. RELATED: whatap_list_agents (servers/instances), whatap_data_availability (query discovery).",
+    "Get detailed info about a specific project (platform, product type, status, gateway). Only call this when the user explicitly asks about project details. Do NOT call as a prerequisite before querying data \u2014 it is not needed for data queries.",
     { projectCode: z.number().describe(PARAM_PROJECT_CODE) },
     async ({ projectCode }) => {
       try {
@@ -16367,7 +16367,7 @@ ${text}`;
   );
   server.tool(
     "whatap_list_agents",
-    "Use this to discover servers, app instances, or DB instances in a project. Returns agent name (oname), status (active/inactive), IP, and OID. OIDs can filter MXQL queries via params: whatap_query_data(params={oid: '...'}). PREREQUISITE: projectCode from whatap_list_projects.",
+    "List servers, app instances, or DB instances in a project. Returns agent name (oname), status (active/inactive), IP, and OID. Only call this when the user asks about agents/instances, or when you need an OID to filter query results. Do NOT call as a prerequisite before data queries \u2014 it is not needed.",
     { projectCode: z.number().describe(PARAM_PROJECT_CODE) },
     async ({ projectCode }) => {
       try {
@@ -49471,7 +49471,7 @@ var PROBE_CATEGORIES = [
 function registerYardTools(server, client) {
   server.tool(
     "whatap_data_availability",
-    'Browse available MXQL queries from the WhaTap yard (production query catalog). Use this to discover what data you can query.\n\nUSAGE:\n- No params \u2192 domain summary table (domain, count, description)\n- domain="v2/sys" \u2192 list all query paths in that domain\n- search="cpu" \u2192 keyword search across all paths/descriptions\n- category="server_base" \u2192 reverse lookup: which query paths use this category\n- projectCode=12345 \u2192 live probe: which data categories have active data\n\nWORKFLOW:\n1. whatap_data_availability() \u2192 see domains\n2. whatap_data_availability(domain="v2/sys") \u2192 see queries\n3. whatap_describe_query(path) \u2192 see query details\n4. whatap_query_data(projectCode, path) \u2192 execute query',
+    'Discover available MXQL query paths for a project. Call this ONCE \u2014 do NOT call multiple times with different params.\n\nBEST USAGE (pick ONE):\n- projectCode=12345 \u2192 RECOMMENDED: live probe showing which categories have data + query paths\n- search="cpu" \u2192 keyword search across all 900+ paths (fast, single call)\n- category="server_base" \u2192 find paths for a specific MXQL category\n- No params \u2192 domain summary overview\n\nIMPORTANT: One call is enough. Do NOT chain multiple data_availability calls (e.g., domain then search). Use search= to find what you need in one call.',
     {
       domain: z.string().optional().describe(
         'Domain to list (e.g., "v2/sys", "v2/app", "v2/container", "v2/db"). Omit for summary.'
@@ -49672,7 +49672,7 @@ function registerYardTools(server, client) {
   );
   server.tool(
     "whatap_describe_query",
-    'Describe a specific MXQL query path or an OpenMetrics metric. For MXQL: shows description, categories, parameters, output fields, header types, JOIN dependencies, and raw MXQL.\nFor OpenMetrics: shows metric type, label sets, cardinality.\n\nUse this before whatap_query_data to understand what a query does and what parameters it accepts.\n\nMXQL example: whatap_describe_query(path="v2/sys/server_base")\nOpenMetrics example: whatap_describe_query(metric="node_cpu_seconds_total", projectCode=3730)',
+    'Describe a specific MXQL query path or an OpenMetrics metric in detail. Shows parameters, output fields, header types, and raw MXQL.\n\nWHEN TO CALL:\n- Only when the user asks what a query does or what fields it returns.\n- Do NOT call this as a prerequisite before whatap_query_data \u2014 just call query_data directly.\n- query_data already returns formatted results with field names and units.\n\nMXQL example: whatap_describe_query(path="v2/sys/server_base")\nOpenMetrics example: whatap_describe_query(metric="node_cpu_seconds_total", projectCode=3730)',
     {
       path: z.string().optional().describe(PARAM_MXQL_PATH),
       metric: z.string().optional().describe(
@@ -49952,7 +49952,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
   );
   server.tool(
     "whatap_query_data",
-    'Execute an MXQL path query, a PromQL query, or a saved PromQL query.\n\nTHREE MODES:\n- MXQL: whatap_query_data(projectCode=X, path="v2/sys/server_base")\n- PromQL: whatap_query_data(projectCode=X, query="rate(node_cpu[5m])")\n- Saved: whatap_query_data(projectCode=X, savedQuery="CPU by Pod")\n\nPREREQUISITES:\n- projectCode from whatap_list_projects\n- path from whatap_data_availability (MXQL) OR\n- query: ad-hoc PromQL expression OR\n- savedQuery: name of a query created with whatap_create_promql\n\nPass params for MXQL queries that accept $-prefixed parameters (e.g., $oid, $okind).',
+    'Execute a data query. Call this directly when you know the projectCode \u2014 no prerequisite tools needed.\n\nTHREE MODES:\n- MXQL: whatap_query_data(projectCode=X, path="v2/sys/server_base")\n- PromQL: whatap_query_data(projectCode=X, query="rate(node_cpu[5m])")\n- Saved: whatap_query_data(projectCode=X, savedQuery="CPU by Pod")\n\nCOMMON PATHS (use directly \u2014 no need to call data_availability or describe_query first):\n- Server: cpu/mem/disk/net \u2192 v2/sys/server_base, v2/sys/server_disk, v2/sys/server_network\n- APM: tps/response/error \u2192 v2/app/tps_pcode, v2/app/resp_time_pcode, v2/app/tx_error_pcode\n- APM per agent: \u2192 v2/app/tps_oid, v2/app/resp_time_oid, v2/app/act_tx/act_tx_oid\n- K8s: pods/nodes/events \u2192 v2/container/kube_pod, v2/container/kube_node, v2/container/kube_event\n- Container: \u2192 v2/container/container_stat\n- DB active sessions: \u2192 v2/db/instance_active_session\n- DB SQL stats: \u2192 db_oracle_dma_sqlstat_top_elapse, db_postgresql_sqlstat_top_elapse, db_mysql_sqlstat_top_elapse\n\nIf the path returns no data, THEN call data_availability(projectCode=X) to find the right path.\n\nPass params for MXQL queries that accept $-prefixed parameters (e.g., $oid, $okind).',
     {
       projectCode: z.number().describe(PARAM_PROJECT_CODE),
       path: z.string().optional().describe(PARAM_MXQL_PATH),

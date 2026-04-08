@@ -14,6 +14,7 @@ export interface OsInstallGuide {
   configPath: string;
   packageName: string;
   steps: InstallStep[];
+  notes?: string[];
 }
 
 export interface PlatformInstallGuide {

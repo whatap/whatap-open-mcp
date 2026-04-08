@@ -35,6 +35,11 @@ coverage/
 tests/codex-results*/
 tests/*-report*.md
 tests/*.jsonl
+test-results/
+test-results-local/
+
+# Task directory (LLM infrastructure maintenance — instance-specific)
+.tasks/
 
 # Scripts with session data
 resume.sh
