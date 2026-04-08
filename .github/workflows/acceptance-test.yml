@@ -33,17 +33,11 @@ jobs:
       - name: Configure MCP server
         env:
           WHATAP_API_TOKEN: ${{ secrets.WHATAP_API_TOKEN }}
+          WORKSPACE: ${{ github.workspace }}
         run: |
-          # Configure Codex to use the locally-built MCP server
           mkdir -p ~/.codex
-          cat > ~/.codex/config.toml << EOF
-          [mcp_servers.whatap]
-          command = "node"
-          args = ["${{ github.workspace }}/dist/index.js"]
-
-          [mcp_servers.whatap.env]
-          WHATAP_API_TOKEN = "${WHATAP_API_TOKEN}"
-          EOF
+          printf '[mcp_servers.whatap]\ncommand = "node"\nargs = ["%s/dist/index.js"]\n\n[mcp_servers.whatap.env]\nWHATAP_API_TOKEN = "%s"\n' "$WORKSPACE" "$WHATAP_API_TOKEN" > ~/.codex/config.toml
+          echo "Config written:" && cat ~/.codex/config.toml
 
       - name: Run acceptance tests
         env:

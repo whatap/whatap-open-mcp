@@ -26,10 +26,10 @@ jobs:
       - name: Get PR diff
         id: diff
         run: |
-          git diff origin/${{ github.event.pull_request.base.ref }}...HEAD > /tmp/pr-diff.txt
+          git diff origin/${{ github.event.pull_request.base.ref }}...HEAD -- ':!dist/' ':!package-lock.json' > /tmp/pr-diff.txt
           DIFF_SIZE=$(wc -c < /tmp/pr-diff.txt | tr -d ' ')
           echo "diff_size=$DIFF_SIZE" >> "$GITHUB_OUTPUT"
-          echo "Diff size: $DIFF_SIZE bytes"
+          echo "Diff size: $DIFF_SIZE bytes (excluding dist/ and lock files)"
 
       - name: Skip if empty diff
         if: steps.diff.outputs.diff_size == '0'
@@ -42,37 +42,39 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          # Build review prompt with the diff inlined
-          DIFF_CONTENT=$(head -c 30000 /tmp/pr-diff.txt)
+          # Truncate diff to keep prompt reasonable
+          head -c 15000 /tmp/pr-diff.txt > /tmp/pr-diff-truncated.txt
 
-          REVIEW_PROMPT="You are reviewing the whatap-open-mcp project — an MCP server bridging AI assistants to WhaTap monitoring (10 tools, 640+ MXQL catalog entries, zero-dependency MCP impl).
+          # Build prompt file and pipe via stdin
+          cat > /tmp/review-input.txt << 'INSTRUCTIONS'
+          Review this whatap-open-mcp PR diff. This is an MCP server (10 tools, 640+ catalog entries, zero-dep MCP impl).
 
-          Review the following PR diff. Check for:
-          1. MXQL CORRECTNESS: field must be mql not mxql, param not params, pageKey required, TAGLOAD must follow CATEGORY, case-sensitive fields, Unix ms times
-          2. RESPONSE QUALITY: tool descriptions guide LLM workflow efficiently, errors include next steps, format functions preserve units
-          3. SECURITY: no token exposure, no command injection, input validation
-          4. REGRESSIONS: tool count >= 10, catalog >= 640, no removed exports
+          Check for:
+          1. MXQL CORRECTNESS: field "mql" not "mxql", "param" not "params", pageKey required, TAGLOAD after CATEGORY
+          2. RESPONSE QUALITY: tool descriptions guide efficient LLM workflow, errors have next steps, units preserved
+          3. SECURITY: no token exposure, no injection, input validation
+          4. REGRESSIONS: tool count >= 10, catalog >= 640
 
-          Output your review as markdown with: ## Summary, ## Findings (each as [CRITICAL|WARNING|INFO]: description), ## Verdict (APPROVE or REQUEST_CHANGES with reason).
+          Output: ## Summary, ## Findings ([CRITICAL|WARNING|INFO]), ## Verdict (APPROVE or REQUEST_CHANGES).
 
-          Here is the diff:
+          <diff>
+          INSTRUCTIONS
 
-          \`\`\`diff
-          ${DIFF_CONTENT}
-          \`\`\`"
+          cat /tmp/pr-diff-truncated.txt >> /tmp/review-input.txt
+          echo "" >> /tmp/review-input.txt
+          echo "</diff>" >> /tmp/review-input.txt
 
-          # Use codex exec to run the review (non-interactive)
+          # Pipe prompt via stdin using -
           codex exec \
             --dangerously-bypass-approvals-and-sandbox \
             -o /tmp/review-result.txt \
-            "$REVIEW_PROMPT" || true
+            - < /tmp/review-input.txt || true
 
-          # Fallback if output is empty
+          # Fallback
           if [[ ! -s /tmp/review-result.txt ]]; then
-            echo "Review completed but no structured output captured." > /tmp/review-result.txt
+            echo "AI review ran but produced no structured output." > /tmp/review-result.txt
           fi
 
-          # Determine verdict from output
           if grep -qi "REQUEST_CHANGES" /tmp/review-result.txt; then
             echo "verdict=request_changes" >> "$GITHUB_ENV"
           else
