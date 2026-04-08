@@ -39,6 +39,23 @@ jobs:
           printf '[mcp_servers.whatap]\ncommand = "node"\nargs = ["%s/dist/index.js"]\n\n[mcp_servers.whatap.env]\nWHATAP_API_TOKEN = "%s"\n' "$WORKSPACE" "$WHATAP_API_TOKEN" > ~/.codex/config.toml
           echo "Config written:" && cat ~/.codex/config.toml
 
+      - name: Sanity check — verify MCP + Codex work
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          echo "Testing codex exec with MCP..."
+          timeout 60 codex exec --dangerously-bypass-approvals-and-sandbox --json "Say hello" > /tmp/sanity.jsonl 2>&1 || true
+          echo "Sanity output size: $(wc -c < /tmp/sanity.jsonl) bytes"
+          echo "First 3 lines:"
+          head -3 /tmp/sanity.jsonl
+          if [ ! -s /tmp/sanity.jsonl ]; then
+            echo "::error::Codex exec produced no output — MCP or API connectivity issue"
+            echo "Codex version: $(codex --version 2>&1)"
+            echo "Config:"
+            cat ~/.codex/config.toml
+            exit 1
+          fi
+
       - name: Run acceptance tests
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -60,12 +77,20 @@ jobs:
             echo "::group::Test $id/$TOTAL [$CATEGORY]"
             echo "Prompt: $PROMPT"
 
-            # Run with timeout
+            # Run with timeout — capture both stdout (JSONL) and stderr (debug)
             OUTPUT_FILE="$RESULTS_DIR/prompt_${id}.txt"
+            STDERR_FILE="$RESULTS_DIR/prompt_${id}_stderr.txt"
             set +e
-            timeout 180 codex exec --dangerously-bypass-approvals-and-sandbox --json "$PROMPT" > "$OUTPUT_FILE" 2>/dev/null
+            timeout 180 codex exec --dangerously-bypass-approvals-and-sandbox --json "$PROMPT" > "$OUTPUT_FILE" 2>"$STDERR_FILE"
             EXIT_CODE=$?
             set -e
+
+            # Debug: show output sizes and any errors
+            echo "Exit code: $EXIT_CODE, stdout: $(wc -c < "$OUTPUT_FILE") bytes, stderr: $(wc -c < "$STDERR_FILE") bytes"
+            if [ -s "$STDERR_FILE" ]; then
+              echo "Stderr (last 5 lines):"
+              tail -5 "$STDERR_FILE"
+            fi
 
             if [ $EXIT_CODE -eq 124 ]; then
               echo "TIMEOUT" > "$OUTPUT_FILE"
