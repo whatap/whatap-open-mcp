@@ -15,6 +15,9 @@ jobs:
     runs-on: self-hosted
     if: github.event.pull_request.draft == false
     timeout-minutes: 30
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      WHATAP_API_TOKEN: ${{ secrets.WHATAP_API_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -22,18 +25,6 @@ jobs:
         run: |
           npm ci
           npm run build
-
-      - name: Diagnose runner environment
-        run: |
-          echo "User: $(whoami), Home: $HOME"
-          echo "Node: $(node -v), Codex: $(codex --version 2>&1)"
-          echo "OPENAI_API_KEY set: $([ -n "$OPENAI_API_KEY" ] && echo YES || echo NO)"
-          echo "WHATAP_API_TOKEN set: $([ -n "$WHATAP_API_TOKEN" ] && echo YES || echo NO)"
-          echo "--- Quick codex test ---"
-          timeout 30 codex exec --dangerously-bypass-approvals-and-sandbox --json "Say hello" > /tmp/diag.jsonl 2>&1 || true
-          echo "Output size: $(wc -c < /tmp/diag.jsonl) bytes, exit: $?"
-          echo "First 3 lines:"
-          head -3 /tmp/diag.jsonl
 
       - name: Configure Codex MCP
         run: |

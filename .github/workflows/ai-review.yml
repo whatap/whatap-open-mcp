@@ -14,6 +14,8 @@ jobs:
     runs-on: self-hosted
     if: github.event.pull_request.draft == false
     timeout-minutes: 10
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
     steps:
       - uses: actions/checkout@v4
         with:
