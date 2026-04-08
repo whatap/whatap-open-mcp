@@ -1,0 +1,20 @@
+name: Runner Diagnostic
+on: workflow_dispatch
+jobs:
+  diag:
+    runs-on: self-hosted
+    steps:
+      - name: Check environment
+        run: |
+          echo "User: $(whoami)"
+          echo "Home: $HOME"
+          echo "Node: $(node -v 2>&1 || echo 'not found')"
+          echo "Codex: $(codex --version 2>&1 || echo 'not found')"
+          echo "OPENAI_API_KEY set: $([ -n "$OPENAI_API_KEY" ] && echo 'YES' || echo 'NO')"
+          echo "WHATAP_API_TOKEN set: $([ -n "$WHATAP_API_TOKEN" ] && echo 'YES' || echo 'NO')"
+          echo "Codex config:"
+          cat ~/.codex/config.toml 2>/dev/null || echo "no config"
+          echo "Runner .env:"
+          cat ~/actions-runner/.env 2>/dev/null | sed 's/=.*/=***/' || echo "no .env"
+          echo "--- Quick codex test ---"
+          timeout 30 codex exec --dangerously-bypass-approvals-and-sandbox --json "Say hello" 2>&1 | head -5 || echo "codex exec failed with $?"
