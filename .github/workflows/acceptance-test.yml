@@ -12,54 +12,24 @@ permissions:
 jobs:
   acceptance:
     name: Live Acceptance Test (30 prompts)
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     if: github.event.pull_request.draft == false
-    timeout-minutes: 60
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies and build
+      - name: Build MCP server
         run: |
           npm ci
           npm run build
 
-      - name: Install Codex CLI
-        run: npm install -g @openai/codex
-
-      - name: Configure MCP server
-        env:
-          WHATAP_API_TOKEN: ${{ secrets.WHATAP_API_TOKEN }}
-          WORKSPACE: ${{ github.workspace }}
+      - name: Configure Codex MCP
         run: |
           mkdir -p ~/.codex
-          printf '[mcp_servers.whatap]\ncommand = "node"\nargs = ["%s/dist/index.js"]\n\n[mcp_servers.whatap.env]\nWHATAP_API_TOKEN = "%s"\n' "$WORKSPACE" "$WHATAP_API_TOKEN" > ~/.codex/config.toml
-          echo "Config written:" && cat ~/.codex/config.toml
-
-      - name: Sanity check — verify MCP + Codex work
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          echo "Testing codex exec with MCP..."
-          timeout 60 codex exec --dangerously-bypass-approvals-and-sandbox --json "Say hello" > /tmp/sanity.jsonl 2>&1 || true
-          echo "Sanity output size: $(wc -c < /tmp/sanity.jsonl) bytes"
-          echo "First 3 lines:"
-          head -3 /tmp/sanity.jsonl
-          if [ ! -s /tmp/sanity.jsonl ]; then
-            echo "::error::Codex exec produced no output — MCP or API connectivity issue"
-            echo "Codex version: $(codex --version 2>&1)"
-            echo "Config:"
-            cat ~/.codex/config.toml
-            exit 1
-          fi
+          printf '[mcp_servers.whatap]\ncommand = "node"\nargs = ["%s/dist/index.js"]\n\n[mcp_servers.whatap.env]\nWHATAP_API_TOKEN = "%s"\n' \
+            "${{ github.workspace }}" "$WHATAP_API_TOKEN" > ~/.codex/config.toml
 
       - name: Run acceptance tests
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          WHATAP_API_TOKEN: ${{ secrets.WHATAP_API_TOKEN }}
         run: |
           RESULTS_DIR="${{ github.workspace }}/test-results"
           mkdir -p "$RESULTS_DIR"
@@ -69,7 +39,6 @@ jobs:
           TOTAL=30
           REPORT=""
 
-          # Parse and run each prompt
           for id in $(seq 1 $TOTAL); do
             PROMPT=$(jq -r ".[$id - 1].prompt" tests/acceptance/prompts.json)
             CATEGORY=$(jq -r ".[$id - 1].category" tests/acceptance/prompts.json)
@@ -77,27 +46,18 @@ jobs:
             echo "::group::Test $id/$TOTAL [$CATEGORY]"
             echo "Prompt: $PROMPT"
 
-            # Run with timeout — capture both stdout (JSONL) and stderr (debug)
             OUTPUT_FILE="$RESULTS_DIR/prompt_${id}.txt"
-            STDERR_FILE="$RESULTS_DIR/prompt_${id}_stderr.txt"
             set +e
-            timeout 180 codex exec --dangerously-bypass-approvals-and-sandbox --json "$PROMPT" > "$OUTPUT_FILE" 2>"$STDERR_FILE"
+            timeout 180 codex exec --dangerously-bypass-approvals-and-sandbox --json "$PROMPT" > "$OUTPUT_FILE" 2>/dev/null
             EXIT_CODE=$?
             set -e
 
-            # Debug: show output sizes and any errors
-            echo "Exit code: $EXIT_CODE, stdout: $(wc -c < "$OUTPUT_FILE") bytes, stderr: $(wc -c < "$STDERR_FILE") bytes"
-            if [ -s "$STDERR_FILE" ]; then
-              echo "Stderr (last 5 lines):"
-              tail -5 "$STDERR_FILE"
-            fi
+            echo "Exit: $EXIT_CODE, Output: $(wc -c < "$OUTPUT_FILE") bytes"
 
             if [ $EXIT_CODE -eq 124 ]; then
-              echo "TIMEOUT" > "$OUTPUT_FILE"
-              echo "::warning::Test $id timed out"
+              echo '{"item":{"type":"agent_message","text":"TIMEOUT"}}' > "$OUTPUT_FILE"
             fi
 
-            # Validate
             VALIDATION=$(npx tsx tests/acceptance/validate.ts \
               --output "$OUTPUT_FILE" \
               --prompt-id "$id" \
@@ -115,20 +75,16 @@ jobs:
             fi
 
             REPORT="${REPORT}| ${id} | ${CATEGORY} | ${PROMPT:0:60}... | **${STATUS}** | ${REASON:0:80} |\n"
-
             echo "::endgroup::"
 
-            # Brief pause between prompts to avoid rate limits
             sleep 2
           done
 
-          # Calculate pass rate
           PASS_RATE=$((PASS * 100 / TOTAL))
           echo "pass_rate=$PASS_RATE" >> "$GITHUB_ENV"
           echo "pass_count=$PASS" >> "$GITHUB_ENV"
           echo "fail_count=$FAIL" >> "$GITHUB_ENV"
 
-          # Generate report
           cat > "$RESULTS_DIR/report.md" << EOF
           ## Acceptance Test Report
 
@@ -139,31 +95,28 @@ jobs:
           | # | Category | Prompt | Status | Reason |
           |---|----------|--------|--------|--------|
           $(echo -e "$REPORT")
-
-          ---
-          _Tested with Codex CLI against live WhaTap API_
           EOF
 
           cat "$RESULTS_DIR/report.md"
 
-          # Fail if below threshold
           if [ $PASS_RATE -lt 90 ]; then
-            echo "::error::Acceptance test failed: ${PASS_RATE}% pass rate (threshold: 90%)"
+            echo "::error::Acceptance test failed: ${PASS_RATE}% (threshold: 90%)"
             exit 1
           fi
 
       - name: Post test report
         if: always()
         uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
             const fs = require('fs');
             const reportPath = '${{ github.workspace }}/test-results/report.md';
-            let report = 'Acceptance test report not generated.';
+            let report = 'Report not generated.';
             if (fs.existsSync(reportPath)) {
               report = fs.readFileSync(reportPath, 'utf8');
             }
-
             const passRate = process.env.pass_rate || '0';
             const emoji = parseInt(passRate) >= 90 ? ':white_check_mark:' : ':x:';
 
@@ -171,13 +124,13 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `${emoji} **Acceptance Test**: ${process.env.pass_count || 0}/${30} passed (${passRate}%)\n\n${report}`
+              body: `${emoji} **Acceptance Test**: ${process.env.pass_count || 0}/30 passed (${passRate}%)\n\n${report}`
             });
 
-      - name: Upload test artifacts
+      - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: acceptance-test-results
           path: test-results/
-          retention-days: 30
+          retention-days: 14

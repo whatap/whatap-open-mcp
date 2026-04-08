@@ -11,7 +11,7 @@ permissions:
 jobs:
   ai-review:
     name: AI Code Review
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     if: github.event.pull_request.draft == false
     timeout-minutes: 10
     steps:
@@ -19,35 +19,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
       - name: Get PR diff
-        id: diff
         run: |
           git diff origin/${{ github.event.pull_request.base.ref }}...HEAD -- ':!dist/' ':!package-lock.json' > /tmp/pr-diff.txt
-          DIFF_SIZE=$(wc -c < /tmp/pr-diff.txt | tr -d ' ')
-          echo "diff_size=$DIFF_SIZE" >> "$GITHUB_OUTPUT"
-          echo "Diff size: $DIFF_SIZE bytes (excluding dist/ and lock files)"
-
-      - name: Skip if empty diff
-        if: steps.diff.outputs.diff_size == '0'
-        run: echo "No changes to review" && exit 0
-
-      - name: Install Codex CLI
-        run: npm install -g @openai/codex
+          echo "Diff size: $(wc -c < /tmp/pr-diff.txt) bytes"
 
       - name: Run AI review
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          # Truncate diff to keep prompt reasonable
           head -c 15000 /tmp/pr-diff.txt > /tmp/pr-diff-truncated.txt
 
-          # Build prompt file and pipe via stdin
           cat > /tmp/review-input.txt << 'INSTRUCTIONS'
-          Review this whatap-open-mcp PR diff. This is an MCP server (10 tools, 640+ catalog entries, zero-dep MCP impl).
+          Review this whatap-open-mcp PR diff. This is an MCP server (10 tools, 640+ catalog entries).
 
           Check for:
           1. MXQL CORRECTNESS: field "mql" not "mxql", "param" not "params", pageKey required, TAGLOAD after CATEGORY
@@ -61,18 +43,15 @@ jobs:
           INSTRUCTIONS
 
           cat /tmp/pr-diff-truncated.txt >> /tmp/review-input.txt
-          echo "" >> /tmp/review-input.txt
-          echo "</diff>" >> /tmp/review-input.txt
+          echo -e "\n</diff>" >> /tmp/review-input.txt
 
-          # Pipe prompt via stdin using -
           codex exec \
             --dangerously-bypass-approvals-and-sandbox \
             -o /tmp/review-result.txt \
             - < /tmp/review-input.txt || true
 
-          # Fallback
           if [[ ! -s /tmp/review-result.txt ]]; then
-            echo "AI review ran but produced no structured output." > /tmp/review-result.txt
+            echo "AI review produced no structured output." > /tmp/review-result.txt
           fi
 
           if grep -qi "REQUEST_CHANGES" /tmp/review-result.txt; then
@@ -84,6 +63,8 @@ jobs:
       - name: Post review comment
         if: always()
         uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
             const fs = require('fs');
@@ -94,7 +75,7 @@ jobs:
             const verdict = process.env.verdict || 'approve';
             const emoji = verdict === 'approve' ? ':white_check_mark:' : ':warning:';
 
-            const body = `## ${emoji} AI Code Review\n\n${review}\n\n---\n_Reviewed by Codex CLI_`;
+            const body = `## ${emoji} AI Code Review\n\n${review}\n\n---\n_Reviewed by Codex CLI on self-hosted runner_`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
@@ -104,5 +85,5 @@ jobs:
             });
 
             if (verdict === 'request_changes') {
-              core.setFailed('AI review requested changes. See PR comment for details.');
+              core.setFailed('AI review requested changes.');
             }
