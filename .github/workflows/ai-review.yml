@@ -21,9 +21,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
-      - name: Get PR diff size
+      - name: Get PR diff
         id: diff
         run: |
           git diff origin/${{ github.event.pull_request.base.ref }}...HEAD > /tmp/pr-diff.txt
@@ -42,41 +42,34 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          # Use codex built-in review against the base branch
-          # with project-specific review instructions
-          REVIEW_PROMPT=$(cat << 'EOF'
-          You are reviewing the whatap-open-mcp project — an MCP server bridging AI assistants
-          to WhaTap monitoring (10 tools, 640+ MXQL catalog entries, zero-dependency MCP impl).
+          # Build review prompt with the diff inlined
+          DIFF_CONTENT=$(head -c 30000 /tmp/pr-diff.txt)
 
-          Focus your review on these critical areas:
+          REVIEW_PROMPT="You are reviewing the whatap-open-mcp project — an MCP server bridging AI assistants to WhaTap monitoring (10 tools, 640+ MXQL catalog entries, zero-dependency MCP impl).
 
-          1. MXQL CORRECTNESS (silent failures — the worst kind):
-             - Field must be "mql" not "mxql", "param" not "params"
-             - pageKey: "mxql" required, TAGLOAD must follow CATEGORY
-             - Field names are case-sensitive, times are Unix ms
-
-          2. RESPONSE QUALITY (LLM user satisfaction):
-             - Tool descriptions guide workflow: list_projects → data_availability → describe → query
-             - Errors include actionable next steps (classifyAndBuildError pattern)
-             - Format functions preserve unit annotations (%, ms, bytes) and semantic headers
-             - English descriptions (120+) not removed or corrupted
-
+          Review the following PR diff. Check for:
+          1. MXQL CORRECTNESS: field must be mql not mxql, param not params, pageKey required, TAGLOAD must follow CATEGORY, case-sensitive fields, Unix ms times
+          2. RESPONSE QUALITY: tool descriptions guide LLM workflow efficiently, errors include next steps, format functions preserve units
           3. SECURITY: no token exposure, no command injection, input validation
-
           4. REGRESSIONS: tool count >= 10, catalog >= 640, no removed exports
 
-          Output structured markdown: Summary, Findings ([CRITICAL|WARNING|INFO]), Verdict (APPROVE or REQUEST_CHANGES).
-          EOF
-          )
+          Output your review as markdown with: ## Summary, ## Findings (each as [CRITICAL|WARNING|INFO]: description), ## Verdict (APPROVE or REQUEST_CHANGES with reason).
 
-          codex review \
-            --base "origin/${{ github.event.pull_request.base.ref }}" \
+          Here is the diff:
+
+          \`\`\`diff
+          ${DIFF_CONTENT}
+          \`\`\`"
+
+          # Use codex exec to run the review (non-interactive)
+          codex exec \
+            --dangerously-bypass-approvals-and-sandbox \
             -o /tmp/review-result.txt \
             "$REVIEW_PROMPT" || true
 
-          # Fallback if -o didn't work (write something)
+          # Fallback if output is empty
           if [[ ! -s /tmp/review-result.txt ]]; then
-            echo "Review completed but no output captured." > /tmp/review-result.txt
+            echo "Review completed but no structured output captured." > /tmp/review-result.txt
           fi
 
           # Determine verdict from output
@@ -99,7 +92,7 @@ jobs:
             const verdict = process.env.verdict || 'approve';
             const emoji = verdict === 'approve' ? ':white_check_mark:' : ':warning:';
 
-            const body = `## ${emoji} AI Code Review\n\n${review}\n\n---\n_Reviewed by Codex CLI \`codex review\`_`;
+            const body = `## ${emoji} AI Code Review\n\n${review}\n\n---\n_Reviewed by Codex CLI_`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
