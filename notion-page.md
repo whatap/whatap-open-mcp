@@ -164,7 +164,7 @@ codex mcp add whatap \
 **Gemini CLI** — 터미널에서:
 
 ```bash
-gemini mcp add whatap \
+gemini mcp -s user add whatap \
   -e WHATAP_API_TOKEN=발급받은_토큰 \
   -- npx -y github:whatap/whatap-open-mcp
 ```

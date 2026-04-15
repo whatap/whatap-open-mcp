@@ -121,7 +121,7 @@ codex mcp add whatap \
 **Gemini CLI** — one command:
 
 ```bash
-gemini mcp add whatap \
+gemini mcp -s user add whatap \
   -e WHATAP_API_TOKEN=YOUR_TOKEN_HERE \
   -- npx -y github:whatap/whatap-open-mcp
 ```
