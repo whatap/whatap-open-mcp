@@ -166,7 +166,7 @@ codex mcp add whatap \
 ```bash
 gemini mcp -s user add whatap \
   -e WHATAP_API_TOKEN=발급받은_토큰 \
-  -- npx -y github:whatap/whatap-open-mcp
+  npx -- -y github:whatap/whatap-open-mcp
 ```
 
 ### 리전별 API URL

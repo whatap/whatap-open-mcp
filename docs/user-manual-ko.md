@@ -205,7 +205,7 @@ codex mcp list
 ```bash
 gemini mcp -s user add whatap \
   -e WHATAP_API_TOKEN=여기에_토큰_입력 \
-  -- npx -y github:whatap/whatap-open-mcp
+  npx -- -y github:whatap/whatap-open-mcp
 ```
 
 **방법 B — 설정 파일 직접 편집** (`~/.gemini/settings.json`)
@@ -507,7 +507,7 @@ WHATAP_API_URL = "https://api.gov.whatap.io"
 gemini mcp -s user add whatap \
   -e WHATAP_API_TOKEN=여기에_토큰_입력 \
   -e WHATAP_API_URL=https://api.gov.whatap.io \
-  -- npx -y github:whatap/whatap-open-mcp
+  npx -- -y github:whatap/whatap-open-mcp
 ```
 
 ### WhaTap 서비스 리전
@@ -664,7 +664,7 @@ npx clear-npx-cache
 | **Claude Desktop** | JSON | `claude_desktop_config.json` | 파일 직접 편집 |
 | **Claude Code** | — | — | `claude mcp add whatap -e WHATAP_API_TOKEN=... -- npx -y github:whatap/whatap-open-mcp` |
 | **Codex CLI** | TOML | `~/.codex/config.toml` | `codex mcp add whatap --env ... -- npx -y github:whatap/whatap-open-mcp` |
-| **Gemini CLI** | JSON | `~/.gemini/settings.json` | `gemini mcp -s user add whatap -e ... -- npx -y github:whatap/whatap-open-mcp` |
+| **Gemini CLI** | JSON | `~/.gemini/settings.json` | `gemini mcp -s user add whatap -e ... npx -- -y github:whatap/whatap-open-mcp` |
 
 ### 환경 변수 요약
 

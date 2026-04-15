@@ -181,7 +181,7 @@ codex mcp list
 ```bash
 gemini mcp -s user add whatap \
   -e WHATAP_API_TOKEN=YOUR_TOKEN_HERE \
-  -- npx -y github:whatap/whatap-open-mcp
+  npx -- -y github:whatap/whatap-open-mcp
 ```
 
 **Option B — Config file (`~/.gemini/settings.json`):**
@@ -453,7 +453,7 @@ claude mcp add whatap \
 gemini mcp -s user add whatap \
   -e WHATAP_API_TOKEN=YOUR_TOKEN_HERE \
   -e WHATAP_API_URL=https://api.gov.whatap.io \
-  -- npx -y github:whatap/whatap-open-mcp
+  npx -- -y github:whatap/whatap-open-mcp
 ```
 
 ### WhaTap Service Regions
@@ -585,7 +585,7 @@ npx clear-npx-cache
 | **Claude Desktop** | JSON | `claude_desktop_config.json` | Edit file manually |
 | **Claude Code** | — | — | `claude mcp add whatap -e WHATAP_API_TOKEN=... -- npx -y github:whatap/whatap-open-mcp` |
 | **Codex CLI** | TOML | `~/.codex/config.toml` | `codex mcp add whatap --env ... -- npx -y github:whatap/whatap-open-mcp` |
-| **Gemini CLI** | JSON | `~/.gemini/settings.json` | `gemini mcp -s user add whatap -e ... -- npx -y github:whatap/whatap-open-mcp` |
+| **Gemini CLI** | JSON | `~/.gemini/settings.json` | `gemini mcp -s user add whatap -e ... npx -- -y github:whatap/whatap-open-mcp` |
 
 **Environment variables:**
 
