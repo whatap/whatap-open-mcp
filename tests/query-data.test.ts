@@ -2,6 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { registerYardTools } from '../src/tools/yard.ts';
 import { McpServer } from '../src/mcp/server.ts';
 import type { WhatapApiClient } from '../src/api/client.ts';
+import { CATALOG_RAW } from '../src/data/mxql-catalog.ts';
+import { scanMarkers } from '../src/yard/markers.ts';
 
 interface Captured {
   endpoint: 'text' | 'path';
@@ -42,6 +44,52 @@ const args = (over: Record<string, unknown> = {}) => ({
   timeRange: '6h',
   limit: 100,
   ...over,
+});
+
+const TICKET_PATH = 'src/main/resources/mxql/apm/stat/transaction_diff';
+
+describe('whatap_query_data — not executed (template markers)', () => {
+  it('rejects the ticket path without sending anything to the server', async () => {
+    const { calls, callback } = setupTool();
+    const res = await callback(args({ path: TICKET_PATH }));
+    expect(res.isError).toBe(true);
+    expect(calls).toEqual([]); // nothing left the process
+    const text = res.content[0].text;
+    expect(text).toContain('NOT sent to the server');
+    expect(text).toContain('<%AGENT%>');
+    expect(text).toContain('Do NOT retry');
+    expect(text).not.toContain('No data found');
+  });
+
+  it('names the template category and offers an executable path over it', async () => {
+    const { callback } = setupTool();
+    const text = (await callback(args({ path: TICKET_PATH }))).content[0].text;
+    expect(text).toContain('db3_stat_tx');
+    expect(text).toContain('mxql/app/stat_tx_pcode');
+  });
+
+  it('never suggests another template as the alternative', async () => {
+    const { callback } = setupTool();
+    const text = (await callback(args({ path: TICKET_PATH }))).content[0].text;
+    const suggested = [...text.matchAll(/^- `([^`]+)`/gm)].map((m) => m[1]);
+    expect(suggested.length).toBeGreaterThan(0);
+    for (const p of suggested) {
+      expect(scanMarkers(CATALOG_RAW[p] ?? '').hasMarkers).toBe(false);
+    }
+  });
+
+  it('blocks every marker path in the catalog — none can reach the client', async () => {
+    const markerPaths = Object.keys(CATALOG_RAW).filter(
+      (p) => scanMarkers(CATALOG_RAW[p]).hasMarkers
+    );
+    expect(markerPaths.length).toBe(200); // 100 logical paths, shipped twice
+    const { calls, callback } = setupTool();
+    for (const p of markerPaths) {
+      const res = await callback(args({ path: p }));
+      expect(res.isError, `${p} should be rejected`).toBe(true);
+    }
+    expect(calls).toEqual([]);
+  });
 });
 
 describe('whatap_query_data — the server said why', () => {
