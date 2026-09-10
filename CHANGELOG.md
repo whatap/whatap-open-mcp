@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-09-10
+
+### Fixed
+
+- `whatap_describe_query` rejected the path spelling its own documentation uses.
+  Catalog keys all carry an `mxql/` prefix (`mxql/v2/sys/server_base`; the bare
+  form has 0 keys against 340 prefixed ones), while `PARAM_MXQL_PATH` and the
+  `whatap_query_data` description advertise the bare form — so
+  `describe_query(path="v2/sys/server_base")` returned
+  `isError: "Query path not found in the catalog."` Both spellings now resolve.
+  Lookup only: execution routing is unchanged, since a bare path is still
+  resolved by the server's path endpoint. The response names the canonical key,
+  and its example block uses it so a copied call hits the catalog.
+- The live acceptance assertion that hid this. Its `describe_query` case checked
+  only `text.includes("tps")`, which the *error* response satisfied via the fuzzy
+  "Did you mean" list — the gate stayed green over a broken documented path. It
+  now asserts `isError` and the presence of catalog metadata.
+
 ## [1.3.0] - 2026-09-10
 
 ### Changed

@@ -16414,7 +16414,7 @@ function buildServerErrorResponse(opts) {
 }
 
 // src/version.ts
-var VERSION = "1.3.0";
+var VERSION = "1.3.1";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {
@@ -49255,6 +49255,15 @@ function searchEntries(opts) {
   }
   return results;
 }
+function canonicalCatalogPath(path) {
+  const bare = path.replace(/^\/+/, "");
+  if (byPath().has(bare)) return bare;
+  const prefixed = `mxql/${bare}`;
+  if (byPath().has(prefixed)) return prefixed;
+  const stripped = bare.replace(/^mxql\//, "");
+  if (stripped !== bare && byPath().has(stripped)) return stripped;
+  return null;
+}
 function describeMql(path) {
   const entry = byPath().get(path);
   if (!entry) return null;
@@ -49999,8 +50008,9 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
         };
       }
       try {
-        const result = describeMql(path);
-        if (!result) {
+        const canonicalPath = canonicalCatalogPath(path);
+        const result = canonicalPath ? describeMql(canonicalPath) : null;
+        if (!result || !canonicalPath) {
           const suggestions = fuzzyMatch(path);
           const lines2 = [
             `**Error**: Query path "${path}" not found in the catalog.`
@@ -50022,7 +50032,13 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
           };
         }
         const { entry, ...metadata } = result;
-        const lines = [`## MXQL: ${path}`, ""];
+        const lines = [`## MXQL: ${canonicalPath}`, ""];
+        if (canonicalPath !== path) {
+          lines.push(
+            `*Resolved from \`${path}\` \u2014 the catalog key is \`${canonicalPath}\`. Both spellings work in \`whatap_query_data\`.*`,
+            ""
+          );
+        }
         const markerScan = scanMarkers(metadata.raw);
         if (markerScan.hasMarkers) {
           lines.push(
@@ -50030,7 +50046,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
             ""
           );
         }
-        const englishDesc = ENGLISH_DESCRIPTIONS[path] ?? ENGLISH_DESCRIPTIONS[path.replace(/^mxql\//, "")];
+        const englishDesc = ENGLISH_DESCRIPTIONS[canonicalPath] ?? ENGLISH_DESCRIPTIONS[canonicalPath.replace(/^mxql\//, "")];
         if (englishDesc) {
           lines.push(`**Description**: ${englishDesc}`, "");
         } else if (metadata.comments.length > 0) {
@@ -50133,7 +50149,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
             }
           }
         }
-        const sem = classifyResultType(path, {
+        const sem = classifyResultType(canonicalPath, {
           selectFields: metadata.selectFields,
           rawMxql: metadata.raw
         });
@@ -50168,7 +50184,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
             "### Example",
             "",
             "```",
-            `whatap_query_data(projectCode=<PCODE>, path="${path}", timeRange="5m")`,
+            `whatap_query_data(projectCode=<PCODE>, path="${canonicalPath}", timeRange="5m")`,
             "```"
           );
         }
@@ -50182,7 +50198,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
             "To filter by agent:",
             "",
             "```",
-            `whatap_query_data(projectCode=<PCODE>, path="${path}", params={"${exampleParam}": "<VALUE>"})`,
+            `whatap_query_data(projectCode=<PCODE>, path="${canonicalPath}", params={"${exampleParam}": "<VALUE>"})`,
             "```"
           );
         }
