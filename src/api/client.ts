@@ -11,6 +11,9 @@ import type {
 
 const REQUEST_TIMEOUT = 30_000;
 
+/** Required in every MXQL request body. Echoed back on empty results. */
+export const MXQL_PAGE_KEY = "mxql";
+
 interface AgentInfo {
   oname: string;
   okindName?: string;
@@ -173,7 +176,7 @@ export class WhatapApiClient {
   ): Promise<MxqlResult> {
     const token = await this.getProjectToken(pcode);
     // Ensure pageKey is set
-    const payload = { pageKey: "mxql", ...params };
+    const payload = { pageKey: MXQL_PAGE_KEY, ...params };
     const res = await this.fetchProject(
       "/open-mcp/api/flush/mxql/text",
       pcode,
@@ -204,7 +207,7 @@ export class WhatapApiClient {
     params: MxqlPathParams
   ): Promise<MxqlResult> {
     const token = await this.getProjectToken(pcode);
-    const payload = { pageKey: "mxql", ...params };
+    const payload = { pageKey: MXQL_PAGE_KEY, ...params };
     const res = await this.fetchProject(
       "/open-mcp/api/flush/mxql/path",
       pcode,

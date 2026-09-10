@@ -5,6 +5,85 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-09-10
+
+### Changed
+
+- **BREAKING-ish for text consumers**: every empty-result and server-error response
+  was reworded, and `isError: true` is now set in cases that previously returned a
+  normal response. Anything matching on the old strings (`"No data found."`,
+  `"No data found for the specified time range."`,
+  `"No NPM topology data found."`) must be updated.
+- `whatap_query_data`, `whatap_log_search`, `whatap_apm_anomaly` and
+  `whatap_service_topology` no longer guess *why* a result was empty. The previous
+  wording asserted three causes as fact ("time range may be too narrow",
+  "no data was collected", "no active agents"); all three were false for the
+  reported case, and because an LLM consumes these responses those guesses
+  propagated into analyses as evidence. The response now separates what is known
+  (zero rows for this query and window) from what is not, and states explicitly
+  that it is not evidence of missing collection or absent agents.
+- An empty result now echoes what was executed: endpoint, the MXQL text sent
+  verbatim, `param`, `limit`, `pageKey`, the window in epoch-ms plus UTC and KST,
+  and row counts before/after metadata filtering. For the path endpoint — where the
+  server expands the `.mql` file and the executed text is not visible to this
+  client — the catalog source is attached, labelled as such.
+- `whatap_apm_anomaly` runs its 4 sub-queries with `Promise.allSettled` instead of
+  `Promise.all`, so one failing sub-query no longer discards the three that
+  succeeded. Partial results are labelled as partial.
+
+### Fixed
+
+- Server-reported query errors are no longer silently converted into "no data".
+  The server returns HTTP 200 with `[{"error":"..."}]` for invalid MXQL; the tool
+  only reported it when the message contained `"not found"` **and** it was the only
+  row in the response, and the metadata filter then deleted the row. Every other
+  server error — including the reported
+  `A JSONObject text must begin with '{' at 1 [character 2 line 1]` — reached the
+  caller as an absence of data. Any error row anywhere in the response is now an
+  error, regardless of its message.
+- Catalog paths whose raw MXQL still contains unresolved yard template markers
+  (`<% AGENT %>`, `<% FILTER %>`) are rejected before execution instead of being
+  sent and reported as empty. Nothing in this package substitutes those markers,
+  so such a query can never match anything. 200 of 931 catalog entries are affected
+  (100 logical paths, duplicated under `src/main/resources/` and `target/classes/`).
+  The error names the missing markers and suggests executable paths over the same
+  or a related category.
+- `whatap_describe_query` marks a template path NOT EXECUTABLE and no longer prints
+  a `whatap_query_data` example for it. Its parameter list is empty for these paths,
+  which read as "no arguments needed".
+
+### Added
+
+- `src/yard/markers.ts` — `scanMarkers()` detects unresolved yard template markers.
+- `extractServerError()` / `buildServerErrorResponse()` in `src/utils/response.ts`.
+
+### Notes
+
+- Verified live against `api.whatap.io` (pcodes 5490, 29763, 33194, 29762, 28458,
+  32496) on 2026-09-10, plus 93 unit tests and the live MCP protocol and 30-prompt
+  acceptance suites.
+- Still open: catalog discovery is unchanged, so `whatap_data_availability(search=…)`
+  can still return template paths — they now fail loudly with an alternative instead
+  of reporting no data. `whatap_describe_query` also still requires the `mxql/`
+  prefixed spelling, while the tool descriptions use the bare form.
+
+## [1.2.1] - tag only
+
+Released as tag `v1.2.1`; no changelog entry was written at the time. Notable
+contents: DB SQL statistics catalog paths (640 → 914 entries), local catalog
+priority for MXQL execution, `oname` on DB queries, version single-sourced in
+`src/version.ts`.
+
+## [1.2.0] - tag only
+
+Released as tag `v1.2.0`; no changelog entry was written at the time. Notable
+contents: PromQL / OpenMetrics support with query validation and reuse
+(`whatap_create_promql`), OpenAgent install guide.
+
+## [1.1.0] - tag only
+
+Released as tag `v1.1.0`; no changelog entry was written at the time.
+
 ## [1.0.0] - 2025-01-01
 
 ### Added

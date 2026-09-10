@@ -28,6 +28,7 @@ import {
   buildNoDataResponse,
   buildServerErrorResponse,
   extractServerError,
+  type QueryEcho,
 } from "../utils/response.js";
 import {
   getDomainSummary,
@@ -40,9 +41,8 @@ import {
 } from "../yard/catalog.js";
 import { scanMarkers, type MarkerScan } from "../yard/markers.js";
 import { CATALOG_RAW, CATALOG_ENTRIES } from "../data/mxql-catalog.js";
+import { MXQL_PAGE_KEY } from "../api/client.js";
 import { getPromqlQueryStore } from "./promql.js";
-
-import type { CatalogEntry } from "../yard/types.js";
 
 type McpTextResponse = {
   content: { type: "text"; text: string }[];
@@ -61,7 +61,7 @@ const GENERIC_PATH_TOKENS = new Set([
   "stat", "main", "list", "all", "get", "new", "old", "tmp", "sum", "avg",
   "cnt", "count", "time", "data", "info", "top", "topn", "pcode", "oid",
   "okind", "onode", "daily", "month", "last", "diff", "mxql", "src", "java",
-  "resources", "target", "classes",
+  "main", "resources", "target", "classes",
 ]);
 
 function pathTokens(p: string): string[] {
@@ -112,7 +112,7 @@ function suggestExecutablePaths(
 }
 
 /**
- * The catalog entry is a yard template, not an executable query.
+ * State C: the catalog entry is a yard template, not an executable query.
  * Returned BEFORE any network call — nothing was sent to the server.
  */
 function buildMarkerErrorResponse(
@@ -168,8 +168,9 @@ function buildMarkerErrorResponse(
 }
 
 /**
- * The server rejected the path itself. Fuzzy suggestions are a presentation
- * detail here — they no longer gate whether an error is reported at all.
+ * State B, "not found" flavour: the server rejected the path itself.
+ * Fuzzy suggestions are a presentation detail here — they no longer gate
+ * whether an error is reported at all.
  */
 function buildPathNotFoundResponse(
   path: string,
@@ -196,6 +197,8 @@ function buildPathNotFoundResponse(
   );
   return { content: [{ type: "text" as const, text: lines.join("\n") }], isError: true };
 }
+
+import type { CatalogEntry } from "../yard/types.js";
 
 // Fields that are dimensions/identifiers, not metrics
 const NON_METRIC_FIELDS = new Set([
@@ -589,7 +592,8 @@ export function registerYardTools(
                 {
                   type: "text" as const,
                   text:
-                    `**No data found for metric "${metric}".**\n\n` +
+                    `**No rows returned for metric "${metric}".** ` +
+                    "The server reported no error — this is not evidence the metric is uncollected.\n\n" +
                     `Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})\``,
                 },
               ],
@@ -1002,6 +1006,15 @@ export function registerYardTools(
             limit,
           });
 
+          const promqlEcho: QueryEcho = {
+            endpoint: "openmx/text",
+            sentMql: `OPENMX ${query}`,
+            stime,
+            etime,
+            limit,
+            pageKey: MXQL_PAGE_KEY,
+          };
+
           const promqlError = extractServerError(result);
           if (promqlError !== null) {
             return buildServerErrorResponse({
@@ -1009,6 +1022,11 @@ export function registerYardTools(
               serverMessage: promqlError,
               projectCode,
               timeRange,
+              echo: {
+                ...promqlEcho,
+                rawRowCount: Array.isArray(result) ? result.length : 0,
+                dataRowCount: 0,
+              },
             });
           }
 
@@ -1023,6 +1041,11 @@ export function registerYardTools(
               toolName: "whatap_query_data",
               projectCode,
               timeRange,
+              echo: {
+                ...promqlEcho,
+                rawRowCount: Array.isArray(result) ? result.length : 0,
+                dataRowCount: 0,
+              },
             });
           }
 
@@ -1070,10 +1093,11 @@ export function registerYardTools(
         const catalogInfo = describeMql(path);
         const rawMxql = catalogInfo?.raw;
 
-        // Pre-execution guard: a template that still carries yard markers cannot
-        // be executed as raw text. Fail loudly BEFORE the first network call
-        // instead of reporting "no data" afterwards. Verified live: such text
-        // returns HTTP 200 with [{"error":"A JSONObject text must begin ..."}].
+        // ── State C: pre-execution guard ────────────────────────────────
+        // A template that still carries yard markers cannot be executed as raw
+        // text. Fail loudly BEFORE the first network call instead of reporting
+        // "no data" afterwards. Verified live: such text returns HTTP 200 with
+        // [{"error":"A JSONObject text must begin with '{' ..."}].
         if (rawMxql) {
           const scan = scanMarkers(rawMxql);
           if (scan.hasMarkers) {
@@ -1086,40 +1110,58 @@ export function registerYardTools(
           }
         }
 
-        let result;
-        if (rawMxql) {
-          // Local catalog has the raw MXQL — execute via text endpoint (no server deployment needed)
-          result = await client.executeMxqlText(projectCode, {
-            stime,
-            etime,
-            mql: rawMxql,
-            limit,
-            param: params,
-          });
-        } else {
-          // Not in local catalog — fallback to path endpoint
-          const mqlPath = path.startsWith("/") ? path : `/${path}`;
-          result = await client.executeMxqlPath(projectCode, {
-            stime,
-            etime,
-            mql: mqlPath,
-            limit,
-            param: params,
-          });
-        }
+        // Hoist the request so the no-data / error paths can echo what was sent.
+        const usingText = Boolean(rawMxql);
+        const sentMql = usingText
+          ? rawMxql!
+          : path.startsWith("/")
+            ? path
+            : `/${path}`;
+        // Catalog keys carry an `mxql/` prefix while the tool docs use the bare
+        // form, so an unprefixed path misses `describeMql` and goes to the path
+        // endpoint. Look the source up anyway — for DISPLAY only, so the caller
+        // can see what the server is expanding. Routing is deliberately unchanged.
+        const catalogSource = usingText
+          ? undefined
+          : catalogInfo?.raw ||
+            CATALOG_RAW[path] ||
+            CATALOG_RAW[`mxql/${path.replace(/^\//, "")}`] ||
+            undefined;
 
-        if (Array.isArray(result) && result.length === 0) {
-          return buildNoDataResponse({
-            toolName: "whatap_query_data",
-            projectCode,
-            timeRange,
-          });
-        }
+        const requestEcho: QueryEcho = {
+          endpoint: usingText ? "mxql/text" : "mxql/path",
+          sentMql,
+          serverExpanded: !usingText,
+          catalogRawMxql: catalogSource,
+          param: params,
+          stime,
+          etime,
+          limit,
+          pageKey: MXQL_PAGE_KEY,
+        };
 
-        // Server returned HTTP 200 with an error row in the body. Any error row
-        // is an error — the message content is NOT a gate. Previously only
-        // messages containing "not found" were reported and every other server
-        // error was filtered out below and reported as missing data.
+        const result = usingText
+          ? await client.executeMxqlText(projectCode, {
+              stime,
+              etime,
+              mql: sentMql,
+              limit,
+              param: params,
+            })
+          : await client.executeMxqlPath(projectCode, {
+              stime,
+              etime,
+              mql: sentMql,
+              limit,
+              param: params,
+            });
+
+        const rawRowCount = Array.isArray(result) ? result.length : 0;
+
+        // ── State B: any error row is an error ──────────────────────────
+        // The message content is NOT a gate. Previously only messages containing
+        // "not found" were reported, and every other server error was filtered
+        // out and reported as missing data.
         const serverError = extractServerError(result);
         if (serverError !== null) {
           if (serverError.includes("not found")) {
@@ -1131,10 +1173,11 @@ export function registerYardTools(
             projectCode,
             path,
             timeRange,
+            echo: { ...requestEcho, rawRowCount, dataRowCount: 0 },
           });
         }
 
-        // Check for no data after filtering metadata rows
+        // ── State A: executed, no error, zero rows ──────────────────────
         const dataRows = Array.isArray(result)
           ? result.filter(
               (r: Record<string, unknown>) =>
@@ -1146,7 +1189,8 @@ export function registerYardTools(
             toolName: "whatap_query_data",
             projectCode,
             timeRange,
-            category: describeMql(path)?.entry.baseCategories[0],
+            category: catalogInfo?.entry.baseCategories[0],
+            echo: { ...requestEcho, rawRowCount, dataRowCount: 0 },
           });
         }
 

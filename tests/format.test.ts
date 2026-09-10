@@ -6,9 +6,12 @@ import {
 } from '../src/utils/format.ts';
 
 describe('formatMxqlResponse', () => {
-  it('empty array → contains "No data"', () => {
+  it('empty array → says no rows, without asserting a cause', () => {
     const result = formatMxqlResponse([]);
-    expect(result).toContain('No data');
+    expect(result).toContain('No rows returned');
+    // Must not guess why: the reported bug was a confident wrong cause.
+    expect(result).toContain('not evidence');
+    expect(result).not.toContain('No data found for the specified time range');
   });
 
   it('sample data with _head_ → contains "cpu", "%", "test-agent"', () => {

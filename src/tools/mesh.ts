@@ -15,7 +15,10 @@ import {
 import {
   classifyAndBuildError,
   appendNextSteps,
+  buildServerErrorResponse,
+  extractServerError,
 } from "../utils/response.js";
+import { MXQL_PAGE_KEY } from "../api/client.js";
 
 // ─── Helpers ───────────────────────────────────────────────────
 
@@ -345,25 +348,48 @@ export function registerMeshTools(
         const { stime, etime } = parseTimeRange(timeRange);
         const base = { stime, etime, limit: 200 };
 
-        // Execute 4 MXQL path queries in parallel
-        const [tpsData, respData, errData, actTxData] = await Promise.all([
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/tps_oid",
-          }),
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/resp_time_oid",
-          }),
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/tx_error_oid",
-          }),
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/act_tx/act_tx_oid",
-          }),
-        ]);
+        // Execute 4 MXQL path queries in parallel. allSettled, not all: one
+        // failing sub-query must not discard the three that succeeded.
+        const SUB_QUERIES = [
+          "/v2/app/tps_oid",
+          "/v2/app/resp_time_oid",
+          "/v2/app/tx_error_oid",
+          "/v2/app/act_tx/act_tx_oid",
+        ] as const;
+        const settled = await Promise.allSettled(
+          SUB_QUERIES.map((mql) =>
+            client.executeMxqlPath(projectCode, { ...base, mql })
+          )
+        );
+
+        // Per-sub-query status, so a partial result never reads as a whole one.
+        const subQueryNotes: string[] = [];
+        const resolved = settled.map((s, i) => {
+          if (s.status === "rejected") {
+            subQueryNotes.push(
+              `\`${SUB_QUERIES[i]}\` failed: ${(s.reason as Error)?.message ?? String(s.reason)}`
+            );
+            return [] as MxqlResult;
+          }
+          const serverError = extractServerError(s.value);
+          if (serverError !== null) {
+            subQueryNotes.push(`\`${SUB_QUERIES[i]}\` server error: ${serverError}`);
+            return [] as MxqlResult;
+          }
+          return s.value;
+        });
+
+        // Every sub-query failed — report the reasons instead of "no data".
+        if (subQueryNotes.length === SUB_QUERIES.length) {
+          return buildServerErrorResponse({
+            toolName: "whatap_apm_anomaly",
+            serverMessage: subQueryNotes.join(" | "),
+            projectCode,
+            timeRange,
+          });
+        }
+
+        const [tpsData, respData, errData, actTxData] = resolved;
 
         const tpsRows = cleanMxqlRows(tpsData);
         const respRows = cleanMxqlRows(respData);
@@ -380,9 +406,13 @@ export function registerMeshTools(
                 type: "text" as const,
                 text:
                   `## APM Anomaly Detection — Project ${projectCode}\n\n` +
-                  "**No APM data found.** This project may not be an APM project, " +
-                  "or there are no active agents sending data in the specified time range.\n\n" +
-                  "**Suggestions:**\n" +
+                  "**No rows returned by any of the 4 APM sub-queries.** " +
+                  "The server reported no error for them, so this is not evidence that " +
+                  "the project is not an APM project or that no agents are running.\n\n" +
+                  (subQueryNotes.length > 0
+                    ? `**Sub-query notes:**\n${subQueryNotes.map((n) => `- ${n}`).join("\n")}\n\n`
+                    : "") +
+                  "**To narrow it down:**\n" +
                   `- Verify project type: \`whatap_project_info(projectCode=${projectCode})\`\n` +
                   `- Check data availability: \`whatap_data_availability(projectCode=${projectCode})\`\n` +
                   `- Try a wider time range: \`whatap_apm_anomaly(projectCode=${projectCode}, timeRange="1h")\``,
@@ -409,6 +439,17 @@ export function registerMeshTools(
           `**Period**: last ${timeRange} | **Sensitivity**: ${sensitivity} | **Agents analyzed**: ${summaries.length}`,
           "",
         ];
+
+        // A partial result must never read as a complete one.
+        if (subQueryNotes.length > 0) {
+          lines.push(
+            `> **Partial result — ${subQueryNotes.length} of ${SUB_QUERIES.length} sub-queries did not return data:**`,
+            ...subQueryNotes.map((n) => `> - ${n}`),
+            ">",
+            "> Metrics from the failed sub-queries are missing below; absent values are not measurements.",
+            ""
+          );
+        }
 
         // Anomalies section
         if (anomalyAgents.length > 0) {
@@ -480,12 +521,37 @@ export function registerMeshTools(
       try {
         const { stime, etime } = parseTimeRange(timeRange);
 
+        const TOPOLOGY_MQL = "/npm/all/topology/app_name_latency";
         const topoData = await client.executeMxqlPath(projectCode, {
           stime,
           etime,
-          mql: "/npm/all/topology/app_name_latency",
+          mql: TOPOLOGY_MQL,
           limit: 500,
         });
+
+        // cleanMxqlRows() drops error rows as metadata, so check for them first
+        // or a server-side failure reads as "this project has no NPM data".
+        const topoError = extractServerError(topoData);
+        if (topoError !== null) {
+          return buildServerErrorResponse({
+            toolName: "whatap_service_topology",
+            serverMessage: topoError,
+            projectCode,
+            path: TOPOLOGY_MQL,
+            timeRange,
+            echo: {
+              endpoint: "mxql/path",
+              sentMql: TOPOLOGY_MQL,
+              serverExpanded: true,
+              stime,
+              etime,
+              limit: 500,
+              pageKey: MXQL_PAGE_KEY,
+              rawRowCount: Array.isArray(topoData) ? topoData.length : 0,
+              dataRowCount: 0,
+            },
+          });
+        }
 
         const rows = cleanMxqlRows(topoData);
 
@@ -496,10 +562,14 @@ export function registerMeshTools(
                 type: "text" as const,
                 text:
                   `## Service Topology — Project ${projectCode}\n\n` +
-                  "**No NPM topology data found.** This could mean:\n" +
-                  "- The project does not have an NPM agent installed.\n" +
-                  "- No network traffic was captured in the specified time range.\n\n" +
-                  "**Suggestions:**\n" +
+                  "**No rows returned.** The server reported no error, so this is " +
+                  "not evidence that NPM is absent or that no traffic occurred. " +
+                  "Two things are consistent with it, neither confirmed here:\n" +
+                  "- The project may not have an NPM agent installed.\n" +
+                  "- No network traffic may have been captured in this window.\n\n" +
+                  `Executed (server-expanded path): \`${TOPOLOGY_MQL}\` | ` +
+                  `window ${stime} → ${etime}\n\n` +
+                  "**To narrow it down:**\n" +
                   `- Verify project type: \`whatap_project_info(projectCode=${projectCode})\`\n` +
                   `- Check data availability: \`whatap_data_availability(projectCode=${projectCode})\`\n` +
                   `- Try a wider time range: \`whatap_service_topology(projectCode=${projectCode}, timeRange="6h")\`\n` +
