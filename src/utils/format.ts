@@ -36,7 +36,10 @@ export function formatMxqlResponse(
   if (Array.isArray(data)) {
     if (data.length === 0) {
       return lines
-        .concat("No data found for the specified time range.")
+        .concat(
+          "No rows returned. The server reported no error — this is not evidence " +
+            "that the data is uncollected or that the time range is wrong."
+        )
         .join("\n");
     }
 
@@ -73,7 +76,10 @@ export function formatMxqlResponse(
     );
     if (dataRows.length === 0) {
       return lines
-        .concat("No data found for the specified time range.")
+        .concat(
+          "No rows returned. The server reported no error — this is not evidence " +
+            "that the data is uncollected or that the time range is wrong."
+        )
         .join("\n");
     }
 

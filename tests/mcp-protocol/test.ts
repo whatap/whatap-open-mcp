@@ -99,7 +99,14 @@ async function main() {
       timeRange: "5m",
     });
     const text = result.content[0]?.text ?? "";
-    if (text.includes("No data") || text.length < 50) throw new Error("No data returned");
+    // Match on the empty-result marker, not the old "No data found" wording:
+    // a substring check against wording that no longer exists would make this
+    // assertion silently always pass instead of failing.
+    if (result.isError) throw new Error(`Tool error: ${text}`);
+    if (text.includes("No rows returned") || text.includes("No data") || text.length < 50) {
+      throw new Error("No data returned");
+    }
+    if (!text.includes("|")) throw new Error("Response has no result table");
     return `Got server data (${text.length} chars)`;
   });
 

@@ -15,6 +15,8 @@ import {
 import {
   classifyAndBuildError,
   appendNextSteps,
+  buildServerErrorResponse,
+  extractServerError,
 } from "../utils/response.js";
 
 // ─── Helpers ───────────────────────────────────────────────────
@@ -345,25 +347,48 @@ export function registerMeshTools(
         const { stime, etime } = parseTimeRange(timeRange);
         const base = { stime, etime, limit: 200 };
 
-        // Execute 4 MXQL path queries in parallel
-        const [tpsData, respData, errData, actTxData] = await Promise.all([
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/tps_oid",
-          }),
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/resp_time_oid",
-          }),
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/tx_error_oid",
-          }),
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/act_tx/act_tx_oid",
-          }),
-        ]);
+        // Execute 4 MXQL path queries in parallel. allSettled, not all: one
+        // failing sub-query must not discard the three that succeeded.
+        const SUB_QUERIES = [
+          "/v2/app/tps_oid",
+          "/v2/app/resp_time_oid",
+          "/v2/app/tx_error_oid",
+          "/v2/app/act_tx/act_tx_oid",
+        ] as const;
+        const settled = await Promise.allSettled(
+          SUB_QUERIES.map((mql) =>
+            client.executeMxqlPath(projectCode, { ...base, mql })
+          )
+        );
+
+        // Per-sub-query status, so a partial result never reads as a whole one.
+        const subQueryNotes: string[] = [];
+        const resolved = settled.map((s, i) => {
+          if (s.status === "rejected") {
+            subQueryNotes.push(
+              `\`${SUB_QUERIES[i]}\` failed: ${(s.reason as Error)?.message ?? String(s.reason)}`
+            );
+            return [] as MxqlResult;
+          }
+          const serverError = extractServerError(s.value);
+          if (serverError !== null) {
+            subQueryNotes.push(`\`${SUB_QUERIES[i]}\` server error: ${serverError}`);
+            return [] as MxqlResult;
+          }
+          return s.value;
+        });
+
+        // Every sub-query failed — report the reasons instead of "no data".
+        if (subQueryNotes.length === SUB_QUERIES.length) {
+          return buildServerErrorResponse({
+            toolName: "whatap_apm_anomaly",
+            serverMessage: subQueryNotes.join(" | "),
+            projectCode,
+            timeRange,
+          });
+        }
+
+        const [tpsData, respData, errData, actTxData] = resolved;
 
         const tpsRows = cleanMxqlRows(tpsData);
         const respRows = cleanMxqlRows(respData);
@@ -380,9 +405,13 @@ export function registerMeshTools(
                 type: "text" as const,
                 text:
                   `## APM Anomaly Detection — Project ${projectCode}\n\n` +
-                  "**No APM data found.** This project may not be an APM project, " +
-                  "or there are no active agents sending data in the specified time range.\n\n" +
-                  "**Suggestions:**\n" +
+                  "**No rows returned by any of the 4 APM sub-queries.** " +
+                  "The server reported no error for them, so this is not evidence that " +
+                  "the project is not an APM project or that no agents are running.\n\n" +
+                  (subQueryNotes.length > 0
+                    ? `**Sub-query notes:**\n${subQueryNotes.map((n) => `- ${n}`).join("\n")}\n\n`
+                    : "") +
+                  "**To narrow it down:**\n" +
                   `- Verify project type: \`whatap_project_info(projectCode=${projectCode})\`\n` +
                   `- Check data availability: \`whatap_data_availability(projectCode=${projectCode})\`\n` +
                   `- Try a wider time range: \`whatap_apm_anomaly(projectCode=${projectCode}, timeRange="1h")\``,
@@ -409,6 +438,17 @@ export function registerMeshTools(
           `**Period**: last ${timeRange} | **Sensitivity**: ${sensitivity} | **Agents analyzed**: ${summaries.length}`,
           "",
         ];
+
+        // A partial result must never read as a complete one.
+        if (subQueryNotes.length > 0) {
+          lines.push(
+            `> **Partial result — ${subQueryNotes.length} of ${SUB_QUERIES.length} sub-queries did not return data:**`,
+            ...subQueryNotes.map((n) => `> - ${n}`),
+            ">",
+            "> Metrics from the failed sub-queries are missing below; absent values are not measurements.",
+            ""
+          );
+        }
 
         // Anomalies section
         if (anomalyAgents.length > 0) {

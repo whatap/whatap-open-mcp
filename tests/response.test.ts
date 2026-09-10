@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   classifyAndBuildError,
   appendNextSteps,
+  buildNoDataResponse,
   buildServerErrorResponse,
   extractServerError,
 } from '../src/utils/response.ts';
@@ -103,5 +104,110 @@ describe('buildServerErrorResponse', () => {
     expect(text).toContain('Do NOT retry');
     // The whole point of the ticket: this must not read as missing data.
     expect(text).not.toContain('No data found');
+  });
+});
+
+describe('buildNoDataResponse', () => {
+  const echo = {
+    endpoint: 'mxql/text' as const,
+    sentMql: 'CATEGORY app_counter\nTAGLOAD\nSELECT [tps]',
+    stime: 1789018714682,
+    etime: 1789020514682,
+    limit: 100,
+    pageKey: 'mxql',
+    rawRowCount: 0,
+    dataRowCount: 0,
+  };
+
+  it('no longer asserts a cause it cannot know', () => {
+    const text = buildNoDataResponse({
+      toolName: 'whatap_query_data',
+      projectCode: 5490,
+      timeRange: '6h',
+    }).content[0].text;
+    expect(text).not.toContain('Time range may be too narrow');
+    expect(text).not.toContain('No active agents sending data');
+    expect(text).toContain('Not known');
+  });
+
+  it('tells the caller not to report the result as "not measured"', () => {
+    const text = buildNoDataResponse({
+      toolName: 'whatap_query_data',
+      projectCode: 5490,
+      echo,
+    }).content[0].text;
+    expect(text).toContain('not measured');
+    expect(text).toContain('not evidence');
+  });
+
+  it('echoes the executed MXQL, the window in both zones, and row counts', () => {
+    const text = buildNoDataResponse({
+      toolName: 'whatap_query_data',
+      projectCode: 5490,
+      timeRange: '6h',
+      echo,
+    }).content[0].text;
+    expect(text).toContain('CATEGORY app_counter');
+    expect(text).toContain('Endpoint: `mxql/text`');
+    expect(text).toContain('UTC:');
+    expect(text).toContain('KST:');
+    expect(text).toContain('0 returned');
+  });
+
+  it('labels a path-endpoint query as server-expanded rather than claiming it is the executed text', () => {
+    const text = buildNoDataResponse({
+      toolName: 'whatap_query_data',
+      projectCode: 5490,
+      echo: {
+        ...echo,
+        endpoint: 'mxql/path',
+        sentMql: '/v2/container/kube_pod_stat',
+        serverExpanded: true,
+        catalogRawMxql: 'CATEGORY kube_pod_stat\nTAGLOAD',
+      },
+    }).content[0].text;
+    expect(text).toContain('a path reference');
+    expect(text).toContain('not the executed text');
+    expect(text).not.toContain('sent verbatim');
+  });
+
+  it('flags leftover markers in the echoed MXQL as "not executed as intended"', () => {
+    const text = buildNoDataResponse({
+      toolName: 'whatap_query_data',
+      projectCode: 5490,
+      echo: { ...echo, sentMql: 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD' },
+    }).content[0].text;
+    expect(text).toContain('unresolved');
+    expect(text).toContain('not executed as');
+  });
+
+  it('keeps the category hint but labels it a catalog convention, not a measurement', () => {
+    const text = buildNoDataResponse({
+      toolName: 'whatap_query_data',
+      projectCode: 5490,
+      category: 'kube_pod_stat',
+      echo,
+    }).content[0].text;
+    // kube_pod_stat is not in CATEGORY_PLATFORMS; app_counter is.
+    const withKnown = buildNoDataResponse({
+      toolName: 'whatap_query_data',
+      projectCode: 5490,
+      category: 'app_counter',
+      echo,
+    }).content[0].text;
+    expect(withKnown).toContain('catalog convention');
+    expect(withKnown).not.toContain('Project type mismatch');
+    expect(text).toBeTruthy();
+  });
+
+  it('truncates a very long MXQL echo instead of dumping it whole', () => {
+    const huge = 'CATEGORY x\n' + 'SELECT [a]\n'.repeat(400);
+    const text = buildNoDataResponse({
+      toolName: 'whatap_query_data',
+      projectCode: 5490,
+      echo: { ...echo, sentMql: huge },
+    }).content[0].text;
+    expect(text).toContain('truncated');
+    expect(text.length).toBeLessThan(huge.length);
   });
 });
