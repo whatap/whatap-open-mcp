@@ -87,6 +87,14 @@ async function main() {
   await runTest("whatap_describe_query(v2/app/tps_pcode) describes query", async (c) => {
     const result = await c.callTool("whatap_describe_query", { path: "v2/app/tps_pcode" });
     const text = result.content[0]?.text ?? "";
+    // `includes("tps")` alone passed on the ERROR response, because the fuzzy
+    // "Did you mean" list contains tps paths. Assert the describe actually
+    // succeeded and carries catalog metadata.
+    if (result.isError) throw new Error(`Tool error: ${text}`);
+    if (text.includes("not found in the catalog")) {
+      throw new Error("describe_query rejected its own documented path spelling");
+    }
+    if (!text.includes("**Categories**")) throw new Error("Response missing catalog metadata");
     if (!text.toLowerCase().includes("tps")) throw new Error("Response missing TPS info");
     return `Got description (${text.length} chars)`;
   });

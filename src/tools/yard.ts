@@ -38,6 +38,7 @@ import {
   getPathsForCategory,
   getAllBaseCategories,
   getCatalogSize,
+  canonicalCatalogPath,
 } from "../yard/catalog.js";
 import { scanMarkers, type MarkerScan } from "../yard/markers.js";
 import { CATALOG_RAW, CATALOG_ENTRIES } from "../data/mxql-catalog.js";
@@ -657,9 +658,12 @@ export function registerYardTools(
         };
       }
       try {
-        const result = describeMql(path);
+        // Accept both spellings — the tool's own docs use the bare form while
+        // catalog keys are `mxql/`-prefixed. See canonicalCatalogPath().
+        const canonicalPath = canonicalCatalogPath(path);
+        const result = canonicalPath ? describeMql(canonicalPath) : null;
 
-        if (!result) {
+        if (!result || !canonicalPath) {
           // Fuzzy match suggestions
           const suggestions = fuzzyMatch(path);
           const lines = [
@@ -685,7 +689,14 @@ export function registerYardTools(
         }
 
         const { entry, ...metadata } = result;
-        const lines = [`## MXQL: ${path}`, ""];
+        const lines = [`## MXQL: ${canonicalPath}`, ""];
+        if (canonicalPath !== path) {
+          lines.push(
+            `*Resolved from \`${path}\` — the catalog key is \`${canonicalPath}\`. ` +
+              "Both spellings work in `whatap_query_data`.*",
+            ""
+          );
+        }
 
         // A yard template cannot be executed as raw text. Say so up front —
         // the parameter list below is empty for these paths, which otherwise
@@ -703,8 +714,8 @@ export function registerYardTools(
         }
 
         // Description — prefer English overlay, fall back to original comments
-        const englishDesc = ENGLISH_DESCRIPTIONS[path]
-          ?? ENGLISH_DESCRIPTIONS[path.replace(/^mxql\//, "")];
+        const englishDesc = ENGLISH_DESCRIPTIONS[canonicalPath]
+          ?? ENGLISH_DESCRIPTIONS[canonicalPath.replace(/^mxql\//, "")];
         if (englishDesc) {
           lines.push(`**Description**: ${englishDesc}`, "");
         } else if (metadata.comments.length > 0) {
@@ -830,7 +841,7 @@ export function registerYardTools(
         }
 
         // Semantic hints
-        const sem = classifyResultType(path, {
+        const sem = classifyResultType(canonicalPath, {
           selectFields: metadata.selectFields,
           rawMxql: metadata.raw,
         });
@@ -880,7 +891,7 @@ export function registerYardTools(
             "### Example",
             "",
             "```",
-            `whatap_query_data(projectCode=<PCODE>, path="${path}", timeRange="5m")`,
+            `whatap_query_data(projectCode=<PCODE>, path="${canonicalPath}", timeRange="5m")`,
             "```"
           );
         }
@@ -898,7 +909,7 @@ export function registerYardTools(
             "To filter by agent:",
             "",
             "```",
-            `whatap_query_data(projectCode=<PCODE>, path="${path}", params={"${exampleParam}": "<VALUE>"})`,
+            `whatap_query_data(projectCode=<PCODE>, path="${canonicalPath}", params={"${exampleParam}": "<VALUE>"})`,
             "```"
           );
         }

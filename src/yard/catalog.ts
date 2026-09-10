@@ -111,6 +111,32 @@ export function searchEntries(opts: {
   return results;
 }
 
+/**
+ * Resolve a catalog path written either way.
+ *
+ * Every catalog key carries an `mxql/` prefix (`mxql/v2/sys/server_base`), but
+ * the tool descriptions and PARAM_MXQL_PATH tell callers to use the bare form
+ * (`v2/sys/server_base`), so whatap_describe_query used to reject its own
+ * documented spelling with "not found in the catalog".
+ *
+ * This is a LOOKUP helper only. It deliberately does not change which endpoint
+ * whatap_query_data uses: a bare path still misses the catalog there and goes to
+ * the server's path endpoint, which resolves it. Making execution follow this
+ * normalization would move 340 v2 paths from the path endpoint to the text
+ * endpoint, which needs its own verification.
+ *
+ * Returns the canonical catalog key, or null when nothing matches either way.
+ */
+export function canonicalCatalogPath(path: string): string | null {
+  const bare = path.replace(/^\/+/, "");
+  if (byPath().has(bare)) return bare;
+  const prefixed = `mxql/${bare}`;
+  if (byPath().has(prefixed)) return prefixed;
+  const stripped = bare.replace(/^mxql\//, "");
+  if (stripped !== bare && byPath().has(stripped)) return stripped;
+  return null;
+}
+
 export function describeMql(path: string): (MqlMetadata & { entry: CatalogEntry }) | null {
   const entry = byPath().get(path);
   if (!entry) return null;
