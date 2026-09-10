@@ -38,6 +38,8 @@ import {
   getAllBaseCategories,
   getCatalogSize,
 } from "../yard/catalog.js";
+import { scanMarkers, type MarkerScan } from "../yard/markers.js";
+import { CATALOG_RAW, CATALOG_ENTRIES } from "../data/mxql-catalog.js";
 import { getPromqlQueryStore } from "./promql.js";
 
 import type { CatalogEntry } from "../yard/types.js";
@@ -46,6 +48,124 @@ type McpTextResponse = {
   content: { type: "text"; text: string }[];
   isError?: true;
 };
+
+/** True when the catalog's raw MXQL for this path can be sent as-is. */
+function isExecutablePath(p: string): boolean {
+  return !scanMarkers(CATALOG_RAW[p] ?? "").hasMarkers;
+}
+
+// Path-name tokens that carry no discriminating meaning on their own. Matching
+// on these is what made plain fuzzyMatch suggest `mongo/stat` for an APM
+// transaction template.
+const GENERIC_PATH_TOKENS = new Set([
+  "stat", "main", "list", "all", "get", "new", "old", "tmp", "sum", "avg",
+  "cnt", "count", "time", "data", "info", "top", "topn", "pcode", "oid",
+  "okind", "onode", "daily", "month", "last", "diff", "mxql", "src", "java",
+  "resources", "target", "classes",
+]);
+
+function pathTokens(p: string): string[] {
+  return (p.split("/").pop() ?? p)
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((t) => t.length >= 2 && !GENERIC_PATH_TOKENS.has(t));
+}
+
+/** Strip vendor/version prefixes so db3_stat_tx and stat_tx compare equal. */
+function normalizeCategory(c: string): string {
+  return c.toLowerCase().replace(/^(db\d*_|v\d+_)/, "");
+}
+
+/**
+ * Rank executable catalog paths as alternatives to `path`.
+ * Category identity is the strongest signal available — it names the actual
+ * data source — so it outranks path-name similarity.
+ */
+function suggestExecutablePaths(
+  path: string,
+  baseCategories: string[],
+  limit = 5
+): CatalogEntry[] {
+  const wantedExact = new Set(baseCategories.map((c) => c.toLowerCase()));
+  const wantedNorm = new Set(baseCategories.map(normalizeCategory));
+  const tokens = pathTokens(path);
+
+  const scored: Array<{ entry: CatalogEntry; score: number }> = [];
+  for (const entry of CATALOG_ENTRIES) {
+    if (entry.path === path || !isExecutablePath(entry.path)) continue;
+    let score = 0;
+    const cats = entry.baseCategories ?? [];
+    if (cats.some((c) => wantedExact.has(c.toLowerCase()))) score += 100;
+    else if (cats.some((c) => wantedNorm.has(normalizeCategory(c)))) score += 60;
+
+    const hay = entry.path.toLowerCase();
+    for (const t of tokens) if (hay.includes(t)) score += 20;
+
+    if (score === 0) continue;
+    // Prefer the maintained v2 tree and shorter, more general paths.
+    if (hay.includes("/v2/")) score += 5;
+    score -= entry.path.split("/").length;
+    scored.push({ entry, score });
+  }
+  scored.sort((a, b) => b.score - a.score || a.entry.path.length - b.entry.path.length);
+  return scored.slice(0, limit).map((s) => s.entry);
+}
+
+/**
+ * The catalog entry is a yard template, not an executable query.
+ * Returned BEFORE any network call — nothing was sent to the server.
+ */
+function buildMarkerErrorResponse(
+  path: string,
+  scan: MarkerScan,
+  projectCode: number,
+  baseCategories: string[]
+): McpTextResponse {
+  const alternatives = suggestExecutablePaths(path, baseCategories, 5);
+
+  const lines = [
+    `**Error**: \`${path}\` is a yard **template**, not an executable query. ` +
+      "It was NOT sent to the server.",
+    "",
+    `**Unresolved markers** (${scan.markers.length}): ` +
+      scan.markers.map((m) => `\`<%${m}%>\``).join(", "),
+    "",
+    "These markers are filled in by the WhaTap yard service, not by this MCP " +
+      "server, and they cannot be supplied via `params`. Executing this path " +
+      "would return an empty result that does **not** mean the project has no data.",
+  ];
+
+  if (baseCategories.length > 0) {
+    lines.push(
+      "",
+      `**Data source of this template**: \`${baseCategories.join("`, `")}\``
+    );
+  }
+  if (alternatives.length > 0) {
+    lines.push("", "**Executable paths over the same or a related category:**");
+    for (const a of alternatives) {
+      const desc = a.description
+        ? ` — ${translateDescription(a.path, a.description).slice(0, 120)}`
+        : "";
+      const cats = (a.baseCategories ?? []).join(", ");
+      lines.push(`- \`${a.path}\`${cats ? ` [${cats}]` : ""}${desc}`);
+    }
+  } else {
+    lines.push(
+      "",
+      "**No executable catalog path matched this template's category or name.** " +
+        "Do not substitute an unrelated path — find one from live data instead."
+    );
+  }
+  lines.push(
+    "",
+    `Or call \`whatap_data_availability(projectCode=${projectCode}, search="<keyword>")\` ` +
+      "to list executable paths.",
+    "",
+    "Do NOT retry this path with different params or a wider time range."
+  );
+  return { content: [{ type: "text" as const, text: lines.join("\n") }], isError: true };
+}
 
 /**
  * The server rejected the path itself. Fuzzy suggestions are a presentation
@@ -56,7 +176,7 @@ function buildPathNotFoundResponse(
   projectCode: number,
   serverMessage: string
 ): McpTextResponse {
-  const suggestions = fuzzyMatch(path, 5).filter((e) => e.path !== path);
+  const suggestions = suggestExecutablePaths(path, [], 5);
   const lines = [`**Error**: MXQL path "${path}" not found on the server.`];
   if (suggestions.length > 0) {
     lines.push("", "**Did you mean:**");
@@ -563,6 +683,21 @@ export function registerYardTools(
         const { entry, ...metadata } = result;
         const lines = [`## MXQL: ${path}`, ""];
 
+        // A yard template cannot be executed as raw text. Say so up front —
+        // the parameter list below is empty for these paths, which otherwise
+        // reads as "no arguments needed".
+        const markerScan = scanMarkers(metadata.raw);
+        if (markerScan.hasMarkers) {
+          lines.push(
+            "> **NOT EXECUTABLE.** This path is a yard template with " +
+              `${markerScan.markers.length} unresolved marker(s): ` +
+              markerScan.markers.map((m) => `\`<%${m}%>\``).join(", ") +
+              ". `whatap_query_data` will reject it. The markers are filled in " +
+              "server-side and cannot be passed via `params`.",
+            ""
+          );
+        }
+
         // Description — prefer English overlay, fall back to original comments
         const englishDesc = ENGLISH_DESCRIPTIONS[path]
           ?? ENGLISH_DESCRIPTIONS[path.replace(/^mxql\//, "")];
@@ -733,20 +868,25 @@ export function registerYardTools(
           }
         }
 
-        // Example call
-        lines.push(
-          "",
-          "### Example",
-          "",
-          "```",
-          `whatap_query_data(projectCode=<PCODE>, path="${path}", timeRange="5m")`,
-          "```"
-        );
+        // Example call — only for executable paths. Offering an example for a
+        // template path actively recommends a call that cannot succeed.
+        if (!markerScan.hasMarkers) {
+          lines.push(
+            "",
+            "### Example",
+            "",
+            "```",
+            `whatap_query_data(projectCode=<PCODE>, path="${path}", timeRange="5m")`,
+            "```"
+          );
+        }
 
         // Filter example when filter params exist
-        const filterParams = metadata.parameters.filter(
-          (p) => MXQL_PARAM_REGISTRY[p]?.kind === "filter"
-        );
+        const filterParams = markerScan.hasMarkers
+          ? []
+          : metadata.parameters.filter(
+              (p) => MXQL_PARAM_REGISTRY[p]?.kind === "filter"
+            );
         if (filterParams.length > 0) {
           const exampleParam = filterParams[0].slice(1); // strip $
           lines.push(
@@ -929,6 +1069,22 @@ export function registerYardTools(
         // Local catalog priority: if raw MXQL exists in catalog, use text endpoint
         const catalogInfo = describeMql(path);
         const rawMxql = catalogInfo?.raw;
+
+        // Pre-execution guard: a template that still carries yard markers cannot
+        // be executed as raw text. Fail loudly BEFORE the first network call
+        // instead of reporting "no data" afterwards. Verified live: such text
+        // returns HTTP 200 with [{"error":"A JSONObject text must begin ..."}].
+        if (rawMxql) {
+          const scan = scanMarkers(rawMxql);
+          if (scan.hasMarkers) {
+            return buildMarkerErrorResponse(
+              path,
+              scan,
+              projectCode,
+              catalogInfo?.entry.baseCategories ?? []
+            );
+          }
+        }
 
         let result;
         if (rawMxql) {
