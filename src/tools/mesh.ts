@@ -18,6 +18,7 @@ import {
   buildServerErrorResponse,
   extractServerError,
 } from "../utils/response.js";
+import { MXQL_PAGE_KEY } from "../api/client.js";
 
 // ─── Helpers ───────────────────────────────────────────────────
 
@@ -520,12 +521,37 @@ export function registerMeshTools(
       try {
         const { stime, etime } = parseTimeRange(timeRange);
 
+        const TOPOLOGY_MQL = "/npm/all/topology/app_name_latency";
         const topoData = await client.executeMxqlPath(projectCode, {
           stime,
           etime,
-          mql: "/npm/all/topology/app_name_latency",
+          mql: TOPOLOGY_MQL,
           limit: 500,
         });
+
+        // cleanMxqlRows() drops error rows as metadata, so check for them first
+        // or a server-side failure reads as "this project has no NPM data".
+        const topoError = extractServerError(topoData);
+        if (topoError !== null) {
+          return buildServerErrorResponse({
+            toolName: "whatap_service_topology",
+            serverMessage: topoError,
+            projectCode,
+            path: TOPOLOGY_MQL,
+            timeRange,
+            echo: {
+              endpoint: "mxql/path",
+              sentMql: TOPOLOGY_MQL,
+              serverExpanded: true,
+              stime,
+              etime,
+              limit: 500,
+              pageKey: MXQL_PAGE_KEY,
+              rawRowCount: Array.isArray(topoData) ? topoData.length : 0,
+              dataRowCount: 0,
+            },
+          });
+        }
 
         const rows = cleanMxqlRows(topoData);
 
@@ -536,10 +562,14 @@ export function registerMeshTools(
                 type: "text" as const,
                 text:
                   `## Service Topology — Project ${projectCode}\n\n` +
-                  "**No NPM topology data found.** This could mean:\n" +
-                  "- The project does not have an NPM agent installed.\n" +
-                  "- No network traffic was captured in the specified time range.\n\n" +
-                  "**Suggestions:**\n" +
+                  "**No rows returned.** The server reported no error, so this is " +
+                  "not evidence that NPM is absent or that no traffic occurred. " +
+                  "Two things are consistent with it, neither confirmed here:\n" +
+                  "- The project may not have an NPM agent installed.\n" +
+                  "- No network traffic may have been captured in this window.\n\n" +
+                  `Executed (server-expanded path): \`${TOPOLOGY_MQL}\` | ` +
+                  `window ${stime} → ${etime}\n\n` +
+                  "**To narrow it down:**\n" +
                   `- Verify project type: \`whatap_project_info(projectCode=${projectCode})\`\n` +
                   `- Check data availability: \`whatap_data_availability(projectCode=${projectCode})\`\n` +
                   `- Try a wider time range: \`whatap_service_topology(projectCode=${projectCode}, timeRange="6h")\`\n` +
