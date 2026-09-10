@@ -417,6 +417,7 @@ function loadConfig() {
 
 // src/api/client.ts
 var REQUEST_TIMEOUT = 3e4;
+var MXQL_PAGE_KEY = "mxql";
 var WhatapApiClient = class {
   baseUrl;
   accountToken;
@@ -536,7 +537,7 @@ var WhatapApiClient = class {
   // --- MXQL operations ---
   async executeMxqlText(pcode, params) {
     const token = await this.getProjectToken(pcode);
-    const payload = { pageKey: "mxql", ...params };
+    const payload = { pageKey: MXQL_PAGE_KEY, ...params };
     const res = await this.fetchProject(
       "/open-mcp/api/flush/mxql/text",
       pcode,
@@ -561,7 +562,7 @@ var WhatapApiClient = class {
   }
   async executeMxqlPath(pcode, params) {
     const token = await this.getProjectToken(pcode);
-    const payload = { pageKey: "mxql", ...params };
+    const payload = { pageKey: MXQL_PAGE_KEY, ...params };
     const res = await this.fetchProject(
       "/open-mcp/api/flush/mxql/path",
       pcode,
@@ -15751,7 +15752,9 @@ function formatMxqlResponse(data, options = {}) {
   }
   if (Array.isArray(data)) {
     if (data.length === 0) {
-      return lines.concat("No data found for the specified time range.").join("\n");
+      return lines.concat(
+        "No rows returned. The server reported no error \u2014 this is not evidence that the data is uncollected or that the time range is wrong."
+      ).join("\n");
     }
     const allRows = data;
     const headRow = allRows.find((row) => row["_head_"]);
@@ -15772,7 +15775,9 @@ function formatMxqlResponse(data, options = {}) {
       (row) => !row["_head_"] && !row["error"]
     );
     if (dataRows.length === 0) {
-      return lines.concat("No data found for the specified time range.").join("\n");
+      return lines.concat(
+        "No rows returned. The server reported no error \u2014 this is not evidence that the data is uncollected or that the time range is wrong."
+      ).join("\n");
     }
     const limited = dataRows.slice(0, maxRows);
     const truncated = dataRows.length >= maxRows;
@@ -16278,37 +16283,138 @@ var CATEGORY_PLATFORMS = {
   db_active_session: "Database",
   logsink_stats: "Log monitoring"
 };
+var MXQL_ECHO_MAX_CHARS = 1200;
+function fenceMxql(src) {
+  const compact = src.replace(/\n{3,}/g, "\n\n").trim();
+  const shown = compact.length <= MXQL_ECHO_MAX_CHARS ? compact : compact.slice(0, MXQL_ECHO_MAX_CHARS) + `
+\u2026 (truncated; ${compact.length} chars total)`;
+  return "```mxql\n" + shown + "\n```";
+}
+function fmtWindow(stime, etime) {
+  const iso = (ms) => new Date(ms).toISOString().replace("T", " ").slice(0, 19);
+  const kst = (ms) => new Date(ms + 9 * 36e5).toISOString().replace("T", " ").slice(0, 19);
+  return `${stime} \u2192 ${etime}
+  UTC: ${iso(stime)} \u2192 ${iso(etime)}
+  KST: ${kst(stime)} \u2192 ${kst(etime)}`;
+}
+function renderEcho(e, projectCode, timeRange) {
+  const lines = ["**What was executed**", ""];
+  lines.push(`- Endpoint: \`${e.endpoint}\``);
+  if (projectCode != null) {
+    lines.push(
+      `- Project: ${projectCode}` + (timeRange ? ` | timeRange: "${timeRange}"` : "")
+    );
+  }
+  lines.push(`- Window (epoch ms): ${fmtWindow(e.stime, e.etime)}`);
+  if (e.limit != null) lines.push(`- limit: ${e.limit}`);
+  if (e.pageKey) lines.push(`- pageKey: ${e.pageKey}`);
+  lines.push(
+    `- param: ${e.param && Object.keys(e.param).length > 0 ? JSON.stringify(e.param) : "(none)"}`
+  );
+  if (e.rawRowCount != null) {
+    lines.push(
+      `- Rows: ${e.rawRowCount} returned, ${e.dataRowCount ?? 0} after metadata filtering`
+    );
+  }
+  lines.push("");
+  if (e.serverExpanded) {
+    lines.push(
+      `Sent \`mql\`: \`${e.sentMql}\` \u2014 a path reference. The server expands the .mql file, so the executed text is not visible to this client.`
+    );
+    if (e.catalogRawMxql) {
+      lines.push(
+        "",
+        "Catalog source for this path (server-expanded, not the executed text):",
+        fenceMxql(e.catalogRawMxql)
+      );
+    }
+  } else {
+    lines.push("Executed MXQL (sent verbatim to the server):", fenceMxql(e.sentMql));
+  }
+  return lines;
+}
 function buildNoDataResponse(opts) {
-  const lines = ["**No data found.**", ""];
-  lines.push("**Possible causes:**");
+  const e = opts.echo;
+  const lines = [
+    "**No rows returned.**",
+    e ? "The request reached the server and came back without an error and without rows." : "The request completed without rows. (Execution details were not captured for this call site.)",
+    ""
+  ];
+  if (e) {
+    lines.push(...renderEcho(e, opts.projectCode, opts.timeRange), "");
+  }
+  lines.push("**What this tells you**", "");
+  lines.push(
+    "- Known: this query, over this window, returned zero rows.",
+    "- Not known: whether the metric is collected at all, whether agents are running, and whether the query is well-formed for this project.",
+    '- **Do not report this as "not measured", "not collected", or "no agents".** This response is not evidence for any of those.'
+  );
+  if (e && !e.serverExpanded && /<%[\s\S]*?%>/.test(e.sentMql)) {
+    lines.push(
+      "- The MXQL above still contains unresolved `<% \u2026 %>` template markers. It could not have matched anything. Treat this result as **query not executed as intended**, not as absent data."
+    );
+  }
   if (opts.category) {
     const expectedPlatform = CATEGORY_PLATFORMS[opts.category];
     if (expectedPlatform) {
       lines.push(
-        `- Project type mismatch \u2014 \`${opts.category}\` is typically used by ${expectedPlatform} projects.`
+        `- Context: \`${opts.category}\` is typically populated by ${expectedPlatform} projects. This is a catalog convention, not a measurement of this project.`
       );
     }
   }
-  lines.push(
-    "- Time range may be too narrow or no data was collected in this window.",
-    "- No active agents sending data for this category."
-  );
   lines.push("");
-  lines.push("**Recovery steps:**");
+  lines.push("**To narrow it down**", "");
   lines.push(
-    `- \`whatap_data_availability(projectCode=${opts.projectCode})\` to see which categories have active data.`
+    `- \`whatap_data_availability(projectCode=${opts.projectCode})\` \u2014 probes live categories.`
   );
   if (opts.timeRange) {
-    lines.push(`- Try a wider time range (current: "${opts.timeRange}").`);
+    lines.push(`- Re-run with a wider timeRange (current: "${opts.timeRange}").`);
   }
   lines.push(
-    `- \`whatap_list_agents(projectCode=${opts.projectCode})\` to verify agents are running.`
+    `- \`whatap_list_agents(projectCode=${opts.projectCode})\` \u2014 confirms agents are reporting.`
   );
   return { content: [{ type: "text", text: lines.join("\n") }] };
 }
+var ERROR_ROW_KEYS = ["error", "err", "errorMessage", "error_message", "msg"];
+function extractServerError(result) {
+  if (!Array.isArray(result)) return null;
+  for (const row of result) {
+    if (!row || typeof row !== "object") continue;
+    const r = row;
+    for (const key of ERROR_ROW_KEYS) {
+      if (!(key in r)) continue;
+      const v = r[key];
+      if (v == null || v === "" || v === false) continue;
+      return typeof v === "string" ? v : JSON.stringify(v);
+    }
+  }
+  return null;
+}
+function buildServerErrorResponse(opts) {
+  const lines = [
+    "**Query failed on the WhaTap server.**",
+    "",
+    `**Server message**: ${opts.serverMessage}`,
+    "",
+    "This is a query execution failure, **not** an absence of data. Do not conclude that the project has no data for this time range."
+  ];
+  const ctx = [];
+  if (opts.path) ctx.push(`- **Path**: \`${opts.path}\``);
+  if (opts.projectCode != null) ctx.push(`- **Project**: ${opts.projectCode}`);
+  if (opts.timeRange) ctx.push(`- **Time range**: ${opts.timeRange}`);
+  if (ctx.length > 0) lines.push("", "**Context:**", ...ctx);
+  if (opts.echo) {
+    lines.push("", ...renderEcho(opts.echo, opts.projectCode, opts.timeRange));
+  }
+  lines.push("", "Do NOT retry with the same parameters.");
+  return {
+    content: [{ type: "text", text: lines.join("\n") }],
+    isError: true
+  };
+}
 
 // src/version.ts
-var VERSION = "1.2.1";
+var VERSION = "1.3.0";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {
@@ -49199,6 +49305,21 @@ function getCatalogSize() {
   return CATALOG_ENTRIES.length;
 }
 
+// src/yard/markers.ts
+var MARKER_RE = /<%([\s\S]*?)%>/g;
+function scanMarkers(raw) {
+  const names = /* @__PURE__ */ new Set();
+  if (!raw) return { hasMarkers: false, markers: [] };
+  for (const line of raw.split("\n")) {
+    if (line.trim().startsWith("--")) continue;
+    for (const m of line.matchAll(MARKER_RE)) {
+      const name = m[1].trim();
+      if (name) names.add(name);
+    }
+  }
+  return { hasMarkers: names.size > 0, markers: [...names] };
+}
+
 // src/tools/promql.ts
 var PromqlQueryStore = class {
   queries = /* @__PURE__ */ new Map();
@@ -49258,14 +49379,9 @@ function registerPromqlTools(server, client) {
           etime,
           limit: 50
         });
-        if (Array.isArray(result)) {
-          const errorRow = result.find(
-            (r) => r && typeof r === "object" && "error" in r
-          );
-          if (errorRow) {
-            const errMsg = String(
-              errorRow.error
-            );
+        {
+          const errMsg = extractServerError(result);
+          if (errMsg !== null) {
             return {
               content: [
                 {
@@ -49380,6 +49496,125 @@ Check project type: \`whatap_project_info(projectCode=${projectCode})\``
 }
 
 // src/tools/yard.ts
+function isExecutablePath(p) {
+  return !scanMarkers(CATALOG_RAW[p] ?? "").hasMarkers;
+}
+var GENERIC_PATH_TOKENS = /* @__PURE__ */ new Set([
+  "stat",
+  "main",
+  "list",
+  "all",
+  "get",
+  "new",
+  "old",
+  "tmp",
+  "sum",
+  "avg",
+  "cnt",
+  "count",
+  "time",
+  "data",
+  "info",
+  "top",
+  "topn",
+  "pcode",
+  "oid",
+  "okind",
+  "onode",
+  "daily",
+  "month",
+  "last",
+  "diff",
+  "mxql",
+  "src",
+  "java",
+  "main",
+  "resources",
+  "target",
+  "classes"
+]);
+function pathTokens(p) {
+  return (p.split("/").pop() ?? p).toLowerCase().split(/[^a-z0-9]+/).filter((t) => t.length >= 2 && !GENERIC_PATH_TOKENS.has(t));
+}
+function normalizeCategory(c) {
+  return c.toLowerCase().replace(/^(db\d*_|v\d+_)/, "");
+}
+function suggestExecutablePaths(path, baseCategories, limit = 5) {
+  const wantedExact = new Set(baseCategories.map((c) => c.toLowerCase()));
+  const wantedNorm = new Set(baseCategories.map(normalizeCategory));
+  const tokens = pathTokens(path);
+  const scored = [];
+  for (const entry of CATALOG_ENTRIES) {
+    if (entry.path === path || !isExecutablePath(entry.path)) continue;
+    let score = 0;
+    const cats = entry.baseCategories ?? [];
+    if (cats.some((c) => wantedExact.has(c.toLowerCase()))) score += 100;
+    else if (cats.some((c) => wantedNorm.has(normalizeCategory(c)))) score += 60;
+    const hay = entry.path.toLowerCase();
+    for (const t of tokens) if (hay.includes(t)) score += 20;
+    if (score === 0) continue;
+    if (hay.includes("/v2/")) score += 5;
+    score -= entry.path.split("/").length;
+    scored.push({ entry, score });
+  }
+  scored.sort((a, b) => b.score - a.score || a.entry.path.length - b.entry.path.length);
+  return scored.slice(0, limit).map((s) => s.entry);
+}
+function buildMarkerErrorResponse(path, scan, projectCode, baseCategories) {
+  const alternatives = suggestExecutablePaths(path, baseCategories, 5);
+  const lines = [
+    `**Error**: \`${path}\` is a yard **template**, not an executable query. It was NOT sent to the server.`,
+    "",
+    `**Unresolved markers** (${scan.markers.length}): ` + scan.markers.map((m) => `\`<%${m}%>\``).join(", "),
+    "",
+    "These markers are filled in by the WhaTap yard service, not by this MCP server, and they cannot be supplied via `params`. Executing this path would return an empty result that does **not** mean the project has no data."
+  ];
+  if (baseCategories.length > 0) {
+    lines.push(
+      "",
+      `**Data source of this template**: \`${baseCategories.join("`, `")}\``
+    );
+  }
+  if (alternatives.length > 0) {
+    lines.push("", "**Executable paths over the same or a related category:**");
+    for (const a of alternatives) {
+      const desc = a.description ? ` \u2014 ${translateDescription(a.path, a.description).slice(0, 120)}` : "";
+      const cats = (a.baseCategories ?? []).join(", ");
+      lines.push(`- \`${a.path}\`${cats ? ` [${cats}]` : ""}${desc}`);
+    }
+  } else {
+    lines.push(
+      "",
+      "**No executable catalog path matched this template's category or name.** Do not substitute an unrelated path \u2014 find one from live data instead."
+    );
+  }
+  lines.push(
+    "",
+    `Or call \`whatap_data_availability(projectCode=${projectCode}, search="<keyword>")\` to list executable paths.`,
+    "",
+    "Do NOT retry this path with different params or a wider time range."
+  );
+  return { content: [{ type: "text", text: lines.join("\n") }], isError: true };
+}
+function buildPathNotFoundResponse(path, projectCode, serverMessage) {
+  const suggestions = suggestExecutablePaths(path, [], 5);
+  const lines = [`**Error**: MXQL path "${path}" not found on the server.`];
+  if (suggestions.length > 0) {
+    lines.push("", "**Did you mean:**");
+    for (const s of suggestions) {
+      const desc = s.description ? ` \u2014 ${translateDescription(s.path, s.description)}` : "";
+      lines.push(`- \`${s.path}\`${desc}`);
+    }
+  }
+  lines.push("", `**Server message**: ${serverMessage}`);
+  lines.push(
+    "",
+    "This is a query execution failure, **not** an absence of data.",
+    "",
+    `Use \`whatap_data_availability(projectCode=${projectCode})\` to see available paths.`
+  );
+  return { content: [{ type: "text", text: lines.join("\n") }], isError: true };
+}
 var NON_METRIC_FIELDS = /* @__PURE__ */ new Set([
   "time",
   "oid",
@@ -49689,6 +49924,14 @@ function registerYardTools(server, client) {
             etime,
             metric
           });
+          const describeError = extractServerError(result);
+          if (describeError !== null) {
+            return buildServerErrorResponse({
+              toolName: "whatap_describe_query",
+              serverMessage: describeError,
+              projectCode
+            });
+          }
           const rows = Array.isArray(result) ? result.filter(
             (r) => !r["_head_"] && !r["error"]
           ) : [];
@@ -49697,7 +49940,7 @@ function registerYardTools(server, client) {
               content: [
                 {
                   type: "text",
-                  text: `**No data found for metric "${metric}".**
+                  text: `**No rows returned for metric "${metric}".** The server reported no error \u2014 this is not evidence the metric is uncollected.
 
 Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})\``
                 }
@@ -49780,6 +50023,13 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
         }
         const { entry, ...metadata } = result;
         const lines = [`## MXQL: ${path}`, ""];
+        const markerScan = scanMarkers(metadata.raw);
+        if (markerScan.hasMarkers) {
+          lines.push(
+            `> **NOT EXECUTABLE.** This path is a yard template with ${markerScan.markers.length} unresolved marker(s): ` + markerScan.markers.map((m) => `\`<%${m}%>\``).join(", ") + ". `whatap_query_data` will reject it. The markers are filled in server-side and cannot be passed via `params`.",
+            ""
+          );
+        }
         const englishDesc = ENGLISH_DESCRIPTIONS[path] ?? ENGLISH_DESCRIPTIONS[path.replace(/^mxql\//, "")];
         if (englishDesc) {
           lines.push(`**Description**: ${englishDesc}`, "");
@@ -49912,15 +50162,17 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
             lines.push("### Raw MXQL", "", "```", simplified, "```");
           }
         }
-        lines.push(
-          "",
-          "### Example",
-          "",
-          "```",
-          `whatap_query_data(projectCode=<PCODE>, path="${path}", timeRange="5m")`,
-          "```"
-        );
-        const filterParams = metadata.parameters.filter(
+        if (!markerScan.hasMarkers) {
+          lines.push(
+            "",
+            "### Example",
+            "",
+            "```",
+            `whatap_query_data(projectCode=<PCODE>, path="${path}", timeRange="5m")`,
+            "```"
+          );
+        }
+        const filterParams = markerScan.hasMarkers ? [] : metadata.parameters.filter(
           (p) => MXQL_PARAM_REGISTRY[p]?.kind === "filter"
         );
         if (filterParams.length > 0) {
@@ -49999,6 +50251,28 @@ Create new queries with \`whatap_create_promql\`.`
             etime,
             limit
           });
+          const promqlEcho = {
+            endpoint: "openmx/text",
+            sentMql: `OPENMX ${query}`,
+            stime,
+            etime,
+            limit,
+            pageKey: MXQL_PAGE_KEY
+          };
+          const promqlError = extractServerError(result);
+          if (promqlError !== null) {
+            return buildServerErrorResponse({
+              toolName: "whatap_query_data",
+              serverMessage: promqlError,
+              projectCode,
+              timeRange,
+              echo: {
+                ...promqlEcho,
+                rawRowCount: Array.isArray(result) ? result.length : 0,
+                dataRowCount: 0
+              }
+            });
+          }
           const dataRows = Array.isArray(result) ? result.filter(
             (r) => !r["_head_"] && !r["error"]
           ) : [];
@@ -50006,7 +50280,12 @@ Create new queries with \`whatap_create_promql\`.`
             return buildNoDataResponse({
               toolName: "whatap_query_data",
               projectCode,
-              timeRange
+              timeRange,
+              echo: {
+                ...promqlEcho,
+                rawRowCount: Array.isArray(result) ? result.length : 0,
+                dataRowCount: 0
+              }
             });
           }
           const text = formatPromqlResponse(result, {
@@ -50046,47 +50325,58 @@ Create new queries with \`whatap_create_promql\`.`
         const { stime, etime } = parseTimeRange(timeRange);
         const catalogInfo = describeMql(path);
         const rawMxql = catalogInfo?.raw;
-        let result;
         if (rawMxql) {
-          result = await client.executeMxqlText(projectCode, {
-            stime,
-            etime,
-            mql: rawMxql,
-            limit,
-            param: params
-          });
-        } else {
-          const mqlPath = path.startsWith("/") ? path : `/${path}`;
-          result = await client.executeMxqlPath(projectCode, {
-            stime,
-            etime,
-            mql: mqlPath,
-            limit,
-            param: params
-          });
-        }
-        if (Array.isArray(result) && result.length === 0) {
-          return buildNoDataResponse({
-            toolName: "whatap_query_data",
-            projectCode,
-            timeRange
-          });
-        }
-        if (Array.isArray(result) && result.length === 1 && typeof result[0] === "object" && result[0] !== null && "error" in result[0]) {
-          const errorMsg = String(result[0].error);
-          if (errorMsg.includes("not found")) {
-            const suggestions = fuzzyMatch(path, 5);
-            const lines = [`**Error**: MXQL path "${path}" not found on the server.`];
-            if (suggestions.length > 0) {
-              lines.push("", "**Did you mean:**");
-              for (const s of suggestions) {
-                const desc = s.description ? ` \u2014 ${translateDescription(s.path, s.description)}` : "";
-                lines.push(`- \`${s.path}\`${desc}`);
-              }
-            }
-            lines.push("", `Use \`whatap_data_availability(projectCode=${projectCode})\` to see available paths.`);
-            return { content: [{ type: "text", text: lines.join("\n") }], isError: true };
+          const scan = scanMarkers(rawMxql);
+          if (scan.hasMarkers) {
+            return buildMarkerErrorResponse(
+              path,
+              scan,
+              projectCode,
+              catalogInfo?.entry.baseCategories ?? []
+            );
           }
+        }
+        const usingText = Boolean(rawMxql);
+        const sentMql = usingText ? rawMxql : path.startsWith("/") ? path : `/${path}`;
+        const catalogSource = usingText ? void 0 : catalogInfo?.raw || CATALOG_RAW[path] || CATALOG_RAW[`mxql/${path.replace(/^\//, "")}`] || void 0;
+        const requestEcho = {
+          endpoint: usingText ? "mxql/text" : "mxql/path",
+          sentMql,
+          serverExpanded: !usingText,
+          catalogRawMxql: catalogSource,
+          param: params,
+          stime,
+          etime,
+          limit,
+          pageKey: MXQL_PAGE_KEY
+        };
+        const result = usingText ? await client.executeMxqlText(projectCode, {
+          stime,
+          etime,
+          mql: sentMql,
+          limit,
+          param: params
+        }) : await client.executeMxqlPath(projectCode, {
+          stime,
+          etime,
+          mql: sentMql,
+          limit,
+          param: params
+        });
+        const rawRowCount = Array.isArray(result) ? result.length : 0;
+        const serverError = extractServerError(result);
+        if (serverError !== null) {
+          if (serverError.includes("not found")) {
+            return buildPathNotFoundResponse(path, projectCode, serverError);
+          }
+          return buildServerErrorResponse({
+            toolName: "whatap_query_data",
+            serverMessage: serverError,
+            projectCode,
+            path,
+            timeRange,
+            echo: { ...requestEcho, rawRowCount, dataRowCount: 0 }
+          });
         }
         const dataRows = Array.isArray(result) ? result.filter(
           (r) => !r["_head_"] && !r["error"]
@@ -50096,7 +50386,8 @@ Create new queries with \`whatap_create_promql\`.`
             toolName: "whatap_query_data",
             projectCode,
             timeRange,
-            category: describeMql(path)?.entry.baseCategories[0]
+            category: catalogInfo?.entry.baseCategories[0],
+            echo: { ...requestEcho, rawRowCount, dataRowCount: 0 }
           });
         }
         if (Array.isArray(result)) {
@@ -50358,24 +50649,41 @@ function registerMeshTools(server, client) {
       try {
         const { stime, etime } = parseTimeRange(timeRange);
         const base = { stime, etime, limit: 200 };
-        const [tpsData, respData, errData, actTxData] = await Promise.all([
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/tps_oid"
-          }),
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/resp_time_oid"
-          }),
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/tx_error_oid"
-          }),
-          client.executeMxqlPath(projectCode, {
-            ...base,
-            mql: "/v2/app/act_tx/act_tx_oid"
-          })
-        ]);
+        const SUB_QUERIES = [
+          "/v2/app/tps_oid",
+          "/v2/app/resp_time_oid",
+          "/v2/app/tx_error_oid",
+          "/v2/app/act_tx/act_tx_oid"
+        ];
+        const settled = await Promise.allSettled(
+          SUB_QUERIES.map(
+            (mql) => client.executeMxqlPath(projectCode, { ...base, mql })
+          )
+        );
+        const subQueryNotes = [];
+        const resolved = settled.map((s, i) => {
+          if (s.status === "rejected") {
+            subQueryNotes.push(
+              `\`${SUB_QUERIES[i]}\` failed: ${s.reason?.message ?? String(s.reason)}`
+            );
+            return [];
+          }
+          const serverError = extractServerError(s.value);
+          if (serverError !== null) {
+            subQueryNotes.push(`\`${SUB_QUERIES[i]}\` server error: ${serverError}`);
+            return [];
+          }
+          return s.value;
+        });
+        if (subQueryNotes.length === SUB_QUERIES.length) {
+          return buildServerErrorResponse({
+            toolName: "whatap_apm_anomaly",
+            serverMessage: subQueryNotes.join(" | "),
+            projectCode,
+            timeRange
+          });
+        }
+        const [tpsData, respData, errData, actTxData] = resolved;
         const tpsRows = cleanMxqlRows(tpsData);
         const respRows = cleanMxqlRows(respData);
         const errRows = cleanMxqlRows(errData);
@@ -50388,9 +50696,12 @@ function registerMeshTools(server, client) {
                 type: "text",
                 text: `## APM Anomaly Detection \u2014 Project ${projectCode}
 
-**No APM data found.** This project may not be an APM project, or there are no active agents sending data in the specified time range.
+**No rows returned by any of the 4 APM sub-queries.** The server reported no error for them, so this is not evidence that the project is not an APM project or that no agents are running.
 
-**Suggestions:**
+` + (subQueryNotes.length > 0 ? `**Sub-query notes:**
+${subQueryNotes.map((n) => `- ${n}`).join("\n")}
+
+` : "") + `**To narrow it down:**
 - Verify project type: \`whatap_project_info(projectCode=${projectCode})\`
 - Check data availability: \`whatap_data_availability(projectCode=${projectCode})\`
 - Try a wider time range: \`whatap_apm_anomaly(projectCode=${projectCode}, timeRange="1h")\``
@@ -50412,6 +50723,15 @@ function registerMeshTools(server, client) {
           `**Period**: last ${timeRange} | **Sensitivity**: ${sensitivity} | **Agents analyzed**: ${summaries.length}`,
           ""
         ];
+        if (subQueryNotes.length > 0) {
+          lines.push(
+            `> **Partial result \u2014 ${subQueryNotes.length} of ${SUB_QUERIES.length} sub-queries did not return data:**`,
+            ...subQueryNotes.map((n) => `> - ${n}`),
+            ">",
+            "> Metrics from the failed sub-queries are missing below; absent values are not measurements.",
+            ""
+          );
+        }
         if (anomalyAgents.length > 0) {
           lines.push(`### Anomalies Detected (${anomalyAgents.length})`, "");
           for (const agent of anomalyAgents) {
@@ -50464,12 +50784,34 @@ function registerMeshTools(server, client) {
     async ({ projectCode, timeRange }) => {
       try {
         const { stime, etime } = parseTimeRange(timeRange);
+        const TOPOLOGY_MQL = "/npm/all/topology/app_name_latency";
         const topoData = await client.executeMxqlPath(projectCode, {
           stime,
           etime,
-          mql: "/npm/all/topology/app_name_latency",
+          mql: TOPOLOGY_MQL,
           limit: 500
         });
+        const topoError = extractServerError(topoData);
+        if (topoError !== null) {
+          return buildServerErrorResponse({
+            toolName: "whatap_service_topology",
+            serverMessage: topoError,
+            projectCode,
+            path: TOPOLOGY_MQL,
+            timeRange,
+            echo: {
+              endpoint: "mxql/path",
+              sentMql: TOPOLOGY_MQL,
+              serverExpanded: true,
+              stime,
+              etime,
+              limit: 500,
+              pageKey: MXQL_PAGE_KEY,
+              rawRowCount: Array.isArray(topoData) ? topoData.length : 0,
+              dataRowCount: 0
+            }
+          });
+        }
         const rows = cleanMxqlRows(topoData);
         if (rows.length === 0) {
           return {
@@ -50478,11 +50820,13 @@ function registerMeshTools(server, client) {
                 type: "text",
                 text: `## Service Topology \u2014 Project ${projectCode}
 
-**No NPM topology data found.** This could mean:
-- The project does not have an NPM agent installed.
-- No network traffic was captured in the specified time range.
+**No rows returned.** The server reported no error, so this is not evidence that NPM is absent or that no traffic occurred. Two things are consistent with it, neither confirmed here:
+- The project may not have an NPM agent installed.
+- No network traffic may have been captured in this window.
 
-**Suggestions:**
+Executed (server-expanded path): \`${TOPOLOGY_MQL}\` | window ${stime} \u2192 ${etime}
+
+**To narrow it down:**
 - Verify project type: \`whatap_project_info(projectCode=${projectCode})\`
 - Check data availability: \`whatap_data_availability(projectCode=${projectCode})\`
 - Try a wider time range: \`whatap_service_topology(projectCode=${projectCode}, timeRange="6h")\`
