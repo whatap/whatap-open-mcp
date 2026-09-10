@@ -5,6 +5,49 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-09-10
+
+### Fixed
+
+- Query results carried no entity identity for 362 catalog paths. Many catalog
+  queries move the identity into the dashboard's series keys — either
+  `CREATE {key:_name_, from:oname}` followed by `DELETE [oid,oname]`, or
+  `RENAME {dst:_name_, src:oname}`, which consumes `oname` outright — and the
+  formatter stripped `_id_`/`_name_` as internal metadata. The server was
+  returning the identity all along; this client deleted it at the last step.
+  `mxql/app/gc_oid` returned 9 rows per timestamp, one per agent, with nothing to
+  tell them apart, and `v2/sys/server_base` — the path the tool descriptions
+  advertise first — returned `time | cpu | memory_pused` with no host name.
+
+### Changed
+
+- `_name_` and `_id_` are now rendered as table columns, placed next to `time`,
+  with a note explaining them: `_name_` is the entity display name (agent
+  `oname`, or a project/node name), `_id_` is the query's series key, which may
+  be a raw `oid` or a composite such as `pcode_oname` and is therefore only
+  comparable within one query.
+- They are deliberately **not** renamed to `name`/`id`: a real `name` column
+  already exists in 16 catalog paths (process name, pod name, container name) and
+  a real `id` in 3, so a rename would silently overwrite one of the two. Keeping
+  the wire keys makes a collision impossible.
+- An entity column is suppressed when another column already carries the same
+  value in every row (e.g. `mxql/sys/process_oid`, where `_name_` copies `name`
+  and `_id_` copies `hash`), so paths that already expose identity gain no
+  duplicate column.
+- Identity is never summarized as a metric, and `_head_`/`_type_`/`_rows_` stay
+  hidden.
+
+### Notes
+
+- Responses for narrow timeseries tables grow measurably, because identity is
+  repeated per row: `v2/sys/server_base` went from 4,781 to 8,549 characters and
+  `v2/app/tps_pcode` from 2,553 to 5,171 in the live protocol suite. A follow-up
+  can hoist a single-entity result's identity into one line above the table
+  instead of repeating it.
+- Verified live against pcodes 5490 / 29763 / 33194 on 2026-09-10, with the
+  server's own wire rows captured as test fixtures. 110 unit tests, live MCP
+  protocol suite 12/12.
+
 ## [1.3.1] - 2026-09-10
 
 ### Fixed

@@ -125,6 +125,10 @@ export function formatMxqlResponse(
     // Data table
     lines.push(formatTable(limited, headerTypes));
 
+    // Explain the entity columns, but only the ones the table actually shows
+    const entityNote = entityColumnNote(limited, resolveColumns(limited));
+    if (entityNote) lines.push("", entityNote);
+
     // Legacy truncation notice (only when no semantics)
     if (truncated && !semantics) {
       lines.push(
@@ -147,11 +151,10 @@ export function formatMxqlResponse(
       const cat = options.fieldGuide.category;
 
       // Extract column names (same logic as formatTable)
-      const metaCols = new Set(["_head_", "_id_", "_name_", "_type_", "_rows_"]);
       const colKeys = new Set<string>();
       for (const row of limited) {
         for (const key of Object.keys(row)) {
-          if (!metaCols.has(key)) colKeys.add(key);
+          if (!NON_METRIC_COLS.has(key)) colKeys.add(key);
         }
       }
       let cols = Array.from(colKeys);
@@ -247,21 +250,77 @@ const UNIT_SUFFIX: Record<string, string> = {
   B: "bytes",
 };
 
+/**
+ * Columns hidden from the rendered table: dashboard bookkeeping with no meaning
+ * to a reader. `_id_`/`_name_` are intentionally absent — see formatTable().
+ */
+const TABLE_HIDDEN_COLS = new Set(["_head_", "_type_", "_rows_"]);
+
+/**
+ * Entity-identity columns produced by the catalog queries. `_name_` is the
+ * display name (from `oname`, `pname` or `onodeName`); `_id_` is the query's
+ * series key, which may be a raw oid or a composite such as `pcode_oname`.
+ * They identify a row, so they are never treated as metrics.
+ */
+const ENTITY_COLS: string[] = ["_name_", "_id_"];
+
+/** Columns that are identifiers or bookkeeping, never metrics to summarize. */
+const NON_METRIC_COLS = new Set([...TABLE_HIDDEN_COLS, ...ENTITY_COLS]);
+
+
+
+/**
+ * Explains `_id_`/`_name_` to the caller. Without this the columns read as
+ * internal noise, and an LLM has no way to know `_name_` is the agent name.
+ */
+function entityColumnNote(
+  rows: Record<string, unknown>[],
+  shown: string[]
+): string | null {
+  const has = (c: string) => shown.includes(c);
+  if (!ENTITY_COLS.some(has)) return null;
+  const parts: string[] = [];
+  if (has("_name_")) {
+    parts.push(
+      "`_name_` is the entity display name for the row (agent `oname`, or the " +
+        "project/node name for project- and node-level queries)"
+    );
+  }
+  if (has("_id_")) {
+    parts.push(
+      "`_id_` is this query's series key — sometimes the raw `oid`, sometimes a " +
+        "composite such as `pcode_oname`, so compare it only within one query"
+    );
+  }
+  return (
+    "*Entity columns*: " +
+    parts.join("; ") +
+    ". The query moved these out of `oid`/`oname`, so they are the row's only identity."
+  );
+}
+
 // Valid MXQL HEADER type codes for Format B _head_ extraction
 const KNOWN_HEADER_TYPES = new Set(["P", "F", "I", "B", "ms", "0", "S", "#"]);
 
-function formatTable(
-  rows: Record<string, unknown>[],
-  headerTypes: Record<string, string> = {}
-): string {
-  if (rows.length === 0) return "";
+/**
+ * Decide which columns a result table shows, in order.
+ *
+ * Shared so the entity-column note cannot disagree with the table it explains.
+ */
+function resolveColumns(rows: Record<string, unknown>[]): string[] {
+  if (rows.length === 0) return [];
 
-  // Get all unique keys, excluding internal metadata columns
-  const META_COLS = new Set(["_head_", "_id_", "_name_", "_type_", "_rows_"]);
+  // Get all unique keys, excluding columns that carry no information for a reader.
+  // `_id_`/`_name_` are NOT in this set: many catalog queries move the entity
+  // identity into them (`CREATE {key:_name_, from:oname}` followed by
+  // `DELETE [oid,oname]`), so for those paths they are the only identity the
+  // response carries. Hiding them made per-agent queries return unattributable
+  // numbers — e.g. mxql/app/gc_oid returned 9 rows per timestamp, one per agent,
+  // with nothing to tell them apart.
   const keys = new Set<string>();
   for (const row of rows) {
     for (const key of Object.keys(row)) {
-      if (!META_COLS.has(key)) keys.add(key);
+      if (!TABLE_HIDDEN_COLS.has(key)) keys.add(key);
     }
   }
 
@@ -271,6 +330,54 @@ function formatTable(
   if (columns.includes("oname") && columns.includes("oid")) {
     columns = columns.filter((c) => c !== "oid");
   }
+
+  // Most catalog queries keep `oid`/`oname` and *also* set `_id_`/`_name_` for the
+  // dashboard, so showing both would duplicate a column. Drop an entity column
+  // only when another column already carries the identical value in every row —
+  // never when it is the sole identity (the case this whole change exists for).
+  for (const ec of ENTITY_COLS) {
+    if (!columns.includes(ec)) continue;
+    const val = (row: Record<string, unknown>, k: string) => {
+      const v = row[k];
+      return v === null || v === undefined ? "" : String(v);
+    };
+    const informative = rows.some((r) => val(r, ec) !== "");
+    const duplicated = columns.some(
+      (other) =>
+        other !== ec &&
+        !ENTITY_COLS.includes(other) &&
+        rows.every((r) => val(r, other) === val(r, ec))
+    );
+    if (!informative || duplicated) {
+      columns = columns.filter((c) => c !== ec);
+    }
+  }
+
+  // Identity reads better next to time than appended after 20 metric columns.
+  // Deliberately NOT renamed to `oname`/`name`: `_name_` collides with a real
+  // `name` column in 16 catalog paths (process name, pod name, container name)
+  // and `_id_` with a real `id` in 3, and a rename would silently overwrite one
+  // of them. Keeping the wire keys makes a collision impossible.
+  const identityCols = ENTITY_COLS.filter((c) => columns.includes(c));
+  if (identityCols.length > 0) {
+    const rest = columns.filter((c) => !identityCols.includes(c));
+    const timeIdx = rest.indexOf("time");
+    columns =
+      timeIdx >= 0
+        ? [...rest.slice(0, timeIdx + 1), ...identityCols, ...rest.slice(timeIdx + 1)]
+        : [...identityCols, ...rest];
+  }
+
+  return columns;
+}
+
+function formatTable(
+  rows: Record<string, unknown>[],
+  headerTypes: Record<string, string> = {}
+): string {
+  if (rows.length === 0) return "";
+
+  const columns = resolveColumns(rows);
 
   // Annotate column headers with units from _head_
   const displayColumns = columns.map((col) => {
@@ -326,7 +433,7 @@ function computeSummaryStats(
 ): string | null {
   if (rows.length < 3) return null;
 
-  const META_COLS = new Set(["_head_", "_id_", "_name_", "_type_", "_rows_"]);
+  const META_COLS = NON_METRIC_COLS;
   const SKIP_COLS = new Set(["time", "oid", "pcode"]);
 
   // Collect all columns
