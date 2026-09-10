@@ -16303,9 +16303,6 @@ var NEXT_STEPS = {
   ],
   whatap_service_topology: [
     "**Next**: `whatap_apm_anomaly(projectCode)` to detect performance issues."
-  ],
-  whatap_log_search: [
-    '**Next**: For RPS/aggregate trends, try the `v2/logs/logsink_*` paths via `whatap_query_data`. For raw lines, re-run with `mode="content"` and a tighter filter.'
   ]
 };
 function appendNextSteps(text, toolName) {
