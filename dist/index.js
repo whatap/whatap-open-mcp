@@ -15809,6 +15809,8 @@ function formatMxqlResponse(data, options = {}) {
       }
     }
     lines.push(formatTable(limited, headerTypes));
+    const entityNote = entityColumnNote(limited, resolveColumns(limited));
+    if (entityNote) lines.push("", entityNote);
     if (truncated && !semantics) {
       lines.push(
         "",
@@ -15822,11 +15824,10 @@ function formatMxqlResponse(data, options = {}) {
     }
     if (options.fieldGuide?.category) {
       const cat = options.fieldGuide.category;
-      const metaCols = /* @__PURE__ */ new Set(["_head_", "_id_", "_name_", "_type_", "_rows_"]);
       const colKeys = /* @__PURE__ */ new Set();
       for (const row of limited) {
         for (const key of Object.keys(row)) {
-          if (!metaCols.has(key)) colKeys.add(key);
+          if (!NON_METRIC_COLS.has(key)) colKeys.add(key);
         }
       }
       let cols = Array.from(colKeys);
@@ -15893,20 +15894,63 @@ var UNIT_SUFFIX = {
   ms: "ms",
   B: "bytes"
 };
+var TABLE_HIDDEN_COLS = /* @__PURE__ */ new Set(["_head_", "_type_", "_rows_"]);
+var ENTITY_COLS = ["_name_", "_id_"];
+var NON_METRIC_COLS = /* @__PURE__ */ new Set([...TABLE_HIDDEN_COLS, ...ENTITY_COLS]);
+function entityColumnNote(rows, shown) {
+  const has = (c) => shown.includes(c);
+  if (!ENTITY_COLS.some(has)) return null;
+  const parts = [];
+  if (has("_name_")) {
+    parts.push(
+      "`_name_` is the entity display name for the row (agent `oname`, or the project/node name for project- and node-level queries)"
+    );
+  }
+  if (has("_id_")) {
+    parts.push(
+      "`_id_` is this query's series key \u2014 sometimes the raw `oid`, sometimes a composite such as `pcode_oname`, so compare it only within one query"
+    );
+  }
+  return "*Entity columns*: " + parts.join("; ") + ". The query moved these out of `oid`/`oname`, so they are the row's only identity.";
+}
 var KNOWN_HEADER_TYPES = /* @__PURE__ */ new Set(["P", "F", "I", "B", "ms", "0", "S", "#"]);
-function formatTable(rows, headerTypes = {}) {
-  if (rows.length === 0) return "";
-  const META_COLS = /* @__PURE__ */ new Set(["_head_", "_id_", "_name_", "_type_", "_rows_"]);
+function resolveColumns(rows) {
+  if (rows.length === 0) return [];
   const keys = /* @__PURE__ */ new Set();
   for (const row of rows) {
     for (const key of Object.keys(row)) {
-      if (!META_COLS.has(key)) keys.add(key);
+      if (!TABLE_HIDDEN_COLS.has(key)) keys.add(key);
     }
   }
   let columns = Array.from(keys);
   if (columns.includes("oname") && columns.includes("oid")) {
     columns = columns.filter((c) => c !== "oid");
   }
+  for (const ec of ENTITY_COLS) {
+    if (!columns.includes(ec)) continue;
+    const val = (row, k) => {
+      const v = row[k];
+      return v === null || v === void 0 ? "" : String(v);
+    };
+    const informative = rows.some((r) => val(r, ec) !== "");
+    const duplicated = columns.some(
+      (other) => other !== ec && !ENTITY_COLS.includes(other) && rows.every((r) => val(r, other) === val(r, ec))
+    );
+    if (!informative || duplicated) {
+      columns = columns.filter((c) => c !== ec);
+    }
+  }
+  const identityCols = ENTITY_COLS.filter((c) => columns.includes(c));
+  if (identityCols.length > 0) {
+    const rest = columns.filter((c) => !identityCols.includes(c));
+    const timeIdx = rest.indexOf("time");
+    columns = timeIdx >= 0 ? [...rest.slice(0, timeIdx + 1), ...identityCols, ...rest.slice(timeIdx + 1)] : [...identityCols, ...rest];
+  }
+  return columns;
+}
+function formatTable(rows, headerTypes = {}) {
+  if (rows.length === 0) return "";
+  const columns = resolveColumns(rows);
   const displayColumns = columns.map((col) => {
     const suffix = UNIT_SUFFIX[headerTypes[col]];
     return suffix ? `${col} (${suffix})` : col;
@@ -15941,7 +15985,7 @@ function fmtNum(n) {
 }
 function computeSummaryStats(rows, headerTypes, rowCounts) {
   if (rows.length < 3) return null;
-  const META_COLS = /* @__PURE__ */ new Set(["_head_", "_id_", "_name_", "_type_", "_rows_"]);
+  const META_COLS = NON_METRIC_COLS;
   const SKIP_COLS = /* @__PURE__ */ new Set(["time", "oid", "pcode"]);
   const allCols = /* @__PURE__ */ new Set();
   for (const row of rows) {
@@ -16414,7 +16458,7 @@ function buildServerErrorResponse(opts) {
 }
 
 // src/version.ts
-var VERSION = "1.3.1";
+var VERSION = "1.4.0";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {
