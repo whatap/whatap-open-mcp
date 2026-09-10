@@ -14,6 +14,7 @@ import {
 import {
   classifyAndBuildError,
   appendNextSteps,
+  extractServerError,
 } from "../utils/response.js";
 
 // ─── Saved Query Store ──────────────────────────────────────────
@@ -133,15 +134,10 @@ export function registerPromqlTools(
           limit: 50,
         });
 
-        // Check for errors
-        if (Array.isArray(result)) {
-          const errorRow = result.find(
-            (r) => r && typeof r === "object" && "error" in r
-          );
-          if (errorRow) {
-            const errMsg = String(
-              (errorRow as Record<string, unknown>).error
-            );
+        // Check for errors — any error row is an error, whatever it says.
+        {
+          const errMsg = extractServerError(result);
+          if (errMsg !== null) {
             return {
               content: [
                 {

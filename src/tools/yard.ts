@@ -26,6 +26,8 @@ import {
   classifyAndBuildError,
   appendNextSteps,
   buildNoDataResponse,
+  buildServerErrorResponse,
+  extractServerError,
 } from "../utils/response.js";
 import {
   getDomainSummary,
@@ -39,6 +41,41 @@ import {
 import { getPromqlQueryStore } from "./promql.js";
 
 import type { CatalogEntry } from "../yard/types.js";
+
+type McpTextResponse = {
+  content: { type: "text"; text: string }[];
+  isError?: true;
+};
+
+/**
+ * The server rejected the path itself. Fuzzy suggestions are a presentation
+ * detail here — they no longer gate whether an error is reported at all.
+ */
+function buildPathNotFoundResponse(
+  path: string,
+  projectCode: number,
+  serverMessage: string
+): McpTextResponse {
+  const suggestions = fuzzyMatch(path, 5).filter((e) => e.path !== path);
+  const lines = [`**Error**: MXQL path "${path}" not found on the server.`];
+  if (suggestions.length > 0) {
+    lines.push("", "**Did you mean:**");
+    for (const s of suggestions) {
+      const desc = s.description
+        ? ` — ${translateDescription(s.path, s.description)}`
+        : "";
+      lines.push(`- \`${s.path}\`${desc}`);
+    }
+  }
+  lines.push("", `**Server message**: ${serverMessage}`);
+  lines.push(
+    "",
+    "This is a query execution failure, **not** an absence of data.",
+    "",
+    `Use \`whatap_data_availability(projectCode=${projectCode})\` to see available paths.`
+  );
+  return { content: [{ type: "text" as const, text: lines.join("\n") }], isError: true };
+}
 
 // Fields that are dimensions/identifiers, not metrics
 const NON_METRIC_FIELDS = new Set([
@@ -410,6 +447,15 @@ export function registerYardTools(
             etime,
             metric,
           });
+
+          const describeError = extractServerError(result);
+          if (describeError !== null) {
+            return buildServerErrorResponse({
+              toolName: "whatap_describe_query",
+              serverMessage: describeError,
+              projectCode,
+            });
+          }
 
           const rows = Array.isArray(result)
             ? result.filter(
@@ -816,6 +862,16 @@ export function registerYardTools(
             limit,
           });
 
+          const promqlError = extractServerError(result);
+          if (promqlError !== null) {
+            return buildServerErrorResponse({
+              toolName: "whatap_query_data",
+              serverMessage: promqlError,
+              projectCode,
+              timeRange,
+            });
+          }
+
           const dataRows = Array.isArray(result)
             ? result.filter(
                 (r: Record<string, unknown>) => !r["_head_"] && !r["error"]
@@ -904,30 +960,22 @@ export function registerYardTools(
           });
         }
 
-        // Detect "not found" returned as a data row (server returns 200 with error in body)
-        if (
-          Array.isArray(result) &&
-          result.length === 1 &&
-          typeof result[0] === "object" &&
-          result[0] !== null &&
-          "error" in result[0]
-        ) {
-          const errorMsg = String((result[0] as Record<string, unknown>).error);
-          if (errorMsg.includes("not found")) {
-            const suggestions = fuzzyMatch(path, 5);
-            const lines = [`**Error**: MXQL path "${path}" not found on the server.`];
-            if (suggestions.length > 0) {
-              lines.push("", "**Did you mean:**");
-              for (const s of suggestions) {
-                const desc = s.description
-                ? ` — ${translateDescription(s.path, s.description)}`
-                : "";
-                lines.push(`- \`${s.path}\`${desc}`);
-              }
-            }
-            lines.push("", `Use \`whatap_data_availability(projectCode=${projectCode})\` to see available paths.`);
-            return { content: [{ type: "text" as const, text: lines.join("\n") }], isError: true };
+        // Server returned HTTP 200 with an error row in the body. Any error row
+        // is an error — the message content is NOT a gate. Previously only
+        // messages containing "not found" were reported and every other server
+        // error was filtered out below and reported as missing data.
+        const serverError = extractServerError(result);
+        if (serverError !== null) {
+          if (serverError.includes("not found")) {
+            return buildPathNotFoundResponse(path, projectCode, serverError);
           }
+          return buildServerErrorResponse({
+            toolName: "whatap_query_data",
+            serverMessage: serverError,
+            projectCode,
+            path,
+            timeRange,
+          });
         }
 
         // Check for no data after filtering metadata rows
