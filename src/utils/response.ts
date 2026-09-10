@@ -202,3 +202,63 @@ export function buildNoDataResponse(opts: {
   );
   return { content: [{ type: "text" as const, text: lines.join("\n") }] };
 }
+
+// ---------- Server-reported Error Rows ----------
+
+// Field names WhaTap/Yard responses have been observed to use for in-body errors.
+// Verified live 2026-09-10: /flush/mxql/text returns HTTP 200 with
+// [{"error":"A JSONObject text must begin with '{' ..."}] for invalid MXQL.
+// "message" is deliberately excluded — it is a plausible column name in log data.
+const ERROR_ROW_KEYS = ["error", "err", "errorMessage", "error_message", "msg"] as const;
+
+/**
+ * Extract a server-supplied error message from an MXQL/PromQL response.
+ * The server can return HTTP 200 with an error row inside the array, at any
+ * position and alongside other rows. Returns null when no error row is present.
+ */
+export function extractServerError(result: unknown): string | null {
+  if (!Array.isArray(result)) return null;
+  for (const row of result) {
+    if (!row || typeof row !== "object") continue;
+    const r = row as Record<string, unknown>;
+    for (const key of ERROR_ROW_KEYS) {
+      if (!(key in r)) continue;
+      const v = r[key];
+      if (v == null || v === "" || v === false) continue;
+      return typeof v === "string" ? v : JSON.stringify(v);
+    }
+  }
+  return null;
+}
+
+/**
+ * Response for a query the server executed (or refused) and explained.
+ * Shows the server's own message verbatim and never inspects its content —
+ * any error row is an error.
+ */
+export function buildServerErrorResponse(opts: {
+  toolName: string;
+  serverMessage: string;
+  projectCode?: number;
+  path?: string;
+  timeRange?: string;
+}): McpResponse {
+  const lines: string[] = [
+    "**Query failed on the WhaTap server.**",
+    "",
+    `**Server message**: ${opts.serverMessage}`,
+    "",
+    "This is a query execution failure, **not** an absence of data. " +
+      "Do not conclude that the project has no data for this time range.",
+  ];
+  const ctx: string[] = [];
+  if (opts.path) ctx.push(`- **Path**: \`${opts.path}\``);
+  if (opts.projectCode != null) ctx.push(`- **Project**: ${opts.projectCode}`);
+  if (opts.timeRange) ctx.push(`- **Time range**: ${opts.timeRange}`);
+  if (ctx.length > 0) lines.push("", "**Context:**", ...ctx);
+  lines.push("", "Do NOT retry with the same parameters.");
+  return {
+    content: [{ type: "text" as const, text: lines.join("\n") }],
+    isError: true,
+  };
+}
