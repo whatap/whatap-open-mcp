@@ -5,6 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2026-09-10
+
+### Fixed
+
+- **Regression from 1.3.0**: error statistics queries were reported as failed
+  queries. `extractServerError()` treated a row containing a key named `msg` as
+  a server error, but `mxql/app/stat_error_pcode` is a `FLEXLOAD` query with no
+  `SELECT`, so it returns every field of the `stat_error` category — including
+  `msg`, which holds a numeric error-message hash:
+
+  ```json
+  {"pcode":37751,"time":1789012800000,"oid":1343766450,"msg":-1233599648,"count":31}
+  ```
+
+  Every such row produced `Query failed on the WhaTap server. Server message:
+  -1233599648 … Do NOT retry`, on a high-traffic path. Reported by an engineer
+  against pcode 37751 and reproduced on 5490.
+
+  A key name is not evidence of failure, and the same trap existed for the name
+  `error` itself: 31 catalog paths `RENAME [[tx_error, error]]`. Detection now
+  requires both discriminators that the real wire shapes satisfy and data rows do
+  not — the value must be a **non-empty string** (these data columns hold
+  numbers), and the row must carry **nothing but** the message (a result row
+  identifies itself by having `time`/`pcode`/`oid`/`count` alongside).
+  `msg`, `errorMessage` and `error_message` were dropped from the key list; only
+  `error` and `err` remain, and `error` was the sole shape ever observed on the
+  wire.
+
+### Notes
+
+- 1.3.0 shipped the `msg` key as a defensive guess. The analysis that preceded it
+  listed exactly this risk as unverified and asked for a live response before
+  merging; it was merged without that check. The regression tests now pin the
+  reporter's row and a full `stat_error` response.
+- Verified live: `mxql/app/stat_error_pcode` on pcode 5490 returns its 13 columns
+  again, the real parse-error shape is still reported as an error, and all four
+  response states plus `whatap_log_search` are unchanged. 115 unit tests, live MCP
+  protocol suite 12/12.
+
 ## [1.4.0] - 2026-09-10
 
 ### Fixed
