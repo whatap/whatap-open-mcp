@@ -16419,17 +16419,19 @@ function buildNoDataResponse(opts) {
   );
   return { content: [{ type: "text", text: lines.join("\n") }] };
 }
-var ERROR_ROW_KEYS = ["error", "err", "errorMessage", "error_message", "msg"];
+var ERROR_ROW_KEYS = ["error", "err"];
+var ERROR_ROW_COMPANIONS = /* @__PURE__ */ new Set([...ERROR_ROW_KEYS, "code", "status"]);
 function extractServerError(result) {
   if (!Array.isArray(result)) return null;
   for (const row of result) {
     if (!row || typeof row !== "object") continue;
     const r = row;
+    const keys = Object.keys(r);
+    if (keys.length === 0) continue;
+    if (keys.some((k) => !ERROR_ROW_COMPANIONS.has(k))) continue;
     for (const key of ERROR_ROW_KEYS) {
-      if (!(key in r)) continue;
       const v = r[key];
-      if (v == null || v === "" || v === false) continue;
-      return typeof v === "string" ? v : JSON.stringify(v);
+      if (typeof v === "string" && v.trim() !== "") return v;
     }
   }
   return null;
@@ -16458,7 +16460,7 @@ function buildServerErrorResponse(opts) {
 }
 
 // src/version.ts
-var VERSION = "1.4.0";
+var VERSION = "1.4.1";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {

@@ -211,3 +211,60 @@ describe('buildNoDataResponse', () => {
     expect(text.length).toBeLessThan(huge.length);
   });
 });
+
+// ─── Regression: data columns named like errors (1.4.0 → 1.4.1) ────────────
+//
+// `mxql/app/stat_error_pcode` is FLEXLOAD with no SELECT, so it returns every
+// field of the `stat_error` category — including `msg`, an error-message hash.
+// 1.4.0 had "msg" in the error-key list and reported every such row as a failed
+// query. Reported by an engineer against pcode 37751; the row below is theirs.
+
+describe('extractServerError — must not fire on data rows', () => {
+  const statErrorRow = {
+    pcode: 37751,
+    pname: 'HCMS',
+    time: 1789012800000,
+    oid: 1343766450,
+    classHash: 354851430,
+    serviceHash: 625921299,
+    msg: -1233599648,
+    errorSnapId: '8700176238577990796',
+    count: 31,
+    stime: 1789012800000,
+    etime: 1789013099990,
+  };
+
+  it('does not treat a numeric `msg` hash as a server error', () => {
+    expect(extractServerError([statErrorRow])).toBeNull();
+  });
+
+  it('does not fire on a full stat_error response with a _head_ row', () => {
+    const wire = [{ _head_: { 'tx_error$': '#' } }, statErrorRow, { ...statErrorRow, msg: 226395946 }];
+    expect(extractServerError(wire)).toBeNull();
+  });
+
+  it('does not treat a renamed `error` metric column as a server error', () => {
+    // 31 catalog paths do RENAME [[tx_error, error]].
+    const row = { time: 1789012800000, oid: 1343766450, count: 12, error: 3 };
+    expect(extractServerError([row])).toBeNull();
+  });
+
+  it('does not fire when `error` holds a number even on its own', () => {
+    expect(extractServerError([{ error: 226395946 }])).toBeNull();
+  });
+
+  it('does not fire on a log row carrying a string `msg`', () => {
+    const logRow = { time: 1789012800000, level: 'ERROR', msg: 'connection refused', host: 'web-01' };
+    expect(extractServerError([logRow])).toBeNull();
+  });
+
+  it('still detects the shapes the server actually sends', () => {
+    expect(extractServerError([{ error: "A JSONObject text must begin with '{' at 1" }]))
+      .toContain('JSONObject');
+    expect(extractServerError([{ error: 'not found /v2/app/nope' }]))
+      .toBe('not found /v2/app/nope');
+    expect(extractServerError([{ _head_: { a: 'F' } }, { error: 'query breaker tripped' }]))
+      .toBe('query breaker tripped');
+    expect(extractServerError([{ error: 'boom', code: 400 }])).toBe('boom');
+  });
+});

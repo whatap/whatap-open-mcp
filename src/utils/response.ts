@@ -325,27 +325,46 @@ export function buildNoDataResponse(opts: {
 
 // ---------- Server-reported Error Rows ----------
 
-// Field names WhaTap/Yard responses have been observed to use for in-body errors.
-// Verified live 2026-09-10: /flush/mxql/text returns HTTP 200 with
-// [{"error":"A JSONObject text must begin with '{' ..."}] for invalid MXQL.
-// "message" is deliberately excluded — it is a plausible column name in log data.
-const ERROR_ROW_KEYS = ["error", "err", "errorMessage", "error_message", "msg"] as const;
+// A server error arrives as a lone error row in an otherwise-empty object:
+//   [{"error":"A JSONObject text must begin with '{' at 1 [character 2 line 1]"}]
+//   [{"error":"not found /v2/app/nope"}]
+// (both captured live on 2026-09-10 against api.whatap.io)
+//
+// The key name alone is NOT evidence of failure, and treating it as such caused a
+// regression in 1.4.0: `mxql/app/stat_error_pcode` is a FLEXLOAD query with no
+// SELECT, so it returns every category field — including `msg`, which holds a
+// numeric error-message hash:
+//   {"pcode":37751,"time":...,"oid":1343766450,"msg":-1233599648,"count":31,...}
+// Every such row was reported as a failed query. 31 catalog paths also RENAME
+// `tx_error` to `error`, so the same trap exists for the `error` name itself.
+//
+// Discriminators, both required:
+//   1. the value is a non-empty string — data columns of these names hold numbers
+//   2. the row carries nothing else — a data row identifies itself by having
+//      time/pcode/oid/count/... alongside
+const ERROR_ROW_KEYS = ["error", "err"] as const;
+
+// Keys allowed to accompany the message without disqualifying the row.
+const ERROR_ROW_COMPANIONS = new Set<string>([...ERROR_ROW_KEYS, "code", "status"]);
 
 /**
  * Extract a server-supplied error message from an MXQL/PromQL response.
  * The server can return HTTP 200 with an error row inside the array, at any
- * position and alongside other rows. Returns null when no error row is present.
+ * position and alongside other rows (e.g. after a `_head_` row).
+ * Returns null when no error row is present.
  */
 export function extractServerError(result: unknown): string | null {
   if (!Array.isArray(result)) return null;
   for (const row of result) {
     if (!row || typeof row !== "object") continue;
     const r = row as Record<string, unknown>;
+    const keys = Object.keys(r);
+    if (keys.length === 0) continue;
+    // Any data field present → this is a result row, not a failure.
+    if (keys.some((k) => !ERROR_ROW_COMPANIONS.has(k))) continue;
     for (const key of ERROR_ROW_KEYS) {
-      if (!(key in r)) continue;
       const v = r[key];
-      if (v == null || v === "" || v === false) continue;
-      return typeof v === "string" ? v : JSON.stringify(v);
+      if (typeof v === "string" && v.trim() !== "") return v;
     }
   }
   return null;
