@@ -5,6 +5,52 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-09-11
+
+### Fixed
+
+- **`params` were silently ignored.** MXQL variables are written `$oid`, `$field`,
+  `$okind` … and the server substitutes them by that exact name, so the request's
+  `param` map must be keyed with the `$`. Every tool advertised the bare form
+  (`params={"oid":"12345"}`), which the server dropped without a word:
+
+  | sent | result (pcode 5490, `v2/app/tps_oid`) |
+  |---|---|
+  | `param {"oid":384770091}` | 9 agents — filter ignored |
+  | `param {"$oid":384770091}` | 1 agent — filter applied |
+
+  A caller asking for one agent silently received all of them, which an LLM would
+  then attribute to that agent. 432 executable catalog paths take caller-supplied
+  parameters (`$oid` 408, `$okind`/`$onode` 325, `$field` 32). Both spellings are
+  now accepted and normalized before the request is sent.
+
+- **Queries whose `SELECT` takes the metric as `$field` returned no metric.**
+  Reported against `mxql/v2/app/app_gc` and `mxql/flexboard/app_gc`, whose
+  `SELECT [time, pcode, oid, oname, $field]` came back with only time and entity
+  columns — indistinguishable from "this project has no GC data". With the fix,
+  `params={"field":"gc_time"}` returns the column. `whatap_describe_query` now
+  announces the requirement, lists the metrics the query declares, and prints a
+  working example.
+
+- **`HEADER` entries with an unquoted type code were dropped by the parser**
+  (`HEADER {gc_time$:ms, gc_count$:'I'}` kept only the quoted ones), losing the
+  field from `describe_query`'s metric list on 82 catalog paths — `tps`,
+  `resp_time`, `apdex` and `cpu_quota` among them.
+
+- **Unit annotations never rendered for Format A `_head_` rows.** The server
+  echoes HEADER keys as written (`{"gc_time$":"ms"}`) while data rows are keyed
+  `gc_time`, so every lookup missed. Tables now show `gc_time (ms)`, `cpu (%)`,
+  and byte units — the distinction v1.2.1's release notes were written about.
+
+### Notes
+
+- Reported by an engineer after upgrading to 1.4.1; `mxql/app/gc_oid` was already
+  correct because it names its metrics directly. Urgency was low — the customer
+  had switched to `gc_oid`.
+- Verified live on pcode 5490 / 29763: the two reported paths return GC metrics,
+  `$oid` filtering narrows 9 agents to 1, units render, and the 1.4.1 false-positive
+  fix is unaffected. 126 unit tests, live MCP protocol suite 12/12.
+
 ## [1.4.1] - 2026-09-10
 
 ### Fixed

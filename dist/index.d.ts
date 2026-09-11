@@ -1,3 +1,3 @@
-declare const VERSION = "1.4.1";
+declare const VERSION = "1.5.0";
 
 export { VERSION };

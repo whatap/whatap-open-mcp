@@ -14,6 +14,33 @@ const REQUEST_TIMEOUT = 30_000;
 /** Required in every MXQL request body. Echoed back on empty results. */
 export const MXQL_PAGE_KEY = "mxql";
 
+/**
+ * MXQL variables are written `$oid`, `$field`, `$okind` … and the server
+ * substitutes them by that exact name, so the `param` map has to be keyed with
+ * the `$`. The tools advertise the bare form (`params={"oid":"12345"}`), which
+ * the server silently ignored: a query asking for one agent came back with all
+ * of them, and `SELECT [time, oid, oname, $field]` came back with no metric
+ * column at all. Accept either spelling and send what the server expects.
+ *
+ * An explicitly `$`-prefixed key wins over the bare one if a caller passes both.
+ */
+export function normalizeMxqlParams(
+  param?: Record<string, string>
+): Record<string, string> | undefined {
+  if (!param) return undefined;
+  const keys = Object.keys(param);
+  if (keys.length === 0) return param;
+  const out: Record<string, string> = {};
+  for (const k of keys) {
+    if (k.startsWith("$")) continue;
+    out[`$${k}`] = param[k];
+  }
+  for (const k of keys) {
+    if (k.startsWith("$")) out[k] = param[k];
+  }
+  return out;
+}
+
 interface AgentInfo {
   oname: string;
   okindName?: string;
@@ -175,8 +202,12 @@ export class WhatapApiClient {
     params: MxqlTextParams
   ): Promise<MxqlResult> {
     const token = await this.getProjectToken(pcode);
-    // Ensure pageKey is set
-    const payload = { pageKey: MXQL_PAGE_KEY, ...params };
+    // Ensure pageKey is set, and key `param` the way the server substitutes it
+    const payload = {
+      pageKey: MXQL_PAGE_KEY,
+      ...params,
+      ...(params.param ? { param: normalizeMxqlParams(params.param) } : {}),
+    };
     const res = await this.fetchProject(
       "/open-mcp/api/flush/mxql/text",
       pcode,
@@ -207,7 +238,11 @@ export class WhatapApiClient {
     params: MxqlPathParams
   ): Promise<MxqlResult> {
     const token = await this.getProjectToken(pcode);
-    const payload = { pageKey: MXQL_PAGE_KEY, ...params };
+    const payload = {
+      pageKey: MXQL_PAGE_KEY,
+      ...params,
+      ...(params.param ? { param: normalizeMxqlParams(params.param) } : {}),
+    };
     const res = await this.fetchProject(
       "/open-mcp/api/flush/mxql/path",
       pcode,
