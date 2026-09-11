@@ -896,6 +896,40 @@ export function registerYardTools(
           );
         }
 
+        // Caller-supplied variables. `$field` is the one that silently empties a
+        // result: it stands in for the metric column inside SELECT.
+        const callerParams = markerScan.hasMarkers
+          ? []
+          : metadata.parameters.filter(
+              (p) => MXQL_PARAM_REGISTRY[p]?.kind !== "auto"
+            );
+        if (callerParams.includes("$field")) {
+          const fields = metadata.selectFields
+            .map((f) => f.replace(/^['"]|['"]$/g, ""))
+            .filter((f) => !f.startsWith("$"));
+          const headerFields = Object.keys(metadata.headerTypes).map((f) =>
+            f.replace(/\$$/, "")
+          );
+          const candidates = [...new Set(headerFields)].filter(
+            (f) => !fields.includes(f)
+          );
+          lines.push(
+            "",
+            "> **`$field` required.** This query's `SELECT` takes the metric column as a " +
+              "parameter, so without it the result comes back with only time and entity " +
+              "columns — which reads as \"no data for this metric\", but nothing was asked for." +
+              (candidates.length > 0
+                ? ` Declared metrics: ${candidates.map((f) => `\`${f}\``).join(", ")}.`
+                : ""),
+            "",
+            "```",
+            `whatap_query_data(projectCode=<PCODE>, path="${canonicalPath}", params={"$field": "${
+              candidates[0] ?? "<METRIC>"
+            }"})`,
+            "```"
+          );
+        }
+
         // Filter example when filter params exist
         const filterParams = markerScan.hasMarkers
           ? []
@@ -903,7 +937,8 @@ export function registerYardTools(
               (p) => MXQL_PARAM_REGISTRY[p]?.kind === "filter"
             );
         if (filterParams.length > 0) {
-          const exampleParam = filterParams[0].slice(1); // strip $
+          // Keep the `$` — MXQL variables are substituted by their exact name.
+          const exampleParam = filterParams[0];
           lines.push(
             "",
             "To filter by agent:",
@@ -948,7 +983,10 @@ export function registerYardTools(
       "- DB active sessions: → v2/db/instance_active_session\n" +
       "- DB SQL stats: → db_oracle_dma_sqlstat_top_elapse, db_postgresql_sqlstat_top_elapse, db_mysql_sqlstat_top_elapse\n\n" +
       "If the path returns no data, THEN call data_availability(projectCode=X) to find the right path.\n\n" +
-      "Pass params for MXQL queries that accept $-prefixed parameters (e.g., $oid, $okind).",
+      'Pass params for MXQL queries that accept $-prefixed variables. Use the variable name as ' +
+      'the key: params={"$oid": "12345", "$field": "gc_time"} (a bare "oid" is accepted too). ' +
+      "Call whatap_describe_query(path) first — a query whose SELECT contains $field returns no " +
+      "metric column until you supply it.",
     {
       projectCode: z.number().describe(PARAM_PROJECT_CODE),
       path: z.string().optional().describe(PARAM_MXQL_PATH),

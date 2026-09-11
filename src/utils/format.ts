@@ -54,8 +54,15 @@ export function formatMxqlResponse(
     if (headRow) {
       const hv = headRow["_head_"];
       if (typeof hv === "object" && hv !== null) {
-        // Format A
-        Object.assign(headerTypes, hv as Record<string, string>);
+        // Format A. The server echoes the HEADER keys as written in the MXQL,
+        // which usually carry the `$` marker — `{"gc_time$":"ms","tps$":"F"}` —
+        // while rows are keyed `gc_time`. Register both spellings, or the unit
+        // lookup misses and every annotation is silently dropped.
+        for (const [key, value] of Object.entries(hv as Record<string, string>)) {
+          headerTypes[key] = value;
+          const bare = key.replace(/\$$/, "");
+          if (bare !== key) headerTypes[bare] = value;
+        }
       } else {
         // Format B: extract sibling fields with known type codes
         for (const [key, value] of Object.entries(headRow)) {

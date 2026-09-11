@@ -117,7 +117,10 @@ function parseHeader(
   target: Record<string, string>
 ): void {
   // Matches patterns like: cpu$:'P'  or  memory_pused$: 'P'  or cpu$:"F"
-  const re = /(\w+)\$\s*:\s*['"](\w+)['"]/g;
+  // The quotes are optional in practice — `HEADER {gc_time$:ms, gc_count$:'I'}`
+  // is real, and requiring them dropped the unquoted entry, losing both its unit
+  // annotation and its name from the metric list describe_query shows.
+  const re = /(\w+)\$\s*:\s*['"]?(\w+)['"]?/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
     target[m[1]] = m[2];
