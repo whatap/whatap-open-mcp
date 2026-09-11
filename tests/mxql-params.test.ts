@@ -82,3 +82,41 @@ describe('unit annotations from _head_', () => {
     expect(header).toContain('cpu (%)');
   });
 });
+
+// The helper is only half the contract — what matters is what leaves the tool.
+describe('whatap_query_data sends $-prefixed params to the server', () => {
+  async function setup() {
+    const { registerYardTools } = await import('../src/tools/yard.ts');
+    const { McpServer } = await import('../src/mcp/server.ts');
+    const { WhatapApiClient } = await import('../src/api/client.ts');
+    const sent: Array<Record<string, unknown>> = [];
+    const client = new WhatapApiClient({ apiToken: 't', apiUrl: 'http://localhost' });
+    // Intercept at the HTTP boundary so the client's own normalization runs.
+    (client as any).getProjectToken = async () => 'ptok';
+    (globalThis as any).fetch = async (_url: string, init: RequestInit) => {
+      sent.push(JSON.parse(String(init.body)));
+      return { ok: true, status: 200, json: async () => [] } as unknown as Response;
+    };
+    const server = new McpServer({ name: 'test', version: '0.0.0' });
+    registerYardTools(server, client);
+    return { sent, callback: (server as any)._tools.get('whatap_query_data').callback };
+  }
+
+  it('rewrites a bare key so the filter is actually applied', async () => {
+    const { sent, callback } = await setup();
+    await callback({ projectCode: 5490, path: 'mxql/v2/app/tps_oid', timeRange: '10m', limit: 5, params: { oid: '384770091' } });
+    expect(sent[0].param).toEqual({ $oid: '384770091' });
+  });
+
+  it('passes $field through for queries whose SELECT takes the metric as a parameter', async () => {
+    const { sent, callback } = await setup();
+    await callback({ projectCode: 5490, path: 'mxql/v2/app/app_gc', timeRange: '10m', limit: 5, params: { field: 'gc_time' } });
+    expect(sent[0].param).toEqual({ $field: 'gc_time' });
+  });
+
+  it('sends no param key when the caller supplied none', async () => {
+    const { sent, callback } = await setup();
+    await callback({ projectCode: 5490, path: 'mxql/v2/app/tps_oid', timeRange: '10m', limit: 5 });
+    expect(sent[0].param).toBeUndefined();
+  });
+});
