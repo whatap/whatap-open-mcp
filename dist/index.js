@@ -418,6 +418,20 @@ function loadConfig() {
 // src/api/client.ts
 var REQUEST_TIMEOUT = 3e4;
 var MXQL_PAGE_KEY = "mxql";
+function normalizeMxqlParams(param) {
+  if (!param) return void 0;
+  const keys = Object.keys(param);
+  if (keys.length === 0) return param;
+  const out = {};
+  for (const k of keys) {
+    if (k.startsWith("$")) continue;
+    out[`$${k}`] = param[k];
+  }
+  for (const k of keys) {
+    if (k.startsWith("$")) out[k] = param[k];
+  }
+  return out;
+}
 var WhatapApiClient = class {
   baseUrl;
   accountToken;
@@ -537,7 +551,11 @@ var WhatapApiClient = class {
   // --- MXQL operations ---
   async executeMxqlText(pcode, params) {
     const token = await this.getProjectToken(pcode);
-    const payload = { pageKey: MXQL_PAGE_KEY, ...params };
+    const payload = {
+      pageKey: MXQL_PAGE_KEY,
+      ...params,
+      ...params.param ? { param: normalizeMxqlParams(params.param) } : {}
+    };
     const res = await this.fetchProject(
       "/open-mcp/api/flush/mxql/text",
       pcode,
@@ -562,7 +580,11 @@ var WhatapApiClient = class {
   }
   async executeMxqlPath(pcode, params) {
     const token = await this.getProjectToken(pcode);
-    const payload = { pageKey: MXQL_PAGE_KEY, ...params };
+    const payload = {
+      pageKey: MXQL_PAGE_KEY,
+      ...params,
+      ...params.param ? { param: normalizeMxqlParams(params.param) } : {}
+    };
     const res = await this.fetchProject(
       "/open-mcp/api/flush/mxql/path",
       pcode,
@@ -15762,7 +15784,11 @@ function formatMxqlResponse(data, options = {}) {
     if (headRow) {
       const hv = headRow["_head_"];
       if (typeof hv === "object" && hv !== null) {
-        Object.assign(headerTypes, hv);
+        for (const [key, value] of Object.entries(hv)) {
+          headerTypes[key] = value;
+          const bare = key.replace(/\$$/, "");
+          if (bare !== key) headerTypes[bare] = value;
+        }
       } else {
         for (const [key, value] of Object.entries(headRow)) {
           if (key !== "_head_" && typeof value === "string" && KNOWN_HEADER_TYPES.has(value)) {
@@ -16460,7 +16486,7 @@ function buildServerErrorResponse(opts) {
 }
 
 // src/version.ts
-var VERSION = "1.4.1";
+var VERSION = "1.5.0";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {
@@ -49209,7 +49235,7 @@ function parseMqlFile(content) {
   };
 }
 function parseHeader(text, target) {
-  const re = /(\w+)\$\s*:\s*['"](\w+)['"]/g;
+  const re = /(\w+)\$\s*:\s*['"]?(\w+)['"]?/g;
   let m;
   while ((m = re.exec(text)) !== null) {
     target[m[1]] = m[2];
@@ -50234,11 +50260,31 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
             "```"
           );
         }
+        const callerParams = markerScan.hasMarkers ? [] : metadata.parameters.filter(
+          (p) => MXQL_PARAM_REGISTRY[p]?.kind !== "auto"
+        );
+        if (callerParams.includes("$field")) {
+          const fields = metadata.selectFields.map((f) => f.replace(/^['"]|['"]$/g, "")).filter((f) => !f.startsWith("$"));
+          const headerFields = Object.keys(metadata.headerTypes).map(
+            (f) => f.replace(/\$$/, "")
+          );
+          const candidates = [...new Set(headerFields)].filter(
+            (f) => !fields.includes(f)
+          );
+          lines.push(
+            "",
+            '> **`$field` required.** This query\'s `SELECT` takes the metric column as a parameter, so without it the result comes back with only time and entity columns \u2014 which reads as "no data for this metric", but nothing was asked for.' + (candidates.length > 0 ? ` Declared metrics: ${candidates.map((f) => `\`${f}\``).join(", ")}.` : ""),
+            "",
+            "```",
+            `whatap_query_data(projectCode=<PCODE>, path="${canonicalPath}", params={"$field": "${candidates[0] ?? "<METRIC>"}"})`,
+            "```"
+          );
+        }
         const filterParams = markerScan.hasMarkers ? [] : metadata.parameters.filter(
           (p) => MXQL_PARAM_REGISTRY[p]?.kind === "filter"
         );
         if (filterParams.length > 0) {
-          const exampleParam = filterParams[0].slice(1);
+          const exampleParam = filterParams[0];
           lines.push(
             "",
             "To filter by agent:",
@@ -50265,7 +50311,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
   );
   server.tool(
     "whatap_query_data",
-    'Execute a data query. Call this directly when you know the projectCode \u2014 no prerequisite tools needed.\n\nTHREE MODES:\n- MXQL: whatap_query_data(projectCode=X, path="v2/sys/server_base")\n- PromQL: whatap_query_data(projectCode=X, query="rate(node_cpu[5m])")\n- Saved: whatap_query_data(projectCode=X, savedQuery="CPU by Pod")\n\nCOMMON PATHS (use directly \u2014 no need to call data_availability or describe_query first):\n- Server: cpu/mem/disk/net \u2192 v2/sys/server_base, v2/sys/server_disk, v2/sys/server_network\n- APM: tps/response/error \u2192 v2/app/tps_pcode, v2/app/resp_time_pcode, v2/app/tx_error_pcode\n- APM per agent: \u2192 v2/app/tps_oid, v2/app/resp_time_oid, v2/app/act_tx/act_tx_oid\n- K8s: pods/nodes/events \u2192 v2/container/kube_pod, v2/container/kube_node, v2/container/kube_event\n- Container: \u2192 v2/container/container_stat\n- DB active sessions: \u2192 v2/db/instance_active_session\n- DB SQL stats: \u2192 db_oracle_dma_sqlstat_top_elapse, db_postgresql_sqlstat_top_elapse, db_mysql_sqlstat_top_elapse\n\nIf the path returns no data, THEN call data_availability(projectCode=X) to find the right path.\n\nPass params for MXQL queries that accept $-prefixed parameters (e.g., $oid, $okind).',
+    'Execute a data query. Call this directly when you know the projectCode \u2014 no prerequisite tools needed.\n\nTHREE MODES:\n- MXQL: whatap_query_data(projectCode=X, path="v2/sys/server_base")\n- PromQL: whatap_query_data(projectCode=X, query="rate(node_cpu[5m])")\n- Saved: whatap_query_data(projectCode=X, savedQuery="CPU by Pod")\n\nCOMMON PATHS (use directly \u2014 no need to call data_availability or describe_query first):\n- Server: cpu/mem/disk/net \u2192 v2/sys/server_base, v2/sys/server_disk, v2/sys/server_network\n- APM: tps/response/error \u2192 v2/app/tps_pcode, v2/app/resp_time_pcode, v2/app/tx_error_pcode\n- APM per agent: \u2192 v2/app/tps_oid, v2/app/resp_time_oid, v2/app/act_tx/act_tx_oid\n- K8s: pods/nodes/events \u2192 v2/container/kube_pod, v2/container/kube_node, v2/container/kube_event\n- Container: \u2192 v2/container/container_stat\n- DB active sessions: \u2192 v2/db/instance_active_session\n- DB SQL stats: \u2192 db_oracle_dma_sqlstat_top_elapse, db_postgresql_sqlstat_top_elapse, db_mysql_sqlstat_top_elapse\n\nIf the path returns no data, THEN call data_availability(projectCode=X) to find the right path.\n\nPass params for MXQL queries that accept $-prefixed variables. Use the variable name as the key: params={"$oid": "12345", "$field": "gc_time"} (a bare "oid" is accepted too). Call whatap_describe_query(path) first \u2014 a query whose SELECT contains $field returns no metric column until you supply it.',
     {
       projectCode: z.number().describe(PARAM_PROJECT_CODE),
       path: z.string().optional().describe(PARAM_MXQL_PATH),
