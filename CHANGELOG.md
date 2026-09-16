@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.4] - 2026-09-16
+
+### Fixed
+
+- **A missed `category` lookup suggested nothing useful.** The miss response
+  listed the first 15 base categories alphabetically — `#WhaTapPIIClearHistory,
+  $category, 1d, 2h, AppLog, ...` — which never contains what was asked for.
+
+  Callers keep spelling marker categories without their delimiters, asking for
+  `SQLSTAT_CATEGORY` when the catalog key is `<%SQLSTAT_CATEGORY%>`; the `<%` and
+  `%>` are part of the name. Three separate sessions failed this same lookup in
+  three different ways (escaped brackets, stripped delimiters, and giving up on
+  the tool to grep `dist/index.js` for 7½ minutes).
+
+  Misses now suggest near matches, ranked on a normalized form (lowercase,
+  alphanumerics only) so the two spellings compare equal:
+
+  ```
+  No queries found for category "SQLSTAT_CATEGORY".
+
+  **Did you mean:**
+  - `<%SQLSTAT_CATEGORY%>`
+  ```
+
+  An exact normalized match is returned alone — offering weaker candidates
+  beside it only invites a second wrong guess. Partial names still fan out
+  (`sqlstat` → the seven `db_*_sqlstat` categories), and typos are caught
+  (`server_bas` → `server_base`).
+
 ## [1.5.3] - 2026-09-16
 
 ### Fixed

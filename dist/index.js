@@ -16536,7 +16536,7 @@ function buildServerErrorResponse(opts) {
 }
 
 // src/version.ts
-var VERSION = "1.5.3";
+var VERSION = "1.5.4";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {
@@ -46837,6 +46837,25 @@ function getPathsForCategory(category) {
 function getAllBaseCategories() {
   return Array.from(byCategoryBase().keys()).filter((c) => !isTemplateCategory(c)).sort();
 }
+function suggestCategories(term, limit = 8) {
+  const norm = (v) => v.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const wanted = norm(term);
+  if (!wanted) return [];
+  const scored = [];
+  for (const name of byCategoryBase().keys()) {
+    const candidate = norm(name);
+    if (!candidate) continue;
+    let score = 0;
+    if (candidate === wanted) score = 100;
+    else if (candidate.includes(wanted)) score = 70;
+    else if (wanted.includes(candidate)) score = 50;
+    if (score > 0) scored.push({ name, score });
+  }
+  const exact = scored.filter((s) => s.score === 100);
+  const pool = exact.length > 0 ? exact : scored;
+  pool.sort((a, b) => b.score - a.score || a.name.length - b.name.length);
+  return pool.slice(0, limit).map((s) => s.name);
+}
 function getCatalogSize() {
   return CATALOG_ENTRIES.length;
 }
@@ -47345,15 +47364,22 @@ function registerYardTools(server, client) {
             const allCats = getAllBaseCategories();
             const sample = allCats.slice(0, 15).join(", ");
             const reason = isTemplateCategory(category) ? `"${category}" is an unresolved yard template marker, not a category name. The yard substitutes it server-side when it serves a query by path, so it can never be looked up here.` : `No queries found for category "${category}".`;
+            const near = suggestCategories(category);
+            const body = [reason, ""];
+            if (near.length > 0) {
+              body.push(
+                "**Did you mean:**",
+                ...near.map((c) => `- \`${c}\``),
+                "",
+                "*Marker names such as `<%CATEGORY%>` are real catalog keys \u2014 the surrounding `<%` and `%>` are part of the name.*",
+                ""
+              );
+            }
+            body.push(
+              `**Available base categories** (${allCats.length} total): ${sample}${allCats.length > 15 ? ", ..." : ""}`
+            );
             return {
-              content: [
-                {
-                  type: "text",
-                  text: `${reason}
-
-**Available base categories** (${allCats.length} total): ${sample}${allCats.length > 15 ? ", ..." : ""}`
-                }
-              ]
+              content: [{ type: "text", text: body.join("\n") }]
             };
           }
           const lines2 = [
