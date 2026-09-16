@@ -12,6 +12,7 @@ import {
   getAllBaseCategories,
   getDomainSummary,
   searchEntries,
+  suggestCategories,
 } from "../src/yard/catalog.js";
 import {
   hasBuildLayoutPrefix,
@@ -186,5 +187,34 @@ describe("HTML-escaped category arguments", () => {
     }).map((e) => e.path);
     expect(escaped).toEqual(plain);
     expect(escaped.length).toBe(2);
+  });
+});
+
+describe("category miss suggestions", () => {
+  it("finds the marker category when the delimiters are omitted", () => {
+    // Three sessions asked for `SQLSTAT_CATEGORY` and got an alphabetical
+    // sample that never contained `<%SQLSTAT_CATEGORY%>`.
+    expect(suggestCategories("SQLSTAT_CATEGORY")).toEqual(["<%SQLSTAT_CATEGORY%>"]);
+    expect(suggestCategories("PLAN_CHANGE_CATEGORY")).toEqual(["<%PLAN_CHANGE_CATEGORY%>"]);
+  });
+
+  it("is case- and punctuation-insensitive", () => {
+    expect(suggestCategories("sqlstat_category")).toEqual(["<%SQLSTAT_CATEGORY%>"]);
+    expect(suggestCategories("<% SQLSTAT_CATEGORY %>")).toEqual(["<%SQLSTAT_CATEGORY%>"]);
+  });
+
+  it("suggests the whole family for a partial name", () => {
+    const hits = suggestCategories("sqlstat");
+    expect(hits).toContain("db_oracle_sqlstat");
+    expect(hits).toContain("db_mysql_sqlstat");
+  });
+
+  it("corrects a typo in an ordinary category", () => {
+    expect(suggestCategories("server_bas")).toContain("server_base");
+  });
+
+  it("returns nothing for a name with no resemblance", () => {
+    expect(suggestCategories("totally_unknown_xyz")).toEqual([]);
+    expect(suggestCategories("")).toEqual([]);
   });
 });

@@ -42,6 +42,7 @@ import {
   fuzzyMatch,
   getPathsForCategory,
   getAllBaseCategories,
+  suggestCategories,
   getCatalogSize,
   canonicalCatalogPath,
 } from "../yard/catalog.js";
@@ -463,15 +464,28 @@ export function registerYardTools(
                 "The yard substitutes it server-side when it serves a query by path, " +
                 "so it can never be looked up here."
               : `No queries found for category "${category}".`;
+
+            // An alphabetical sample never contains the answer. Offer the
+            // categories that actually resemble what was asked for — which is
+            // how `SQLSTAT_CATEGORY` finds `<%SQLSTAT_CATEGORY%>`.
+            const near = suggestCategories(category);
+            const body = [reason, ""];
+            if (near.length > 0) {
+              body.push(
+                "**Did you mean:**",
+                ...near.map((c) => `- \`${c}\``),
+                "",
+                "*Marker names such as `<%CATEGORY%>` are real catalog keys — " +
+                  "the surrounding `<%` and `%>` are part of the name.*",
+                ""
+              );
+            }
+            body.push(
+              `**Available base categories** (${allCats.length} total): ${sample}${allCats.length > 15 ? ", ..." : ""}`
+            );
+
             return {
-              content: [
-                {
-                  type: "text" as const,
-                  text:
-                    `${reason}\n\n` +
-                    `**Available base categories** (${allCats.length} total): ${sample}${allCats.length > 15 ? ", ..." : ""}`,
-                },
-              ],
+              content: [{ type: "text" as const, text: body.join("\n") }],
             };
           }
 
