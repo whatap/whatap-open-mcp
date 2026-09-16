@@ -5,6 +5,71 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.1] - 2026-09-16
+
+### Fixed
+
+- **MCP responses showed Korean to non-Korean-speaking users.** Reported by a
+  Japanese customer. The server's own prose was already English; Korean entered
+  only through the two auto-generated data files and was passed straight through
+  to the caller:
+
+  | surface | leaked | tool |
+  |---|---|---|
+  | raw MXQL comments (`--`, `#`, `/* */`) | 294 lines across 192 of 931 paths | `whatap_describe_query` |
+  | field/category descriptions from upstream YAML | 16, in 5 categories | `describe_query`, `query_data` Field Guide |
+
+  Catalog descriptions were already covered by the existing `ENGLISH_DESCRIPTIONS`
+  overlay; that layer simply never reached raw MXQL or field metadata. Added a
+  comment-aware rewriter (`src/utils/mxql-comments.ts`) that translates the 135
+  distinct Korean comment lines, and English overrides applied at the single
+  `getCategoryMeta()` lookup point so they survive metadata regeneration.
+
+  Translation is display-only — `whatap_query_data` still sends `CATALOG_RAW` to
+  the text endpoint byte-identical to the yard source. The Korean in
+  `mxql/techross/*` is left alone: those are real SCADA metric identifiers
+  (`P1_PV_AI_UF_1차압`), not prose, so rewriting them would produce MXQL that
+  matches nothing.
+
+  Verified by sweeping all 931 paths through the built bundle over MCP stdio:
+  zero Korean outside the techross identifiers.
+
+- **A quarter of the catalog was duplicate rows.** The yard lives in a Maven
+  project, so every `.mql` exists twice on disk — under `src/main/resources/` and
+  as a byte-identical build copy under `target/classes/`. The generator walked
+  both trees and registered each query twice, so 232 of 931 entries (24.9%) were
+  duplicate pairs. Tool output goes straight into LLM context, so a `category=`
+  listing could spend up to half its rows on copies.
+
+  All 116 pairs were verified identical in raw body and metadata, with zero
+  collisions against the 699 already-clean paths, so collapsing them loses no
+  queries:
+
+  | | before | after |
+  |---|---|---|
+  | catalog entries | 931 | **815** |
+  | category listings containing copies | 45 of 164 | **0** |
+  | duplicate rows across listings | 124 | 0 |
+  | `dist/index.js` | 1.99 MB | **1.85 MB** |
+
+  Fixed at the source in `scripts/generate-catalog.ts`. `canonicalCatalogPath()`
+  still resolves the old prefixed spellings, so a path copied from a pre-1.5.1
+  response keeps working.
+
+- **Unusable category names were offered as query candidates.** 14 of the 164
+  base categories were unsubstituted yard markers (`<%CATEGORY%>`,
+  `db_oracle_dma_sqlstat<%TIMEUNIT%>`, a bare `<%`) rather than category names.
+  All 62 entries carrying them are non-executable templates, so they were never
+  usable candidates. They are now excluded from the category index and the
+  browsable list (164 → 150), and asking for one by name returns an explanation
+  instead of a bare "not found" — which would otherwise read as "this project has
+  no such data".
+
+  Not addressed here: `$category` (11 paths) is a runtime `$`-parameter in the
+  same class, but all of its paths are executable, so removing it would hide
+  working log paths from `category=` lookup. `db3_stat_httpc[h1}` is a brace typo
+  in the upstream collector `.mql`, tracked in PLAT-854.
+
 ## [1.5.0] - 2026-09-11
 
 ### Fixed

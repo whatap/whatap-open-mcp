@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { scanMarkers } from '../src/yard/markers.ts';
+import { scanMarkers, isTemplateCategory } from '../src/yard/markers.ts';
 import { CATALOG_RAW, CATALOG_ENTRIES } from '../src/data/mxql-catalog.ts';
 
 describe('scanMarkers', () => {
@@ -37,37 +37,37 @@ describe('scanMarkers', () => {
 });
 
 describe('catalog marker inventory', () => {
-  // Ground truth measured 2026-09-10 against main HEAD c6e1f8a. These numbers
-  // are asserted so a catalog regeneration cannot silently change the blast
-  // radius: the src/main/resources tree carries 100 template paths, duplicated
-  // under target/classes.
+  // Ground truth measured 2026-09-10 against main HEAD c6e1f8a, restated after
+  // the build-layout dedupe: the 100 template paths were counted twice then
+  // (once under src/main/resources, once under target/classes) and are counted
+  // once now. These numbers are asserted so a catalog regeneration cannot
+  // silently change the blast radius.
   const markerPaths = Object.keys(CATALOG_RAW).filter(
     (p) => scanMarkers(CATALOG_RAW[p]).hasMarkers
   );
 
-  it('every marker path lives under a yard source or build tree, never under mxql/', () => {
-    const underMxql = markerPaths.filter((p) => p.startsWith('mxql/'));
-    expect(underMxql).toEqual([]);
+  it('carries the 100 template paths exactly once', () => {
+    expect(markerPaths.length).toBe(100);
   });
 
-  it('the reported 100 template paths are present under src/main/resources', () => {
-    const srcMain = markerPaths.filter((p) => p.startsWith('src/main/resources/'));
-    expect(srcMain.length).toBe(100);
+  it('registers every marker path under mxql/, not a build-layout prefix', () => {
+    expect(markerPaths.filter((p) => !p.startsWith('mxql/'))).toEqual([]);
   });
 
-  it('the same templates are duplicated under target/classes', () => {
-    const target = markerPaths.filter((p) => p.startsWith('target/classes/'));
-    expect(target.length).toBe(100);
+  it('no longer ships the src/main/resources and target/classes duplicates', () => {
+    const prefixed = Object.keys(CATALOG_RAW).filter(
+      (p) => p.startsWith('src/main/resources/') || p.startsWith('target/classes/')
+    );
+    expect(prefixed).toEqual([]);
   });
 
   it('the reported per-domain split holds (apm/stat 48, dbx 27, infra 22, other 3)', () => {
     const domainOf = (p: string) => {
-      const rel = p.replace(/^src\/main\/resources\//, '').replace(/^mxql\//, '');
-      const seg = rel.split('/');
+      const seg = p.replace(/^mxql\//, '').split('/');
       return seg[0] === 'apm' && seg[1] === 'stat' ? 'apm/stat' : seg[0];
     };
     const counts = new Map<string, number>();
-    for (const p of markerPaths.filter((x) => x.startsWith('src/main/resources/'))) {
+    for (const p of markerPaths) {
       const d = domainOf(p);
       counts.set(d, (counts.get(d) ?? 0) + 1);
     }
@@ -81,7 +81,7 @@ describe('catalog marker inventory', () => {
   });
 
   it('the ticket reproduction path is a template with AGENT and FILTER markers', () => {
-    const p = 'src/main/resources/mxql/apm/stat/transaction_diff';
+    const p = 'mxql/apm/stat/transaction_diff';
     const scan = scanMarkers(CATALOG_RAW[p]);
     expect(scan.hasMarkers).toBe(true);
     expect(scan.markers).toEqual(['AGENT', 'FILTER']);
@@ -92,5 +92,15 @@ describe('catalog marker inventory', () => {
     const alt = CATALOG_ENTRIES.find((e) => e.path === 'mxql/app/stat_tx_pcode');
     expect(alt).toBeDefined();
     expect(scanMarkers(CATALOG_RAW[alt!.path]).hasMarkers).toBe(false);
+  });
+});
+
+describe('isTemplateCategory', () => {
+  it('flags marker text and passes real category names', () => {
+    expect(isTemplateCategory('<%CATEGORY%>')).toBe(true);
+    expect(isTemplateCategory('db_oracle_dma_sqlstat<%TIMEUNIT%>')).toBe(true);
+    expect(isTemplateCategory('<%')).toBe(true);
+    expect(isTemplateCategory('app_counter')).toBe(false);
+    expect(isTemplateCategory('server_base')).toBe(false);
   });
 });

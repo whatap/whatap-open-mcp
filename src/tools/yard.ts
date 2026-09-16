@@ -23,6 +23,10 @@ import {
 } from "../utils/semantic.js";
 import { getCategoryMeta } from "../utils/field-guide.js";
 import {
+  translateComment,
+  translateMxqlComments,
+} from "../utils/mxql-comments.js";
+import {
   classifyAndBuildError,
   appendNextSteps,
   buildNoDataResponse,
@@ -40,7 +44,11 @@ import {
   getCatalogSize,
   canonicalCatalogPath,
 } from "../yard/catalog.js";
-import { scanMarkers, type MarkerScan } from "../yard/markers.js";
+import {
+  scanMarkers,
+  isTemplateCategory,
+  type MarkerScan,
+} from "../yard/markers.js";
 import { CATALOG_RAW, CATALOG_ENTRIES } from "../data/mxql-catalog.js";
 import { MXQL_PAGE_KEY } from "../api/client.js";
 import { getPromqlQueryStore } from "./promql.js";
@@ -441,12 +449,20 @@ export function registerYardTools(
           if (entries.length === 0) {
             const allCats = getAllBaseCategories();
             const sample = allCats.slice(0, 15).join(", ");
+            // A marker is not a category name, so "not found" would read as
+            // "this project has no such data" rather than "that is a template
+            // placeholder". Say which it is.
+            const reason = isTemplateCategory(category)
+              ? `"${category}" is an unresolved yard template marker, not a category name. ` +
+                "The yard substitutes it server-side when it serves a query by path, " +
+                "so it can never be looked up here."
+              : `No queries found for category "${category}".`;
             return {
               content: [
                 {
                   type: "text" as const,
                   text:
-                    `No queries found for category "${category}".\n\n` +
+                    `${reason}\n\n` +
                     `**Available base categories** (${allCats.length} total): ${sample}${allCats.length > 15 ? ", ..." : ""}`,
                 },
               ],
@@ -720,7 +736,7 @@ export function registerYardTools(
           lines.push(`**Description**: ${englishDesc}`, "");
         } else if (metadata.comments.length > 0) {
           lines.push(
-            `**Description**: ${metadata.comments.join(" / ")}`,
+            `**Description**: ${metadata.comments.map(translateComment).join(" / ")}`,
             ""
           );
         }
@@ -863,7 +879,9 @@ export function registerYardTools(
 
         // Raw MXQL — simplified (strip internal directives)
         if (metadata.raw) {
-          const simplified = metadata.raw
+          // Display-only translation. The executed copy (whatap_query_data) still
+          // sends the untouched yard source to the text endpoint.
+          const simplified = translateMxqlComments(metadata.raw)
             .split("\n")
             .filter((line) => {
               const t = line.trim();

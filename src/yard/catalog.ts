@@ -5,6 +5,8 @@
 import { CATALOG_ENTRIES, CATALOG_RAW } from "../data/mxql-catalog.js";
 import type { CatalogEntry, DomainSummary, MqlMetadata } from "./types.js";
 import { parseMqlFile } from "./parser.js";
+import { isTemplateCategory } from "./markers.js";
+import { normalizeCatalogPath } from "./paths.js";
 
 const DOMAIN_DESCRIPTIONS: Record<string, string> = {
   "v2/app": "APM: TPS, response time, errors, active TX, apdex, heap, GC, threads",
@@ -57,6 +59,10 @@ function byCategoryBase(): Map<string, CatalogEntry[]> {
     _byCategoryBase = new Map();
     for (const e of CATALOG_ENTRIES) {
       for (const cat of e.baseCategories) {
+        // `<%CATEGORY%>` and friends are unsubstituted yard markers, not category
+        // names. Indexing them offers the caller a lookup key that can never
+        // resolve — and every entry carrying one is a non-executable template.
+        if (isTemplateCategory(cat)) continue;
         const list = _byCategoryBase.get(cat) ?? [];
         list.push(e);
         _byCategoryBase.set(cat, list);
@@ -130,10 +136,17 @@ export function searchEntries(opts: {
 export function canonicalCatalogPath(path: string): string | null {
   const bare = path.replace(/^\/+/, "");
   if (byPath().has(bare)) return bare;
-  const prefixed = `mxql/${bare}`;
+
+  // Back-compat: catalogs before the build-layout dedupe registered these
+  // queries under `src/main/resources/...` and `target/classes/...`, so a path
+  // copied from an older response still resolves.
+  const normalized = normalizeCatalogPath(bare);
+  if (normalized !== bare && byPath().has(normalized)) return normalized;
+
+  const prefixed = `mxql/${normalized}`;
   if (byPath().has(prefixed)) return prefixed;
-  const stripped = bare.replace(/^mxql\//, "");
-  if (stripped !== bare && byPath().has(stripped)) return stripped;
+  const stripped = normalized.replace(/^mxql\//, "");
+  if (stripped !== normalized && byPath().has(stripped)) return stripped;
   return null;
 }
 
@@ -189,6 +202,13 @@ export function getPathsForCategory(category: string): CatalogEntry[] {
   return byCategoryBase().get(base) ?? [];
 }
 
+/**
+ * Browsable base category names.
+ *
+ * Excludes unsubstituted yard markers — see byCategoryBase(). Callers use this
+ * list to pick a `category=` argument, so every name in it must be one that
+ * resolves.
+ */
 export function getAllBaseCategories(): string[] {
   return Array.from(byCategoryBase().keys()).sort();
 }
