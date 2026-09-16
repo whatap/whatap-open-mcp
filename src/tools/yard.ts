@@ -23,6 +23,10 @@ import {
 } from "../utils/semantic.js";
 import { getCategoryMeta } from "../utils/field-guide.js";
 import {
+  translateComment,
+  translateMxqlComments,
+} from "../utils/mxql-comments.js";
+import {
   classifyAndBuildError,
   appendNextSteps,
   buildNoDataResponse,
@@ -720,7 +724,7 @@ export function registerYardTools(
           lines.push(`**Description**: ${englishDesc}`, "");
         } else if (metadata.comments.length > 0) {
           lines.push(
-            `**Description**: ${metadata.comments.join(" / ")}`,
+            `**Description**: ${metadata.comments.map(translateComment).join(" / ")}`,
             ""
           );
         }
@@ -863,7 +867,9 @@ export function registerYardTools(
 
         // Raw MXQL — simplified (strip internal directives)
         if (metadata.raw) {
-          const simplified = metadata.raw
+          // Display-only translation. The executed copy (whatap_query_data) still
+          // sends the untouched yard source to the text endpoint.
+          const simplified = translateMxqlComments(metadata.raw)
             .split("\n")
             .filter((line) => {
               const t = line.trim();

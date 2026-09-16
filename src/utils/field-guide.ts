@@ -7,14 +7,52 @@ import {
   type CategoryMeta,
   type FieldMeta,
 } from "../data/field-metadata.js";
+import {
+  CATEGORY_DESCRIPTION_EN,
+  FIELD_DESCRIPTION_EN,
+} from "../data/field-metadata-en.js";
 
 // ── Lookup ───────────────────────────────────────────────────────
 
 let _map: Map<string, CategoryMeta> | null = null;
 
+/**
+ * Apply the English overrides for categories whose upstream YAML description is
+ * still Korean. Done here, at the single lookup choke point, so every consumer
+ * (describe_query, the Field Guide table, summary guidance) gets English and the
+ * override survives `npm run generate-field-metadata`.
+ */
+function applyEnglishOverrides(
+  name: string,
+  meta: CategoryMeta
+): CategoryMeta {
+  const catDesc = CATEGORY_DESCRIPTION_EN[name];
+  const fieldDescs = FIELD_DESCRIPTION_EN[name];
+  if (!catDesc && !fieldDescs) return meta;
+
+  const fields = fieldDescs ? { ...meta.fields } : meta.fields;
+  if (fieldDescs) {
+    for (const [field, description] of Object.entries(fieldDescs)) {
+      const fm = fields[field];
+      if (fm) fields[field] = { ...fm, description };
+    }
+  }
+
+  return {
+    ...meta,
+    description: catDesc ?? meta.description,
+    fields,
+  };
+}
+
 function getMap(): Map<string, CategoryMeta> {
   if (!_map) {
-    _map = new Map(Object.entries(FIELD_METADATA));
+    _map = new Map(
+      Object.entries(FIELD_METADATA).map(([name, meta]) => [
+        name,
+        applyEnglishOverrides(name, meta),
+      ])
+    );
   }
   return _map;
 }

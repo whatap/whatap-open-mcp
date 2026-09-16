@@ -1,6 +1,6 @@
 # whatap-mcp — Claude Code Context
 
-MCP server bridging AI assistants to WhaTap monitoring. 10 tools (3 project + 3 data + 2 mesh + 1 install + 1 promql), MXQL catalog (640 entries) + PromQL/OpenMetrics support, semantic result classification, live-tested.
+MCP server bridging AI assistants to WhaTap monitoring. 11 tools (3 project + 3 data + 2 mesh + 1 install + 1 promql + 1 log), MXQL catalog (640 entries) + PromQL/OpenMetrics support, semantic result classification, live-tested.
 
 ## Commands
 
@@ -31,7 +31,9 @@ src/
 ├── data/
 │   ├── mxql-catalog.ts   # AUTO-GENERATED: 640 CatalogEntry objects + raw MXQL (from yard)
 │   ├── field-metadata.ts # AUTO-GENERATED: 131 categories, 2,605 field descriptions (from YAML)
-│   └── install-guides.ts # 29 platforms, 9 INFRA OS variants, APM/DB/K8s/server-app guides
+│   ├── install-guides.ts # 29 platforms, 9 INFRA OS variants, APM/DB/K8s/server-app guides
+│   ├── mxql-comment-translations.ts # HAND-MAINTAINED: 135 Korean .mql comment lines → English
+│   └── field-metadata-en.ts # HAND-MAINTAINED: English overrides for 16 Korean YAML descriptions
 └── utils/
     ├── format-promql.ts  # PromQL result formatter (group by label set, OpenMetrics list)
 ├── yard/
@@ -44,14 +46,16 @@ src/
 │   ├── yard.ts (3)       # data_availability, describe_query, query_data (+PromQL/savedQuery)
 │   ├── mesh.ts (2)       # apm_anomaly (4-query parallel), service_topology (NPM)
 │   ├── install.ts (1)    # install_agent (fetch access + generate install commands for 29 platforms)
-│   └── promql.ts (1)     # create_promql (validate + save reusable PromQL queries)
+│   ├── promql.ts (1)     # create_promql (validate + save reusable PromQL queries)
+│   └── log.ts (1)        # log_search (LogCountLoad count mode + LOGSINKLOAD content mode, capped)
 └── utils/
     ├── time.ts           # parseTimeRange("5m","1h","last 7 days") → {stime,etime}
     ├── format.ts         # MXQL results → Markdown tables, unit annotations, semantic headers, summary stats, field guide
     ├── response.ts       # classifyAndBuildError(), appendNextSteps(), buildNoDataResponse() — unified response system
     ├── descriptions.ts   # Shared parameter descriptions, MXQL param registry (17), English overlay (120 translations)
     ├── semantic.ts       # Result type classifier (timeseries/snapshot/ranking/inventory/events/aggregate), badge generator
-    └── field-guide.ts    # Category field metadata lookup, field guide table, threshold alerts, analysis guidance
+    ├── field-guide.ts    # Category field metadata lookup (+English overrides), field guide table, threshold alerts, analysis guidance
+    └── mxql-comments.ts  # Comment-aware Korean→English rewriter for raw MXQL (display-only)
 scripts/
 └── generate-catalog.ts   # Build-time: scan yard .mql files → src/data/mxql-catalog.ts
 tests/
@@ -103,6 +107,21 @@ Execute commands on target server → install, configure, start agent
 whatap_list_agents(projectCode) → verify agent appears
 ```
 
+## Log Search Workflow
+
+```
+whatap_data_availability(projectCode) → confirm "Log Sink" is active
+        ↓
+whatap_log_search(projectCode, category="AppLog", mode="count", filters={"level":"ERROR"})
+        ↓                                      (LogCountLoad — safe, ≤24h, ≤1000 rows)
+whatap_log_search(projectCode, category="AppLog", mode="content",
+                  filters={"level":"ERROR","host":"web-01"}, timeRange="15m")
+        ↓                                      (LOGSINKLOAD — capped: ≤1h, ≤100 lines, mandatory non-wildcard filter)
+```
+
+Yard guards apply server-side: 30s query timeout, 512 MB / 30s CPU breaker,
+max 3 concurrent MXQL queries per project (`mcp_api_call_limit`).
+
 ## MXQL Critical Gotchas
 
 > These cause silent failures (empty results, not errors). Memorize them.
@@ -139,7 +158,7 @@ SELECT [field1, field2, ...]
 | `/open-mcp/api/flush/mxql/path` | POST | Project | MXQL path queries (yard .mql files) |
 | `/open-mcp/api/json/project/access/{pcode}` | GET | Project | Agent access credentials (accesskey + server) |
 
-## Tools (10)
+## Tools (11)
 
 | Tool | Description |
 |------|-------------|
@@ -153,6 +172,7 @@ SELECT [field1, field2, ...]
 | `whatap_apm_anomaly` | Multi-query APM anomaly detection (TPS, latency, errors, active TX per agent) |
 | `whatap_service_topology` | Service connectivity map with bottleneck detection (requires NPM) |
 | `whatap_install_agent` | Get agent install commands for 29 platforms with pre-filled credentials (auto-detects platform, optional OS filter) |
+| `whatap_log_search` | Search log sink data — count mode (LogCountLoad, ≤24h/1000 rows) or content mode (LOGSINKLOAD, ≤1h/100 lines, mandatory non-wildcard filter) |
 
 ## Key Probe Categories
 
@@ -204,7 +224,36 @@ SELECT [field1, field2, ...]
 ## Current Status
 
 - **Version:** 1.2.1 (single source: `src/version.ts`)
-- **Tools:** 10 (3 project + 3 data + 2 mesh + 1 install + 1 promql)
+- **Tools:** 11 (3 project + 3 data + 2 mesh + 1 install + 1 promql + 1 log)
 - **Catalog:** 914 entries across 35+ domains (generated from yard)
-- **English translations:** 130 entries (120 base + 10 DB long session with unit info)
+- **English translations:** 130 description entries (120 base + 10 DB long session with unit info), 135 MXQL comment lines, 16 field-metadata overrides
+- **Output language:** English only — `tests/no-korean-output.test.ts` fails the build if a catalog/field-metadata regeneration introduces untranslated Korean
 - **LLM Pipeline Score:** 9.1/10
+
+## Output Language (English-only guarantee)
+
+MCP tool output is consumed by an LLM, which renders it into the end user's
+language. Korean in the payload confuses non-Korean-speaking customers, so every
+string the server *renders* is English.
+
+Korean only enters through the two auto-generated data files. Three layers keep
+it out of responses:
+
+| Layer | Covers | Applied in |
+|-------|--------|-----------|
+| `ENGLISH_DESCRIPTIONS` (130) | catalog `description` fields | `translateDescription()` — `src/tools/yard.ts` |
+| `MXQL_COMMENT_TRANSLATIONS` (135) | `--`, `#`, `/* */` comments in raw MXQL | `translateMxqlComments()` — `describe_query` display only |
+| `CATEGORY/FIELD_DESCRIPTION_EN` (16) | Korean YAML field metadata | `getCategoryMeta()` — `src/utils/field-guide.ts` |
+
+Two rules:
+
+1. **Translation is display-only.** `whatap_query_data` sends `CATALOG_RAW` to the
+   text endpoint verbatim — the stored MXQL must stay byte-identical to the yard
+   source. Only `whatap_describe_query` translates its copy.
+2. **`mxql/techross/*` Korean is data, not prose.** Those paths use Korean SCADA
+   tag names as real metric identifiers (`P1_PV_AI_UF_1차압`). The rewriter is
+   comment-aware so it never touches them.
+
+After `npm run generate-catalog` or `npm run generate-field-metadata`, run
+`npx vitest run tests/no-korean-output.test.ts` — it fails with the exact
+untranslated strings to add.
