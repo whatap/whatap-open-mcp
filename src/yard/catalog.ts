@@ -216,6 +216,46 @@ export function getAllBaseCategories(): string[] {
     .sort();
 }
 
+/**
+ * Near matches for a category name that did not resolve.
+ *
+ * Callers keep spelling marker categories without their delimiters — asking for
+ * `SQLSTAT_CATEGORY` when the catalog holds `<%SQLSTAT_CATEGORY%>`. The old miss
+ * response listed the first 15 categories alphabetically (`#WhaTapPIIClearHistory,
+ * $category, 1d, 2h, ...`), which never contains the answer. Matching on a
+ * normalized form (lowercase, alphanumerics only) makes the two spellings equal,
+ * so the suggestion is exactly the category the caller meant.
+ *
+ * Searches the unfiltered index, markers included — a marker is a legitimate
+ * lookup target even though it is not offered as a browsing candidate.
+ */
+export function suggestCategories(term: string, limit = 8): string[] {
+  const norm = (v: string) => v.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const wanted = norm(term);
+  if (!wanted) return [];
+
+  const scored: Array<{ name: string; score: number }> = [];
+  for (const name of byCategoryBase().keys()) {
+    const candidate = norm(name);
+    if (!candidate) continue;
+
+    let score = 0;
+    if (candidate === wanted) score = 100;
+    else if (candidate.includes(wanted)) score = 70;
+    else if (wanted.includes(candidate)) score = 50;
+
+    if (score > 0) scored.push({ name, score });
+  }
+
+  // An exact normalized match is the answer, not a candidate. Returning weaker
+  // matches alongside it (`stat`, `$category`) only invites a second wrong guess.
+  const exact = scored.filter((s) => s.score === 100);
+  const pool = exact.length > 0 ? exact : scored;
+
+  pool.sort((a, b) => b.score - a.score || a.name.length - b.name.length);
+  return pool.slice(0, limit).map((s) => s.name);
+}
+
 export function getCatalogSize(): number {
   return CATALOG_ENTRIES.length;
 }
