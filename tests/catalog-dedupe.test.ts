@@ -18,7 +18,7 @@ import {
   normalizeCatalogPath,
   preferredDuplicate,
 } from "../src/yard/paths.js";
-import { isTemplateCategory } from "../src/yard/markers.js";
+import { isTemplateCategory, decodeCategoryArg } from "../src/yard/markers.js";
 
 describe("normalizeCatalogPath", () => {
   it("strips both Maven layout prefixes and leaves clean paths alone", () => {
@@ -165,5 +165,26 @@ describe("browsable categories exclude template markers", () => {
       (e) => !scanMarkers(CATALOG_RAW[e.path] ?? "").hasMarkers
     );
     expect(executable.map((e) => e.path)).toEqual([]);
+  });
+});
+
+describe("HTML-escaped category arguments", () => {
+  it("decodes the escaped spelling of a marker category", () => {
+    expect(decodeCategoryArg("&lt;%SQLSTAT_CATEGORY%&gt;")).toBe("<%SQLSTAT_CATEGORY%>");
+    expect(decodeCategoryArg("&#60;%CATEGORY%&#62;")).toBe("<%CATEGORY%>");
+  });
+
+  it("leaves an ordinary category name untouched", () => {
+    expect(decodeCategoryArg("app_counter")).toBe("app_counter");
+    expect(decodeCategoryArg("<%SQLSTAT_CATEGORY%>")).toBe("<%SQLSTAT_CATEGORY%>");
+  });
+
+  it("resolves to the same paths escaped or not", () => {
+    const plain = searchEntries({ category: "<%SQLSTAT_CATEGORY%>" }).map((e) => e.path);
+    const escaped = searchEntries({
+      category: decodeCategoryArg("&lt;%SQLSTAT_CATEGORY%&gt;"),
+    }).map((e) => e.path);
+    expect(escaped).toEqual(plain);
+    expect(escaped.length).toBe(2);
   });
 });
