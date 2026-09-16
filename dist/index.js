@@ -16536,7 +16536,7 @@ function buildServerErrorResponse(opts) {
 }
 
 // src/version.ts
-var VERSION = "1.5.1";
+var VERSION = "1.5.2";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {
@@ -17038,6 +17038,46 @@ function findCommentStart(line) {
     if (c === "#") return { index: i, marker: "#" };
   }
   return null;
+}
+
+// src/utils/simplify-mxql.ts
+var HIDDEN_DIRECTIVES = ["INJECT", "RENAME", "FIRST-ONLY", "APPEND"];
+function depthDelta(line) {
+  let depth = 0;
+  let quote = null;
+  for (const c of line) {
+    if (quote) {
+      if (c === quote) quote = null;
+      continue;
+    }
+    if (c === "'" || c === '"') {
+      quote = c;
+      continue;
+    }
+    if (c === "[" || c === "{") depth++;
+    else if (c === "]" || c === "}") depth--;
+  }
+  return depth;
+}
+function simplifyRawMxql(raw) {
+  if (!raw) return raw;
+  const out = [];
+  const lines = raw.split("\n");
+  for (let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim();
+    if (!trimmed) continue;
+    const hidden = HIDDEN_DIRECTIVES.some((d) => trimmed.startsWith(d));
+    if (!hidden) {
+      out.push(lines[i]);
+      continue;
+    }
+    let depth = depthDelta(lines[i]);
+    while (depth > 0 && i + 1 < lines.length) {
+      i++;
+      depth += depthDelta(lines[i]);
+    }
+  }
+  return out.join("\n").trim();
 }
 
 // src/data/mxql-catalog.ts
@@ -46698,7 +46738,6 @@ function byCategoryBase() {
     _byCategoryBase = /* @__PURE__ */ new Map();
     for (const e of CATALOG_ENTRIES) {
       for (const cat of e.baseCategories) {
-        if (isTemplateCategory(cat)) continue;
         const list = _byCategoryBase.get(cat) ?? [];
         list.push(e);
         _byCategoryBase.set(cat, list);
@@ -46793,7 +46832,7 @@ function getPathsForCategory(category) {
   return byCategoryBase().get(base) ?? [];
 }
 function getAllBaseCategories() {
-  return Array.from(byCategoryBase().keys()).sort();
+  return Array.from(byCategoryBase().keys()).filter((c) => !isTemplateCategory(c)).sort();
 }
 function getCatalogSize() {
   return CATALOG_ENTRIES.length;
@@ -47317,6 +47356,12 @@ function registerYardTools(server, client) {
             `## Category: ${category} (${entries2.length} query paths)`,
             ""
           ];
+          if (isTemplateCategory(category)) {
+            lines2.push(
+              `> \`${category}\` is an unresolved yard template marker, not a category name \u2014 the yard substitutes it when it serves a query by path. The paths below are templates and are **not executable** via \`whatap_query_data\`.`,
+              ""
+            );
+          }
           for (const e of entries2) {
             lines2.push(formatPathEntry(e));
           }
@@ -47640,11 +47685,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
         }
         lines.push("");
         if (metadata.raw) {
-          const simplified = translateMxqlComments(metadata.raw).split("\n").filter((line) => {
-            const t = line.trim();
-            if (!t) return false;
-            return !(t.startsWith("INJECT") || t.startsWith("RENAME") || t.startsWith("CREATE") || t.startsWith("FIRST-ONLY") || t.startsWith("APPEND"));
-          }).join("\n").trim();
+          const simplified = simplifyRawMxql(translateMxqlComments(metadata.raw));
           if (simplified) {
             lines.push("### Raw MXQL", "", "```", simplified, "```");
           }

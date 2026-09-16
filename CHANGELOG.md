@@ -5,6 +5,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.2] - 2026-09-16
+
+### Fixed
+
+- **`describe_query` displayed syntactically broken MXQL for 39 paths.** The raw
+  body shown to the caller strips internal directives, but did so line by line.
+  A multi-line directive lost only its first line, leaving the continuation lines
+  and the closing bracket behind:
+
+  ```
+  UPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}
+         ,[tx_count, count]
+         ,[tx_error, error]
+  ]
+  ```
+
+  The source `.mql` is well-formed — the display invented the defect, and readers
+  reasonably concluded the collector's file was malformed. Stripping is now
+  directive-aware (`src/utils/simplify-mxql.ts`): a directive is consumed whole,
+  continuation lines included.
+
+  `CREATE` is no longer hidden. It introduces derived output fields
+  (`CREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }`), which is precisely
+  what a caller needs in order to understand the result; hiding it dropped real
+  output semantics.
+
+- **Marker categories became unanswerable in 1.5.1 (regression).** 1.5.1 removed
+  unsubstituted yard markers such as `<%SQLSTAT_CATEGORY%>` from the browsable
+  category list, which was the intent — every entry carrying one is a
+  non-executable template, so they are never usable candidates. But it also
+  dropped them from the reverse-lookup index, so "which paths use
+  `<%SQLSTAT_CATEGORY%>`?" became a dead end rather than returning its two paths
+  (`mxql/dbx/planchange/chart`, `mxql/dbx/planchange/summary`).
+
+  Marker names are indexed again and remain excluded from the candidate list
+  (150 browsable, unchanged). An explicit lookup now returns the template paths
+  with a note that they are not executable via `whatap_query_data`.
+
+### Added
+
+- `tests/simplify-mxql.test.ts` asserts that no catalog body with balanced
+  brackets is ever displayed with an unbalanced one, and that the running bracket
+  depth never goes negative. Run against the 1.5.1 filter this flags 40 paths;
+  against 1.5.2, zero.
+
 ## [1.5.1] - 2026-09-16
 
 ### Fixed
