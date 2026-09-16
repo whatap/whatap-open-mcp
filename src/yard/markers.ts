@@ -8,7 +8,8 @@
 //   [{"error":"A JSONObject text must begin with '{' at 1 [character 2 line 1]"}]
 //
 // which the tool layer used to misreport as "No data found". Verified live
-// against pcode 5490 on 2026-09-10 with src/main/resources/mxql/apm/stat/transaction_diff.
+// against pcode 5490 on 2026-09-10 with mxql/apm/stat/transaction_diff (registered
+// as src/main/resources/... before the build-layout dedupe).
 
 const MARKER_RE = /<%([\s\S]*?)%>/g;
 
@@ -35,4 +36,17 @@ export function scanMarkers(raw: string): MarkerScan {
     }
   }
   return { hasMarkers: names.size > 0, markers: [...names] };
+}
+
+/**
+ * True when a CATEGORY name still contains an unsubstituted yard marker.
+ *
+ * 14 of the catalog's 164 base categories are marker text rather than category
+ * names (`<%CATEGORY%>`, `db_oracle_dma_sqlstat<%TIMEUNIT%>`, and a bare `<%`).
+ * They cannot be looked up, and every one of the 62 entries carrying them is a
+ * non-executable template, so they are filtered out of the browsable category
+ * list. Uses its own non-global regex — MARKER_RE is /g and carries lastIndex.
+ */
+export function isTemplateCategory(category: string): boolean {
+  return /<%|%>/.test(category);
 }

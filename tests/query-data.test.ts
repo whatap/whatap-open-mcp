@@ -46,7 +46,7 @@ const args = (over: Record<string, unknown> = {}) => ({
   ...over,
 });
 
-const TICKET_PATH = 'src/main/resources/mxql/apm/stat/transaction_diff';
+const TICKET_PATH = 'mxql/apm/stat/transaction_diff';
 
 // The four states the response contract distinguishes. Live-verified against
 // pcode 5490 on 2026-09-10; these lock the behaviour in.
@@ -85,7 +85,7 @@ describe('whatap_query_data — state C: not executed (template markers)', () =>
     const markerPaths = Object.keys(CATALOG_RAW).filter(
       (p) => scanMarkers(CATALOG_RAW[p]).hasMarkers
     );
-    expect(markerPaths.length).toBe(200); // 100 logical paths, shipped twice
+    expect(markerPaths.length).toBe(100); // once each, post build-layout dedupe
     const { calls, callback } = setupTool();
     for (const p of markerPaths) {
       const res = await callback(args({ path: p }));
