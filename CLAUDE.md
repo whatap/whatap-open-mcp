@@ -56,6 +56,7 @@ src/
     ├── descriptions.ts   # Shared parameter descriptions, MXQL param registry (17), English overlay (120 translations)
     ├── semantic.ts       # Result type classifier (timeseries/snapshot/ranking/inventory/events/aggregate), badge generator
     ├── field-guide.ts    # Category field metadata lookup (+English overrides), field guide table, threshold alerts, analysis guidance
+    ├── simplify-mxql.ts  # Directive-aware stripping for the raw MXQL shown by describe_query
     └── mxql-comments.ts  # Comment-aware Korean→English rewriter for raw MXQL (display-only)
 scripts/
 └── generate-catalog.ts   # Build-time: scan yard .mql files → src/data/mxql-catalog.ts
@@ -263,9 +264,11 @@ spellings, so a path copied from a pre-dedupe response keeps resolving.
 **Rule 2 — marker text is not a category name.** 14 of 164 base categories were
 unsubstituted yard markers (`<%CATEGORY%>`, `db_oracle_dma_sqlstat<%TIMEUNIT%>`,
 a bare `<%`). All 62 entries carrying them are non-executable templates, so
-`isTemplateCategory()` keeps them out of the category index and the browsable
-list (**164 → 150**). Asking for one by name returns an explanation rather than a
-bare "not found".
+`isTemplateCategory()` keeps them out of the **browsable list** (**164 → 150**).
+They stay in the category *index*: "which paths use `<%SQLSTAT_CATEGORY%>`?" is a
+real question with a real answer, so an explicit lookup returns the template
+paths plus a not-executable note. (1.5.1 dropped them from the index too, which
+turned that lookup into a dead end; fixed in 1.5.2.)
 
 `tests/catalog-dedupe.test.ts` locks both rules in. Known follow-ups, left alone
 deliberately:
