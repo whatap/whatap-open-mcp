@@ -1,6 +1,6 @@
 # whatap-mcp — Claude Code Context
 
-MCP server bridging AI assistants to WhaTap monitoring. 11 tools (3 project + 3 data + 2 mesh + 1 install + 1 promql + 1 log), MXQL catalog (815 entries) + PromQL/OpenMetrics support, semantic result classification, live-tested.
+MCP server bridging AI assistants to WhaTap monitoring. 10 tools (3 project + 3 data + 2 mesh + 1 install + 1 promql), MXQL catalog (815 entries) + PromQL/OpenMetrics support, semantic result classification, live-tested.
 
 ## Commands
 
@@ -48,8 +48,7 @@ src/
 │   ├── yard.ts (3)       # data_availability, describe_query, query_data (+PromQL/savedQuery)
 │   ├── mesh.ts (2)       # apm_anomaly (4-query parallel), service_topology (NPM)
 │   ├── install.ts (1)    # install_agent (fetch access + generate install commands for 29 platforms)
-│   ├── promql.ts (1)     # create_promql (validate + save reusable PromQL queries)
-│   └── log.ts (1)        # log_search (LogCountLoad count mode + LOGSINKLOAD content mode, capped)
+│   └── promql.ts (1)     # create_promql (validate + save reusable PromQL queries)
 └── utils/
     ├── time.ts           # parseTimeRange("5m","1h","last 7 days") → {stime,etime}
     ├── format.ts         # MXQL results → Markdown tables, unit annotations, semantic headers, summary stats, field guide
@@ -109,18 +108,6 @@ Execute commands on target server → install, configure, start agent
 whatap_list_agents(projectCode) → verify agent appears
 ```
 
-## Log Search Workflow
-
-```
-whatap_data_availability(projectCode) → confirm "Log Sink" is active
-        ↓
-whatap_log_search(projectCode, category="AppLog", mode="count", filters={"level":"ERROR"})
-        ↓                                      (LogCountLoad — safe, ≤24h, ≤1000 rows)
-whatap_log_search(projectCode, category="AppLog", mode="content",
-                  filters={"level":"ERROR","host":"web-01"}, timeRange="15m")
-        ↓                                      (LOGSINKLOAD — capped: ≤1h, ≤100 lines, mandatory non-wildcard filter)
-```
-
 Yard guards apply server-side: 30s query timeout, 512 MB / 30s CPU breaker,
 max 3 concurrent MXQL queries per project (`mcp_api_call_limit`).
 
@@ -160,7 +147,7 @@ SELECT [field1, field2, ...]
 | `/open-mcp/api/flush/mxql/path` | POST | Project | MXQL path queries (yard .mql files) |
 | `/open-mcp/api/json/project/access/{pcode}` | GET | Project | Agent access credentials (accesskey + server) |
 
-## Tools (11)
+## Tools (10)
 
 | Tool | Description |
 |------|-------------|
@@ -174,7 +161,6 @@ SELECT [field1, field2, ...]
 | `whatap_apm_anomaly` | Multi-query APM anomaly detection (TPS, latency, errors, active TX per agent) |
 | `whatap_service_topology` | Service connectivity map with bottleneck detection (requires NPM) |
 | `whatap_install_agent` | Get agent install commands for 29 platforms with pre-filled credentials (auto-detects platform, optional OS filter) |
-| `whatap_log_search` | Search log sink data — count mode (LogCountLoad, ≤24h/1000 rows) or content mode (LOGSINKLOAD, ≤1h/100 lines, mandatory non-wildcard filter) |
 
 ## Key Probe Categories
 
@@ -226,7 +212,7 @@ SELECT [field1, field2, ...]
 ## Current Status
 
 - **Version:** 1.2.1 (single source: `src/version.ts`)
-- **Tools:** 11 (3 project + 3 data + 2 mesh + 1 install + 1 promql + 1 log)
+- **Tools:** 10 (3 project + 3 data + 2 mesh + 1 install + 1 promql)
 - **Catalog:** 815 entries across 35+ domains (generated from yard; 116 Maven build-layout duplicates collapsed)
 - **English translations:** 130 description entries (120 base + 10 DB long session with unit info), 135 MXQL comment lines, 16 field-metadata overrides
 - **Output language:** English only — `tests/no-korean-output.test.ts` fails the build if a catalog/field-metadata regeneration introduces untranslated Korean

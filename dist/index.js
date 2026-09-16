@@ -15664,11 +15664,61 @@ var FIELD_METADATA = {
   }
 };
 
+// src/data/field-metadata-en.ts
+var CATEGORY_DESCRIPTION_EN = {
+  url_stat_all: "Status breakdown across all monitored URLs",
+  server_pc_tcpv4: "Server monitoring \u2014 Windows netstat (TCP v4)",
+  db_mysql_tables: "MySQL table information"
+};
+var FIELD_DESCRIPTION_EN = {
+  url_stat_all: {
+    normal: "Number of URLs in a normal state",
+    total: "Total number of URLs",
+    error: "Number of URLs in an error state"
+  },
+  agent_status_summary: {
+    isRebooted: "Whether the server was rebooted",
+    inActTime: "Time at which the agent became inactive",
+    startTime: "Time at which the agent started",
+    oid: "oid value",
+    isActive: "Whether the agent is active",
+    lastActTime: "Last time the agent was seen active",
+    isRestart: "Whether the agent was restarted",
+    uptime: "Time at which the server started",
+    status: "Agent status value"
+  },
+  db_cubrid_counter: {
+    num_plan_cache_full: "Number of times victim search was attempted because the cache entry count exceeded the maximum"
+  }
+};
+
 // src/utils/field-guide.ts
 var _map = null;
+function applyEnglishOverrides(name, meta) {
+  const catDesc = CATEGORY_DESCRIPTION_EN[name];
+  const fieldDescs = FIELD_DESCRIPTION_EN[name];
+  if (!catDesc && !fieldDescs) return meta;
+  const fields = fieldDescs ? { ...meta.fields } : meta.fields;
+  if (fieldDescs) {
+    for (const [field, description] of Object.entries(fieldDescs)) {
+      const fm = fields[field];
+      if (fm) fields[field] = { ...fm, description };
+    }
+  }
+  return {
+    ...meta,
+    description: catDesc ?? meta.description,
+    fields
+  };
+}
 function getMap() {
   if (!_map) {
-    _map = new Map(Object.entries(FIELD_METADATA));
+    _map = new Map(
+      Object.entries(FIELD_METADATA).map(([name, meta]) => [
+        name,
+        applyEnglishOverrides(name, meta)
+      ])
+    );
   }
   return _map;
 }
@@ -16486,7 +16536,7 @@ function buildServerErrorResponse(opts) {
 }
 
 // src/version.ts
-var VERSION = "1.5.0";
+var VERSION = "1.5.1";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {
@@ -16778,6 +16828,216 @@ function parseTimeRange(range) {
   throw new Error(
     `Invalid time range format: "${range}". Use formats like "5m", "1h", "7d", or "last 30 minutes".`
   );
+}
+
+// src/data/mxql-comment-translations.ts
+var MXQL_COMMENT_TRANSLATIONS = {
+  "\uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654": "Sync with the server list",
+  "\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4.": "Transaction statistics are stored at 1-minute / 5-minute granularity.",
+  "1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4.": "Build first-pass statistics every hour, apply the row limit, then build second-pass statistics over the whole period.",
+  "\uC77C\uC790\uBCC4 \uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uBD84\uAC12": "Project-total TPS by day, 5-minute values",
+  "\uBD84\uB2E8\uC704 rows \uB97C \uC704\uD574 1\uCC28 \uADF8\uB8F9\uD551": "First-pass grouping to produce per-minute rows",
+  "\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC, CPU&MEM": "Agent list with status, CPU & memory",
+  "select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568": "Must be used before SELECT",
+  "\uC5D0\uC774\uC804\uD2B8 CPU & MEM \uCD5C\uADFC 15\uCD08": "Agent CPU & memory, last 15s",
+  "\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00": "Fields that have to be read from another PCODE (callerPcode) cannot be queried through MXQL",
+  "\uC11C\uBC84\uBAA9\uB85D\uC5D0\uC11C \uC0AD\uC81C\uD55C \uC11C\uBC84 \uBC18\uC601\uC744 \uC704\uD55C \uAE30\uBCF8 \uD544\uD130\uB85C \uC0AC\uC6A9\uD55C\uB2E4": "Used as the base filter so that servers deleted from the server list are reflected",
+  "agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568": "Joins agent info so that active status is included",
+  "[\uBC29\uC5B4\uB85C\uC9C1] MIG Disabled \uC0C1\uD0DC\uC778 Physical GPU \uD558\uC704\uC758 MIG \uC778\uC2A4\uD134\uC2A4 \uC81C\uC678 (\uC5D0\uC774\uC804\uD2B8\uC5D0\uC11C 1\uCC28 \uD544\uD130\uB9C1, \uBC31\uC5D4\uB4DC 2\uCC28 \uBC29\uC5B4)": "[Guard] Exclude MIG instances under a Physical GPU in MIG Disabled state (first filtered at the agent, second guard in the backend)",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08": "Active TX count per agent, count by tier, last 15s",
+  "\uC911\uB958\uBCC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12": "Concurrent users per agent kind by day, 5-minute values",
+  "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4, \uC77C\uC790\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uBD84\uAC12": "Project-total concurrent users by day, 5-minute values",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 GC\uC2DC\uAC04\uACFC \uAC74\uC218, OldGen GC \uD3EC\uD568": "GC time and count per agent, including OldGen GC",
+  "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12": "Project-total TPS, 5-second values",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, INACTIVE \uC5D0\uC774\uC804\uD2B8 \uD3EC\uD568, \uCD5C\uADFC15\uCD08": "Active TX count per agent, count by tier, including INACTIVE agents, last 15s",
+  "\uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08": "Active TX count per agent kind, count by tier, last 15s",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08": "Active TX count per agent, count by status, last 15s",
+  "\uC885\uB958\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08": "Active TX count per agent kind, count by status, last 15s",
+  "\uC5D0\uC774\uC804\uD2B8 \uC885\uB958\uBCC4  <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704": "Apdex per agent kind, 5-second interval",
+  "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 <APDEX> \uC870\uD68C, 5\uCD08\uB2E8\uC704": "Project-total Apdex, 5-second interval",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790": "Concurrent users per agent",
+  "\uC885\uB958\uBCC4 \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790": "Concurrent users per agent kind",
+  "\uD504\uB85C\uC81D\uD2B8\uBCC4, \uB3D9\uC2DC\uC811\uC18D\uC0AC\uC6A9\uC790, 5\uCD08\uAC12": "Concurrent users per project, 5-second values",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04": "Service response time per agent",
+  "\uC885\uB958\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04": "Service response time per agent kind",
+  "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04": "Project-total service response time",
+  "\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4": "Transaction statistics",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12": "TPS per agent, 5-second values",
+  "\uC885\uB958\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12": "TPS per agent kind, 5-second values",
+  "OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218": "CPU millicore count per OID",
+  "OKIND\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218": "CPU millicore count per OKIND",
+  "ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218": "CPU millicore count per ONODE",
+  "PCODE CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218": "CPU millicore count for the PCODE",
+  "\uC2E4\uC81C \uB370\uC774\uD0C0\uB294 30\uBD84 ~ 1\uC2DC\uAC04 \uC5D0 1\uD68C\uC815\uB3C4 \uBCF4\uB0BC\uAC83\uC774\uB77C recent 2h \uC815\uB3C4 \uD55C\uB2E4.": "Real data is sent only about once every 30 minutes to 1 hour, so use a recent window of roughly 2h.",
+  "select \uAC00 \uC5C6\uC73C\uBA74 \uC804\uCCB4 \uCEEC\uB7FC\uC744 \uC804\uBD80 \uAC00\uC838\uC628\uB2E4.": "Without a SELECT, every column is returned.",
+  "settings \uB85C \uC0AC\uC6A9\uD558\uC9C0 \uB9D0\uACE0 config \uB97C \uC0AC\uC6A9\uD558\uB3C4\uB85D \uD55C\uB2E4. 201109": "Use config rather than settings. 201109",
+  "\uC694\uC57D \uC5D0\uC774\uC804\uD2B8 \uAC74\uC218": "Summary agent count",
+  "rps\uB294 RPM, rps.avg\uB294 RPS, rps.avg\uC758 avg\uB294 \uCE74\uD14C\uACE0\uB9AC \uBCC4 RPS\uC758 \uD3C9\uADE0": "`rps` is RPM, `rps.avg` is RPS, and the avg of `rps.avg` is the average RPS per category",
+  "<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568": "<IMPORTANT> resp_time is stored as a metricValue",
+  "1\uC2DC\uAC04 \uD1B5\uACC4 \uC870\uD68C": "Query 1-hour statistics",
+  "1\uC2DC\uAC04 \uD1B5\uACC4\uC5D0 5\uBD84\uD1B5\uACC4 \uACB0\uD569 2\uCC28 GROUP \uD544\uC694": "Combining 5-minute statistics into 1-hour statistics needs a second GROUP",
+  "5\uBD84\uD1B5\uACC4 \uC870\uD68C": "Query 5-minute statistics",
+  "1\uC2DC\uAC04 \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 \uD55C\uBC88\uB9CC \uADF8\uB8F9\uD551\uD55C\uB2E4.": "1-hour transaction statistics are grouped only once.",
+  "\uD558\uB2E8 \uD14C\uC774\uBE14\uC6A9": "For the bottom table",
+  "\uBA54\uC778 \uD14C\uC774\uBE14\uC6A9": "For the main table",
+  "\uC0C1\uB2E8 \uD14C\uC774\uBE14\uC6A9": "For the top table",
+  "\uADF8\uB8F9 \uBC0F \uD544\uD130\uB9C1\uC5D0 \uC758\uD574 \uD544\uD130\uB9C1\uB41C oid \uB85C \uD30C\uC77C \uC2DC\uC2A4\uD15C \uBAA9\uB85D \uC870\uD68C": "Query the file system list using the oids left after grouping and filtering",
+  "\uBAA8\uB4E0 custom field \uC758 \uD0A4\uAC12\uC744 \uC870\uD68C\uD55C\uB2E4.": "Query the key values of every custom field.",
+  "\uB514\uBE44 \uAC19\uC774 entity\uAC00 \uBA85\uD655\uD558\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uBBC0\uB85C \uC804\uCCB4 \uB370\uC774\uD130\uC5D0\uC11C \uACF5\uD1B5\uB41C \uAC12\uC744 \uAC00\uC838\uC628\uB2E4": "The entity may not be well defined (as with databases), so take the value common to all the data",
+  "\uC911\uBCF5 \uC81C\uAC70\uD558\uACE0 oid : event id set \uC73C\uB85C \uC774\uC6A9\uD558\uAE30?": "Deduplicate and use as an oid : event id set?",
+  "NOTE: warning \uC640 critical \uC740 \uCF64\uB9C8\uB85C \uC5F0\uACB0\uB41C \uC774\uBCA4\uD2B8 \uC544\uC774\uB514\uC784": "NOTE: warning and critical are event IDs joined by commas",
+  "metric value \uCC98\uB9AC": "metric value handling",
+  "cube{1h} \uAC00 \uC5C6\uB294 \uACBD\uC6B0 oid \uC870\uD68C\uD558\uAE30 \uC704\uD55C mql": "MQL for looking up oids when cube{1h} is absent",
+  "time-range \uB294 \uB3D9\uC791\uD558\uC9C0 \uC54A\uC73C\uBBC0\uB85C MxqlExecutor \uC5D0\uC11C stime, etime \uC744 \uB123\uC5B4\uC918\uC57C \uD55C\uB2E4": "time-range does not work here, so MxqlExecutor has to supply stime and etime",
+  "\uCC28\uD2B8 \uC775\uC2A4\uD50C\uB85C\uB7EC\uB97C \uC704\uD574 \uC0AC\uC6A9\uB428": "Used by the chart explorer",
+  "\uC9C0\uC815\uB41C \uC2DC\uAC04\uC5D0\uC11C infra_cpu{h1} \uAC00 \uC788\uB294 oid \uB9AC\uC2A4\uD2B8\uB9CC \uAC00\uC838\uC640 \uD544\uD130\uB9C1\uC5D0 \uC0AC\uC6A9\uD55C\uB2E4.": "Fetch only the list of oids that have infra_cpu{h1} at the given time and use it for filtering.",
+  "group \uD654\uBA74 \uC0C1\uB2E8\uC758 \uC804\uCCB4 \uD1B5\uACC4 \uC870\uD68C\uB97C \uC704\uD574 \uC0AC\uC6A9\uD568": "Used to query the overall statistics at the top of the group screen",
+  "os \uBCC4 { active(not inactive/paused), total, total core count) }": "Per OS: { active (not inactive/paused), total, total core count }",
+  "NOTE: \uACFC\uAC70\uC758 \uC0C1\uD0DC\uB97C \uC870\uD68C\uD558\uB294 \uAE30\uB2A5\uC740 \uC5C6\uC74C, \uC2DC\uACC4\uC5F4\uC774 \uC544\uB2C8\uAE30 \uB54C\uBB38\uC5D0 stime, etime \uC774 \uC758\uBBF8 \uC5C6\uC74C": "NOTE: There is no way to query past state; this is not a time series, so stime and etime are meaningless",
+  "NOTE: \uADF8\uB8F9\uBCC4 \uC8FC\uC694 \uBA54\uD2B8\uB9AD\uC774 \uD3EC\uD568\uB41C \uC11C\uBC84 \uC815\uBCF4": "NOTE: Server info including the key metrics per group",
+  "\uBE0C\uB77C\uC6B0\uC800\uC640 \uC11C\uBC84\uC758 \uC2DC\uAC04\uCC28? \uAC00 \uC788\uB294 \uACBD\uC6B0 \uC624\uCC28\uB85C \uC778\uD574 cpu, ~ \uAC12\uC774 \uC81C\uB300\uB85C \uC548\uB098\uC62C \uC218 \uC788\uC74C": "If the browser and server clocks differ, the skew can keep cpu and similar values from coming out correctly",
+  "\uC774 \uACBD\uC6B0\uC5D0\uB3C4 diskBusy \uB294 \uAC12\uC774 \uB098\uC634(20\uCD08), cpu, \uB4F1 (5\uCD08)": "Even then diskBusy still returns a value (20s), as do cpu and the others (5s)",
+  "\uC77C\uAD04 20\uCD08\uB85C \uD558\uB3C4\uB85D \uD568": "Use 20s across the board",
+  "\uC2E4\uC2DC\uAC04 \uC11C\uBC84 \uB370\uC774\uD130\uB9CC \uC0AC\uC6A9\uD55C\uB2E4": "Use only real-time server data",
+  "metric key \uAC12\uC740 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD558\uC9C0 \uC54A\uACE0 \uC544\uB798\uC640 \uAC19\uC740 \uAC12\uC73C\uB85C \uBCC0\uD658\uD55C\uB2E4.": "The metric key value is not used as is; it is converted to the values below.",
+  "\uC2DC\uAC04\uC5D0 \uBB34\uAD00\uD568": "Time-independent",
+  "NOTE: inventory + custom \uC815\uBCF4 \uC800\uC7A5\uC744 \uC704\uD574\uC11C \uD50C\uB7EC\uADF8\uC778\uC744 \uC0AC\uC6A9\uD55C\uB2E4": "NOTE: A plugin is used to store the inventory + custom information",
+  "group fields \uB294 \uC5C6\uAC70\uB098(''), n\uAC1C \uC874\uC7AC\uD558\uAC70\uB098 (', g1, g2') \uC784": "group fields is either empty ('') or holds n entries (', g1, g2')",
+  "NOTE: \uD50C\uB7EC\uADF8\uC778\uC744 \uD1B5\uD574 map \uCC98\uB9AC\uB97C \uD588\uB2E4\uBA74": "NOTE: If map processing was done through the plugin,",
+  "join\uC5D0 \uC0AC\uC6A9\uB418\uB294 \uD0A4\uAC00 \uC5C6\uC744 \uC218 \uC788\uB2E4": "the key used for the join may be missing,",
+  "mxql\uC740 \uC21C\uCC28 \uCC98\uB9AC\uB77C\uC11C": "and because MXQL is processed sequentially,",
+  "invenory \uC640 custom \uC758 join \uC740 \uD50C\uB7EC\uADF8\uC778\uBCF4\uB2E4 \uC55E\uC5D0 \uC788\uC5B4\uC57C \uD568": "the inventory/custom join has to come before the plugin",
+  "TODO: plugin\uC744 \uD1B5\uD574 \uC720\uC5F0\uD55C \uB370\uC774\uD130 \uC804\uCC98\uB9AC\uB3C4 \uAD1C\uCC2E\uC9C0\uB9CC": "TODO: Flexible data preprocessing through a plugin is fine, but",
+  "select(map) key\uAC00 java\uC640 mxql\uC5D0 \uB098\uB220\uC838 \uC788\uC5B4 \uBCF4\uAE30\uAC00 \uD798\uB4E0\uB4EF": "the select(map) key is split between Java and MXQL, which makes it hard to read",
+  "\uCC28\uB77C\uB9AC param text\uB97C \uD65C\uC6A9\uD558\uB294\uAC8C \uB098\uC744\uB7F0\uC9C0": "maybe using param text would be better",
+  "\uC2E4\uC2DC\uAC04 gpu inventory \uC870\uD68C": "Query real-time GPU inventory",
+  "\uACFC\uAC70 gpu inventory \uC870\uD68C": "Query historical GPU inventory",
+  "server_inventory \uC5D0\uC11C ipAddress, OSVersion \uC870\uD68C": "Query ipAddress and OSVersion from server_inventory",
+  "NOTE: gpu/server \uC2A4\uB0C5\uC0F7 \uC800\uC7A5 \uC8FC\uAE30\uAC00 \uB2EC\uB77C \uC815\uD655\uD55C \uC2DC\uC810\uC758 server \uC2A4\uB0C5\uC0F7\uC744 \uC870\uD68C\uD560 \uC218 \uC5C6\uC73C\uBBC0\uB85C \uC2E4\uC2DC\uAC04 \uB370\uC774\uD130\uB97C \uC0AC\uC6A9\uD568": "NOTE: The GPU and server snapshot intervals differ, so a server snapshot for the exact point in time cannot be queried; real-time data is used instead",
+  "TODO: \uC5D0\uC774\uC804\uD2B8\uAC00 gpu_inventory \uC5D0 ipAddress, OSVersion \uC744 \uC9C1\uC811 \uC218\uC9D1\uD558\uBA74 server_inv JOIN \uC81C\uAC70": "TODO: If the agent collects ipAddress and OSVersion into gpu_inventory directly, drop the server_inv JOIN",
+  "\uC2E4\uC2DC\uAC04 server inventory \uC870\uD68C": "Query real-time server inventory",
+  "\uACFC\uAC70 server inventory \uC870\uD68C": "Query historical server inventory",
+  "server list \uC870\uD68C\uD6C4 \uD68D\uB4DD\uD55C oid list \uB97C \uC870\uAC74\uC73C\uB85C \uC0AC\uC6A9\uD55C\uB2E4.": "Use the oid list obtained after querying the server list as the condition.",
+  "TODO: \uD55C\uBC88\uC5D0 \uC5EC\uB7EC \uBA54\uD2B8\uB9AD\uC758 \uCC28\uD2B8\uB97C \uADF8\uB9AC\uB294 \uACBD\uC6B0\uC5D0\uB294 \uD558\uB098\uC758 \uBA54\uD2B8\uB9AD\uC774 \uC544\uB2CC \uBCF5\uC218\uC758 \uBA54\uD2B8\uB9AD \uD544\uB4DC\uB97C \uC785\uB825\uD574\uC57C??": "TODO: When charting several metrics at once, should multiple metric fields be passed instead of a single one??",
+  "\uC5EC\uB7EC \uCE74\uD14C\uACE0\uB9AC\uB3C4 \uB9C8\uCC2C\uAC00\uC9C0??": "Same for multiple categories??",
+  "\uD0ED\uC744 \uD1B5\uD574 \uCE74\uD14C\uACE0\uB9AC\uBCC4\uB85C \uAC00\uC838\uC628\uB2E4\uACE0 \uC0DD\uAC01\uD558\uC790?": "Assume they are fetched per category through tabs?",
+  "TODO: \uC870\uAC74\uC5D0 \uB530\uB77C\uC11C": "TODO: Depending on the condition,",
+  "\uCE74\uD14C\uACE0\uB9AC\uC640 \uD544\uB4DC, \uB9AC\uBBF8\uD2B8\uB97C": "the category, fields and limit",
+  "\uBCC0\uACBD\uD558\uAC8C \uD560 \uC218 \uB3C4 \uC788\uC74C": "could be made changeable",
+  "oid list \uB85C os type \uC744 \uBAA8\uB450 \uC870\uD68C\uD55C\uB2E4.": "Query every os type by oid list.",
+  "unfold / filtering order \uB294 java \uC5D0\uC11C \uCC98\uB9AC\uD55C\uB2E4.": "unfold / filtering order is handled in Java.",
+  "dashboard page \uC6B0\uCE21 \uC0C1\uC138 \uD328\uB110 / \uADF8\uB8F9\uC815\uBCF4": "Dashboard page right-hand detail panel / group info",
+  "# agent \uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4": "# Information collected by the agent",
+  "# \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4": "# User-customized information",
+  "# agent\uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\uC640 \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\uB97C join": "# Join the agent-collected information with the user-customized information",
+  "total count \uACC4\uC0B0\uC744 \uC704\uD55C plugin \uCD94\uAC00": "Added a plugin to compute the total count",
+  "TODO: filtered count / total count \uB97C \uC870\uD68C\uD560 \uC218 \uC788\uB294 mxql \uC778\uD130\uD398\uC774\uC2A4\uAC00 \uC788\uB2E4\uBA74?": "TODO: What if there were an MXQL interface that could query filtered count / total count?",
+  "\uD544\uD130\uB294 \uD50C\uB7EC\uADF8\uC778\uC73C\uB85C \uD558\uC9C0 \uC54A\uACE0, filter \uBB38\uBC95\uC744 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD568": "Filtering is not done in the plugin; the filter syntax is used directly",
+  "\uCD5C\uADFC 10\uBD84\uAC04 cpu \uC0C1\uC704 5\uAC1C \uC11C\uBC84 \uBAA9\uB85D \uBC0F cpu \uC0AC\uC6A9 \uC870\uD68C": "Top 5 servers by CPU over the last 10 minutes, with their CPU usage",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, TPS \uD569\uAC8C \uAC74\uC218  \uCD5C\uADFC15\uCD08": "Active TX count per agent, count by tier, total TPS, last 15s",
+  "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08": "Project-total active TX count, count by tier, last 15s",
+  "\uD504\uB85C\uC81D\uD2B8\uD569\uACC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uC0C1\uD0DC\uBCC4> \uAC74\uC218, \uCD5C\uADFC15\uCD08": "Project-total active TX count, count by status, last 15s",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uD638\uC2A4\uD2B8 CPU%, 5\uCD08\uAC12": "Host CPU % per agent, 5-second values",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 DBConn \uAC74\uC218, 5\uCD08 \uB9C8\uB2E4": "DB connection count per agent, every 5 seconds",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uD799\uBA54\uBAA8\uB9AC \uC0AC\uC6A9\uB7C9(B)": "Heap memory usage per agent (bytes)",
+  "\uAC01 \uC5D0\uC774\uC774\uC804\uD2B8\uB85C \uBD80\uD130 \uC561\uD2F0\uBE0C\uD2B8\uB79C\uC7AD\uC158 \uB9AC\uC2A4\uD2B8\uB97C \uC870\uD68C\uD55C\uB2E4.": "Query the active transaction list from each agent.",
+  "Speed \uCC28\uD2B8\uC5D0 \uD544\uC694\uD55C \uB370\uC774\uD130\uB97C \uC870\uD68C\uD55C\uB2E4.": "Query the data the Speed chart needs.",
+  "\uB2E8 java2.0_23\uC774\uD558\uC758 \uBC84\uC804\uC5D0\uC11C\uB294 arrival_rate\uAC00 \uC218\uC9D1\uB418\uC9C0 \uC54A\uC74C\uC73C\uB85C": "However, arrival_rate is not collected on java2.0_23 and below,",
+  "\uAE30\uBCF8\uC740 tx_count\uB85C \uB300\uCCB4\uD55C\uB2E4.": "so it falls back to tx_count by default.",
+  "\uC678\uBD80 \uD638\uCD9C \uD1B5\uACC4": "External call statistics",
+  "SQL \uD1B5\uACC4": "SQL statistics",
+  "SELECT [time, oid, oname, onode, server, EDB-12]	-- \uC804\uCCB4\uB97C \uAC00\uC838\uC624\uB3C4\uB85D SELECT \uB97C \uB9C9\uC74C.": "SELECT [time, oid, oname, onode, server, EDB-12]	-- SELECT is disabled so that every column is returned.",
+  "INACTIVE\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D": "INACTIVE agent list",
+  "\uC5D0\uC774\uC804\uD2B8\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, <\uAD6C\uAC04\uBCC4> \uAC74\uC218, \uCD5C\uADFC11\uCD08": "Active TX count per agent, count by tier, last 11s",
+  "Context\uBCC4 \uC561\uD2F0\uBE0CTX \uAC74\uC218, \uCD5C\uADFC15\uCD08": "Active TX count per context, last 15s",
+  "Context\uBCC4 \uC11C\uBE44\uC2A4 \uC751\uB2F5\uC2DC\uAC04": "Service response time per context",
+  "Context\uBCC4 \uCD08\uB2F9 \uD2B8\uB79C\uC7AD\uC158, 5\uCD08\uAC12": "TPS per context, 5-second values",
+  "\uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM okind\uBCC4 \uC218": "Number of APM agents installed in container applications, per okind",
+  "\uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM onode\uBCC4 \uC218": "Number of APM agents installed in container applications, per onode",
+  "\uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM \uC804\uCCB4 \uC218": "Total number of APM agents installed in container applications",
+  "OID\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0": "Summed CPU millicore count per OID",
+  "OKIND CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0": "Summed CPU millicore count per OKIND",
+  "ONODE\uBCC4 CPU \uBC00\uB9AC \uCF54\uC5B4 \uC218 \uD569\uC0B0": "Summed CPU millicore count per ONODE",
+  "\uCEE8\uD14C\uC774\uB108\uC758 \uC560\uD50C\uB9AC\uCF00\uC774\uC158\uC5D0 \uC124\uCE58\uB41C APM oid\uBCC4 \uCD94\uC774": "Trend of APM agents installed in container applications, per oid",
+  "\uC5D0\uC774\uC804\uD2B8 \uBAA9\uB85D, \uC0C1\uD0DC": "Agent list with status",
+  "\uB9C8\uC2A4\uD130 \uAC2F\uC218": "Master count",
+  "\uC2AC\uB808\uC774\uBE0C \uAC2F\uC218": "Slave (replica) count",
+  "\uC218\uC9D1 \uC0C1\uD0DC : \uC218\uC9D1 \uC911 | 5\uBD84\uC774\uC0C1 \uC911\uB2E8\uB428": "Collection status: collecting | stopped for 5 minutes or more",
+  "\uCE74\uD14C\uACE0\uB9AC \uBCC4 RPS\uC758 \uD3C9\uADE0": "Average RPS per category",
+  "\uCE74\uD14C\uACE0\uB9AC \uBCC4 RPS\uC758 \uD569": "Sum of RPS per category",
+  "\uCE74\uD14C\uACE0\uB9AC \uBCC4 RPS\uC758 \uD3C9\uADE0 \uB610\uB294 \uD569\uC0B0": "Average or sum of RPS per category",
+  "N\uBD84\uC758 \uD3C9\uADE0\uC744 \uAD6C\uD558\uB294 \uACF5\uC2DD": "Formula for computing the N-minute average"
+};
+
+// src/utils/mxql-comments.ts
+function translateCommentLine(text) {
+  return MXQL_COMMENT_TRANSLATIONS[text.trim()] ?? null;
+}
+function translateComment(text) {
+  return translateCommentLine(text) ?? text;
+}
+function translateMxqlComments(raw) {
+  if (!raw) return raw;
+  const out = [];
+  let inBlock = false;
+  for (const line of raw.split("\n")) {
+    if (inBlock) {
+      const end = line.indexOf("*/");
+      if (end === -1) {
+        out.push(rewriteSegment(line, ""));
+      } else {
+        inBlock = false;
+        out.push(rewriteSegment(line.slice(0, end), line.slice(end)));
+      }
+      continue;
+    }
+    const start = findCommentStart(line);
+    if (!start) {
+      out.push(line);
+      continue;
+    }
+    const code = line.slice(0, start.index + start.marker.length);
+    const rest = line.slice(start.index + start.marker.length);
+    if (start.marker === "/*") {
+      const end = rest.indexOf("*/");
+      if (end === -1) {
+        inBlock = true;
+        out.push(code + rewriteSegment(rest, ""));
+      } else {
+        out.push(code + rewriteSegment(rest.slice(0, end), rest.slice(end)));
+      }
+    } else {
+      out.push(code + rewriteSegment(rest, ""));
+    }
+  }
+  return out.join("\n");
+}
+function rewriteSegment(body, tail) {
+  const trimmed = body.trim();
+  if (!trimmed) return body + tail;
+  const translated = MXQL_COMMENT_TRANSLATIONS[trimmed];
+  if (!translated) return body + tail;
+  const lead = body.slice(0, body.indexOf(trimmed[0]));
+  const trailStart = lead.length + trimmed.length;
+  return lead + translated + body.slice(trailStart) + tail;
+}
+function findCommentStart(line) {
+  let quote = null;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (quote) {
+      if (c === quote) quote = null;
+      continue;
+    }
+    if (c === "'" || c === '"') {
+      quote = c;
+      continue;
+    }
+    if (c === "/" && line[i + 1] === "*") return { index: i, marker: "/*" };
+    if (c === "-" && line[i + 1] === "-") return { index: i, marker: "--" };
+    if (c === "#") return { index: i, marker: "#" };
+  }
+  return null;
 }
 
 // src/data/mxql-catalog.ts
@@ -35575,8 +35835,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/daily/app_counter",
-    "domain": "src/main/resources/mxql/apm/daily",
+    "path": "mxql/apm/daily/app_counter",
+    "domain": "mxql/apm/daily",
     "description": "",
     "categories": [
       "app_counter{h1}",
@@ -35607,8 +35867,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/daily/app_user",
-    "domain": "src/main/resources/mxql/apm/daily",
+    "path": "mxql/apm/daily/app_user",
+    "domain": "mxql/apm/daily",
     "description": "",
     "categories": [
       "visitor{h1}"
@@ -35630,8 +35890,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/error_diff",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/error_diff",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_error"
@@ -35646,40 +35906,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/error_diff_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_error{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_error"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "src/main/resources/mxql/apm/stat/error_series",
-    "domain": "src/main/resources/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_error"
-    ],
-    "baseCategories": [
-      "db3_stat_error"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "src/main/resources/mxql/apm/stat/error_series_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/error_diff_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_error{h1}"
@@ -35694,8 +35922,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/error_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/error_series",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_error"
@@ -35710,8 +35938,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/error_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/error_series_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_error{h1}"
@@ -35726,8 +35954,40 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/httpc_diff",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/error_stat",
+    "domain": "mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/apm/stat/error_stat_1h",
+    "domain": "mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_error{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_error"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/apm/stat/httpc_diff",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_httpc"
@@ -35742,8 +36002,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/httpc_diff_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/httpc_diff_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_httpc[h1}"
@@ -35758,8 +36018,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/httpc_series",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/httpc_series",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_httpc"
@@ -35774,40 +36034,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/httpc_series_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_httpc{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_httpc"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "src/main/resources/mxql/apm/stat/httpc_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_httpc"
-    ],
-    "baseCategories": [
-      "db3_stat_httpc"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "src/main/resources/mxql/apm/stat/httpc_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/httpc_series_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_httpc{h1}"
@@ -35822,8 +36050,40 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/ip_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/httpc_stat",
+    "domain": "mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/apm/stat/httpc_stat_1h",
+    "domain": "mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_httpc{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_httpc"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/apm/stat/ip_stat",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_ip"
@@ -35838,8 +36098,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/ip_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/ip_stat_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_ip{h1}"
@@ -35854,8 +36114,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/ip_url_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/ip_url_stat",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_ip-url"
@@ -35879,8 +36139,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/ip_url_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/ip_url_stat_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_ip-url{h1}"
@@ -35904,8 +36164,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/sql_diff",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/sql_diff",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_sql"
@@ -35920,40 +36180,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/sql_diff_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_sql{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "src/main/resources/mxql/apm/stat/sql_series",
-    "domain": "src/main/resources/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_sql"
-    ],
-    "baseCategories": [
-      "db3_stat_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "src/main/resources/mxql/apm/stat/sql_series_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/sql_diff_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_sql{h1}"
@@ -35968,8 +36196,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/sql_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/sql_series",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_sql"
@@ -35984,8 +36212,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/sql_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/sql_series_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_sql{h1}"
@@ -36000,8 +36228,40 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/sql_stat_join",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/sql_stat",
+    "domain": "mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/apm/stat/sql_stat_1h",
+    "domain": "mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_sql{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_sql"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/apm/stat/sql_stat_join",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_sql{h1}",
@@ -36017,8 +36277,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/transaction_diff",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/transaction_diff",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_tx"
@@ -36033,8 +36293,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/transaction_diff_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/transaction_diff_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_tx{h1}"
@@ -36049,8 +36309,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/transaction_quantile_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/transaction_quantile_stat",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_tx_quantile",
@@ -36071,8 +36331,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/transaction_quantile_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/transaction_quantile_stat_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_tx_quantile{h1}",
@@ -36092,8 +36352,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/transaction_series",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/transaction_series",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_tx"
@@ -36108,40 +36368,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/transaction_series_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_tx{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "src/main/resources/mxql/apm/stat/transaction_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_tx"
-    ],
-    "baseCategories": [
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "src/main/resources/mxql/apm/stat/transaction_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/transaction_series_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_tx{h1}"
@@ -36156,8 +36384,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/transaction_stat_join",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/transaction_stat",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_tx"
@@ -36172,8 +36400,40 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_caller_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/transaction_stat_1h",
+    "domain": "mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx{h1}"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/apm/stat/transaction_stat_join",
+    "domain": "mxql/apm/stat",
+    "description": "",
+    "categories": [
+      "db3_stat_tx"
+    ],
+    "baseCategories": [
+      "db3_stat_tx"
+    ],
+    "parameters": [],
+    "headerTypes": {},
+    "selectFields": [],
+    "joins": [],
+    "loadType": "FLEXLOAD"
+  },
+  {
+    "path": "mxql/apm/stat/tx_caller_stat",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_mt"
@@ -36188,8 +36448,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_caller_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_caller_stat_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_mt{h1}"
@@ -36204,8 +36464,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_domain_series",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_domain_series",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_dom"
@@ -36226,8 +36486,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_domain_series_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_domain_series_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_dom{h1}"
@@ -36248,8 +36508,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_domain_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_domain_stat",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_dom"
@@ -36273,8 +36533,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_domain_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_domain_stat_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_dom{h1}"
@@ -36298,8 +36558,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_login_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_login_stat",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_login"
@@ -36323,8 +36583,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_login_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_login_stat_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_login{h1}"
@@ -36348,8 +36608,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_referer_series",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_referer_series",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_referer"
@@ -36370,8 +36630,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_referer_series_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_referer_series_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_referer{h1}"
@@ -36392,8 +36652,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_referer_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_referer_stat",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_referer"
@@ -36417,8 +36677,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/tx_referer_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/tx_referer_stat_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_gen_referer{h1}"
@@ -36442,8 +36702,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/useragent_series",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/useragent_series",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_useragent"
@@ -36461,8 +36721,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/useragent_series_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/useragent_series_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_useragent{h1}"
@@ -36480,8 +36740,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/useragent_stat",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/useragent_stat",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_useragent"
@@ -36496,8 +36756,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/apm/stat/useragent_stat_1h",
-    "domain": "src/main/resources/mxql/apm/stat",
+    "path": "mxql/apm/stat/useragent_stat_1h",
+    "domain": "mxql/apm/stat",
     "description": "",
     "categories": [
       "db3_stat_useragent{h1}"
@@ -36512,8 +36772,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/linkages/apm2db",
-    "domain": "src/main/resources/mxql/dbx/linkages",
+    "path": "mxql/dbx/linkages/apm2db",
+    "domain": "mxql/dbx/linkages",
     "description": "",
     "categories": [
       "search_act_tx_run_sql"
@@ -36528,8 +36788,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/dbx/linkages/db2apm",
-    "domain": "src/main/resources/mxql/dbx/linkages",
+    "path": "mxql/dbx/linkages/db2apm",
+    "domain": "mxql/dbx/linkages",
     "description": "",
     "categories": [
       "<%category%>"
@@ -36546,8 +36806,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/linkages/db2apm_oracle",
-    "domain": "src/main/resources/mxql/dbx/linkages",
+    "path": "mxql/dbx/linkages/db2apm_oracle",
+    "domain": "mxql/dbx/linkages",
     "description": "",
     "categories": [
       "<%category%>"
@@ -36562,8 +36822,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/parameter-history",
-    "domain": "src/main/resources/mxql/dbx",
+    "path": "mxql/dbx/parameter-history",
+    "domain": "mxql/dbx",
     "description": "",
     "categories": [
       "db_<%DB_TYPE%>_parameter"
@@ -36578,8 +36838,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/planchange/chart",
-    "domain": "src/main/resources/mxql/dbx/planchange",
+    "path": "mxql/dbx/planchange/chart",
+    "domain": "mxql/dbx/planchange",
     "description": "",
     "categories": [
       "<%SQLSTAT_CATEGORY%>{h1}",
@@ -36606,8 +36866,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/planchange/history",
-    "domain": "src/main/resources/mxql/dbx/planchange",
+    "path": "mxql/dbx/planchange/history",
+    "domain": "mxql/dbx/planchange",
     "description": "",
     "categories": [
       "<%PLAN_CHANGE_CATEGORY%>"
@@ -36633,8 +36893,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/planchange/summary",
-    "domain": "src/main/resources/mxql/dbx/planchange",
+    "path": "mxql/dbx/planchange/summary",
+    "domain": "mxql/dbx/planchange",
     "description": "",
     "categories": [
       "<%SQLSTAT_CATEGORY%>{h1}",
@@ -36666,8 +36926,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/stat/each_sql",
-    "domain": "src/main/resources/mxql/dbx/stat",
+    "path": "mxql/dbx/stat/each_sql",
+    "domain": "mxql/dbx/stat",
     "description": "",
     "categories": [
       "<%CATEGORY%>"
@@ -36682,8 +36942,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/stat/each_sql_main",
-    "domain": "src/main/resources/mxql/dbx/stat",
+    "path": "mxql/dbx/stat/each_sql_main",
+    "domain": "mxql/dbx/stat",
     "description": "",
     "categories": [
       "<%CATEGORY%>"
@@ -36698,8 +36958,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/stat/merged_sql",
-    "domain": "src/main/resources/mxql/dbx/stat",
+    "path": "mxql/dbx/stat/merged_sql",
+    "domain": "mxql/dbx/stat",
     "description": "",
     "categories": [
       "<%CATEGORY%>"
@@ -36714,8 +36974,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/stat/sql_stat_raw",
-    "domain": "src/main/resources/mxql/dbx/stat",
+    "path": "mxql/dbx/stat/sql_stat_raw",
+    "domain": "mxql/dbx/stat",
     "description": "",
     "categories": [
       "<%CATEGORY%>"
@@ -36732,8 +36992,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/stat/summary_chart_all",
-    "domain": "src/main/resources/mxql/dbx/stat",
+    "path": "mxql/dbx/stat/summary_chart_all",
+    "domain": "mxql/dbx/stat",
     "description": "",
     "categories": [
       "<%CATEGORY%>"
@@ -36755,8 +37015,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/stat/summary_chart_group",
-    "domain": "src/main/resources/mxql/dbx/stat",
+    "path": "mxql/dbx/stat/summary_chart_group",
+    "domain": "mxql/dbx/stat",
     "description": "",
     "categories": [
       "<%CATEGORY%>"
@@ -36779,8 +37039,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/group_name",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/group_name",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_sqlstat<%TIMEUNIT%>"
@@ -36802,8 +37062,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_class",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_analysis_chart_class",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_wait_class<%TIMEUNIT%>"
@@ -36818,8 +37078,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_cpu",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_analysis_chart_cpu",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_counter<%TIMEUNIT%>"
@@ -36846,8 +37106,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_enqueue",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_analysis_chart_enqueue",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_event_time_top<%TIMEUNIT%>"
@@ -36865,8 +37125,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_latch",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_analysis_chart_latch",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_event_time_top<%TIMEUNIT%>"
@@ -36884,8 +37144,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_mem",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_analysis_chart_mem",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_counter<%TIMEUNIT%>"
@@ -36905,8 +37165,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_session",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_analysis_chart_session",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_counter<%TIMEUNIT%>"
@@ -36927,8 +37187,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_stat",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_analysis_chart_stat",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_stat_top<%TIMEUNIT%>"
@@ -36950,8 +37210,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_waitcount",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_analysis_chart_waitcount",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_event_wait_top<%TIMEUNIT%>"
@@ -36973,8 +37233,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_analysis_chart_waittime",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_analysis_chart_waittime",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_event_time_top<%TIMEUNIT%>"
@@ -36996,8 +37256,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_sql_list_1",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_sql_list_1",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_sqlstat<%TIMEUNIT%>"
@@ -37012,8 +37272,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_sql_list_2",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_sql_list_2",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_sqlstat_event",
@@ -37035,8 +37295,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_summary",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_summary",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_oracle_dma_wait_class<%TIMEUNIT%>"
@@ -37051,8 +37311,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/dbx/wait/wait_top_n",
-    "domain": "src/main/resources/mxql/dbx/wait",
+    "path": "mxql/dbx/wait/wait_top_n",
+    "domain": "mxql/dbx/wait",
     "description": "",
     "categories": [
       "db_index_wait_class",
@@ -37078,8 +37338,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/event/select-options",
-    "domain": "src/main/resources/mxql/event",
+    "path": "mxql/event/select-options",
+    "domain": "mxql/event",
     "description": "",
     "categories": [
       "<%"
@@ -37094,8 +37354,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/ServerCommonService-getServerList",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/ServerCommonService-getServerList",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "server_base",
@@ -37116,8 +37376,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/ServerProcessService-getCpuMaxOrderTopList",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/ServerProcessService-getCpuMaxOrderTopList",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "server_process"
@@ -37141,8 +37401,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/ServerProcessService-getMemMaxOrderTopList",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/ServerProcessService-getMemMaxOrderTopList",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "server_process"
@@ -37166,8 +37426,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/ServerProcessService-getProcessList",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/ServerProcessService-getProcessList",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "server_process"
@@ -37198,8 +37458,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/file-systems-by-group-and-keys",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/file-systems-by-group-and-keys",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "infra_filesystem",
@@ -37221,8 +37481,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-custom-field-keys",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-custom-field-keys",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "agent_list"
@@ -37240,8 +37500,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-event-id-list",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-event-id-list",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "event_status_summary",
@@ -37262,8 +37522,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-fold-category-desc-fields",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-fold-category-desc-fields",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "<%"
@@ -37278,8 +37538,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-inventory-keywords",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-inventory-keywords",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "agent_list"
@@ -37297,8 +37557,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-oids-by-infra-cpu-fixed-3h-range",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-oids-by-infra-cpu-fixed-3h-range",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "infra_cpu"
@@ -37315,8 +37575,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-oids-by-infra-cpu-h1",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-oids-by-infra-cpu-h1",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "infra_cpu{h1}"
@@ -37333,8 +37593,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-server-inventories-for-status",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-server-inventories-for-status",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "agent_list"
@@ -37354,8 +37614,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-server-inventories-with-metric",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-server-inventories-with-metric",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "agent_list",
@@ -37410,8 +37670,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-server-ostype-version",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-server-ostype-version",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "agent_list"
@@ -37430,8 +37690,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/get-server-process-names",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/get-server-process-names",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "server_process"
@@ -37448,8 +37708,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/hostnames-by-all",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/hostnames-by-all",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [],
     "baseCategories": [],
@@ -37460,8 +37720,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/infra/hostnames-by-oid-list",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/hostnames-by-oid-list",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [],
     "baseCategories": [],
@@ -37472,8 +37732,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/infra/inventory/check-exist-gpu",
-    "domain": "src/main/resources/mxql/infra/inventory",
+    "path": "mxql/infra/inventory/check-exist-gpu",
+    "domain": "mxql/infra/inventory",
     "description": "",
     "categories": [
       "agent_list"
@@ -37490,8 +37750,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/inventory/get-active-gpu-list",
-    "domain": "src/main/resources/mxql/infra/inventory",
+    "path": "mxql/infra/inventory/get-active-gpu-list",
+    "domain": "mxql/infra/inventory",
     "description": "",
     "categories": [
       "agent_list"
@@ -37509,8 +37769,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/inventoryV2/gpu-search-agent-join",
-    "domain": "src/main/resources/mxql/infra/inventoryV2",
+    "path": "mxql/infra/inventoryV2/gpu-search-agent-join",
+    "domain": "mxql/infra/inventoryV2",
     "description": "",
     "categories": [
       "agent_list"
@@ -37531,8 +37791,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/inventoryV2/gpu-search-snapshot",
-    "domain": "src/main/resources/mxql/infra/inventoryV2",
+    "path": "mxql/infra/inventoryV2/gpu-search-snapshot",
+    "domain": "mxql/infra/inventoryV2",
     "description": "",
     "categories": [],
     "baseCategories": [],
@@ -37548,8 +37808,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/infra/inventoryV2/server-search-agent-join",
-    "domain": "src/main/resources/mxql/infra/inventoryV2",
+    "path": "mxql/infra/inventoryV2/server-search-agent-join",
+    "domain": "mxql/infra/inventoryV2",
     "description": "",
     "categories": [
       "agent_list"
@@ -37567,8 +37827,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/inventoryV2/server-search-snapshot",
-    "domain": "src/main/resources/mxql/infra/inventoryV2",
+    "path": "mxql/infra/inventoryV2/server-search-snapshot",
+    "domain": "mxql/infra/inventoryV2",
     "description": "",
     "categories": [],
     "baseCategories": [],
@@ -37579,8 +37839,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/infra/metric-by-oid-list",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/metric-by-oid-list",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "<%"
@@ -37598,8 +37858,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/metrics_explorer/get-agent-info-list",
-    "domain": "src/main/resources/mxql/infra/metrics_explorer",
+    "path": "mxql/infra/metrics_explorer/get-agent-info-list",
+    "domain": "mxql/infra/metrics_explorer",
     "description": "",
     "categories": [
       "agent_list",
@@ -37621,8 +37881,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/oid-list-by-filters",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/oid-list-by-filters",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "agent_list"
@@ -37639,8 +37899,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/oid-list-by-top-n",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/oid-list-by-top-n",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "infra_cpu"
@@ -37659,8 +37919,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/os-type-by-oids",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/os-type-by-oids",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [],
     "baseCategories": [],
@@ -37673,8 +37933,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/infra/process-list-by-oid",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/process-list-by-oid",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "infra_process_group"
@@ -37689,8 +37949,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/servers-by-group-and-keys",
-    "domain": "src/main/resources/mxql/infra",
+    "path": "mxql/infra/servers-by-group-and-keys",
+    "domain": "mxql/infra",
     "description": "",
     "categories": [
       "agent_list"
@@ -37707,8 +37967,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/infra/v4series/select-fold-category",
-    "domain": "src/main/resources/mxql/infra/v4series",
+    "path": "mxql/infra/v4series/select-fold-category",
+    "domain": "mxql/infra/v4series",
     "description": "",
     "categories": [
       "<% CATEGORY_NAME %>{m5}",
@@ -37731,8 +37991,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/openmetric/stat/stat_gpu_trend_hitmap",
-    "domain": "src/main/resources/mxql/openmetric/stat",
+    "path": "mxql/openmetric/stat/stat_gpu_trend_hitmap",
+    "domain": "mxql/openmetric/stat",
     "description": "",
     "categories": [],
     "baseCategories": [],
@@ -37743,8 +38003,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/report/getReportBatchMenu",
-    "domain": "src/main/resources/mxql/report",
+    "path": "mxql/report/getReportBatchMenu",
+    "domain": "mxql/report",
     "description": "",
     "categories": [],
     "baseCategories": [],
@@ -37755,8 +38015,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/server/inventory/agent",
-    "domain": "src/main/resources/mxql/server/inventory",
+    "path": "mxql/server/inventory/agent",
+    "domain": "mxql/server/inventory",
     "description": "",
     "categories": [],
     "baseCategories": [],
@@ -37767,8 +38027,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/server/inventory/custom",
-    "domain": "src/main/resources/mxql/server/inventory",
+    "path": "mxql/server/inventory/custom",
+    "domain": "mxql/server/inventory",
     "description": "",
     "categories": [],
     "baseCategories": [],
@@ -37779,8 +38039,8 @@ var CATALOG_ENTRIES = [
     "loadType": "unknown"
   },
   {
-    "path": "src/main/resources/mxql/server/inventory/join",
-    "domain": "src/main/resources/mxql/server/inventory",
+    "path": "mxql/server/inventory/join",
+    "domain": "mxql/server/inventory",
     "description": "",
     "categories": [
       "agent_list"
@@ -37798,8 +38058,8 @@ var CATALOG_ENTRIES = [
     "loadType": "FLEXLOAD"
   },
   {
-    "path": "src/main/resources/mxql/server/tmp_cube/tmp_category_filter",
-    "domain": "src/main/resources/mxql/server/tmp_cube",
+    "path": "mxql/server/tmp_cube/tmp_category_filter",
+    "domain": "mxql/server/tmp_cube",
     "description": "",
     "categories": [
       "<%"
@@ -37814,2270 +38074,8 @@ var CATALOG_ENTRIES = [
     "loadType": "TAGLOAD"
   },
   {
-    "path": "src/main/resources/mxql/server/ver20/get-top5-cpu-server-list",
-    "domain": "src/main/resources/mxql/server/ver20",
-    "description": "",
-    "categories": [
-      "infra_cpu",
-      "infra_cpu"
-    ],
-    "baseCategories": [
-      "infra_cpu"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "total",
-      "oid",
-      "oname",
-      "order"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/daily/app_counter",
-    "domain": "target/classes/mxql/apm/daily",
-    "description": "",
-    "categories": [
-      "app_counter{h1}",
-      "app_counter{h1}"
-    ],
-    "baseCategories": [
-      "app_counter"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "tx_count",
-      "peak_hour",
-      "oid",
-      "oname",
-      "tx_error",
-      "tps",
-      "resp_time",
-      "active_tx_count",
-      "daily_tx_count",
-      "daily_tx_error",
-      "peak_hour_tps",
-      "peak_hour_resp_time",
-      "peak_hour_active_tx"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/daily/app_user",
-    "domain": "target/classes/mxql/apm/daily",
-    "description": "",
-    "categories": [
-      "visitor{h1}"
-    ],
-    "baseCategories": [
-      "visitor"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "oid",
-      "oname",
-      "logbits",
-      "daily_bits",
-      "daily_visitor"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/error_diff",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_error"
-    ],
-    "baseCategories": [
-      "db3_stat_error"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/error_diff_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_error{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_error"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/error_series",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_error"
-    ],
-    "baseCategories": [
-      "db3_stat_error"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/error_series_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_error{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_error"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/error_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_error"
-    ],
-    "baseCategories": [
-      "db3_stat_error"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/error_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_error{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_error"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/httpc_diff",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_httpc"
-    ],
-    "baseCategories": [
-      "db3_stat_httpc"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/httpc_diff_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_httpc[h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_httpc[h1}"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/httpc_series",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_httpc"
-    ],
-    "baseCategories": [
-      "db3_stat_httpc"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/httpc_series_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_httpc{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_httpc"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/httpc_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_httpc"
-    ],
-    "baseCategories": [
-      "db3_stat_httpc"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/httpc_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_httpc{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_httpc"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/ip_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_ip"
-    ],
-    "baseCategories": [
-      "db3_stat_ip"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/ip_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_ip{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_ip"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/ip_url_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_ip-url"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_ip-url"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "ip",
-      "ipHash",
-      "url",
-      "urlHash",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/ip_url_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_ip-url{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_ip-url"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "ip",
-      "ipHash",
-      "url",
-      "urlHash",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/sql_diff",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_sql"
-    ],
-    "baseCategories": [
-      "db3_stat_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/sql_diff_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_sql{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/sql_series",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_sql"
-    ],
-    "baseCategories": [
-      "db3_stat_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/sql_series_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_sql{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/sql_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_sql"
-    ],
-    "baseCategories": [
-      "db3_stat_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/sql_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_sql{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/sql_stat_join",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_sql{h1}",
-      "db3_stat_sql"
-    ],
-    "baseCategories": [
-      "db3_stat_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/transaction_diff",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_tx"
-    ],
-    "baseCategories": [
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/transaction_diff_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_tx{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/transaction_quantile_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_tx_quantile",
-      "db3_stat_tx"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_tx_quantile",
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "urlhash",
-      "quantile"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/transaction_quantile_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_tx_quantile{h1}",
-      "db3_stat_tx{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_tx_quantile",
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "urlhash",
-      "quantile"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/transaction_series",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_tx"
-    ],
-    "baseCategories": [
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/transaction_series_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_tx{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/transaction_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_tx"
-    ],
-    "baseCategories": [
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/transaction_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_tx{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/transaction_stat_join",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_tx"
-    ],
-    "baseCategories": [
-      "db3_stat_tx"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_caller_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_mt"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_mt"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_caller_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_mt{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_mt"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_domain_series",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_dom"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_dom"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_domain_series_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_dom{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_dom"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_domain_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_dom"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_dom"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "domain",
-      "domainHash",
-      "url",
-      "urlHash",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_domain_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_dom{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_dom"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "domain",
-      "domainHash",
-      "url",
-      "urlHash",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_login_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_login"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_login"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "login",
-      "loginHash",
-      "url",
-      "urlHash",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_login_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_login{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_login"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "login",
-      "loginHash",
-      "url",
-      "urlHash",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_referer_series",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_referer"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_referer"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_referer_series_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_referer{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_referer"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_referer_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_referer"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_referer"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "referer",
-      "refererHash",
-      "url",
-      "urlHash",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/tx_referer_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_gen_referer{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_gen_referer"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "referer",
-      "refererHash",
-      "url",
-      "urlHash",
-      "count",
-      "error",
-      "timeSum",
-      "timeAvg"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/useragent_series",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_useragent"
-    ],
-    "baseCategories": [
-      "db3_stat_useragent"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "count"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/useragent_series_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_useragent{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_useragent"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "count"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/useragent_stat",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_useragent"
-    ],
-    "baseCategories": [
-      "db3_stat_useragent"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/apm/stat/useragent_stat_1h",
-    "domain": "target/classes/mxql/apm/stat",
-    "description": "",
-    "categories": [
-      "db3_stat_useragent{h1}"
-    ],
-    "baseCategories": [
-      "db3_stat_useragent"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/linkages/apm2db",
-    "domain": "target/classes/mxql/dbx/linkages",
-    "description": "",
-    "categories": [
-      "search_act_tx_run_sql"
-    ],
-    "baseCategories": [
-      "search_act_tx_run_sql"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/dbx/linkages/db2apm",
-    "domain": "target/classes/mxql/dbx/linkages",
-    "description": "",
-    "categories": [
-      "<%category%>"
-    ],
-    "baseCategories": [
-      "<%category%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/linkages/db2apm_oracle",
-    "domain": "target/classes/mxql/dbx/linkages",
-    "description": "",
-    "categories": [
-      "<%category%>"
-    ],
-    "baseCategories": [
-      "<%category%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/parameter-history",
-    "domain": "target/classes/mxql/dbx",
-    "description": "",
-    "categories": [
-      "db_<%DB_TYPE%>_parameter"
-    ],
-    "baseCategories": [
-      "db_<%DB_TYPE%>_parameter"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/planchange/chart",
-    "domain": "target/classes/mxql/dbx/planchange",
-    "description": "",
-    "categories": [
-      "<%SQLSTAT_CATEGORY%>{h1}",
-      "<%SQLSTAT_CATEGORY%>{h1}",
-      "<%PLAN_CHANGE_CATEGORY%>"
-    ],
-    "baseCategories": [
-      "<%SQLSTAT_CATEGORY%>",
-      "<%PLAN_CHANGE_CATEGORY%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "sql_id",
-      "before_plan_hash_value",
-      "before_elapsed_time_per_exec",
-      "after_plan_hash_value",
-      "after_elapsed_time_per_exec",
-      "change_count",
-      "flag"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/planchange/history",
-    "domain": "target/classes/mxql/dbx/planchange",
-    "description": "",
-    "categories": [
-      "<%PLAN_CHANGE_CATEGORY%>"
-    ],
-    "baseCategories": [
-      "<%PLAN_CHANGE_CATEGORY%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "sql_id",
-      "<%SQL_HASH_FIELD%>",
-      "sql_text",
-      "child_number",
-      "before_plan_hash_value",
-      "after_plan_hash_value",
-      "sid",
-      "user",
-      "program"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/planchange/summary",
-    "domain": "target/classes/mxql/dbx/planchange",
-    "description": "",
-    "categories": [
-      "<%SQLSTAT_CATEGORY%>{h1}",
-      "<%SQLSTAT_CATEGORY%>{h1}",
-      "<%PLAN_CHANGE_CATEGORY%>"
-    ],
-    "baseCategories": [
-      "<%SQLSTAT_CATEGORY%>",
-      "<%PLAN_CHANGE_CATEGORY%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "sql_id",
-      "before_plan_hash_value",
-      "before_elapsed_time_per_exec",
-      "after_plan_hash_value",
-      "after_elapsed_time_per_exec",
-      "time",
-      "sql_text",
-      "user",
-      "program",
-      "elapsed_time_diff",
-      "flag",
-      "change_count",
-      "sql_hash_value"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/stat/each_sql",
-    "domain": "target/classes/mxql/dbx/stat",
-    "description": "",
-    "categories": [
-      "<%CATEGORY%>"
-    ],
-    "baseCategories": [
-      "<%CATEGORY%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/stat/each_sql_main",
-    "domain": "target/classes/mxql/dbx/stat",
-    "description": "",
-    "categories": [
-      "<%CATEGORY%>"
-    ],
-    "baseCategories": [
-      "<%CATEGORY%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/stat/merged_sql",
-    "domain": "target/classes/mxql/dbx/stat",
-    "description": "",
-    "categories": [
-      "<%CATEGORY%>"
-    ],
-    "baseCategories": [
-      "<%CATEGORY%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/stat/sql_stat_raw",
-    "domain": "target/classes/mxql/dbx/stat",
-    "description": "",
-    "categories": [
-      "<%CATEGORY%>"
-    ],
-    "baseCategories": [
-      "<%CATEGORY%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "<%SELECT_FIELDS%><%ADD_GROUPS%>"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/stat/summary_chart_all",
-    "domain": "target/classes/mxql/dbx/stat",
-    "description": "",
-    "categories": [
-      "<%CATEGORY%>"
-    ],
-    "baseCategories": [
-      "<%CATEGORY%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "execute_count",
-      "elapsed_time",
-      "elapsed_max",
-      "<%SQL_HASH_FIELD_NAME%>",
-      "<%REQUEST_FIELD%>"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/stat/summary_chart_group",
-    "domain": "target/classes/mxql/dbx/stat",
-    "description": "",
-    "categories": [
-      "<%CATEGORY%>"
-    ],
-    "baseCategories": [
-      "<%CATEGORY%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "execute_count",
-      "elapsed_time",
-      "elapsed_max",
-      "<%SQL_HASH_FIELD_NAME%>",
-      "<%REQUEST_GROUP%>",
-      "<%REQUEST_FIELD%>"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/group_name",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "schemaname",
-      "con_name",
-      "machine",
-      "program",
-      "module",
-      "osuser"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_class",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_wait_class<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_wait_class<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_cpu",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_counter<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_counter<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "pcode",
-      "oid",
-      "cpu(xos2)",
-      "cpu_sys(xos2)",
-      "cpu_user(xos2)",
-      "cpu_idle(xos2)",
-      "cpu_iowait(xos2)",
-      "'cpu_iowait(xos)'",
-      "'cpu_sys(xos)'",
-      "'cpu_user(xos)'"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_enqueue",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "'enq: TX - row lock contention'"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_latch",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "'latch: shared pool'"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_mem",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_counter<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_counter<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "pcode",
-      "oid",
-      "mem(xos)"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_session",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_counter<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_counter<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "pcode",
-      "oid",
-      "active_sessions",
-      "total_sessions"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_stat",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_stat_top<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_stat_top<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "'non-idle wait time'",
-      "'application wait time'",
-      "'logical read bytes from cache'",
-      "'redo synch time overhead (usec)'",
-      "'cell physical IO interconnect bytes'"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_waitcount",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_event_wait_top<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_event_wait_top<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "'SQL*Net message to client'",
-      "'control file sequential read'",
-      "'log file parallel write'",
-      "'log file sync'",
-      "'db file parallel write'"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_analysis_chart_waittime",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_event_time_top<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "'enq: TX - row lock contention'",
-      "'log file sync'",
-      "'ADR block file read'",
-      "'ADR block file write'",
-      "'control file sequential read'"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_sql_list_1",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_sql_list_2",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_sqlstat_event",
-      "db_index_event",
-      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_sqlstat_event",
-      "db_index_event",
-      "db_oracle_dma_sqlstat<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "@id",
-      "idx"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_summary",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_oracle_dma_wait_class<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_oracle_dma_wait_class<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/dbx/wait/wait_top_n",
-    "domain": "target/classes/mxql/dbx/wait",
-    "description": "",
-    "categories": [
-      "db_index_wait_class",
-      "db_index_event",
-      "db_oracle_dma_sqlstat_event<%TIMEUNIT%>"
-    ],
-    "baseCategories": [
-      "db_index_wait_class",
-      "db_index_event",
-      "db_oracle_dma_sqlstat_event<%TIMEUNIT%>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "class",
-      "class_name",
-      "event_no",
-      "event_name",
-      "wait_time",
-      "percentage"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/event/select-options",
-    "domain": "target/classes/mxql/event",
-    "description": "",
-    "categories": [
-      "<%"
-    ],
-    "baseCategories": [
-      "<%"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/ServerCommonService-getServerList",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "server_base",
-      "server_base{m5}",
-      "server_base{h1}"
-    ],
-    "baseCategories": [
-      "server_base"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "oid",
-      "oname"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/ServerProcessService-getCpuMaxOrderTopList",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "server_process"
-    ],
-    "baseCategories": [
-      "server_process"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "oid",
-      "hash",
-      "name",
-      "oname",
-      "user",
-      "cpu",
-      "count"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/ServerProcessService-getMemMaxOrderTopList",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "server_process"
-    ],
-    "baseCategories": [
-      "server_process"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "oid",
-      "hash",
-      "name",
-      "oname",
-      "user",
-      "memory",
-      "count"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/ServerProcessService-getProcessList",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "server_process"
-    ],
-    "baseCategories": [
-      "server_process"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "oid",
-      "hash",
-      "name",
-      "cmd1",
-      "oname",
-      "user",
-      "cpu",
-      "memory",
-      "riops",
-      "wiops",
-      "count",
-      "rss",
-      "rbps",
-      "wbps"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/file-systems-by-group-and-keys",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "infra_filesystem",
-      "agent_list"
-    ],
-    "baseCategories": [
-      "infra_filesystem",
-      "agent_list"
-    ],
-    "parameters": [
-      "$etime"
-    ],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "hostname"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-custom-field-keys",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "pivot_field"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-event-id-list",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "event_status_summary",
-      "agent_list"
-    ],
-    "baseCategories": [
-      "event_status_summary",
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "warning",
-      "critical"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-fold-category-desc-fields",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "<%"
-    ],
-    "baseCategories": [
-      "<%"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-inventory-keywords",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "<% COLUMN_NAME %>",
-      "oid"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-oids-by-infra-cpu-fixed-3h-range",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "infra_cpu"
-    ],
-    "baseCategories": [
-      "infra_cpu"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-oids-by-infra-cpu-h1",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "infra_cpu{h1}"
-    ],
-    "baseCategories": [
-      "infra_cpu"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-server-inventories-for-status",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "status",
-      "OSType",
-      "nCores"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-server-inventories-with-metric",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "agent_list",
-      "infra_disk_perf",
-      "infra_cpu",
-      "infra_mem",
-      "infra_swap",
-      "infra_network",
-      "infra_gpu"
-    ],
-    "baseCategories": [
-      "agent_list",
-      "infra_disk_perf",
-      "infra_cpu",
-      "infra_mem",
-      "infra_swap",
-      "infra_network",
-      "infra_gpu"
-    ],
-    "parameters": [
-      "$etime"
-    ],
-    "headerTypes": {},
-    "selectFields": [
-      "active",
-      "oid",
-      "status",
-      "@id",
-      "name",
-      "busy",
-      "total",
-      "pUsed",
-      "rxbps",
-      "txbps",
-      "gpu_util_203",
-      "fb_total_250",
-      "power_usage_155",
-      "ecc_dbe_aggregate_total_313",
-      "server_agent_active",
-      "OSType",
-      "IP_all",
-      "hostname",
-      "hostAlias",
-      "nCores",
-      "lCores",
-      "memTotal",
-      "frequency",
-      "bootTime",
-      "serverType <% GROUP_FIELDS %>"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-server-ostype-version",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "OSType",
-      "whatap_infradVersion"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/get-server-process-names",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "server_process"
-    ],
-    "baseCategories": [
-      "server_process"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "cmd"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/hostnames-by-all",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [],
-    "baseCategories": [],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/infra/hostnames-by-oid-list",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [],
-    "baseCategories": [],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/infra/inventory/check-exist-gpu",
-    "domain": "target/classes/mxql/infra/inventory",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/inventory/get-active-gpu-list",
-    "domain": "target/classes/mxql/infra/inventory",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "excludeKey"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/inventoryV2/gpu-search-agent-join",
-    "domain": "target/classes/mxql/infra/inventoryV2",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "ipAddress",
-      "OSVersion",
-      "active",
-      "excludeKey"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/inventoryV2/gpu-search-snapshot",
-    "domain": "target/classes/mxql/infra/inventoryV2",
-    "description": "",
-    "categories": [],
-    "baseCategories": [],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "ipAddress",
-      "OSVersion",
-      "excludeKey"
-    ],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/infra/inventoryV2/server-search-agent-join",
-    "domain": "target/classes/mxql/infra/inventoryV2",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "active"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/inventoryV2/server-search-snapshot",
-    "domain": "target/classes/mxql/infra/inventoryV2",
-    "description": "",
-    "categories": [],
-    "baseCategories": [],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/infra/metric-by-oid-list",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "<%"
-    ],
-    "baseCategories": [
-      "<%"
-    ],
-    "parameters": [
-      "$stime",
-      "$etime"
-    ],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/metrics_explorer/get-agent-info-list",
-    "domain": "target/classes/mxql/infra/metrics_explorer",
-    "description": "",
-    "categories": [
-      "agent_list",
-      "infra_cpu",
-      "infra_cpu{m5}",
-      "infra_cpu{h1}"
-    ],
-    "baseCategories": [
-      "agent_list",
-      "infra_cpu"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "hostname"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/oid-list-by-filters",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/oid-list-by-top-n",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "infra_cpu"
-    ],
-    "baseCategories": [
-      "infra_cpu"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid",
-      "time",
-      "total"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/os-type-by-oids",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [],
-    "baseCategories": [],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "OSType"
-    ],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/infra/process-list-by-oid",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "infra_process_group"
-    ],
-    "baseCategories": [
-      "infra_process_group"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/servers-by-group-and-keys",
-    "domain": "target/classes/mxql/infra",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "oid"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/infra/v4series/select-fold-category",
-    "domain": "target/classes/mxql/infra/v4series",
-    "description": "",
-    "categories": [
-      "<% CATEGORY_NAME %>{m5}",
-      "<% CATEGORY_NAME %>{h1}"
-    ],
-    "baseCategories": [
-      "<% CATEGORY_NAME %>"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "time",
-      "oid",
-      "@id",
-      "@pk",
-      "uuid",
-      "<% FIELD_LIST %>"
-    ],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/openmetric/stat/stat_gpu_trend_hitmap",
-    "domain": "target/classes/mxql/openmetric/stat",
-    "description": "",
-    "categories": [],
-    "baseCategories": [],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/report/getReportBatchMenu",
-    "domain": "target/classes/mxql/report",
-    "description": "",
-    "categories": [],
-    "baseCategories": [],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/server/inventory/agent",
-    "domain": "target/classes/mxql/server/inventory",
-    "description": "",
-    "categories": [],
-    "baseCategories": [],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/server/inventory/custom",
-    "domain": "target/classes/mxql/server/inventory",
-    "description": "",
-    "categories": [],
-    "baseCategories": [],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "unknown"
-  },
-  {
-    "path": "target/classes/mxql/server/inventory/join",
-    "domain": "target/classes/mxql/server/inventory",
-    "description": "",
-    "categories": [
-      "agent_list"
-    ],
-    "baseCategories": [
-      "agent_list"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [
-      "active",
-      "oid"
-    ],
-    "joins": [],
-    "loadType": "FLEXLOAD"
-  },
-  {
-    "path": "target/classes/mxql/server/tmp_cube/tmp_category_filter",
-    "domain": "target/classes/mxql/server/tmp_cube",
-    "description": "",
-    "categories": [
-      "<%"
-    ],
-    "baseCategories": [
-      "<%"
-    ],
-    "parameters": [],
-    "headerTypes": {},
-    "selectFields": [],
-    "joins": [],
-    "loadType": "TAGLOAD"
-  },
-  {
-    "path": "target/classes/mxql/server/ver20/get-top5-cpu-server-list",
-    "domain": "target/classes/mxql/server/ver20",
+    "path": "mxql/server/ver20/get-top5-cpu-server-list",
+    "domain": "mxql/server/ver20",
     "description": "",
     "categories": [
       "infra_cpu",
@@ -47921,61 +45919,61 @@ INJECT default
 SELECT [ 'pcode', 'time', 'error_url', 'normal_url', 'total_url' ]
 
 LAST-ONLY { key: pcode }`,
-  "src/main/resources/mxql/apm/daily/app_counter": 'SUB {id:findMax}\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, tx_count]\nGROUP {timeunit:1h, merge:[tx_count]}\nUPDATE {key:tx_count, value:sum}\nRENAME {src:time,dst:peak_hour}\nORDER {key:tx_count, sort:desc}\nCREATE { key: time, from:peak_hour}\nSELECT [time,peak_hour]\nLIMIT 1\nEND\n\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, oid, oname, tx_count,tx_error, tps, resp_time,active_tx_count]\nUPDATE { key:[tx_count,tx_error], value:sum }\nUPDATE { key:[tps,active_tx_count] , value:avg }\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\n\nJOIN {pk:[time], query:findMax}\n\nDELETE time\nIFUPDATE {if:"(peak_hour>0)==false", key:[tps,resp_time,active_tx_count], value:null}\nGROUP { merge:[tx_count,tps,tx_error, resp_time,active_tx_count], pk:[oid, oname], last:peak_hour }\n\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\nUPDATE {key:[tx_count,tps,tx_error, active_tx_count],  value:sum }\n\nRENAME [\n     [tx_count, daily_tx_count]\n    ,[tx_error, daily_tx_error]\n    ,[tps, peak_hour_tps]\n    ,[active_tx_count, peak_hour_active_tx]\n    ,[resp_time, peak_hour_resp_time]\n]\n\nSELECT [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nFOLD [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }\n',
-  "src/main/resources/mxql/apm/daily/app_user": "\nCATEGORY visitor{h1}\nTAGLOAD\nSELECT [time, oid, oname, logbits]\n\nDELETE time\nGROUP { user:logbits, pk:[oid, oname] }\n\nRENAME [\n     [userbytes, daily_bits]\n    ,[logbits, daily_visitor]\n]\n\nSELECT [oid,oname, daily_bits, daily_visitor]\nFOLD [oid,oname, daily_bits, daily_visitor]\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }",
-  "src/main/resources/mxql/apm/stat/error_diff": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
-  "src/main/resources/mxql/apm/stat/error_diff_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	, last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
-  "src/main/resources/mxql/apm/stat/error_series": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
-  "src/main/resources/mxql/apm/stat/error_series_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n\n<% FILTER %>\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] , last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
-  "src/main/resources/mxql/apm/stat/error_stat": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {\n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/error_stat_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/httpc_diff": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
-  "src/main/resources/mxql/apm/stat/httpc_diff_1h": 'CATEGORY db3_stat_httpc[h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
-  "src/main/resources/mxql/apm/stat/httpc_series": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
-  "src/main/resources/mxql/apm/stat/httpc_series_1h": 'CATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
-  "src/main/resources/mxql/apm/stat/httpc_stat": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\n#<% ORDER1 %>\n#<% LIMIT1 %>\n\nDELETE time\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max],\n	pk:[httpc_host_hash,httpc_url_hash,httpc_port] , last:[httpc_tx_hash,tt] \n\n}\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/httpc_stat_1h": '\nCATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n   	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/ip_stat": "CATEGORY db3_stat_ip\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
-  "src/main/resources/mxql/apm/stat/ip_stat_1h": "CATEGORY db3_stat_ip{h1}\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
-  "src/main/resources/mxql/apm/stat/ip_url_stat": 'CATEGORY db3_stat_gen_ip-url\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/ip_url_stat_1h": 'CATEGORY db3_stat_gen_ip-url{h1}\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/sql_diff": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
-  "src/main/resources/mxql/apm/stat/sql_diff_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
-  "src/main/resources/mxql/apm/stat/sql_series": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
-  "src/main/resources/mxql/apm/stat/sql_series_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
-  "src/main/resources/mxql/apm/stat/sql_stat": '\nCATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/sql_stat_1h": '\nCATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/sql_stat_join": '\n\n# 1\uC2DC\uAC04 \uD1B5\uACC4 \uC870\uD68C \nCATEGORY db3_stat_sql{h1}\n<% TIME_1H %>\n\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\n##################################################\n# 1\uC2DC\uAC04 \uD1B5\uACC4\uC5D0 5\uBD84\uD1B5\uACC4 \uACB0\uD569 2\uCC28 GROUP \uD544\uC694  \nAPPEND stat5m\n\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n##################################################\n\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>\n\n\n##################################################\n# 5\uBD84\uD1B5\uACC4 \uC870\uD68C \nSUB stat5m\nCATEGORY db3_stat_sql\n<% TIME_5M %>\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n\nEND\n##################################################',
-  "src/main/resources/mxql/apm/stat/transaction_diff": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:5m, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\n\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]',
-  "src/main/resources/mxql/apm/stat/transaction_diff_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:1h, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]       ',
-  "src/main/resources/mxql/apm/stat/transaction_quantile_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile\n<% AGENT %>\nFLEXLOAD\nGROUP { timeunit:1h, quantile:quantile, pk:urlhash }\nSELECT [time,urlhash, quantile]\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx\n<% AGENT %>\n\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt] }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n<% ORDER1 %>\n<% LIMIT1 %>\n\nJOINByTime {query:quan,  pk:[tx_hash]}\nDELETE time\nGROUP {   merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt], quantile:quantile}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std],value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/transaction_quantile_stat_1h": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile{h1}\n<% AGENT %>\nFLEXLOAD\nSELECT [urlhash,quantile]\nGROUP {quantile:quantile, pk:urlhash }\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\n\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt]}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n\nJOIN {query:quan,  pk:[tx_hash]}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/transaction_series": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]',
-  "src/main/resources/mxql/apm/stat/transaction_series_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]\n',
-  "src/main/resources/mxql/apm/stat/transaction_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/transaction_stat_1h": '#1\uC2DC\uAC04 \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 \uD55C\uBC88\uB9CC \uADF8\uB8F9\uD551\uD55C\uB2E4.  \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated]\n    , pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n\nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n \nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/transaction_stat_join": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/tx_caller_stat": 'CATEGORY db3_stat_gen_mt\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/tx_caller_stat_1h": '\nCATEGORY db3_stat_gen_mt{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP  {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE {value:sum }\nCREATE {key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/tx_domain_series": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
-  "src/main/resources/mxql/apm/stat/tx_domain_series_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
-  "src/main/resources/mxql/apm/stat/tx_domain_stat": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/tx_domain_stat_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/tx_login_stat": 'CATEGORY db3_stat_gen_login\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[login,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/tx_login_stat_1h": 'CATEGORY db3_stat_gen_login{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/tx_referer_series": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
-  "src/main/resources/mxql/apm/stat/tx_referer_series_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
-  "src/main/resources/mxql/apm/stat/tx_referer_stat": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[referer,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/tx_referer_stat_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "src/main/resources/mxql/apm/stat/useragent_series": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:5m, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
-  "src/main/resources/mxql/apm/stat/useragent_series_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:1h, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
-  "src/main/resources/mxql/apm/stat/useragent_stat": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count], pk:[hash], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
-  "src/main/resources/mxql/apm/stat/useragent_stat_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
-  "src/main/resources/mxql/dbx/linkages/apm2db": "CATEGORY search_act_tx_run_sql\n<%flexload%>\nSELECT",
-  "src/main/resources/mxql/dbx/linkages/db2apm": "CATEGORY <%category%>\nTAGLOAD\nUNFOLD { <%keyName%> }\nFILTER { key: <%keyName%>, value: <%value%> }\nGROUP { merge:[ <%keyName%> ], pk:oid }\nSELECT [ oid ]",
-  "src/main/resources/mxql/dbx/linkages/db2apm_oracle": "CATEGORY <%category%>\nTAGLOAD\nSELECT\nUNFOLD { sid, serial, inst }\n<%filter1%>\n<%filter2%>\n<%filter3%>\nLASTONLY { key: oid }",
-  "src/main/resources/mxql/dbx/parameter-history": "CATEGORY db_<%DB_TYPE%>_parameter\nTAGLOAD\nFILTER {key:oid, value:<%OID%>}\nUNFOLD [name, value]",
-  "src/main/resources/mxql/dbx/planchange/chart": `SUB sqlstat_before
+  "mxql/apm/daily/app_counter": 'SUB {id:findMax}\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, tx_count]\nGROUP {timeunit:1h, merge:[tx_count]}\nUPDATE {key:tx_count, value:sum}\nRENAME {src:time,dst:peak_hour}\nORDER {key:tx_count, sort:desc}\nCREATE { key: time, from:peak_hour}\nSELECT [time,peak_hour]\nLIMIT 1\nEND\n\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, oid, oname, tx_count,tx_error, tps, resp_time,active_tx_count]\nUPDATE { key:[tx_count,tx_error], value:sum }\nUPDATE { key:[tps,active_tx_count] , value:avg }\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\n\nJOIN {pk:[time], query:findMax}\n\nDELETE time\nIFUPDATE {if:"(peak_hour>0)==false", key:[tps,resp_time,active_tx_count], value:null}\nGROUP { merge:[tx_count,tps,tx_error, resp_time,active_tx_count], pk:[oid, oname], last:peak_hour }\n\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\nUPDATE {key:[tx_count,tps,tx_error, active_tx_count],  value:sum }\n\nRENAME [\n     [tx_count, daily_tx_count]\n    ,[tx_error, daily_tx_error]\n    ,[tps, peak_hour_tps]\n    ,[active_tx_count, peak_hour_active_tx]\n    ,[resp_time, peak_hour_resp_time]\n]\n\nSELECT [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nFOLD [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }\n',
+  "mxql/apm/daily/app_user": "\nCATEGORY visitor{h1}\nTAGLOAD\nSELECT [time, oid, oname, logbits]\n\nDELETE time\nGROUP { user:logbits, pk:[oid, oname] }\n\nRENAME [\n     [userbytes, daily_bits]\n    ,[logbits, daily_visitor]\n]\n\nSELECT [oid,oname, daily_bits, daily_visitor]\nFOLD [oid,oname, daily_bits, daily_visitor]\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }",
+  "mxql/apm/stat/error_diff": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "mxql/apm/stat/error_diff_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	, last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "mxql/apm/stat/error_series": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "mxql/apm/stat/error_series_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n\n<% FILTER %>\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] , last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
+  "mxql/apm/stat/error_stat": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {\n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/error_stat_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/httpc_diff": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
+  "mxql/apm/stat/httpc_diff_1h": 'CATEGORY db3_stat_httpc[h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
+  "mxql/apm/stat/httpc_series": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
+  "mxql/apm/stat/httpc_series_1h": 'CATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
+  "mxql/apm/stat/httpc_stat": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\n#<% ORDER1 %>\n#<% LIMIT1 %>\n\nDELETE time\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max],\n	pk:[httpc_host_hash,httpc_url_hash,httpc_port] , last:[httpc_tx_hash,tt] \n\n}\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/httpc_stat_1h": '\nCATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n   	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/ip_stat": "CATEGORY db3_stat_ip\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "mxql/apm/stat/ip_stat_1h": "CATEGORY db3_stat_ip{h1}\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "mxql/apm/stat/ip_url_stat": 'CATEGORY db3_stat_gen_ip-url\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/ip_url_stat_1h": 'CATEGORY db3_stat_gen_ip-url{h1}\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/sql_diff": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "mxql/apm/stat/sql_diff_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "mxql/apm/stat/sql_series": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "mxql/apm/stat/sql_series_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
+  "mxql/apm/stat/sql_stat": '\nCATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/sql_stat_1h": '\nCATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/sql_stat_join": '\n\n# 1\uC2DC\uAC04 \uD1B5\uACC4 \uC870\uD68C \nCATEGORY db3_stat_sql{h1}\n<% TIME_1H %>\n\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\n##################################################\n# 1\uC2DC\uAC04 \uD1B5\uACC4\uC5D0 5\uBD84\uD1B5\uACC4 \uACB0\uD569 2\uCC28 GROUP \uD544\uC694  \nAPPEND stat5m\n\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n##################################################\n\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>\n\n\n##################################################\n# 5\uBD84\uD1B5\uACC4 \uC870\uD68C \nSUB stat5m\nCATEGORY db3_stat_sql\n<% TIME_5M %>\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n\nEND\n##################################################',
+  "mxql/apm/stat/transaction_diff": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:5m, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\n\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]',
+  "mxql/apm/stat/transaction_diff_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:1h, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]       ',
+  "mxql/apm/stat/transaction_quantile_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile\n<% AGENT %>\nFLEXLOAD\nGROUP { timeunit:1h, quantile:quantile, pk:urlhash }\nSELECT [time,urlhash, quantile]\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx\n<% AGENT %>\n\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt] }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n<% ORDER1 %>\n<% LIMIT1 %>\n\nJOINByTime {query:quan,  pk:[tx_hash]}\nDELETE time\nGROUP {   merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt], quantile:quantile}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std],value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/transaction_quantile_stat_1h": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile{h1}\n<% AGENT %>\nFLEXLOAD\nSELECT [urlhash,quantile]\nGROUP {quantile:quantile, pk:urlhash }\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\n\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt]}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n\nJOIN {query:quan,  pk:[tx_hash]}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/transaction_series": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]',
+  "mxql/apm/stat/transaction_series_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]\n',
+  "mxql/apm/stat/transaction_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/transaction_stat_1h": '#1\uC2DC\uAC04 \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 \uD55C\uBC88\uB9CC \uADF8\uB8F9\uD551\uD55C\uB2E4.  \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated]\n    , pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n\nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n \nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/transaction_stat_join": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/tx_caller_stat": 'CATEGORY db3_stat_gen_mt\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/tx_caller_stat_1h": '\nCATEGORY db3_stat_gen_mt{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP  {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE {value:sum }\nCREATE {key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/tx_domain_series": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "mxql/apm/stat/tx_domain_series_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "mxql/apm/stat/tx_domain_stat": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/tx_domain_stat_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/tx_login_stat": 'CATEGORY db3_stat_gen_login\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[login,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/tx_login_stat_1h": 'CATEGORY db3_stat_gen_login{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/tx_referer_series": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "mxql/apm/stat/tx_referer_series_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
+  "mxql/apm/stat/tx_referer_stat": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[referer,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/tx_referer_stat_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
+  "mxql/apm/stat/useragent_series": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:5m, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
+  "mxql/apm/stat/useragent_series_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:1h, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
+  "mxql/apm/stat/useragent_stat": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count], pk:[hash], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "mxql/apm/stat/useragent_stat_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
+  "mxql/dbx/linkages/apm2db": "CATEGORY search_act_tx_run_sql\n<%flexload%>\nSELECT",
+  "mxql/dbx/linkages/db2apm": "CATEGORY <%category%>\nTAGLOAD\nUNFOLD { <%keyName%> }\nFILTER { key: <%keyName%>, value: <%value%> }\nGROUP { merge:[ <%keyName%> ], pk:oid }\nSELECT [ oid ]",
+  "mxql/dbx/linkages/db2apm_oracle": "CATEGORY <%category%>\nTAGLOAD\nSELECT\nUNFOLD { sid, serial, inst }\n<%filter1%>\n<%filter2%>\n<%filter3%>\nLASTONLY { key: oid }",
+  "mxql/dbx/parameter-history": "CATEGORY db_<%DB_TYPE%>_parameter\nTAGLOAD\nFILTER {key:oid, value:<%OID%>}\nUNFOLD [name, value]",
+  "mxql/dbx/planchange/chart": `SUB sqlstat_before
 CATEGORY <%SQLSTAT_CATEGORY%>{h1}
 TAGLOAD
 FILTER { key: "oid", value: <%OID%> }
@@ -48029,8 +46027,8 @@ SELECT [time,change_count,flag]
 GROUP { timeunit:1d, merge:[change_count], pk: [flag]}
 UPDATE { key: "change_count", value: sum }
 PIVOT-FIELD { key:time, pivot_field:flag, pivot_value:change_count}`,
-  "src/main/resources/mxql/dbx/planchange/history": 'CATEGORY <%PLAN_CHANGE_CATEGORY%>\nTAGLOAD\nFILTER { key: "oid", value: <%OID%> }\nUNFOLD [time, sql_id, <%SQL_HASH_FIELD%>, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\nUPDATE {key: <%SQL_HASH_FIELD%>, cast: long}\nUPDATE {key: before_plan_hash_value, cast: long}\nUPDATE {key: after_plan_hash_value, cast: long}\n\nHVTEXT {hash: <%SQL_HASH_FIELD%>, key: sql_text, type: sql, checktime: 2h}\n\nORDER {key: time, sort: asc}\n\nSELECT [time, sql_id, <%SQL_HASH_FIELD%>, sql_text, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\n',
-  "src/main/resources/mxql/dbx/planchange/summary": `SUB sqlstat_before
+  "mxql/dbx/planchange/history": 'CATEGORY <%PLAN_CHANGE_CATEGORY%>\nTAGLOAD\nFILTER { key: "oid", value: <%OID%> }\nUNFOLD [time, sql_id, <%SQL_HASH_FIELD%>, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\nUPDATE {key: <%SQL_HASH_FIELD%>, cast: long}\nUPDATE {key: before_plan_hash_value, cast: long}\nUPDATE {key: after_plan_hash_value, cast: long}\n\nHVTEXT {hash: <%SQL_HASH_FIELD%>, key: sql_text, type: sql, checktime: 2h}\n\nORDER {key: time, sort: asc}\n\nSELECT [time, sql_id, <%SQL_HASH_FIELD%>, sql_text, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\n',
+  "mxql/dbx/planchange/summary": `SUB sqlstat_before
 CATEGORY <%SQLSTAT_CATEGORY%>{h1}
 TAGLOAD
 FILTER { key: "oid", value: <%OID%> }
@@ -48086,15 +46084,15 @@ CREATE {key: "elapsed_time_diff", expr: "round(after_elapsed_time_per_exec - bef
 
 RENAME {src: <%SQL_HASH_FIELD%>, dst: "sql_hash_value"}
 SELECT [time, sql_id, sql_text, user, program, before_plan_hash_value, after_plan_hash_value, before_elapsed_time_per_exec, after_elapsed_time_per_exec, elapsed_time_diff, flag, change_count, sql_hash_value]`,
-  "src/main/resources/mxql/dbx/stat/each_sql": '# \uD558\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield:tt}\n<%ADD_HVTEXT%>\n\nFILTER {key:name, value:"<%GROUP_VALUE%>"}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nGROUP { merge:[<%GROUP_MERGE%>], pk: [<%SQL_HASH_FIELD_NAME%><%ADD_GROUPS%>,<%SQL_HASH_FIELD_NAME_2%>], listup:[plan_hash_value<%ADD_GROUPS%>], last:tt }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n\nUPDATE { key:elapsed_max, value:max }\nUPDATE { value:sum }\n\nCREATE { key:elapsed_avg, expr:"elapsed_time/execute_count"}\n\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
-  "src/main/resources/mxql/dbx/stat/each_sql_main": '# \uBA54\uC778 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%USER_FIELD_HASH%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%USER_FIELD_HASH%>, key:<%USER_FIELD_NAME%>, type:db_attribute}\n<%ADD_HVTEXT%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%SQL_HASH_FIELD_NAME%>, listup:[oname,<%USER_FIELD_NAME%>,sql_id,plan_hash_value<%ADD_GROUPS%>], last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
-  "src/main/resources/mxql/dbx/stat/merged_sql": '# \uC0C1\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:[<%GROUP_KEY%>,<%SQL_HASH_FIELD_NAME%>,<%SQL_HASH_FIELD_NAME_2%>] }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n<%FILTER_TEXT%>\n\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\n<%FILTER_NUMBER%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%GROUP_KEY%>, last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield: tt}\n\nFILTER { key:name, exist:true }\n\nORDER {key:name}\nDELETE tt\nDELETE _rows_\nDELETE <%GROUP_KEY%>\n\nSELECT',
-  "src/main/resources/mxql/dbx/stat/sql_stat_raw": "CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [<%UNFOLD_FIELDS%><%ADD_GROUPS%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n<%ADD_HVTEXT%>\nSELECT [<%SELECT_FIELDS%><%ADD_GROUPS%>]\n",
-  "src/main/resources/mxql/dbx/stat/summary_chart_all": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\n\n<%FILTER%>\n\nGROUP {merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}',
-  "src/main/resources/mxql/dbx/stat/summary_chart_group": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nFILTER <%REQUEST_GROUP%> != 0\n\n<%FILTER%>\n\nGROUP {pk: <%REQUEST_GROUP%>, merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}\n\nHVTEXT {hash: <%REQUEST_GROUP%>, key: <%REQUEST_GROUP%>, type: db_attribute}',
-  "src/main/resources/mxql/dbx/wait/group_name": "CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>\nTAGLOAD\nOID [ <%OID%> ]\nUNFOLD [schemaname, con_name,machine, program, module, osuser]\nSELECT [schemaname, con_name,machine, program, module, osuser]\n\nHVTEXT {hash: schemaname, key: schemaname_str, type: db_attribute}\nHVTEXT {hash: con_name, key: con_name_str, type: db_attribute}\nHVTEXT {hash: machine, key: machine_str, type: db_attribute}\nHVTEXT {hash: program, key: program_str, type: db_attribute}\nHVTEXT {hash: module, key: module_str, type: db_attribute}\nHVTEXT {hash: osuser, key: osuser_str, type: db_attribute}\n\nGROUP { listup: [schemaname_str, con_name_str,machine_str, program_str, module_str, osuser_str] }",
-  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_class": "CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER {key: con_name, value: ['']}\nDELETE ['con_id', 'con_name', 'oname',  '_no_5m_hour_',  'oid', 'pcode',  'pname']\nDELETE ['show_in', 'show_out']",
-  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_cpu": `CATEGORY db_oracle_dma_counter<%TIMEUNIT%>
+  "mxql/dbx/stat/each_sql": '# \uD558\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield:tt}\n<%ADD_HVTEXT%>\n\nFILTER {key:name, value:"<%GROUP_VALUE%>"}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nGROUP { merge:[<%GROUP_MERGE%>], pk: [<%SQL_HASH_FIELD_NAME%><%ADD_GROUPS%>,<%SQL_HASH_FIELD_NAME_2%>], listup:[plan_hash_value<%ADD_GROUPS%>], last:tt }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n\nUPDATE { key:elapsed_max, value:max }\nUPDATE { value:sum }\n\nCREATE { key:elapsed_avg, expr:"elapsed_time/execute_count"}\n\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
+  "mxql/dbx/stat/each_sql_main": '# \uBA54\uC778 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%USER_FIELD_HASH%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%USER_FIELD_HASH%>, key:<%USER_FIELD_NAME%>, type:db_attribute}\n<%ADD_HVTEXT%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%SQL_HASH_FIELD_NAME%>, listup:[oname,<%USER_FIELD_NAME%>,sql_id,plan_hash_value<%ADD_GROUPS%>], last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
+  "mxql/dbx/stat/merged_sql": '# \uC0C1\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:[<%GROUP_KEY%>,<%SQL_HASH_FIELD_NAME%>,<%SQL_HASH_FIELD_NAME_2%>] }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n<%FILTER_TEXT%>\n\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\n<%FILTER_NUMBER%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%GROUP_KEY%>, last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield: tt}\n\nFILTER { key:name, exist:true }\n\nORDER {key:name}\nDELETE tt\nDELETE _rows_\nDELETE <%GROUP_KEY%>\n\nSELECT',
+  "mxql/dbx/stat/sql_stat_raw": "CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [<%UNFOLD_FIELDS%><%ADD_GROUPS%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n<%ADD_HVTEXT%>\nSELECT [<%SELECT_FIELDS%><%ADD_GROUPS%>]\n",
+  "mxql/dbx/stat/summary_chart_all": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\n\n<%FILTER%>\n\nGROUP {merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}',
+  "mxql/dbx/stat/summary_chart_group": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nFILTER <%REQUEST_GROUP%> != 0\n\n<%FILTER%>\n\nGROUP {pk: <%REQUEST_GROUP%>, merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}\n\nHVTEXT {hash: <%REQUEST_GROUP%>, key: <%REQUEST_GROUP%>, type: db_attribute}',
+  "mxql/dbx/wait/group_name": "CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>\nTAGLOAD\nOID [ <%OID%> ]\nUNFOLD [schemaname, con_name,machine, program, module, osuser]\nSELECT [schemaname, con_name,machine, program, module, osuser]\n\nHVTEXT {hash: schemaname, key: schemaname_str, type: db_attribute}\nHVTEXT {hash: con_name, key: con_name_str, type: db_attribute}\nHVTEXT {hash: machine, key: machine_str, type: db_attribute}\nHVTEXT {hash: program, key: program_str, type: db_attribute}\nHVTEXT {hash: module, key: module_str, type: db_attribute}\nHVTEXT {hash: osuser, key: osuser_str, type: db_attribute}\n\nGROUP { listup: [schemaname_str, con_name_str,machine_str, program_str, module_str, osuser_str] }",
+  "mxql/dbx/wait/wait_analysis_chart_class": "CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER {key: con_name, value: ['']}\nDELETE ['con_id', 'con_name', 'oname',  '_no_5m_hour_',  'oid', 'pcode',  'pname']\nDELETE ['show_in', 'show_out']",
+  "mxql/dbx/wait/wait_analysis_chart_cpu": `CATEGORY db_oracle_dma_counter<%TIMEUNIT%>
 OID [ <%OID%> ]
 TAGLOAD
 FILTER con_id == 0
@@ -48116,14 +46114,14 @@ RENAME { src: cpu_iowait(xos2), dst: cpu_iowait2}
 CREATE {key:'cpu_iowait(xos)', expr:"cpu_iowait2 == null ? cpu_iowait : cpu_iowait2"}
 DELETE [cpu_xos, cpu2, cpu_sys, cpu_sys2, cpu_user, cpu_user2, cpu_idle, cpu_idle2, cpu_iowait, cpu_iowait2]
 DELETE ['show_in', 'show_out']`,
-  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_enqueue": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention']\nDELETE ['show_in', 'show_out']",
-  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_latch": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'latch: shared pool']\nFILTER {key: con_name, value: ['']}\nDELETE ['show_in', 'show_out']",
-  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_mem": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time, pcode, oid, mem(xos)]\nDELETE ['show_in', 'show_out']",
-  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_session": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time,pcode,oid,active_sessions,total_sessions]\nDELETE ['show_in', 'show_out']",
-  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_stat": "CATEGORY db_oracle_dma_stat_top<%TIMEUNIT%>\nOID [  <%OID%> ]\nTAGLOAD\nSELECT [time, 'non-idle wait time','application wait time','logical read bytes from cache','redo synch time overhead (usec)','cell physical IO interconnect bytes']\nDELETE ['show_in', 'show_out']",
-  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_waitcount": "CATEGORY db_oracle_dma_event_wait_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'SQL*Net message to client','control file sequential read','log file parallel write','log file sync','db file parallel write']\nDELETE ['show_in', 'show_out']",
-  "src/main/resources/mxql/dbx/wait/wait_analysis_chart_waittime": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention','log file sync','ADR block file read','ADR block file write','control file sequential read']\nDELETE ['show_in', 'show_out']",
-  "src/main/resources/mxql/dbx/wait/wait_sql_list_1": `CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>
+  "mxql/dbx/wait/wait_analysis_chart_enqueue": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention']\nDELETE ['show_in', 'show_out']",
+  "mxql/dbx/wait/wait_analysis_chart_latch": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'latch: shared pool']\nFILTER {key: con_name, value: ['']}\nDELETE ['show_in', 'show_out']",
+  "mxql/dbx/wait/wait_analysis_chart_mem": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time, pcode, oid, mem(xos)]\nDELETE ['show_in', 'show_out']",
+  "mxql/dbx/wait/wait_analysis_chart_session": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time,pcode,oid,active_sessions,total_sessions]\nDELETE ['show_in', 'show_out']",
+  "mxql/dbx/wait/wait_analysis_chart_stat": "CATEGORY db_oracle_dma_stat_top<%TIMEUNIT%>\nOID [  <%OID%> ]\nTAGLOAD\nSELECT [time, 'non-idle wait time','application wait time','logical read bytes from cache','redo synch time overhead (usec)','cell physical IO interconnect bytes']\nDELETE ['show_in', 'show_out']",
+  "mxql/dbx/wait/wait_analysis_chart_waitcount": "CATEGORY db_oracle_dma_event_wait_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'SQL*Net message to client','control file sequential read','log file parallel write','log file sync','db file parallel write']\nDELETE ['show_in', 'show_out']",
+  "mxql/dbx/wait/wait_analysis_chart_waittime": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention','log file sync','ADR block file read','ADR block file write','control file sequential read']\nDELETE ['show_in', 'show_out']",
+  "mxql/dbx/wait/wait_sql_list_1": `CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>
 OID <%OID%>
 TAGLOAD
 UNFOLD ["@id","con_id","con_name","cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","machine","module","osuser","physical reads","plan_hash_value","program","redo size","schemaname","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","sql_id","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"]
@@ -48154,7 +46152,7 @@ CREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}
 
 DELETE _rows_
 DELETE ['show_in', 'show_out']`,
-  "src/main/resources/mxql/dbx/wait/wait_sql_list_2": `SUB q1
+  "mxql/dbx/wait/wait_sql_list_2": `SUB q1
 TIME-RANGE {recent: 1d}
 CATEGORY db_oracle_dma_sqlstat_event
 OID <%OID%>
@@ -48209,7 +46207,7 @@ CREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}
 DELETE _rows_
 
 DELETE ['show_in', 'show_out']`,
-  "src/main/resources/mxql/dbx/wait/wait_summary": `CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>
+  "mxql/dbx/wait/wait_summary": `CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>
 OID [ <%OID%> ]
 TAGLOAD
 SELECT
@@ -48219,7 +46217,7 @@ GROUP { merge: "pivot_value", pk: "pivot_field" }
 PIVOT-FIELD { pivot_field: "pivot_field", pivot_value: "pivot_value" }
 UPDATE { value: sum }
 DELETE ['show_in', 'show_out']`,
-  "src/main/resources/mxql/dbx/wait/wait_top_n": `SUB q1
+  "mxql/dbx/wait/wait_top_n": `SUB q1
 TIME-RANGE {recent: 1d}
 CATEGORY db_index_wait_class
 OID <%OID%>
@@ -48270,20 +46268,20 @@ ORDER {key:percentage, sort: desc}
 SELECT [event_no,event_name,wait_time,percentage,class]
 JOIN {pk: class, query: q1}
 DELETE ['show_in', 'show_out']`,
-  "src/main/resources/mxql/event/select-options": "TIME-RANGE {recent: <% TIMEUNIT %>}\nCATEGORY <% CATEGORY %>\nTAGLOAD\nUNFOLD <% UNFOLD %>\nSELECT <% SELECT %>\nGROUP {timeunit:<% TIMEUNIT %>, pk:<% PK %>}",
-  "src/main/resources/mxql/infra/ServerCommonService-getServerList": 'CATEGORY {"server_base": 30m, "server_base{m5}": 2h, "server_base{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [time, oid, oname]\n\n',
-  "src/main/resources/mxql/infra/ServerProcessService-getCpuMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, cpu, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [cpu, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: cpuAvg, from: cpu }\nCREATE { key: cpuMax, from: cpu }\nCREATE { key: cpuMin, from: cpu }\nUPDATE { key: cpuMax, value: max }\nUPDATE { key: cpuMin, value: min }\n\nORDER {key:[cpuMax], sort: [desc]}\n',
-  "src/main/resources/mxql/infra/ServerProcessService-getMemMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, memory, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [memory, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: memAvg, from: memory }\nCREATE { key: memMax, from: memory }\nCREATE { key: memMin, from: memory }\nUPDATE { key: memMax, value: max }\nUPDATE { key: memMin, value: min }\n\nORDER {key:[memMax], sort: [desc]}\n',
-  "src/main/resources/mxql/infra/ServerProcessService-getProcessList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, cmd1, oname, user, cpu, memory, riops, wiops, count, rss, rbps, wbps]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash]}\n',
-  "src/main/resources/mxql/infra/file-systems-by-group-and-keys": "\n# \uADF8\uB8F9 \uBC0F \uD544\uD130\uB9C1\uC5D0 \uC758\uD574 \uD544\uD130\uB9C1\uB41C oid \uB85C \uD30C\uC77C \uC2DC\uC2A4\uD15C \uBAA9\uB85D \uC870\uD68C\n\nSUB sub_custom\nKV.LOAD server_inventory_custom\nEND\n\nSUB sub_inv\nKV.LOAD server_inventory\nJOIN {pk: pk0, query: sub_custom}\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid, hostname]\nEND\n\nTIME-RANGE {duration: 1m, etime: $etime}\nCATEGORY infra_filesystem\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[oid], query:sub_inv, type:inner}\n\nselect [oid, hostname, mountName, pUsed, totalSize, free, used, pInodeUsed]\n\nORDER {key:[hostname, mountName], sort: asc}",
-  "src/main/resources/mxql/infra/get-custom-field-keys": "# \uBAA8\uB4E0 custom field \uC758 \uD0A4\uAC12\uC744 \uC870\uD68C\uD55C\uB2E4.\n# \uB514\uBE44 \uAC19\uC774 entity\uAC00 \uBA85\uD655\uD558\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uBBC0\uB85C \uC804\uCCB4 \uB370\uC774\uD130\uC5D0\uC11C \uACF5\uD1B5\uB41C \uAC12\uC744 \uAC00\uC838\uC628\uB2E4\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nKV.LOAD server_inventory_custom\nJOIN {pk:pk0, query: agents, type: inner}\n\nPIVOT-HEAD\nFIRST-ONLY {key:[pivot_field]}\nSELECT [pivot_field]",
-  "src/main/resources/mxql/infra/get-event-id-list": '# \uC911\uBCF5 \uC81C\uAC70\uD558\uACE0 oid : event id set \uC73C\uB85C \uC774\uC6A9\uD558\uAE30?\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\nSUB filtered_inventory\nKV.LOAD server_inventory\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid]\nEND\n\nTIME-RANGE {recent: 20s}\nCATEGORY event_status_summary\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[pcode]}\nSELECT\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: stat, type: inner}\nJOIN {pk:[oid], query:filtered_inventory, type: inner}\n\nFILTER { expr: "warningCount > 0 || criticalCount > 0"}\n\n# NOTE: warning \uC640 critical \uC740 \uCF64\uB9C8\uB85C \uC5F0\uACB0\uB41C \uC774\uBCA4\uD2B8 \uC544\uC774\uB514\uC784\nSELECT [oid, warning, critical]\n',
-  "src/main/resources/mxql/infra/get-fold-category-desc-fields": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAM %>\nUNFOLD\nFIRST-ONLY {key:[oid, @id]}\n\n# metric value \uCC98\uB9AC\nUPDATE { key: pid, value: last }\nUPDATE { key: pid, cast: long }\n\nUPDATE { key: ppid, value: last }\nUPDATE { key: ppid, cast: long }\n\nUPDATE { key: stime, value: last }\nUPDATE { key: stime, cast: long }\n",
-  "src/main/resources/mxql/infra/get-inventory-keywords": "APPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\n\n<% FILTER_PARAM %>\nSELECT [ <% COLUMN_NAME %> ]\nGROUP {merge: <% COLUMN_NAME %>, pk: <% COLUMN_NAME %>}\nORDER {key: <% COLUMN_NAME %>, sort: asc}\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nSUB inv\nKV.LOAD <% CATEGORY_NAME %>\nEND",
-  "src/main/resources/mxql/infra/get-oids-by-infra-cpu-fixed-3h-range": "# cube{1h} \uAC00 \uC5C6\uB294 \uACBD\uC6B0 oid \uC870\uD68C\uD558\uAE30 \uC704\uD55C mql\n# time-range \uB294 \uB3D9\uC791\uD558\uC9C0 \uC54A\uC73C\uBBC0\uB85C MxqlExecutor \uC5D0\uC11C stime, etime \uC744 \uB123\uC5B4\uC918\uC57C \uD55C\uB2E4\n#TIME-RANGE {recent: 3h}\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]\n",
-  "src/main/resources/mxql/infra/get-oids-by-infra-cpu-h1": "# \uCC28\uD2B8 \uC775\uC2A4\uD50C\uB85C\uB7EC\uB97C \uC704\uD574 \uC0AC\uC6A9\uB428\n# \uC9C0\uC815\uB41C \uC2DC\uAC04\uC5D0\uC11C infra_cpu{h1} \uAC00 \uC788\uB294 oid \uB9AC\uC2A4\uD2B8\uB9CC \uAC00\uC838\uC640 \uD544\uD130\uB9C1\uC5D0 \uC0AC\uC6A9\uD55C\uB2E4.\nCATEGORY infra_cpu{h1}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]",
-  "src/main/resources/mxql/infra/get-server-inventories-for-status": "\n# group \uD654\uBA74 \uC0C1\uB2E8\uC758 \uC804\uCCB4 \uD1B5\uACC4 \uC870\uD68C\uB97C \uC704\uD574 \uC0AC\uC6A9\uD568\n# os \uBCC4 { active(not inactive/paused), total, total core count) }\n\n# NOTE: \uACFC\uAC70\uC758 \uC0C1\uD0DC\uB97C \uC870\uD68C\uD558\uB294 \uAE30\uB2A5\uC740 \uC5C6\uC74C, \uC2DC\uACC4\uC5F4\uC774 \uC544\uB2C8\uAE30 \uB54C\uBB38\uC5D0 stime, etime \uC774 \uC758\uBBF8 \uC5C6\uC74C\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, status]\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nSELECT [oid, OSType, nCores]\n\nJOIN {pk:[oid], query:stat, type: inner}\n",
-  "src/main/resources/mxql/infra/get-server-inventories-with-metric": `/**
+  "mxql/event/select-options": "TIME-RANGE {recent: <% TIMEUNIT %>}\nCATEGORY <% CATEGORY %>\nTAGLOAD\nUNFOLD <% UNFOLD %>\nSELECT <% SELECT %>\nGROUP {timeunit:<% TIMEUNIT %>, pk:<% PK %>}",
+  "mxql/infra/ServerCommonService-getServerList": 'CATEGORY {"server_base": 30m, "server_base{m5}": 2h, "server_base{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [time, oid, oname]\n\n',
+  "mxql/infra/ServerProcessService-getCpuMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, cpu, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [cpu, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: cpuAvg, from: cpu }\nCREATE { key: cpuMax, from: cpu }\nCREATE { key: cpuMin, from: cpu }\nUPDATE { key: cpuMax, value: max }\nUPDATE { key: cpuMin, value: min }\n\nORDER {key:[cpuMax], sort: [desc]}\n',
+  "mxql/infra/ServerProcessService-getMemMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, memory, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [memory, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: memAvg, from: memory }\nCREATE { key: memMax, from: memory }\nCREATE { key: memMin, from: memory }\nUPDATE { key: memMax, value: max }\nUPDATE { key: memMin, value: min }\n\nORDER {key:[memMax], sort: [desc]}\n',
+  "mxql/infra/ServerProcessService-getProcessList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, cmd1, oname, user, cpu, memory, riops, wiops, count, rss, rbps, wbps]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash]}\n',
+  "mxql/infra/file-systems-by-group-and-keys": "\n# \uADF8\uB8F9 \uBC0F \uD544\uD130\uB9C1\uC5D0 \uC758\uD574 \uD544\uD130\uB9C1\uB41C oid \uB85C \uD30C\uC77C \uC2DC\uC2A4\uD15C \uBAA9\uB85D \uC870\uD68C\n\nSUB sub_custom\nKV.LOAD server_inventory_custom\nEND\n\nSUB sub_inv\nKV.LOAD server_inventory\nJOIN {pk: pk0, query: sub_custom}\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid, hostname]\nEND\n\nTIME-RANGE {duration: 1m, etime: $etime}\nCATEGORY infra_filesystem\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[oid], query:sub_inv, type:inner}\n\nselect [oid, hostname, mountName, pUsed, totalSize, free, used, pInodeUsed]\n\nORDER {key:[hostname, mountName], sort: asc}",
+  "mxql/infra/get-custom-field-keys": "# \uBAA8\uB4E0 custom field \uC758 \uD0A4\uAC12\uC744 \uC870\uD68C\uD55C\uB2E4.\n# \uB514\uBE44 \uAC19\uC774 entity\uAC00 \uBA85\uD655\uD558\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uBBC0\uB85C \uC804\uCCB4 \uB370\uC774\uD130\uC5D0\uC11C \uACF5\uD1B5\uB41C \uAC12\uC744 \uAC00\uC838\uC628\uB2E4\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nKV.LOAD server_inventory_custom\nJOIN {pk:pk0, query: agents, type: inner}\n\nPIVOT-HEAD\nFIRST-ONLY {key:[pivot_field]}\nSELECT [pivot_field]",
+  "mxql/infra/get-event-id-list": '# \uC911\uBCF5 \uC81C\uAC70\uD558\uACE0 oid : event id set \uC73C\uB85C \uC774\uC6A9\uD558\uAE30?\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\nSUB filtered_inventory\nKV.LOAD server_inventory\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid]\nEND\n\nTIME-RANGE {recent: 20s}\nCATEGORY event_status_summary\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[pcode]}\nSELECT\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: stat, type: inner}\nJOIN {pk:[oid], query:filtered_inventory, type: inner}\n\nFILTER { expr: "warningCount > 0 || criticalCount > 0"}\n\n# NOTE: warning \uC640 critical \uC740 \uCF64\uB9C8\uB85C \uC5F0\uACB0\uB41C \uC774\uBCA4\uD2B8 \uC544\uC774\uB514\uC784\nSELECT [oid, warning, critical]\n',
+  "mxql/infra/get-fold-category-desc-fields": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAM %>\nUNFOLD\nFIRST-ONLY {key:[oid, @id]}\n\n# metric value \uCC98\uB9AC\nUPDATE { key: pid, value: last }\nUPDATE { key: pid, cast: long }\n\nUPDATE { key: ppid, value: last }\nUPDATE { key: ppid, cast: long }\n\nUPDATE { key: stime, value: last }\nUPDATE { key: stime, cast: long }\n",
+  "mxql/infra/get-inventory-keywords": "APPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\n\n<% FILTER_PARAM %>\nSELECT [ <% COLUMN_NAME %> ]\nGROUP {merge: <% COLUMN_NAME %>, pk: <% COLUMN_NAME %>}\nORDER {key: <% COLUMN_NAME %>, sort: asc}\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nSUB inv\nKV.LOAD <% CATEGORY_NAME %>\nEND",
+  "mxql/infra/get-oids-by-infra-cpu-fixed-3h-range": "# cube{1h} \uAC00 \uC5C6\uB294 \uACBD\uC6B0 oid \uC870\uD68C\uD558\uAE30 \uC704\uD55C mql\n# time-range \uB294 \uB3D9\uC791\uD558\uC9C0 \uC54A\uC73C\uBBC0\uB85C MxqlExecutor \uC5D0\uC11C stime, etime \uC744 \uB123\uC5B4\uC918\uC57C \uD55C\uB2E4\n#TIME-RANGE {recent: 3h}\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]\n",
+  "mxql/infra/get-oids-by-infra-cpu-h1": "# \uCC28\uD2B8 \uC775\uC2A4\uD50C\uB85C\uB7EC\uB97C \uC704\uD574 \uC0AC\uC6A9\uB428\n# \uC9C0\uC815\uB41C \uC2DC\uAC04\uC5D0\uC11C infra_cpu{h1} \uAC00 \uC788\uB294 oid \uB9AC\uC2A4\uD2B8\uB9CC \uAC00\uC838\uC640 \uD544\uD130\uB9C1\uC5D0 \uC0AC\uC6A9\uD55C\uB2E4.\nCATEGORY infra_cpu{h1}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]",
+  "mxql/infra/get-server-inventories-for-status": "\n# group \uD654\uBA74 \uC0C1\uB2E8\uC758 \uC804\uCCB4 \uD1B5\uACC4 \uC870\uD68C\uB97C \uC704\uD574 \uC0AC\uC6A9\uD568\n# os \uBCC4 { active(not inactive/paused), total, total core count) }\n\n# NOTE: \uACFC\uAC70\uC758 \uC0C1\uD0DC\uB97C \uC870\uD68C\uD558\uB294 \uAE30\uB2A5\uC740 \uC5C6\uC74C, \uC2DC\uACC4\uC5F4\uC774 \uC544\uB2C8\uAE30 \uB54C\uBB38\uC5D0 stime, etime \uC774 \uC758\uBBF8 \uC5C6\uC74C\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, status]\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nSELECT [oid, OSType, nCores]\n\nJOIN {pk:[oid], query:stat, type: inner}\n",
+  "mxql/infra/get-server-inventories-with-metric": `/**
 NOTE: \uADF8\uB8F9\uBCC4 \uC8FC\uC694 \uBA54\uD2B8\uB9AD\uC774 \uD3EC\uD568\uB41C \uC11C\uBC84 \uC815\uBCF4
       \uBE0C\uB77C\uC6B0\uC800\uC640 \uC11C\uBC84\uC758 \uC2DC\uAC04\uCC28? \uAC00 \uC788\uB294 \uACBD\uC6B0 \uC624\uCC28\uB85C \uC778\uD574 cpu, ~ \uAC12\uC774 \uC81C\uB300\uB85C \uC548\uB098\uC62C \uC218 \uC788\uC74C
       \uC774 \uACBD\uC6B0\uC5D0\uB3C4 diskBusy \uB294 \uAC12\uC774 \uB098\uC634(20\uCD08), cpu, \uB4F1 (5\uCD08)
@@ -48393,8 +46391,8 @@ JOIN {pk:[oid], query:diskBusy}
 JOIN {pk:[oid], query:sub-gpu-data}
 # filter & order
 <% ORDER_PARAM %>`,
-  "src/main/resources/mxql/infra/get-server-ostype-version": "# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nJOIN {pk:pk0, query: agents, type: inner}\nFIRST-ONLY {key:[OSType, whatap_infradVersion]}\nSELECT [OSType, whatap_infradVersion]\nRENAME { src:whatap_infradVersion, dst:version }\n",
-  "src/main/resources/mxql/infra/get-server-process-names": `APPEND {query: recent_list}
+  "mxql/infra/get-server-ostype-version": "# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nJOIN {pk:pk0, query: agents, type: inner}\nFIRST-ONLY {key:[OSType, whatap_infradVersion]}\nSELECT [OSType, whatap_infradVersion]\nRENAME { src:whatap_infradVersion, dst:version }\n",
+  "mxql/infra/get-server-process-names": `APPEND {query: recent_list}
 APPEND {query: m5_list}
 
 CREATE { key: cmd, expr: "isEmpty(cmd2) ? cmd1 : cmd2" }
@@ -48415,10 +46413,10 @@ TAGLOAD {backward: true}
 END
 
 `,
-  "src/main/resources/mxql/infra/hostnames-by-all": "# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nselect [oid, hostname]",
-  "src/main/resources/mxql/infra/hostnames-by-oid-list": '# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nFILTER { key: "oid", value: [<% OID_LIST_PARAM %>] }\nselect [oid, hostname]',
-  "src/main/resources/mxql/infra/inventory/check-exist-gpu": 'SUB currentAgents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load gpu_inventory\nFILTER-SUBQUERY { key: oid, include: "currentAgents" }\n<% FILTER_GROUP_OIDS %>\nLIMIT 1',
-  "src/main/resources/mxql/infra/inventory/get-active-gpu-list": `
+  "mxql/infra/hostnames-by-all": "# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nselect [oid, hostname]",
+  "mxql/infra/hostnames-by-oid-list": '# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nFILTER { key: "oid", value: [<% OID_LIST_PARAM %>] }\nselect [oid, hostname]',
+  "mxql/infra/inventory/check-exist-gpu": 'SUB currentAgents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load gpu_inventory\nFILTER-SUBQUERY { key: oid, include: "currentAgents" }\n<% FILTER_GROUP_OIDS %>\nLIMIT 1',
+  "mxql/infra/inventory/get-active-gpu-list": `
 kv.load gpu_inventory
 FILTER-SUBQUERY {key: oid, include: "currentAgentList"}
 CREATE { key: excludeKey, expr: "StartsWith(uuid, 'MIG') ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
@@ -48437,7 +46435,7 @@ FILTER { expr: "migModeCurrent == 'Disabled'" }
 CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
 SELECT [excludeKey]
 END`,
-  "src/main/resources/mxql/infra/inventoryV2/gpu-search-agent-join": `# \uC2E4\uC2DC\uAC04 gpu inventory \uC870\uD68C
+  "mxql/infra/inventoryV2/gpu-search-agent-join": `# \uC2E4\uC2DC\uAC04 gpu inventory \uC870\uD68C
 # agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568
 
 kv.load gpu_inventory
@@ -48477,7 +46475,7 @@ sub filterMigList
   CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
   SELECT [excludeKey]
 end`,
-  "src/main/resources/mxql/infra/inventoryV2/gpu-search-snapshot": `# \uACFC\uAC70 gpu inventory \uC870\uD68C
+  "mxql/infra/inventoryV2/gpu-search-snapshot": `# \uACFC\uAC70 gpu inventory \uC870\uD68C
 # server_inventory \uC5D0\uC11C ipAddress, OSVersion \uC870\uD68C
 # NOTE: gpu/server \uC2A4\uB0C5\uC0F7 \uC800\uC7A5 \uC8FC\uAE30\uAC00 \uB2EC\uB77C \uC815\uD655\uD55C \uC2DC\uC810\uC758 server \uC2A4\uB0C5\uC0F7\uC744 \uC870\uD68C\uD560 \uC218 \uC5C6\uC73C\uBBC0\uB85C \uC2E4\uC2DC\uAC04 \uB370\uC774\uD130\uB97C \uC0AC\uC6A9\uD568
 # TODO: \uC5D0\uC774\uC804\uD2B8\uAC00 gpu_inventory \uC5D0 ipAddress, OSVersion \uC744 \uC9C1\uC811 \uC218\uC9D1\uD558\uBA74 server_inv JOIN \uC81C\uAC70
@@ -48516,635 +46514,23 @@ CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
 SELECT [excludeKey]
 END
 `,
-  "src/main/resources/mxql/infra/inventoryV2/server-search-agent-join": "# \uC2E4\uC2DC\uAC04 server inventory \uC870\uD68C\n# agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568\n\nAPPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\nJOIN {pk: pk0, query: custom}\n\n# for total count\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\n# end of main query\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, active]\nRENAME {src: oid, dst: pk0}\nRENAME {src: active, dst: __agent_is_active__}\nEND\n\nSUB inv\nKV.LOAD server_inventory\nEND\n\nSUB custom\nKV.LOAD server_inventory_custom\nEND\n\n",
-  "src/main/resources/mxql/infra/inventoryV2/server-search-snapshot": "# \uACFC\uAC70 server inventory \uC870\uD68C\n\nAPPEND {query: inv}\nJOIN {pk: pk0, query: custom}\n\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\nSUB inv\nKV.SNAPSHOT {table: server_inventory, target: <% SNAPSHOT_DATE %> }\nEND\n\nSUB custom\nKV.SNAPSHOT {table: server_inventory_custom, target: <% SNAPSHOT_DATE %> }\nEND\n",
-  "src/main/resources/mxql/infra/metric-by-oid-list": "\n# server list \uC870\uD68C\uD6C4 \uD68D\uB4DD\uD55C oid list \uB97C \uC870\uAC74\uC73C\uB85C \uC0AC\uC6A9\uD55C\uB2E4.\n\n#TIME-RANGE {stime: $stime, etime: $etime}\n#TIME-RANGE {recent: 5m}\n# <% CATEGORY_NAME %>\nCATEGORY <% CATEGORY_NAME %>\nTAGLOAD {backward:true}\n\n<% FILTER_OID_LIST %>\n\n# TODO: \uD55C\uBC88\uC5D0 \uC5EC\uB7EC \uBA54\uD2B8\uB9AD\uC758 \uCC28\uD2B8\uB97C \uADF8\uB9AC\uB294 \uACBD\uC6B0\uC5D0\uB294 \uD558\uB098\uC758 \uBA54\uD2B8\uB9AD\uC774 \uC544\uB2CC \uBCF5\uC218\uC758 \uBA54\uD2B8\uB9AD \uD544\uB4DC\uB97C \uC785\uB825\uD574\uC57C??\n#       \uC5EC\uB7EC \uCE74\uD14C\uACE0\uB9AC\uB3C4 \uB9C8\uCC2C\uAC00\uC9C0??\n#       \uD0ED\uC744 \uD1B5\uD574 \uCE74\uD14C\uACE0\uB9AC\uBCC4\uB85C \uAC00\uC838\uC628\uB2E4\uACE0 \uC0DD\uAC01\uD558\uC790?\n# time, oid, <% FIELD_NAME %>\nselect [time, oid, <% FIELD_NAME %>]\n\n\n",
-  "src/main/resources/mxql/infra/metrics_explorer/get-agent-info-list": '\nCATEGORY agent_list\nFLEXLOAD\n\nJOIN {pk: [oid], query: sub_infra, type: inner}\nJOIN {pk: [oid], query: sub_svr_inventory}\n\nSUB sub_infra\nCATEGORY {"infra_cpu": 1h, "infra_cpu{m5}": 3h, "infra_cpu{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nEND\n\nSUB sub_svr_inventory\nKV.LOAD server_inventory\nSELECT [oid, hostname]\nEND',
-  "src/main/resources/mxql/infra/oid-list-by-filters": "# server_inventory, server_inventory_custom\n\nsub custom\nkv.load server_inventory_custom\nend\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load server_inventory\nJOIN {pk:oid, query: agents, type: inner}\njoin {pk: pk0, query: custom}\n\n<% FILTER_PARAM %>\n\nselect [oid]\n",
-  "src/main/resources/mxql/infra/oid-list-by-top-n": '/*\n TODO: \uC870\uAC74\uC5D0 \uB530\uB77C\uC11C\n       \uCE74\uD14C\uACE0\uB9AC\uC640 \uD544\uB4DC, \uB9AC\uBBF8\uD2B8\uB97C\n       \uBCC0\uACBD\uD558\uAC8C \uD560 \uC218 \uB3C4 \uC788\uC74C\n*/\n\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nSELECT [oid, time, total]\nFILTER {key: "oid", value: [<% OID_LIST_PARAM %>]}\n\nGROUP {timeunit:1h, merge:"total", pk:"oid"}\nUPDATE {key: "total", value: sum }\nORDER {key:[total], sort: desc}\nLIMIT 50',
-  "src/main/resources/mxql/infra/os-type-by-oids": "# oid list \uB85C os type \uC744 \uBAA8\uB450 \uC870\uD68C\uD55C\uB2E4.\nKV.LOAD server_inventory\n<% FILTER_PARAM %>\nFILTER {key:pk0, value:[<% OID_LIST_PARAM %>]}\nFIRST-ONLY {key: [OSType]}\nSELECT [OSType]",
-  "src/main/resources/mxql/infra/process-list-by-oid": '/**\n NOTE: process list for group detail - event\n */\n\nCATEGORY infra_process_group\nTAGLOAD\nFILTER { key: "oid", value: <% OID_PARAM %>}\n\n# unfold / filtering order \uB294 java \uC5D0\uC11C \uCC98\uB9AC\uD55C\uB2E4.',
-  "src/main/resources/mxql/infra/servers-by-group-and-keys": "# dashboard page \uC6B0\uCE21 \uC0C1\uC138 \uD328\uB110 / \uADF8\uB8F9\uC815\uBCF4\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nKV.LOAD server_inventory\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT\n\nORDER {key: [hostname], sort: asc}",
-  "src/main/resources/mxql/infra/v4series/select-fold-category": 'CATEGORY {<% CATEGORY_NAME %>:3h, "<% CATEGORY_NAME %>{m5}":15d, "<% CATEGORY_NAME %>{h1}":unlimit }\n<% OID_FILTER %>\nTAGLOAD\nSELECT [time, oid, @id, @pk, uuid, <% FIELD_LIST %>]\nUNFOLD\n<% SUB_KEY_FILTER %>\n\n',
-  "src/main/resources/mxql/openmetric/stat/stat_gpu_trend_hitmap": 'SUB origin\nkv.load {table:"stat_gpu_trend_hitmap-@{query_date}" , ifexist:true}\nEND\n\nSUB avg_data\n>> 100*sum by (UUID)(sum_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h])) / sum by (UUID) (count_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nORDER {key:UUID, sort: desc}\nEND\n\nSUB max_data\n>> 100*max by (UUID)(max_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:max_value}\nEND\n\nSUB min_data\n>> 100*min by (UUID)(min_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:min_value}\nEND\n\nSUB target\nAPPEND {query: avg_data}\nJOIN {query: max_data, pk: [t, UUID]}\nJOIN {query: min_data, pk: [t, UUID]}\nFOLD {pk:t, key:[UUID,value,max_value,min_value]}\nEND\n\nAPPEND {query: origin}\nAPPEND {query: target}\n\nORDER {key:t, sort: asc}\n\nkv.insert {table: "stat_gpu_trend_hitmap-@{query_date}", pk.key:[t]}\n',
-  "src/main/resources/mxql/report/getReportBatchMenu": "kv.select {table: report_batch_menu, pk.val:0}",
-  "src/main/resources/mxql/server/inventory/agent": "## agent \uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\nkv.load server_inventory",
-  "src/main/resources/mxql/server/inventory/custom": "## \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\nkv.load server_inventory_custom",
-  "src/main/resources/mxql/server/inventory/join": "## agent\uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\uC640 \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\uB97C join\n\n# \uC11C\uBC84\uBAA9\uB85D\uC5D0\uC11C \uC0AD\uC81C\uD55C \uC11C\uBC84 \uBC18\uC601\uC744 \uC704\uD55C \uAE30\uBCF8 \uD544\uD130\uB85C \uC0AC\uC6A9\uD55C\uB2E4\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [active, oid]\nRENAME {src: active, dst: server_agent_active}\nEND\n\nSUB custom\nkv.load server_inventory_custom\nEND\n\nSUB inventory\nkv.load server_inventory\nEND\n\nAPPEND {query: agents}\nJOIN {pk: oid, query: inventory, type: inner}\nJOIN {pk: [pk0], query: custom}\n# total count \uACC4\uC0B0\uC744 \uC704\uD55C plugin \uCD94\uAC00\n# TODO: filtered count / total count \uB97C \uC870\uD68C\uD560 \uC218 \uC788\uB294 mxql \uC778\uD130\uD398\uC774\uC2A4\uAC00 \uC788\uB2E4\uBA74?\nPLUGIN\n# \uD544\uD130\uB294 \uD50C\uB7EC\uADF8\uC778\uC73C\uB85C \uD558\uC9C0 \uC54A\uACE0, filter \uBB38\uBC95\uC744 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD568\n<% FILTER %>",
-  "src/main/resources/mxql/server/tmp_cube/tmp_category_filter": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAMS %>\n",
-  "src/main/resources/mxql/server/ver20/get-top5-cpu-server-list": '# \uCD5C\uADFC 10\uBD84\uAC04 cpu \uC0C1\uC704 5\uAC1C \uC11C\uBC84 \uBAA9\uB85D \uBC0F cpu \uC0AC\uC6A9 \uC870\uD68C\nTIME-RANGE {recent: 10m}\n\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\n\nFILTER-SUBQUERY {key: oid, query: top5}\nJOIN {pk:oid, query:top5}\nRENAME {src:time, dst: t}\nORDER {key:[order, t], sort: [asc, asc]}\n\n\nSUB top5\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\nGROUP { timeunit:10m, pk:"oid" }\nORDER {key:total, sort: desc}\nROWNUM\nRENAME {src:rownum, dst:order}\nSELECT [oid, order]\nLIMIT 5\nEND',
-  "target/classes/mxql/apm/daily/app_counter": 'SUB {id:findMax}\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, tx_count]\nGROUP {timeunit:1h, merge:[tx_count]}\nUPDATE {key:tx_count, value:sum}\nRENAME {src:time,dst:peak_hour}\nORDER {key:tx_count, sort:desc}\nCREATE { key: time, from:peak_hour}\nSELECT [time,peak_hour]\nLIMIT 1\nEND\n\nCATEGORY app_counter{h1}\nTAGLOAD\nSELECT [time, oid, oname, tx_count,tx_error, tps, resp_time,active_tx_count]\nUPDATE { key:[tx_count,tx_error], value:sum }\nUPDATE { key:[tps,active_tx_count] , value:avg }\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\n\nJOIN {pk:[time], query:findMax}\n\nDELETE time\nIFUPDATE {if:"(peak_hour>0)==false", key:[tps,resp_time,active_tx_count], value:null}\nGROUP { merge:[tx_count,tps,tx_error, resp_time,active_tx_count], pk:[oid, oname], last:peak_hour }\n\n#<\uC911\uC694>resp_time\uC740 meticValue\uC0C1\uD0DC\uB85C \uC800\uC7A5\uD568\nUPDATE {key:[tx_count,tps,tx_error, active_tx_count],  value:sum }\n\nRENAME [\n     [tx_count, daily_tx_count]\n    ,[tx_error, daily_tx_error]\n    ,[tps, peak_hour_tps]\n    ,[active_tx_count, peak_hour_active_tx]\n    ,[resp_time, peak_hour_resp_time]\n]\n\nSELECT [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nFOLD [oid,oname, daily_tx_count,daily_tx_error, peak_hour_tps, peak_hour_resp_time, peak_hour_active_tx, peak_hour]\n\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }\n',
-  "target/classes/mxql/apm/daily/app_user": "\nCATEGORY visitor{h1}\nTAGLOAD\nSELECT [time, oid, oname, logbits]\n\nDELETE time\nGROUP { user:logbits, pk:[oid, oname] }\n\nRENAME [\n     [userbytes, daily_bits]\n    ,[logbits, daily_visitor]\n]\n\nSELECT [oid,oname, daily_bits, daily_visitor]\nFOLD [oid,oname, daily_bits, daily_visitor]\nCREATE {key:stime, env: stime }\nCREATE {key:etime, env: etime }\nCREATE {key:build, env: now }",
-  "target/classes/mxql/apm/stat/error_diff": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
-  "target/classes/mxql/apm/stat/error_diff_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[oid, classHash,serviceHash,msgHash] \n	, last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
-  "target/classes/mxql/apm/stat/error_series": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n<% FILTER %>\nGROUP {\n	timeunit:5m, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] \n	,last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
-  "target/classes/mxql/apm/stat/error_series_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:msg, dst:msgHash}\n\n<% FILTER %>\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msgHash] , last:[errorSnapId] \n}\nUPDATE { key: "count", value: sum }\n',
-  "target/classes/mxql/apm/stat/error_stat": '\nCATEGORY db3_stat_error\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {\n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/error_stat_1h": '\nCATEGORY db3_stat_error{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP {\n	timeunit:1h, \n	merge:[count],\n	pk:[classHash,serviceHash,msg] , last:[errorSnapId,tt] \n}\nUPDATE { key: "count", value: sum }\nRENAME [ [msg, msgHash]\n      ,[errorSnapId,snapSeq]\n]\n\nHVTEXT {hash:classHash, key:class, type:error, timefield:tt}\nHVTEXT {hash:msgHash, key:msg, type:error, timefield:tt}\nHVTEXT {hash:serviceHash, key:service, type:service, timefield:tt}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/httpc_diff": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
-  "target/classes/mxql/apm/stat/httpc_diff_1h": 'CATEGORY db3_stat_httpc[h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, count],\n	[httpc_error, error]\n ]',
-  "target/classes/mxql/apm/stat/httpc_series": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
-  "target/classes/mxql/apm/stat/httpc_series_1h": 'CATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[httpc_count,httpc_error,httpc_time_sum]}\nUPDATE { value:sum }\nCREATE { key:avg, expr:"int(httpc_time_sum/httpc_count)" }\nRENAME [ \n	[httpc_time_sum, sum],\n	[httpc_count, total],\n	[httpc_error, error]\n ]',
-  "target/classes/mxql/apm/stat/httpc_stat": 'CATEGORY db3_stat_httpc\n<% AGENT %>\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\n#<% ORDER1 %>\n#<% LIMIT1 %>\n\nDELETE time\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max],\n	pk:[httpc_host_hash,httpc_url_hash,httpc_port] , last:[httpc_tx_hash,tt] \n\n}\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { key: [httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max], value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/httpc_stat_1h": '\nCATEGORY db3_stat_httpc{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n   	merge:[httpc_count,httpc_error, httpc_time_sum,httpc_time_sqr_sum,httpc_time_min,httpc_time_max]\n   	,pk:[httpc_host_hash,httpc_url_hash,httpc_port] \n   	,last:[httpc_tx_hash,tt] \n}\n\nUPDATE { key: "httpc_time_min", value: min }\nUPDATE { key: "httpc_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:httpc_host_hash, key:host, type:httpc_host, timefield:tt}\nHVTEXT {hash:httpc_url_hash, key:url, type:httpc_url, timefield:tt}\nHVTEXT {hash:httpc_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [httpc_host_hash,   hostHash], \n   [httpc_url_hash,   urlHash], \n   [httpc_port,   port], \n   [httpc_tx_hash,   serviceHash], \n   [httpc_count,  total],\n   [httpc_error,  error],\n   [httpc_time_sum,  sum],\n   [httpc_time_min,  min],\n   [httpc_time_max,  max]\n]\n\nCREATE { key:avg, expr: "sum/total"}\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/ip_stat": "CATEGORY db3_stat_ip\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
-  "target/classes/mxql/apm/stat/ip_stat_1h": "CATEGORY db3_stat_ip{h1}\n<% AGENT %>\nFLEXLOAD\n\nDELETE time\nGROUP {merge:[count], pk:[ip] }\nUPDATE { value:sum }\n\nIP2LOC ip\nFORMAT {key:ip, type:ip }\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
-  "target/classes/mxql/apm/stat/ip_url_stat": 'CATEGORY db3_stat_gen_ip-url\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/ip_url_stat_1h": 'CATEGORY db3_stat_gen_ip-url{h1}\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[ip,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[url,   urlHash]\n]\n\nFORMAT { key:ip, type:ip}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [ip, ipHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/sql_diff": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
-  "target/classes/mxql/apm/stat/sql_diff_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum], pk:[oid]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
-  "target/classes/mxql/apm/stat/sql_series": 'CATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
-  "target/classes/mxql/apm/stat/sql_series_1h": 'CATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[sql_count,sql_error,sql_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(sql_time_sum/sql_count)" }\nRENAME [ \n	[sql_time_sum, timeSum],\n	[sql_count, count],\n	[sql_error, error]\n ]',
-  "target/classes/mxql/apm/stat/sql_stat": '\nCATEGORY db3_stat_sql\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/sql_stat_1h": '\nCATEGORY db3_stat_sql{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/sql_stat_join": '\n\n# 1\uC2DC\uAC04 \uD1B5\uACC4 \uC870\uD68C \nCATEGORY db3_stat_sql{h1}\n<% TIME_1H %>\n\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\n##################################################\n# 1\uC2DC\uAC04 \uD1B5\uACC4\uC5D0 5\uBD84\uD1B5\uACC4 \uACB0\uD569 2\uCC28 GROUP \uD544\uC694  \nAPPEND stat5m\n\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n##################################################\n\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { value:sum}\n\nHVTEXT {hash:sql_hash, key:sql, type:sql, timefield:tt}\nHVTEXT {hash:dbc_hash, key:db, type:db_url, timefield:tt}\nHVTEXT {hash:sql_tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [\n   [dbc_hash,      dbcHash], \n   [sql_tx_hash,   serviceHash], \n   [sql_hash,   hash], \n   [sql_count,  countTotal],\n   [sql_error,  countError],\n   [sql_time_sum,  timeSum],\n   [sql_time_min,  timeMin],\n   [sql_time_max,  timeMax],\n   [fetch_count,   fetchCount],\n   [fetch_time_sum,fetchTime]\n]\n\nCREATE-EXPR {timeAvg: "timeSum/countTotal"\n    ,fetchCountAvg: "fetchCount/countTotal"\n    ,fetchTimeAvg: "fetchTime/countTotal"\n    ,timeStd: "stdDev(countTotal,timeSum,sql_time_sqr_sum)" \n}\n\nSQLTABLE {sql:sql, key:crudMetrics ,compact:true}\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>\n\n\n##################################################\n# 5\uBD84\uD1B5\uACC4 \uC870\uD68C \nSUB stat5m\nCATEGORY db3_stat_sql\n<% TIME_5M %>\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {\n	timeunit:1h, \n	merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum],\n	pk:[dbc_hash,sql_hash] , last:[sql_tx_hash,tt] \n}\nUPDATE { key: "sql_time_min", value: min }\nUPDATE { key: "sql_time_max", value: max }\nUPDATE { key:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP { \n    merge:[sql_count,sql_error,sql_time_sum, sql_time_sqr_sum, sql_time_min,sql_time_max,fetch_count,fetch_time_sum], \n    pk:[dbc_hash,sql_hash] , \n    last:[sql_tx_hash,tt] \n}\n\n\nEND\n##################################################',
-  "target/classes/mxql/apm/stat/transaction_diff": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:5m, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\n\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]',
-  "target/classes/mxql/apm/stat/transaction_diff_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP { timeunit:1h, merge: [tx_count, tx_error, tx_time_sum], pk:[oid] }\nUPDATE { key: [tx_count, tx_error, tx_time_sum], value:sum}\nCREATE { key: timeAvg, expr: "tx_time_sum/tx_count" }\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count, count]\n       ,[tx_error, error]\n]       ',
-  "target/classes/mxql/apm/stat/transaction_quantile_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile\n<% AGENT %>\nFLEXLOAD\nGROUP { timeunit:1h, quantile:quantile, pk:urlhash }\nSELECT [time,urlhash, quantile]\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx\n<% AGENT %>\n\nFLEXLOAD\n\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt] }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n<% ORDER1 %>\n<% LIMIT1 %>\n\nJOINByTime {query:quan,  pk:[tx_hash]}\nDELETE time\nGROUP {   merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt], quantile:quantile}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std],value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/transaction_quantile_stat_1h": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nSUB quan\nCATEGORY db3_stat_gen_tx_quantile{h1}\n<% AGENT %>\nFLEXLOAD\nSELECT [urlhash,quantile]\nGROUP {quantile:quantile, pk:urlhash }\nRENAME {src:urlhash, dst:tx_hash}\nEND\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\n\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP { merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], pk:[tx_hash] , last:[appctx,tt]}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, time_min, time_std], value:sum}\n\nJOIN {query:quan,  pk:[tx_hash]}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [[tx_hash,  hash]\n       ,[tx_count, count]\n       ,[tx_error, error]\n       ,[tx_time_sum, timeSum]\n       ,[tx_time_max, timeMax]\n       ,[time_min,    timeMin]\n]       \n\nCREATE { key:timeAvg, expr: "timeSum/count"}\nCREATE { key:timeStd, expr: "stdDev(count,timeSum,time_std)" }\n\nDELETE [time_std,tt,malloc,cpu,_rows_, quantile]\n\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/transaction_series": 'CATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:5m, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]',
-  "target/classes/mxql/apm/stat/transaction_series_1h": 'CATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n<% FILTER %>\nGROUP {timeunit:1h, merge:[tx_count,tx_error,tx_time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(tx_time_sum/tx_count)" }\n\nRENAME [[tx_time_sum, timeSum]\n       ,[tx_count,    count]\n       ,[tx_error,    error]\n]\n',
-  "target/classes/mxql/apm/stat/transaction_stat": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/transaction_stat_1h": '#1\uC2DC\uAC04 \uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 \uD55C\uBC88\uB9CC \uADF8\uB8F9\uD551\uD55C\uB2E4.  \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx{h1}\n<% AGENT %>\nFLEXLOAD\n\nRENAME {src:time, dst:tt}\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated]\n    , pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n                sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n                httpc_count, httpc_time_sum,\n                malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n\nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n \nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/transaction_stat_join": '#\uD2B8\uB79C\uC7AD\uC158 \uD1B5\uACC4\uB294 1\uBD84/5\uBD84 \uB2E8\uC704\uB85C \uC800\uC7A5\uB418\uC5B4\uC788\uB2E4. \n#1\uC2DC\uAC04\uB9C8\uB2E4 1\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uACE0 \uAC74\uC218\uC81C\uD55C\uC744 \uD55C \uD6C4\uC5D0 \uC804\uCCB4 \uAE30\uAC04\uC5D0 \uB300\uD574 2\uCC28 \uD1B5\uACC4\uB97C \uB9CC\uB4E4\uC5B4\uC57C \uD55C\uB2E4. \n#2024.4.11@sjkim\n\nCATEGORY db3_stat_tx\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {  timeunit:1h, \n    merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], \n    pk:[tx_hash] , last:[appctx,tt] \n }\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, \n         sql_count,  sql_time_sum, fetch_x,fetch_time_sum, \n         httpc_count, httpc_time_sum, \n         malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated] , value:sum}\n\n<% ORDER1 %>\n<% LIMIT1 %>\n\nDELETE time\nGROUP {  merge:[tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated],\n   pk:[tx_hash] , last:[appctx,tt] \n}\nUPDATE { key: "time_min", value: min }\nUPDATE { key: "tx_time_max", value: max }\nUPDATE { key: [tx_count, tx_error, time_min, tx_time_max, tx_time_sum, sql_count,  sql_time_sum, fetch_x,fetch_time_sum, httpc_count, httpc_time_sum, malloc, cpu, time_min, time_std, apdex_satisfied, apdex_tolerated], value:sum}\n\nHVTEXT {hash:tx_hash, key:service, type:service, timefield:tt}\n\nRENAME [ [tx_hash, hash]\n      ,[tx_count, count]\n      ,[tx_error, error]\n      ,[tx_time_sum,timeSum]\n      ,[tx_time_max,timeMax]\n      ,[sql_count,     sqlCount]\n      ,[sql_time_sum,  sqlTime]\n      ,[fetch_x,       sqlFetch]\n      ,[fetch_time_sum,sqlFetchTime]\n      ,[httpc_count,   httpcCount]\n      ,[httpc_time_sum,httpcTime]\n      ,[time_min, timeMin]\n]     \n \nCREATE-EXPR { sqlCountAvg:  "sqlCount/count" \n      , sqlTimeAvg: "sqlTime/sqlCount" \n      , txSqlTimeAvg: "sqlTime/count" \n      , sqlFetchAvg:  "sqlFetch/count" \n      , sqlFetchTimeAvg:  "sqlFetchTime/sqlFetch" \n      , txSqlFetchTimeAvg:  "sqlFetchTime/count" \n      , httpcCountAvg:  "httpcCount/count" \n      , httpcTimeAvg:  "httpcTime/httpcCount" \n      , txHttpcTimeAvg:  "httpcTime/count" \n      , timeAvg:  "timeSum/count" \n      , memAvg:  "malloc/count" \n      , cpuAvg:  "cpu/count" \n      , timeStd:  "stdDev(count,timeSum,time_std)"  \n      , apdex:  "apdex_satisfied + apdex_tolerated * 0.5"  \n }\n\nDELETE [time_std,tt,malloc,cpu,_rows_]\n\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/tx_caller_stat": 'CATEGORY db3_stat_gen_mt\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/tx_caller_stat_1h": '\nCATEGORY db3_stat_gen_mt{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src:time, dst:tt}\nGROUP  {merge:[count,error,time_sum], pk:[caller_pcode,caller_okind,caller_spec,caller_url,url,spec], last:tt }\nUPDATE {value:sum }\nCREATE {key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[caller_pcode, callerPcode]\n       ,[caller_okind, callerOkindHash]\n       ,[caller_spec,  callerSpecHash]\n       ,[caller_url,   callerUrlHash]\n       ,[url,          urlHash]\n       ,[spec,         specHash]\n]\n\n#\uB2E4\uB978 PCODE(callerPcode)\uC5D0\uC11C \uC870\uD68C\uD574\uC57C\uD558\uB294 \uD544\uB4DC\uB294 MXQL\uC870\uD68C\uAC00 \uBD88\uAC00\n \nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nHVTEXT {hash:specHash, key:spec, type:mtrace_spec, timefield:tt}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/tx_domain_series": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
-  "target/classes/mxql/apm/stat/tx_domain_series_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\n<% DOMAIN %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
-  "target/classes/mxql/apm/stat/tx_domain_stat": 'CATEGORY db3_stat_gen_dom\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/tx_domain_stat_1h": 'CATEGORY db3_stat_gen_dom{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[domain,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[domain, domainHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:domainHash, key:domain, type:http_domain, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [domain, domainHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/tx_login_stat": 'CATEGORY db3_stat_gen_login\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[login,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/tx_login_stat_1h": 'CATEGORY db3_stat_gen_login{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[login,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[login, loginHash]\n       ,[url,   urlHash]\n]\n\nHVTEXT {hash:loginHash, key:login, type:login, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [login, loginHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/tx_referer_series": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:5m, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
-  "target/classes/mxql/apm/stat/tx_referer_series_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\n<% REFERER %>\n<% URL %>\nGROUP {timeunit:1h, merge:[count,error,time_sum]}\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\nRENAME { src: time_sum, dst:timeSum}\nSELECT [time, count, error, timeSum, timeAvg]\n',
-  "target/classes/mxql/apm/stat/tx_referer_stat": 'CATEGORY db3_stat_gen_referer\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count,error,time_sum], pk:[referer,url], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash, url, urlHash, count, error, timeSum, timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/tx_referer_stat_1h": 'CATEGORY db3_stat_gen_referer{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count,error,time_sum], pk:[referer,url], last:tt }\nUPDATE { value:sum }\nCREATE { key:timeAvg, expr:"int(time_sum/count)" }\n\nRENAME [[time_sum, timeSum]\n       ,[referer, refererHash]\n       ,[url, urlHash]\n]\n\nHVTEXT {hash:refererHash, key:referer, type:referer, timefield:tt}\nHVTEXT {hash:urlHash, key:url, type:service, timefield:tt}\nSELECT [referer, refererHash,url,urlHash, count,error,timeSum,timeAvg]\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>',
-  "target/classes/mxql/apm/stat/useragent_series": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:5m, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
-  "target/classes/mxql/apm/stat/useragent_series_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\n<% HASH %>\nGROUP {timeunit:1h, merge:[count]}\nUPDATE { value:sum }\nSELECT [time, count]\n",
-  "target/classes/mxql/apm/stat/useragent_stat": "CATEGORY db3_stat_useragent\n<% AGENT %>\nFLEXLOAD\nCREATE {key:tt, from:time}\nGROUP {timeunit:1h, merge:[count], pk:[hash], last:tt}\nUPDATE { value:sum }\n<% ORDER1 %>\n<% LIMIT1 %>\nDELETE time\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
-  "target/classes/mxql/apm/stat/useragent_stat_1h": "CATEGORY db3_stat_useragent{h1}\n<% AGENT %>\nFLEXLOAD\nRENAME {src: time, dst:tt}\nGROUP {merge:[count], pk:[hash], last:tt }\nUPDATE { value:sum }\n\nHVTEXT {hash:hash, key:useragent, type:user_agent, timefield:tt}\nOS-BROWSER {hashKey:hash, textKey:useragent}\n<% FILTER %>\n<% ORDER2 %>\n<% LIMIT2 %>",
-  "target/classes/mxql/dbx/linkages/apm2db": "CATEGORY search_act_tx_run_sql\n<%flexload%>\nSELECT",
-  "target/classes/mxql/dbx/linkages/db2apm": "CATEGORY <%category%>\nTAGLOAD\nUNFOLD { <%keyName%> }\nFILTER { key: <%keyName%>, value: <%value%> }\nGROUP { merge:[ <%keyName%> ], pk:oid }\nSELECT [ oid ]",
-  "target/classes/mxql/dbx/linkages/db2apm_oracle": "CATEGORY <%category%>\nTAGLOAD\nSELECT\nUNFOLD { sid, serial, inst }\n<%filter1%>\n<%filter2%>\n<%filter3%>\nLASTONLY { key: oid }",
-  "target/classes/mxql/dbx/parameter-history": "CATEGORY db_<%DB_TYPE%>_parameter\nTAGLOAD\nFILTER {key:oid, value:<%OID%>}\nUNFOLD [name, value]",
-  "target/classes/mxql/dbx/planchange/chart": `SUB sqlstat_before
-CATEGORY <%SQLSTAT_CATEGORY%>{h1}
-TAGLOAD
-FILTER { key: "oid", value: <%OID%> }
-UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
-UPDATE {key: plan_hash_value, cast: long}
-FILTER execute_count > 0
-GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
-UPDATE { key: "elapsed_time", value: sum }
-UPDATE { key: "execute_count", value: sum }
-
-CREATE {key: before_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
-RENAME {src: plan_hash_value, dst: before_plan_hash_value}
-SELECT [time, sql_id, before_plan_hash_value, before_elapsed_time_per_exec]
-END
-
-SUB sqlstat_after
-CATEGORY <%SQLSTAT_CATEGORY%>{h1}
-TAGLOAD
-FILTER { key: "oid", value: <%OID%> }
-UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
-UPDATE {key: plan_hash_value, cast: long}
-FILTER execute_count > 0
-GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
-UPDATE { key: "elapsed_time", value: sum }
-UPDATE { key: "execute_count", value: sum }
-
-CREATE {key: after_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
-RENAME {src: plan_hash_value, dst: after_plan_hash_value}
-SELECT [time, sql_id, after_plan_hash_value, after_elapsed_time_per_exec]
-END
-
-CATEGORY <%PLAN_CHANGE_CATEGORY%>
-TAGLOAD
-FILTER { key: "oid", value: <%OID%> }
-UNFOLD [time, sql_id, before_plan_hash_value, after_plan_hash_value, <%SQL_HASH_FIELD%>]
-UPDATE {key: <%SQL_HASH_FIELD%>, cast: long}
-UPDATE {key: before_plan_hash_value, cast: long}
-UPDATE {key: after_plan_hash_value, cast: long}
-
-GROUP {timeunit: 1d, pk: [sql_id, before_plan_hash_value, after_plan_hash_value, <%SQL_HASH_FIELD%>]}
-RENAME {src:"_rows_", dst: "change_count"}
-
-JOIN {query: "sqlstat_before", pk: [time, sql_id, before_plan_hash_value]}
-JOIN {query: "sqlstat_after", pk: [time, sql_id, after_plan_hash_value]}
-UPDATE {key: "before_elapsed_time_per_exec", notnull: 0}
-UPDATE {key: "after_elapsed_time_per_exec", notnull: 0}
-
-CREATE {key: "flag", expr: "after_elapsed_time_per_exec < before_elapsed_time_per_exec ? 'good' : 'bad'"}
-
-SELECT [time,change_count,flag]
-GROUP { timeunit:1d, merge:[change_count], pk: [flag]}
-UPDATE { key: "change_count", value: sum }
-PIVOT-FIELD { key:time, pivot_field:flag, pivot_value:change_count}`,
-  "target/classes/mxql/dbx/planchange/history": 'CATEGORY <%PLAN_CHANGE_CATEGORY%>\nTAGLOAD\nFILTER { key: "oid", value: <%OID%> }\nUNFOLD [time, sql_id, <%SQL_HASH_FIELD%>, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\nUPDATE {key: <%SQL_HASH_FIELD%>, cast: long}\nUPDATE {key: before_plan_hash_value, cast: long}\nUPDATE {key: after_plan_hash_value, cast: long}\n\nHVTEXT {hash: <%SQL_HASH_FIELD%>, key: sql_text, type: sql, checktime: 2h}\n\nORDER {key: time, sort: asc}\n\nSELECT [time, sql_id, <%SQL_HASH_FIELD%>, sql_text, child_number, before_plan_hash_value, after_plan_hash_value, sid, user, program]\n',
-  "target/classes/mxql/dbx/planchange/summary": `SUB sqlstat_before
-CATEGORY <%SQLSTAT_CATEGORY%>{h1}
-TAGLOAD
-FILTER { key: "oid", value: <%OID%> }
-UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
-UPDATE {key: plan_hash_value, cast: long}
-FILTER execute_count > 0
-GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
-UPDATE { key: "elapsed_time", value: sum }
-UPDATE { key: "execute_count", value: sum }
-
-CREATE {key: before_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
-RENAME {src: plan_hash_value, dst: before_plan_hash_value}
-SELECT [sql_id, before_plan_hash_value, before_elapsed_time_per_exec]
-END
-
-SUB sqlstat_after
-CATEGORY <%SQLSTAT_CATEGORY%>{h1}
-TAGLOAD
-FILTER { key: "oid", value: <%OID%> }
-UNFOLD [sql_id, plan_hash_value, elapsed_time, execute_count]
-UPDATE {key: plan_hash_value, cast: long}
-FILTER execute_count > 0
-GROUP {timeunit:1d, pk: [sql_id, plan_hash_value], merge: [elapsed_time, execute_count]}
-UPDATE { key: "elapsed_time", value: sum }
-UPDATE { key: "execute_count", value: sum }
-
-CREATE {key: after_elapsed_time_per_exec, expr: "elapsed_time / execute_count"}
-RENAME {src: plan_hash_value, dst: after_plan_hash_value}
-SELECT [sql_id, after_plan_hash_value, after_elapsed_time_per_exec]
-END
-
-CATEGORY <%PLAN_CHANGE_CATEGORY%>
-TAGLOAD
-FILTER { key: "oid", value: <%OID%> }
-UNFOLD [time, sql_id, before_plan_hash_value, after_plan_hash_value, user, program, <%SQL_HASH_FIELD%>]
-UPDATE {key: <%SQL_HASH_FIELD%>, cast: long}
-UPDATE {key: before_plan_hash_value, cast: long}
-UPDATE {key: after_plan_hash_value, cast: long}
-
-GROUP {timeunit:1d, pk: [sql_id, before_plan_hash_value, after_plan_hash_value, <%SQL_HASH_FIELD%>], first: [user, program]}
-RENAME {src:"_rows_", dst: "change_count"}
-HVTEXT {hash: <%SQL_HASH_FIELD%>, key: sql_text, type: sql, checktime: 2h}
-
-JOIN {query: "sqlstat_before", pk: [sql_id, before_plan_hash_value]}
-JOIN {query: "sqlstat_after", pk: [sql_id, after_plan_hash_value]}
-
-UPDATE {key: "before_elapsed_time_per_exec", notnull: 0}
-UPDATE {key: "after_elapsed_time_per_exec", notnull: 0}
-
-CREATE {key: "flag", expr: "after_elapsed_time_per_exec < before_elapsed_time_per_exec ? 'GOOD' : 'BAD'"}
-
-CREATE {key: "elapsed_time_diff", expr: "round(after_elapsed_time_per_exec - before_elapsed_time_per_exec, 3)"}
-
-RENAME {src: <%SQL_HASH_FIELD%>, dst: "sql_hash_value"}
-SELECT [time, sql_id, sql_text, user, program, before_plan_hash_value, after_plan_hash_value, before_elapsed_time_per_exec, after_elapsed_time_per_exec, elapsed_time_diff, flag, change_count, sql_hash_value]`,
-  "target/classes/mxql/dbx/stat/each_sql": '# \uD558\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield:tt}\n<%ADD_HVTEXT%>\n\nFILTER {key:name, value:"<%GROUP_VALUE%>"}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nGROUP { merge:[<%GROUP_MERGE%>], pk: [<%SQL_HASH_FIELD_NAME%><%ADD_GROUPS%>,<%SQL_HASH_FIELD_NAME_2%>], listup:[plan_hash_value<%ADD_GROUPS%>], last:tt }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n\nUPDATE { key:elapsed_max, value:max }\nUPDATE { value:sum }\n\nCREATE { key:elapsed_avg, expr:"elapsed_time/execute_count"}\n\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
-  "target/classes/mxql/dbx/stat/each_sql_main": '# \uBA54\uC778 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%UNFOLD%><%ADD_GROUPS%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%USER_FIELD_HASH%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nHVTEXT {hash:<%USER_FIELD_HASH%>, key:<%USER_FIELD_NAME%>, type:db_attribute}\n<%ADD_HVTEXT%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%SQL_HASH_FIELD_NAME%>, listup:[oname,<%USER_FIELD_NAME%>,sql_id,plan_hash_value<%ADD_GROUPS%>], last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n\n<%FILTER_TEXT%>\n<%FILTER_NUMBER%>\n\nORDER {key:<%ORDER_KEY%>, sort:desc}\n\nLIMIT <%LIMIT%>\nDELETE tt\nDELETE _rows_\n\nSELECT',
-  "target/classes/mxql/dbx/stat/merged_sql": '# \uC0C1\uB2E8 \uD14C\uC774\uBE14\uC6A9\n\nCATEGORY <%CATEGORY%>\nTAGLOAD\n\nUNFOLD [<%GROUP_KEY%>,<%UNFOLD%>]\nUPDATE {key: plan_hash_value, cast: long}\nUPDATE {key: <%GROUP_KEY%>, cast: long}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nRENAME {src:time, dst:tt}\n\nFILTER {key:oid, value:[<%OIDS%>]}\n\nFILTER <%SQL_HASH_FIELD_NAME%> != 0\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:[<%GROUP_KEY%>,<%SQL_HASH_FIELD_NAME%>,<%SQL_HASH_FIELD_NAME_2%>] }\n\nHVTEXT {hash:<%SQL_HASH_FIELD_NAME%>, key:sql_query, type:sql, checktime: 2h}\nUPDATE { key: <%SQL_HASH_FIELD_NAME%>, cast: string}\n<%FILTER_TEXT%>\n\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\n<%FILTER_NUMBER%>\n\nGROUP { merge:[<%GROUP_MERGE%>], pk:<%GROUP_KEY%>, last:tt }\nUPDATE { key: elapsed_max, value: max }\nUPDATE { value: sum }\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\n\nHVTEXT {hash:<%GROUP_KEY%>, key:name, type:db_attribute, timefield: tt}\n\nFILTER { key:name, exist:true }\n\nORDER {key:name}\nDELETE tt\nDELETE _rows_\nDELETE <%GROUP_KEY%>\n\nSELECT',
-  "target/classes/mxql/dbx/stat/sql_stat_raw": "CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [<%UNFOLD_FIELDS%><%ADD_GROUPS%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n<%ADD_HVTEXT%>\nSELECT [<%SELECT_FIELDS%><%ADD_GROUPS%>]\n",
-  "target/classes/mxql/dbx/stat/summary_chart_all": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_FIELD%>]\n\n<%FILTER%>\n\nGROUP {merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}',
-  "target/classes/mxql/dbx/stat/summary_chart_group": 'CATEGORY <%CATEGORY%>\nTAGLOAD\nFILTER {key: oid, value: [<%OID%>]}\nUNFOLD [execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, value: min}\nUPDATE {key: <%SQL_HASH_FIELD_NAME%>, cast: long}\n\nSELECT [time, execute_count, elapsed_time, elapsed_max, <%SQL_HASH_FIELD_NAME%>, <%REQUEST_GROUP%>, <%REQUEST_FIELD%>]\nFILTER <%REQUEST_GROUP%> != 0\n\n<%FILTER%>\n\nGROUP {pk: <%REQUEST_GROUP%>, merge: [execute_count, elapsed_time, elapsed_max, <%REQUEST_FIELD%>], timeunit: <%TIMEUNIT%>}\n\nCREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}\nUPDATE {key: elapsed_max, value: max}\nUPDATE {value: sum}\n\nHVTEXT {hash: <%REQUEST_GROUP%>, key: <%REQUEST_GROUP%>, type: db_attribute}',
-  "target/classes/mxql/dbx/wait/group_name": "CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>\nTAGLOAD\nOID [ <%OID%> ]\nUNFOLD [schemaname, con_name,machine, program, module, osuser]\nSELECT [schemaname, con_name,machine, program, module, osuser]\n\nHVTEXT {hash: schemaname, key: schemaname_str, type: db_attribute}\nHVTEXT {hash: con_name, key: con_name_str, type: db_attribute}\nHVTEXT {hash: machine, key: machine_str, type: db_attribute}\nHVTEXT {hash: program, key: program_str, type: db_attribute}\nHVTEXT {hash: module, key: module_str, type: db_attribute}\nHVTEXT {hash: osuser, key: osuser_str, type: db_attribute}\n\nGROUP { listup: [schemaname_str, con_name_str,machine_str, program_str, module_str, osuser_str] }",
-  "target/classes/mxql/dbx/wait/wait_analysis_chart_class": "CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER {key: con_name, value: ['']}\nDELETE ['con_id', 'con_name', 'oname',  '_no_5m_hour_',  'oid', 'pcode',  'pname']\nDELETE ['show_in', 'show_out']",
-  "target/classes/mxql/dbx/wait/wait_analysis_chart_cpu": `CATEGORY db_oracle_dma_counter<%TIMEUNIT%>
-OID [ <%OID%> ]
-TAGLOAD
-FILTER con_id == 0
-SELECT [time,pcode,oid, cpu(xos2), cpu_sys(xos2), cpu_user(xos2), cpu_idle(xos2), cpu_iowait(xos2), 'cpu_iowait(xos)','cpu_sys(xos)','cpu_user(xos)']
-RENAME { src: cpu(xos), dst: cpu_xos}
-RENAME { src: cpu(xos2), dst: cpu2}
-CREATE {key:'cpu(xos)', expr:"cpu2 == null ? cpu_xos : cpu2"}
-RENAME { src: cpu_sys(xos), dst: cpu_sys}
-RENAME { src: cpu_sys(xos2), dst: cpu_sys2}
-CREATE {key:'cpu_sys(xos)', expr:"cpu_sys2 == null ? cpu_sys : cpu_sys2"}
-RENAME { src: cpu_user(xos), dst: cpu_user}
-RENAME { src: cpu_user(xos2), dst: cpu_user2}
-CREATE {key:'cpu_user(xos)', expr:"cpu_user2 == null ? cpu_user : cpu_user2"}
-RENAME { src: cpu_idle(xos), dst: cpu_idle}
-RENAME { src: cpu_idle(xos2), dst: cpu_idle2}
-CREATE {key:'cpu_idle(xos)', expr:"cpu_idle2 == null ? cpu_idle : cpu_idle2"}
-RENAME { src: cpu_iowait(xos), dst: cpu_iowait}
-RENAME { src: cpu_iowait(xos2), dst: cpu_iowait2}
-CREATE {key:'cpu_iowait(xos)', expr:"cpu_iowait2 == null ? cpu_iowait : cpu_iowait2"}
-DELETE [cpu_xos, cpu2, cpu_sys, cpu_sys2, cpu_user, cpu_user2, cpu_idle, cpu_idle2, cpu_iowait, cpu_iowait2]
-DELETE ['show_in', 'show_out']`,
-  "target/classes/mxql/dbx/wait/wait_analysis_chart_enqueue": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention']\nDELETE ['show_in', 'show_out']",
-  "target/classes/mxql/dbx/wait/wait_analysis_chart_latch": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'latch: shared pool']\nFILTER {key: con_name, value: ['']}\nDELETE ['show_in', 'show_out']",
-  "target/classes/mxql/dbx/wait/wait_analysis_chart_mem": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time, pcode, oid, mem(xos)]\nDELETE ['show_in', 'show_out']",
-  "target/classes/mxql/dbx/wait/wait_analysis_chart_session": "CATEGORY db_oracle_dma_counter<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nFILTER con_id == 0\nSELECT [time,pcode,oid,active_sessions,total_sessions]\nDELETE ['show_in', 'show_out']",
-  "target/classes/mxql/dbx/wait/wait_analysis_chart_stat": "CATEGORY db_oracle_dma_stat_top<%TIMEUNIT%>\nOID [  <%OID%> ]\nTAGLOAD\nSELECT [time, 'non-idle wait time','application wait time','logical read bytes from cache','redo synch time overhead (usec)','cell physical IO interconnect bytes']\nDELETE ['show_in', 'show_out']",
-  "target/classes/mxql/dbx/wait/wait_analysis_chart_waitcount": "CATEGORY db_oracle_dma_event_wait_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'SQL*Net message to client','control file sequential read','log file parallel write','log file sync','db file parallel write']\nDELETE ['show_in', 'show_out']",
-  "target/classes/mxql/dbx/wait/wait_analysis_chart_waittime": "CATEGORY db_oracle_dma_event_time_top<%TIMEUNIT%>\nOID [ <%OID%> ]\nTAGLOAD\nSELECT [time, 'enq: TX - row lock contention','log file sync','ADR block file read','ADR block file write','control file sequential read']\nDELETE ['show_in', 'show_out']",
-  "target/classes/mxql/dbx/wait/wait_sql_list_1": `CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>
-OID <%OID%>
-TAGLOAD
-UNFOLD ["@id","con_id","con_name","cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","machine","module","osuser","physical reads","plan_hash_value","program","redo size","schemaname","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","sql_id","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"]
-SELECT
-
-HVTEXT {hash: schemaname, key: schema, type: db_attribute}
-HVTEXT {hash: con_name, key: con_name, type: db_attribute}
-HVTEXT {hash: machine, key: machine, type: db_attribute}
-HVTEXT {hash: program, key: program, type: db_attribute}
-HVTEXT {hash: module, key: module, type: db_attribute}
-HVTEXT {hash: osuser, key: osuser, type: db_attribute}
-
-DELETE time
-GROUP {pk: "sql_hash_value", listup: ["schema","con_name", "machine", "program", "module", "osuser", "plan_hash_value", "sql_id"], merge: ["cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","physical reads","redo size","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"] }
-
-UPDATE {key: "<%REQUEST_ORDER_KEY%>", value: sum}
-FILTER {expr: "\${<%REQUEST_ORDER_KEY%>} > 0"}
-ORDER {key: "<%REQUEST_ORDER_KEY%>", sort: desc}
-LIMIT 50
-
-HVTEXT {hash: sql_hash_value, key: sql_query, type: sql}
-UPDATE {value: sum}
-
-<%FILTER_TEXT%>
-<%FILTER_NUMBER%>
-
-CREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}
-
-DELETE _rows_
-DELETE ['show_in', 'show_out']`,
-  "target/classes/mxql/dbx/wait/wait_sql_list_2": `SUB q1
-TIME-RANGE {recent: 1d}
-CATEGORY db_oracle_dma_sqlstat_event
-OID <%OID%>
-TAGLOAD
-UNFOLD [class, event_no]
-UPDATE { key: "event_no", cast: int }
-FILTER-SUBQUERY {key: event_no, query: q2}
-SELECT [@id]
-UPDATE { key: "@id", cast: long }
-END
-
-SUB q2
-TIME-RANGE {recent: 1d}
-CATEGORY db_index_event
-OID <%OID%>
-TAGLOAD
-LASTONLY
-UNFOLD [class, idx, name]
-FILTER {key: name, value: "<%REQUEST_EVENT_NAME%>"}
-SELECT [idx]
-RENAME {src:idx, dst:event_no}
-UPDATE { key: "event_no", cast: int }
-END
-
-CATEGORY db_oracle_dma_sqlstat<%TIMEUNIT%>
-OID <%OID%>
-TAGLOAD
-UNFOLD ["@id","con_id","con_name","cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","machine","module","osuser","physical reads","plan_hash_value","program","redo size","schemaname","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","sql_id","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"]
-SELECT
-UPDATE { key: "@id", cast: long }
-FILTER-SUBQUERY {key:@id, query:q1}
-
-HVTEXT {hash: schemaname, key: schema, type: db_attribute}
-HVTEXT {hash: con_name, key: con_name, type: db_attribute}
-HVTEXT {hash: machine, key: machine, type: db_attribute}
-HVTEXT {hash: program, key: program, type: db_attribute}
-HVTEXT {hash: module, key: module, type: db_attribute}
-HVTEXT {hash: osuser, key: osuser, type: db_attribute}
-
-DELETE time
-GROUP {pk: "sql_hash_value", listup: ["schema","con_name", "machine", "program", "module", "osuser", "plan_hash_value" , "sql_id"], merge: ["cpu_time","elapsed_max","elapsed_time","elapsed_wait","execute_count","physical reads","redo size","session logical reads","sorts (disk)","sorts (rows)","sql_hash_value","table fetch by rowid","table fetch continued row","table scan blocks gotten","wc_Administrative","wc_Application","wc_Cluster","wc_Commit","wc_Concurrency","wc_Configuration","wc_Idle","wc_Network","wc_Other","wc_Queueing","wc_Scheduler","wc_System I/O","wc_User I/O"] }
-ORDER {key: elapsed_wait, sort: desc}
-LIMIT 50
-
-HVTEXT {hash: sql_hash_value, key: sql_query, type: sql}
-UPDATE {value: sum}
-
-<%FILTER_TEXT%>
-<%FILTER_NUMBER%>
-
-CREATE { key: elapsed_avg, expr:"elapsed_time/execute_count"}
-DELETE _rows_
-
-DELETE ['show_in', 'show_out']`,
-  "target/classes/mxql/dbx/wait/wait_summary": `CATEGORY db_oracle_dma_wait_class<%TIMEUNIT%>
-OID [ <%OID%> ]
-TAGLOAD
-SELECT
-PIVOT-HEAD { key: ['time'], except: ['_no_5m_hour_','pname','pcode','oid','oname','con_id','con_name','Idle'] }
-DELETE ['time']
-GROUP { merge: "pivot_value", pk: "pivot_field" }
-PIVOT-FIELD { pivot_field: "pivot_field", pivot_value: "pivot_value" }
-UPDATE { value: sum }
-DELETE ['show_in', 'show_out']`,
-  "target/classes/mxql/dbx/wait/wait_top_n": `SUB q1
-TIME-RANGE {recent: 1d}
-CATEGORY db_index_wait_class
-OID <%OID%>
-TAGLOAD
-LASTONLY
-UNFOLD [idx, name]
-<%FILTER_CLASS_NAME%>
-RENAME {src:idx, dst:class}
-RENAME {src:name, dst:class_name}
-UPDATE {key: class, cast: int}
-SELECT [ class, class_name ]
-END
-
-SUB q2
-TIME-RANGE {recent: 1d}
-CATEGORY db_index_event
-OID <%OID%>
-TAGLOAD
-LASTONLY
-UNFOLD [idx, name, class]
-RENAME {src:idx, dst: event_no}
-UPDATE { key: event_no, cast: int}
-END
-
-CATEGORY db_oracle_dma_sqlstat_event<%TIMEUNIT%>
-OID <%OID%>
-TAGLOAD
-UNFOLD [class, event_no, wait_time]
-UPDATE {key: class, cast: int}
-FILTER-SUBQUERY { key: class, query: q1 }
-UPDATE { key: event_no, cast: int}
-DELETE time
-GROUP { pk: [event_no,class], merge: wait_time }
-
-JOIN {pk: [event_no,class], query: q2}
-RENAME {src:name, dst: event_name}
-UPDATE {key: wait_time, value: sum}
-
-PART-BY {
-    task: [
-        {key: total, from: wait_time, func: sum}
-    ]
-}
-
-CREATE {key: percentage, expr: "wait_time * 100 / total"}
-
-ORDER {key:percentage, sort: desc}
-SELECT [event_no,event_name,wait_time,percentage,class]
-JOIN {pk: class, query: q1}
-DELETE ['show_in', 'show_out']`,
-  "target/classes/mxql/event/select-options": "TIME-RANGE {recent: <% TIMEUNIT %>}\nCATEGORY <% CATEGORY %>\nTAGLOAD\nUNFOLD <% UNFOLD %>\nSELECT <% SELECT %>\nGROUP {timeunit:<% TIMEUNIT %>, pk:<% PK %>}",
-  "target/classes/mxql/infra/ServerCommonService-getServerList": 'CATEGORY {"server_base": 30m, "server_base{m5}": 2h, "server_base{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [time, oid, oname]\n\n',
-  "target/classes/mxql/infra/ServerProcessService-getCpuMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, cpu, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [cpu, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: cpuAvg, from: cpu }\nCREATE { key: cpuMax, from: cpu }\nCREATE { key: cpuMin, from: cpu }\nUPDATE { key: cpuMax, value: max }\nUPDATE { key: cpuMin, value: min }\n\nORDER {key:[cpuMax], sort: [desc]}\n',
-  "target/classes/mxql/infra/ServerProcessService-getMemMaxOrderTopList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, oname, user, memory, count]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash, oid]}\nGROUP { timeunit: 10m, pk: hash, last: [name, user], merge: [memory, count], listup: [oid, oname] }\n\nUPDATE { key: count, value: sum }\nCREATE { key: memAvg, from: memory }\nCREATE { key: memMax, from: memory }\nCREATE { key: memMin, from: memory }\nUPDATE { key: memMax, value: max }\nUPDATE { key: memMin, value: min }\n\nORDER {key:[memMax], sort: [desc]}\n',
-  "target/classes/mxql/infra/ServerProcessService-getProcessList": 'CATEGORY server_process\nTAGLOAD {backward: true}\nFILTER { expr: "count > 0"}\nSELECT [time, oid, hash, name, cmd1, oname, user, cpu, memory, riops, wiops, count, rss, rbps, wbps]\n# hash = hash(user + (group)name)\nFIRST-ONLY {key:[hash]}\n',
-  "target/classes/mxql/infra/file-systems-by-group-and-keys": "\n# \uADF8\uB8F9 \uBC0F \uD544\uD130\uB9C1\uC5D0 \uC758\uD574 \uD544\uD130\uB9C1\uB41C oid \uB85C \uD30C\uC77C \uC2DC\uC2A4\uD15C \uBAA9\uB85D \uC870\uD68C\n\nSUB sub_custom\nKV.LOAD server_inventory_custom\nEND\n\nSUB sub_inv\nKV.LOAD server_inventory\nJOIN {pk: pk0, query: sub_custom}\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid, hostname]\nEND\n\nTIME-RANGE {duration: 1m, etime: $etime}\nCATEGORY infra_filesystem\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[oid], query:sub_inv, type:inner}\n\nselect [oid, hostname, mountName, pUsed, totalSize, free, used, pInodeUsed]\n\nORDER {key:[hostname, mountName], sort: asc}",
-  "target/classes/mxql/infra/get-custom-field-keys": "# \uBAA8\uB4E0 custom field \uC758 \uD0A4\uAC12\uC744 \uC870\uD68C\uD55C\uB2E4.\n# \uB514\uBE44 \uAC19\uC774 entity\uAC00 \uBA85\uD655\uD558\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uBBC0\uB85C \uC804\uCCB4 \uB370\uC774\uD130\uC5D0\uC11C \uACF5\uD1B5\uB41C \uAC12\uC744 \uAC00\uC838\uC628\uB2E4\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nKV.LOAD server_inventory_custom\nJOIN {pk:pk0, query: agents, type: inner}\n\nPIVOT-HEAD\nFIRST-ONLY {key:[pivot_field]}\nSELECT [pivot_field]",
-  "target/classes/mxql/infra/get-event-id-list": '# \uC911\uBCF5 \uC81C\uAC70\uD558\uACE0 oid : event id set \uC73C\uB85C \uC774\uC6A9\uD558\uAE30?\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\nSUB filtered_inventory\nKV.LOAD server_inventory\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT [oid]\nEND\n\nTIME-RANGE {recent: 20s}\nCATEGORY event_status_summary\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[pcode]}\nSELECT\nUNFOLD\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nJOIN {pk:oid, query: stat, type: inner}\nJOIN {pk:[oid], query:filtered_inventory, type: inner}\n\nFILTER { expr: "warningCount > 0 || criticalCount > 0"}\n\n# NOTE: warning \uC640 critical \uC740 \uCF64\uB9C8\uB85C \uC5F0\uACB0\uB41C \uC774\uBCA4\uD2B8 \uC544\uC774\uB514\uC784\nSELECT [oid, warning, critical]\n',
-  "target/classes/mxql/infra/get-fold-category-desc-fields": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAM %>\nUNFOLD\nFIRST-ONLY {key:[oid, @id]}\n\n# metric value \uCC98\uB9AC\nUPDATE { key: pid, value: last }\nUPDATE { key: pid, cast: long }\n\nUPDATE { key: ppid, value: last }\nUPDATE { key: ppid, cast: long }\n\nUPDATE { key: stime, value: last }\nUPDATE { key: stime, cast: long }\n",
-  "target/classes/mxql/infra/get-inventory-keywords": "APPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\n\n<% FILTER_PARAM %>\nSELECT [ <% COLUMN_NAME %> ]\nGROUP {merge: <% COLUMN_NAME %>, pk: <% COLUMN_NAME %>}\nORDER {key: <% COLUMN_NAME %>, sort: asc}\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nSUB inv\nKV.LOAD <% CATEGORY_NAME %>\nEND",
-  "target/classes/mxql/infra/get-oids-by-infra-cpu-fixed-3h-range": "# cube{1h} \uAC00 \uC5C6\uB294 \uACBD\uC6B0 oid \uC870\uD68C\uD558\uAE30 \uC704\uD55C mql\n# time-range \uB294 \uB3D9\uC791\uD558\uC9C0 \uC54A\uC73C\uBBC0\uB85C MxqlExecutor \uC5D0\uC11C stime, etime \uC744 \uB123\uC5B4\uC918\uC57C \uD55C\uB2E4\n#TIME-RANGE {recent: 3h}\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]\n",
-  "target/classes/mxql/infra/get-oids-by-infra-cpu-h1": "# \uCC28\uD2B8 \uC775\uC2A4\uD50C\uB85C\uB7EC\uB97C \uC704\uD574 \uC0AC\uC6A9\uB428\n# \uC9C0\uC815\uB41C \uC2DC\uAC04\uC5D0\uC11C infra_cpu{h1} \uAC00 \uC788\uB294 oid \uB9AC\uC2A4\uD2B8\uB9CC \uAC00\uC838\uC640 \uD544\uD130\uB9C1\uC5D0 \uC0AC\uC6A9\uD55C\uB2E4.\nCATEGORY infra_cpu{h1}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nSELECT [oid]",
-  "target/classes/mxql/infra/get-server-inventories-for-status": "\n# group \uD654\uBA74 \uC0C1\uB2E8\uC758 \uC804\uCCB4 \uD1B5\uACC4 \uC870\uD68C\uB97C \uC704\uD574 \uC0AC\uC6A9\uD568\n# os \uBCC4 { active(not inactive/paused), total, total core count) }\n\n# NOTE: \uACFC\uAC70\uC758 \uC0C1\uD0DC\uB97C \uC870\uD68C\uD558\uB294 \uAE30\uB2A5\uC740 \uC5C6\uC74C, \uC2DC\uACC4\uC5F4\uC774 \uC544\uB2C8\uAE30 \uB54C\uBB38\uC5D0 stime, etime \uC774 \uC758\uBBF8 \uC5C6\uC74C\nSUB stat\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, status]\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nSELECT [oid, OSType, nCores]\n\nJOIN {pk:[oid], query:stat, type: inner}\n",
-  "target/classes/mxql/infra/get-server-inventories-with-metric": `/**
-NOTE: \uADF8\uB8F9\uBCC4 \uC8FC\uC694 \uBA54\uD2B8\uB9AD\uC774 \uD3EC\uD568\uB41C \uC11C\uBC84 \uC815\uBCF4
-      \uBE0C\uB77C\uC6B0\uC800\uC640 \uC11C\uBC84\uC758 \uC2DC\uAC04\uCC28? \uAC00 \uC788\uB294 \uACBD\uC6B0 \uC624\uCC28\uB85C \uC778\uD574 cpu, ~ \uAC12\uC774 \uC81C\uB300\uB85C \uC548\uB098\uC62C \uC218 \uC788\uC74C
-      \uC774 \uACBD\uC6B0\uC5D0\uB3C4 diskBusy \uB294 \uAC12\uC774 \uB098\uC634(20\uCD08), cpu, \uB4F1 (5\uCD08)
-      \uC77C\uAD04 20\uCD08\uB85C \uD558\uB3C4\uB85D \uD568
-*/
-# \uC2E4\uC2DC\uAC04 \uC11C\uBC84 \uB370\uC774\uD130\uB9CC \uC0AC\uC6A9\uD55C\uB2E4
-# \uC11C\uBC84\uBAA9\uB85D\uC5D0\uC11C \uC0AD\uC81C\uD55C \uC11C\uBC84 \uBC18\uC601\uC744 \uC704\uD55C \uAE30\uBCF8 \uD544\uD130\uB85C \uC0AC\uC6A9\uD55C\uB2E4
-SUB agents
-CATEGORY agent_list
-FLEXLOAD
-SELECT [active, oid, status]
-RENAME {src: active, dst: server_agent_active}
-END
-
-# metric key \uAC12\uC740 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD558\uC9C0 \uC54A\uACE0 \uC544\uB798\uC640 \uAC19\uC740 \uAC12\uC73C\uB85C \uBCC0\uD658\uD55C\uB2E4.
-# public static String[] KEY_METRIC = new String[] {
-#   "cpu", "mem", "swap", "rx", "tx", "diskBusy" + diskName
-
-SUB diskBusy
-#time-range {duration:20s, etime:$etime}
-CATEGORY infra_disk_perf
-TAGLOAD {backward: true}
-FIRST-ONLY {key:[oid]}
-SELECT [oid, @id, name, busy]
-RENAME {src:name, dst:diskName}
-RENAME {src:busy, dst:diskBusy}
-END
-
-SUB cpu
-CATEGORY infra_cpu
-TAGLOAD {backward:true}
-FIRST-ONLY {key:[oid]}
-SELECT [oid, total]
-RENAME {src:total, dst:cpu}
-END
-
-SUB mem
-CATEGORY infra_mem
-TAGLOAD {backward:true}
-FIRST-ONLY {key:[oid]}
-SELECT [oid, pUsed]
-RENAME {src:pUsed, dst:mem}
-END
-
-SUB swap
-CATEGORY infra_swap
-TAGLOAD {backward:true}
-FIRST-ONLY {key:[oid]}
-SELECT [oid, pUsed]
-RENAME {src:pUsed, dst:swap}
-END
-
-SUB network
-CATEGORY infra_network
-TAGLOAD {backward:true}
-FIRST-ONLY {key:[oid]}
-SELECT [oid, rxbps, txbps]
-RENAME [[rxbps, rx],[txbps, tx]]
-END
-
-SUB sub-gpu-data
-CATEGORY infra_gpu
-TAGLOAD {backward: true}
-FIRST-ONLY {key:[oid]}
-SELECT [oid, gpu_util_203, fb_total_250, power_usage_155, ecc_dbe_aggregate_total_313]
-CREATE {key: hasGpu, value: true}
-RENAME [[gpu_util_203, gpuUtil], [fb_total_250, fbMemoryUsage], [power_usage_155, powerUsage], [ecc_dbe_aggregate_total_313, eccDbeErrorCount]]
-END
-
-SUB inventory_custom
-kv.load server_inventory_custom
-END
-
-# \uC2DC\uAC04\uC5D0 \uBB34\uAD00\uD568
-SUB inventory
-KV.LOAD server_inventory
-END
-
-APPEND {query: agents}
-JOIN {pk: oid, query: inventory, type: inner}
-JOIN {pk:[pk0], query:inventory_custom}
-
-<% FILTER_PARAM %>
-
-# NOTE: inventory + custom \uC815\uBCF4 \uC800\uC7A5\uC744 \uC704\uD574\uC11C \uD50C\uB7EC\uADF8\uC778\uC744 \uC0AC\uC6A9\uD55C\uB2E4
-PLUGIN
-
-# group fields \uB294 \uC5C6\uAC70\uB098(''), n\uAC1C \uC874\uC7AC\uD558\uAC70\uB098 (', g1, g2') \uC784
-SELECT [oid, status, server_agent_active, OSType, IP_all, hostname, hostAlias, nCores, lCores, memTotal, frequency, bootTime, serverType <% GROUP_FIELDS %>]
-
-/*
-NOTE: \uD50C\uB7EC\uADF8\uC778\uC744 \uD1B5\uD574 map \uCC98\uB9AC\uB97C \uD588\uB2E4\uBA74
-      join\uC5D0 \uC0AC\uC6A9\uB418\uB294 \uD0A4\uAC00 \uC5C6\uC744 \uC218 \uC788\uB2E4
-      mxql\uC740 \uC21C\uCC28 \uCC98\uB9AC\uB77C\uC11C
-      invenory \uC640 custom \uC758 join \uC740 \uD50C\uB7EC\uADF8\uC778\uBCF4\uB2E4 \uC55E\uC5D0 \uC788\uC5B4\uC57C \uD568
-
-TODO: plugin\uC744 \uD1B5\uD574 \uC720\uC5F0\uD55C \uB370\uC774\uD130 \uC804\uCC98\uB9AC\uB3C4 \uAD1C\uCC2E\uC9C0\uB9CC
-      select(map) key\uAC00 java\uC640 mxql\uC5D0 \uB098\uB220\uC838 \uC788\uC5B4 \uBCF4\uAE30\uAC00 \uD798\uB4E0\uB4EF
-      \uCC28\uB77C\uB9AC param text\uB97C \uD65C\uC6A9\uD558\uB294\uAC8C \uB098\uC744\uB7F0\uC9C0
-*/
-
-JOIN {pk:[oid], query:cpu}
-JOIN {pk:[oid], query:mem}
-JOIN {pk:[oid], query:swap}
-JOIN {pk:[oid], query:network}
-JOIN {pk:[oid], query:diskBusy}
-JOIN {pk:[oid], query:sub-gpu-data}
-# filter & order
-<% ORDER_PARAM %>`,
-  "target/classes/mxql/infra/get-server-ostype-version": "# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nRENAME {src: oid, dst: pk0}\nEND\n\nkv.load server_inventory\n\n<% FILTER_PARAM %>\n\nJOIN {pk:pk0, query: agents, type: inner}\nFIRST-ONLY {key:[OSType, whatap_infradVersion]}\nSELECT [OSType, whatap_infradVersion]\nRENAME { src:whatap_infradVersion, dst:version }\n",
-  "target/classes/mxql/infra/get-server-process-names": `APPEND {query: recent_list}
-APPEND {query: m5_list}
-
-CREATE { key: cmd, expr: "isEmpty(cmd2) ? cmd1 : cmd2" }
-SELECT [cmd]
-FIRST-ONLY {key:[cmd]}
-
-SUB m5_list
-TIME-RANGE {recent: 3h}
-CATEGORY {'server_process{m5}': unlimit}
-TAGLOAD {backward: true}
-END
-
-
-SUB recent_list
-TIME-RANGE {recent: 10m}
-CATEGORY server_process
-TAGLOAD {backward: true}
-END
-
-`,
-  "target/classes/mxql/infra/hostnames-by-all": "# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nselect [oid, hostname]",
-  "target/classes/mxql/infra/hostnames-by-oid-list": '# hostname select\nkv.load server_inventory\n<% FILTER_PARAM %>\nFILTER { key: "oid", value: [<% OID_LIST_PARAM %>] }\nselect [oid, hostname]',
-  "target/classes/mxql/infra/inventory/check-exist-gpu": 'SUB currentAgents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load gpu_inventory\nFILTER-SUBQUERY { key: oid, include: "currentAgents" }\n<% FILTER_GROUP_OIDS %>\nLIMIT 1',
-  "target/classes/mxql/infra/inventory/get-active-gpu-list": `
-kv.load gpu_inventory
-FILTER-SUBQUERY {key: oid, include: "currentAgentList"}
-CREATE { key: excludeKey, expr: "StartsWith(uuid, 'MIG') ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
-FILTER-SUBQUERY { key: excludeKey, exclude: "filterMigList" }
-
-SUB currentAgentList
-CATEGORY agent_list
-FLEXLOAD
-SELECT [oid]
-<% FILTER_OIDS %>
-END
-
-SUB filterMigList
-kv.load gpu_inventory
-FILTER { expr: "migModeCurrent == 'Disabled'" }
-CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
-SELECT [excludeKey]
-END`,
-  "target/classes/mxql/infra/inventoryV2/gpu-search-agent-join": `# \uC2E4\uC2DC\uAC04 gpu inventory \uC870\uD68C
-# agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568
-
-kv.load gpu_inventory
-CREATE { key: excludeKey, expr: "gpuType == 'MIG' ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
-FILTER-SUBQUERY { key: excludeKey, exclude: "filterMigList" }
-DELETE [excludeKey]
-JOIN {pk: [pk0], query: gpu_inv_custom}
-JOIN {pk: [oid], query: server_inventory}
-JOIN {pk: [oid], query: agent_active_status}
-
-# for total count
-PLUGIN
-
-<% FILTER_PARAM %>
-<% ORDER_PARAM %>
-
-sub server_inventory
-  kv.load server_inventory
-  SELECT [oid, ipAddress, OSVersion]
-end
-
-sub agent_active_status
-  CATEGORY agent_list
-  FLEXLOAD
-  SELECT [oid, active]
-  RENAME {src: active, dst: __agent_is_active__}
-end
-
-sub gpu_inv_custom
-  kv.load gpu_inventory_custom
-end
-
-# [\uBC29\uC5B4\uB85C\uC9C1] MIG Disabled \uC0C1\uD0DC\uC778 Physical GPU \uD558\uC704\uC758 MIG \uC778\uC2A4\uD134\uC2A4 \uC81C\uC678 (\uC5D0\uC774\uC804\uD2B8\uC5D0\uC11C 1\uCC28 \uD544\uD130\uB9C1, \uBC31\uC5D4\uB4DC 2\uCC28 \uBC29\uC5B4)
-sub filterMigList
-  kv.load gpu_inventory
-  FILTER { expr: "gpuType == 'Physical' && migModeCurrent == 'Disabled'" }
-  CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
-  SELECT [excludeKey]
-end`,
-  "target/classes/mxql/infra/inventoryV2/gpu-search-snapshot": `# \uACFC\uAC70 gpu inventory \uC870\uD68C
-# server_inventory \uC5D0\uC11C ipAddress, OSVersion \uC870\uD68C
-# NOTE: gpu/server \uC2A4\uB0C5\uC0F7 \uC800\uC7A5 \uC8FC\uAE30\uAC00 \uB2EC\uB77C \uC815\uD655\uD55C \uC2DC\uC810\uC758 server \uC2A4\uB0C5\uC0F7\uC744 \uC870\uD68C\uD560 \uC218 \uC5C6\uC73C\uBBC0\uB85C \uC2E4\uC2DC\uAC04 \uB370\uC774\uD130\uB97C \uC0AC\uC6A9\uD568
-# TODO: \uC5D0\uC774\uC804\uD2B8\uAC00 gpu_inventory \uC5D0 ipAddress, OSVersion \uC744 \uC9C1\uC811 \uC218\uC9D1\uD558\uBA74 server_inv JOIN \uC81C\uAC70
-
-APPEND {query: inv}
-CREATE { key: excludeKey, expr: "gpuType == 'MIG' ? (oid + '_' + Token(gpuIndex, '/', 0)) : '' " }
-FILTER-SUBQUERY { key: excludeKey, exclude: "filterMigList" }
-DELETE [excludeKey]
-JOIN {pk: pk0, query: custom}
-JOIN {pk: [oid], query: server_inv}
-
-PLUGIN
-
-<% FILTER_PARAM %>
-<% ORDER_PARAM %>
-
-SUB inv
-KV.SNAPSHOT {table: gpu_inventory, target: <% SNAPSHOT_DATE %> }
-END
-
-SUB custom
-KV.SNAPSHOT {table: gpu_inventory_custom, target: <% SNAPSHOT_DATE %> }
-END
-
-
-SUB server_inv
-kv.load server_inventory
-SELECT [oid, ipAddress, OSVersion]
-END
-
-# [\uBC29\uC5B4\uB85C\uC9C1] MIG Disabled \uC0C1\uD0DC\uC778 Physical GPU \uD558\uC704\uC758 MIG \uC778\uC2A4\uD134\uC2A4 \uC81C\uC678 (\uC5D0\uC774\uC804\uD2B8\uC5D0\uC11C 1\uCC28 \uD544\uD130\uB9C1, \uBC31\uC5D4\uB4DC 2\uCC28 \uBC29\uC5B4)
-SUB filterMigList
-KV.SNAPSHOT {table: gpu_inventory, target: <% SNAPSHOT_DATE %> }
-FILTER { expr: "gpuType == 'Physical' && migModeCurrent == 'Disabled'" }
-CREATE { key: excludeKey, expr: "oid + '_' + gpuIndex" }
-SELECT [excludeKey]
-END
-`,
-  "target/classes/mxql/infra/inventoryV2/server-search-agent-join": "# \uC2E4\uC2DC\uAC04 server inventory \uC870\uD68C\n# agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568\n\nAPPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\nJOIN {pk: pk0, query: custom}\n\n# for total count\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\n# end of main query\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, active]\nRENAME {src: oid, dst: pk0}\nRENAME {src: active, dst: __agent_is_active__}\nEND\n\nSUB inv\nKV.LOAD server_inventory\nEND\n\nSUB custom\nKV.LOAD server_inventory_custom\nEND\n\n",
-  "target/classes/mxql/infra/inventoryV2/server-search-snapshot": "# \uACFC\uAC70 server inventory \uC870\uD68C\n\nAPPEND {query: inv}\nJOIN {pk: pk0, query: custom}\n\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\nSUB inv\nKV.SNAPSHOT {table: server_inventory, target: <% SNAPSHOT_DATE %> }\nEND\n\nSUB custom\nKV.SNAPSHOT {table: server_inventory_custom, target: <% SNAPSHOT_DATE %> }\nEND\n",
-  "target/classes/mxql/infra/metric-by-oid-list": "\n# server list \uC870\uD68C\uD6C4 \uD68D\uB4DD\uD55C oid list \uB97C \uC870\uAC74\uC73C\uB85C \uC0AC\uC6A9\uD55C\uB2E4.\n\n#TIME-RANGE {stime: $stime, etime: $etime}\n#TIME-RANGE {recent: 5m}\n# <% CATEGORY_NAME %>\nCATEGORY <% CATEGORY_NAME %>\nTAGLOAD {backward:true}\n\n<% FILTER_OID_LIST %>\n\n# TODO: \uD55C\uBC88\uC5D0 \uC5EC\uB7EC \uBA54\uD2B8\uB9AD\uC758 \uCC28\uD2B8\uB97C \uADF8\uB9AC\uB294 \uACBD\uC6B0\uC5D0\uB294 \uD558\uB098\uC758 \uBA54\uD2B8\uB9AD\uC774 \uC544\uB2CC \uBCF5\uC218\uC758 \uBA54\uD2B8\uB9AD \uD544\uB4DC\uB97C \uC785\uB825\uD574\uC57C??\n#       \uC5EC\uB7EC \uCE74\uD14C\uACE0\uB9AC\uB3C4 \uB9C8\uCC2C\uAC00\uC9C0??\n#       \uD0ED\uC744 \uD1B5\uD574 \uCE74\uD14C\uACE0\uB9AC\uBCC4\uB85C \uAC00\uC838\uC628\uB2E4\uACE0 \uC0DD\uAC01\uD558\uC790?\n# time, oid, <% FIELD_NAME %>\nselect [time, oid, <% FIELD_NAME %>]\n\n\n",
-  "target/classes/mxql/infra/metrics_explorer/get-agent-info-list": '\nCATEGORY agent_list\nFLEXLOAD\n\nJOIN {pk: [oid], query: sub_infra, type: inner}\nJOIN {pk: [oid], query: sub_svr_inventory}\n\nSUB sub_infra\nCATEGORY {"infra_cpu": 1h, "infra_cpu{m5}": 3h, "infra_cpu{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nEND\n\nSUB sub_svr_inventory\nKV.LOAD server_inventory\nSELECT [oid, hostname]\nEND',
-  "target/classes/mxql/infra/oid-list-by-filters": "# server_inventory, server_inventory_custom\n\nsub custom\nkv.load server_inventory_custom\nend\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load server_inventory\nJOIN {pk:oid, query: agents, type: inner}\njoin {pk: pk0, query: custom}\n\n<% FILTER_PARAM %>\n\nselect [oid]\n",
-  "target/classes/mxql/infra/oid-list-by-top-n": '/*\n TODO: \uC870\uAC74\uC5D0 \uB530\uB77C\uC11C\n       \uCE74\uD14C\uACE0\uB9AC\uC640 \uD544\uB4DC, \uB9AC\uBBF8\uD2B8\uB97C\n       \uBCC0\uACBD\uD558\uAC8C \uD560 \uC218 \uB3C4 \uC788\uC74C\n*/\n\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nSELECT [oid, time, total]\nFILTER {key: "oid", value: [<% OID_LIST_PARAM %>]}\n\nGROUP {timeunit:1h, merge:"total", pk:"oid"}\nUPDATE {key: "total", value: sum }\nORDER {key:[total], sort: desc}\nLIMIT 50',
-  "target/classes/mxql/infra/os-type-by-oids": "# oid list \uB85C os type \uC744 \uBAA8\uB450 \uC870\uD68C\uD55C\uB2E4.\nKV.LOAD server_inventory\n<% FILTER_PARAM %>\nFILTER {key:pk0, value:[<% OID_LIST_PARAM %>]}\nFIRST-ONLY {key: [OSType]}\nSELECT [OSType]",
-  "target/classes/mxql/infra/process-list-by-oid": '/**\n NOTE: process list for group detail - event\n */\n\nCATEGORY infra_process_group\nTAGLOAD\nFILTER { key: "oid", value: <% OID_PARAM %>}\n\n# unfold / filtering order \uB294 java \uC5D0\uC11C \uCC98\uB9AC\uD55C\uB2E4.',
-  "target/classes/mxql/infra/servers-by-group-and-keys": "# dashboard page \uC6B0\uCE21 \uC0C1\uC138 \uD328\uB110 / \uADF8\uB8F9\uC815\uBCF4\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nKV.LOAD server_inventory\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT\n\nORDER {key: [hostname], sort: asc}",
-  "target/classes/mxql/infra/v4series/select-fold-category": 'CATEGORY {<% CATEGORY_NAME %>:3h, "<% CATEGORY_NAME %>{m5}":15d, "<% CATEGORY_NAME %>{h1}":unlimit }\n<% OID_FILTER %>\nTAGLOAD\nSELECT [time, oid, @id, @pk, uuid, <% FIELD_LIST %>]\nUNFOLD\n<% SUB_KEY_FILTER %>\n\n',
-  "target/classes/mxql/openmetric/stat/stat_gpu_trend_hitmap": 'SUB origin\nkv.load {table:"stat_gpu_trend_hitmap-@{query_date}" , ifexist:true}\nEND\n\nSUB avg_data\n>> 100*sum by (UUID)(sum_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h])) / sum by (UUID) (count_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nORDER {key:UUID, sort: desc}\nEND\n\nSUB max_data\n>> 100*max by (UUID)(max_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:max_value}\nEND\n\nSUB min_data\n>> 100*min by (UUID)(min_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:min_value}\nEND\n\nSUB target\nAPPEND {query: avg_data}\nJOIN {query: max_data, pk: [t, UUID]}\nJOIN {query: min_data, pk: [t, UUID]}\nFOLD {pk:t, key:[UUID,value,max_value,min_value]}\nEND\n\nAPPEND {query: origin}\nAPPEND {query: target}\n\nORDER {key:t, sort: asc}\n\nkv.insert {table: "stat_gpu_trend_hitmap-@{query_date}", pk.key:[t]}\n',
-  "target/classes/mxql/report/getReportBatchMenu": "kv.select {table: report_batch_menu, pk.val:0}",
-  "target/classes/mxql/server/inventory/agent": "## agent \uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\nkv.load server_inventory",
-  "target/classes/mxql/server/inventory/custom": "## \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\nkv.load server_inventory_custom",
-  "target/classes/mxql/server/inventory/join": "## agent\uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\uC640 \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\uB97C join\n\n# \uC11C\uBC84\uBAA9\uB85D\uC5D0\uC11C \uC0AD\uC81C\uD55C \uC11C\uBC84 \uBC18\uC601\uC744 \uC704\uD55C \uAE30\uBCF8 \uD544\uD130\uB85C \uC0AC\uC6A9\uD55C\uB2E4\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [active, oid]\nRENAME {src: active, dst: server_agent_active}\nEND\n\nSUB custom\nkv.load server_inventory_custom\nEND\n\nSUB inventory\nkv.load server_inventory\nEND\n\nAPPEND {query: agents}\nJOIN {pk: oid, query: inventory, type: inner}\nJOIN {pk: [pk0], query: custom}\n# total count \uACC4\uC0B0\uC744 \uC704\uD55C plugin \uCD94\uAC00\n# TODO: filtered count / total count \uB97C \uC870\uD68C\uD560 \uC218 \uC788\uB294 mxql \uC778\uD130\uD398\uC774\uC2A4\uAC00 \uC788\uB2E4\uBA74?\nPLUGIN\n# \uD544\uD130\uB294 \uD50C\uB7EC\uADF8\uC778\uC73C\uB85C \uD558\uC9C0 \uC54A\uACE0, filter \uBB38\uBC95\uC744 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD568\n<% FILTER %>",
-  "target/classes/mxql/server/tmp_cube/tmp_category_filter": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAMS %>\n",
-  "target/classes/mxql/server/ver20/get-top5-cpu-server-list": '# \uCD5C\uADFC 10\uBD84\uAC04 cpu \uC0C1\uC704 5\uAC1C \uC11C\uBC84 \uBAA9\uB85D \uBC0F cpu \uC0AC\uC6A9 \uC870\uD68C\nTIME-RANGE {recent: 10m}\n\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\n\nFILTER-SUBQUERY {key: oid, query: top5}\nJOIN {pk:oid, query:top5}\nRENAME {src:time, dst: t}\nORDER {key:[order, t], sort: [asc, asc]}\n\n\nSUB top5\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\nGROUP { timeunit:10m, pk:"oid" }\nORDER {key:total, sort: desc}\nROWNUM\nRENAME {src:rownum, dst:order}\nSELECT [oid, order]\nLIMIT 5\nEND'
+  "mxql/infra/inventoryV2/server-search-agent-join": "# \uC2E4\uC2DC\uAC04 server inventory \uC870\uD68C\n# agent \uC815\uBCF4\uB97C join \uD558\uC5EC active \uC815\uBCF4\uB97C \uD3EC\uD568\uD568\n\nAPPEND {query: agents}\nJOIN {pk: pk0, query: inv, type: inner}\nJOIN {pk: pk0, query: custom}\n\n# for total count\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\n# end of main query\n\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid, active]\nRENAME {src: oid, dst: pk0}\nRENAME {src: active, dst: __agent_is_active__}\nEND\n\nSUB inv\nKV.LOAD server_inventory\nEND\n\nSUB custom\nKV.LOAD server_inventory_custom\nEND\n\n",
+  "mxql/infra/inventoryV2/server-search-snapshot": "# \uACFC\uAC70 server inventory \uC870\uD68C\n\nAPPEND {query: inv}\nJOIN {pk: pk0, query: custom}\n\nPLUGIN\n\n<% FILTER_PARAM %>\n<% ORDER_PARAM %>\n\nSUB inv\nKV.SNAPSHOT {table: server_inventory, target: <% SNAPSHOT_DATE %> }\nEND\n\nSUB custom\nKV.SNAPSHOT {table: server_inventory_custom, target: <% SNAPSHOT_DATE %> }\nEND\n",
+  "mxql/infra/metric-by-oid-list": "\n# server list \uC870\uD68C\uD6C4 \uD68D\uB4DD\uD55C oid list \uB97C \uC870\uAC74\uC73C\uB85C \uC0AC\uC6A9\uD55C\uB2E4.\n\n#TIME-RANGE {stime: $stime, etime: $etime}\n#TIME-RANGE {recent: 5m}\n# <% CATEGORY_NAME %>\nCATEGORY <% CATEGORY_NAME %>\nTAGLOAD {backward:true}\n\n<% FILTER_OID_LIST %>\n\n# TODO: \uD55C\uBC88\uC5D0 \uC5EC\uB7EC \uBA54\uD2B8\uB9AD\uC758 \uCC28\uD2B8\uB97C \uADF8\uB9AC\uB294 \uACBD\uC6B0\uC5D0\uB294 \uD558\uB098\uC758 \uBA54\uD2B8\uB9AD\uC774 \uC544\uB2CC \uBCF5\uC218\uC758 \uBA54\uD2B8\uB9AD \uD544\uB4DC\uB97C \uC785\uB825\uD574\uC57C??\n#       \uC5EC\uB7EC \uCE74\uD14C\uACE0\uB9AC\uB3C4 \uB9C8\uCC2C\uAC00\uC9C0??\n#       \uD0ED\uC744 \uD1B5\uD574 \uCE74\uD14C\uACE0\uB9AC\uBCC4\uB85C \uAC00\uC838\uC628\uB2E4\uACE0 \uC0DD\uAC01\uD558\uC790?\n# time, oid, <% FIELD_NAME %>\nselect [time, oid, <% FIELD_NAME %>]\n\n\n",
+  "mxql/infra/metrics_explorer/get-agent-info-list": '\nCATEGORY agent_list\nFLEXLOAD\n\nJOIN {pk: [oid], query: sub_infra, type: inner}\nJOIN {pk: [oid], query: sub_svr_inventory}\n\nSUB sub_infra\nCATEGORY {"infra_cpu": 1h, "infra_cpu{m5}": 3h, "infra_cpu{h1}": unlimit}\nTAGLOAD {backward: true}\nFIRST-ONLY {key:[oid]}\nEND\n\nSUB sub_svr_inventory\nKV.LOAD server_inventory\nSELECT [oid, hostname]\nEND',
+  "mxql/infra/oid-list-by-filters": "# server_inventory, server_inventory_custom\n\nsub custom\nkv.load server_inventory_custom\nend\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nkv.load server_inventory\nJOIN {pk:oid, query: agents, type: inner}\njoin {pk: pk0, query: custom}\n\n<% FILTER_PARAM %>\n\nselect [oid]\n",
+  "mxql/infra/oid-list-by-top-n": '/*\n TODO: \uC870\uAC74\uC5D0 \uB530\uB77C\uC11C\n       \uCE74\uD14C\uACE0\uB9AC\uC640 \uD544\uB4DC, \uB9AC\uBBF8\uD2B8\uB97C\n       \uBCC0\uACBD\uD558\uAC8C \uD560 \uC218 \uB3C4 \uC788\uC74C\n*/\n\nCATEGORY infra_cpu\nTAGLOAD {backward: true}\nSELECT [oid, time, total]\nFILTER {key: "oid", value: [<% OID_LIST_PARAM %>]}\n\nGROUP {timeunit:1h, merge:"total", pk:"oid"}\nUPDATE {key: "total", value: sum }\nORDER {key:[total], sort: desc}\nLIMIT 50',
+  "mxql/infra/os-type-by-oids": "# oid list \uB85C os type \uC744 \uBAA8\uB450 \uC870\uD68C\uD55C\uB2E4.\nKV.LOAD server_inventory\n<% FILTER_PARAM %>\nFILTER {key:pk0, value:[<% OID_LIST_PARAM %>]}\nFIRST-ONLY {key: [OSType]}\nSELECT [OSType]",
+  "mxql/infra/process-list-by-oid": '/**\n NOTE: process list for group detail - event\n */\n\nCATEGORY infra_process_group\nTAGLOAD\nFILTER { key: "oid", value: <% OID_PARAM %>}\n\n# unfold / filtering order \uB294 java \uC5D0\uC11C \uCC98\uB9AC\uD55C\uB2E4.',
+  "mxql/infra/servers-by-group-and-keys": "# dashboard page \uC6B0\uCE21 \uC0C1\uC138 \uD328\uB110 / \uADF8\uB8F9\uC815\uBCF4\n\nSUB inventory_custom\nkv.load server_inventory_custom\nEND\n\n# \uC11C\uBC84\uBAA9\uB85D\uACFC \uB3D9\uAE30\uD654\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [oid]\nEND\n\nKV.LOAD server_inventory\nJOIN {pk:oid, query: agents, type: inner}\nJOIN {pk:[pk0], query:inventory_custom}\n\n# select \uBCF4\uB2E4 \uBA3C\uC800 \uC0AC\uC6A9\uB418\uC57C \uD568\n<% FILTER_PARAM %>\n\nSELECT\n\nORDER {key: [hostname], sort: asc}",
+  "mxql/infra/v4series/select-fold-category": 'CATEGORY {<% CATEGORY_NAME %>:3h, "<% CATEGORY_NAME %>{m5}":15d, "<% CATEGORY_NAME %>{h1}":unlimit }\n<% OID_FILTER %>\nTAGLOAD\nSELECT [time, oid, @id, @pk, uuid, <% FIELD_LIST %>]\nUNFOLD\n<% SUB_KEY_FILTER %>\n\n',
+  "mxql/openmetric/stat/stat_gpu_trend_hitmap": 'SUB origin\nkv.load {table:"stat_gpu_trend_hitmap-@{query_date}" , ifexist:true}\nEND\n\nSUB avg_data\n>> 100*sum by (UUID)(sum_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h])) / sum by (UUID) (count_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nORDER {key:UUID, sort: desc}\nEND\n\nSUB max_data\n>> 100*max by (UUID)(max_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:max_value}\nEND\n\nSUB min_data\n>> 100*min by (UUID)(min_over_time(DCGM_FI_DEV_WEIGHTED_GPU_UTIL[1h]))\nRENAME {src:time, dst:t}\nRENAME {src:value, dst:min_value}\nEND\n\nSUB target\nAPPEND {query: avg_data}\nJOIN {query: max_data, pk: [t, UUID]}\nJOIN {query: min_data, pk: [t, UUID]}\nFOLD {pk:t, key:[UUID,value,max_value,min_value]}\nEND\n\nAPPEND {query: origin}\nAPPEND {query: target}\n\nORDER {key:t, sort: asc}\n\nkv.insert {table: "stat_gpu_trend_hitmap-@{query_date}", pk.key:[t]}\n',
+  "mxql/report/getReportBatchMenu": "kv.select {table: report_batch_menu, pk.val:0}",
+  "mxql/server/inventory/agent": "## agent \uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\nkv.load server_inventory",
+  "mxql/server/inventory/custom": "## \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\nkv.load server_inventory_custom",
+  "mxql/server/inventory/join": "## agent\uAC00 \uC218\uC9D1\uD55C \uC815\uBCF4\uC640 \uC0AC\uC6A9\uC790\uAC00 \uCEE4\uC2A4\uD140\uD55C \uC815\uBCF4\uB97C join\n\n# \uC11C\uBC84\uBAA9\uB85D\uC5D0\uC11C \uC0AD\uC81C\uD55C \uC11C\uBC84 \uBC18\uC601\uC744 \uC704\uD55C \uAE30\uBCF8 \uD544\uD130\uB85C \uC0AC\uC6A9\uD55C\uB2E4\nSUB agents\nCATEGORY agent_list\nFLEXLOAD\nSELECT [active, oid]\nRENAME {src: active, dst: server_agent_active}\nEND\n\nSUB custom\nkv.load server_inventory_custom\nEND\n\nSUB inventory\nkv.load server_inventory\nEND\n\nAPPEND {query: agents}\nJOIN {pk: oid, query: inventory, type: inner}\nJOIN {pk: [pk0], query: custom}\n# total count \uACC4\uC0B0\uC744 \uC704\uD55C plugin \uCD94\uAC00\n# TODO: filtered count / total count \uB97C \uC870\uD68C\uD560 \uC218 \uC788\uB294 mxql \uC778\uD130\uD398\uC774\uC2A4\uAC00 \uC788\uB2E4\uBA74?\nPLUGIN\n# \uD544\uD130\uB294 \uD50C\uB7EC\uADF8\uC778\uC73C\uB85C \uD558\uC9C0 \uC54A\uACE0, filter \uBB38\uBC95\uC744 \uADF8\uB300\uB85C \uC0AC\uC6A9\uD568\n<% FILTER %>",
+  "mxql/server/tmp_cube/tmp_category_filter": "CATEGORY <% CATEGORY_NAME %>\nTAGLOAD\n<% FILTER_PARAMS %>\n",
+  "mxql/server/ver20/get-top5-cpu-server-list": '# \uCD5C\uADFC 10\uBD84\uAC04 cpu \uC0C1\uC704 5\uAC1C \uC11C\uBC84 \uBAA9\uB85D \uBC0F cpu \uC0AC\uC6A9 \uC870\uD68C\nTIME-RANGE {recent: 10m}\n\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\n\nFILTER-SUBQUERY {key: oid, query: top5}\nJOIN {pk:oid, query:top5}\nRENAME {src:time, dst: t}\nORDER {key:[order, t], sort: [asc, asc]}\n\n\nSUB top5\nCATEGORY infra_cpu\nTAGLOAD\nSELECT [time, total, oid, oname]\nGROUP { timeunit:10m, pk:"oid" }\nORDER {key:total, sort: desc}\nROWNUM\nRENAME {src:rownum, dst:order}\nSELECT [oid, order]\nLIMIT 5\nEND'
 };
 
 // src/yard/parser.ts
@@ -49242,6 +46628,30 @@ function parseHeader(text, target) {
   }
 }
 
+// src/yard/markers.ts
+var MARKER_RE = /<%([\s\S]*?)%>/g;
+function scanMarkers(raw) {
+  const names = /* @__PURE__ */ new Set();
+  if (!raw) return { hasMarkers: false, markers: [] };
+  for (const line of raw.split("\n")) {
+    if (line.trim().startsWith("--")) continue;
+    for (const m of line.matchAll(MARKER_RE)) {
+      const name = m[1].trim();
+      if (name) names.add(name);
+    }
+  }
+  return { hasMarkers: names.size > 0, markers: [...names] };
+}
+function isTemplateCategory(category) {
+  return /<%|%>/.test(category);
+}
+
+// src/yard/paths.ts
+var PREFIX_RE = /^(?:src\/main\/resources\/|target\/classes\/)+/;
+function normalizeCatalogPath(path) {
+  return path.replace(/^\/+/, "").replace(PREFIX_RE, "");
+}
+
 // src/yard/catalog.ts
 var DOMAIN_DESCRIPTIONS = {
   "v2/app": "APM: TPS, response time, errors, active TX, apdex, heap, GC, threads",
@@ -49288,6 +46698,7 @@ function byCategoryBase() {
     _byCategoryBase = /* @__PURE__ */ new Map();
     for (const e of CATALOG_ENTRIES) {
       for (const cat of e.baseCategories) {
+        if (isTemplateCategory(cat)) continue;
         const list = _byCategoryBase.get(cat) ?? [];
         list.push(e);
         _byCategoryBase.set(cat, list);
@@ -49330,10 +46741,12 @@ function searchEntries(opts) {
 function canonicalCatalogPath(path) {
   const bare = path.replace(/^\/+/, "");
   if (byPath().has(bare)) return bare;
-  const prefixed = `mxql/${bare}`;
+  const normalized = normalizeCatalogPath(bare);
+  if (normalized !== bare && byPath().has(normalized)) return normalized;
+  const prefixed = `mxql/${normalized}`;
   if (byPath().has(prefixed)) return prefixed;
-  const stripped = bare.replace(/^mxql\//, "");
-  if (stripped !== bare && byPath().has(stripped)) return stripped;
+  const stripped = normalized.replace(/^mxql\//, "");
+  if (stripped !== normalized && byPath().has(stripped)) return stripped;
   return null;
 }
 function describeMql(path) {
@@ -49384,21 +46797,6 @@ function getAllBaseCategories() {
 }
 function getCatalogSize() {
   return CATALOG_ENTRIES.length;
-}
-
-// src/yard/markers.ts
-var MARKER_RE = /<%([\s\S]*?)%>/g;
-function scanMarkers(raw) {
-  const names = /* @__PURE__ */ new Set();
-  if (!raw) return { hasMarkers: false, markers: [] };
-  for (const line of raw.split("\n")) {
-    if (line.trim().startsWith("--")) continue;
-    for (const m of line.matchAll(MARKER_RE)) {
-      const name = m[1].trim();
-      if (name) names.add(name);
-    }
-  }
-  return { hasMarkers: names.size > 0, markers: [...names] };
 }
 
 // src/tools/promql.ts
@@ -49903,11 +47301,12 @@ function registerYardTools(server, client) {
           if (entries2.length === 0) {
             const allCats = getAllBaseCategories();
             const sample = allCats.slice(0, 15).join(", ");
+            const reason = isTemplateCategory(category) ? `"${category}" is an unresolved yard template marker, not a category name. The yard substitutes it server-side when it serves a query by path, so it can never be looked up here.` : `No queries found for category "${category}".`;
             return {
               content: [
                 {
                   type: "text",
-                  text: `No queries found for category "${category}".
+                  text: `${reason}
 
 **Available base categories** (${allCats.length} total): ${sample}${allCats.length > 15 ? ", ..." : ""}`
                 }
@@ -50123,7 +47522,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
           lines.push(`**Description**: ${englishDesc}`, "");
         } else if (metadata.comments.length > 0) {
           lines.push(
-            `**Description**: ${metadata.comments.join(" / ")}`,
+            `**Description**: ${metadata.comments.map(translateComment).join(" / ")}`,
             ""
           );
         }
@@ -50241,7 +47640,7 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
         }
         lines.push("");
         if (metadata.raw) {
-          const simplified = metadata.raw.split("\n").filter((line) => {
+          const simplified = translateMxqlComments(metadata.raw).split("\n").filter((line) => {
             const t = line.trim();
             if (!t) return false;
             return !(t.startsWith("INJECT") || t.startsWith("RENAME") || t.startsWith("CREATE") || t.startsWith("FIRST-ONLY") || t.startsWith("APPEND"));
