@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.3] - 2026-09-16
+
+### Fixed
+
+- **An HTML-escaped `category` argument silently returned "No queries found".**
+  Marker categories are spelled `<%SQLSTAT_CATEGORY%>`, and some MCP clients
+  escape the angle brackets in transit, so the server received
+  `&lt;%SQLSTAT_CATEGORY%&gt;`. That missed the index and answered "No queries
+  found for category …" — which reads as *nothing uses this marker*, the opposite
+  of the truth. It actually has two paths (`mxql/dbx/planchange/chart`,
+  `mxql/dbx/planchange/summary`).
+
+  Observed three times in the wild, including once against the live server, and
+  it cost one session 7½ minutes of grepping `dist/index.js` to reach an answer
+  the tool should have given in a single call. The `category` argument is now
+  entity-decoded before lookup, so both spellings resolve identically and the
+  echoed category shows the form the caller meant. No real MXQL category name
+  contains `&`, so the decoding is unambiguous.
+
 ## [1.5.2] - 2026-09-16
 
 ### Fixed

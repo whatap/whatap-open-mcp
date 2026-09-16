@@ -50,3 +50,22 @@ export function scanMarkers(raw: string): MarkerScan {
 export function isTemplateCategory(category: string): boolean {
   return /<%|%>/.test(category);
 }
+
+/**
+ * Decode HTML entities in a category argument.
+ *
+ * Marker categories are spelled `<%SQLSTAT_CATEGORY%>`, and some MCP clients
+ * HTML-escape the angle brackets in transit, so the server receives
+ * `&lt;%SQLSTAT_CATEGORY%&gt;`. That misses the index and returns "No queries
+ * found", which reads as "nothing uses this marker" — the opposite of the truth.
+ * Observed twice in the wild, including once against the live server.
+ *
+ * No real MXQL category name contains `&`, so decoding is unambiguous.
+ */
+export function decodeCategoryArg(category: string): string {
+  return category
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d)))
+    .replace(/&amp;/g, "&");
+}

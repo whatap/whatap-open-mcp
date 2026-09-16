@@ -48,6 +48,7 @@ import {
 import {
   scanMarkers,
   isTemplateCategory,
+  decodeCategoryArg,
   type MarkerScan,
 } from "../yard/markers.js";
 import { CATALOG_RAW, CATALOG_ENTRIES } from "../data/mxql-catalog.js";
@@ -446,6 +447,10 @@ export function registerYardTools(
 
         // ── Category reverse lookup ──
         if (category) {
+          // Some clients HTML-escape `<%MARKER%>` in transit. Decode before
+          // lookup so the escaped spelling resolves, and so the messages below
+          // echo the category the caller meant.
+          category = decodeCategoryArg(category);
           const entries = searchEntries({ category, search });
           if (entries.length === 0) {
             const allCats = getAllBaseCategories();
