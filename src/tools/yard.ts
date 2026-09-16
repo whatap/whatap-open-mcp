@@ -26,6 +26,7 @@ import {
   translateComment,
   translateMxqlComments,
 } from "../utils/mxql-comments.js";
+import { simplifyRawMxql } from "../utils/simplify-mxql.js";
 import {
   classifyAndBuildError,
   appendNextSteps,
@@ -473,6 +474,18 @@ export function registerYardTools(
             `## Category: ${category} (${entries.length} query paths)`,
             "",
           ];
+          if (isTemplateCategory(category)) {
+            // Resolvable, but say what it is: the yard substitutes this marker
+            // server-side, so every path under it is a template that
+            // whatap_query_data will refuse.
+            lines.push(
+              `> \`${category}\` is an unresolved yard template marker, not a category ` +
+                "name — the yard substitutes it when it serves a query by path. " +
+                "The paths below are templates and are **not executable** via " +
+                "`whatap_query_data`.",
+              ""
+            );
+          }
           for (const e of entries) {
             lines.push(formatPathEntry(e));
           }
@@ -881,21 +894,7 @@ export function registerYardTools(
         if (metadata.raw) {
           // Display-only translation. The executed copy (whatap_query_data) still
           // sends the untouched yard source to the text endpoint.
-          const simplified = translateMxqlComments(metadata.raw)
-            .split("\n")
-            .filter((line) => {
-              const t = line.trim();
-              if (!t) return false;
-              return !(
-                t.startsWith("INJECT") ||
-                t.startsWith("RENAME") ||
-                t.startsWith("CREATE") ||
-                t.startsWith("FIRST-ONLY") ||
-                t.startsWith("APPEND")
-              );
-            })
-            .join("\n")
-            .trim();
+          const simplified = simplifyRawMxql(translateMxqlComments(metadata.raw));
           if (simplified) {
             lines.push("### Raw MXQL", "", "```", simplified, "```");
           }

@@ -59,10 +59,10 @@ function byCategoryBase(): Map<string, CatalogEntry[]> {
     _byCategoryBase = new Map();
     for (const e of CATALOG_ENTRIES) {
       for (const cat of e.baseCategories) {
-        // `<%CATEGORY%>` and friends are unsubstituted yard markers, not category
-        // names. Indexing them offers the caller a lookup key that can never
-        // resolve — and every entry carrying one is a non-executable template.
-        if (isTemplateCategory(cat)) continue;
+        // Marker names ARE indexed. They are not offered as candidates — see
+        // getAllBaseCategories() — but "which paths use <%SQLSTAT_CATEGORY%>?"
+        // is a real question with a real answer (two, as it happens), and
+        // dropping them from the index turned it into a dead end.
         const list = _byCategoryBase.get(cat) ?? [];
         list.push(e);
         _byCategoryBase.set(cat, list);
@@ -205,12 +205,15 @@ export function getPathsForCategory(category: string): CatalogEntry[] {
 /**
  * Browsable base category names.
  *
- * Excludes unsubstituted yard markers — see byCategoryBase(). Callers use this
- * list to pick a `category=` argument, so every name in it must be one that
- * resolves.
+ * Callers use this list to pick a `category=` argument, so unsubstituted yard
+ * markers are filtered out: every one of the 62 entries carrying them is a
+ * non-executable template, so they are never usable candidates. They remain
+ * reachable by explicit lookup — see byCategoryBase().
  */
 export function getAllBaseCategories(): string[] {
-  return Array.from(byCategoryBase().keys()).sort();
+  return Array.from(byCategoryBase().keys())
+    .filter((c) => !isTemplateCategory(c))
+    .sort();
 }
 
 export function getCatalogSize(): number {

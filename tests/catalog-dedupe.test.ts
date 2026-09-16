@@ -124,6 +124,31 @@ describe("browsable categories exclude template markers", () => {
     expect(categories.length).toBe(fromEntries.size - marked.length);
   });
 
+  it("still answers an explicit lookup for a marker category", () => {
+    // Regression: 1.5.1 dropped marker names from the index as well as the list,
+    // which turned "which paths use <%SQLSTAT_CATEGORY%>?" into a dead end.
+    // Hiding them from the candidate list is right; making them unanswerable is not.
+    const hits = searchEntries({ category: "<%SQLSTAT_CATEGORY%>" }).map((e) => e.path);
+    expect(hits).toEqual([
+      "mxql/dbx/planchange/chart",
+      "mxql/dbx/planchange/summary",
+    ]);
+  });
+
+  it("resolves a marker category written with its modifier", () => {
+    const hits = searchEntries({ category: "<%SQLSTAT_CATEGORY%>{h1}" }).map((e) => e.path);
+    expect(hits.length).toBe(2);
+  });
+
+  it("every marker name in the catalog is reachable by explicit lookup", () => {
+    const fromEntries = new Set<string>();
+    for (const e of CATALOG_ENTRIES) for (const c of e.baseCategories) fromEntries.add(c);
+    const unreachable = [...fromEntries]
+      .filter(isTemplateCategory)
+      .filter((c) => searchEntries({ category: c }).length === 0);
+    expect(unreachable).toEqual([]);
+  });
+
   it("keeps the real categories the probe list depends on", () => {
     for (const c of ["server_base", "app_counter", "kube_pod_stat", "logsink_stats"]) {
       expect(categories, `${c} missing`).toContain(c);
