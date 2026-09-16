@@ -16536,7 +16536,7 @@ function buildServerErrorResponse(opts) {
 }
 
 // src/version.ts
-var VERSION = "1.5.2";
+var VERSION = "1.5.3";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {
@@ -46685,6 +46685,9 @@ function scanMarkers(raw) {
 function isTemplateCategory(category) {
   return /<%|%>/.test(category);
 }
+function decodeCategoryArg(category) {
+  return category.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d))).replace(/&amp;/g, "&");
+}
 
 // src/yard/paths.ts
 var PREFIX_RE = /^(?:src\/main\/resources\/|target\/classes\/)+/;
@@ -47336,6 +47339,7 @@ function registerYardTools(server, client) {
           };
         }
         if (category) {
+          category = decodeCategoryArg(category);
           const entries2 = searchEntries({ category, search });
           if (entries2.length === 0) {
             const allCats = getAllBaseCategories();
