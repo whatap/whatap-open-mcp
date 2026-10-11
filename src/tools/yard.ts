@@ -6,10 +6,13 @@ import type { McpServer } from "../mcp/server.js";
 import type { WhatapApiClient } from "../api/client.js";
 import { formatMxqlResponse } from "../utils/format.js";
 import { formatPromqlResponse, formatOpenMetricsList } from "../utils/format-promql.js";
-import { parseTimeRange } from "../utils/time.js";
+import { resolveTimeWindow, requestedWindow } from "../utils/time.js";
+import { checkLimit } from "../api/limits.js";
 import {
   PARAM_PROJECT_CODE,
   PARAM_TIME_RANGE_OPTIONAL,
+  PARAM_STIME,
+  PARAM_ETIME,
   PARAM_MXQL_PATH,
   MXQL_PARAM_REGISTRY,
   HEADER_UNIT_SUFFIX,
@@ -1030,6 +1033,8 @@ export function registerYardTools(
         .string()
         .default("5m")
         .describe(PARAM_TIME_RANGE_OPTIONAL),
+      stime: z.string().optional().describe(PARAM_STIME),
+      etime: z.string().optional().describe(PARAM_ETIME),
       params: z
         .record(z.string())
         .optional()
@@ -1039,9 +1044,19 @@ export function registerYardTools(
       limit: z
         .number()
         .default(100)
-        .describe("Maximum rows to return (default: 100)."),
+        .describe("Maximum rows to return (default: 100, 1 to 100,000)."),
     },
-    async ({ projectCode, path, query, savedQuery, timeRange, params, limit }) => {
+    async ({ projectCode, path, query, savedQuery, timeRange, stime: stimeArg, etime: etimeArg, params, limit }) => {
+      try {
+        checkLimit(limit);
+      } catch (err) {
+        return classifyAndBuildError(err, {
+          toolName: "whatap_query_data",
+          projectCode,
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg),
+        });
+      }
+
       // ── Resolve saved query ──
       if (savedQuery) {
         const saved = getPromqlQueryStore().get(projectCode, savedQuery);
@@ -1069,7 +1084,11 @@ export function registerYardTools(
       // ── PromQL execution mode ──
       if (query && !path) {
         try {
-          const { stime, etime } = parseTimeRange(timeRange);
+          const { stime, etime, label: windowLabel } = resolveTimeWindow({
+          timeRange,
+          stime: stimeArg,
+          etime: etimeArg,
+        });
           const result = await client.executePromql(projectCode, {
             query,
             stime,
@@ -1092,7 +1111,7 @@ export function registerYardTools(
               toolName: "whatap_query_data",
               serverMessage: promqlError,
               projectCode,
-              timeRange,
+              timeRange: windowLabel,
               echo: {
                 ...promqlEcho,
                 rawRowCount: Array.isArray(result) ? result.length : 0,
@@ -1111,7 +1130,7 @@ export function registerYardTools(
             return buildNoDataResponse({
               toolName: "whatap_query_data",
               projectCode,
-              timeRange,
+              timeRange: windowLabel,
               echo: {
                 ...promqlEcho,
                 rawRowCount: Array.isArray(result) ? result.length : 0,
@@ -1139,7 +1158,7 @@ export function registerYardTools(
           return classifyAndBuildError(err, {
             toolName: "whatap_query_data",
             projectCode,
-            timeRange,
+            timeRange: requestedWindow(timeRange, stimeArg, etimeArg),
           });
         }
       }
@@ -1158,7 +1177,11 @@ export function registerYardTools(
       }
 
       try {
-        const { stime, etime } = parseTimeRange(timeRange);
+        const { stime, etime, label: windowLabel } = resolveTimeWindow({
+          timeRange,
+          stime: stimeArg,
+          etime: etimeArg,
+        });
 
         // Local catalog priority: if raw MXQL exists in catalog, use text endpoint
         const catalogInfo = describeMql(path);
@@ -1243,7 +1266,7 @@ export function registerYardTools(
             serverMessage: serverError,
             projectCode,
             path,
-            timeRange,
+            timeRange: windowLabel,
             echo: { ...requestEcho, rawRowCount, dataRowCount: 0 },
           });
         }
@@ -1259,7 +1282,7 @@ export function registerYardTools(
           return buildNoDataResponse({
             toolName: "whatap_query_data",
             projectCode,
-            timeRange,
+            timeRange: windowLabel,
             category: catalogInfo?.entry.baseCategories[0],
             echo: { ...requestEcho, rawRowCount, dataRowCount: 0 },
           });
@@ -1335,7 +1358,7 @@ export function registerYardTools(
         return classifyAndBuildError(err, {
           toolName: "whatap_query_data",
           projectCode,
-          timeRange,
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg),
         });
       }
     }

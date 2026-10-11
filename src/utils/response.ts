@@ -1,6 +1,8 @@
 // src/utils/response.ts
 // Central response utilities for errors, next-steps, and no-data cases.
 
+import { LocalArgumentError } from "./errors.js";
+
 // ---------- Types ----------
 
 type McpTextContent = { type: "text"; text: string };
@@ -54,6 +56,16 @@ export function classifyAndBuildError(
 ): McpResponse {
   const msg = (err as Error).message ?? String(err);
 
+  // Bad argument (time window, limit) — rejected locally, nothing was sent.
+  // First: these messages are ours, so no substring check below may claim them
+  if (err instanceof LocalArgumentError) {
+    return buildErrorResponse({
+      message: `${context.toolName}: ${msg}`,
+      hint: "Fix the arguments and retry. The request was not sent to WhaTap.",
+      retryable: false,
+    });
+  }
+
   // No API token → wrong projectCode
   if (msg.includes("No API token found for project")) {
     return buildErrorResponse({
@@ -66,9 +78,31 @@ export function classifyAndBuildError(
     });
   }
 
+  // Server limits (HTTP 400). Matched on the server's own wording, measured
+  // 2026-10-11; see src/api/limits.ts. Checked before the status-code
+  // branches so a pcode like 403 inside the message cannot win.
+  if (msg.includes("search period is too long")) {
+    return buildErrorResponse({
+      message: msg,
+      hint:
+        "The WhaTap API accepts a window of under 32 days per request. " +
+        "Split the window with stime/etime into parts under 32 days.",
+      retryable: false,
+    });
+  }
+  if (msg.includes("max limit is")) {
+    return buildErrorResponse({
+      message: msg,
+      hint:
+        "The WhaTap API returns at most 100,000 rows per request. " +
+        "Use a smaller limit, or split the window with stime/etime.",
+      retryable: false,
+    });
+  }
+
   // Rate limit
   if (
-    msg.includes("429") ||
+    /\(429\)|^429\b/.test(msg) ||
     msg.toLowerCase().includes("rate limit") ||
     msg.includes("Too Many Requests")
   ) {
@@ -79,8 +113,9 @@ export function classifyAndBuildError(
     });
   }
 
-  // Auth failure
-  if (msg.includes("401") || msg.includes("403")) {
+  // Auth failure. Match the status, not any "401"/"403" substring: the
+  // message also carries the project code.
+  if (/\(40[13]\)|^40[13]\b/.test(msg)) {
     return buildErrorResponse({
       message: msg,
       hint: "Authentication failed. Verify WHATAP_API_TOKEN is valid.",
@@ -96,6 +131,16 @@ export function classifyAndBuildError(
       message: `Request timed out for ${context.toolName}.`,
       hint: 'Try a shorter time range (e.g., "5m" instead of "1d").',
       retryable: true,
+    });
+  }
+
+  // Any other HTTP 400: the server's reason is in the message. A wrong
+  // project code fails earlier ("No API token found"), so do not point there.
+  if (/API error \(400\)/.test(msg)) {
+    return buildErrorResponse({
+      message: `${context.toolName} failed: ${msg}`,
+      hint: "The WhaTap API rejected the request (HTTP 400). Its reason is in the message above.",
+      retryable: false,
     });
   }
 

@@ -5,6 +5,64 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [1.5.4] - 2026-10-11
+
+### Added
+
+- **`stime` / `etime` on every time-windowed tool** (`whatap_query_data`,
+  `whatap_create_promql`, `whatap_apm_anomaly`, `whatap_service_topology`).
+  `timeRange` always ended at *now*, so a past incident window — say
+  2026-05-14 09:00–10:00 KST — could only be reached by querying everything from
+  then until today, and anything older than the server's one-month cap could not
+  be reached at all. The window now resolves as:
+
+  | given | window |
+  | --- | --- |
+  | neither | `[now - timeRange, now]` (unchanged) |
+  | `stime` | `[stime, stime + timeRange]` |
+  | `etime` | `[etime - timeRange, etime]` |
+  | both | `[stime, etime]`, `timeRange` ignored |
+
+  Values are epoch milliseconds (or 10-digit seconds) as strings, or ISO 8601
+  with an explicit offset (`2026-05-14T09:00:00+09:00`, `…Z`). An ISO value
+  without an offset is rejected rather than read in the MCP process's local
+  zone, which would silently shift the window by hours.
+
+### Fixed
+
+- **Bad `timeRange` / `stime` / `etime` arguments were reported as a wrong
+  project code** ("Verify project code N is correct", "call
+  `whatap_list_projects`"). They now say the time arguments need fixing and that
+  no request was sent.
+- **Requests over the server's limits are rejected before they are sent.**
+  Measured on 2026-10-11, `/open-mcp/api/flush/mxql/*` answers HTTP 400 when
+  `etime - stime` is 32 days or more (32 days - 1 ms passes; a fixed length, not
+  a calendar month) and when `limit` exceeds 100,000. Those 400s used to come
+  back with "Verify project code N is correct". Every time-windowed tool now
+  checks the window locally and suggests a split that fits; `whatap_query_data`
+  accepts `limit` from 1 to 100,000. A window whose `stime` is not before `etime`
+  is rejected too: the server answers it with an empty result, which reads as
+  "no data".
+- **Server 400s that still get through name the server's reason.** The two
+  limit messages above get their own hint, and any other 400 points at the
+  server's message instead of the project code.
+- **Error classification no longer keys on a project code.** A `401`, `403` or
+  `429` inside the message (`for project 403: …`) was read as an auth or rate
+  limit failure; only the HTTP status is matched now.
+- **A result cut at `limit` now says which part of the window it covers.**
+  The server fills rows from `stime` and stops at `limit` (measured
+  2026-10-11), so a truncated `whatap_query_data` result is the start of the
+  window, not a sample of it — yet only "Result may be truncated" was shown
+  under a Period naming the whole window. When the rows carry `time` and end
+  before `etime`, the notice now gives the span actually returned, warns that
+  rows at the latest time may be partial, and gives the `stime` to continue
+  from. When every returned row shares one time, that time alone exceeds the
+  limit, so it asks for a larger limit instead of a `stime` that would return
+  the same rows. Ranking results, and results without a `time` column, keep
+  the old notice.
+
 ## [1.5.3] - 2026-09-16
 
 ### Fixed

@@ -27,6 +27,7 @@ src/
 │   └── server.ts         # McpServer class with tool() API
 ├── api/
 │   ├── client.ts         # WhatapApiClient — HTTP, two-tier auth, token cache, category probing
+│   ├── limits.ts         # Measured server limits (window < 32d, limit ≤ 100,000) and checkLimit()
 │   └── types.ts          # TypeScript interfaces (Project, Agent, MxqlTextParams, MxqlPathParams)
 ├── data/
 │   ├── mxql-catalog.ts   # AUTO-GENERATED: 815 CatalogEntry objects + raw MXQL (from yard, build-layout deduped)
@@ -50,7 +51,8 @@ src/
 │   ├── install.ts (1)    # install_agent (fetch access + generate install commands for 29 platforms)
 │   └── promql.ts (1)     # create_promql (validate + save reusable PromQL queries)
 └── utils/
-    ├── time.ts           # parseTimeRange("5m","1h","last 7 days") → {stime,etime}
+    ├── errors.ts         # LocalArgumentError — bad argument rejected before any request
+    ├── time.ts           # parseTimeRange("5m","1h","last 7 days") → {stime,etime}; resolveTimeWindow() adds absolute stime/etime
     ├── format.ts         # MXQL results → Markdown tables, unit annotations, semantic headers, summary stats, field guide
     ├── response.ts       # classifyAndBuildError(), appendNextSteps(), buildNoDataResponse() — unified response system
     ├── descriptions.ts   # Shared parameter descriptions, MXQL param registry (17), English overlay (120 translations)

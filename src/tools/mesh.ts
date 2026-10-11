@@ -6,10 +6,12 @@ import { z } from "../mcp/schema.js";
 import type { McpServer } from "../mcp/server.js";
 import type { WhatapApiClient } from "../api/client.js";
 import type { MxqlResult, MxqlRow } from "../api/types.js";
-import { parseTimeRange } from "../utils/time.js";
+import { resolveTimeWindow, requestedWindow } from "../utils/time.js";
 import {
   PARAM_PROJECT_CODE,
   PARAM_TIME_RANGE_OPTIONAL,
+  PARAM_STIME,
+  PARAM_ETIME,
   PARAM_SENSITIVITY,
 } from "../utils/descriptions.js";
 import {
@@ -338,14 +340,20 @@ export function registerMeshTools(
         .string()
         .default("5m")
         .describe(PARAM_TIME_RANGE_OPTIONAL),
+      stime: z.string().optional().describe(PARAM_STIME),
+      etime: z.string().optional().describe(PARAM_ETIME),
       sensitivity: z
         .enum(["low", "medium", "high"])
         .default("medium")
         .describe(PARAM_SENSITIVITY),
     },
-    async ({ projectCode, timeRange, sensitivity }) => {
+    async ({ projectCode, timeRange, stime: stimeArg, etime: etimeArg, sensitivity }) => {
       try {
-        const { stime, etime } = parseTimeRange(timeRange);
+        const { stime, etime, label: windowLabel, absolute } = resolveTimeWindow({
+          timeRange,
+          stime: stimeArg,
+          etime: etimeArg,
+        });
         const base = { stime, etime, limit: 200 };
 
         // Execute 4 MXQL path queries in parallel. allSettled, not all: one
@@ -385,7 +393,7 @@ export function registerMeshTools(
             toolName: "whatap_apm_anomaly",
             serverMessage: subQueryNotes.join(" | "),
             projectCode,
-            timeRange,
+            timeRange: windowLabel,
           });
         }
 
@@ -436,7 +444,7 @@ export function registerMeshTools(
         const lines: string[] = [
           `## APM Anomaly Detection — Project ${projectCode}`,
           "",
-          `**Period**: last ${timeRange} | **Sensitivity**: ${sensitivity} | **Agents analyzed**: ${summaries.length}`,
+          `**Period**: ${absolute ? windowLabel : `last ${timeRange}`} | **Sensitivity**: ${sensitivity} | **Agents analyzed**: ${summaries.length}`,
           "",
         ];
 
@@ -495,7 +503,7 @@ export function registerMeshTools(
         return classifyAndBuildError(err, {
           toolName: "whatap_apm_anomaly",
           projectCode,
-          timeRange,
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg),
         });
       }
     }
@@ -516,10 +524,16 @@ export function registerMeshTools(
         .string()
         .default("1h")
         .describe(PARAM_TIME_RANGE_OPTIONAL),
+      stime: z.string().optional().describe(PARAM_STIME),
+      etime: z.string().optional().describe(PARAM_ETIME),
     },
-    async ({ projectCode, timeRange }) => {
+    async ({ projectCode, timeRange, stime: stimeArg, etime: etimeArg }) => {
       try {
-        const { stime, etime } = parseTimeRange(timeRange);
+        const { stime, etime, label: windowLabel, absolute } = resolveTimeWindow({
+          timeRange,
+          stime: stimeArg,
+          etime: etimeArg,
+        });
 
         const TOPOLOGY_MQL = "/npm/all/topology/app_name_latency";
         const topoData = await client.executeMxqlPath(projectCode, {
@@ -538,7 +552,7 @@ export function registerMeshTools(
             serverMessage: topoError,
             projectCode,
             path: TOPOLOGY_MQL,
-            timeRange,
+            timeRange: windowLabel,
             echo: {
               endpoint: "mxql/path",
               sentMql: TOPOLOGY_MQL,
@@ -585,7 +599,7 @@ export function registerMeshTools(
         const lines: string[] = [
           `## Service Topology — Project ${projectCode}`,
           "",
-          `**Period**: last ${timeRange} | **Services**: ${serviceNames.size} | **Connections**: ${edges.length} | **Total Calls**: ${totalCalls.toLocaleString()}`,
+          `**Period**: ${absolute ? windowLabel : `last ${timeRange}`} | **Services**: ${serviceNames.size} | **Connections**: ${edges.length} | **Total Calls**: ${totalCalls.toLocaleString()}`,
           "",
         ];
 
@@ -658,7 +672,7 @@ export function registerMeshTools(
         return classifyAndBuildError(err, {
           toolName: "whatap_service_topology",
           projectCode,
-          timeRange,
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg),
         });
       }
     }

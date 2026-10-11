@@ -15871,7 +15871,19 @@ function formatMxqlResponse(data, options = {}) {
       );
     }
     if (semantics || queryMeta) lines.push("");
-    if (truncated && semantics) {
+    const coverage = truncated && queryMeta && semantics?.resultType !== "ranking" ? truncatedCoverage(dataRows, queryMeta.etime) : void 0;
+    if (coverage && coverage.first === coverage.last) {
+      lines.push(
+        `> **Truncated at limit ${maxRows.toLocaleString("en-US")}.** All returned rows are at ${fmtTime(coverage.last)}, and even that time is cut: it has more rows than the limit. Nothing after it was returned. Do not treat this as the whole Period. Calling again from the same stime returns the same rows; raise limit well above ${maxRows.toLocaleString("en-US")}, or narrow the query.`,
+        ""
+      );
+    } else if (coverage) {
+      lines.push(
+        `> **Truncated at limit ${maxRows.toLocaleString("en-US")}.** Returned rows span ${fmtTime(coverage.first)} \u2192 ${fmtTime(coverage.last)}; nothing after ${fmtTime(coverage.last)} was returned, and rows at that time may be partial. Do not treat this as the whole Period. To continue, call again with stime="${isoTime(coverage.last)}" (same etime) and drop rows already seen.`,
+        ""
+      );
+    }
+    if (truncated && semantics && !coverage) {
       if (semantics.resultType === "timeseries") {
         lines.push(
           `> Result may be truncated (showing ${limited.length} rows). Do not infer global ranking from displayed rows.`,
@@ -15887,7 +15899,7 @@ function formatMxqlResponse(data, options = {}) {
     lines.push(formatTable(limited, headerTypes));
     const entityNote = entityColumnNote(limited, resolveColumns(limited));
     if (entityNote) lines.push("", entityNote);
-    if (truncated && !semantics) {
+    if (truncated && !semantics && !coverage) {
       lines.push(
         "",
         `(Showing ${limited.length} rows \u2014 result may be truncated)`
@@ -16052,6 +16064,21 @@ function formatValue(v, field) {
   if (typeof v === "object") return JSON.stringify(v);
   return String(v);
 }
+function truncatedCoverage(rows, etime) {
+  let first = Infinity;
+  let last = -Infinity;
+  for (const row of rows) {
+    const t = row["time"];
+    if (typeof t !== "number" || !Number.isFinite(t)) continue;
+    if (t < first) first = t;
+    if (t > last) last = t;
+  }
+  if (last === -Infinity || last >= etime) return void 0;
+  return { first, last };
+}
+function isoTime(ms) {
+  return new Date(ms).toISOString().replace(".000Z", "Z");
+}
 function fmtTime(ms) {
   return new Date(ms).toISOString().replace("T", " ").slice(0, 19) + " UTC";
 }
@@ -16102,7 +16129,10 @@ function computeSummaryStats(rows, headerTypes, rowCounts) {
 
 // src/utils/descriptions.ts
 var PARAM_PROJECT_CODE = "Project code (pcode). Get this by calling whatap_list_projects first \u2014 it returns all accessible projects with their pcodes.";
-var PARAM_TIME_RANGE_OPTIONAL = 'Time range (default: "5m"). Examples: "5m", "1h", "6h", "1d", "last 30 minutes".';
+var PARAM_TIME_RANGE_OPTIONAL = 'Time range (default: "5m"). Examples: "5m", "1h", "6h", "1d", "last 30 minutes". Ends now unless stime or etime is given. The window must be under 32 days.';
+var TIME_POINT_FORMAT = 'Epoch milliseconds as a string (e.g. "1778716800000") or ISO 8601 with an explicit offset (e.g. "2026-05-14T09:00:00+09:00"); an ISO value without an offset is rejected.';
+var PARAM_STIME = "Absolute window start, for querying a past period. " + TIME_POINT_FORMAT + " With etime: the window is exactly [stime, etime] and timeRange is ignored. Alone: the window is [stime, stime + timeRange].";
+var PARAM_ETIME = "Absolute window end. " + TIME_POINT_FORMAT + " Alone: the window is [etime - timeRange, etime].";
 var PARAM_MXQL_PATH = 'MXQL query path from the yard (e.g., "v2/sys/server_base", "v2/app/tps_pcode"). Discover paths with whatap_data_availability.';
 var PARAM_SENSITIVITY = 'Anomaly detection sensitivity: "low" = only major issues (3\u03C3 threshold), "medium" = balanced (2\u03C3, default), "high" = catch subtle issues (1.5\u03C3).';
 var MXQL_PARAM_REGISTRY = {
@@ -16291,6 +16321,14 @@ function translateDescription(path, original) {
   return ENGLISH_DESCRIPTIONS[path] ?? ENGLISH_DESCRIPTIONS[path.replace(/^mxql\//, "")] ?? original;
 }
 
+// src/utils/errors.ts
+var LocalArgumentError = class extends Error {
+  constructor(message) {
+    super(message);
+    this.name = new.target.name;
+  }
+};
+
 // src/utils/response.ts
 function buildErrorResponse(opts) {
   const lines = [];
@@ -16316,6 +16354,13 @@ function buildErrorResponse(opts) {
 }
 function classifyAndBuildError(err, context) {
   const msg = err.message ?? String(err);
+  if (err instanceof LocalArgumentError) {
+    return buildErrorResponse({
+      message: `${context.toolName}: ${msg}`,
+      hint: "Fix the arguments and retry. The request was not sent to WhaTap.",
+      retryable: false
+    });
+  }
   if (msg.includes("No API token found for project")) {
     return buildErrorResponse({
       message: msg,
@@ -16325,14 +16370,28 @@ function classifyAndBuildError(err, context) {
       retryable: false
     });
   }
-  if (msg.includes("429") || msg.toLowerCase().includes("rate limit") || msg.includes("Too Many Requests")) {
+  if (msg.includes("search period is too long")) {
+    return buildErrorResponse({
+      message: msg,
+      hint: "The WhaTap API accepts a window of under 32 days per request. Split the window with stime/etime into parts under 32 days.",
+      retryable: false
+    });
+  }
+  if (msg.includes("max limit is")) {
+    return buildErrorResponse({
+      message: msg,
+      hint: "The WhaTap API returns at most 100,000 rows per request. Use a smaller limit, or split the window with stime/etime.",
+      retryable: false
+    });
+  }
+  if (/\(429\)|^429\b/.test(msg) || msg.toLowerCase().includes("rate limit") || msg.includes("Too Many Requests")) {
     return buildErrorResponse({
       message: msg,
       hint: "WhaTap API rate limit hit. Wait a few seconds, then retry with a narrower time range.",
       retryable: true
     });
   }
-  if (msg.includes("401") || msg.includes("403")) {
+  if (/\(40[13]\)|^40[13]\b/.test(msg)) {
     return buildErrorResponse({
       message: msg,
       hint: "Authentication failed. Verify WHATAP_API_TOKEN is valid.",
@@ -16346,6 +16405,13 @@ function classifyAndBuildError(err, context) {
       message: `Request timed out for ${context.toolName}.`,
       hint: 'Try a shorter time range (e.g., "5m" instead of "1d").',
       retryable: true
+    });
+  }
+  if (/API error \(400\)/.test(msg)) {
+    return buildErrorResponse({
+      message: `${context.toolName} failed: ${msg}`,
+      hint: "The WhaTap API rejected the request (HTTP 400). Its reason is in the message above.",
+      retryable: false
     });
   }
   return buildErrorResponse({
@@ -16411,10 +16477,10 @@ function fenceMxql(src) {
   return "```mxql\n" + shown + "\n```";
 }
 function fmtWindow(stime, etime) {
-  const iso = (ms) => new Date(ms).toISOString().replace("T", " ").slice(0, 19);
+  const iso2 = (ms) => new Date(ms).toISOString().replace("T", " ").slice(0, 19);
   const kst = (ms) => new Date(ms + 9 * 36e5).toISOString().replace("T", " ").slice(0, 19);
   return `${stime} \u2192 ${etime}
-  UTC: ${iso(stime)} \u2192 ${iso(etime)}
+  UTC: ${iso2(stime)} \u2192 ${iso2(etime)}
   KST: ${kst(stime)} \u2192 ${kst(etime)}`;
 }
 function renderEcho(e, projectCode, timeRange) {
@@ -16536,7 +16602,7 @@ function buildServerErrorResponse(opts) {
 }
 
 // src/version.ts
-var VERSION = "1.5.3";
+var VERSION = "1.5.4";
 
 // src/tools/project.ts
 function registerProjectTools(server, client) {
@@ -16797,7 +16863,28 @@ function fmtCell(v) {
   return String(v);
 }
 
+// src/api/limits.ts
+var MAX_WINDOW_MS = 32 * 864e5;
+var MAX_LIMIT = 1e5;
+function checkLimit(limit) {
+  if (!Number.isInteger(limit)) {
+    throw new LocalArgumentError(`limit must be a whole number, got ${limit}.`);
+  }
+  if (limit < 1) {
+    throw new LocalArgumentError(
+      `limit must be between 1 and ${MAX_LIMIT.toLocaleString("en-US")}, got ${limit}.`
+    );
+  }
+  if (limit > MAX_LIMIT) {
+    throw new LocalArgumentError(
+      `limit ${limit.toLocaleString("en-US")} exceeds the WhaTap API maximum of ${MAX_LIMIT.toLocaleString("en-US")}. Use a smaller limit, or split the window with stime/etime and query each part.`
+    );
+  }
+}
+
 // src/utils/time.ts
+var TimeArgumentError = class extends LocalArgumentError {
+};
 var UNIT_MS = {
   s: 1e3,
   m: 6e4,
@@ -16805,15 +16892,11 @@ var UNIT_MS = {
   d: 864e5,
   w: 6048e5
 };
-function parseTimeRange(range) {
-  const etime = Date.now();
+function parseDuration(range) {
   const trimmed = range.trim().toLowerCase();
   const shortMatch = trimmed.match(/^(\d+)\s*([smhdw])$/);
   if (shortMatch) {
-    const amount = parseInt(shortMatch[1], 10);
-    const unit = shortMatch[2];
-    const ms = amount * UNIT_MS[unit];
-    return { stime: etime - ms, etime };
+    return parseInt(shortMatch[1], 10) * UNIT_MS[shortMatch[2]];
   }
   const longMatch = trimmed.match(
     /^(?:last\s+)?(\d+)\s+(second|minute|hour|day|week)s?$/
@@ -16822,12 +16905,88 @@ function parseTimeRange(range) {
     const amount = parseInt(longMatch[1], 10);
     const unit = longMatch[2];
     const unitKey = unit === "second" ? "s" : unit === "minute" ? "m" : unit === "hour" ? "h" : unit === "day" ? "d" : "w";
-    const ms = amount * UNIT_MS[unitKey];
-    return { stime: etime - ms, etime };
+    return amount * UNIT_MS[unitKey];
   }
-  throw new Error(
+  throw new TimeArgumentError(
     `Invalid time range format: "${range}". Use formats like "5m", "1h", "7d", or "last 30 minutes".`
   );
+}
+function parseTimeRange(range) {
+  const etime = Date.now();
+  return { stime: etime - parseDuration(range), etime };
+}
+function fmtSpan(ms) {
+  const d = Math.floor(ms / 864e5);
+  const h = Math.floor(ms % 864e5 / 36e5);
+  const m = Math.floor(ms % 36e5 / 6e4);
+  return [d && `${d}d`, h && `${h}h`, m && `${m}m`].filter(Boolean).join(" ") || `${ms}ms`;
+}
+function checkWindowSpan(stime, etime) {
+  const span = etime - stime;
+  if (span < MAX_WINDOW_MS) return;
+  const firstEnd = stime + MAX_WINDOW_MS - 864e5;
+  throw new TimeArgumentError(
+    `Time window is ${fmtSpan(span)}; the WhaTap API rejects a window of 32 days or more ("The maximum search period is one month"). Split it with stime/etime into parts under 32 days, e.g. stime="${iso(stime)}", etime="${iso(firstEnd)}", then continue from there.`
+  );
+}
+var ISO_WITH_OFFSET = /^(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)(Z|[+-]\d{2}:?\d{2})$/i;
+var ISO_WITHOUT_OFFSET = /^\d{4}-\d{2}-\d{2}([T ]\d{2}:\d{2}(:\d{2}(\.\d+)?)?)?$/;
+function parseTimePoint(value, name = "time") {
+  const v = value.trim();
+  if (/^\d{13}$/.test(v)) return parseInt(v, 10);
+  if (/^\d{10}$/.test(v)) return parseInt(v, 10) * 1e3;
+  const iso2 = v.match(ISO_WITH_OFFSET);
+  if (iso2) {
+    let offset = iso2[3].toUpperCase();
+    if (offset !== "Z" && !offset.includes(":")) {
+      offset = `${offset.slice(0, 3)}:${offset.slice(3)}`;
+    }
+    const ms = Date.parse(`${iso2[1]}T${iso2[2]}${offset}`);
+    if (!Number.isNaN(ms)) return ms;
+  }
+  if (ISO_WITHOUT_OFFSET.test(v)) {
+    throw new TimeArgumentError(
+      `${name} "${value}" has no timezone offset. Add one, e.g. "${v.includes("T") || v.includes(" ") ? v.replace(" ", "T") : `${v}T00:00:00`}+09:00" for KST or "...Z" for UTC.`
+    );
+  }
+  throw new TimeArgumentError(
+    `Invalid ${name}: "${value}". Use epoch milliseconds (e.g. "1778716800000") or ISO 8601 with offset (e.g. "2026-05-14T09:00:00+09:00").`
+  );
+}
+function iso(ms) {
+  return new Date(ms).toISOString().replace(".000Z", "Z");
+}
+function resolveTimeWindow(opts) {
+  const hasS = opts.stime !== void 0 && opts.stime.trim() !== "";
+  const hasE = opts.etime !== void 0 && opts.etime.trim() !== "";
+  if (!hasS && !hasE) {
+    const { stime: stime2, etime: etime2 } = parseTimeRange(opts.timeRange);
+    checkWindowSpan(stime2, etime2);
+    return { stime: stime2, etime: etime2, label: opts.timeRange, absolute: false };
+  }
+  let stime;
+  let etime;
+  if (hasS && hasE) {
+    stime = parseTimePoint(opts.stime, "stime");
+    etime = parseTimePoint(opts.etime, "etime");
+  } else if (hasS) {
+    stime = parseTimePoint(opts.stime, "stime");
+    etime = stime + parseDuration(opts.timeRange);
+  } else {
+    etime = parseTimePoint(opts.etime, "etime");
+    stime = etime - parseDuration(opts.timeRange);
+  }
+  if (stime >= etime) {
+    throw new TimeArgumentError(
+      `Invalid time window: stime (${iso(stime)}) must be before etime (${iso(etime)}).`
+    );
+  }
+  checkWindowSpan(stime, etime);
+  return { stime, etime, label: `${iso(stime)} \u2192 ${iso(etime)}`, absolute: true };
+}
+function requestedWindow(timeRange, stime, etime) {
+  if (!stime && !etime) return timeRange;
+  return `stime=${stime ?? "-"}, etime=${etime ?? "-"}, timeRange=${timeRange}`;
 }
 
 // src/data/mxql-comment-translations.ts
@@ -46889,11 +47048,17 @@ function registerPromqlTools(server, client) {
         'PromQL expression to validate and save (e.g., "rate(node_cpu_seconds_total[5m])", "sum by (pod)(container_memory_usage_bytes)").'
       ),
       description: z.string().optional().describe("What this query measures. Helps LLMs understand the query purpose."),
-      timeRange: z.string().default("5m").describe(PARAM_TIME_RANGE_OPTIONAL)
+      timeRange: z.string().default("5m").describe(PARAM_TIME_RANGE_OPTIONAL),
+      stime: z.string().optional().describe(PARAM_STIME),
+      etime: z.string().optional().describe(PARAM_ETIME)
     },
-    async ({ projectCode, name, query, description, timeRange }) => {
+    async ({ projectCode, name, query, description, timeRange, stime: stimeArg, etime: etimeArg }) => {
       try {
-        const { stime, etime } = parseTimeRange(timeRange);
+        const { stime, etime, label: windowLabel } = resolveTimeWindow({
+          timeRange,
+          stime: stimeArg,
+          etime: etimeArg
+        });
         const result = await client.executePromql(projectCode, {
           query,
           stime,
@@ -47009,7 +47174,7 @@ Check project type: \`whatap_project_info(projectCode=${projectCode})\``
         return classifyAndBuildError(err, {
           toolName: "whatap_create_promql",
           projectCode,
-          timeRange
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg)
         });
       }
     }
@@ -47766,12 +47931,23 @@ Verify the metric exists: \`whatap_data_availability(projectCode=${projectCode})
         'Name of a saved PromQL query (created with whatap_create_promql). Example: "CPU by Pod"'
       ),
       timeRange: z.string().default("5m").describe(PARAM_TIME_RANGE_OPTIONAL),
+      stime: z.string().optional().describe(PARAM_STIME),
+      etime: z.string().optional().describe(PARAM_ETIME),
       params: z.record(z.string()).optional().describe(
         'Query parameters for MXQL $-prefixed variables. Example: {"oid": "12345", "okind": "myApp"}'
       ),
-      limit: z.number().default(100).describe("Maximum rows to return (default: 100).")
+      limit: z.number().default(100).describe("Maximum rows to return (default: 100, 1 to 100,000).")
     },
-    async ({ projectCode, path, query, savedQuery, timeRange, params, limit }) => {
+    async ({ projectCode, path, query, savedQuery, timeRange, stime: stimeArg, etime: etimeArg, params, limit }) => {
+      try {
+        checkLimit(limit);
+      } catch (err) {
+        return classifyAndBuildError(err, {
+          toolName: "whatap_query_data",
+          projectCode,
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg)
+        });
+      }
       if (savedQuery) {
         const saved = getPromqlQueryStore().get(projectCode, savedQuery);
         if (!saved) {
@@ -47796,7 +47972,11 @@ Create new queries with \`whatap_create_promql\`.`
       }
       if (query && !path) {
         try {
-          const { stime, etime } = parseTimeRange(timeRange);
+          const { stime, etime, label: windowLabel } = resolveTimeWindow({
+            timeRange,
+            stime: stimeArg,
+            etime: etimeArg
+          });
           const result = await client.executePromql(projectCode, {
             query,
             stime,
@@ -47817,7 +47997,7 @@ Create new queries with \`whatap_create_promql\`.`
               toolName: "whatap_query_data",
               serverMessage: promqlError,
               projectCode,
-              timeRange,
+              timeRange: windowLabel,
               echo: {
                 ...promqlEcho,
                 rawRowCount: Array.isArray(result) ? result.length : 0,
@@ -47832,7 +48012,7 @@ Create new queries with \`whatap_create_promql\`.`
             return buildNoDataResponse({
               toolName: "whatap_query_data",
               projectCode,
-              timeRange,
+              timeRange: windowLabel,
               echo: {
                 ...promqlEcho,
                 rawRowCount: Array.isArray(result) ? result.length : 0,
@@ -47858,7 +48038,7 @@ Create new queries with \`whatap_create_promql\`.`
           return classifyAndBuildError(err, {
             toolName: "whatap_query_data",
             projectCode,
-            timeRange
+            timeRange: requestedWindow(timeRange, stimeArg, etimeArg)
           });
         }
       }
@@ -47874,7 +48054,11 @@ Create new queries with \`whatap_create_promql\`.`
         };
       }
       try {
-        const { stime, etime } = parseTimeRange(timeRange);
+        const { stime, etime, label: windowLabel } = resolveTimeWindow({
+          timeRange,
+          stime: stimeArg,
+          etime: etimeArg
+        });
         const catalogInfo = describeMql(path);
         const rawMxql = catalogInfo?.raw;
         if (rawMxql) {
@@ -47926,7 +48110,7 @@ Create new queries with \`whatap_create_promql\`.`
             serverMessage: serverError,
             projectCode,
             path,
-            timeRange,
+            timeRange: windowLabel,
             echo: { ...requestEcho, rawRowCount, dataRowCount: 0 }
           });
         }
@@ -47937,7 +48121,7 @@ Create new queries with \`whatap_create_promql\`.`
           return buildNoDataResponse({
             toolName: "whatap_query_data",
             projectCode,
-            timeRange,
+            timeRange: windowLabel,
             category: catalogInfo?.entry.baseCategories[0],
             echo: { ...requestEcho, rawRowCount, dataRowCount: 0 }
           });
@@ -48004,7 +48188,7 @@ Create new queries with \`whatap_create_promql\`.`
         return classifyAndBuildError(err, {
           toolName: "whatap_query_data",
           projectCode,
-          timeRange
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg)
         });
       }
     }
@@ -48195,11 +48379,17 @@ function registerMeshTools(server, client) {
     {
       projectCode: z.number().describe(PARAM_PROJECT_CODE),
       timeRange: z.string().default("5m").describe(PARAM_TIME_RANGE_OPTIONAL),
+      stime: z.string().optional().describe(PARAM_STIME),
+      etime: z.string().optional().describe(PARAM_ETIME),
       sensitivity: z.enum(["low", "medium", "high"]).default("medium").describe(PARAM_SENSITIVITY)
     },
-    async ({ projectCode, timeRange, sensitivity }) => {
+    async ({ projectCode, timeRange, stime: stimeArg, etime: etimeArg, sensitivity }) => {
       try {
-        const { stime, etime } = parseTimeRange(timeRange);
+        const { stime, etime, label: windowLabel, absolute } = resolveTimeWindow({
+          timeRange,
+          stime: stimeArg,
+          etime: etimeArg
+        });
         const base = { stime, etime, limit: 200 };
         const SUB_QUERIES = [
           "/v2/app/tps_oid",
@@ -48232,7 +48422,7 @@ function registerMeshTools(server, client) {
             toolName: "whatap_apm_anomaly",
             serverMessage: subQueryNotes.join(" | "),
             projectCode,
-            timeRange
+            timeRange: windowLabel
           });
         }
         const [tpsData, respData, errData, actTxData] = resolved;
@@ -48272,7 +48462,7 @@ ${subQueryNotes.map((n) => `- ${n}`).join("\n")}
         const lines = [
           `## APM Anomaly Detection \u2014 Project ${projectCode}`,
           "",
-          `**Period**: last ${timeRange} | **Sensitivity**: ${sensitivity} | **Agents analyzed**: ${summaries.length}`,
+          `**Period**: ${absolute ? windowLabel : `last ${timeRange}`} | **Sensitivity**: ${sensitivity} | **Agents analyzed**: ${summaries.length}`,
           ""
         ];
         if (subQueryNotes.length > 0) {
@@ -48321,7 +48511,7 @@ ${subQueryNotes.map((n) => `- ${n}`).join("\n")}
         return classifyAndBuildError(err, {
           toolName: "whatap_apm_anomaly",
           projectCode,
-          timeRange
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg)
         });
       }
     }
@@ -48331,11 +48521,17 @@ ${subQueryNotes.map((n) => `- ${n}`).join("\n")}
     'Service connectivity map with bottleneck detection using NPM (Network Performance Monitoring) data. Queries caller\u2192callee edges with latency from the NPM topology endpoint, then builds a service graph and identifies high-latency bottlenecks.\n\nPREREQUISITES: projectCode from whatap_list_projects (project must have NPM agent installed).\n\nExample: whatap_service_topology(projectCode=12345, timeRange="1h")',
     {
       projectCode: z.number().describe(PARAM_PROJECT_CODE),
-      timeRange: z.string().default("1h").describe(PARAM_TIME_RANGE_OPTIONAL)
+      timeRange: z.string().default("1h").describe(PARAM_TIME_RANGE_OPTIONAL),
+      stime: z.string().optional().describe(PARAM_STIME),
+      etime: z.string().optional().describe(PARAM_ETIME)
     },
-    async ({ projectCode, timeRange }) => {
+    async ({ projectCode, timeRange, stime: stimeArg, etime: etimeArg }) => {
       try {
-        const { stime, etime } = parseTimeRange(timeRange);
+        const { stime, etime, label: windowLabel, absolute } = resolveTimeWindow({
+          timeRange,
+          stime: stimeArg,
+          etime: etimeArg
+        });
         const TOPOLOGY_MQL = "/npm/all/topology/app_name_latency";
         const topoData = await client.executeMxqlPath(projectCode, {
           stime,
@@ -48350,7 +48546,7 @@ ${subQueryNotes.map((n) => `- ${n}`).join("\n")}
             serverMessage: topoError,
             projectCode,
             path: TOPOLOGY_MQL,
-            timeRange,
+            timeRange: windowLabel,
             echo: {
               endpoint: "mxql/path",
               sentMql: TOPOLOGY_MQL,
@@ -48392,7 +48588,7 @@ Executed (server-expanded path): \`${TOPOLOGY_MQL}\` | window ${stime} \u2192 ${
         const lines = [
           `## Service Topology \u2014 Project ${projectCode}`,
           "",
-          `**Period**: last ${timeRange} | **Services**: ${serviceNames.size} | **Connections**: ${edges.length} | **Total Calls**: ${totalCalls.toLocaleString()}`,
+          `**Period**: ${absolute ? windowLabel : `last ${timeRange}`} | **Services**: ${serviceNames.size} | **Connections**: ${edges.length} | **Total Calls**: ${totalCalls.toLocaleString()}`,
           ""
         ];
         if (bottlenecks.length > 0) {
@@ -48454,7 +48650,7 @@ Executed (server-expanded path): \`${TOPOLOGY_MQL}\` | window ${stime} \u2192 ${
         return classifyAndBuildError(err, {
           toolName: "whatap_service_topology",
           projectCode,
-          timeRange
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg)
         });
       }
     }

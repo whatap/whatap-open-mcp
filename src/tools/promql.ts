@@ -5,11 +5,13 @@
 import { z } from "../mcp/schema.js";
 import type { McpServer } from "../mcp/server.js";
 import type { WhatapApiClient } from "../api/client.js";
-import { parseTimeRange } from "../utils/time.js";
+import { resolveTimeWindow, requestedWindow } from "../utils/time.js";
 import { formatPromqlResponse } from "../utils/format-promql.js";
 import {
   PARAM_PROJECT_CODE,
   PARAM_TIME_RANGE_OPTIONAL,
+  PARAM_STIME,
+  PARAM_ETIME,
 } from "../utils/descriptions.js";
 import {
   classifyAndBuildError,
@@ -121,10 +123,16 @@ export function registerPromqlTools(
         .string()
         .default("5m")
         .describe(PARAM_TIME_RANGE_OPTIONAL),
+      stime: z.string().optional().describe(PARAM_STIME),
+      etime: z.string().optional().describe(PARAM_ETIME),
     },
-    async ({ projectCode, name, query, description, timeRange }) => {
+    async ({ projectCode, name, query, description, timeRange, stime: stimeArg, etime: etimeArg }) => {
       try {
-        const { stime, etime } = parseTimeRange(timeRange);
+        const { stime, etime, label: windowLabel } = resolveTimeWindow({
+          timeRange,
+          stime: stimeArg,
+          etime: etimeArg,
+        });
 
         // Validate by executing
         const result = await client.executePromql(projectCode, {
@@ -254,7 +262,7 @@ export function registerPromqlTools(
         return classifyAndBuildError(err, {
           toolName: "whatap_create_promql",
           projectCode,
-          timeRange,
+          timeRange: requestedWindow(timeRange, stimeArg, etimeArg),
         });
       }
     }

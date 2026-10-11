@@ -114,8 +114,38 @@ export function formatMxqlResponse(
 
     if (semantics || queryMeta) lines.push("");
 
+    // Where a truncated result stops. The server fills from stime and stops at
+    // the limit (measured 2026-10-11), so "may be truncated" alone reads as a
+    // sample of the whole window when it is the first part of it. Stated from
+    // the returned rows only; rows at the latest time are cut mid-way.
+    const coverage =
+      truncated && queryMeta && semantics?.resultType !== "ranking"
+        ? truncatedCoverage(dataRows, queryMeta.etime)
+        : undefined;
+    if (coverage && coverage.first === coverage.last) {
+      // Every row shares one time: that time alone holds more rows than the
+      // limit, so continuing from it would return the same rows again.
+      lines.push(
+        `> **Truncated at limit ${maxRows.toLocaleString("en-US")}.** ` +
+          `All returned rows are at ${fmtTime(coverage.last)}, and even that time is cut: ` +
+          `it has more rows than the limit. Nothing after it was returned. ` +
+          `Do not treat this as the whole Period. Calling again from the same stime returns ` +
+          `the same rows; raise limit well above ${maxRows.toLocaleString("en-US")}, or narrow the query.`,
+        ""
+      );
+    } else if (coverage) {
+      lines.push(
+        `> **Truncated at limit ${maxRows.toLocaleString("en-US")}.** ` +
+          `Returned rows span ${fmtTime(coverage.first)} → ${fmtTime(coverage.last)}; ` +
+          `nothing after ${fmtTime(coverage.last)} was returned, and rows at that time may be partial. ` +
+          `Do not treat this as the whole Period. To continue, call again with ` +
+          `stime="${isoTime(coverage.last)}" (same etime) and drop rows already seen.`,
+        ""
+      );
+    }
+
     // Truncation caution (context-aware when semantics available)
-    if (truncated && semantics) {
+    if (truncated && semantics && !coverage) {
       if (semantics.resultType === "timeseries") {
         lines.push(
           `> Result may be truncated (showing ${limited.length} rows). Do not infer global ranking from displayed rows.`,
@@ -137,7 +167,7 @@ export function formatMxqlResponse(
     if (entityNote) lines.push("", entityNote);
 
     // Legacy truncation notice (only when no semantics)
-    if (truncated && !semantics) {
+    if (truncated && !semantics && !coverage) {
       lines.push(
         "",
         `(Showing ${limited.length} rows — result may be truncated)`
@@ -422,6 +452,30 @@ function formatValue(v: unknown, field?: string): string {
   }
   if (typeof v === "object") return JSON.stringify(v);
   return String(v);
+}
+
+/**
+ * Time span of the returned rows, when they end before the requested etime.
+ * Undefined when rows carry no numeric `time` or already reach etime.
+ */
+function truncatedCoverage(
+  rows: Record<string, unknown>[],
+  etime: number
+): { first: number; last: number } | undefined {
+  let first = Infinity;
+  let last = -Infinity;
+  for (const row of rows) {
+    const t = row["time"];
+    if (typeof t !== "number" || !Number.isFinite(t)) continue;
+    if (t < first) first = t;
+    if (t > last) last = t;
+  }
+  if (last === -Infinity || last >= etime) return undefined;
+  return { first, last };
+}
+
+function isoTime(ms: number): string {
+  return new Date(ms).toISOString().replace(".000Z", "Z");
 }
 
 function fmtTime(ms: number): string {

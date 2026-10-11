@@ -13,7 +13,23 @@ export const PARAM_TIME_RANGE =
 
 export const PARAM_TIME_RANGE_OPTIONAL =
   'Time range (default: "5m"). ' +
-  'Examples: "5m", "1h", "6h", "1d", "last 30 minutes".';
+  'Examples: "5m", "1h", "6h", "1d", "last 30 minutes". ' +
+  "Ends now unless stime or etime is given. The window must be under 32 days.";
+
+const TIME_POINT_FORMAT =
+  'Epoch milliseconds as a string (e.g. "1778716800000") or ISO 8601 with an ' +
+  'explicit offset (e.g. "2026-05-14T09:00:00+09:00"); an ISO value without an offset is rejected.';
+
+export const PARAM_STIME =
+  "Absolute window start, for querying a past period. " +
+  TIME_POINT_FORMAT +
+  " With etime: the window is exactly [stime, etime] and timeRange is ignored. " +
+  "Alone: the window is [stime, stime + timeRange].";
+
+export const PARAM_ETIME =
+  "Absolute window end. " +
+  TIME_POINT_FORMAT +
+  " Alone: the window is [etime - timeRange, etime].";
 
 export const PARAM_MXQL_PATH =
   'MXQL query path from the yard (e.g., "v2/sys/server_base", "v2/app/tps_pcode"). ' +
